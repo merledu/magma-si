@@ -24,6 +24,9 @@ class BFP32Adder extends Module {
   val oSign = Wire(Bool())
   val oExponent = Wire(UInt(8.W))
   val oMantissa = Wire(UInt(24.W))
+  oSign := 0.B
+  oExponent := 0.U
+  oMantissa := 0.U
 
   val adderAIn = io.A
   val adderBIn = io.B
@@ -81,12 +84,17 @@ class GeneralAdder extends Module {
   val bExponent = Wire(UInt(8.W))
   val bMantissa = Wire(UInt(24.W))
 
-  val oSign = Wire(Bool())
-  val oExponent = Wire(UInt(8.W))
-  val oMantissa = Wire(UInt(25.W))
+  val oSign = Reg(Bool())
+  val oExponent = Reg(UInt(8.W))
+  val oMantissa = Reg(UInt(25.W))
+  oSign := 0.B
+  oExponent := 0.U
+  oMantissa := 0.U
 
   val diff = Wire(UInt(8.W))
+  diff := 0.U
   val tmpMantissa = Wire(UInt(24.W))
+  tmpMantissa := 0.U
 
   val norm1 = Module(new AdditionNormaliser)
   norm1.io.in_e := oExponent
@@ -148,16 +156,22 @@ class GeneralAdder extends Module {
       oMantissa := bMantissa - tmpMantissa
     }
   }
+  norm1.io.in_e := oExponent
+  norm1.io.in_m := oMantissa
 
   when (oMantissa(24) === 1.U) {
     oExponent := oExponent + 1.U
     oMantissa := oMantissa >> 1
   } .elsewhen ((oMantissa(23) =/= 1.U) && (oExponent =/= 0.U)) {
-    norm1.io.in_e := oExponent
-    norm1.io.in_m := oMantissa
     oExponent := norm1.io.out_e
     oMantissa := norm1.io.out_m
+  }.otherwise {
+    oExponent := 0.U
+    oMantissa := 0.U
   }
+
+  // oExponent := Mux(oMantissa(24) === 1.U,oExponent + 1.U,Mux((oMantissa(23) =/= 1.U) && (oExponent =/= 0.U),RegNext(norm1.io.out_e,0.U))
+  // oMantissa := Mux(oMantissa(24) === 1.U,oMantissa >> 1,Mux((oMantissa(23) =/= 1.U) && (oExponent =/= 0.U),norm1.io.out_m,0.U))
 
   io.out := Cat(oSign, oExponent, oMantissa(22, 0))
 }
@@ -173,9 +187,13 @@ class AdditionNormaliser extends Module {
   })
 
   for (i <- 2 to 22) {
+    
     when (io.in_m(23, 23 - i) === ("b" + "0" * i + "1").U) {
       io.out_e := io.in_e - (23 - i).U
       io.out_m := io.in_m << (23 - i).U
+    }. otherwise {
+      io.out_e := 0.U
+      io.out_m := 0.U
     }
   }
 }
