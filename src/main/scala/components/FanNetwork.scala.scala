@@ -759,7 +759,7 @@ class FanNetwork(DATA_TYPE: Int = 32,NUM_PES: Int = 32,LOG2_PES: Int = 5) extend
     r_lvl_output_ff_valid(122) := r_lvl_output_ff_valid(90)
 
     r_lvl_output_ff(3967, 3936) := r_lvl_output_ff(2943, 2912)
-    r_lvl_output_ff_valid(123) := r_lvl_output_ff_valid(91
+    r_lvl_output_ff_valid(123) := r_lvl_output_ff_valid(91)
 
     r_lvl_output_ff(3999, 3968) := r_lvl_output_ff(2975, 2944)
     r_lvl_output_ff_valid(124) := r_lvl_output_ff_valid(92)
@@ -773,7 +773,494 @@ class FanNetwork(DATA_TYPE: Int = 32,NUM_PES: Int = 32,LOG2_PES: Int = 5) extend
     r_lvl_output_ff(4095, 4064) := r_lvl_output_ff(3071, 3040)
     r_lvl_output_ff_valid(127) := r_lvl_output_ff_valid(95)
   }
+  when (rst === 1.B) {
+    r_lvl_output_ff(5119, 4096) := 0.U
+    r_lvl_output_ff_valid(159, 128) := 0.U
+  } .otherwise {
+    r_lvl_output_ff(4127, 4096) := r_lvl_output_ff(3103, 3072)
+    r_lvl_output_ff_valid(128) := r_lvl_output_ff_valid(96)
+
+    r_lvl_output_ff(4159, 4128) := r_lvl_output_ff(3135, 3104)
+    r_lvl_output_ff_valid(129) := r_lvl_output_ff_valid(97)
+
+    r_lvl_output_ff(4191, 4160) := r_lvl_output_ff(3167, 3136)
+    r_lvl_output_ff_valid(130) := r_lvl_output_ff_valid(98)
+
+    r_lvl_output_ff(4223, 4192) := r_lvl_output_ff(3199, 3168)
+    r_lvl_output_ff_valid(131) := r_lvl_output_ff_valid(99)
+
+    r_lvl_output_ff(4255, 4224) := r_lvl_output_ff(3231, 3200)
+    r_lvl_output_ff_valid(132) := r_lvl_output_ff_valid(100)
+
+    r_lvl_output_ff(4287, 4256) := r_lvl_output_ff(3263, 3232)
+    r_lvl_output_ff_valid(133) := r_lvl_output_ff_valid(101)
+
+    r_lvl_output_ff(4319, 4288) := r_lvl_output_ff(3295, 3264)
+    r_lvl_output_ff_valid(134) := r_lvl_output_ff_valid(102)
+
+    r_lvl_output_ff(4351, 4320) := r_lvl_output_ff(3327, 3296)
+    r_lvl_output_ff_valid(135) := r_lvl_output_ff_valid(103)
+
+    r_lvl_output_ff(4383, 4352) := r_lvl_output_ff(3359, 3328)
+    r_lvl_output_ff_valid(136) := r_lvl_output_ff_valid(104)
+
+    r_lvl_output_ff(4415, 4384) := r_lvl_output_ff(3391, 3360)
+    r_lvl_output_ff_valid(137) := r_lvl_output_ff_valid(105)
+
+    r_lvl_output_ff(4447, 4416) := r_lvl_output_ff(3423, 3392)
+    r_lvl_output_ff_valid(138) := r_lvl_output_ff_valid(106)
+
+    r_lvl_output_ff(4479, 4448) := r_lvl_output_ff(3455, 3424)
+    r_lvl_output_ff_valid(139) := r_lvl_output_ff_valid(107)
+
+    r_lvl_output_ff(4511, 4480) := r_lvl_output_ff(3487, 3456)
+    r_lvl_output_ff_valid(140) := r_lvl_output_ff_valid(108)
+
+    r_lvl_output_ff(4543, 4512) := r_lvl_output_ff(3519, 3488)
+    r_lvl_output_ff_valid(141) := r_lvl_output_ff_valid(109)
+
+    r_lvl_output_ff(4575, 4544) := r_lvl_output_ff(3551, 3520)
+    r_lvl_output_ff_valid(142) := r_lvl_output_ff_valid(110)
+
+    when (w_vn_lvl_4_valid(0) === 1.B) {
+        r_lvl_output_ff(4607, 4576) := w_vn_lvl_4(31, 0)
+        r_lvl_output_ff_valid(143) := 1.B
+    } .otherwise {
+        r_lvl_output_ff(4607, 4576) := r_lvl_output_ff(3583, 3552)
+        r_lvl_output_ff_valid(143) := r_lvl_output_ff_valid(111)
+    }
+
+    when (w_vn_lvl_4_valid(1) === 1.B) {
+        r_lvl_output_ff(4639, 4608) := w_vn_lvl_4(63, 32)
+        r_lvl_output_ff_valid(144) := 1.B
+    } .otherwise {
+        r_lvl_output_ff(4639, 4608) := r_lvl_output_ff(3615, 3584)
+        r_lvl_output_ff_valid(144) := r_lvl_output_ff_valid(112)
+    }
+
+    r_lvl_output_ff(4671, 4640) := r_lvl_output_ff(3647, 3616)
+    r_lvl_output_ff_valid(145) := r_lvl_output_ff_valid(113)
+
+    r_lvl_output_ff(4703, 4672) := r_lvl_output_ff(3679, 3648)
+    r_lvl_output_ff_valid(146) := r_lvl_output_ff_valid(114)
+
+    r_lvl_output_ff(4735, 4704) := r_lvl_output_ff(3711, 3680)
+    r_lvl_output_ff_valid(147) := r_lvl_output_ff_valid(115)
+
+    r_lvl_output_ff(4767, 4736) := r_lvl_output_ff(3743, 3712)
+    r_lvl_output_ff_valid(148) := r_lvl_output_ff_valid(116)
+
+    r_lvl_output_ff(4799, 4768) := r_lvl_output_ff(3775, 3744)
+    r_lvl_output_ff_valid(149) := r_lvl_output_ff_valid(117)
+
+    r_lvl_output_ff(4831, 4800) := r_lvl_output_ff(3807, 3776)
+    r_lvl_output_ff_valid(150) := r_lvl_output_ff_valid(118)
+
+    r_lvl_output_ff(4863, 4832) := r_lvl_output_ff(3839, 3808)
+    r_lvl_output_ff_valid(151) := r_lvl_output_ff_valid(119)
+
+    r_lvl_output_ff(4895, 4864) := r_lvl_output_ff(3871, 3840)
+    r_lvl_output_ff_valid(152) := r_lvl_output_ff_valid(120)
+
+    r_lvl_output_ff(4927, 4896) := r_lvl_output_ff(3903, 3872)
+    r_lvl_output_ff_valid(153) := r_lvl_output_ff_valid(121)
+
+    r_lvl_output_ff(4959, 4928) := r_lvl_output_ff(3935, 3904)
+    r_lvl_output_ff_valid(154) := r_lvl_output_ff_valid(122)
+
+    r_lvl_output_ff(4991, 4960) := r_lvl_output_ff(3967, 3936)
+    r_lvl_output_ff_valid(155) := r_lvl_output_ff_valid(123)
+    
+    r_lvl_output_ff(5023, 4992) := r_lvl_output_ff(3999, 3968)
+    r_lvl_output_ff_valid(156) := r_lvl_output_ff_valid(124)
+
+    r_lvl_output_ff(5055, 5024) := r_lvl_output_ff(4031, 4000)
+    r_lvl_output_ff_valid(157) := r_lvl_output_ff_valid(125)
+
+    r_lvl_output_ff(5087, 5056) := r_lvl_output_ff(4063, 4032)
+    r_lvl_output_ff_valid(158) := r_lvl_output_ff_valid(126)
+
+    r_lvl_output_ff(5119, 5088) := r_lvl_output_ff(4095, 4064)
+    r_lvl_output_ff_valid(159) := r_lvl_output_ff_valid(127)
+  }
+
+  when (i_valid === 1.U) {
+    r_valid(0) := 1.U
+  } .otherwise {
+    r_valid(0) := 0.U
+  }
+
+  for (i <- 0 until 6) {
+    when (rst === 1.U) {
+        r_valid(i + 1) := 0.U
+    } .otherwise {
+        r_valid(i + 1) := r_valid(i)
+    }
+  }
+
+  val my_adder_0 = Module(new edge_adder_switch(DATA_TYPE = UInt(32.W), NUM_IN = 2, SEL_IN = 2))
+
+  my_adder_0.io.i_valid := io.i_valid
+  my_adder_0.io.i_data_bus := io.i_data_bus
+  my_adder_0.io.i_add_en := io.i_add_en
+  my_adder_0.io.i_cmd := io.i_cmd
+  my_adder_0.io.i_sel := io.i_sel
+  io.o_vn := my_adder_0.io.o_vn
+  io.o_vn_valid := my_adder_0.io.o_vn_valid
+  io.o_adder := my_adder_0.io.o_adder
+
+  val my_adder_1 = Module(new edge_adder_switch(DATA_TYPE = UInt(32.W), NUM_IN = 2, SEL_IN = 2))
+
+  my_adder_1.io.i_valid := io.i_valid
+  my_adder_1.io.i_data_bus := io.i_data_bus
+  my_adder_1.io.i_add_en := io.i_add_en
+  my_adder_1.io.i_cmd := io.i_cmd
+  my_adder_1.io.i_sel := io.i_sel
+  io.o_vn := my_adder_1.io.o_vn
+  io.o_vn_valid := my_adder_1.io.o_vn_valid
+  io.o_adder := my_adder_1.io.o_adder
+
+  val my_adder_2 = Module(new adder_switch(DATA_TYPE = UInt(32.W), NUM_IN = 2, SEL_IN = 2))
+
+  my_adder_2.io.i_valid := io.i_valid
+  my_adder_2.io.i_data_bus := io.i_data_bus
+  my_adder_2.io.i_add_en := io.i_add_en
+  my_adder_2.io.i_cmd := io.i_cmd
+  my_adder_2.io.i_sel := io.i_sel
+  io.o_vn := my_adder_2.io.o_vn
+  io.o_vn_valid := my_adder_2.io.o_vn_valid
+  io.o_adder := my_adder_2.io.o_adder
+
+  val my_adder_3 = Module(new edge_adder_switch(DATA_TYPE = UInt(32.W), NUM_IN = 4, SEL_IN = 2))
+
+  my_adder_3.io.i_valid := io.i_valid
+  my_adder_3.io.i_data_bus := io.i_data_bus
+  my_adder_3.io.i_add_en := io.i_add_en
+  my_adder_3.io.i_cmd := io.i_cmd
+  my_adder_3.io.i_sel := io.i_sel
+  io.o_vn := my_adder_3.io.o_vn
+  io.o_vn_valid := my_adder_3.io.o_vn_valid
+  io.o_adder := my_adder_3.io.o_adder
+
+  val my_adder_4 = Module(new adder_switch(DATA_TYPE = UInt(32.W), NUM_IN = 2, SEL_IN = 2))
+
+  my_adder_4.io.i_valid := io.i_valid
+  my_adder_4.io.i_data_bus := io.i_data_bus
+  my_adder_4.io.i_add_en := io.i_add_en
+  my_adder_4.io.i_cmd := io.i_cmd
+  my_adder_4.io.i_sel := io.i_sel
+  io.o_vn := my_adder_4.io.o_vn
+  io.o_vn_valid := my_adder_4.io.o_vn_valid
+  io.o_adder := my_adder_4.io.o_adder
+
+  val my_adder_5 = Module(new adder_switch(DATA_TYPE = UInt(32.W), NUM_IN = 2, SEL_IN = 2))
+
+  my_adder_5.io.i_valid := io.i_valid
+  my_adder_5.io.i_data_bus := io.i_data_bus
+  my_adder_5.io.i_add_en := io.i_add_en
+  my_adder_5.io.i_cmd := io.i_cmd
+  my_adder_5.io.i_sel := io.i_sel
+  io.o_vn := my_adder_5.io.o_vn
+  io.o_vn_valid := my_adder_5.io.o_vn_valid
+  io.o_adder := my_adder_5.io.o_adder
+
+  val my_adder_6 = Module(new adder_switch(DATA_TYPE = UInt(32.W), NUM_IN = 2, SEL_IN = 2))
+
+  my_adder_6.io.i_valid := io.i_valid
+  my_adder_6.io.i_data_bus := io.i_data_bus
+  my_adder_6.io.i_add_en := io.i_add_en
+  my_adder_6.io.i_cmd := io.i_cmd
+  my_adder_6.io.i_sel := io.i_sel
+  io.o_vn := my_adder_6.io.o_vn
+  io.o_vn_valid := my_adder_6.io.o_vn_valid
+  io.o_adder := my_adder_6.io.o_adder
+
+  val my_adder_7 = Module(new edge_adder_switch(DATA_TYPE = UInt(32.W), NUM_IN = 6, SEL_IN = 4))
+
+  my_adder_7.io.i_valid := io.i_valid
+  my_adder_7.io.i_data_bus := io.i_data_bus
+  my_adder_7.io.i_add_en := io.i_add_en
+  my_adder_7.io.i_cmd := io.i_cmd
+  my_adder_7.io.i_sel := io.i_sel
+  io.o_vn := my_adder_7.io.o_vn
+  io.o_vn_valid := my_adder_7.io.o_vn_valid
+  io.o_adder := my_adder_7.io.o_adder
+
+  val my_adder_9 = Module(new adder_switch(DATA_TYPE = UInt(32.W), NUM_IN = 2, SEL_IN = 2))
+
+  my_adder_9.io.i_valid := io.i_valid
+  my_adder_9.io.i_data_bus := io.i_data_bus
+  my_adder_9.io.i_add_en := io.i_add_en
+  my_adder_9.io.i_cmd := io.i_cmd
+  my_adder_9.io.i_sel := io.i_sel
+  io.o_vn := my_adder_9.io.o_vn
+  io.o_vn_valid := my_adder_9.io.o_vn_valid
+  io.o_adder := my_adder_9.io.o_adder
+
+  val my_adder_11 = Module(new adder_switch(DATA_TYPE = UInt(32.W), NUM_IN = 4, SEL_IN = 2))
+
+  my_adder_11.io.i_valid := io.i_valid
+  my_adder_11.io.i_data_bus := io.i_data_bus
+  my_adder_11.io.i_add_en := io.i_add_en
+  my_adder_11.io.i_cmd := io.i_cmd
+  my_adder_11.io.i_sel := io.i_sel
+  io.o_vn := my_adder_11.io.o_vn
+  io.o_vn_valid := my_adder_11.io.o_vn_valid
+  io.o_adder := my_adder_11.io.o_adder
+
+  val my_adder_12 = Module(new adder_switch(DATA_TYPE = UInt(32.W), NUM_IN = 2, SEL_IN = 2))
+
+  my_adder_12.io.i_valid := io.i_valid
+  my_adder_12.io.i_data_bus := io.i_data_bus
+  my_adder_12.io.i_add_en := io.i_add_en
+  my_adder_12.io.i_cmd := io.i_cmd
+  my_adder_12.io.i_sel := io.i_sel
+  io.o_vn := my_adder_12.io.o_vn
+  io.o_vn_valid := my_adder_12.io.o_vn_valid
+  io.o_adder := my_adder_12.io.o_adder
+
+  val my_adder_13 = Module(new adder_switch(DATA_TYPE = UInt(32.W), NUM_IN = 2, SEL_IN = 2))
+
+  my_adder_13.io.i_valid := io.i_valid
+  my_adder_13.io.i_data_bus := io.i_data_bus
+  my_adder_13.io.i_add_en := io.i_add_en
+  my_adder_13.io.i_cmd := io.i_cmd
+  my_adder_13.io.i_sel := io.i_sel
+  io.o_vn := my_adder_13.io.o_vn
+  io.o_vn_valid := my_adder_13.io.o_vn_valid
+  io.o_adder := my_adder_13.io.o_adder
+
+  val my_adder_14 = Module(new adder_switch(DATA_TYPE = UInt(32.W), NUM_IN = 2, SEL_IN = 2))
+
+  my_adder_14.io.i_valid := io.i_valid
+  my_adder_14.io.i_data_bus := io.i_data_bus
+  my_adder_14.io.i_add_en := io.i_add_en
+  my_adder_14.io.i_cmd := io.i_cmd
+  my_adder_14.io.i_sel := io.i_sel
+  io.o_vn := my_adder_14.io.o_vn
+  io.o_vn_valid := my_adder_14.io.o_vn_valid
+  io.o_adder := my_adder_14.io.o_adder
+
+  val my_adder_15 = Module(new edge_adder_switch(DATA_TYPE = UInt(32.W), NUM_IN = 8, SEL_IN = 4))
+
+  my_adder_15.io.i_valid := io.i_valid
+  my_adder_15.io.i_data_bus := io.i_data_bus
+  my_adder_15.io.i_add_en := io.i_add_en
+  my_adder_15.io.i_cmd := io.i_cmd
+  my_adder_15.io.i_sel := io.i_sel
+  io.o_vn := my_adder_15.io.o_vn
+  io.o_vn_valid := my_adder_15.io.o_vn_valid
+  io.o_adder := my_adder_15.io.o_adder
+
+  val my_adder_16 = Module(new adder_switch(DATA_TYPE = UInt(32.W), NUM_IN = 2, SEL_IN = 2))
+
+  my_adder_16.io.i_valid := io.i_valid
+  my_adder_16.io.i_data_bus := io.i_data_bus
+  my_adder_16.io.i_add_en := io.i_add_en
+  my_adder_16.io.i_cmd := io.i_cmd
+  my_adder_16.io.i_sel := io.i_sel
+  io.o_vn := my_adder_16.io.o_vn
+  io.o_vn_valid := my_adder_16.io.o_vn_valid
+  io.o_adder := my_adder_16.io.o_adder
+
+  val my_adder_17 = Module(new adder_switch(DATA_TYPE = UInt(32.W), NUM_IN = 2, SEL_IN = 2))
+
+  my_adder_17.io.i_valid := io.i_valid
+  my_adder_17.io.i_data_bus := io.i_data_bus
+  my_adder_17.io.i_add_en := io.i_add_en
+  my_adder_17.io.i_cmd := io.i_cmd
+  my_adder_17.io.i_sel := io.i_sel
+  io.o_vn := my_adder_17.io.o_vn
+  io.o_vn_valid := my_adder_17.io.o_vn_valid
+  io.o_adder := my_adder_17.io.o_adder
+
+  val my_adder_18 = Module(new adder_switch(DATA_TYPE = UInt(32.W), NUM_IN = 2, SEL_IN = 2))
+
+  my_adder_18.io.i_valid := io.i_valid
+  my_adder_18.io.i_data_bus := io.i_data_bus
+  my_adder_18.io.i_add_en := io.i_add_en
+  my_adder_18.io.i_cmd := io.i_cmd
+  my_adder_18.io.i_sel := io.i_sel
+  io.o_vn := my_adder_18.io.o_vn
+  io.o_vn_valid := my_adder_18.io.o_vn_valid
+  io.o_adder := my_adder_18.io.o_adder
+
+  val my_adder_19 = Module(new adder_switch(DATA_TYPE = UInt(32.W), NUM_IN = 4, SEL_IN = 2))
+
+  my_adder_19.io.i_valid := io.i_valid
+  my_adder_19.io.i_data_bus := io.i_data_bus
+  my_adder_19.io.i_add_en := io.i_add_en
+  my_adder_19.io.i_cmd := io.i_cmd
+  my_adder_19.io.i_sel := io.i_sel
+  io.o_vn := my_adder_19.io.o_vn
+  io.o_vn_valid := my_adder_19.io.o_vn_valid
+  io.o_adder := my_adder_19.io.o_adder
+
+  val my_adder_20 = Module(new adder_switch(DATA_TYPE = UInt(32.W), NUM_IN = 2, SEL_IN = 2))
+
+  my_adder_20.io.i_valid := io.i_valid
+  my_adder_20.io.i_data_bus := io.i_data_bus
+  my_adder_20.io.i_add_en := io.i_add_en
+  my_adder_20.io.i_cmd := io.i_cmd
+  my_adder_20.io.i_sel := io.i_sel
+  io.o_vn := my_adder_20.io.o_vn
+  io.o_vn_valid := my_adder_20.io.o_vn_valid
+  io.o_adder := my_adder_20.io.o_adder
+
+  val my_adder_21 = Module(new adder_switch(DATA_TYPE = UInt(32.W), NUM_IN = 2, SEL_IN = 2))
+
+  my_adder_21.io.i_valid := io.i_valid
+  my_adder_21.io.i_data_bus := io.i_data_bus
+  my_adder_21.io.i_add_en := io.i_add_en
+  my_adder_21.io.i_cmd := io.i_cmd
+  my_adder_21.io.i_sel := io.i_sel
+  io.o_vn := my_adder_21.io.o_vn
+  io.o_vn_valid := my_adder_21.io.o_vn_valid
+  io.o_adder := my_adder_21.io.o_adder
+
+  val my_adder_22 = Module(new adder_switch(DATA_TYPE = UInt(32.W), NUM_IN = 2, SEL_IN = 2))
+
+  my_adder_22.io.i_valid := io.i_valid
+  my_adder_22.io.i_data_bus := io.i_data_bus
+  my_adder_22.io.i_add_en := io.i_add_en
+  my_adder_22.io.i_cmd := io.i_cmd
+  my_adder_22.io.i_sel := io.i_sel
+  io.o_vn := my_adder_22.io.o_vn
+  io.o_vn_valid := my_adder_22.io.o_vn_valid
+  io.o_adder := my_adder_22.io.o_adder
+
+  val my_adder_23 = Module(new edge_adder_switch(DATA_TYPE = UInt(32.W), NUM_IN = 6, SEL_IN = 4))
+
+  my_adder_23.io.i_valid := io.i_valid
+  my_adder_23.io.i_data_bus := io.i_data_bus
+  my_adder_23.io.i_add_en := io.i_add_en
+  my_adder_23.io.i_cmd := io.i_cmd
+  my_adder_23.io.i_sel := io.i_sel
+  io.o_vn := my_adder_23.io.o_vn
+  io.o_vn_valid := my_adder_23.io.o_vn_valid
+  io.o_adder := my_adder_23.io.o_adder
+
+  val my_adder_24 = Module(new adder_switch(DATA_TYPE = UInt(32.W), NUM_IN = 2, SEL_IN = 2))
+
+  my_adder_24.io.i_valid := io.i_valid
+  my_adder_24.io.i_data_bus := io.i_data_bus
+  my_adder_24.io.i_add_en := io.i_add_en
+  my_adder_24.io.i_cmd := io.i_cmd
+  my_adder_24.io.i_sel := io.i_sel
+  io.o_vn := my_adder_24.io.o_vn
+  io.o_vn_valid := my_adder_24.io.o_vn_valid
+  io.o_adder := my_adder_24.io.o_adder
+
+  val my_adder_25 = Module(new adder_switch(DATA_TYPE = UInt(32.W), NUM_IN = 2, SEL_IN = 2))
+
+  my_adder_25.io.i_valid := io.i_valid
+  my_adder_25.io.i_data_bus := io.i_data_bus
+  my_adder_25.io.i_add_en := io.i_add_en
+  my_adder_25.io.i_cmd := io.i_cmd
+  my_adder_25.io.i_sel := io.i_sel
+  io.o_vn := my_adder_25.io.o_vn
+  io.o_vn_valid := my_adder_25.io.o_vn_valid
+  io.o_adder := my_adder_25.io.o_adder
+
+  val my_adder_26 = Module(new adder_switch(DATA_TYPE = UInt(32.W), NUM_IN = 2, SEL_IN = 2))
+
+  my_adder_26.io.i_valid := io.i_valid
+  my_adder_26.io.i_data_bus := io.i_data_bus
+  my_adder_26.io.i_add_en := io.i_add_en
+  my_adder_26.io.i_cmd := io.i_cmd
+  my_adder_26.io.i_sel := io.i_sel
+  io.o_vn := my_adder_26.io.o_vn
+  io.o_vn_valid := my_adder_26.io.o_vn_valid
+  io.o_adder := my_adder_26.io.o_adder
+
+  val my_adder_27 = Module(new edge_adder_switch(DATA_TYPE = UInt(32.W), NUM_IN = 4, SEL_IN = 2))
+
+  my_adder_27.io.i_valid := io.i_valid
+  my_adder_27.io.i_data_bus := io.i_data_bus
+  my_adder_27.io.i_add_en := io.i_add_en
+  my_adder_27.io.i_cmd := io.i_cmd
+  my_adder_27.io.i_sel := io.i_sel
+  io.o_vn := my_adder_27.io.o_vn
+  io.o_vn_valid := my_adder_27.io.o_vn_valid
+  io.o_adder := my_adder_27.io.o_adder
+
+  val my_adder_28 = Module(new adder_switch(DATA_TYPE = UInt(32.W), NUM_IN = 2, SEL_IN = 2))
+
+  my_adder_28.io.i_valid := io.i_valid
+  my_adder_28.io.i_data_bus := io.i_data_bus
+  my_adder_28.io.i_add_en := io.i_add_en
+  my_adder_28.io.i_cmd := io.i_cmd
+  my_adder_28.io.i_sel := io.i_sel
+  io.o_vn := my_adder_28.io.o_vn
+  io.o_vn_valid := my_adder_28.io.o_vn_valid
+  io.o_adder := my_adder_28.io.o_adder
+
+  val my_adder_29 = Module(new edge_adder_switch(DATA_TYPE = UInt(32.W), NUM_IN = 2, SEL_IN = 2))
+
+  my_adder_29.io.i_valid := io.i_valid
+  my_adder_29.io.i_data_bus := io.i_data_bus
+  my_adder_29.io.i_add_en := io.i_add_en
+  my_adder_29.io.i_cmd := io.i_cmd
+  my_adder_29.io.i_sel := io.i_sel
+  io.o_vn := my_adder_29.io.o_vn
+  io.o_vn_valid := my_adder_29.io.o_vn_valid
+  io.o_adder := my_adder_29.io.o_adder
+
+  val my_adder_30 = Module(new edge_adder_switch(DATA_TYPE = UInt(32.W), NUM_IN = 2, SEL_IN = 2))
+
+  my_adder_30.io.i_valid := io.i_valid
+  my_adder_30.io.i_data_bus := io.i_data_bus
+  my_adder_30.io.i_add_en := io.i_add_en
+  my_adder_30.io.i_cmd := io.i_cmd
+  my_adder_30.io.i_sel := io.i_sel
+  io.o_vn := my_adder_30.io.o_vn
+  io.o_vn_valid := my_adder_30.io.o_vn_valid
+  io.o_adder := my_adder_30.io.o_adder
+
+  when(io.rst === true.B) {
+    r_final_add := 0.U
+    r_final_add2 := 0.U
+    r_final_sum := 0.U
+  }.otherwise {
+    r_final_add := io.i_add_en_bus(30)
+    r_final_add2 := r_final_add
+    r_final_sum := io.w_fan_lvl_4
+  }
+
+
+  
+  when (io.rst === true.B) {
+    o_data_bus := 0.U
+  } .otherwise {
+    o_data_bus(479, 0) := r_lvl_output_ff(4575, 4096)
+    when (io.r_final_add2 === true.B) {
+        o_data_bus(511, 480) := io.r_final_sum
+    } .otherwise {
+        o_data_bus(511, 480) := r_lvl_output_ff(4607, 4576)
+    }
+    o_data_bus(1023, 512) := r_lvl_output_ff(5119, 4608)
+  }
+
+
+
+  when (io.rst === true.B || io.r_valid(6) === false.B) {
+    o_valid := 0.U
+  } .otherwise {
+    o_valid(14, 0) := r_lvl_output_ff_valid(143, 128)
+    when (io.r_final_add2 === true.B) {
+        o_valid(15) := true.B
+    } .otherwise {
+        o_valid(15) := r_lvl_output_ff_valid(143)
+    }
+    o_valid(31, 16) := r_lvl_output_ff_valid(159, 144)
+  }
+
+
 
 
 }
+
+
+
+
 
