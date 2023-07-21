@@ -5,8 +5,6 @@ import chisel3.util._
 
 class EdgeAdderSwitch(DATA_TYPE: Int = 32, NUM_IN: Int = 4, SEL_IN: Int = 2) extends Module {
   val io = IO(new Bundle {
-    // val clk = Input(Clock())
-    // val rst = Input(Bool())
     val i_valid = Input(Bool())
     val i_data_bus = Input(Vec(NUM_IN, UInt(DATA_TYPE.W)))
     val i_add_en = Input(Bool())
@@ -20,13 +18,11 @@ class EdgeAdderSwitch(DATA_TYPE: Int = 32, NUM_IN: Int = 4, SEL_IN: Int = 2) ext
   val clk = clock
   val rst = reset.asBool
 
-  val reductionMux = Module(new ReductionMux(W = DATA_TYPE, NUM_IN = NUM_IN, SEL_IN = SEL_IN, NUM_OUT = 2))
+  val reductionMux = Module(new ReductionMux(W = DATA_TYPE, NUM_IN = NUM_IN, SEL_IN = SEL_IN))
   reductionMux.io.i_data := io.i_data_bus
   reductionMux.io.i_sel := io.i_sel
 
   val adder32 = Module(new SimpleAdder)
-  adder32.io.clk := io.clk
-  adder32.io.rst := io.rst
   adder32.io.A := reductionMux.io.o_data(1)
   adder32.io.B := reductionMux.io.o_data(0)
 
