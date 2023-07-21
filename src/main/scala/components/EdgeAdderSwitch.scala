@@ -6,7 +6,7 @@ import chisel3.util._
 class EdgeAdderSwitch(DATA_TYPE: Int = 32, NUM_IN: Int = 4, SEL_IN: Int = 2) extends Module {
   val io = IO(new Bundle {
     val i_valid = Input(Bool())
-    val i_data_bus = Input(Vec(NUM_IN, UInt(DATA_TYPE.W)))
+    val i_data_bus = Input(Vec(NUM_IN, UInt(64.W)))
     val i_add_en = Input(Bool())
     val i_cmd = Input(UInt(3.W))
     val i_sel = Input(UInt(SEL_IN.W))

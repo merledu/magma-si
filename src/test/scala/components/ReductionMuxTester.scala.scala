@@ -13,8 +13,9 @@ class ReductionMuxTester extends AnyFreeSpec with ChiselScalatestTester {
             dut.io.i_data(1).poke(4.U)
             dut.io.i_data(2).poke(5.U)
             dut.io.i_data(3).poke(6.U)
-            dut.io.i_sel.poke(0.U)
+            dut.io.i_sel.poke(3.U)
             dut.clock.step(1)
+
         }
     }
 }
