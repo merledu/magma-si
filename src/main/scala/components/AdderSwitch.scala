@@ -7,8 +7,6 @@ import chisel3.util._
 
 class AdderSwitch(DATA_TYPE: Int = 32, NUM_IN: Int = 4, SEL_IN: Int = 2) extends Module {
   val io = IO(new Bundle {
-    // val clk = Input(Clock())
-    // val rst = Input(Bool())
     val i_valid = Input(Bool())
     val i_data_bus = Input(Vec(NUM_IN, UInt(DATA_TYPE.W)))
     val i_add_en = Input(Bool())
