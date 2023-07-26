@@ -17,41 +17,6 @@ class FanNetwork(DATA_TYPE: Int = 32,NUM_PES: Int = 32,LOG2_PES: Int = 5) extend
     val o_data_bus = Output(Vec(NUM_PES, UInt( DATA_TYPE.W)))
   })
 
-  // Use the register value as io.i_sel_bus
-
-
-  // val w_fan_lvl_0 = Wire(UInt(960.W))
-  // val w_fan_lvl_1 = Wire(UInt(448.W))
-  // val w_fan_lvl_2 = Wire(UInt(192.W))
-  // val w_fan_lvl_3 = Wire(UInt(64.W))
-  // val w_fan_lvl_4 = Wire(UInt(32.W))
-
-  // val r_fan_ff_lvl_0_to_4 = RegInit(0.U(64.W))
-  // val r_fan_ff_lvl_0_to_3 = RegInit(0.U(192.W))
-  // val r_fan_ff_lvl_0_to_2 = RegInit(0.U(448.W))
-  // val r_fan_ff_lvl_1_to_4 = RegInit(0.U(64.W))
-  // val r_fan_ff_lvl_1_to_3 = RegInit(0.U(192.W))
-  // val r_fan_ff_lvl_2_to_4 = RegInit(0.U(64.W))
-
-  // val w_vn_lvl_0 = Wire(UInt(1024.W))
-  // val w_vn_lvl_0_valid = Wire(UInt(32.W))
-  // val w_vn_lvl_1 = Wire(UInt(512.W))
-  // val w_vn_lvl_1_valid = Wire(UInt(16.W))
-  // val w_vn_lvl_2 = Wire(UInt(256.W))
-  // val w_vn_lvl_2_valid = Wire(UInt(8.W))
-  // val w_vn_lvl_3 = Wire(UInt(128.W))
-  // val w_vn_lvl_3_valid = Wire(UInt(4.W))
-  // val w_vn_lvl_4 = Wire(UInt(64.W))
-  // val w_vn_lvl_4_valid = Wire(UInt(2.W))
-
-  // val r_lvl_output_ff = RegInit(VecInit(Seq.fill(160)(0.U(32.W))))
-  // val r_lvl_output_ff_valid = RegInit(VecInit(Seq.fill(160)(0.U(1.W))))  
-  // val r_valid = RegInit(0.U(7.W))
-  // val r_final_sum = RegInit(0.U(DATA_TYPE.W))
-  // val r_final_add = RegInit(false.B)
-  // val r_final_add2 = RegInit(false.B)
-
-// Initialize all the wires with zero
 val w_fan_lvl_0 = WireInit(VecInit(Seq.fill(30)(0.U(960.W))))
 val w_fan_lvl_1 = WireInit(VecInit(Seq.fill(14)(0.U(448.W))))
 val w_fan_lvl_2 = WireInit(VecInit(Seq.fill(6)(0.U(192.W))))
