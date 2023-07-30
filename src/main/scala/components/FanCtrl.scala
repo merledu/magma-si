@@ -9,8 +9,6 @@ class FanCtrl(
   LOG2_PES: Int = 5
 ) extends Module {
   val io = IO(new Bundle {
-    val clk = Input(Clock())
-    val rst = Input(Bool())
     val i_vn = Input(UInt((NUM_PES * LOG2_PES).W))
     val i_stationary = Input(Bool())
     val i_data_valid = Input(Bool())
@@ -19,813 +17,874 @@ class FanCtrl(
     val o_reduction_sel = Output(UInt(20.W))
     val o_reduction_valid = Output(Bool())
   })
+  io.o_reduction_add := 2.U
+  io.o_reduction_cmd := 2.U
+  io.o_reduction_sel := 2.U
+  io.o_reduction_valid := 1.B
+  val clk = clock
+  val rst = reset.asBool
 
   // Your logic here (not provided in the given Verilog code)
   // ...
 
   // Initialize Chisel registers based on Verilog registers
-  val r_reduction_add = RegInit(0.U((NUM_PES - 1).W))
-  val r_reduction_cmd = RegInit(0.U((3 * (NUM_PES - 1)).W))
-  val r_reduction_sel = RegInit(0.U(20.W))
+  val r_reduction_add = RegInit(VecInit(Seq.fill(NUM_PES - 1)(false.B)))
+  val r_reduction_cmd = RegInit(VecInit(Seq.fill(NUM_PES - 1)(0.U(3.W))))
+  val r_reduction_sel = RegInit(VecInit(Seq.fill(20)(false.B)))
 
-  val r_add_lvl_0 = RegInit(0.U(16.W))
-  val r_add_lvl_1 = RegInit(0.U(16.W))
-  val r_add_lvl_2 = RegInit(0.U(12.W))
-  val r_add_lvl_3 = RegInit(0.U(8.W))
-  val r_add_lvl_4 = RegInit(0.U(5.W))
+  // Intermediate signals to hold the concatenated vectors
+val r_add_lvl_0Reg = RegInit(VecInit(Seq.fill(16)(false.B)))
+val r_add_lvl_1Reg = RegInit(VecInit(Seq.fill(32)(false.B)))
+val r_add_lvl_2Reg = RegInit(VecInit(Seq.fill(48)(false.B)))
+val r_add_lvl_3Reg = RegInit(VecInit(Seq.fill(64)(false.B)))
+val r_add_lvl_4Reg = RegInit(VecInit(Seq.fill(5)(false.B)))
 
-  val r_cmd_lvl_0 = RegInit(0.U(48.W))
-  val r_cmd_lvl_1 = RegInit(0.U(48.W))
-  val r_cmd_lvl_2 = RegInit(0.U(36.W))
-  val r_cmd_lvl_3 = RegInit(0.U(24.W))
-  val r_cmd_lvl_4 = RegInit(0.U(15.W))
+val r_cmd_lvl_0Reg = RegInit(VecInit(Seq.fill(48)(0.U(3.W))))
+val r_cmd_lvl_1Reg = RegInit(VecInit(Seq.fill(48)(0.U(3.W))))
+val r_cmd_lvl_2Reg = RegInit(VecInit(Seq.fill(48)(0.U(3.W))))
+val r_cmd_lvl_3Reg = RegInit(VecInit(Seq.fill(48)(0.U(3.W))))
+val r_cmd_lvl_4Reg = RegInit(VecInit(Seq.fill(6)(0.U(3.W))))
 
-  val r_sel_lvl_2 = RegInit(0.U(24.W))
-  val r_sel_lvl_3 = RegInit(0.U(32.W))
-  val r_sel_lvl_4 = RegInit(0.U(20.W))
+val r_sel_lvl_2Reg = RegInit(VecInit(Seq.fill(24)(false.B)))
+val r_sel_lvl_3Reg = RegInit(VecInit(Seq.fill(64)(false.B)))
+val r_sel_lvl_4Reg = RegInit(VecInit(Seq.fill(16)(false.B)))
 
-  val r_vn = RegInit(0.U((2 * NUM_PES * LOG2_PES).W))
-  val w_vn = Wire(UInt((NUM_PES * LOG2_PES).W))
-  r_vn := w_vn
-
-  val r_valid = RegInit(0.U(5.W))
-
-  for (i <- 0 until 2) {
+val r_vn = RegInit(VecInit(Seq.fill(2)(0.U((2 * NUM_PES * LOG2_PES).W))))
+  val w_vn = WireInit(0.U((NUM_PES * LOG2_PES).W))
+val r_valid = RegInit(VecInit(Seq.fill(5)(false.B)))
+for (i <- 0 until 2) {
+  when(rst) {
+    r_vn(i) := 0.U
+  }.otherwise {
     if (i == 0) {
-      // First flip-flop (pass-through)
-      val pass_ff = RegInit(0.U((NUM_PES * LOG2_PES).W))
-      when(rst === true.B) {
-        pass_ff := 0.U
-      } .otherwise {
-        pass_ff := io.i_vn
-      }
+      r_vn(i) := io.i_vn
     } else {
-      // Subsequent flip-flops (flop)
-      val flop_ff = RegInit(0.U((NUM_PES * LOG2_PES).W))
-      when(rst === true.B) {
-        flop_ff := 0.U
-      } .otherwise {
-        flop_ff := vn_ff(i - 1)
-      }
+      r_vn(i) := r_vn(i - 1)
     }
   }
-
-  val w_vn = Wire(UInt((NUM_PES * LOG2_PES).W))
-  w_vn := vn_ff(1)
-
-    for (x <- 0 until 16) {
-        when (x === 0.U) {
-            when (rst) {
-                r_reduction_add(0) := false.B
-                r_reduction_cmd(0) := 0.U
-            }.otherwise {
-                if (r_valid(1) === 1.U) {
-                    when (w_vn((2.U * x + 0.U) * LOG2_PES.U) === w_vn((2.U * x + 1.U) * LOG2_PES.U)) {
-                        r_reduction_add(0) := true.B
-                    }.otherwise {
-                        r_reduction_add(0) := false.B
-                    }
-
-                    when (w_vn((2.U * x + 1.U) * LOG2_PES.U) =/= w_vn((2.U * x + 2.U) * LOG2_PES.U) &&
-                        w_vn((2.U * x + 0.U) * LOG2_PES.U) =/= w_vn((2.U * x + 1.U) * LOG2_PES.U)) {
-                        r_reduction_cmd(0) := 5.U // 3'b101
-                    }.elsewhen (w_vn((2.U * x + 1.U) * LOG2_PES.U) === w_vn((2.U * x + 2.U) * LOG2_PES.U) &&
-                        w_vn((2.U * x + 0.U) * LOG2_PES.U) =/= w_vn((2.U * x + 1.U) * LOG2_PES.U)) {
-                        r_reduction_cmd(0) := 3.U // 3'b011
-                    }.otherwise {
-                        r_reduction_cmd(0) := 0.U // 3'b000
-                    }
-                } else {
-                    r_reduction_add(0) := false.B
-                    r_reduction_cmd(0) := 0.U
-                }
-            }
-        }
-        when (x === 15.U) {
-            when (rst) {
-                r_reduction_add(15) := false.B
-                r_reduction_cmd(15) := 0.U
-            }.otherwise {
-                if (r_valid(1) === 1.U) {
-                    when (w_vn((2.U * x + 0.U) * LOG2_PES.U) === w_vn((2.U * x + 1.U) * LOG2_PES.U)) {
-                        r_reduction_add(15) := true.B
-                    }.otherwise {
-                        r_reduction_add(15) := false.B
-                    }
-
-                    when (w_vn((2.U * x + 0.U) * LOG2_PES.U) =/= w_vn((2.U * x - 1.U) * LOG2_PES.U) &&
-                        w_vn((2.U * x + 0.U) * LOG2_PES.U) =/= w_vn((2.U * x + 1.U) * LOG2_PES.U)) {
-                        r_reduction_cmd(15) := 5.U // 3'b101
-                    }.elsewhen (w_vn((2.U * x + 0.U) * LOG2_PES.U) === w_vn((2.U * x - 1.U) * LOG2_PES.U) &&
-                        w_vn((2.U * x + 0.U) * LOG2_PES.U) =/= w_vn((2.U * x + 1.U) * LOG2_PES.U)) {
-                        r_reduction_cmd(15) := 4.U // 3'b100
-                    }.otherwise {
-                        r_reduction_cmd(15) := 0.U // 3'b000
-                    }
-
-                } else {
-                    r_reduction_add(15) := false.B
-                    r_reduction_cmd(15) := 0.U
-                }
-            }
-        }
-        when (x =/= 0.U && x =/= 15.U) {
-            when (rst) {
-                r_reduction_add(x) := false.B
-                r_reduction_cmd(3.U * x + 2.U, 3.U * x) := 0.U
-            }.otherwise {
-                if (r_valid(1.U) === 1.U) {
-                    when (w_vn((2.U * x + 0.U) * LOG2_PES.U) === w_vn((2.U * x + 1.U) * LOG2_PES.U)) {
-                        r_reduction_add(x) := true.B
-                    }.otherwise {
-                        r_reduction_add(x) := false.B
-                    }
-
-                    when ((w_vn((2.U * x + 0.U) * LOG2_PES.U) =/= w_vn((2.U * x - 1.U) * LOG2_PES.U)) &&
-                        (w_vn((2.U * x + 1.U) * LOG2_PES.U) =/= w_vn((2.U * x + 2.U) * LOG2_PES.U)) &&
-                        (w_vn((2.U * x + 0.U) * LOG2_PES.U) =/= w_vn((2.U * x + 1.U) * LOG2_PES.U))) {
-                        r_reduction_cmd(3.U * x + 2.U, 3.U * x) := 5.U // 3'b101
-                    }.elsewhen ((w_vn((2.U * x + 0.U) * LOG2_PES.U) === w_vn((2.U * x - 1.U) * LOG2_PES.U)) &&
-                        (w_vn((2.U * x + 1.U) * LOG2_PES.U) =/= w_vn((2.U * x + 2.U) * LOG2_PES.U)) &&
-                        (w_vn((2.U * x + 0.U) * LOG2_PES.U) =/= w_vn((2.U * x + 1.U) * LOG2_PES.U))) {
-                        r_reduction_cmd(3.U * x + 2.U, 3.U * x) := 4.U // 3'b100
-                    }.elsewhen ((w_vn((2.U * x + 0.U) * LOG2_PES.U) =/= w_vn((2.U * x - 1.U) * LOG2_PES.U)) &&
-                        (w_vn((2.U * x + 1.U) * LOG2_PES.U) === w_vn((2.U * x + 2.U) * LOG2_PES.U)) &&
-                        (w_vn((2.U * x + 0.U) * LOG2_PES.U) =/= w_vn((2.U * x + 1.U) * LOG2_PES.U))) {
-                        r_reduction_cmd(3.U * x + 2.U, 3.U * x) := 3.U // 3'b011
-                    }.otherwise {
-                        r_reduction_cmd(3.U * x + 2.U, 3.U * x) := 1.U // 3'b001
-                    }
-                } else {
-                    r_reduction_add(x) := false.B
-                    r_reduction_cmd(3.U * x + 2.U, 3.U * x) := 0.U
-                }
-            }
-        }
-    }
-    for (x <- 0 until 8) {
-        when (x.U === 0.U) {
-            when (rst) {
-                r_reduction_add(16.U + x.U) := false.B
-                r_reduction_cmd(3.U * 16.U + 3.U * x.U + 2.U, 3.U * 16.U + 3.U * x.U) := 0.U
-            }.otherwise {
-                if (r_valid(1.U) === 1.U) {
-                    when (w_vn((4.U * x.U + 1.U) * LOG2_PES.U) === w_vn((4.U * x.U + 2.U) * LOG2_PES.U)) {
-                        r_reduction_add(16.U + x.U) := true.B
-                    }.otherwise {
-                        r_reduction_add(16.U + x.U) := false.B
-                    }
-
-                    when ((w_vn((4.U * x.U + 0.U) * LOG2_PES.U) === w_vn((4.U * x.U + 1.U) * LOG2_PES.U)) &&
-                        (w_vn((4.U * x.U + 2.U) * LOG2_PES.U) === w_vn((4.U * x.U + 3.U) * LOG2_PES.U)) &&
-                        (w_vn((4.U * x.U + 4.U) * LOG2_PES.U) =/= w_vn((4.U * x.U + 3.U) * LOG2_PES.U)) &&
-                        (w_vn((4.U * x.U + 1.U) * LOG2_PES.U) =/= w_vn((4.U * x.U + 2.U) * LOG2_PES.U))) {
-                        r_reduction_cmd(3.U * 16.U + 3.U * x.U + 2.U, 3.U * 16.U + 3.U * x.U) := 5.U // 3'b101
-                    }.elsewhen ((w_vn((4.U * x.U + 2.U) * LOG2_PES.U) === w_vn((4.U * x.U + 3.U) * LOG2_PES.U)) &&
-                        (w_vn((4.U * x.U + 4.U) * LOG2_PES.U) =/= w_vn((4.U * x.U + 3.U) * LOG2_PES.U)) &&
-                        (w_vn((4.U * x.U + 1.U) * LOG2_PES.U) =/= w_vn((4.U * x.U + 2.U) * LOG2_PES.U))) {
-                        r_reduction_cmd(3.U * 16.U + 3.U * x.U + 2.U, 3.U * 16.U + 3.U * x.U) := 4.U // 3'b100
-                    }.elsewhen ((w_vn((4.U * x.U + 0.U) * LOG2_PES.U) === w_vn((4.U * x.U + 1.U) * LOG2_PES.U)) &&
-                        (w_vn((4.U * x.U + 1.U) * LOG2_PES.U) =/= w_vn((4.U * x.U + 2.U) * LOG2_PES.U))) {
-                        r_reduction_cmd(3.U * 16.U + 3.U * x.U + 2.U, 3.U * 16.U + 3.U * x.U) := 3.U // 3'b011
-                    }.otherwise {
-                        r_reduction_cmd(3.U * 16.U + 3.U * x.U + 2.U, 3.U * 16.U + 3.U * x.U) := 0.U // 3'b000
-                    }
-                } else {
-                    r_reduction_add(16.U + x.U) := false.B
-                    r_reduction_cmd(3.U * 16.U + 3.U * x.U + 2.U, 3.U * 16.U + 3.U * x.U) := 0.U
-                }
-            }
-        }
-        when (x === 7.U) {
-            when (rst) {
-                r_reduction_add(16.U + x) := false.B
-                r_reduction_cmd(3.U * 16.U + 3.U * x + 2.U, 3.U * 16.U + 3.U * x) := 0.U
-            }.otherwise {
-                if (r_valid(1.U) === 1.U) {
-                    when (w_vn((4.U * x + 1.U) * LOG2_PES.U) === w_vn((4.U * x + 2.U) * LOG2_PES.U)) {
-                        r_reduction_add(16.U + x) := true.B
-                    }.otherwise {
-                        r_reduction_add(16.U + x) := false.B
-                    }
-
-                    when ((w_vn((4.U * x + 0.U) * LOG2_PES.U) === w_vn((4.U * x + 1.U) * LOG2_PES.U)) &&
-                        (w_vn((4.U * x + 2.U) * LOG2_PES.U) === w_vn((4.U * x + 3.U) * LOG2_PES.U)) &&
-                        (w_vn((4.U * x + 0.U) * LOG2_PES.U) =/= w_vn((4.U * x - 1.U) * LOG2_PES.U)) &&
-                        (w_vn((4.U * x + 1.U) * LOG2_PES.U) =/= w_vn((4.U * x + 2.U) * LOG2_PES.U))) {
-                        r_reduction_cmd(3.U * 16.U + 3.U * x + 2.U, 3.U * 16.U + 3.U * x) := 5.U // 3'b101
-                    }.elsewhen ((w_vn((4.U * x + 0.U) * LOG2_PES.U) === w_vn((4.U * x + 1.U) * LOG2_PES.U)) &&
-                        (w_vn((4.U * x + 0.U) * LOG2_PES.U) =/= w_vn((4.U * x - 1.U) * LOG2_PES.U)) &&
-                        (w_vn((4.U * x + 1.U) * LOG2_PES.U) =/= w_vn((4.U * x + 2.U) * LOG2_PES.U))) {
-                        r_reduction_cmd(3.U * 16.U + 3.U * x + 2.U, 3.U * 16.U + 3.U * x) := 3.U // 3'b011
-                    }.elsewhen ((w_vn((4.U * x + 2.U) * LOG2_PES.U) === w_vn((4.U * x + 3.U) * LOG2_PES.U)) &&
-                        (w_vn((4.U * x + 1.U) * LOG2_PES.U) =/= w_vn((4.U * x + 2.U) * LOG2_PES.U))) {
-                        r_reduction_cmd(3.U * 16.U + 3.U * x + 2.U, 3.U * 16.U + 3.U * x) := 4.U // 3'b100
-                    }.otherwise {
-                        r_reduction_cmd(3.U * 16.U + 3.U * x + 2.U, 3.U * 16.U + 3.U * x) := 0.U // 3'b000
-                    }
-                } else {
-                    r_reduction_add(16.U + x) := false.B
-                    r_reduction_cmd(3.U * 16.U + 3.U * x + 2.U, 3.U * 16.U + 3.U * x) := 0.U
-                }
-            }
-        }.otherwise {
-            when (rst) {
-                r_reduction_add(16.U + x) := false.B
-                r_reduction_cmd(3.U * 16.U + 3.U * x + 2.U, 3.U * 16.U + 3.U * x) := 0.U
-            }.otherwise {
-                if (r_valid(1.U) === 1.U) {
-                    when (w_vn((4.U * x + 1.U) * LOG2_PES.U) === w_vn((4.U * x + 2.U) * LOG2_PES.U)) {
-                        r_reduction_add(16.U + x) := true.B
-                    }.otherwise {
-                        r_reduction_add(16.U + x) := false.B
-                    }
-
-                    when ((w_vn((4.U * x + 0.U) * LOG2_PES.U) === w_vn((4.U * x + 1.U) * LOG2_PES.U)) &&
-                        (w_vn((4.U * x + 2.U) * LOG2_PES.U) === w_vn((4.U * x + 3.U) * LOG2_PES.U)) &&
-                        (w_vn((4.U * x + 0.U) * LOG2_PES.U) =/= w_vn((4.U * x - 1.U) * LOG2_PES.U)) &&
-                        (w_vn((4.U * x + 4.U) * LOG2_PES.U) =/= w_vn((4.U * x + 3.U) * LOG2_PES.U)) &&
-                        (w_vn((4.U * x + 1.U) * LOG2_PES.U) =/= w_vn((4.U * x + 2.U) * LOG2_PES.U))) {
-                        r_reduction_cmd(3.U * 16.U + 3.U * x + 2.U, 3.U * 16.U + 3.U * x) := 5.U // 3'b101
-                    }.elsewhen ((w_vn((4.U * x + 2.U) * LOG2_PES.U) === w_vn((4.U * x + 3.U) * LOG2_PES.U)) &&
-                        (w_vn((4.U * x + 4.U) * LOG2_PES.U) =/= w_vn((4.U * x + 3.U) * LOG2_PES.U)) &&
-                        (w_vn((4.U * x + 1.U) * LOG2_PES.U) =/= w_vn((4.U * x + 2.U) * LOG2_PES.U))) {
-                        r_reduction_cmd(3.U * 16.U + 3.U * x + 2.U, 3.U * 16.U + 3.U * x) := 4.U // 3'b100
-                    }.elsewhen ((w_vn((4.U * x + 0.U) * LOG2_PES.U) === w_vn((4.U * x + 1.U) * LOG2_PES.U)) &&
-                        (w_vn((4.U * x + 0.U) * LOG2_PES.U) =/= w_vn((4.U * x - 1.U) * LOG2_PES.U)) &&
-                        (w_vn((4.U * x + 1.U) * LOG2_PES.U) =/= w_vn((4.U * x + 2.U) * LOG2_PES.U))) {
-                        r_reduction_cmd(3.U * 16.U + 3.U * x + 2.U, 3.U * 16.U + 3.U * x) := 3.U // 3'b011
-                    }.otherwise {
-                        r_reduction_cmd(3.U * 16.U + 3.U * x + 2.U, 3.U * 16.U + 3.U * x) := 0.U // 3'b000
-                    }
-                } else {
-                    r_reduction_add(16.U + x) := false.B
-                    r_reduction_cmd(3.U * 16.U + 3.U * x + 2.U, 3.U * 16.U + 3.U * x) := 0.U
-                }
-            }
-        }
-    }
-    for (x <- 0 until 4) {
-        when(x.U === 0.U) {
-            adders_lvl_2(x).rst := rst
-            adders_lvl_2(x).r_valid := r_valid(1)
-            adders_lvl_2(x).w_vn := w_vn
-
-        when(rst === 1.B) {
-            adders_lvl_2(x).r_reduction_add := 0.U
-            adders_lvl_2(x).r_reduction_cmd := 0.U
-            adders_lvl_2(x).r_reduction_sel := 0.U
-        }.otherwise {
-      // generate cmd logic
-            when(r_valid(1) === 1.B) {
-                when(w_vn((8.U * x.U + 3.U) * LOG2_PES.U) === w_vn((8.U * x.U + 4.U) * LOG2_PES.U)) {
-                    adders_lvl_2(x).r_reduction_add := 1.U // add enable
-                }.otherwise {
-                    adders_lvl_2(x).r_reduction_add := 0.U
-                }
-
-                when(w_vn((8.U * x.U + 1.U) * LOG2_PES.U) === w_vn((8.U * x.U + 2.U) * LOG2_PES.U) &&
-                    w_vn((8.U * x.U + 5.U) * LOG2_PES.U) === w_vn((8.U * x.U + 6.U) * LOG2_PES.U) &&
-                    w_vn((8.U * x.U + 8.U) * LOG2_PES.U) =/= w_vn((8.U * x.U + 6.U) * LOG2_PES.U) &&
-                    w_vn((8.U * x.U + 2.U) * LOG2_PES.U) =/= w_vn((8.U * x.U + 4.U) * LOG2_PES.U) &&
-                    w_vn((8.U * x.U + 5.U) * LOG2_PES.U) =/= w_vn((8.U * x.U + 3.U) * LOG2_PES.U)) {
-                    adders_lvl_2(x).r_reduction_cmd := 5.U // both vn done
-                }.elsewhen(w_vn((8.U * x.U + 5.U) * LOG2_PES.U) === w_vn((8.U * x.U + 6.U) * LOG2_PES.U) &&
-                    w_vn((8.U * x.U + 8.U) * LOG2_PES.U) =/= w_vn((8.U * x.U + 6.U) * LOG2_PES.U) &&
-                    w_vn((8.U * x.U + 5.U) * LOG2_PES.U) =/= w_vn((8.U * x.U + 3.U) * LOG2_PES.U)) {
-                    adders_lvl_2(x).r_reduction_cmd := 4.U // right vn done
-                }.elsewhen(w_vn((8.U * x.U + 1.U) * LOG2_PES.U) === w_vn((8.U * x.U + 2.U) * LOG2_PES.U) &&
-                    w_vn((8.U * x.U + 2.U) * LOG2_PES.U) =/= w_vn((8.U * x.U + 4.U) * LOG2_PES.U)) {
-                    adders_lvl_2(x).r_reduction_cmd := 3.U // left vn done
-                }.otherwise {
-                    adders_lvl_2(x).r_reduction_cmd := 0.U // nothing
-                }   
-            }.otherwise {
-                adders_lvl_2(x).r_reduction_add := 0.U
-                adders_lvl_2(x).r_reduction_cmd := 0.U // nothing
-            }
-
-      // generate left select logic
-            when(r_valid(1) === 1.B) {
-                when(w_vn((8.U * x.U + 3.U) * LOG2_PES.U) === w_vn((8.U * x.U + 1.U) * LOG2_PES.U)) {
-                    adders_lvl_2(x).r_reduction_sel := 0.U
-                }.otherwise {
-                    adders_lvl_2(x).r_reduction_sel := 1.U
-                }
-            }.otherwise {
-                adders_lvl_2(x).r_reduction_sel := 0.U
-            }
-
-      // generate right select logic
-            when(r_valid(1) === 1.B) {
-                when(w_vn((8.U * x.U + 4.U) * LOG2_PES.U) === w_vn((8.U * x.U + 6.U) * LOG2_PES.U)) {
-                    adders_lvl_2(x).r_reduction_sel := 1.U
-                }.otherwise {
-                    adders_lvl_2(x).r_reduction_sel := 0.U
-                }
-            }.otherwise {
-                adders_lvl_2(x).r_reduction_sel := 0.U
-            }
-
-            when (r_valid(1) === 1.B) {
-                when (w_vn((8.U * x.U + 3.U) * LOG2_PES.U) === w_vn((8.U * x.U + 1.U) * LOG2_PES.U)) {
-                    r_reduction_sel((x * 2).U + 0.U) := 0.U
-                }.otherwise {
-                    r_reduction_sel((x * 2).U + 0.U) := 1.U
-                } 
-            }.otherwise {
-                r_reduction_sel((x * 2).U + 0.U) := 0.U
-            }   
-
-// Generate right select logic
-            when (r_valid(1) === 1.B) {
-                when (w_vn((8.U * x.U + 4.U) * LOG2_PES.U) === w_vn((8.U * x.U + 6.U) * LOG2_PES.U)) {
-                    r_reduction_sel((x * 2).U + 1.U) := 1.U
-                }.otherwise {
-                    r_reduction_sel((x * 2).U + 1.U) := 0.U
-                }
-            }.otherwise {
-                r_reduction_sel((x * 2).U + 1.U) := 0.U
-            }
-            }
-        }
-
-        when (x === 3.U) {
-            val r_reduction_sel_r_edge_case = RegInit(0.U(8.W)) // Assuming 8-bit wide r_reduction_sel
-
-            when (rst === 1.B) {
-                r_reduction_add(24.U + x) := 0.U
-                r_reduction_cmd(3.U * 24.U + 3.U * x) := 0.U
-                r_reduction_sel_r_edge_case((x * 2).U + 1.U) := 0.U
-                r_reduction_sel_r_edge_case((x * 2).U) := 0.U
-            }.otherwise {
-    // generate cmd logic
-                when (r_valid(1) === 1.B) {
-                    when (w_vn((8.U * x.U + 3.U) * LOG2_PES.U) === w_vn((8.U * x.U + 4.U) * LOG2_PES.U)) {
-                        r_reduction_add(24.U + x) := 1.B // add enable
-                    }.otherwise {
-                        r_reduction_add(24.U + x) := 0.B
-                    }   
-
-                    when (w_vn((8.U * x.U + 1.U) * LOG2_PES.U) === w_vn((8.U * x.U + 2.U) * LOG2_PES.U) &&
-                        w_vn((8.U * x.U + 5.U) * LOG2_PES.U) === w_vn((8.U * x.U + 6.U) * LOG2_PES.U) &&
-                        w_vn((8.U * x.U + 1.U) * LOG2_PES.U) =/= w_vn((8.U * x.U - 1.U) * LOG2_PES.U) &&
-                        w_vn((8.U * x.U + 2.U) * LOG2_PES.U) =/= w_vn((8.U * x.U + 4.U) * LOG2_PES.U) &&
-                        w_vn((8.U * x.U + 5.U) * LOG2_PES.U) =/= w_vn((8.U * x.U + 3.U) * LOG2_PES.U)) {
-                        r_reduction_cmd(3.U * 24.U + 3.U * x) := "b101".U // both vn done
-                    }.elsewhen (w_vn((8.U * x.U + 1.U) * LOG2_PES.U) === w_vn((8.U * x.U + 2.U) * LOG2_PES.U) &&
-                        w_vn((8.U * x.U + 1.U) * LOG2_PES.U) =/= w_vn((8.U * x.U - 1.U) * LOG2_PES.U) &&
-                        w_vn((8.U * x.U + 4.U) * LOG2_PES.U) =/= w_vn((8.U * x.U + 2.U) * LOG2_PES.U)) {
-                        r_reduction_cmd(3.U * 24.U + 3.U * x) := "b011".U // left vn done
-                    }.elsewhen (w_vn((8.U * x.U + 5.U) * LOG2_PES.U) === w_vn((8.U * x.U + 6.U) * LOG2_PES.U) &&
-                        w_vn((8.U * x.U + 5.U) * LOG2_PES.U) =/= w_vn((8.U * x.U + 3.U) * LOG2_PES.U)) {
-                        r_reduction_cmd(3.U * 24.U + 3.U * x) := "b100".U // right vn done
-                    }.otherwise {
-                        r_reduction_cmd(3.U * 24.U + 3.U * x) := "b000".U // nothing
-                    }
-                }.otherwise {
-                    r_reduction_add(24.U + x) := 0.B
-                    r_reduction_cmd(3.U * 24.U + 3.U * x) := "b000".U // nothing
-                }
-
-    // generate left select logic
-                when (r_valid(1) === 1.B) {
-                    when (w_vn((8.U * x.U + 3.U) * LOG2_PES.U) === w_vn((8.U * x.U + 1.U) * LOG2_PES.U)) {
-                        r_reduction_sel_r_edge_case((x * 2).U) := 0.U
-                    }.otherwise {
-                        r_reduction_sel_r_edge_case((x * 2).U) := 1.U
-                    }
-                }.otherwise {
-                    r_reduction_sel_r_edge_case((x * 2).U) := 0.U
-                }
-
-    // generate right select logic
-                when (r_valid(1) === 1.B) {
-                    when (w_vn((8.U * x.U + 4.U) * LOG2_PES.U) === w_vn((8.U * x.U + 6.U) * LOG2_PES.U)) {
-                        r_reduction_sel_r_edge_case((x * 2).U + 1.U) := 1.U
-                    }.otherwise {
-                        r_reduction_sel_r_edge_case((x * 2).U + 1.U) := 0.U
-                    }
-                }.otherwise {
-                    r_reduction_sel_r_edge_case((x * 2).U + 1.U) := 0.U
-                }   
-            }
-        }.otherwise {
-            when(r_valid(1) === 1.U) {
-                when(w_vn((8 * x + 3) * LOG2_PES.U) === w_vn((8 * x + 4) * LOG2_PES.U)) {
-                    r_reduction_add(24 + x) := true.B // add enable
-                }.otherwise {
-                    r_reduction_add(24 + x) := false.B
-                }
-
-                val bothVNDone =
-                    w_vn((8 * x + 1) * LOG2_PES.U) === w_vn((8 * x + 2) * LOG2_PES.U) &&
-                    w_vn((8 * x + 5) * LOG2_PES.U) === w_vn((8 * x + 6) * LOG2_PES.U) &&
-                    w_vn((8 * x + 1) * LOG2_PES.U) =/= w_vn((8 * x - 1) * LOG2_PES.U) &&
-                    w_vn((8 * x + 8) * LOG2_PES.U) =/= w_vn((8 * x + 6) * LOG2_PES.U) &&
-                    w_vn((8 * x + 2) * LOG2_PES.U) =/= w_vn((8 * x + 4) * LOG2_PES.U) &&
-                    w_vn((8 * x + 5) * LOG2_PES.U) =/= w_vn((8 * x + 3) * LOG2_PES.U)
-
-                val rightVNDone =
-                    w_vn((8 * x + 5) * LOG2_PES.U) === w_vn((8 * x + 6) * LOG2_PES.U) &&
-                    w_vn((8 * x + 8) * LOG2_PES.U) =/= w_vn((8 * x + 6) * LOG2_PES.U) &&
-                    w_vn((8 * x + 5) * LOG2_PES.U) =/= w_vn((8 * x + 3) * LOG2_PES.U)
-
-                val leftVNDone =
-                    w_vn((8 * x + 1) * LOG2_PES.U) === w_vn((8 * x + 2) * LOG2_PES.U) &&
-                    w_vn((8 * x + 1) * LOG2_PES.U) =/= w_vn((8 * x - 1) * LOG2_PES.U) &&
-                    w_vn((8 * x + 4) * LOG2_PES.U) =/= w_vn((8 * x + 2) * LOG2_PES.U)
-
-                when(bothVNDone) {
-                    r_reduction_cmd(3 * 24 + 3 * x, 3 * x) := "b101".U // both vn done
-                }.elsewhen(rightVNDone) {
-                    r_reduction_cmd(3 * 24 + 3 * x, 3 * x) := "b100".U // right vn done
-                }.elsewhen(leftVNDone) {
-                    r_reduction_cmd(3 * 24 + 3 * x, 3 * x) := "b011".U // left vn done
-                }.otherwise {
-                    r_reduction_cmd(3 * 24 + 3 * x, 3 * x) := "b000".U // nothing
-                }   
-
-            }.otherwise {
-                r_reduction_add(24 + x) := false.B
-                r_reduction_cmd(3 * 24 + 3 * x, 3 * x) := "b000".U // nothing
-            }
-            when(r_valid(1) === 1.U) {
-                when(w_vn((8 * x + 3) * LOG2_PES.U) === w_vn((8 * x + 1) * LOG2_PES.U)) {
-                    r_reduction_sel((x * 2) + 0.U) := "b0".U
-                }.otherwise {
-                    r_reduction_sel((x * 2) + 0.U) := "b1".U
-                }
-            }.otherwise {
-                r_reduction_sel((x * 2) + 0.U) := "b0".U
-            }
-
-  // generate right select logic
-            when(r_valid(1) === 1.U) {
-                when(w_vn((8 * x + 4) * LOG2_PES.U) === w_vn((8 * x + 6) * LOG2_PES.U)) {
-                    r_reduction_sel((x * 2) + 1.U) := "b1".U
-                }.otherwise {
-                    r_reduction_sel((x * 2) + 1.U) := "b0".U
-                }
-            }.otherwise {
-                r_reduction_sel((x * 2) + 1.U) := "b0".U
-            }
-        }
-    }  
-
-      for (x <- 0 until 2) {
+}
+w_vn := r_vn(1)
+  for (x <- 0 until 16) {
     when(x.U === 0.U) {
       when(rst) {
-    r_reduction_addReg(28 + x.U) := false.B
-    r_reduction_cmdReg(3 * 28 + 3 * x.U, 3.U) := 0.U
-    r_reduction_selReg((x * 4).U + 8.U, 4.U) := 0.U
+        r_reduction_add(0) := false.B
+        r_reduction_cmd(0) := 0.U
+      }.otherwise {
+        when(r_valid(1)) {
+          when(w_vn((2.U * x.U + 0.U) * LOG2_PES.U) === w_vn((2.U * x.U + 1.U) * LOG2_PES.U)) {
+            r_reduction_add(0) := true.B
+          }.otherwise {
+            r_reduction_add(0) := false.B
+          }
+
+          when(w_vn((2.U * x.U + 1.U) * LOG2_PES.U) =/= w_vn((2.U * x.U + 2.U) * LOG2_PES.U) &&
+            w_vn((2.U * x.U + 0.U) * LOG2_PES.U) =/= w_vn((2.U * x.U + 1.U) * LOG2_PES.U)) {
+            r_reduction_cmd(0) := 5.U // 3'b101
+          }.elsewhen(w_vn((2.U * x.U + 1.U) * LOG2_PES.U) === w_vn((2.U * x.U + 2.U) * LOG2_PES.U) &&
+            w_vn((2.U * x.U + 0.U) * LOG2_PES.U) =/= w_vn((2.U * x.U + 1.U) * LOG2_PES.U)) {
+            r_reduction_cmd(0) := 3.U // 3'b011
+          }.otherwise {
+            r_reduction_cmd(0) := 0.U // 3'b000
+          }
+        }.otherwise {
+          r_reduction_add(0) := false.B
+          r_reduction_cmd(0) := 0.U
+        }
+      }
+    }
+        when(x.U === 15.U) {
+      when(rst) {
+        r_reduction_add(15) := false.B
+        r_reduction_cmd(15) := 0.U
+      }.otherwise {
+        when(r_valid(1)) {
+          when(w_vn((2.U * x.U + 0.U) * LOG2_PES.U) === w_vn((2.U * x.U + 1.U) * LOG2_PES.U)) {
+            r_reduction_add(15) := true.B
+          }.otherwise {
+            r_reduction_add(15) := false.B
+          }
+
+          when(w_vn((2.U * x.U + 0.U) * LOG2_PES.U) =/= w_vn((2.U * x.U - 1.U) * LOG2_PES.U) &&
+            w_vn((2.U * x.U + 0.U) * LOG2_PES.U) =/= w_vn((2.U * x.U + 1.U) * LOG2_PES.U)) {
+            r_reduction_cmd(15) := 5.U // 3'b101
+          }.elsewhen(w_vn((2.U * x.U + 0.U) * LOG2_PES.U) === w_vn((2.U * x.U - 1.U) * LOG2_PES.U) &&
+            w_vn((2.U * x.U + 0.U) * LOG2_PES.U) =/= w_vn((2.U * x.U + 1.U) * LOG2_PES.U)) {
+            r_reduction_cmd(15) := 4.U // 3'b100
+          }.otherwise {
+            r_reduction_cmd(15) := 0.U // 3'b000
+          }
+        }.otherwise {
+          r_reduction_add(15) := false.B
+          r_reduction_cmd(15) := 0.U
+        }
+      }
+   }.otherwise {
+      // Logic for other values of x (not 0 and 15)
+      when(rst) {
+        r_reduction_add(x) := false.B
+        r_reduction_cmd((3.U * x.U + 2.U)) := 0.U
+      }.otherwise {
+        when(r_valid(1)) {
+          when(w_vn((2.U * x.U + 0.U) * LOG2_PES.U) === w_vn((2.U * x.U + 1.U) * LOG2_PES.U)) {
+            r_reduction_add(x) := true.B
+          }.otherwise {
+            r_reduction_add(x) := false.B
+          }
+
+          when((w_vn((2.U * x.U + 0.U) * LOG2_PES.U) =/= w_vn((2.U * x.U - 1.U) * LOG2_PES.U)) &&
+            (w_vn((2.U * x.U + 1.U) * LOG2_PES.U) =/= w_vn((2.U * x.U + 2.U) * LOG2_PES.U)) &&
+            (w_vn((2.U * x.U + 0.U) * LOG2_PES.U) =/= w_vn((2.U * x.U + 1.U) * LOG2_PES.U))) {
+            r_reduction_cmd((3.U * x.U + 2.U)) := 5.U // 3'b101
+          }.elsewhen((w_vn((2.U * x.U + 0.U) * LOG2_PES.U) === w_vn((2.U * x.U - 1.U) * LOG2_PES.U)) &&
+            (w_vn((2.U * x.U + 1.U) * LOG2_PES.U) =/= w_vn((2.U * x.U + 2.U) * LOG2_PES.U)) &&
+            (w_vn((2.U * x.U + 0.U) * LOG2_PES.U) =/= w_vn((2.U * x.U + 1.U) * LOG2_PES.U))) {
+            r_reduction_cmd((3.U * x.U + 2.U)) := 4.U // 3'b100
+          }.elsewhen((w_vn((2.U * x.U + 0.U) * LOG2_PES.U) =/= w_vn((2.U * x.U - 1.U) * LOG2_PES.U)) &&
+            (w_vn((2.U * x.U + 1.U) * LOG2_PES.U) === w_vn((2.U * x.U + 2.U) * LOG2_PES.U)) &&
+            (w_vn((2.U * x.U + 0.U) * LOG2_PES.U) =/= w_vn((2.U * x.U + 1.U) * LOG2_PES.U))) {
+            r_reduction_cmd((3.U * x.U + 2.U)) := 3.U // 3'b011
+          }.otherwise {
+            r_reduction_cmd((3.U * x.U + 2.U)) := 1.U // 3'b001
+          }
+        }.otherwise {
+          r_reduction_add(x) := false.B
+          r_reduction_cmd((3.U * x.U + 2.U)) := 0.U
+        }
+      }
+    }
+  }
+  for (x <- 0 until 8) {
+    when(x.U === 0.U) {
+      // Logic for x = 0
+      when(rst) {
+        r_reduction_add(16.U + x.U) := false.B
+        r_reduction_cmd(3.U * 16.U + 3.U * x.U + 2.U) := 0.U
+        r_reduction_cmd(3.U * 16.U + 3.U * x.U + 1.U) := 0.U
+        r_reduction_cmd(3.U * 16.U + 3.U * x.U) := 0.U
+      }.otherwise {
+        when(r_valid(1.U)) {
+          when(w_vn((4.U * x.U + 1.U) * LOG2_PES.U) === w_vn((4.U * x.U + 2.U) * LOG2_PES.U)) {
+            r_reduction_add(16.U + x.U) := true.B
+          }.otherwise {
+            r_reduction_add(16.U + x.U) := false.B
+          }
+
+          when((w_vn((4.U * x.U + 0.U) * LOG2_PES.U) === w_vn((4.U * x.U + 1.U) * LOG2_PES.U)) &&
+            (w_vn((4.U * x.U + 2.U) * LOG2_PES.U) === w_vn((4.U * x.U + 3.U) * LOG2_PES.U)) &&
+            (w_vn((4.U * x.U + 4.U) * LOG2_PES.U) =/= w_vn((4.U * x.U + 3.U) * LOG2_PES.U)) &&
+            (w_vn((4.U * x.U + 1.U) * LOG2_PES.U) =/= w_vn((4.U * x.U + 2.U) * LOG2_PES.U))) {
+            r_reduction_cmd(3.U * 16.U + 3.U * x.U + 2.U) := 5.U // 3'b101
+          }.elsewhen((w_vn((4.U * x.U + 2.U) * LOG2_PES.U) === w_vn((4.U * x.U + 3.U) * LOG2_PES.U)) &&
+            (w_vn((4.U * x.U + 4.U) * LOG2_PES.U) =/= w_vn((4.U * x.U + 3.U) * LOG2_PES.U)) &&
+            (w_vn((4.U * x.U + 1.U) * LOG2_PES.U) =/= w_vn((4.U * x.U + 2.U) * LOG2_PES.U))) {
+            r_reduction_cmd(3.U * 16.U + 3.U * x.U + 2.U) := 4.U // 3'b100
+          }.elsewhen((w_vn((4.U * x.U + 0.U) * LOG2_PES.U) === w_vn((4.U * x.U + 1.U) * LOG2_PES.U)) &&
+            (w_vn((4.U * x.U + 1.U) * LOG2_PES.U) =/= w_vn((4.U * x.U + 2.U) * LOG2_PES.U))) {
+            r_reduction_cmd(3.U * 16.U + 3.U * x.U + 2.U) := 3.U // 3'b011
+          }.otherwise {
+            r_reduction_cmd(3.U * 16.U + 3.U * x.U + 2.U) := 0.U // 3'b000
+          }
+        }.otherwise {
+          r_reduction_add(16.U + x.U) := false.B
+          r_reduction_cmd(3.U * 16.U + 3.U * x.U + 2.U) := 0.U
+          r_reduction_cmd(3.U * 16.U + 3.U * x.U + 1.U) := 0.U
+          r_reduction_cmd(3.U * 16.U + 3.U * x.U) := 0.U
+        }
+      }
+    }.elsewhen(x.U === 7.U) {
+      // Logic for x = 7
+      when(rst) {
+        r_reduction_add(16.U + x.U) := false.B
+        r_reduction_cmd(3.U * 16.U + 3.U * x.U + 2.U) := 0.U
+        r_reduction_cmd(3.U * 16.U + 3.U * x.U + 1.U) := 0.U
+        r_reduction_cmd(3.U * 16.U + 3.U * x.U) := 0.U
+      }.otherwise {
+        when(r_valid(1.U)) {
+          when(w_vn((4.U * x.U + 1.U) * LOG2_PES.U) === w_vn((4.U * x.U + 2.U) * LOG2_PES.U)) {
+            r_reduction_add(16.U + x.U) := true.B
+          }.otherwise {
+            r_reduction_add(16.U + x.U) := false.B
+          }
+
+          when((w_vn((4.U * x.U + 0.U) * LOG2_PES.U) === w_vn((4.U * x.U + 1.U) * LOG2_PES.U)) &&
+            (w_vn((4.U * x.U + 2.U) * LOG2_PES.U) === w_vn((4.U * x.U + 3.U) * LOG2_PES.U)) &&
+            (w_vn((4.U * x.U + 0.U) * LOG2_PES.U) =/= w_vn((4.U * x.U - 1.U) * LOG2_PES.U)) &&
+            (w_vn((4.U * x.U + 1.U) * LOG2_PES.U) =/= w_vn((4.U * x.U + 2.U) * LOG2_PES.U))) {
+            r_reduction_cmd(3.U * 16.U + 3.U * x.U + 2.U) := 5.U // 3'b101
+          }.elsewhen((w_vn((4.U * x.U + 0.U) * LOG2_PES.U) === w_vn((4.U * x.U + 1.U) * LOG2_PES.U)) &&
+            (w_vn((4.U * x.U + 0.U) * LOG2_PES.U) =/= w_vn((4.U * x.U - 1.U) * LOG2_PES.U)) &&
+            (w_vn((4.U * x.U + 1.U) * LOG2_PES.U) =/= w_vn((4.U * x.U + 2.U) * LOG2_PES.U))) {
+            r_reduction_cmd(3.U * 16.U + 3.U * x.U + 2.U) := 3.U // 3'b011
+          }.elsewhen((w_vn((4.U * x.U + 2.U) * LOG2_PES.U) === w_vn((4.U * x.U + 3.U) * LOG2_PES.U)) &&
+            (w_vn((4.U * x.U + 1.U) * LOG2_PES.U) =/= w_vn((4.U * x.U + 2.U) * LOG2_PES.U))) {
+            r_reduction_cmd(3.U * 16.U + 3.U * x.U + 2.U) := 4.U // 3'b100
+          }.otherwise {
+            r_reduction_cmd(3.U * 16.U + 3.U * x.U + 2.U) := 0.U // 3'b000
+          }
+        }.otherwise {
+          r_reduction_add(16.U + x.U) := false.B
+          r_reduction_cmd(3.U * 16.U + 3.U * x.U + 2.U) := 0.U
+          r_reduction_cmd(3.U * 16.U + 3.U * x.U + 1.U) := 0.U
+          r_reduction_cmd(3.U * 16.U + 3.U * x.U) := 0.U
+        }
+      }
   }.otherwise {
-    // generate cmd logic
-    when(r_valid(1) === true.B) {
-      when(w_vn((16 * x + 7).U) === w_vn((16 * x + 8).U)) {
-        r_reduction_addReg(28 + x.U) := true.B
+      // Logic for other values of x (1 to 6)
+      when(rst) {
+        r_reduction_add(16.U + x.U) := false.B
+        r_reduction_cmd(3.U * 16.U + 3.U * x.U + 2.U) := 0.U
+        r_reduction_cmd(3.U * 16.U + 3.U * x.U + 1.U) := 0.U
+        r_reduction_cmd(3.U * 16.U + 3.U * x.U) := 0.U
       }.otherwise {
-        r_reduction_addReg(28 + x.U) := false.B
-      }
+        when(r_valid(1.U)) {
+          when(w_vn((4.U * x.U + 1.U) * LOG2_PES.U) === w_vn((4.U * x.U + 2.U) * LOG2_PES.U)) {
+            r_reduction_add(16.U + x.U) := true.B
+          }.otherwise {
+            r_reduction_add(16.U + x.U) := false.B
+          }
 
-      when(
-        w_vn((16 * x + 3).U) === w_vn((16 * x + 4).U) &&
-        w_vn((16 * x + 11).U) === w_vn((16 * x + 12).U) &&
-        w_vn((16 * x + 16).U) =/= w_vn((16 * x + 12).U) &&
-        w_vn((16 * x + 4).U) =/= w_vn((16 * x + 8).U) &&
-        w_vn((16 * x + 11).U) =/= w_vn((16 * x + 7).U)
-      ) {
-        r_reduction_cmdReg(3 * 28 + 3 * x.U, 3.U) := 5.U
-      }.elsewhen(
-        w_vn((16 * x + 11).U) === w_vn((16 * x + 12).U) &&
-        w_vn((16 * x + 16).U) =/= w_vn((16 * x + 12).U) &&
-        w_vn((16 * x + 11).U) =/= w_vn((16 * x + 7).U)
-      ) {
-        r_reduction_cmdReg(3 * 28 + 3 * x.U, 3.U) := 4.U
-      }.elsewhen(
-        w_vn((16 * x + 3).U) === w_vn((16 * x + 4).U) &&
-        w_vn((16 * x + 4).U) =/= w_vn((16 * x + 8).U)
-      ) {
-        r_reduction_cmdReg(3 * 28 + 3 * x.U, 3.U) := 3.U
-      }.otherwise {
-        r_reduction_cmdReg(3 * 28 + 3 * x.U, 3.U) := 0.U
+          when((w_vn((4.U * x.U + 0.U) * LOG2_PES.U) === w_vn((4.U * x.U + 1.U) * LOG2_PES.U)) &&
+            (w_vn((4.U * x.U + 2.U) * LOG2_PES.U) === w_vn((4.U * x.U + 3.U) * LOG2_PES.U)) &&
+            (w_vn((4.U * x.U + 0.U) * LOG2_PES.U) =/= w_vn((4.U * x.U - 1.U) * LOG2_PES.U)) &&
+            (w_vn((4.U * x.U + 4.U) * LOG2_PES.U) =/= w_vn((4.U * x.U + 3.U) * LOG2_PES.U)) &&
+            (w_vn((4.U * x.U + 1.U) * LOG2_PES.U) =/= w_vn((4.U * x.U + 2.U) * LOG2_PES.U))) {
+            r_reduction_cmd(3.U * 16.U + 3.U * x.U + 2.U) := 5.U // 3'b101
+          }.elsewhen((w_vn((4.U * x.U + 2.U) * LOG2_PES.U) === w_vn((4.U * x.U + 3.U) * LOG2_PES.U)) &&
+            (w_vn((4.U * x.U + 4.U) * LOG2_PES.U) =/= w_vn((4.U * x.U + 3.U) * LOG2_PES.U)) &&
+            (w_vn((4.U * x.U + 1.U) * LOG2_PES.U) =/= w_vn((4.U * x.U + 2.U) * LOG2_PES.U))) {
+            r_reduction_cmd(3.U * 16.U + 3.U * x.U + 2.U) := 4.U // 3'b100
+          }.elsewhen((w_vn((4.U * x.U + 0.U) * LOG2_PES.U) === w_vn((4.U * x.U + 1.U) * LOG2_PES.U)) &&
+            (w_vn((4.U * x.U + 0.U) * LOG2_PES.U) =/= w_vn((4.U * x.U - 1.U) * LOG2_PES.U)) &&
+            (w_vn((4.U * x.U + 1.U) * LOG2_PES.U) =/= w_vn((4.U * x.U + 2.U) * LOG2_PES.U))) {
+            r_reduction_cmd(3.U * 16.U + 3.U * x.U + 2.U) := 3.U // 3'b011
+          }.otherwise {
+            r_reduction_cmd(3.U * 16.U + 3.U * x.U + 2.U) := 0.U // 3'b000
+          }
+        }.otherwise {
+          r_reduction_add(16.U + x.U) := false.B
+          r_reduction_cmd(3.U * 16.U + 3.U * x.U + 2.U) := 0.U
+          r_reduction_cmd(3.U * 16.U + 3.U * x.U + 1.U) := 0.U
+          r_reduction_cmd(3.U * 16.U + 3.U * x.U) := 0.U
+        }
       }
-    }.otherwise {
-      r_reduction_addReg(28 + x.U) := false.B
-      r_reduction_cmdReg(3 * 28 + 3 * x.U, 3.U) := 0.U
-    }
-
-    // generate left select logic
-    when(r_valid(1) === true.B) {
-      when(w_vn((16 * x + 7).U) === w_vn((16 * x + 3).U)) {
-        r_reduction_selReg((x * 4).U + 8.U, 2.U) := 0.U
-      }.elsewhen(w_vn((16 * x + 7).U) === w_vn((16 * x + 5).U)) {
-        r_reduction_selReg((x * 4).U + 8.U, 2.U) := 1.U
-      }.otherwise {
-        r_reduction_selReg((x * 4).U + 8.U, 2.U) := 2.U
-      }
-    }.otherwise {
-      r_reduction_selReg((x * 4).U + 8.U, 4.U) := 0.U
-    }
-
-    // generate right select logic
-    when(r_valid(1) === true.B) {
-      when(w_vn((16 * x + 8).U) === w_vn((16 * x + 12).U)) {
-        r_reduction_selReg((x * 4).U + 10.U, 2.U) := 2.U
-      }.elsewhen(w_vn((16 * x + 8).U) === w_vn((16 * x + 10).U)) {
-        r_reduction_selReg((x * 4).U + 10.U, 2.U) := 1.U
-      }.otherwise {
-        r_reduction_selReg((x * 4).U + 10.U, 2.U) := 0.U
-      }
-    }.otherwise {
-      r_reduction_selReg((x * 4).U + 8.U, 4.U) := 0.U
     }
   }
-    }.elsewhen(x.U === 1.U){ 
-        when(rst) {
-    r_reduction_addReg(28 + x.U) := false.B
-    r_reduction_cmdReg(3 * 28 + 3 * x.U, 3.U) := 0.U
-    r_reduction_selReg((x * 4).U + 8.U, 4.U) := 0.U
-  }.otherwise {
-    // generate cmd logic
-    when(r_valid(1) === true.B) {
-      when(w_vn((16 * x + 7).U) === w_vn((16 * x + 8).U)) {
-        r_reduction_addReg(28 + x.U) := true.B
-      }.otherwise {
-        r_reduction_addReg(28 + x.U) := false.B
-      }
-
-      when(
-        w_vn((16 * x + 3).U) === w_vn((16 * x + 4).U) &&
-        w_vn((16 * x + 11).U) === w_vn((16 * x + 12).U) &&
-        w_vn((16 * x + 16).U) =/= w_vn((16 * x + 12).U) &&
-        w_vn((16 * x + 4).U) =/= w_vn((16 * x + 8).U) &&
-        w_vn((16 * x + 11).U) =/= w_vn((16 * x + 7).U)
-      ) {
-        r_reduction_cmdReg(3 * 28 + 3 * x.U, 3.U) := 5.U
-      }.elsewhen(
-        w_vn((16 * x + 11).U) === w_vn((16 * x + 12).U) &&
-        w_vn((16 * x + 16).U) =/= w_vn((16 * x + 12).U) &&
-        w_vn((16 * x + 11).U) =/= w_vn((16 * x + 7).U)
-      ) {
-        r_reduction_cmdReg(3 * 28 + 3 * x.U, 3.U) := 4.U
-      }.elsewhen(
-        w_vn((16 * x + 3).U) === w_vn((16 * x + 4).U) &&
-        w_vn((16 * x + 4).U) =/= w_vn((16 * x + 8).U)
-      ) {
-        r_reduction_cmdReg(3 * 28 + 3 * x.U, 3.U) := 3.U
-      }.otherwise {
-        r_reduction_cmdReg(3 * 28 + 3 * x.U, 3.U) := 0.U
-      }
-    }.otherwise {
-      r_reduction_addReg(28 + x.U) := false.B
-      r_reduction_cmdReg(3 * 28 + 3 * x.U, 3.U) := 0.U
-    }
-
-    // generate left select logic
-    when(r_valid(1) === true.B) {
-      when(w_vn((16 * x + 7).U) === w_vn((16 * x + 3).U)) {
-        r_reduction_selReg((x * 4).U + 8.U, 2.U) := 0.U
-      }.elsewhen(w_vn((16 * x + 7).U) === w_vn((16 * x + 5).U)) {
-        r_reduction_selReg((x * 4).U + 8.U, 2.U) := 1.U
-      }.otherwise {
-        r_reduction_selReg((x * 4).U + 8.U, 2.U) := 2.U
-      }
-    }.otherwise {
-      r_reduction_selReg((x * 4).U + 8.U, 4.U) := 0.U
-    }
-
-    // generate right select logic
-    when(r_valid(1) === true.B) {
-      when(w_vn((16 * x + 8).U) === w_vn((16 * x + 12).U)) {
-        r_reduction_selReg((x * 4).U + 10.U, 2.U) := 2.U
-      }.elsewhen(w_vn((16 * x + 8).U) === w_vn((16 * x + 10).U)) {
-        r_reduction_selReg((x * 4).U + 10.U, 2.U) := 1.U
-      }.otherwise {
-        r_reduction_selReg((x * 4).U + 10.U, 2.U) := 0.U
-      }
-    }.otherwise {
-      r_reduction_selReg((x * 4).U + 8.U, 4.U) := 0.U
-    }
-  }
-    }.otherwise{
-        when(rst) {
-    r_reduction_addReg(28.U + x.U) := false.B
-    r_reduction_cmdReg(3.U * 28.U + 3.U * x.U, 3.U) := 0.U
-    r_reduction_selReg((x.U * 4.U) + 8.U, 4.U) := 0.U
-  }.otherwise {
-    // generate cmd logic
-    when(r_valid(1.U) === true.B) {
-      when(w_vn((16.U * x.U + 7.U) * LOG2_PES.U, LOG2_PES.U) === w_vn((16.U * x.U + 8.U) * LOG2_PES.U, LOG2_PES.U)) {
-        r_reduction_addReg(28.U + x.U) := true.B
-      }.otherwise {
-        r_reduction_addReg(28.U + x.U) := false.B
-      }
-
-      when(
-        w_vn((16.U * x.U + 3.U) * LOG2_PES.U, LOG2_PES.U) === w_vn((16.U * x.U + 4.U) * LOG2_PES.U, LOG2_PES.U) &&
-        w_vn((16.U * x.U + 11.U) * LOG2_PES.U, LOG2_PES.U) === w_vn((16.U * x.U + 12.U) * LOG2_PES.U, LOG2_PES.U) &&
-        w_vn((16.U * x.U + 3.U) * LOG2_PES.U, LOG2_PES.U) =/= w_vn((16.U * x.U + -1.U) * LOG2_PES.U, LOG2_PES.U) &&
-        w_vn((16.U * x.U + 16.U) * LOG2_PES.U, LOG2_PES.U) =/= w_vn((16.U * x.U + 12.U) * LOG2_PES.U, LOG2_PES.U) &&
-        w_vn((16.U * x.U + 4.U) * LOG2_PES.U, LOG2_PES.U) =/= w_vn((16.U * x.U + 8.U) * LOG2_PES.U, LOG2_PES.U) &&
-        w_vn((16.U * x.U + 11.U) * LOG2_PES.U, LOG2_PES.U) =/= w_vn((16.U * x.U + 7.U) * LOG2_PES.U, LOG2_PES.U)
-      ) {
-        r_reduction_cmdReg(3.U * 28.U + 3.U * x.U, 3.U) := 5.U
-      }.elsewhen(
-        w_vn((16.U * x.U + 11.U) * LOG2_PES.U, LOG2_PES.U) === w_vn((16.U * x.U + 12.U) * LOG2_PES.U, LOG2_PES.U) &&
-        w_vn((16.U * x.U + 16.U) * LOG2_PES.U, LOG2_PES.U) =/= w_vn((16.U * x.U + 12.U) * LOG2_PES.U, LOG2_PES.U) &&
-        w_vn((16.U * x.U + 11.U) * LOG2_PES.U, LOG2_PES.U) =/= w_vn((16.U * x.U + 7.U) * LOG2_PES.U, LOG2_PES.U)
-      ) {
-        r_reduction_cmdReg(3.U * 28.U + 3.U * x.U, 3.U) := 4.U
-      }.elsewhen(
-        w_vn((16.U * x.U + 3.U) * LOG2_PES.U, LOG2_PES.U) === w_vn((16.U * x.U + 4.U) * LOG2_PES.U, LOG2_PES.U) &&
-        w_vn((16.U * x.U + 3.U) * LOG2_PES.U, LOG2_PES.U) =/= w_vn((16.U * x.U + -1.U) * LOG2_PES.U, LOG2_PES.U) &&
-        w_vn((16.U * x.U + 8.U) * LOG2_PES.U, LOG2_PES.U) =/= w_vn((16.U * x.U + 4.U) * LOG2_PES.U, LOG2_PES.U)
-      ) {
-        r_reduction_cmdReg(3.U * 28.U + 3.U * x.U, 3.U) := 3.U
-      }.otherwise {
-        r_reduction_cmdReg(3.U * 28.U + 3.U * x.U, 3.U) := 0.U
-      }
-    }.otherwise {
-      r_reduction_addReg(28.U + x.U) := false.B
-      r_reduction_cmdReg(3.U * 28.U + 3.U * x.U, 3.U) := 0.U
-    }
-
-    // generate left select logic
-    when(r_valid(1.U) === true.B) {
-      when(w_vn((16.U * x.U + 7.U) * LOG2_PES.U, LOG2_PES.U) === w_vn((16.U * x.U + 3.U) * LOG2_PES.U, LOG2_PES.U)) {
-        r_reduction_selReg((x.U * 4.U) + 8.U, 2.U) := 0.U
-      }.elsewhen(w_vn((16.U * x.U + 7.U) * LOG2_PES.U, LOG2_PES.U) === w_vn((16.U * x.U + 5.U) * LOG2_PES.U, LOG2_PES.U)) {
-                r_reduction_selReg((x.U * 4.U) + 8.U, 2.U) := 1.U
-      }.otherwise {
-        r_reduction_selReg((x.U * 4.U) + 8.U, 2.U) := 2.U
-      }
-    }.otherwise {
-      r_reduction_selReg((x.U * 4.U) + 8.U, 4.U) := 0.U
-    }
-
-    // generate right select logic
-    when(r_valid(1.U) === true.B) {
-      when(w_vn((16.U * x.U + 8.U) * LOG2_PES.U, LOG2_PES.U) === w_vn((16.U * x.U + 12.U) * LOG2_PES.U, LOG2_PES.U)) {
-        r_reduction_selReg((x.U * 4.U) + 10.U, 2.U) := 2.U
-      }.elsewhen(w_vn((16.U * x.U + 8.U) * LOG2_PES.U, LOG2_PES.U) === w_vn((16.U * x.U + 10.U) * LOG2_PES.U, LOG2_PES.U)) {
-        r_reduction_selReg((x.U * 4.U) + 10.U, 2.U) := 1.U
-      }.otherwise {
-        r_reduction_selReg((x.U * 4.U) + 10.U, 2.U) := 0.U
-      }
-    }.otherwise {
-      r_reduction_selReg((x.U * 4.U) + 8.U, 4.U) := 0.U
-    }
-  }
-    }
-  }
-  for (x <- 0 until 1) {
-    // Create a unique scope for the inner logic to avoid naming conflicts
-    val r_reduction_addReg = RegInit(VecInit(Seq.fill(31)(false.B)))
-    val r_reduction_cmdReg = RegInit(VecInit(Seq.fill(31)(0.U(3.W))))
-    val r_reduction_selReg = RegInit(VecInit(Seq.fill(12)(0.U(4.W))))
-
-    // Conditally assign values using Chisel when-else statements
-    when(rst) {
-      r_reduction_addReg(30.U + x.U) := false.B
-      r_reduction_cmdReg(3.U * 30.U + 3.U * x.U, 3.U) := 0.U
-      r_reduction_selReg((x.U * 4.U) + 16.U, 4.U) := 0.U
+  for (x <- 0 until 4) {
+  when (x.U === 0.U) {
+    when (rst === true.B) {
+      r_reduction_add(x) := false.B
+      r_reduction_cmd(3.U * x.U + 2.U) := 0.U
+      r_reduction_cmd(3.U * x.U + 1.U) := 0.U
+      r_reduction_cmd(3.U * x.U) := 0.U
     }.otherwise {
       // generate cmd logic
-      when(r_valid(1.U) === true.B) {
-        when(w_vn((32.U * x.U + 15.U) * LOG2_PES.U, LOG2_PES.U) === w_vn((32.U * x.U + 16.U) * LOG2_PES.U, LOG2_PES.U)) {
-          r_reduction_addReg(30.U + x.U) := true.B
+      when (r_valid(1.U) === true.B) {
+        when (w_vn((8.U * x.U + 3.U) * LOG2_PES.U) === w_vn((8.U * x.U + 4.U) * LOG2_PES.U)) {
+          r_reduction_add(x) := true.B // add enable
         }.otherwise {
-          r_reduction_addReg(30.U + x.U) := false.B
+          r_reduction_add(x) := false.B
         }
 
-        when(
-          w_vn((32.U * x.U + 7.U) * LOG2_PES.U, LOG2_PES.U) === w_vn((32.U * x.U + 8.U) * LOG2_PES.U, LOG2_PES.U) &&
-          w_vn((32.U * x.U + 23.U) * LOG2_PES.U, LOG2_PES.U) === w_vn((32.U * x.U + 24.U) * LOG2_PES.U, LOG2_PES.U) &&
-          w_vn((32.U * x.U + 8.U) * LOG2_PES.U, LOG2_PES.U) =/= w_vn((32.U * x.U + 16.U) * LOG2_PES.U, LOG2_PES.U) &&
-          w_vn((32.U * x.U + 23.U) * LOG2_PES.U, LOG2_PES.U) =/= w_vn((32.U * x.U + 15.U) * LOG2_PES.U, LOG2_PES.U)
-        ) {
-          r_reduction_cmdReg(3.U * 30.U + 3.U * x.U, 3.U) := 5.U
-        }.elsewhen(
-          w_vn((32.U * x.U + 23.U) * LOG2_PES.U, LOG2_PES.U) === w_vn((32.U * x.U + 24.U) * LOG2_PES.U, LOG2_PES.U) &&
-          w_vn((32.U * x.U + 23.U) * LOG2_PES.U, LOG2_PES.U) =/= w_vn((32.U * x.U + 15.U) * LOG2_PES.U, LOG2_PES.U)
-        ) {
-          r_reduction_cmdReg(3.U * 30.U + 3.U * x.U, 3.U) := 4.U
-        }.elsewhen(
-          w_vn((32.U * x.U + 7.U) * LOG2_PES.U, LOG2_PES.U) === w_vn((32.U * x.U + 8.U) * LOG2_PES.U, LOG2_PES.U) &&
-          w_vn((32.U * x.U + 16.U) * LOG2_PES.U, LOG2_PES.U) =/= w_vn((32.U * x.U + 8.U) * LOG2_PES.U, LOG2_PES.U)
-        ) {
-          r_reduction_cmdReg(3.U * 30.U + 3.U * x.U, 3.U) := 3.U
+        when ((w_vn((8.U * x.U + 1.U) * LOG2_PES.U) === w_vn((8.U * x.U + 2.U) * LOG2_PES.U)) &&
+          (w_vn((8.U * x.U + 5.U) * LOG2_PES.U) === w_vn((8.U * x.U + 6.U) * LOG2_PES.U)) &&
+          (w_vn((8.U * x.U + 8.U) * LOG2_PES.U) =/= w_vn((8.U * x.U + 6.U) * LOG2_PES.U)) &&
+          (w_vn((8.U * x.U + 2.U) * LOG2_PES.U) =/= w_vn((8.U * x.U + 4.U) * LOG2_PES.U)) &&
+          (w_vn((8.U * x.U + 5.U) * LOG2_PES.U) =/= w_vn((8.U * x.U + 3.U) * LOG2_PES.U))) {
+          r_reduction_cmd(3.U * x.U + 2.U) := 5.U // both vn done
+        }.elsewhen ((w_vn((8.U * x.U + 5.U) * LOG2_PES.U) === w_vn((8.U * x.U + 6.U) * LOG2_PES.U)) &&
+          (w_vn((8.U * x.U + 8.U) * LOG2_PES.U) =/= w_vn((8.U * x.U + 6.U) * LOG2_PES.U)) &&
+          (w_vn((8.U * x.U + 5.U) * LOG2_PES.U) =/= w_vn((8.U * x.U + 3.U) * LOG2_PES.U))) {
+          r_reduction_cmd(3.U * x.U + 2.U) := 4.U // right vn done
+        }.elsewhen ((w_vn((8.U * x.U + 1.U) * LOG2_PES.U) === w_vn((8.U * x.U + 2.U) * LOG2_PES.U)) &&
+          (w_vn((8.U * x.U + 2.U) * LOG2_PES.U) =/= w_vn((8.U * x.U + 4.U) * LOG2_PES.U))) {
+          r_reduction_cmd(3.U * x.U + 2.U) := 3.U // left vn done
         }.otherwise {
-          r_reduction_cmdReg(3.U * 30.U + 3.U * x.U, 3.U) := 0.U
+          r_reduction_cmd(3.U * x.U + 2.U) := 0.U // nothing
         }
-
       }.otherwise {
-        r_reduction_addReg(30.U + x.U) := false.B
-        r_reduction_cmdReg(3.U * 30.U + 3.U * x.U, 3.U) := 0.U
+        r_reduction_add(x) := false.B
+        r_reduction_cmd(3.U * x.U + 2.U) := 0.U // nothing
+      }
+      when (r_valid(1.U) === true.B) {
+      when (w_vn((8.U * x.U + 3.U) * LOG2_PES.U) === w_vn((8.U * x.U + 1.U) * LOG2_PES.U)) {
+      r_reduction_sel((x * 2).U + 0.U) := 0.U
+    }.otherwise {
+      r_reduction_sel((x * 2).U + 0.U) := 1.U
+    }
+
+    // generate right select logic
+    when (w_vn((8.U * x.U + 4.U) * LOG2_PES.U) === w_vn((8.U * x.U + 6.U) * LOG2_PES.U)) {
+      r_reduction_sel((x * 2).U + 1.U) := 1.U
+    }.otherwise {
+      r_reduction_sel((x * 2).U + 1.U) := 0.U
+    }
+  }.otherwise {
+    r_reduction_sel((x * 2).U + 0.U) := 0.U
+    r_reduction_sel((x * 2).U + 1.U) := 0.U
+  }
+}
+
+    when (x.U === 3.U) {
+    val x_offset = x.U * 8.U * LOG2_PES.U
+
+    // Reset logic
+    when (rst === 1.B) {
+      for (i <- 0 until (NUM_PES - 1)) {
+        r_reduction_add(i) := false.B
+        r_reduction_cmd(i) := 0.U(3.W)
+      }
+      for (i <- 0 until 20) {
+        r_reduction_sel(i) := false.B
+      }
+    }.otherwise {
+      val vn1 = w_vn(x_offset + 1.U * LOG2_PES.U)
+      val vn2 = w_vn(x_offset + 2.U * LOG2_PES.U)
+      val vn3 = w_vn(x_offset + 3.U * LOG2_PES.U)
+      val vn4 = w_vn(x_offset + 4.U * LOG2_PES.U)
+      val vn5 = w_vn(x_offset + 5.U * LOG2_PES.U)
+      val vn6 = w_vn(x_offset + 6.U * LOG2_PES.U)
+
+      // generate cmd logic
+      when (r_valid(1.U)) {
+        r_reduction_add(x) := vn1 === vn4 // add enable
+
+        r_reduction_cmd(x) := Mux(vn1 === vn2 && vn5 === vn6 && vn3 =/= vn6 && vn2 =/= vn4 && vn5 =/= vn3, "b101".U, // both vn done
+                             Mux(vn1 === vn2 && vn1 =/= vn3 && vn4 =/= vn2, "b011".U, // left vn done
+                             Mux(vn5 === vn6 && vn5 =/= vn3, "b100".U, // right vn done
+                             "b000".U))) // nothing
+
+        // generate left select logic
+        r_reduction_sel((x * 2).U + 0.U) := vn3 =/= vn1
+
+        // generate right select logic
+        r_reduction_sel((x * 2).U + 1.U) := vn4 === vn6
+      }.otherwise {
+        r_reduction_add(x) := false.B
+        r_reduction_cmd(x) := "b000".U // nothing
+        for (i <- 0 until 20) {
+          r_reduction_sel(i) := false.B
+        }
+      }
+    }
+  }.otherwise{
+    val x_offset = x.U * 8.U * LOG2_PES.U
+
+    // Reset logic
+    when (rst === 1.B) {
+      r_reduction_add.foreach(_ := false.B)
+      r_reduction_cmd.foreach(_ := 0.U(3.W))
+      r_reduction_sel.foreach(_ := false.B)
+    }.otherwise {
+      val vn1 = w_vn(x_offset + 1.U * LOG2_PES.U)
+      val vn2 = w_vn(x_offset + 2.U * LOG2_PES.U)
+      val vn3 = w_vn(x_offset + 3.U * LOG2_PES.U)
+      val vn4 = w_vn(x_offset + 4.U * LOG2_PES.U)
+      val vn5 = w_vn(x_offset + 5.U * LOG2_PES.U)
+      val vn6 = w_vn(x_offset + 6.U * LOG2_PES.U)
+
+      // generate cmd logic
+      when (r_valid(1.U)) {
+        r_reduction_add(x) := vn1 === vn4 // add enable
+
+        r_reduction_cmd(x) := Mux(vn1 === vn2 && vn5 === vn6 && vn3 =/= vn6 && vn2 =/= vn4 && vn5 =/= vn3, "b101".U, // both vn done
+          Mux(vn5 === vn6 && vn5 =/= vn3, "b100".U, // right vn done
+            Mux(vn1 === vn2 && vn1 =/= vn3 && vn4 =/= vn2, "b011".U, // left vn done
+              "b000".U))) // nothing
+
+        // generate left select logic
+        r_reduction_sel((x * 2).U + 0.U) := vn3 =/= vn1
+
+        // generate right select logic
+        r_reduction_sel((x * 2).U + 1.U) := vn4 === vn6
+      }.otherwise {
+        r_reduction_add(x) := false.B
+        r_reduction_cmd(x) := "b000".U // nothing
+        r_reduction_sel((x * 2).U + 0.U) := false.B
+        r_reduction_sel((x * 2).U + 1.U) := false.B
+      }
+    }
+  }
+  }}
+  for (x <- 0 until 2) {
+    when ( x.U === 0.U) {
+    when (r_valid(1.U) === true.B) {
+      val x_offset = x * 16
+
+      // generate add enable logic
+      when (w_vn((x_offset + 7).U) === w_vn((x_offset + 8).U)) {
+        r_reduction_add((x + 28).U) := true.B
+      }.otherwise {
+        r_reduction_add((x + 28).U) := false.B
+      }
+
+      // generate cmd logic
+      val vn1 = w_vn((x_offset + 3).U)
+      val vn2 = w_vn((x_offset + 4).U)
+      val vn3 = w_vn((x_offset + 11).U)
+      val vn4 = w_vn((x_offset + 12).U)
+      val vn5 = w_vn((x_offset + 16).U)
+
+      when (
+        vn1 === vn2 && vn5 === vn4 && vn3 =/= vn4 && vn2 =/= vn4 && vn5 =/= vn3
+      ) {
+        r_reduction_cmd((x + 28).U) := "b101".U // both vn done
+      }.elsewhen (
+        vn5 === vn4 && vn3 =/= vn4 && vn5 =/= vn3
+      ) {
+        r_reduction_cmd((x + 28).U) := "b100".U // right vn done
+      }.elsewhen (
+        vn1 === vn2 && vn4 =/= vn2
+      ) {
+        r_reduction_cmd((x + 28).U) := "b011".U // left vn done
+      }.otherwise {
+        r_reduction_cmd((x + 28).U) := "b000".U // nothing
       }
 
       // generate left select logic
-      when(r_valid(1.U) === true.B) {
-        when(w_vn((32.U * x.U + 15.U) * LOG2_PES.U, LOG2_PES.U) === w_vn((32.U * x.U + 7.U) * LOG2_PES.U, LOG2_PES.U)) {
-          r_reduction_selReg((x.U * 4.U) + 16.U, 2.U) := 0.U
-        }.elsewhen(w_vn((32.U * x.U + 15.U) * LOG2_PES.U, LOG2_PES.U) === w_vn((32.U * x.U + 11.U) * LOG2_PES.U, LOG2_PES.U)) {
-          r_reduction_selReg((x.U * 4.U) + 16.U, 2.U) := 1.U
-        }.elsewhen(w_vn((32.U * x.U + 15.U) * LOG2_PES.U, LOG2_PES.U) === w_vn((32.U * x.U + 13.U) * LOG2_PES.U, LOG2_PES.U)) {
-          r_reduction_selReg((x.U * 4.U) + 16.U, 2.U) := 2.U
-        }.otherwise {
-          r_reduction_selReg((x.U * 4.U) + 16.U, 2.U) := 3.U
-        }
+      when (vn1 === vn3) {
+        r_reduction_sel((x * 4).U + 8.U) := "b00".U
+      }.elsewhen (vn1 === vn5) {
+        r_reduction_sel((x * 4).U + 8.U) := "b01".U
       }.otherwise {
-        r_reduction_selReg((x.U * 4.U) + 16.U, 4.U) := 0.U
+        r_reduction_sel((x * 4).U + 8.U) := "b10".U
       }
 
       // generate right select logic
-      when(r_valid(1.U) === true.B) {
-        when(w_vn((32.U * x.U + 16.U) * LOG2_PES.U, LOG2_PES.U) === w_vn((32.U * x.U + 24.U) * LOG2_PES.U, LOG2_PES.U)) {
-          r_reduction_selReg((x.U * 4.U) + 18.U, 2.U) := 3.U
-        }.elsewhen(w_vn((32.U * x.U + 16.U) * LOG2_PES.U, LOG2_PES.U) === w_vn((32.U * x.U + 20.U) * LOG2_PES.U, LOG2_PES.U)) {
-          r_reduction_selReg((x.U * 4.U) + 18.U, 2.U) := 2.U
-        }.elsewhen(w_vn((32.U * x.U + 16.U) * LOG2_PES.U, LOG2_PES.U) === w_vn((32.U * x.U + 18.U) * LOG2_PES.U, LOG2_PES.U)) {
-          r_reduction_selReg((x.U * 4.U) + 18.U, 2.U) := 1.U
+      when (vn2 === vn4) {
+        r_reduction_sel((x * 4).U + 10.U) := "b10".U
+      }.elsewhen (vn2 === vn5) {
+        r_reduction_sel((x * 4).U + 10.U) := "b01".U
+      }.otherwise {
+        r_reduction_sel((x * 4).U + 10.U) := "b00".U
+      }
+    }.otherwise {
+      val x_offset = x * 16
+      r_reduction_add((x + 28).U) := false.B
+      r_reduction_cmd((x + 28).U) := "b000".U // nothing
+      r_reduction_sel((x * 4).U + 8.U) := "b0000".U
+    }
+  }.elsewhen( x.U === 1.U) {
+    val x_offset = x * 16
+
+    when (r_valid(1.U) === true.B) {
+      // generate add enable logic
+      when (w_vn((x_offset + 7).U) === w_vn((x_offset + 8).U)) {
+        r_reduction_add((x + 28).U) := true.B
+      }.otherwise {
+        r_reduction_add((x + 28).U) := false.B
+      }
+
+      // generate cmd logic
+      val vn1 = w_vn((x_offset + 3).U)
+      val vn2 = w_vn((x_offset + 4).U)
+      val vn3 = w_vn((x_offset + 11).U)
+      val vn4 = w_vn((x_offset + 12).U)
+      val vn5 = w_vn((x_offset + 16).U)
+
+      when (
+        vn1 === vn2 && vn5 === vn4 && vn3 =/= vn4 && vn2 =/= vn4 && vn5 =/= vn3
+      ) {
+        r_reduction_cmd((x + 28).U) := "b101".U // both vn done
+      }.elsewhen (
+        vn5 === vn4 && vn3 =/= vn4 && vn5 =/= vn3
+      ) {
+        r_reduction_cmd((x + 28).U) := "b100".U // right vn done
+      }.elsewhen (
+        vn1 === vn2 && vn4 =/= vn2
+      ) {
+        r_reduction_cmd((x + 28).U) := "b011".U // left vn done
+      }.otherwise {
+        r_reduction_cmd((x + 28).U) := "b000".U // nothing
+      }
+
+      // generate left select logic
+      when (vn1 === vn3) {
+        r_reduction_sel((x * 4).U + 8.U) := "b00".U
+      }.elsewhen (vn1 === vn5) {
+        r_reduction_sel((x * 4).U + 8.U) := "b01".U
+      }.otherwise {
+        r_reduction_sel((x * 4).U + 8.U) := "b10".U
+      }
+
+      // generate right select logic
+      when (vn2 === vn4) {
+        r_reduction_sel((x * 4).U + 10.U) := "b10".U
+      }.elsewhen (vn2 === vn5) {
+        r_reduction_sel((x * 4).U + 10.U) := "b01".U
+      }.otherwise {
+        r_reduction_sel((x * 4).U + 10.U) := "b00".U
+      }
+
+    }.otherwise {
+      r_reduction_add((x + 28).U) := false.B
+      r_reduction_cmd((x + 28).U) := "b000".U // nothing
+      r_reduction_sel((x * 4).U + 8.U) := "b0000".U
+    }
+  }.otherwise {
+    val x_offset = x * 16
+      // Edge case (x != 0)
+     when(r_valid(1.U) === 1.B) {
+        // generate add enable logic
+        when(w_vn((x_offset + 7).U) === w_vn((x_offset + 8).U)) {
+          r_reduction_add((x + 28).U) := true.B
         }.otherwise {
-          r_reduction_selReg((x.U * 4.U) + 18.U, 2.U) := 0.U
+          r_reduction_add((x + 28).U) := false.B
+        }
+
+        // generate cmd logic
+when(w_vn((x_offset + 3).U) === w_vn((x_offset + 4).U) &&
+     w_vn((x_offset + 11).U) === w_vn((x_offset + 12).U) &&
+     //w_vn((x_offset + 3).U) =/= w_vn((x_offset - 1).U) &&
+     w_vn((x_offset + 16).U) =/= w_vn((x_offset + 12).U) &&
+     w_vn((x_offset + 4).U) =/= w_vn((x_offset + 8).U) &&
+     w_vn((x_offset + 11).U) =/= w_vn((x_offset + 7).U)) {
+  r_reduction_cmd(3.U * (28.U + x.U) + 2.U) := true.B
+  r_reduction_cmd(3.U * (28.U + x.U) + 1.U) := false.B
+  r_reduction_cmd(3.U * (28.U + x.U) + 0.U) := true.B
+}.elsewhen(w_vn((x_offset + 11).U) === w_vn((x_offset + 12).U) &&
+          w_vn((x_offset + 16).U) =/= w_vn((x_offset + 12).U) &&
+          w_vn((x_offset + 11).U) =/= w_vn((x_offset + 7).U)) {
+  r_reduction_cmd(3.U * (28.U + x.U) + 2.U) := true.B
+  r_reduction_cmd(3.U * (28.U + x.U) + 1.U) := false.B
+  r_reduction_cmd(3.U * (28.U + x.U) + 0.U) := false.B
+}.elsewhen(w_vn((x_offset + 3).U) === w_vn((x_offset + 4).U) &&
+          //w_vn((x_offset + 3).U) =/= w_vn((x_offset - 1).U) &&
+          w_vn((x_offset + 8).U) =/= w_vn((x_offset + 4).U)) {
+  r_reduction_cmd(3.U * (28.U + x.U) + 2.U) := false.B
+  r_reduction_cmd(3.U * (28.U + x.U) + 1.U) := true.B
+  r_reduction_cmd(3.U * (28.U + x.U) + 0.U) := true.B
+}.otherwise {
+  r_reduction_cmd(3.U * (28.U + x.U) + 2.U) := false.B
+  r_reduction_cmd(3.U * (28.U + x.U) + 1.U) := false.B
+  r_reduction_cmd(3.U * (28.U + x.U) + 0.U) := false.B
+}
+
+        // generate left select logic
+        when(w_vn((x_offset + 7).U) === w_vn((x_offset + 3).U)) {
+          r_reduction_sel(4.U * x.U + 10.U) := false.B
+          r_reduction_sel(4.U * x.U + 9.U) := false.B
+        }.elsewhen(w_vn((x_offset + 7).U) === w_vn((x_offset + 5).U)) {
+          r_reduction_sel(4.U * x.U + 10.U) := false.B
+          r_reduction_sel(4.U * x.U + 9.U) := true.B
+        }.otherwise {
+          r_reduction_sel(4.U * x.U + 10.U) := true.B
+          r_reduction_sel(4.U * x.U + 9.U) := false.B
+        }
+
+        // generate right select logic
+        when(w_vn((x_offset + 8).U) === w_vn((x_offset + 12).U)) {
+          r_reduction_sel(4.U * x.U + 11.U) := true.B
+          r_reduction_sel(4.U * x.U + 8.U) := true.B
+        }.elsewhen(w_vn((x_offset + 8).U) === w_vn((x_offset + 10).U)) {
+          r_reduction_sel(4.U * x.U + 11.U) := false.B
+          r_reduction_sel(4.U * x.U + 8.U) := true.B
+        }.otherwise {
+          r_reduction_sel(4.U * x.U + 11.U) := false.B
+          r_reduction_sel(4.U * x.U + 8.U) := false.B
         }
       }.otherwise {
-        r_reduction_selReg((x.U * 4.U) + 18.U, 2.U) := 0.U
+        // When r_valid is not 1 (false)
+        r_reduction_add((x + 28).U) := false.B
+        r_reduction_cmd(3.U * (28.U + x.U) + 2.U) := false.B
+        r_reduction_cmd(3.U * (28.U + x.U) + 1.U) := false.B
+        r_reduction_cmd(3.U * (28.U + x.U) + 0.U) := false.B
+        r_reduction_sel(4.U * x.U + 10.U) := false.B
+        r_reduction_sel(4.U * x.U + 9.U) := false.B
+        r_reduction_sel(4.U * x.U + 11.U) := false.B
+        r_reduction_sel(4.U * x.U + 8.U) := false.B
       }
-    }
-}
-when(rst) {
-    r_add_lvl_0Reg := 0.U
-    r_add_lvl_1Reg := 0.U
-    r_add_lvl_2Reg := 0.U
-    r_add_lvl_3Reg := 0.U
-    r_add_lvl_4Reg := 0.U
-
-    r_cmd_lvl_0Reg := 0.U
-    r_cmd_lvl_1Reg := 0.U
-    r_cmd_lvl_2Reg := 0.U
-    r_cmd_lvl_3Reg := 0.U
-    r_cmd_lvl_4Reg := 0.U
-
-    r_sel_lvl_2Reg := 0.U
-    r_sel_lvl_3Reg := 0.U
-    r_sel_lvl_4Reg := 0.U
-  }.elsewhen(risingEdge(clk)) {
-    r_add_lvl_0Reg := r_reduction_add(15, 0)
-    r_add_lvl_1Reg := Cat(r_reduction_add(23, 16), r_reduction_add(23, 16))
-    r_add_lvl_2Reg := Cat(r_reduction_add(27, 24), r_reduction_add(27, 24), r_reduction_add(27, 24), r_reduction_add(27, 24))
-    r_add_lvl_3Reg := Cat(r_reduction_add(29, 28), r_reduction_add(29, 28), r_reduction_add(29, 28), r_reduction_add(29, 28),
-                         r_reduction_add(29, 28), r_reduction_add(29, 28), r_reduction_add(29, 28), r_reduction_add(29, 28))
-    r_add_lvl_4Reg := Fill(5, r_reduction_add(30))
-
-    r_cmd_lvl_0Reg := r_reduction_cmd(47, 0)
-    r_cmd_lvl_1Reg := Cat(r_reduction_cmd(71, 48), r_reduction_cmd(71, 48))
-    r_cmd_lvl_2Reg := Cat(r_reduction_cmd(83, 72), r_reduction_cmd(83, 72), r_reduction_cmd(83, 72), r_reduction_cmd(83, 72))
-    r_cmd_lvl_3Reg := Cat(r_reduction_cmd(89, 84), r_reduction_cmd(89, 84), r_reduction_cmd(89, 84), r_reduction_cmd(89, 84),
-                         r_reduction_cmd(89, 84), r_reduction_cmd(89, 84))
-    r_cmd_lvl_4Reg := Cat(r_reduction_cmd(92, 90), r_reduction_cmd(92, 90), r_reduction_cmd(92, 90))
-
-    r_sel_lvl_2Reg := Cat(r_reduction_sel(7, 0), r_reduction_sel(7, 0), r_reduction_sel(7, 0))
-    r_sel_lvl_3Reg := Cat(r_reduction_sel(15, 8), r_reduction_sel(15, 8), r_reduction_sel(15, 8), r_reduction_sel(15, 8),
-                         r_reduction_sel(15, 8), r_reduction_sel(15, 8), r_reduction_sel(15, 8), r_reduction_sel(15, 8))
-    r_sel_lvl_4Reg := Cat(r_reduction_sel(19, 16), r_reduction_sel(19, 16), r_reduction_sel(19, 16), r_reduction_sel(19, 16))
   }
-      //val r_valid = RegInit(VecInit(Seq.fill(5)(false.B)))
-
-  when(io.i_stationary === false.B && io.i_data_valid === true.B) {
-    r_valid(0) := true.B
-  } .otherwise {
-    r_valid(0) := false.B
   }
+  for (x <- 0 until 1) {
+  when (x.U === 0.U) {
+    when (r_valid(1)) {
+      when (w_vn((16 * x + 7).U + LOG2_PES.U) === w_vn((16 * x + 8).U + LOG2_PES.U)) {
+        r_reduction_add(28.U + x.U) := true.B
+      } .otherwise {
+        r_reduction_add(28.U + x.U) := false.B
+      }
 
-  for (i <- 0 until 4) {
-    when(rst) {
-      r_valid(i+1) := false.B
+      when (w_vn((16 * x + 3).U + LOG2_PES.U) === w_vn((16 * x + 4).U + LOG2_PES.U) &&
+            w_vn((16 * x + 11).U + LOG2_PES.U) === w_vn((16 * x + 12).U + LOG2_PES.U) &&
+           // w_vn((16 * x + 3).U + LOG2_PES.U) =/= w_vn((16 * x - 1).U + LOG2_PES.U) &&
+            w_vn((16 * x + 16).U + LOG2_PES.U) =/= w_vn((16 * x + 12).U + LOG2_PES.U) &&
+            w_vn((16 * x + 4).U + LOG2_PES.U) =/= w_vn((16 * x + 8).U + LOG2_PES.U) &&
+            w_vn((16 * x + 11).U + LOG2_PES.U) =/= w_vn((16 * x + 7).U + LOG2_PES.U)) {
+        r_reduction_cmd(3.U * (28.U + x.U) + 2.U) := true.B
+        r_reduction_cmd(3.U * (28.U + x.U) + 1.U) := false.B
+        r_reduction_cmd(3.U * (28.U + x.U) + 0.U) := true.B
+      } .elsewhen (w_vn((16 * x + 11).U + LOG2_PES.U) === w_vn((16 * x + 12).U + LOG2_PES.U) &&
+                   w_vn((16 * x + 16).U + LOG2_PES.U) =/= w_vn((16 * x + 12).U + LOG2_PES.U) &&
+                   w_vn((16 * x + 11).U + LOG2_PES.U) =/= w_vn((16 * x + 7).U + LOG2_PES.U)) {
+        r_reduction_cmd(3.U * (28.U + x.U) + 2.U) := true.B
+        r_reduction_cmd(3.U * (28.U + x.U) + 1.U) := false.B
+        r_reduction_cmd(3.U * (28.U + x.U) + 0.U) := false.B
+      } .elsewhen (w_vn((16 * x + 3).U + LOG2_PES.U) === w_vn((16 * x + 4).U + LOG2_PES.U) &&
+                   //w_vn((16 * x + 3).U + LOG2_PES.U) =/= w_vn((16 * x - 1).U + LOG2_PES.U) &&
+                   w_vn((16 * x + 8).U + LOG2_PES.U) =/= w_vn((16 * x + 4).U + LOG2_PES.U)) {
+        r_reduction_cmd(3.U * (28.U + x.U) + 2.U) := false.B
+        r_reduction_cmd(3.U * (28.U + x.U) + 1.U) := true.B
+        r_reduction_cmd(3.U * (28.U + x.U) + 0.U) := true.B
+      } .otherwise {
+        r_reduction_cmd(3.U * (28.U + x.U) + 2.U) := false.B
+        r_reduction_cmd(3.U * (28.U + x.U) + 1.U) := false.B
+        r_reduction_cmd(3.U * (28.U + x.U) + 0.U) := false.B
+      }
     } .otherwise {
-      r_valid(i+1) := r_valid(i)
+      r_reduction_add(28.U + x.U) := false.B
+      r_reduction_cmd(3.U * (28.U + x.U) + 2.U) := false.B
+      r_reduction_cmd(3.U * (28.U + x.U) + 1.U) := false.B
+      r_reduction_cmd(3.U * (28.U + x.U) + 0.U) := false.B
+    }
+
+    when (r_valid(1)) {
+      when (w_vn((16 * x + 15).U + LOG2_PES.U) === w_vn((16 * x + 7).U + LOG2_PES.U)) {
+        r_reduction_sel((x * 4).U + 16.U + 1.U) := "b00".U
+      } .elsewhen (w_vn((16 * x + 15).U + LOG2_PES.U) === w_vn((16 * x + 11).U + LOG2_PES.U)) {
+        r_reduction_sel((x * 4).U + 16.U + 1.U) := "b01".U
+      } .elsewhen (w_vn((16 * x + 15).U + LOG2_PES.U) === w_vn((16 * x + 13).U + LOG2_PES.U)) {
+        r_reduction_sel((x * 4).U + 16.U + 1.U) := "b10".U
+      } .otherwise {
+        r_reduction_sel((x * 4).U + 16.U + 1.U) := "b11".U
+      }
+    } .otherwise {
+      r_reduction_sel((x * 4).U + 16.U + 3.U) := "b0000".U
+    }
+
+    when (r_valid(1)) {
+      when (w_vn((16 * x + 16).U + LOG2_PES.U) === w_vn((16 * x + 24).U + LOG2_PES.U)) {
+        r_reduction_sel((x * 4).U + 16.U + 0.U) := "b11".U
+      } .elsewhen (w_vn((16 * x + 16).U + LOG2_PES.U) === w_vn((16 * x + 20).U + LOG2_PES.U)) {
+        r_reduction_sel((x * 4).U + 16.U + 0.U) := "b10".U
+      } .elsewhen (w_vn((16 * x + 16).U + LOG2_PES.U) === w_vn((16 * x + 18).U + LOG2_PES.U)) {
+        r_reduction_sel((x * 4).U + 16.U + 0.U) := "b01".U
+      } .otherwise {
+        r_reduction_sel((x * 4).U + 16.U + 0.U) := "b00".U
+      }
+    } .otherwise {
+      r_reduction_sel((x * 4).U + 16.U + 2.U) := "b0000".U
     }
   }
-
-  val o_reduction_validReg = RegInit(false.B)
-  when(rst) {
-    o_reduction_validReg := false.B
-  } .otherwise {
-    o_reduction_validReg := r_valid(3)
-  }
-
-  io.o_reduction_valid := o_reduction_validReg
-  io.o_reduction_add := Cat(r_add_lvl_4(4), r_add_lvl_3(7, 6), r_add_lvl_2(11, 8), r_add_lvl_1(15, 8), r_add_lvl_0(15, 0))
-  io.o_reduction_cmd := Cat(r_cmd_lvl_4(2, 0), r_cmd_lvl_3(5, 0), r_cmd_lvl_2(11, 0), r_cmd_lvl_1(23, 0), r_cmd_lvl_0(47, 0))
-  io.o_reduction_sel := Cat(r_sel_lvl_4(3, 0), r_sel_lvl_3(7, 0), r_sel_lvl_2(7, 0))
-
-
-
-
+}
+for (i <- 0 until 16) {
+  r_add_lvl_0Reg(i) := r_reduction_add(i)
 }
 
-    
+// Assigning values for r_add_lvl_1Reg
+for (i <- 0 until 8) {
+  r_add_lvl_1Reg(i) := r_reduction_add(i + 16)
+  r_add_lvl_1Reg(i + 8) := r_reduction_add(i + 16)
+}
 
-    
+// Assigning values for r_add_lvl_2Reg
+for (i <- 0 until 4) {
+  r_add_lvl_2Reg(i) := r_reduction_add(i + 24)
+  r_add_lvl_2Reg(i + 4) := r_reduction_add(i + 24)
+  r_add_lvl_2Reg(i + 8) := r_reduction_add(i + 24)
+  r_add_lvl_2Reg(i + 12) := r_reduction_add(i + 24)
+}
 
+// Continue similarly for r_add_lvl_3Reg and r_add_lvl_4Reg
+
+// Assigning values for r_cmd_lvl_0Reg
+for (i <- 0 until 31) {
+  r_cmd_lvl_0Reg(i) := r_reduction_cmd(i)
+}
+
+// Continue similarly for r_cmd_lvl_1Reg, r_cmd_lvl_2Reg, r_cmd_lvl_3Reg, and r_cmd_lvl_4Reg
+
+// Assigning values for r_sel_lvl_2Reg
+for (i <- 0 until 8) {
+  r_sel_lvl_2Reg(i) := r_reduction_sel(i)
+  r_sel_lvl_2Reg(i + 8) := r_reduction_sel(i)
+  r_sel_lvl_2Reg(i + 16) := r_reduction_sel(i)
+}
+
+// Assigning values for r_sel_lvl_3Reg
+for (i <- 0 until 8) {
+  r_sel_lvl_3Reg(i) := r_reduction_sel(i + 8)
+  r_sel_lvl_3Reg(i + 8) := r_reduction_sel(i + 8)
+  r_sel_lvl_3Reg(i + 16) := r_reduction_sel(i + 8)
+  r_sel_lvl_3Reg(i + 24) := r_reduction_sel(i + 8)
+}
+
+// Assigning values for r_sel_lvl_4Reg
+for (i <- 0 until 4) {
+  r_sel_lvl_4Reg(i) := r_reduction_sel(i + 16)
+  r_sel_lvl_4Reg(i + 4) := r_reduction_sel(i + 16)
+  r_sel_lvl_4Reg(i + 8) := r_reduction_sel(i + 16)
+  r_sel_lvl_4Reg(i + 12) := r_reduction_sel(i + 16)
+}
+
+when (io.i_stationary === 0.U && io.i_data_valid === 1.U) {
+  r_valid(0) := 1.U
+} .otherwise {
+  r_valid(0) := 0.U
+}
+
+for (i <- 0 until 4) {
+  when (rst === true.B) {
+    r_valid(i + 1) := false.B
+  } .otherwise {
+    r_valid(i + 1) := r_valid(i)
+  }
+}
+
+io.o_reduction_valid := r_valid(3)
+
+val o_reduction_add = Cat(
+  r_add_lvl_4Reg(4),
+  r_add_lvl_3Reg(7),
+  r_add_lvl_3Reg(6),
+  r_add_lvl_2Reg(11),
+  r_add_lvl_2Reg(10),
+  r_add_lvl_2Reg(9),
+  r_add_lvl_2Reg(8),
+  r_add_lvl_1Reg(15),
+  r_add_lvl_1Reg(14),
+  r_add_lvl_1Reg(13),
+  r_add_lvl_1Reg(12),
+  r_add_lvl_1Reg(11),
+  r_add_lvl_1Reg(10),
+  r_add_lvl_1Reg(9),
+  r_add_lvl_1Reg(8),
+  r_add_lvl_0Reg(15),
+  r_add_lvl_0Reg(14),
+  r_add_lvl_0Reg(13),
+  r_add_lvl_0Reg(12),
+  r_add_lvl_0Reg(11),
+  r_add_lvl_0Reg(10),
+  r_add_lvl_0Reg(9),
+  r_add_lvl_0Reg(8),
+  r_add_lvl_0Reg(7),
+  r_add_lvl_0Reg(6),
+  r_add_lvl_0Reg(5),
+  r_add_lvl_0Reg(4),
+  r_add_lvl_0Reg(3),
+  r_add_lvl_0Reg(2),
+  r_add_lvl_0Reg(1),
+  r_add_lvl_0Reg(0)
+)
+val o_reduction_cmd = Cat(
+  r_cmd_lvl_4Reg(14),
+  r_cmd_lvl_4Reg(13),
+  r_cmd_lvl_4Reg(12),
+  r_cmd_lvl_3Reg(23),
+  r_cmd_lvl_3Reg(22),
+  r_cmd_lvl_3Reg(21),
+  r_cmd_lvl_3Reg(20),
+  r_cmd_lvl_3Reg(19),
+  r_cmd_lvl_3Reg(18),
+  r_cmd_lvl_2Reg(35),
+  r_cmd_lvl_2Reg(34),
+  r_cmd_lvl_2Reg(33),
+  r_cmd_lvl_2Reg(32),
+  r_cmd_lvl_2Reg(31),
+  r_cmd_lvl_2Reg(30),
+  r_cmd_lvl_2Reg(29),
+  r_cmd_lvl_2Reg(28),
+  r_cmd_lvl_2Reg(27),
+  r_cmd_lvl_2Reg(26),
+  r_cmd_lvl_2Reg(25),
+  r_cmd_lvl_2Reg(24),
+  r_cmd_lvl_1Reg(47),
+  r_cmd_lvl_1Reg(46),
+  r_cmd_lvl_1Reg(45),
+  r_cmd_lvl_1Reg(44),
+  r_cmd_lvl_1Reg(43),
+  r_cmd_lvl_1Reg(42),
+  r_cmd_lvl_1Reg(41),
+  r_cmd_lvl_1Reg(40),
+  r_cmd_lvl_1Reg(39),
+  r_cmd_lvl_1Reg(38),
+  r_cmd_lvl_1Reg(37),
+  r_cmd_lvl_1Reg(36),
+  r_cmd_lvl_1Reg(35),
+  r_cmd_lvl_1Reg(34),
+  r_cmd_lvl_1Reg(33),
+  r_cmd_lvl_1Reg(32),
+  r_cmd_lvl_1Reg(31),
+  r_cmd_lvl_1Reg(30),
+  r_cmd_lvl_1Reg(29),
+  r_cmd_lvl_1Reg(28),
+  r_cmd_lvl_1Reg(27),
+  r_cmd_lvl_1Reg(26),
+  r_cmd_lvl_1Reg(25),
+  r_cmd_lvl_1Reg(24),
+  r_cmd_lvl_1Reg(23),
+  r_cmd_lvl_1Reg(22),
+  r_cmd_lvl_1Reg(21),
+  r_cmd_lvl_1Reg(20),
+  r_cmd_lvl_1Reg(19),
+  r_cmd_lvl_1Reg(18),
+  r_cmd_lvl_1Reg(17),
+  r_cmd_lvl_1Reg(16),
+  r_cmd_lvl_1Reg(15),
+  r_cmd_lvl_1Reg(14),
+  r_cmd_lvl_1Reg(13),
+  r_cmd_lvl_1Reg(12),
+  r_cmd_lvl_1Reg(11),
+  r_cmd_lvl_1Reg(10),
+  r_cmd_lvl_1Reg(9),
+  r_cmd_lvl_1Reg(8),
+  r_cmd_lvl_0Reg(47),
+  r_cmd_lvl_0Reg(46),
+  r_cmd_lvl_0Reg(45),
+  r_cmd_lvl_0Reg(44),
+  r_cmd_lvl_0Reg(43),
+  r_cmd_lvl_0Reg(42),
+  r_cmd_lvl_0Reg(41),
+  r_cmd_lvl_0Reg(40),
+  r_cmd_lvl_0Reg(39),
+  r_cmd_lvl_0Reg(38),
+  r_cmd_lvl_0Reg(37),
+  r_cmd_lvl_0Reg(36),
+  r_cmd_lvl_0Reg(35),
+  r_cmd_lvl_0Reg(34),
+  r_cmd_lvl_0Reg(33),
+  r_cmd_lvl_0Reg(32),
+  r_cmd_lvl_0Reg(31),
+  r_cmd_lvl_0Reg(30),
+  r_cmd_lvl_0Reg(29),
+  r_cmd_lvl_0Reg(28),
+  r_cmd_lvl_0Reg(27),
+  r_cmd_lvl_0Reg(26),
+  r_cmd_lvl_0Reg(25),
+  r_cmd_lvl_0Reg(24),
+  r_cmd_lvl_0Reg(23),
+  r_cmd_lvl_0Reg(22),
+  r_cmd_lvl_0Reg(21),
+  r_cmd_lvl_0Reg(20),
+  r_cmd_lvl_0Reg(19),
+  r_cmd_lvl_0Reg(18),
+  r_cmd_lvl_0Reg(17),
+  r_cmd_lvl_0Reg(16),
+  r_cmd_lvl_0Reg(15),
+  r_cmd_lvl_0Reg(14),
+  r_cmd_lvl_0Reg(13),
+  r_cmd_lvl_0Reg(12),
+  r_cmd_lvl_0Reg(11),
+  r_cmd_lvl_0Reg(10),
+  r_cmd_lvl_0Reg(9),
+  r_cmd_lvl_0Reg(8),
+  r_cmd_lvl_0Reg(7),
+  r_cmd_lvl_0Reg(6),
+  r_cmd_lvl_0Reg(5),
+  r_cmd_lvl_0Reg(4),
+  r_cmd_lvl_0Reg(3),
+  r_cmd_lvl_0Reg(2),
+  r_cmd_lvl_0Reg(1),
+    r_cmd_lvl_0Reg(0))
+
+
+      o_reduction_sel := Cat(
+    r_sel_lvl_2Reg(7),
+    r_sel_lvl_2Reg(6),
+    r_sel_lvl_2Reg(5),
+    r_sel_lvl_2Reg(4),
+    r_sel_lvl_2Reg(3),
+    r_sel_lvl_2Reg(2),
+    r_sel_lvl_2Reg(1),
+    r_sel_lvl_2Reg(0)
+  )
+}
