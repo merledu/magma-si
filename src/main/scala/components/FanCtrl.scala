@@ -766,118 +766,100 @@ val o_reduction_add = Cat(
   r_add_lvl_0Reg(0)
 )
 val o_reduction_cmd = Cat(
-  r_cmd_lvl_4Reg(14),
-  r_cmd_lvl_4Reg(13),
-  r_cmd_lvl_4Reg(12),
-  r_cmd_lvl_3Reg(23),
-  r_cmd_lvl_3Reg(22),
-  r_cmd_lvl_3Reg(21),
-  r_cmd_lvl_3Reg(20),
-  r_cmd_lvl_3Reg(19),
-  r_cmd_lvl_3Reg(18),
-  r_cmd_lvl_2Reg(35),
-  r_cmd_lvl_2Reg(34),
-  r_cmd_lvl_2Reg(33),
-  r_cmd_lvl_2Reg(32),
-  r_cmd_lvl_2Reg(31),
-  r_cmd_lvl_2Reg(30),
-  r_cmd_lvl_2Reg(29),
-  r_cmd_lvl_2Reg(28),
-  r_cmd_lvl_2Reg(27),
-  r_cmd_lvl_2Reg(26),
-  r_cmd_lvl_2Reg(25),
-  r_cmd_lvl_2Reg(24),
-  r_cmd_lvl_1Reg(47),
-  r_cmd_lvl_1Reg(46),
-  r_cmd_lvl_1Reg(45),
-  r_cmd_lvl_1Reg(44),
-  r_cmd_lvl_1Reg(43),
-  r_cmd_lvl_1Reg(42),
-  r_cmd_lvl_1Reg(41),
-  r_cmd_lvl_1Reg(40),
-  r_cmd_lvl_1Reg(39),
-  r_cmd_lvl_1Reg(38),
-  r_cmd_lvl_1Reg(37),
-  r_cmd_lvl_1Reg(36),
-  r_cmd_lvl_1Reg(35),
-  r_cmd_lvl_1Reg(34),
-  r_cmd_lvl_1Reg(33),
-  r_cmd_lvl_1Reg(32),
-  r_cmd_lvl_1Reg(31),
-  r_cmd_lvl_1Reg(30),
-  r_cmd_lvl_1Reg(29),
-  r_cmd_lvl_1Reg(28),
-  r_cmd_lvl_1Reg(27),
-  r_cmd_lvl_1Reg(26),
-  r_cmd_lvl_1Reg(25),
-  r_cmd_lvl_1Reg(24),
-  r_cmd_lvl_1Reg(23),
-  r_cmd_lvl_1Reg(22),
-  r_cmd_lvl_1Reg(21),
-  r_cmd_lvl_1Reg(20),
-  r_cmd_lvl_1Reg(19),
-  r_cmd_lvl_1Reg(18),
-  r_cmd_lvl_1Reg(17),
-  r_cmd_lvl_1Reg(16),
-  r_cmd_lvl_1Reg(15),
-  r_cmd_lvl_1Reg(14),
-  r_cmd_lvl_1Reg(13),
-  r_cmd_lvl_1Reg(12),
-  r_cmd_lvl_1Reg(11),
-  r_cmd_lvl_1Reg(10),
-  r_cmd_lvl_1Reg(9),
-  r_cmd_lvl_1Reg(8),
-  r_cmd_lvl_0Reg(47),
-  r_cmd_lvl_0Reg(46),
-  r_cmd_lvl_0Reg(45),
-  r_cmd_lvl_0Reg(44),
-  r_cmd_lvl_0Reg(43),
-  r_cmd_lvl_0Reg(42),
-  r_cmd_lvl_0Reg(41),
-  r_cmd_lvl_0Reg(40),
-  r_cmd_lvl_0Reg(39),
-  r_cmd_lvl_0Reg(38),
-  r_cmd_lvl_0Reg(37),
-  r_cmd_lvl_0Reg(36),
-  r_cmd_lvl_0Reg(35),
-  r_cmd_lvl_0Reg(34),
-  r_cmd_lvl_0Reg(33),
-  r_cmd_lvl_0Reg(32),
-  r_cmd_lvl_0Reg(31),
-  r_cmd_lvl_0Reg(30),
-  r_cmd_lvl_0Reg(29),
-  r_cmd_lvl_0Reg(28),
-  r_cmd_lvl_0Reg(27),
-  r_cmd_lvl_0Reg(26),
-  r_cmd_lvl_0Reg(25),
-  r_cmd_lvl_0Reg(24),
-  r_cmd_lvl_0Reg(23),
-  r_cmd_lvl_0Reg(22),
-  r_cmd_lvl_0Reg(21),
-  r_cmd_lvl_0Reg(20),
-  r_cmd_lvl_0Reg(19),
-  r_cmd_lvl_0Reg(18),
-  r_cmd_lvl_0Reg(17),
-  r_cmd_lvl_0Reg(16),
-  r_cmd_lvl_0Reg(15),
-  r_cmd_lvl_0Reg(14),
-  r_cmd_lvl_0Reg(13),
-  r_cmd_lvl_0Reg(12),
-  r_cmd_lvl_0Reg(11),
-  r_cmd_lvl_0Reg(10),
-  r_cmd_lvl_0Reg(9),
-  r_cmd_lvl_0Reg(8),
-  r_cmd_lvl_0Reg(7),
-  r_cmd_lvl_0Reg(6),
-  r_cmd_lvl_0Reg(5),
-  r_cmd_lvl_0Reg(4),
-  r_cmd_lvl_0Reg(3),
-  r_cmd_lvl_0Reg(2),
-  r_cmd_lvl_0Reg(1),
-    r_cmd_lvl_0Reg(0))
+  r_cmd_lvl_4Reg(5),   // Index 5, max index for r_cmd_lvl_4Reg
+  r_cmd_lvl_4Reg(4),   // Index 4
+  r_cmd_lvl_4Reg(3),   // Index 3
+  r_cmd_lvl_3Reg(23),  // Index 23, max index for r_cmd_lvl_3Reg
+  r_cmd_lvl_3Reg(22),  // Index 22
+  r_cmd_lvl_3Reg(21),  // Index 21
+  r_cmd_lvl_3Reg(20),  // Index 20
+  r_cmd_lvl_3Reg(19),  // Index 19
+  r_cmd_lvl_3Reg(18),  // Index 18
+  r_cmd_lvl_2Reg(35),  // Index 35, max index for r_cmd_lvl_2Reg
+  r_cmd_lvl_2Reg(34),  // Index 34
+  r_cmd_lvl_2Reg(33),  // Index 33
+  r_cmd_lvl_2Reg(32),  // Index 32
+  r_cmd_lvl_2Reg(31),  // Index 31
+  r_cmd_lvl_2Reg(30),  // Index 30
+  r_cmd_lvl_2Reg(29),  // Index 29
+  r_cmd_lvl_2Reg(28),  // Index 28
+  r_cmd_lvl_2Reg(27),  // Index 27
+  r_cmd_lvl_2Reg(26),  // Index 26
+  r_cmd_lvl_2Reg(25),  // Index 25
+  r_cmd_lvl_2Reg(24),  // Index 24
+  r_cmd_lvl_1Reg(47),  // Index 47, max index for r_cmd_lvl_1Reg
+  r_cmd_lvl_1Reg(46),  // Index 46
+  r_cmd_lvl_1Reg(45),  // Index 45
+  r_cmd_lvl_1Reg(44),  // Index 44
+  r_cmd_lvl_1Reg(43),  // Index 43
+  r_cmd_lvl_1Reg(42),  // Index 42
+  r_cmd_lvl_1Reg(41),  // Index 41
+  r_cmd_lvl_1Reg(40),  // Index 40
+  r_cmd_lvl_1Reg(39),  // Index 39
+  r_cmd_lvl_1Reg(38),  // Index 38
+  r_cmd_lvl_1Reg(37),  // Index 37
+  r_cmd_lvl_1Reg(36),  // Index 36
+  r_cmd_lvl_1Reg(35),  // Index 35
+  r_cmd_lvl_1Reg(34),  // Index 34
+  r_cmd_lvl_1Reg(33),  // Index 33
+  r_cmd_lvl_1Reg(32),  // Index 32
+  r_cmd_lvl_1Reg(31),  // Index 31
+  r_cmd_lvl_1Reg(30),  // Index 30
+  r_cmd_lvl_1Reg(29),  // Index 29
+  r_cmd_lvl_1Reg(28),  // Index 28
+  r_cmd_lvl_1Reg(27),  // Index 27
+  r_cmd_lvl_1Reg(26),  // Index 26
+  r_cmd_lvl_1Reg(25),  // Index 25
+  r_cmd_lvl_1Reg(24),  // Index 24
+  r_cmd_lvl_1Reg(23),  // Index 23
+  r_cmd_lvl_1Reg(22),  // Index 22
+  r_cmd_lvl_1Reg(21),  // Index 21
+  r_cmd_lvl_1Reg(20),  // Index 20
+  r_cmd_lvl_1Reg(19),  // Index 19
+  r_cmd_lvl_1Reg(18),  // Index 18
+  r_cmd_lvl_1Reg(17),  // Index 17
+  r_cmd_lvl_1Reg(16),  // Index 16
+  r_cmd_lvl_1Reg(15),  // Index 15
+  r_cmd_lvl_1Reg(14),  // Index 14
+  r_cmd_lvl_1Reg(13),  // Index 13
+  r_cmd_lvl_1Reg(12),  // Index 12
+  r_cmd_lvl_1Reg(11),  // Index 11
+  r_cmd_lvl_1Reg(10),  // Index 10
+  r_cmd_lvl_1Reg(9),   // Index 9
+  r_cmd_lvl_1Reg(8),   // Index 8
+  r_cmd_lvl_0Reg(47),  // Index 47, max index for r_cmd_lvl_0Reg
+  r_cmd_lvl_0Reg(46),  // Index 46
+  r_cmd_lvl_0Reg(45),  // Index 45
+  r_cmd_lvl_0Reg(44),  // Index 44
+  r_cmd_lvl_0Reg(43),  // Index 43
+  r_cmd_lvl_0Reg(42),  // Index 42
+  r_cmd_lvl_0Reg(41),  // Index 41
+  r_cmd_lvl_0Reg(40),  // Index 40
+  r_cmd_lvl_0Reg(39),  // Index 39
+  r_cmd_lvl_0Reg(38),  // Index 38
+  r_cmd_lvl_0Reg(37),  // Index 37
+  r_cmd_lvl_0Reg(36),  // Index 36
+  r_cmd_lvl_0Reg(35),  // Index 35
+  r_cmd_lvl_0Reg(34),  // Index 34
+  r_cmd_lvl_0Reg(33),  // Index 33
+  r_cmd_lvl_0Reg(32),  // Index 32
+  r_cmd_lvl_0Reg(31),  // Index 31
+  r_cmd_lvl_0Reg(30),  // Index 30
+  r_cmd_lvl_0Reg(29),  // Index 29
+  r_cmd_lvl_0Reg(28),  // Index 28
+  r_cmd_lvl_0Reg(27),  // Index 27
+  r_cmd_lvl_0Reg(26),  // Index 26
+  r_cmd_lvl_0Reg(25),  // Index 25
+  r_cmd_lvl_0Reg(24),  // Index 24
+  r_cmd_lvl_0Reg(23),  // Index 23
+  r_cmd_lvl_0Reg(22),  // Index 22
+  r_cmd_lvl_0Reg(21),  // Index 21
+  r_cmd_lvl_0Reg(20),  // Index 20
+  r_cmd_lvl_0Reg(19),  // Index
+)
 
 
-      o_reduction_sel := Cat(
+      io.o_reduction_sel := Cat(
     r_sel_lvl_2Reg(7),
     r_sel_lvl_2Reg(6),
     r_sel_lvl_2Reg(5),
