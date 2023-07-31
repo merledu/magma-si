@@ -6,7 +6,7 @@ package magmasi.components
 import chisel3._
 import chisel3.util._
 
-class FanNetwork(DATA_TYPE: Int = 32,NUM_PES: Int = 32,LOG2_PES: Int = 5) extends Module {
+class FanNetwork(DATA_TYPE: Int ,NUM_PES: Int ,LOG2_PES: Int ) extends Module {
   val io = IO(new Bundle {
     val i_valid = Input(Bool())
         val i_data_bus = Input(UInt((NUM_PES * DATA_TYPE).W))

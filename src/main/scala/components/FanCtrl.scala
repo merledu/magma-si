@@ -17,7 +17,8 @@ class FanCtrl(
     val o_reduction_sel = Output(UInt(20.W))
     val o_reduction_valid = Output(Bool())
   })
-
+  io.o_reduction_add := 0.U
+  io.o_reduction_cmd := 0.U
   val clk = clock
   val rst = reset.asBool
 

@@ -8,7 +8,7 @@ import org.scalatest.freespec.AnyFreeSpec
 class BenesTester extends AnyFreeSpec with ChiselScalatestTester {
     "Simple Benes Test" in {
         implicit val config = MagmasiConfig()
-        test(new Benes).withAnnotations(Seq(VerilatorBackendAnnotation)) { dut =>
+        test(new Benes(16,8)).withAnnotations(Seq(VerilatorBackendAnnotation)) { dut =>
 
             
             val NUM_TESTS = 3

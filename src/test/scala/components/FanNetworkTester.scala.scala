@@ -8,7 +8,7 @@ import org.scalatest.freespec.AnyFreeSpec
 class FanNetworkTester extends AnyFreeSpec with ChiselScalatestTester {
     "Fan Network Test" in {
         implicit val config = MagmasiConfig()
-        test(new FanNetwork).withAnnotations(Seq(VerilatorBackendAnnotation)) { c =>
+        test(new FanNetwork(32,32,5)).withAnnotations(Seq(VerilatorBackendAnnotation)) { c =>
       c.io.i_valid.poke(true.B)
       c.io.i_data_bus.poke(421111111.U)
       c.io.i_add_en_bus.poke(10.U)
