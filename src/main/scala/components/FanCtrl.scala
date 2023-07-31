@@ -4,9 +4,9 @@ import chisel3._
 import chisel3.util._
 
 class FanCtrl(
-  DATA_TYPE: Int = 32,
-  NUM_PES: Int = 32,
-  LOG2_PES: Int = 5
+  DATA_TYPE: Int,
+  NUM_PES: Int,
+  LOG2_PES: Int
 ) extends Module {
   val io = IO(new Bundle {
     val i_vn = Input(UInt((NUM_PES * LOG2_PES).W))
@@ -17,10 +17,7 @@ class FanCtrl(
     val o_reduction_sel = Output(UInt(20.W))
     val o_reduction_valid = Output(Bool())
   })
-  io.o_reduction_add := 2.U
-  io.o_reduction_cmd := 2.U
-  io.o_reduction_sel := 2.U
-  io.o_reduction_valid := 1.B
+
   val clk = clock
   val rst = reset.asBool
 
