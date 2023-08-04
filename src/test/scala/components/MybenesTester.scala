@@ -16,7 +16,7 @@ class MybenesTester extends AnyFreeSpec with ChiselScalatestTester {
 
       // Connect input data to the DUT
       for (i <- 0 until 8) {
-        dut.io.i_data_bus(i).poke(inputData(i).U)
+        dut.io.i_data_bus1(i).poke(inputData(i).U)
       }
 
 

@@ -6,10 +6,11 @@ import chisel3.util._
 class Mybenes(DATA_TYPE:Int,NUM_PES:Int) extends Module {
   val LEVELS   : Int = (2 * (math.log(NUM_PES) / math.log(2))).toInt + 1
   val io = IO(new Bundle {
-
-    val i_data_bus  = Input(Vec(NUM_PES, UInt(DATA_TYPE.W)))
+    val i_data_bus2 = Input(Vec(NUM_PES, UInt(DATA_TYPE.W)))
+    val i_data_bus1  = Input(Vec(NUM_PES, UInt(DATA_TYPE.W)))
     val i_mux_bus   = Input(Vec(NUM_PES, UInt((LEVELS-1).W)))
-    val o_dist_bus  = Output(Vec(NUM_PES, UInt(DATA_TYPE.W)))
+    val o_dist_bus1  = Output(Vec(NUM_PES, UInt(DATA_TYPE.W)))
+    val o_dist_bus2  = Output(Vec(NUM_PES, UInt(DATA_TYPE.W)))
 
   })
 
@@ -37,7 +38,7 @@ def routing2(index: UInt, muxpin: UInt): UInt = {
   intermediateIndex
 }
 
-val abc = io.i_data_bus.toArray.zipWithIndex
+val abc = io.i_data_bus1.toArray.zipWithIndex
 val outarray = Wire(Vec(NUM_PES, UInt(DATA_TYPE.W)))
 
 for (i <- 0 until (NUM_PES * DATA_TYPE) by DATA_TYPE) {
@@ -57,12 +58,15 @@ val anyBitHigh = io.i_mux_bus(LEVELS - 2)(LEVELS - 2, 1).orR
 dontTouch(anyBitHigh)
 for ( k <- 0 until NUM_PES) {
   when ((io.i_mux_bus(0))(0) === 1.U && anyBitHigh === 1.B) {
-    io.o_dist_bus(k) := io.i_data_bus(array1(k))
+    io.o_dist_bus1(k) := io.i_data_bus1(array1(k))
 
   }.elsewhen ((io.i_mux_bus(0))(0) === 1.U && !(anyBitHigh === 1.B)) {
-    io.o_dist_bus(k) := io.i_data_bus(outarray(k)) 
+    io.o_dist_bus1(k) := io.i_data_bus1(outarray(k)) 
   }.otherwise {
-    io.o_dist_bus(k)  := 0.U
+    io.o_dist_bus1(k)  := 0.U
   }
 }
+io.o_dist_bus2 <> io.i_data_bus2
+
 }
+
