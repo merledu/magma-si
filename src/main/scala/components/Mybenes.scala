@@ -12,95 +12,82 @@ class MyBenes2(DATA_TYPE:Int,NUM_PES:Int) extends Module {
     val o_dist_bus1  = Output(Vec(NUM_PES, UInt(DATA_TYPE.W)))
     val o_dist_bus2  = Output(Vec(NUM_PES, UInt(DATA_TYPE.W)))
   })
+  io.o_dist_bus2 <> io.i_data_bus2
 
-  io.o_dist_bus1 <> io.i_data_bus1
+def routing(index: UInt, muxpin: Bool): UInt = {
+    var outarray2 = RegInit(index)
+  val newIndex = Mux(muxpin, Mux(index % 2.U === 0.U, index + 1.U, index - 1.U), index)
+  dontTouch(outarray2)
+  newIndex
+}
 
-  val inputArrayIndexes = io.i_data_bus1.toArray.zipWithIndex
-  val parse_array = WireInit(VecInit(Seq.fill(NUM_PES+1)(0.U(DATA_TYPE.W))))
-  //parsing logic here
+def routing2(index: UInt, muxpin: UInt): UInt = {
+  val boolArray: Vec[Bool] = VecInit(muxpin.asBools)
+  val newlevel = LEVELS - 3
+  var intermediateIndex = WireInit(index)
 
-  def BenesLogic( input:UInt , inputindex:UInt , muxes:UInt) : UInt = {
+  for (i <- 0 until newlevel) {
+    val calculation = intermediateIndex % 4.U
+      val nextIndex = MuxCase(intermediateIndex, Seq(
+        (calculation === 0.U && (boolArray(i) === 0.B), intermediateIndex),
+        (calculation === 1.U && (boolArray(i) === 0.B), intermediateIndex),
+        (calculation === 2.U && (boolArray(i) === 0.B), intermediateIndex),
+        (calculation === 3.U && (boolArray(i) === 0.B), intermediateIndex),
+        ((calculation === 0.U) && (boolArray(i) === 1.B), intermediateIndex + 2.U),
+        ((calculation === 1.U) && (boolArray(i) === 1.B), intermediateIndex + 2.U),
+        ((calculation === 2.U) && (boolArray(i) === 1.B), intermediateIndex - 2.U),
+        ((calculation === 3.U) && (boolArray(i) === 1.B), intermediateIndex - 2.U)
 
-    val first_stage = Mux(muxes(0), Mux(inputindex % 2.U === 0.U, inputindex + 1.U, inputindex - 1.U), inputindex)
-    // first is completed 
-
-    val muxMiddleWidth = muxes(NUM_PES - 2,1).getWidth
-    val boolArray = VecInit(Seq.tabulate(muxMiddleWidth)(i => (muxes(NUM_PES - 2,1))(i)))
-
-    val newlevel = muxMiddleWidth
-    var second_stage = WireInit(first_stage)
-    for (i <- 0 until newlevel) {
-        val calculation = second_stage % 4.U
-        val nextIndex = MuxCase(second_stage, Seq(
-            ((calculation === 0.U) && (boolArray(i) === 0.B), second_stage),
-            ((calculation === 1.U) && (boolArray(i) === 0.B), second_stage),
-            ((calculation === 2.U) && (boolArray(i) === 0.B), second_stage),
-            ((calculation === 3.U) && (boolArray(i) === 0.B), second_stage),
-            ((calculation === 0.U) && (boolArray(i) === 1.B), second_stage + 2.U),
-            ((calculation === 1.U) && (boolArray(i) === 1.B), second_stage + 2.U),
-            ((calculation === 2.U) && (boolArray(i) === 1.B), second_stage - 2.U),
-            ((calculation === 3.U) && (boolArray(i) === 1.B), second_stage - 2.U)
-        ))
-      second_stage = nextIndex
+      ))
+      intermediateIndex = nextIndex
   }
-  //second stage is completed
-  
-  val third_stage = Mux(muxes(LEVELS - 2), Mux(second_stage % 2.U === 0.U, second_stage + 1.U, second_stage - 1.U), second_stage)
+  intermediateIndex
+}
 
-  third_stage   
+val abc = io.i_data_bus1.toArray.zipWithIndex
+val outarray = Wire(Vec(NUM_PES, UInt(DATA_TYPE.W)))
+def abs(value: Int): Int = {
+  if (value >= 0) value else value*(-1)
+}
+print(io.i_data_bus1(2) == io.i_data_bus1(1))
+val condition = ((abc(2)._1) === (abc(0)._1))//io.i_data_bus1(2) === io.i_data_bus1(1)
+dontTouch(condition)
+for (i <- 0 until (NUM_PES * DATA_TYPE) by DATA_TYPE) {
+    when((abc(i / DATA_TYPE)._1) === (abc((i-1) / DATA_TYPE)._1)) {
+        when ((abc(i / DATA_TYPE)._2).U === 0.U){
+            val a = routing(0.U, ((io.i_mux_bus(i / DATA_TYPE))(0) === 1.U))
+            outarray(i / DATA_TYPE) := a
+        }.otherwise {
+            val a = routing((abc(2)._2).U - 1.U, ((io.i_mux_bus(i / DATA_TYPE))(0) === 1.U))
+            outarray(i / DATA_TYPE) := a
+        }
+    }.otherwise{
+        val a = routing((abc(i / DATA_TYPE)._2).U, ((io.i_mux_bus(i / DATA_TYPE))(0) === 1.U))
+        outarray(i / DATA_TYPE) := a
+    }
+    
+}
 
-  }
+val array1 = RegInit(VecInit(Seq.fill(NUM_PES)(0.U(DATA_TYPE.W))))
+for (i <- 0 until NUM_PES) {
+  val a = routing2(outarray(i), (io.i_mux_bus(i))(LEVELS - 2, 1))
+  array1(i) := a
+}
 
-  for (i <- 1 until NUM_PES ) {
-
-    when ( io.i_data_bus2(i) =/= 0.U) {
-
-        when (io.i_mux_bus(i).orR){
-
-            when(io.i_data_bus2(i) === io.i_data_bus2(i-1)) {
-
-                val parsedindexvalue = BenesLogic(io.i_data_bus2(i),(inputArrayIndexes(i)._2).U - 1.U,io.i_mux_bus(i))//function call for same input numbers with same indexes  
-                parse_array(parsedindexvalue) := io.i_data_bus2(i)
-            }.otherwise {
+val array2 = RegInit(VecInit(Seq.fill(NUM_PES)(0.U(DATA_TYPE.W))))
+for (i <- 0 until NUM_PES) {
+  val a = routing(array1(i), (io.i_mux_bus(i))(LEVELS - 2))
+  array2(i) := a
+}
+dontTouch(array2)
 
                 val parsedindexvalue = BenesLogic(io.i_data_bus2(i),(inputArrayIndexes(i)._2).U,io.i_mux_bus(i))// normal function call
                 parse_array(parsedindexvalue) := io.i_data_bus2(i)
             }    
 
-        }.otherwise{
-
-          when (io.i_data_bus2(i) === io.i_data_bus2(i-1)) {
-
-            parse_array(i) := 0.U
-          
-          }.otherwise{
-          
-            parse_array(i) := io.i_data_bus2(i)
-          
-          }
-        }
-
-    }.otherwise{
-
-        parse_array(NUM_PES.U ) := 0.U   
-
-    }
-
-  }
-
-  when (io.i_data_bus2(0) =/= 0.U){
-
-    val parsedindexvalue = BenesLogic(io.i_data_bus2(0),(inputArrayIndexes(0)._2).U,io.i_mux_bus(0))
-    parse_array(parsedindexvalue) := io.i_data_bus2(0)
-
-  }.otherwise{
-
-    parse_array(NUM_PES) := 0.U
-  
-  }
-
-for ( index <- 0 until NUM_PES){
-    io.o_dist_bus2(index) := parse_array(index)
+for ( k <- 0 until NUM_PES) {
+io.o_dist_bus1(k) := io.i_data_bus1(array2(k)) 
 }
+
 
 }
