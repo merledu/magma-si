@@ -3,7 +3,7 @@ package magmasi.components
 import chisel3._
 import chisel3.util._
 
-class Mybenes(DATA_TYPE:Int,NUM_PES:Int) extends Module {
+class MyBenes2(DATA_TYPE:Int,NUM_PES:Int) extends Module {
   val LEVELS   : Int = (2 * (math.log(NUM_PES) / math.log(2))).toInt + 1
   val io = IO(new Bundle {
     val i_data_bus2 = Input(Vec(NUM_PES, UInt(DATA_TYPE.W)))
@@ -11,7 +11,6 @@ class Mybenes(DATA_TYPE:Int,NUM_PES:Int) extends Module {
     val i_mux_bus   = Input(Vec(NUM_PES, UInt((LEVELS-1).W)))
     val o_dist_bus1  = Output(Vec(NUM_PES, UInt(DATA_TYPE.W)))
     val o_dist_bus2  = Output(Vec(NUM_PES, UInt(DATA_TYPE.W)))
-
   })
   io.o_dist_bus2 <> io.i_data_bus2
 
@@ -82,6 +81,9 @@ for (i <- 0 until NUM_PES) {
 }
 dontTouch(array2)
 
+                val parsedindexvalue = BenesLogic(io.i_data_bus2(i),(inputArrayIndexes(i)._2).U,io.i_mux_bus(i))// normal function call
+                parse_array(parsedindexvalue) := io.i_data_bus2(i)
+            }    
 
 for ( k <- 0 until NUM_PES) {
 io.o_dist_bus1(k) := io.i_data_bus1(array2(k)) 
