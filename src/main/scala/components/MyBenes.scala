@@ -24,8 +24,8 @@ class MyBenes(DATA_TYPE:Int,NUM_PES:Int) extends Module {
     val first_stage = Mux(muxes(0), Mux(inputindex % 2.U === 0.U, inputindex + 1.U, inputindex - 1.U), inputindex)
     // first is completed 
 
-    val muxMiddleWidth = muxes(NUM_PES - 2,1).getWidth
-    val boolArray = VecInit(Seq.tabulate(muxMiddleWidth)(i => (muxes(NUM_PES - 2,1))(i)))
+    val muxMiddleWidth = muxes(LEVELS - 2,1).getWidth
+    val boolArray = VecInit(Seq.tabulate(muxMiddleWidth)(i => (muxes(LEVELS - 2,1))(i)))
 
     val newlevel = muxMiddleWidth
     var second_stage = WireInit(first_stage)
