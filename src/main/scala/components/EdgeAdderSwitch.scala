@@ -3,13 +3,15 @@ package magmasi.components
 import chisel3._
 import chisel3.util._
 
-class EdgeAdderSwitch(DATA_TYPE: Int = 32, NUM_IN: Int = 4, SEL_IN: Int = 2) extends Module {
+class EdgeAdderSwitch(DATA_TYPE: Int = 32, NUM_IN: Int = 2, SEL_IN: Int = 2,NUM_OUT: Int = 2) extends Module {
   val io = IO(new Bundle {
     val i_valid = Input(Bool())
     val i_data_bus = Input(Vec(NUM_IN, UInt(64.W)))
-    val i_add_en = Input(Bool())
-    val i_cmd = Input(UInt(3.W))
+    val i_add_en = Input(UInt(3.W))
+    // val i_cmd = Input(UInt((NUM_IN -1).W))
+     val i_cmd = Input(UInt(5.W))
     val i_sel = Input(UInt(SEL_IN.W))
+    // val o_vn =  Output(Vec(NUM_OUT, UInt(DATA_TYPE.W)))
     val o_vn = Output(UInt((2 * DATA_TYPE).W))
     val o_vn_valid = Output(UInt(2.W))
     val o_adder = Output(UInt(DATA_TYPE.W))
@@ -30,7 +32,7 @@ class EdgeAdderSwitch(DATA_TYPE: Int = 32, NUM_IN: Int = 4, SEL_IN: Int = 2) ext
   val r_adder = RegInit(0.U(DATA_TYPE.W))
   val r_vn = RegInit(0.U((2 * DATA_TYPE).W))
   val r_vn_valid = RegInit(0.U(2.W))
-  val r_add_en = RegNext(io.i_add_en, init = false.B)
+  val r_add_en = RegNext(io.i_add_en, init = 0.U)
 
   when (rst) {
     r_adder := 0.U

@@ -12,8 +12,7 @@ class MultSwitch() extends Module {
     val o_valid = Output(Bool())
     val o_data = Output(UInt(32.W))
   })
-    val clk = clock
-  val rst = reset.asBool
+
   val r_buffer = RegInit(0.U(16.W))
   val r_buffer_valid = RegInit(false.B)
   
@@ -21,10 +20,9 @@ class MultSwitch() extends Module {
 
 
   // Logic to store correct value into the stationary buffer
-  when (rst) {
-    r_buffer := 0.U // Clear buffer during reset
-    r_buffer_valid := false.B // Invalidate buffer
-  }.elsewhen(io.i_stationary && io.i_valid) {
+
+
+  when(io.i_stationary && io.i_valid) {
     r_buffer := io.i_data // Latch the stationary value into the switch buffer
     r_buffer_valid := true.B // Validate buffer
   }
