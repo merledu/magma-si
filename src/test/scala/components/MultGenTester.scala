@@ -8,13 +8,16 @@ import org.scalatest.freespec.AnyFreeSpec
 
 class MultGenTester extends AnyFreeSpec with ChiselScalatestTester {
     "multiplier switch Test" in {
-        test(new MultGen){ dut =>
+        test(new MultGen){ c =>
 
-            dut.io.i_valid.poke(1.B)
-            dut.io.i_data_bus.poke(12.U)
-            dut.io.i_stationary.poke(1.B)
+            c.io.i_valid.poke(1.B)
+             c.io.i_data_bus(0).poke(1.U)
+            c.io.i_data_bus(1).poke(2.U)
+            c.io.i_data_bus(2).poke(4.U)
+            c.io.i_data_bus(3).poke(6.U)
+            c.io.i_stationary.poke(1.B)
 
-            dut.clock.step(20)
+            c.clock.step(20)
         }
     }
 }
