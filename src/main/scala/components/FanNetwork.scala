@@ -7,11 +7,11 @@ class FanNetworkcom(Num : Int = 32 , Data_type : 32 ) extends Module {
     val io = IO(new Bundle{
         val i_valid = Input(UInt(1.W))
         val i_data_bus = Input(Vec(Num, UInt(Data_type.W)))
-        val i_add_en_bus =  Input(Vec(Num - 1, UInt()))
+        val i_add_en_bus =  Input(Vec(Num - 1, UInt(1.W)))
         val i_cmd_bus = Input(Vec(Num - 1, UInt(3.W)))
         //val i_cmd_bus = Input(UInt(6.W))
         //val i_cmd_bus = Input(Vec(3,UInt((Num -1).W)))
-        val i_sel_bus = Input(Vec(20, UInt()))
+        val i_sel_bus = Input(Vec(20, UInt(1.W)))
         val o_valid = Output(Vec(Num, UInt(1.W)))
         val o_data_bus = Output(Vec(Num, UInt(Data_type.W)))
     })
