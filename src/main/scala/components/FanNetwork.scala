@@ -1139,7 +1139,8 @@ class FanNetworkcom(Num : Int = 32 , Data_type : 32 ) extends Module {
     my_adder_7.io.i_add_en := io.i_add_en_bus(28)
     //my_adder_7.io.i_cmd := io.i_cmd_bus(2,0)
     my_adder_7.io.i_cmd := io.i_cmd_bus(28)
-    my_adder_7.io.i_sel := io.i_sel_bus(11)(8)
+my_adder_7.io.i_sel := Cat(io.i_sel_bus(11),io.i_sel_bus(10),io.i_sel_bus(9),io.i_sel_bus(8))
+
     w_vn_lvl_3(0) := my_adder_7.io.o_vn(31,0)
     w_vn_lvl_3(1) := my_adder_7.io.o_vn(63,32)
 
@@ -1209,7 +1210,7 @@ class FanNetworkcom(Num : Int = 32 , Data_type : 32 ) extends Module {
     my_adder_11.io.i_add_en := io.i_add_en_bus(25)
     //my_adder_11.io.i_cmd := io.i_cmd_bus(2,0)
     my_adder_11.io.i_cmd := io.i_cmd_bus(25)
-    my_adder_11.io.i_sel := io.i_sel_bus(3)(2)
+    my_adder_11.io.i_sel := Cat(io.i_sel_bus(3),io.i_sel_bus(2))
 
     w_vn_lvl_2(2) := my_adder_11.io.o_vn(31,0)
         w_vn_lvl_2(3) := my_adder_11.io.o_vn(63,32)
@@ -1284,7 +1285,7 @@ class FanNetworkcom(Num : Int = 32 , Data_type : 32 ) extends Module {
     my_adder_15.io.i_add_en := io.i_add_en_bus(30)
     //my_adder_15.io.i_cmd := io.i_cmd_bus(2,0)
     my_adder_15.io.i_cmd := io.i_cmd_bus(30)
-    my_adder_15.io.i_sel := io.i_sel_bus(19)(16)
+    my_adder_15.io.i_sel := Cat(io.i_sel_bus(19),io.i_sel_bus(16))
     //my_adder_15.io.i_sel := io.i_sel_bus(19,16)
     w_vn_lvl_4(0) := my_adder_15.io.o_vn(31,0)
     w_vn_lvl_4(1) := my_adder_15.io.o_vn(63,32)
@@ -1357,7 +1358,7 @@ class FanNetworkcom(Num : Int = 32 , Data_type : 32 ) extends Module {
     my_adder_19.io.i_add_en := io.i_add_en_bus(26)
     my_adder_19.io.i_cmd := io.i_cmd_bus(26)
     //my_adder_19.io.i_cmd := io.i_cmd_bus(2,0)
-    my_adder_19.io.i_sel := io.i_sel_bus(5)(4)
+    my_adder_19.io.i_sel := Cat(io.i_sel_bus(5),io.i_sel_bus(4))
     w_vn_lvl_2(4) := my_adder_19.io.o_vn(31,0)
     w_vn_lvl_2(5) := my_adder_19.io.o_vn(63,32)
 
@@ -1434,7 +1435,7 @@ class FanNetworkcom(Num : Int = 32 , Data_type : 32 ) extends Module {
     my_adder_23.io.i_add_en := io.i_add_en_bus(29)
     //my_adder_23.io.i_cmd := io.i_cmd_bus(2,0)
     my_adder_23.io.i_cmd := io.i_cmd_bus(29)
-    my_adder_23.io.i_sel := io.i_sel_bus(15)(12)
+    my_adder_23.io.i_sel := Cat(io.i_sel_bus(15),io.i_sel_bus(12))
     w_vn_lvl_3(2) := my_adder_23.io.o_vn(31,0)
     w_vn_lvl_3(3) := my_adder_23.io.o_vn(63,32)
 
@@ -1508,7 +1509,7 @@ class FanNetworkcom(Num : Int = 32 , Data_type : 32 ) extends Module {
     my_adder_27.io.i_add_en := io.i_add_en_bus(27)
     //my_adder_27.io.i_cmd := io.i_cmd_bus(2,0)
     my_adder_27.io.i_cmd := io.i_cmd_bus(27)
-    my_adder_27.io.i_sel := io.i_sel_bus(7)(6)
+    my_adder_27.io.i_sel := Cat(io.i_sel_bus(7),io.i_sel_bus(6))
     w_vn_lvl_2(6) := my_adder_27.io.o_vn(31,0)
     w_vn_lvl_2(7) := my_adder_27.io.o_vn(63,32)
 

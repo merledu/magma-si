@@ -45,7 +45,7 @@ class FlexDPE(IN_DATA_TYPE: Int = 16, OUT_DATA_TYPE: Int = 32, NUM_PES: Int = 32
   r_stationary_ff := io.i_stationary
   r_stationary_ff2 := r_stationary_ff
   
-  r_dest_bus_ff := io.i_mux_bus
+ // r_dest_bus_ff := io.i_mux_bus
   //r_dest_bus_ff2 := r_dest_bus_ff
 
   // Instantiate controller
