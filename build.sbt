@@ -13,6 +13,7 @@ lazy val root = (project in file("."))
       "edu.berkeley.cs" %% "chisel3" % chiselVersion,
       "edu.berkeley.cs" %% "chiseltest" % "0.5.4" % "test"
     ),
+
     scalacOptions ++= Seq(
       "-language:reflectiveCalls",
       "-deprecation",
@@ -22,3 +23,5 @@ lazy val root = (project in file("."))
     ),
     addCompilerPlugin("edu.berkeley.cs" % "chisel3-plugin" % chiselVersion cross CrossVersion.full),
   )
+
+
