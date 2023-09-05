@@ -3,6 +3,7 @@ package magmasi.components
 
 import chisel3._
 import chisel3.util._
+import chisel3.stage.ChiselStage
 
 /*
 Sample Indexing Diagram with 4 PES example
@@ -126,4 +127,9 @@ class Benes(DATA_TYPE:Int,NUM_PES:Int) extends Module {
       w_internal(2 * i * (LEVELS - 1) + 2 * j + 1)  := imm_switch.io.z  
     }
   }
+}
+object BenesDriver extends App {
+
+  (new ChiselStage).emitVerilog(new Benes(16,32))
+
 }
