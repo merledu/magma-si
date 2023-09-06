@@ -9,6 +9,7 @@ class flexdpecom(IN_DATA_TYPE : Int = 32 ,DATA_TYPE: Int = 32, NUM_PES: Int = 32
     val i_stationary = Input(Bool())
     val i_data_valid = Input(Bool())
     val i_data_bus = Input(Vec(NUM_PES, UInt(DATA_TYPE.W)))
+    val i_data_bus1 = Input(Vec(NUM_PES, UInt(DATA_TYPE.W)))
 
     val o_valid = Output(Vec(NUM_PES, UInt(1.W)))
     val o_data_bus = Output(Vec(NUM_PES, UInt(DATA_TYPE.W)))
@@ -63,19 +64,25 @@ class flexdpecom(IN_DATA_TYPE : Int = 32 ,DATA_TYPE: Int = 32, NUM_PES: Int = 32
 
     val my_Benes = Module(new Benes(16,32))
 
-  //my_Benes.io.i_data_bus1 := r_data_bus_ff12
+    my_Benes.io.i_data_bus1 := io.i_data_bus1
     my_Benes.io.i_data_bus2 := io.i_data_bus
     my_Benes.io.i_mux_bus := io.i_mux_bus
 
     val w_dist_bus2 = my_Benes.io.o_dist_bus2
 
-    val my_mult_gen = Module(new MultGen(16,32,32))
+    // val my_mult_gen = Module(new MultGen(16,32,32))
 
-    my_mult_gen.io.i_valid := r_data_valid_ff2
-    my_mult_gen.io.i_data_bus := w_dist_bus2 //io.i_data_bus
-    my_mult_gen.io.i_stationary := r_stationary_ff2
-    val w_mult_valid = my_mult_gen.io.o_valid
-    r_mult := my_mult_gen.io.o_data_bus
+    // my_mult_gen.io.i_valid := r_data_valid_ff2
+    // my_mult_gen.io.i_data_bus := w_dist_bus2 //io.i_data_bus
+    // my_mult_gen.io.i_stationary := r_stationary_ff2
+    // val w_mult_valid = my_mult_gen.io.o_valid
+    // r_mult := my_mult_gen.io.o_data_bus
+
+    val bufferMult = Module(new buffer_multiplication(32,32))
+
+    bufferMult.io.buffer1 :=  my_Benes.io.o_dist_bus1
+    bufferMult.io.buffer2 := w_dist_bus2
+    r_mult := bufferMult.io.out
 
     val my_fan_network = Module(new FanNetworkcom(32,32))
 
