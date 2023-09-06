@@ -64,10 +64,10 @@ class flexdpecom(IN_DATA_TYPE : Int = 32 ,DATA_TYPE: Int = 32, NUM_PES: Int = 32
     val my_Benes = Module(new Benes(16,32))
 
   //my_Benes.io.i_data_bus1 := r_data_bus_ff12
-    my_Benes.io.i_data_bus := io.i_data_bus
+    my_Benes.io.i_data_bus2 := io.i_data_bus
     my_Benes.io.i_mux_bus := io.i_mux_bus
 
-    val w_dist_bus2 = my_Benes.io.o_dist_bus
+    val w_dist_bus2 = my_Benes.io.o_dist_bus2
 
     val my_mult_gen = Module(new MultGen(16,32,32))
 
