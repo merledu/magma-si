@@ -32,5 +32,5 @@ class MultGen(IN_DATA_TYPE: Int = 16, OUT_DATA_TYPE: Int = 32, NUM_PES: Int = 64
   }
 
   io.o_valid := r_valid
-  io.o_data_bus := multSwitchOutputs // Assign the Vec to the output
+  io.o_data_bus := multSwitchOutputs // Assign the Vec to the outputs
 }
