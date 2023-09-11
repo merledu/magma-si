@@ -3,7 +3,7 @@ package magmasi.components
 import chisel3._
 import chisel3.util._
 
-class flexdpe(IN_DATA_TYPE : Int = 32 ,DATA_TYPE: Int = 32, NUM_PES: Int = 32, LOG2_PES: Int = 5) extends Module {
+class flexdpecom2(IN_DATA_TYPE : Int = 32 ,DATA_TYPE: Int = 32, NUM_PES: Int = 32, LOG2_PES: Int = 5) extends Module {
   val io = IO(new Bundle {
     val i_vn = Input(Vec(NUM_PES, UInt(LOG2_PES.W)))
     val i_stationary = Input(Bool())
@@ -13,6 +13,7 @@ class flexdpe(IN_DATA_TYPE : Int = 32 ,DATA_TYPE: Int = 32, NUM_PES: Int = 32, L
 
     val o_valid = Output(Vec(NUM_PES, UInt(1.W)))
     val o_data_bus = Output(Vec(NUM_PES, UInt(DATA_TYPE.W)))
+     val o_adder = Output(Vec(NUM_PES, UInt(DATA_TYPE.W)))
     //val o_reduction_add = Output(Vec(NUM_PES - 1, UInt()))
     // val o_reduction_cmd = Output(Vec(NUM_PES - 1, UInt(3.W)))
     // val o_reduction_sel = Output(Vec(20, UInt()))
@@ -83,7 +84,7 @@ class flexdpe(IN_DATA_TYPE : Int = 32 ,DATA_TYPE: Int = 32, NUM_PES: Int = 32, L
      val buffer_mult = Module(new buffer_multiplication(32,32))
 
       
-      buffer_mult.io.buffer1 := w_dist_bus1 
+      buffer_mult.io.buffer1 := w_dist_bus1 //io.i_data_bus
       buffer_mult.io.buffer2 := w_dist_bus2 
      
       r_mult := buffer_mult.io.out
@@ -95,11 +96,11 @@ class flexdpe(IN_DATA_TYPE : Int = 32 ,DATA_TYPE: Int = 32, NUM_PES: Int = 32, L
     val my_fan_network = Module(new FanNetworkcom(32,32))
 
     my_fan_network.io.i_valid := w_reduction_valid
-    my_fan_network.io.i_data_bus := r_mult
+    my_fan_network.io.i_data_bus :=   r_mult 
     my_fan_network.io.i_add_en_bus := w_reduction_add
     my_fan_network.io.i_cmd_bus := w_reduction_cmd
     my_fan_network.io.i_sel_bus := w_reduction_sel
     io.o_valid := my_fan_network.io.o_valid
     io.o_data_bus := my_fan_network.io.o_data_bus
-
+    io.o_adder :=  my_fan_network.io.o_adder
 }
