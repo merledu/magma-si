@@ -137,7 +137,7 @@ class fancontrol(DATA_TYPE: Int = 32, NUM_PES: Int = 32, LOG2_PES: Int = 5) exte
 
              r_reduction_cmd(x.U ) := "b101".U // both vn done
 
-          }.elsewhen((w_vn(2.U * x.U + 0.U)  === w_vn(2.U * x.U + 1.U) )&&
+          }.elsewhen((w_vn(2.U * x.U + 0.U)  === w_vn(2.U * x.U - 1.U) )&&
             (w_vn(2.U * x.U + 0.U)  =/= w_vn(2.U * x.U + 1.U) )) {
 
             r_reduction_cmd(x.U ) := "b100".U // bypass
