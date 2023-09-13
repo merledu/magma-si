@@ -88,7 +88,7 @@ class flexdpecom2(IN_DATA_TYPE : Int = 32 ,DATA_TYPE: Int = 32, NUM_PES: Int = 3
      //  buffer_mult.io.buffer2 := w_dist_bus2 
      
      //  r_mult := buffer_mult.io.out
-  val benesOutput: = RegInit(VecInit(Seq.fill(32)(0.U(32.W))))
+  val benesOutput = RegInit(VecInit(Seq.fill(32)(0.U(32.W))))
   benesOutput(0) := 2.U
   benesOutput(1) := 2.U
   benesOutput(2) := 2.U
