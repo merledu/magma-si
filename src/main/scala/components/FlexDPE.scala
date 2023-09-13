@@ -81,13 +81,19 @@ class flexdpecom2(IN_DATA_TYPE : Int = 32 ,DATA_TYPE: Int = 32, NUM_PES: Int = 3
     // val w_mult_valid = my_mult_gen.io.o_valid
     // r_mult := my_mult_gen.io.o_data_bus
 
-     val buffer_mult = Module(new buffer_multiplication(32,32))
+     // val buffer_mult = Module(new buffer_multiplication(32,32))
 
       
-      buffer_mult.io.buffer1 := w_dist_bus1 //io.i_data_bus
-      buffer_mult.io.buffer2 := w_dist_bus2 
+     //  buffer_mult.io.buffer1 := w_dist_bus1 //io.i_data_bus
+     //  buffer_mult.io.buffer2 := w_dist_bus2 
      
-      r_mult := buffer_mult.io.out
+     //  r_mult := buffer_mult.io.out
+  val benesOutput: = RegInit(VecInit(Seq.fill(32)(0.U(32.W))))
+  benesOutput(0) := 2.U
+  benesOutput(1) := 2.U
+  benesOutput(2) := 2.U
+  benesOutput(3) := 2.U
+
 
 
 
@@ -96,7 +102,7 @@ class flexdpecom2(IN_DATA_TYPE : Int = 32 ,DATA_TYPE: Int = 32, NUM_PES: Int = 3
     // val my_fan_network = Module(new FanNetworkcom(32,32))
 
     // my_fan_network.io.i_valid := w_reduction_valid
-    // my_fan_network.io.i_data_bus :=   r_mult 
+    // my_fan_network.io.i_data_bus :=   benesOutput
     // my_fan_network.io.i_add_en_bus := w_reduction_add
     // my_fan_network.io.i_cmd_bus := w_reduction_cmd
     // my_fan_network.io.i_sel_bus := w_reduction_sel
