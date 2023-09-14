@@ -1,5 +1,5 @@
 import math, json
-def Benes(PE, ARR1):
+def Benes(PE, ARR1, IMUX):
     
     LEVELS = int((2 * math.log2(PE)) + 1)
 
@@ -16,40 +16,24 @@ def Benes(PE, ARR1):
     c = 0
     d = 1
     for i in range(PE):
-        print(f"i: {i}")
-        print(f"INTERNAL1: {2 * i * (LEVELS - 1)}")
-        print(f"INTERNAL2: {2 * i * (LEVELS - 1)+1}")
         out0 = 2 * i * (LEVELS - 1)
         out1 = 2 * i * (LEVELS - 1)+1
         BENES_STRCT[f"{i}0"] = ((None,None),(out0, out1))
 
     # middle levels
     for i in range(PE):
-        print(f"i: {i}")
         for j in range(1,LEVELS-1):
-            print(f"j: {j}")
-            print(f"in0: {2 * i * (LEVELS - 1) + 2 * (j - 1)}")
             in0 = 2 * i * (LEVELS - 1) + 2 * (j - 1)
             if j <= (LEVELS - 1) / 2:
                 if i % 2**j < 2**(j-1):
-                    # print("CONDITION1")
-                    # print(f"in1: {2 * (i + 2**(j-1)) * (LEVELS-1) + 2 * (j-1) +1}")
                     in1 = 2 * (i + 2**(j-1)) * (LEVELS-1) + 2 * (j-1) +1
                 else:
-                    # print("CONDITION2")
-                    # print(f"in1: {2 * (i - 2**(j-1)) * (LEVELS-1) + 2 * (j-1) +1}")
-                    in1 = 2 * (i - 2**(j-1)) * (LEVELS-1) + 2 * (j-1) +1
+                   in1 = 2 * (i - 2**(j-1)) * (LEVELS-1) + 2 * (j-1) +1
             else:
                 if i % 2**(LEVELS-j) < 2**(LEVELS-j-1):
-                    # print("CONDITION3")
-                    # print(f"in1: {2 * (i + 2**(LEVELS - j - 1)) * (LEVELS - 1) + 2 * (j - 1) + 1}")
                     in1 = 2 * (i + 2**(LEVELS - j - 1)) * (LEVELS - 1) + 2 * (j - 1) + 1
                 else:
-                    # print("CONDITION4")
-                    # print(f"in1: {2 * (i - 2**(LEVELS - j - 1)) * (LEVELS - 1) + 2 * (j - 1) + 1}")
                     in1 = 2 * (i - 2**(LEVELS - j - 1)) * (LEVELS - 1) + 2 * (j - 1) + 1
-            print(f"INTERNAL1: {2 * i * (LEVELS - 1) + 2 * j}")
-            print(f"INTERNAL2: {2 * i * (LEVELS - 1) + 2 * j + 1}")
             out0 = 2 * i * (LEVELS - 1) + 2 * j
             out1 = 2 * i * (LEVELS - 1) + 2 * j + 1
             CONN_WIRES[in0] = f"{i}{j}"
@@ -62,9 +46,6 @@ def Benes(PE, ARR1):
 
     # last level
     for i in range(PE):
-        # print(f"i: {i}")
-        # print(f"INTERNAL1: {2 * i * (LEVELS - 1) + (2 * (LEVELS - 2))}")
-        # print(f"INTERNAL2: {2 * (i + 1 if(i % 2 == 0)  else i - 1) * (LEVELS - 1) + (2 * (LEVELS - 2)) + 1}")
         in0 = 2 * i * (LEVELS - 1) + (2 * (LEVELS - 2))
         in1 = 2 * (i + 1 if(i % 2 == 0)  else i - 1) * (LEVELS - 1) + (2 * (LEVELS - 2)) + 1
         CONN_WIRES[in0] = f"{i}{LEVELS-1}"
@@ -87,7 +68,7 @@ def Benes(PE, ARR1):
     OUTS = [None for i in range(PE)]
     # ARR1 = [1,2,3,4]
     # IMUX = [f"{'V'*5}D",f"{'V'*5}D",f"{'V'*5}D",f"{'V'*5}D"]
-    IMUX = ["VVVD","VVVD","VVVD","VVVD"]
+    # IMUX = ["VVVD","VVVD","VVVD","VVVD"]
     NEXT = None
     for i,e in enumerate(ARR1):
         if e != None:
@@ -132,4 +113,5 @@ def Benes(PE, ARR1):
 if __name__ == '__main__':
     PE = 4
     ARR1 = [1,2,3,4]
-    Benes(PE, ARR1)
+    IMUX = ["VVVD","VVVD","VVVD","VVVD"]
+    Benes(PE, ARR1, IMUX)
