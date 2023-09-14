@@ -60,16 +60,18 @@ NA  r_mux_bus_ff[18,19]	   r_mux_bus_ff[20,21]	  r_mux_bus_ff[22,23]   r_mux_bus
 */
 
 //class Benes(implicit val config: MagmasiConfig) extends Module {
-class Benes(DATA_TYPE:Int,NUM_PES:Int) extends Module {
+class Benes2(DATA_TYPE:Int,NUM_PES:Int) extends Module {
   val LEVELS   : Int = (2 * (math.log(NUM_PES) / math.log(2))).toInt + 1
   val io = IO(new Bundle {
 
-    val i_data_bus  = Input(Vec(NUM_PES, UInt(DATA_TYPE.W)))
+    val i_data_bus2  = Input(Vec(NUM_PES, UInt(DATA_TYPE.W)))
+    val i_data_bus1  = Input(Vec(NUM_PES, UInt(DATA_TYPE.W)))
     val i_mux_bus   = Input(Vec(2 * (LEVELS - 2) * NUM_PES + NUM_PES, Bool()))
-    val o_dist_bus  = Output(Vec(NUM_PES, UInt(DATA_TYPE.W)))
+    val o_dist_bus2  = Output(Vec(NUM_PES, UInt(DATA_TYPE.W)))
+    val o_dist_bus1  = Output(Vec(NUM_PES, UInt(DATA_TYPE.W)))
 
   })
-
+  io.o_dist_bus1 := io.i_data_bus1
   val clk = clock
   val rst = reset.asBool
 
@@ -80,9 +82,9 @@ class Benes(DATA_TYPE:Int,NUM_PES:Int) extends Module {
 
   dontTouch(w_internal)
 
-  r_data_bus_ff := Mux(rst, VecInit(Seq.fill(NUM_PES)(0.U(DATA_TYPE.W))), io.i_data_bus)
+  r_data_bus_ff := Mux(rst, VecInit(Seq.fill(NUM_PES)(0.U(DATA_TYPE.W))), io.i_data_bus2)
   r_mux_bus_ff  := Mux(rst, VecInit(Seq.fill(2 * (LEVELS - 2) * NUM_PES + NUM_PES)(false.B)), io.i_mux_bus)
-  io.o_dist_bus := Mux(rst, VecInit(Seq.fill(NUM_PES)(0.U(DATA_TYPE.W))), w_dist_bus)
+  io.o_dist_bus2 := Mux(rst, VecInit(Seq.fill(NUM_PES)(0.U(DATA_TYPE.W))), w_dist_bus)
 
   for (i <- 0 until NUM_PES) {
 
