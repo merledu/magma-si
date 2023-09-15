@@ -51,4 +51,4 @@ Performance: Designed with a focus on performance improvements, allowing for fas
     When you provide the correct input values for i_vn and muxes pins, you will receive the expected matrix output.
 
 ### Documentation of Matrix multiplication achieved using it
-In this document we show the process of matrix multiplication and compare the output with simple matrix multiplication and flex dpe multiplication which use in the magma-si [**matrix multiplication**](https://docs.google.com/document/d/15aigRM_oNeKfkhLxfViAmdg0WECZvXFH9sVD7_mFjsg/edit)
+In this document, we illustrate the matrix multiplication process and conduct a comparative analysis between the results obtained from traditional matrix multiplication and the flexDpe multiplication which is use in magma-si .[**matrix multiplication**](https://docs.google.com/document/d/15aigRM_oNeKfkhLxfViAmdg0WECZvXFH9sVD7_mFjsg/edit)
