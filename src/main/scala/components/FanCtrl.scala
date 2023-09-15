@@ -14,15 +14,16 @@ class fancontrol(DATA_TYPE: Int = 32, NUM_PES: Int = 32, LOG2_PES: Int = 5) exte
     //val o_reduction_cmd = Output(UInt((3 * (NUM_PES - 1)).W))
      val o_reduction_cmd = Output(Vec(NUM_PES - 1, UInt(3.W)))
     //val o_reduction_sel = Output(UInt(20.W)) // Output signal with 20 bits
-    val o_reduction_sel = Output(Vec(20, UInt()))
+    val o_reduction_sel = Output(Vec(20, UInt(2.W)))
     val o_reduction_valid = Output(UInt(1.W))
   })
 
   // Reduction cmd and sel control bits
+    // Reduction cmd and sel control bits
     val r_reduction_add = RegInit(VecInit(Seq.fill(NUM_PES - 1)(0.U)))
     //val r_reduction_cmd = RegInit(VecInit(Seq.fill(3*(NUM_PES - 1))(0.U)))
     val r_reduction_cmd = RegInit(VecInit(Seq.fill(NUM_PES - 1)(0.U(3.W))))
-    val r_reduction_sel = RegInit(VecInit(Seq.fill(20)(0.U)))
+    val r_reduction_sel = RegInit(VecInit(Seq.fill(20)(0.U(2.W))))
 
     val r_add_lvl_0Reg = RegInit(VecInit(Seq.fill(16)(0.U)))
     val r_add_lvl_1Reg = RegInit(VecInit(Seq.fill(16)(0.U)))
@@ -36,9 +37,9 @@ class fancontrol(DATA_TYPE: Int = 32, NUM_PES: Int = 32, LOG2_PES: Int = 5) exte
     val r_cmd_lvl_3Reg = RegInit(VecInit(Seq.fill(8)(0.U(3.W))))
     val r_cmd_lvl_4Reg = RegInit(VecInit(Seq.fill(5)(0.U(3.W))))
 
-    val r_sel_lvl_2Reg = RegInit(VecInit(Seq.fill(24)(0.U)))
-    val r_sel_lvl_3Reg = RegInit(VecInit(Seq.fill(32)(0.U)))
-    val r_sel_lvl_4Reg = RegInit(VecInit(Seq.fill(20)(0.U)))  
+    val r_sel_lvl_2Reg = RegInit(VecInit(Seq.fill(24)(0.U(2.W))))
+    val r_sel_lvl_3Reg = RegInit(VecInit(Seq.fill(32)(0.U(2.W))))
+    val r_sel_lvl_4Reg = RegInit(VecInit(Seq.fill(20)(0.U(2.W))))  
 
     //val r_vn = RegInit(VecInit(Seq.fill(2 * NUM_PES * LOG2_PES)(0.U)))
     //val r_vn = RegInit(VecInit(Seq.fill(2 * NUM_PES)(0.U(LOG2_PES.W))))
@@ -137,7 +138,7 @@ class fancontrol(DATA_TYPE: Int = 32, NUM_PES: Int = 32, LOG2_PES: Int = 5) exte
 
              r_reduction_cmd(x.U ) := "b101".U // both vn done
 
-          }.elsewhen((w_vn(2.U * x.U + 0.U)  === w_vn(2.U * x.U + 1.U) )&&
+          }.elsewhen((w_vn(2.U * x.U + 0.U)  === w_vn(2.U * x.U - 1.U) )&&
             (w_vn(2.U * x.U + 0.U)  =/= w_vn(2.U * x.U + 1.U) )) {
 
             r_reduction_cmd(x.U ) := "b100".U // bypass

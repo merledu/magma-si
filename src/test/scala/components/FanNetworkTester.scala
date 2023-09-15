@@ -43,8 +43,17 @@ class FanNetcomTester extends AnyFreeSpec with ChiselScalatestTester {
             c.io.i_data_bus(30).poke(1.U)
             c.io.i_data_bus(31).poke(1.U)
             //c.io.i_add_en_bus.poke(2147483647.U)
-            //c.io.i_cmd_bus.poke("b101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101".U)
+           
+            
+            for (i <- 0 until 31) {
+                c.io.i_add_en_bus(i).poke(1.U)
+                c.io.i_cmd_bus(i).poke("b101".U)
+          }
+           // c.io.i_cmd_bus.poke("b101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101101".U)
             //c.io.i_sel_bus.poke(1.U)
+            for (i <- 0 until 20) {
+               c.io.i_sel_bus(i).poke(1.U)
+            }
 
             c.clock.step(20)
         }

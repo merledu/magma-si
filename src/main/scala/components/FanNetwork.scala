@@ -7,14 +7,18 @@ class FanNetworkcom(Num : Int = 32 , Data_type : 32 ) extends Module {
     val io = IO(new Bundle{
         val i_valid = Input(UInt(1.W))
         val i_data_bus = Input(Vec(Num, UInt(Data_type.W)))
-        val i_add_en_bus =  Input(Vec(Num - 1, UInt()))
+        val i_add_en_bus =  Input(Vec(Num - 1, UInt(1.W)))
         val i_cmd_bus = Input(Vec(Num - 1, UInt(3.W)))
         //val i_cmd_bus = Input(UInt(6.W))
         //val i_cmd_bus = Input(Vec(3,UInt((Num -1).W)))
-        val i_sel_bus = Input(Vec(20, UInt()))
+        val i_sel_bus = Input(Vec(20, UInt(2.W)))
         val o_valid = Output(Vec(Num, UInt(1.W)))
         val o_data_bus = Output(Vec(Num, UInt(Data_type.W)))
+        val o_adder = Output(Vec(Num, UInt(Data_type.W)))
+
     })
+      val clk = clock
+      val rst = reset.asBool
 
     var w_fan_lvl_0 = WireInit(VecInit(Seq.fill(30)(0.U(960.W))))
     var w_fan_lvl_1 = WireInit(VecInit(Seq.fill(14)(0.U(480.W))))
@@ -102,27 +106,26 @@ class FanNetworkcom(Num : Int = 32 , Data_type : 32 ) extends Module {
     r_lvl_output_ff_valid(0) := false.B
     }
 
-
     when (w_vn_lvl_0_valid(3)(0) === 1.U && w_vn_lvl_0_valid(2)(0) === 1.U) {
-    r_lvl_output_ff(3) := w_vn_lvl_0(3)
-    r_lvl_output_ff(2) := w_vn_lvl_0(2)
-    r_lvl_output_ff_valid(3) := true.B
-    r_lvl_output_ff_valid(2) := true.B
+        r_lvl_output_ff(3) := w_vn_lvl_0(3)
+        r_lvl_output_ff(2) := w_vn_lvl_0(2)
+        r_lvl_output_ff_valid(3) := 1.U
+        r_lvl_output_ff_valid(2) := 1.U
     }.elsewhen (w_vn_lvl_0_valid(3)(0) === 1.U && w_vn_lvl_0_valid(2)(0) === 0.U) {
-    r_lvl_output_ff(3) := w_vn_lvl_0(3)
-    r_lvl_output_ff(2) := 0.U
-    r_lvl_output_ff_valid(3) := true.B
-    r_lvl_output_ff_valid(2) := false.B
+        r_lvl_output_ff(3) := w_vn_lvl_0(3)
+        r_lvl_output_ff(2) := 0.U
+        r_lvl_output_ff_valid(3) := 1.U
+        r_lvl_output_ff_valid(2) := 0.U
     }.elsewhen (w_vn_lvl_0_valid(3)(0) === 0.U && w_vn_lvl_0_valid(2)(0) === 1.U) {
-    r_lvl_output_ff(3) := 0.U
-    r_lvl_output_ff(2) := w_vn_lvl_0(2)
-    r_lvl_output_ff_valid(3) := false.B
-    r_lvl_output_ff_valid(2) := true.B
+        r_lvl_output_ff(3) := 0.U
+        r_lvl_output_ff(2) := w_vn_lvl_0(2)
+        r_lvl_output_ff_valid(3) := 0.U
+        r_lvl_output_ff_valid(2) := 1.U
     }.otherwise {
-    r_lvl_output_ff(3) := 0.U
-    r_lvl_output_ff(2) := 0.U
-    r_lvl_output_ff_valid(3) := false.B
-    r_lvl_output_ff_valid(2) := false.B
+        r_lvl_output_ff(3) := 0.U
+        r_lvl_output_ff(2) := 0.U
+        r_lvl_output_ff_valid(3) := 0.U
+        r_lvl_output_ff_valid(2) := 0.U
     }
 
     when (w_vn_lvl_0_valid(5)(0) === 1.U && w_vn_lvl_0_valid(4)(0) === 1.U) {
@@ -1069,7 +1072,7 @@ class FanNetworkcom(Num : Int = 32 , Data_type : 32 ) extends Module {
     my_adder_3.io.i_add_en := io.i_add_en_bus(24)
     //my_adder_3.io.i_cmd := io.i_cmd_bus(2,0)
       my_adder_3.io.i_cmd := io.i_cmd_bus(24)
-    my_adder_3.io.i_sel := io.i_sel_bus(1)(0)
+    my_adder_3.io.i_sel := Cat(io.i_sel_bus(1),io.i_sel_bus(0))
     w_vn_lvl_2(0) := my_adder_3.io.o_vn(31,0)
     w_vn_lvl_2(1) := my_adder_3.io.o_vn(63,32)
 
@@ -1086,8 +1089,8 @@ class FanNetworkcom(Num : Int = 32 , Data_type : 32 ) extends Module {
      my_adder_4.io.i_cmd := io.i_cmd_bus(2)
     //my_adder_4.io.i_cmd := io.i_cmd_bus(2,0)
     my_adder_4.io.i_sel := 0.U
-    w_vn_lvl_0(2) := my_adder_4.io.o_vn(31,0)
-    w_vn_lvl_0(3) := my_adder_4.io.o_vn(63,32)
+    w_vn_lvl_0(4) := my_adder_4.io.o_vn(31,0)
+    w_vn_lvl_0(5) := my_adder_4.io.o_vn(63,32)
 
     w_vn_lvl_0_valid(4) := my_adder_4.io.o_vn_valid(0)
     w_vn_lvl_0_valid(5) := my_adder_4.io.o_vn_valid(1)
@@ -1139,7 +1142,8 @@ class FanNetworkcom(Num : Int = 32 , Data_type : 32 ) extends Module {
     my_adder_7.io.i_add_en := io.i_add_en_bus(28)
     //my_adder_7.io.i_cmd := io.i_cmd_bus(2,0)
     my_adder_7.io.i_cmd := io.i_cmd_bus(28)
-    my_adder_7.io.i_sel := io.i_sel_bus(11)(8)
+my_adder_7.io.i_sel := Cat(io.i_sel_bus(11),io.i_sel_bus(10),io.i_sel_bus(9),io.i_sel_bus(8))
+
     w_vn_lvl_3(0) := my_adder_7.io.o_vn(31,0)
     w_vn_lvl_3(1) := my_adder_7.io.o_vn(63,32)
 
@@ -1209,7 +1213,7 @@ class FanNetworkcom(Num : Int = 32 , Data_type : 32 ) extends Module {
     my_adder_11.io.i_add_en := io.i_add_en_bus(25)
     //my_adder_11.io.i_cmd := io.i_cmd_bus(2,0)
     my_adder_11.io.i_cmd := io.i_cmd_bus(25)
-    my_adder_11.io.i_sel := io.i_sel_bus(3)(2)
+    my_adder_11.io.i_sel := Cat(io.i_sel_bus(3),io.i_sel_bus(2))
 
     w_vn_lvl_2(2) := my_adder_11.io.o_vn(31,0)
         w_vn_lvl_2(3) := my_adder_11.io.o_vn(63,32)
@@ -1284,7 +1288,7 @@ class FanNetworkcom(Num : Int = 32 , Data_type : 32 ) extends Module {
     my_adder_15.io.i_add_en := io.i_add_en_bus(30)
     //my_adder_15.io.i_cmd := io.i_cmd_bus(2,0)
     my_adder_15.io.i_cmd := io.i_cmd_bus(30)
-    my_adder_15.io.i_sel := io.i_sel_bus(19)(16)
+    my_adder_15.io.i_sel := Cat(io.i_sel_bus(19),io.i_sel_bus(18),io.i_sel_bus(17),io.i_sel_bus(16))
     //my_adder_15.io.i_sel := io.i_sel_bus(19,16)
     w_vn_lvl_4(0) := my_adder_15.io.o_vn(31,0)
     w_vn_lvl_4(1) := my_adder_15.io.o_vn(63,32)
@@ -1357,7 +1361,7 @@ class FanNetworkcom(Num : Int = 32 , Data_type : 32 ) extends Module {
     my_adder_19.io.i_add_en := io.i_add_en_bus(26)
     my_adder_19.io.i_cmd := io.i_cmd_bus(26)
     //my_adder_19.io.i_cmd := io.i_cmd_bus(2,0)
-    my_adder_19.io.i_sel := io.i_sel_bus(5)(4)
+    my_adder_19.io.i_sel := Cat(io.i_sel_bus(5),io.i_sel_bus(4))
     w_vn_lvl_2(4) := my_adder_19.io.o_vn(31,0)
     w_vn_lvl_2(5) := my_adder_19.io.o_vn(63,32)
 
@@ -1434,7 +1438,7 @@ class FanNetworkcom(Num : Int = 32 , Data_type : 32 ) extends Module {
     my_adder_23.io.i_add_en := io.i_add_en_bus(29)
     //my_adder_23.io.i_cmd := io.i_cmd_bus(2,0)
     my_adder_23.io.i_cmd := io.i_cmd_bus(29)
-    my_adder_23.io.i_sel := io.i_sel_bus(15)(12)
+    my_adder_23.io.i_sel := Cat(io.i_sel_bus(15),io.i_sel_bus(14),io.i_sel_bus(13),io.i_sel_bus(12))
     w_vn_lvl_3(2) := my_adder_23.io.o_vn(31,0)
     w_vn_lvl_3(3) := my_adder_23.io.o_vn(63,32)
 
@@ -1508,7 +1512,7 @@ class FanNetworkcom(Num : Int = 32 , Data_type : 32 ) extends Module {
     my_adder_27.io.i_add_en := io.i_add_en_bus(27)
     //my_adder_27.io.i_cmd := io.i_cmd_bus(2,0)
     my_adder_27.io.i_cmd := io.i_cmd_bus(27)
-    my_adder_27.io.i_sel := io.i_sel_bus(7)(6)
+    my_adder_27.io.i_sel := Cat(io.i_sel_bus(7),io.i_sel_bus(6))
     w_vn_lvl_2(6) := my_adder_27.io.o_vn(31,0)
     w_vn_lvl_2(7) := my_adder_27.io.o_vn(63,32)
 
@@ -1742,6 +1746,73 @@ class FanNetworkcom(Num : Int = 32 , Data_type : 32 ) extends Module {
     io.o_valid(29) := r_lvl_output_ff_valid(157)
     io.o_valid(30) := r_lvl_output_ff_valid(158)
     io.o_valid(31) := r_lvl_output_ff_valid(159)
+
+    io.o_adder(0) :=  0.U
+    io.o_adder(1) :=  0.U
+    io.o_adder(2) :=  0.U
+    io.o_adder(3) :=  0.U
+    io.o_adder(4) :=  0.U
+    io.o_adder(5) :=  0.U
+    io.o_adder(6) :=  0.U
+    io.o_adder(7) := 0.U
+    io.o_adder(8) :=  0.U
+    io.o_adder(9) :=   0.U
+    io.o_adder(10) := 0.U
+    io.o_adder(11) := 0.U
+    io.o_adder(12) := 0.U
+    io.o_adder(13) := 0.U
+    io.o_adder(14) :=  0.U
+    io.o_adder(15) :=  0.U
+    io.o_adder(16) :=  0.U
+    io.o_adder(17) :=  0.U
+    io.o_adder(18) :=  0.U
+    io.o_adder(19) :=  0.U
+    io.o_adder(20) :=  0.U
+    io.o_adder(21) :=  0.U
+    io.o_adder(22) :=  0.U
+    io.o_adder(23) :=  0.U
+    io.o_adder(24) := 0.U
+    io.o_adder(25) :=  0.U
+    io.o_adder(26) :=  0.U
+    io.o_adder(27) :=  0.U
+    io.o_adder(28) := 0.U
+    io.o_adder(29) :=  0.U
+    io.o_adder(30) :=  0.U
+    io.o_adder(31) :=  0.U
+
+
+    io.o_adder(0) :=  w_fan_lvl_0(0)
+    io.o_adder(1) :=  w_fan_lvl_1(0)
+    io.o_adder(2) :=  w_fan_lvl_0(1)
+    io.o_adder(3) :=  w_fan_lvl_2(0)
+    io.o_adder(4) :=  w_fan_lvl_0(3)
+    io.o_adder(5) :=    w_fan_lvl_1(1)
+    io.o_adder(6) := w_fan_lvl_0(5)
+    io.o_adder(7) := w_fan_lvl_3(0)
+    io.o_adder(8) :=  w_fan_lvl_0(7)
+    io.o_adder(9) :=   w_fan_lvl_1(3)
+    io.o_adder(10) := w_fan_lvl_0(9)  
+    io.o_adder(11) := w_fan_lvl_2(1)
+    io.o_adder(12) := w_fan_lvl_0(11)
+    io.o_adder(13) := w_fan_lvl_1(5)
+    io.o_adder(14) :=  w_fan_lvl_0(13)
+    io.o_adder(15) :=  w_fan_lvl_4(0)
+    io.o_adder(16) :=  w_fan_lvl_0(15)
+    io.o_adder(17) :=  w_fan_lvl_1(7)
+    io.o_adder(18) :=  w_fan_lvl_0(17)
+    io.o_adder(19) :=  w_fan_lvl_0(17)
+    io.o_adder(20) :=  w_fan_lvl_0(19)
+    io.o_adder(21) :=  w_fan_lvl_1(9)
+    io.o_adder(22) :=  w_fan_lvl_0(21)
+    io.o_adder(23) :=  w_fan_lvl_3(1) 
+    io.o_adder(24) := w_fan_lvl_0(23)
+    io.o_adder(25) :=  w_fan_lvl_1(11)
+    io.o_adder(26) :=  w_fan_lvl_0(25)
+    io.o_adder(27) :=  w_fan_lvl_2(5)
+    io.o_adder(28) := w_fan_lvl_0(27)
+    io.o_adder(29) :=  w_fan_lvl_1(13) 
+    io.o_adder(30) :=  w_fan_lvl_0(29)
+
 
 
 
