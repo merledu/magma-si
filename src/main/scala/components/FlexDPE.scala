@@ -63,7 +63,7 @@ class flexdpecom2(IN_DATA_TYPE : Int = 32 ,DATA_TYPE: Int = 32, NUM_PES: Int = 3
     val w_reduction_sel = my_controller.io.o_reduction_sel
     val w_reduction_valid = my_controller.io.o_reduction_valid
 
-    val my_Benes = Module(new Benes2(16,32))
+    val my_Benes = Module(new Benes(16,32))
 
   //my_Benes.io.i_data_bus1 := r_data_bus_ff12
     my_Benes.io.i_data_bus1 := io.i_data_bus

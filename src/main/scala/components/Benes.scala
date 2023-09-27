@@ -59,7 +59,7 @@ NA  r_mux_bus_ff[18,19]	   r_mux_bus_ff[20,21]	  r_mux_bus_ff[22,23]   r_mux_bus
 ----------------------------------------------------------------------------------------------- 
 */
 
-class Benes2(DATA_TYPE:Int,NUM_PES:Int) extends Module {
+class Benes(DATA_TYPE:Int,NUM_PES:Int) extends Module {
   val LEVELS   : Int = (2 * (math.log(NUM_PES) / math.log(2))).toInt + 1
   val io = IO(new Bundle {
 
