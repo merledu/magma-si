@@ -10,18 +10,13 @@ class fancontrol(DATA_TYPE: Int = 32, NUM_PES: Int = 32, LOG2_PES: Int = 5) exte
     val i_stationary = Input(Bool())
     val i_data_valid = Input(Bool())
     val o_reduction_add = Output(Vec(NUM_PES - 1, UInt()))
-    //val o_reduction_add = Output(UInt((NUM_PES - 1).W))
-    //val o_reduction_cmd = Output(UInt((3 * (NUM_PES - 1)).W))
-     val o_reduction_cmd = Output(Vec(NUM_PES - 1, UInt(3.W)))
-    //val o_reduction_sel = Output(UInt(20.W)) // Output signal with 20 bits
+    val o_reduction_cmd = Output(Vec(NUM_PES - 1, UInt(3.W)))
     val o_reduction_sel = Output(Vec(20, UInt(2.W)))
     val o_reduction_valid = Output(UInt(1.W))
   })
 
-  // Reduction cmd and sel control bits
-    // Reduction cmd and sel control bits
+
     val r_reduction_add = RegInit(VecInit(Seq.fill(NUM_PES - 1)(0.U)))
-    //val r_reduction_cmd = RegInit(VecInit(Seq.fill(3*(NUM_PES - 1))(0.U)))
     val r_reduction_cmd = RegInit(VecInit(Seq.fill(NUM_PES - 1)(0.U(3.W))))
     val r_reduction_sel = RegInit(VecInit(Seq.fill(20)(0.U(2.W))))
 
@@ -41,51 +36,14 @@ class fancontrol(DATA_TYPE: Int = 32, NUM_PES: Int = 32, LOG2_PES: Int = 5) exte
     val r_sel_lvl_3Reg = RegInit(VecInit(Seq.fill(32)(0.U(2.W))))
     val r_sel_lvl_4Reg = RegInit(VecInit(Seq.fill(20)(0.U(2.W))))  
 
-    //val r_vn = RegInit(VecInit(Seq.fill(2 * NUM_PES * LOG2_PES)(0.U)))
-    //val r_vn = RegInit(VecInit(Seq.fill(2 * NUM_PES)(0.U(LOG2_PES.W))))
+
     val w_vn = RegInit(VecInit(Seq.fill(NUM_PES)(0.U(LOG2_PES.W))))
     val r_valid = RegInit(VecInit(Seq.fill(5)(0.U)))
-  // Generate flop instances for timing alignment of i_vn
-  // for (i <- 0 until 2) {
   
-     
-  //   when(i.U === 0.U) {
-  //     r_vn(i) := io.i_vn
-  //   }.otherwise {
-  //     r_vn(i) := r_vn(i - 1)
-  //   }
-  //   }
-
-  //   w_vn := r_vn(2 * NUM_PES * LOG2_PES - 1, NUM_PES * LOG2_PES)
-
-//   for (i <- 0 until 2) {
-//     when(i.U === 0.U) {
-//       // when(io.rst === true.B) {
-//       //   r_vn((i + 1) * NUM_PES * LOG2_PES - 1, i * NUM_PES * LOG2_PES) := 0.U
-//       // }.otherwise {
-//         //r_vn((i.U + 1.U) * NUM_PES.U  - 1.U):= io.i_vn
-//         r_vn(31)(0) := io.i_vn
-      
-//     }.otherwise {
-//       // when(io.rst === true.B) {
-//       //   r_vn((i + 1) * NUM_PES * LOG2_PES - 1, i * NUM_PES * LOG2_PES) := 0.U
-//       // }.otherwise {
-//         //r_vn((i.U + 1.U) * NUM_PES.U  - 1.U) := r_vn(i.U * NUM_PES.U  - 1.U)
-//         r_vn(63)(32) := r_vn(31)(0)
-//       }
-//   }
-     //w_vn := r_vn(2.U * NUM_PES.U - 1.U)
     w_vn := io.i_vn
 
     for (x <- 0 until 16) {
       when(x.U === 0.U) {
-      
-          //r_reduction_add(0) := 1.U
-          //r_reduction_cmd(0 ) := 1.U
-         
-   
-                  
-          // Generate cmd logic
         when(r_valid(1) === 1.U) {
           when(w_vn(2.U * x.U + 0.U)  === w_vn(2.U * x.U + 1.U)) {
               r_reduction_add(0.U+x.U) := 1.U
@@ -801,30 +759,6 @@ class fancontrol(DATA_TYPE: Int = 32, NUM_PES: Int = 32, LOG2_PES: Int = 5) exte
   }
 
 
-    // r_add_lvl_0 := 0.U
-    // r_add_lvl_1 := 0.U
-    // r_add_lvl_2 := 0.U
-    // r_add_lvl_3 := 0.U
-    // r_add_lvl_4 := 0.U
-
-    // r_cmd_lvl_0 := 0.U
-    // r_cmd_lvl_1 := 0.U
-    // r_cmd_lvl_2 := 0.U
-    // r_cmd_lvl_3 := 0.U
-    // r_cmd_lvl_4 := 0.U
-
-    // r_sel_lvl_2 := 0.U
-    // r_sel_lvl_3 := 0.U
-    // r_sel_lvl_4 := 0.U
-
-
-//     r_add_lvl_0 := r_reduction_add(15, 0)
-//     r_add_lvl_1 := Cat(r_reduction_add(23, 16), r_reduction_add(23, 16))
-//     r_add_lvl_2 := Cat(r_reduction_add(27, 24), r_reduction_add(27, 24), r_reduction_add(27, 24))
-//     r_add_lvl_3 := Cat(r_reduction_add(29, 28), r_reduction_add(29, 28), r_reduction_add(29, 28), r_reduction_add(29, 28))
-//     r_add_lvl_4 := Fill(5, r_reduction_add(30))
-
-
     r_add_lvl_0Reg := VecInit(Seq(
       r_reduction_add(0),
       r_reduction_add(1),
@@ -1060,41 +994,6 @@ class fancontrol(DATA_TYPE: Int = 32, NUM_PES: Int = 32, LOG2_PES: Int = 5) exte
       r_reduction_sel(19)
       ))
 
-
-
-    //     r_cmd_lvl_0 := r_reduction_cmd(47, 0)
-    //     r_cmd_lvl_1 := Cat(r_reduction_cmd(71, 48), r_reduction_cmd(71, 48))
-    //     r_cmd_lvl_2 := Cat(r_reduction_cmd(83, 72), r_reduction_cmd(83, 72), r_reduction_cmd(83, 72))
-    //     r_cmd_lvl_3 := Cat(r_reduction_cmd(89, 84), r_reduction_cmd(89, 84), r_reduction_cmd(89, 84), r_reduction_cmd(89, 84))
-    //     r_cmd_lvl_4 := Cat(r_reduction_cmd(92, 90), r_reduction_cmd(92, 90), r_reduction_cmd(92, 90), r_reduction_cmd(92, 90), r_reduction_cmd(92, 90))
-
-
-
-
-    //     r_sel_lvl_2 := Cat(r_reduction_sel(7, 0), r_reduction_sel(7, 0), r_reduction_sel(7, 0), r_reduction_sel(7, 0))
-    //     r_sel_lvl_3 := Cat(r_reduction_sel(15, 8), r_reduction_sel(15, 8), r_reduction_sel(15, 8), r_reduction_sel(15, 8))
-    //     r_sel_lvl_4 := Cat(r_reduction_sel(19, 16), r_reduction_sel(19, 16), r_reduction_sel(19, 16), r_reduction_sel(19, 16), r_reduction_sel(19, 16))
-
-
-    //     when (io.i_stationary === false.B && io.i_data_valid === true.B) {
-    //     r_valid(0) := true.B
-    //   } .otherwise {
-    //     r_valid(0) := false.B
-    //   }
-
-    //   for (i <- 0 until 4) {
-
-    //      r_valid(i + 1) := r_valid(i)
-
-    //   }
-
-    //    io.o_reduction_valid := r_valid(3)
-
-    //     io.o_reduction_add := Cat(r_add_lvl_4(4), r_add_lvl_3(7, 6), r_add_lvl_2(11, 8), r_add_lvl_1(15, 8), r_add_lvl_0(15, 0))
-    //     io.o_reduction_cmd := Cat(r_cmd_lvl_4(14, 12), r_cmd_lvl_3(23, 18), r_cmd_lvl_2(35, 24), r_cmd_lvl_1(47, 24), r_cmd_lvl_0(47, 0))
-    //     io.o_reduction_sel := Cat(r_sel_lvl_4(19, 16), r_sel_lvl_3(31, 24), r_sel_lvl_2(23, 16))
-
-
     when(io.i_stationary === 0.B && io.i_data_valid === 1.B) {
       r_valid(0) := 1.U
     } .otherwise {
@@ -1109,12 +1008,6 @@ class fancontrol(DATA_TYPE: Int = 32, NUM_PES: Int = 32, LOG2_PES: Int = 5) exte
   
 
     io.o_reduction_valid := r_valid(3)
-
-
- 
-  
- 
-    
     io.o_reduction_add :=  VecInit(Seq(
       r_add_lvl_4Reg(4), 
       r_add_lvl_3Reg(6),
@@ -1209,38 +1102,4 @@ class fancontrol(DATA_TYPE: Int = 32, NUM_PES: Int = 32, LOG2_PES: Int = 5) exte
       r_sel_lvl_2Reg(23)
       
       ))
-
-
-
-
-
 }
-
-
-
-
-
-  
-
-  
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-  
-  

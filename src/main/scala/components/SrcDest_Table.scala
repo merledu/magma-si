@@ -4,12 +4,9 @@ import chisel3._
 import chisel3.util._
 
 class SrcDest_Table(rows:Int,cols:Int,DATA_TYPE:Int,LEVELS:Int) extends Module{
-    //val LEVELS   : Int = (2 * (math.log(NUM_PES) / math.log(2))).toInt + 1
     val io = IO(new Bundle{
         val KM_matrix = Input(Vec(rows, Vec(cols, UInt(DATA_TYPE.W))))
         val NK_matrix = Input(Vec(rows, Vec(cols, UInt(DATA_TYPE.W))))
-        //val source = Output(Vec(rows*cols , UInt(DATA_TYPE.W)))
-        //val muxes = Output(Vec(rows*cols, SInt((LEVELS - 1).W)))
         val counterMatrix1 = Output(Vec(rows, Vec(cols, UInt(DATA_TYPE.W))))
     val counterMatrix2 = Output(Vec(rows, Vec(cols, UInt(DATA_TYPE.W))))    
 })

@@ -23,13 +23,11 @@ class ReductionMux(val W: Int = 32, val NUM_IN: Int = 4, val SEL_IN: Int = 2) ex
   for (i <- 0 until NUM_IN/2  ){
     w_data_right(i) := io.i_data(i+NUM_IN/2)
   }
-  //val w_data_left = (io.i_data(0 until (NUM_IN/2)))//.asTypeOf(Vec(W,Bool()))
-  //val w_data_right = io.i_data.drop(NUM_IN / 2).asTypeOf(Vec(W,Bool()))
+
 
   val w_sel_in_left = (io.i_sel(SEL_IN_LEFT_END, 0))//210
   val w_sel_in_right = (io.i_sel(SEL_IN - 1, SEL_IN_RIGHT_START))
 
-  // io.o_data(0) := Mux(w_sel_in_left < ((NUM_IN / 2).U), w_data_left(w_sel_in_left), 0.U)
   when ((w_sel_in_left).asUInt < 2.U) {
     
     io.o_data(0) := w_data_left(w_sel_in_left)

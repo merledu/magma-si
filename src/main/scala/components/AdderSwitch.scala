@@ -3,8 +3,6 @@ package magmasi.components
 import chisel3._
 import chisel3.util._
 
-
-
 class AdderSwitch(DATA_TYPE: Int = 32, NUM_IN: Int = 2, SEL_IN: Int = 2,NUM_OUT: Int =2) extends Module {
   val io = IO(new Bundle {
     val i_valid = Input(Bool())
@@ -12,10 +10,8 @@ class AdderSwitch(DATA_TYPE: Int = 32, NUM_IN: Int = 2, SEL_IN: Int = 2,NUM_OUT:
     val i_add_en = Input(UInt(3.W))
     val i_cmd = Input(UInt(3.W))
     val i_sel = Input(UInt(SEL_IN.W))
-    // val o_vn = Output(Vec(NUM_OUT, UInt(DATA_TYPE.W)))
     val o_vn_valid = Output(UInt(NUM_OUT.W))
     val o_vn = Output(UInt((2 * DATA_TYPE).W))
-    // val o_vn_valid = Output(UInt(2.W))
     val o_adder = Output(Vec(NUM_OUT, UInt(DATA_TYPE.W)))
   })
 
