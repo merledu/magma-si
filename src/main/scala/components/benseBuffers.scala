@@ -4,14 +4,11 @@ import chisel3._
 import chisel3.util._
 
 class benseBuffers(implicit val config: MagmasiConfig) extends Module{
-
-    // benes routing level computation
-    val LEVELS   : Int = (2 * (math.log(config.NUM_PES) / math.log(2))).toInt + 1
     
     val io = IO(new Bundle{
         val i_data_bus2 = Input(Vec(config.NUM_PES, UInt(config.DATA_TYPE.W)))
         val i_data_bus1  = Input(Vec(config.NUM_PES, UInt(config.DATA_TYPE.W)))
-        val i_mux_bus   = Input(Vec(config.NUM_PES, UInt((LEVELS-1).W)))
+        val i_mux_bus   = Input(Vec(config.NUM_PES, UInt((config.LEVELS-1).W)))
         val out = Output(Vec(config.NUM_PES, UInt(config.DATA_TYPE.W)))
     })
 
