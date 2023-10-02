@@ -12,7 +12,10 @@ class benseBuffers(DATA_TYPE:Int,NUM_PES:Int) extends Module{
         val i_mux_bus   = Input(Vec(NUM_PES, UInt((LEVELS-1).W)))
         val out = Output(Vec(NUM_PES, UInt(DATA_TYPE.W)))
     })
-    val benes = Module(new MyBenes(8,4))
+
+    implicit val config = MagmasiConfig()
+    
+    val benes = Module(new Benes())
     benes.io.i_data_bus1 <> io.i_data_bus1
     benes.io.i_data_bus2 <> io.i_data_bus2
     benes.io.i_mux_bus <> io.i_mux_bus

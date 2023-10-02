@@ -9,7 +9,7 @@ import org.scalatest.freespec.AnyFreeSpec
 class MybenesTester extends AnyFreeSpec with ChiselScalatestTester {
     "Benes Test" in {
         implicit val config = MagmasiConfig()
-        test(new Benes(8,4)).withAnnotations(Seq(VerilatorBackendAnnotation)) { dut =>
+        test(new Benes()).withAnnotations(Seq(VerilatorBackendAnnotation)) { dut =>
           val inputData = Seq(1,2,2,4)
           for (i <- 0 until 4) {
             dut.io.i_data_bus2(i).poke(inputData(i).U)
