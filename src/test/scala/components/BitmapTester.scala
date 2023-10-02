@@ -8,7 +8,7 @@ import org.scalatest.freespec.AnyFreeSpec
 class BitmapTester extends AnyFreeSpec with ChiselScalatestTester {
     "Bitmap Table" in {
         implicit val config = MagmasiConfig()
-        test(new Bitmap(4,4,32)).withAnnotations  (Seq(VerilatorBackendAnnotation)) { dut =>
+        test(new Bitmap()).withAnnotations  (Seq(VerilatorBackendAnnotation)) { dut =>
       val inputData = Seq(
         Seq(0, 2, 3, 0),
         Seq(5, 6, 7, 0),
