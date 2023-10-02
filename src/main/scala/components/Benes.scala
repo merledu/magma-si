@@ -60,32 +60,32 @@ NA  r_mux_bus_ff[18,19]	   r_mux_bus_ff[20,21]	  r_mux_bus_ff[22,23]   r_mux_bus
 */
 
 class Benes(implicit val config: MagmasiConfig) extends Module {
-  val LEVELS   : Int = (2 * (math.log(config.NUM_IN) / math.log(2))).toInt + 1
+  val LEVELS   : Int = (2 * (math.log(config.NUM_PES) / math.log(2))).toInt + 1
   val io = IO(new Bundle {
 
-    val i_data_bus2  = Input(Vec(config.NUM_IN, UInt(config.DATA_TYPE.W)))
-    val i_data_bus1  = Input(Vec(config.NUM_IN, UInt(config.DATA_TYPE.W)))
-    val i_mux_bus   = Input(Vec(2 * (LEVELS - 2) * config.NUM_IN + config.NUM_IN, Bool()))
-    val o_dist_bus2  = Output(Vec(config.NUM_IN, UInt(config.DATA_TYPE.W)))
-    val o_dist_bus1  = Output(Vec(config.NUM_IN, UInt(config.DATA_TYPE.W)))
+    val i_data_bus2  = Input(Vec(config.NUM_PES, UInt(config.DATA_TYPE.W)))
+    val i_data_bus1  = Input(Vec(config.NUM_PES, UInt(config.DATA_TYPE.W)))
+    val i_mux_bus   = Input(Vec(2 * (LEVELS - 2) * config.NUM_PES + config.NUM_PES, Bool()))
+    val o_dist_bus2  = Output(Vec(config.NUM_PES, UInt(config.DATA_TYPE.W)))
+    val o_dist_bus1  = Output(Vec(config.NUM_PES, UInt(config.DATA_TYPE.W)))
 
   })
   io.o_dist_bus1 := io.i_data_bus1
   val clk = clock
   val rst = reset.asBool
 
-  val r_data_bus_ff   = RegInit(VecInit(Seq.fill(config.NUM_IN)(0.U(config.DATA_TYPE.W))))
-  val r_mux_bus_ff    = RegInit(VecInit(Seq.fill(2 * (LEVELS - 2) * config.NUM_IN + config.NUM_IN)(false.B)))
-  val w_dist_bus      = Wire(Vec(config.NUM_IN, UInt(config.DATA_TYPE.W)))
-  val w_internal      = Wire(Vec(2 * config.NUM_IN * (LEVELS - 1), UInt(config.DATA_TYPE.W))) // 8 x 2 = 16
+  val r_data_bus_ff   = RegInit(VecInit(Seq.fill(config.NUM_PES)(0.U(config.DATA_TYPE.W))))
+  val r_mux_bus_ff    = RegInit(VecInit(Seq.fill(2 * (LEVELS - 2) * config.NUM_PES + config.NUM_PES)(false.B)))
+  val w_dist_bus      = Wire(Vec(config.NUM_PES, UInt(config.DATA_TYPE.W)))
+  val w_internal      = Wire(Vec(2 * config.NUM_PES * (LEVELS - 1), UInt(config.DATA_TYPE.W))) // 8 x 2 = 16
 
   dontTouch(w_internal)
 
-  r_data_bus_ff := Mux(rst, VecInit(Seq.fill(config.NUM_IN)(0.U(config.DATA_TYPE.W))), io.i_data_bus2)
-  r_mux_bus_ff  := Mux(rst, VecInit(Seq.fill(2 * (LEVELS - 2) * config.NUM_IN + config.NUM_IN)(false.B)), io.i_mux_bus)
-  io.o_dist_bus2 := Mux(rst, VecInit(Seq.fill(config.NUM_IN)(0.U(config.DATA_TYPE.W))), w_dist_bus)
+  r_data_bus_ff := Mux(rst, VecInit(Seq.fill(config.NUM_PES)(0.U(config.DATA_TYPE.W))), io.i_data_bus2)
+  r_mux_bus_ff  := Mux(rst, VecInit(Seq.fill(2 * (LEVELS - 2) * config.NUM_PES + config.NUM_PES)(false.B)), io.i_mux_bus)
+  io.o_dist_bus2 := Mux(rst, VecInit(Seq.fill(config.NUM_PES)(0.U(config.DATA_TYPE.W))), w_dist_bus)
 
-  for (i <- 0 until config.NUM_IN) {
+  for (i <- 0 until config.NUM_PES) {
 
     val in_switch = Module(new InputSwitch(config.DATA_TYPE))
     in_switch.io.in := r_data_bus_ff(i)
@@ -94,17 +94,17 @@ class Benes(implicit val config: MagmasiConfig) extends Module {
 
   }
 
-  for (i <- 0 until config.NUM_IN) { 
+  for (i <- 0 until config.NUM_PES) { 
 
     val out_switch = Module(new OutputSwitch(config.DATA_TYPE))
     out_switch.io.in0 := w_internal(2 * i * (LEVELS - 1) + (2 * (LEVELS - 2)))
     out_switch.io.in1 := w_internal(2 * (if(i % 2 == 0) i + 1 else i - 1) * (LEVELS - 1) + (2 * (LEVELS - 2)) + 1)
-    out_switch.io.sel := r_mux_bus_ff(2 * config.NUM_IN * (LEVELS - 2) + i) 
+    out_switch.io.sel := r_mux_bus_ff(2 * config.NUM_PES * (LEVELS - 2) + i) 
     w_dist_bus(i)     := out_switch.io.y
   
   }
 
-  for (i <- 0 until config.NUM_IN) {
+  for (i <- 0 until config.NUM_PES) {
     for (j <- 1 until (LEVELS - 1)) {
       val imm_switch = Module(new Switch(config.DATA_TYPE))
       imm_switch.io.in0 := w_internal(2 * i * (LEVELS - 1) + 2 * (j - 1))

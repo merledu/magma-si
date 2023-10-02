@@ -3,17 +3,16 @@ package  magmasi.components
 import chisel3._
 import chisel3.util._
 
-class benseBuffers(DATA_TYPE:Int,NUM_PES:Int) extends Module{
-      val LEVELS   : Int = (2 * (math.log(NUM_PES) / math.log(2))).toInt + 1
-
+class benseBuffers(implicit val config: MagmasiConfig) extends Module{
+      val LEVELS   : Int = (2 * (math.log(config.NUM_PES) / math.log(2))).toInt + 1
     val io = IO(new Bundle{
-        val i_data_bus2 = Input(Vec(NUM_PES, UInt(DATA_TYPE.W)))
-        val i_data_bus1  = Input(Vec(NUM_PES, UInt(DATA_TYPE.W)))
-        val i_mux_bus   = Input(Vec(NUM_PES, UInt((LEVELS-1).W)))
-        val out = Output(Vec(NUM_PES, UInt(DATA_TYPE.W)))
+        val i_data_bus2 = Input(Vec(config.NUM_PES, UInt(config.DATA_TYPE.W)))
+        val i_data_bus1  = Input(Vec(config.NUM_PES, UInt(config.DATA_TYPE.W)))
+        val i_mux_bus   = Input(Vec(config.NUM_PES, UInt((LEVELS-1).W)))
+        val out = Output(Vec(config.NUM_PES, UInt(config.DATA_TYPE.W)))
     })
 
-    implicit val config = MagmasiConfig()
+    
     
     val benes = Module(new Benes())
     benes.io.i_data_bus1 <> io.i_data_bus1
