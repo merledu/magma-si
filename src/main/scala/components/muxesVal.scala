@@ -63,13 +63,4 @@ class muxesVal(rows:Int,cols:Int,DATA_TYPE:Int,LEVELS:Int) extends Module{
   } .otherwise {
     i := i + 1.U
   }
-
-
-
-
-
-    dontTouch(i)
-    dontTouch(j)
-    dontTouch(k)
-    dontTouch(counter)
 }
