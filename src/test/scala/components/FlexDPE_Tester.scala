@@ -7,7 +7,7 @@ import org.scalatest.freespec.AnyFreeSpec
 
 class flexdpecom2test extends AnyFreeSpec with ChiselScalatestTester {
     "flexdpe Test" in {
-        test(new flexdpecom2){ c =>
+        test(new flexdpecom2()){ c =>
 
            // for input data base 1
             c.io.i_data_bus(0).poke(1.U)

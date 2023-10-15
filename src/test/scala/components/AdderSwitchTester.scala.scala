@@ -8,7 +8,7 @@ import org.scalatest.freespec.AnyFreeSpec
 class AdderSwitchTester extends AnyFreeSpec with ChiselScalatestTester {
     "Adder Switch Test" in {
         implicit val config = MagmasiConfig()
-        test(new AdderSwitch).withAnnotations(Seq(VerilatorBackendAnnotation)) { dut =>
+        test(new AdderSwitch(32,2,2,2)).withAnnotations(Seq(VerilatorBackendAnnotation)) { dut =>
             dut.io.i_data_bus(0).poke(2.U)
             dut.io.i_data_bus(1).poke(5.U)
             // dut.io.i_data_bus(4).poke(2.U)

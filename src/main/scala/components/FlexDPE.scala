@@ -4,6 +4,7 @@ import chisel3._
 import chisel3.util._
 
 class flexdpecom2(IN_DATA_TYPE : Int = 32 ,DATA_TYPE: Int = 32, NUM_PES: Int = 32, LOG2_PES: Int = 5) extends Module {
+    implicit val config = MagmasiConfig()
   val io = IO(new Bundle {
     val i_vn = Input(Vec(NUM_PES, UInt(LOG2_PES.W)))
     val i_stationary = Input(Bool())
@@ -14,10 +15,6 @@ class flexdpecom2(IN_DATA_TYPE : Int = 32 ,DATA_TYPE: Int = 32, NUM_PES: Int = 3
     val o_valid = Output(Vec(NUM_PES, UInt(1.W)))
     val o_data_bus = Output(Vec(NUM_PES, UInt(DATA_TYPE.W)))
      val o_adder = Output(Vec(NUM_PES, UInt(DATA_TYPE.W)))
-    //val o_reduction_add = Output(Vec(NUM_PES - 1, UInt()))
-    // val o_reduction_cmd = Output(Vec(NUM_PES - 1, UInt(3.W)))
-    // val o_reduction_sel = Output(Vec(20, UInt()))
-    // val o_reduction_valid = Output(UInt(1.W))
     val LEVELS   : Int = (2 * (math.log(NUM_PES) / math.log(2))).toInt + 1
      val i_mux_bus   = Input(Vec(2 * (LEVELS - 2) * NUM_PES + NUM_PES, Bool()))
   })
@@ -30,26 +27,12 @@ class flexdpecom2(IN_DATA_TYPE : Int = 32 ,DATA_TYPE: Int = 32, NUM_PES: Int = 3
 
     val r_data_valid_ff = Reg(Bool())
     val r_data_valid_ff2 = Reg(Bool())
-
-    // val r_dest_bus_ff = Reg(Vec(NUM_PES, UInt(LEVELS.W)))
-    // val r_dest_bus_ff2 = Reg(Vec(NUM_PES, UInt(LEVELS.W)))
-
-    //  val r_data_bus_ff = Reg(Vec(NUM_PES, UInt(IN_DATA_TYPE.W)))
-
-    // val r_data_bus_ff2 =Reg(Vec(NUM_PES, UInt(IN_DATA_TYPE.W)))
     
     r_stationary_ff := io.i_stationary
     r_stationary_ff2 := r_stationary_ff
 
      r_data_valid_ff := io.i_data_valid
      r_data_valid_ff2 := r_data_valid_ff
-
-  //    r_data_bus_ff := io.i_data_bus
-  // //r_data_bus_ff12 := r_data_bus_ff1
-  //   r_data_bus_ff2 := r_data_bus_ff
-
-    // r_dest_bus_ff := io.i_mux_bus
-    // r_dest_bus_ff2 := r_dest_bus_ff
     
 
     
@@ -63,9 +46,8 @@ class flexdpecom2(IN_DATA_TYPE : Int = 32 ,DATA_TYPE: Int = 32, NUM_PES: Int = 3
     val w_reduction_sel = my_controller.io.o_reduction_sel
     val w_reduction_valid = my_controller.io.o_reduction_valid
 
-    val my_Benes = Module(new Benes2(16,32))
+    val my_Benes = Module(new Benes())
 
-  //my_Benes.io.i_data_bus1 := r_data_bus_ff12
     my_Benes.io.i_data_bus1 := io.i_data_bus
     my_Benes.io.i_data_bus2 := io.i_data_bus2
     my_Benes.io.i_mux_bus := io.i_mux_bus
@@ -73,18 +55,12 @@ class flexdpecom2(IN_DATA_TYPE : Int = 32 ,DATA_TYPE: Int = 32, NUM_PES: Int = 3
     val w_dist_bus1 = my_Benes.io.o_dist_bus1
     val w_dist_bus2 = my_Benes.io.o_dist_bus2
 
-    // val my_mult_gen = Module(new MultGen(16,32,32))
 
-    // my_mult_gen.io.i_valid := r_data_valid_ff2
-    // my_mult_gen.io.i_data_bus := w_dist_bus2 //io.i_data_bus
-    // my_mult_gen.io.i_stationary := r_stationary_ff2
-    // val w_mult_valid = my_mult_gen.io.o_valid
-    // r_mult := my_mult_gen.io.o_data_bus
 
-     val buffer_mult = Module(new buffer_multiplication(32,32))
+     val buffer_mult = Module(new buffer_multiplication())
 
       
-      buffer_mult.io.buffer1 := w_dist_bus1 //io.i_data_bus
+      buffer_mult.io.buffer1 := w_dist_bus1
       buffer_mult.io.buffer2 := w_dist_bus2 
      
       r_mult := buffer_mult.io.out
