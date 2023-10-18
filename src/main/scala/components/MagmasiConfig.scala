@@ -7,10 +7,9 @@ case class MagmasiConfig (
     val NUM_IN  : Int = 4,
     val SEL_IN: Int = 2,
     val NUM_OUT: Int =2,
-    val rowsA :Int = 4,
-    val colsA :Int = 4,
-    val rowsB :Int = 4,
-    val colsB :Int = 4
+    val MaxRows :Int = 4,
+    val MaxCols :Int = 4,
 ) {
     val LEVELS   : Int = (2 * (math.log(NUM_IN) / math.log(2))).toInt + 1
+    
 }
