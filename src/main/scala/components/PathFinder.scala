@@ -18,8 +18,10 @@ class PathFinder(implicit val config: MagmasiConfig) extends Module{
     myCounter.io.Streaming_matrix := io.Streaming_matrix
 
     val myMuxes = Module(new Muxes())
-    myMuxes.io.mat1 := myCounter.io.counterMatrix1
-    myMuxes.io.mat2 := myCounter.io.counterMatrix2
+    myMuxes.io.mat1 := io.Stationary_matrix
+    myMuxes.io.mat2 := io.Streaming_matrix
+    myMuxes.io.counterMatrix1 := myCounter.io.counterMatrix1
+    myMuxes.io.counterMatrix2 := myCounter.io.counterMatrix2
 
     val myWrapper = Module(new BenesWrapper())
     myWrapper.io.i_mux_bus := myMuxes.io.i_mux_bus
