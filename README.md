@@ -52,3 +52,50 @@ Performance: Designed with a focus on performance improvements, allowing for fas
 
 ### Documentation of Matrix multiplication achieved using it
 In this document, we illustrate the matrix multiplication process and conduct a comparative analysis between the results obtained from traditional matrix multiplication and the flexDpe multiplication which is use in magma-si .[**matrix multiplication**](https://docs.google.com/document/d/15aigRM_oNeKfkhLxfViAmdg0WECZvXFH9sVD7_mFjsg/edit)
+
+## PathFInder 
+
+#### Bundle Details
+``````
+// Inputs Signals
+
+Stationary_matrix = Vector(MaxRows(Vector(MaxCols)))
+
+Streaming_matrix = Vector(MaxRows)
+
+// Output Signals
+
+Source = Vector(MaxRows * MaxCols)
+
+i_mux_bus = Vector(MaxRows * MaxCols)
+
+destination = Vector(MaxRows * MaxCols)
+``````
+
+
+#### Desire Ouput
+#### Inputs
+``````
+Stationary_matrix = [(1, 7, 2, 0),
+                    (3, 4, 1, 0),
+                    (2, 0, 4, 0),
+                    (1, 2, 3, 0)]
+                
+Streaming_matrix = [(1, 2, 3, 0)]
+``````
+#### Output Table
+| Source | destination | Muxex |
+|--------|-------------|-------|
+| 1   | 1   | 0   |
+| 1   | 3   | 3   |
+| 1   | 2   | 2   |
+| 1   | 1   | 0   |
+| 2   | 7   | 0   |
+| --  | --   | --   |
+| --   | --   | --  |
+| 3   | 4   | 1   |
+| 3   | 3   | 0   |
+
+#### WaveForm
+<img width="979" alt="Screenshot of PathFinder in action" src="/home/masfiyan/push/images/PathFinder Waveform.png.png">
+
