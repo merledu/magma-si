@@ -45,11 +45,11 @@ class Muxes(implicit val config: MagmasiConfig) extends Module{
     when ((io.mat1(j)(i) =/= 0.U) && (io.mat2(i) =/= 0.U)) {
         
         when(io.counterMatrix1(j)(i) < io.counterMatrix2(i)){
-          mux(counter) :=   (io.counterMatrix2(i) - 1.U) - (io.counterMatrix1(j)(i) - 1.U)
+          mux(counter) :=   (io.mat2(i) - 1.U) - (io.mat1(j)(i) - 1.U)
           src(counter) := io.mat2(i)
           dest(counter) := io.mat1(j)(i)
         }.otherwise{
-          mux(counter) :=   (io.counterMatrix1(j)(i) - 1.U) - (io.counterMatrix2(i) - 1.U)
+          mux(counter) :=   (io.mat1(j)(i) - 1.U) - (io.mat2(i) - 1.U)
           src(counter) := io.mat2(i)      
           dest(counter) := io.mat1(j)(i)
         }
