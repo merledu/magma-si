@@ -35,6 +35,7 @@ class SourceDestination(implicit val config: MagmasiConfig) extends Module {
     val valid1 = RegInit(false.B)
     val jValid = Reg(Bool())
     jValid := 0.B
+    val kvalid = Reg(Bool())
     val k = RegInit(0.U(32.W))
 
     val counter1 = RegInit(1.U(32.W))
@@ -56,15 +57,28 @@ class SourceDestination(implicit val config: MagmasiConfig) extends Module {
     }
 
     when (io.Streaming_matrix(k) =/= 0.U) {
-      counterRegs2(k) := counter2
-      counter2 := counter2 + 1.U
+      when (counter2 < (config.NUM_PES + 1).U) {
+        counterRegs2(k) := counter1
+        when (~((j === (config.MaxCols - 1).U) && (i === (config.MaxRows - 1).U))){
+          counter2 := counter2 + 1.U
+        }
     }
+  }
     val reg_i = RegNext(((j === (config.MaxCols - 1).U) && (i === (config.MaxRows - 1).U)), 1.B)
     valid1 := Mux(((j === (config.MaxCols - 1).U) && (i === (config.MaxRows - 1).U)) === reg_i,1.B,0.B)
     
-    when (k >= 0.U){
-        k := k + 1.U
+
+    // when ((k >= 0.U) && (kvalid === 0.B)){
+    //     k := k + 1.U
+    // }
+
+    when(k === (config.MaxRows - 1).U){
+        kvalid := 1.B
+    }.elsewhen((k >= 0.U) && (kvalid === 0.B)){
+      kvalid := 0.B
+      k := k + 1.U
     }
+    
     when (jValid === 0.B){
       when(j < (config.MaxCols - 1).U) {    
         j := j + 1.U
