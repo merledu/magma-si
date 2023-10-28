@@ -66,3 +66,4 @@ class FanNetworkcom(Num : Int = 32 , Data_type : 32 ) extends Module {
 		println(s"$name = $z2")
 	      }
 	     }
+	}		
