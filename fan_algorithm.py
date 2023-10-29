@@ -63,6 +63,8 @@ for n in range(numlevels):
     v.append(v1)
 print(v)
 f = 23
+e=-2
+d = 4
 for level in reversed(range(numlevels)):
     
     value = int(Num / 2**level)
@@ -98,6 +100,7 @@ for level in reversed(range(numlevels)):
                 print(b5)
     else:
         u=0
+        
         for i in range(int(value/2)-1,Num-1,value):
             
             if value == 4:
@@ -131,7 +134,7 @@ for level in reversed(range(numlevels)):
                     print(b5)
 
             else:
-              
+                e += 2
                 f += 1 
                 print("adder", i)
                 # print(value)
@@ -146,11 +149,18 @@ for level in reversed(range(numlevels)):
                     a0 = f"edge adder(32,{y},2,2) = {i}"
                     a1 = f"my_adder_{i}.io.i_data_bus = VecInit(Seq(w_fan_lvl_{(y//2)-1}({i//2}) w_fan_lvl_{(y//2)-1}(({((i-1)//2)-1}))"
                     a2 = f"my_adder_{i}.io.i_en_bus:= io.ien_bus({f})"
-                    a3 = f"my_adder_{i}.io.i_sel := 0"
                     print(a0)
                     print(a1)
                     print(a2)
-                    print(a3)
+                    if value == 8:
+                        a3 = f"my_adder_{i}.io.i_sel := Cat(io.i_sel_bus({e+1}),io.i_sel_bus({e}))"
+                        print(a3)
+                    else:
+                        e += 1
+                        a3 = f"my_adder_{i}.io.i_sel := Cat(io.i_sel_bus({e+2}),io.i_sel_bus({e+1}),io.i_sel_bus({e}),io.i_sel_bus({e-1}))"
+                        e += 1
+                        print(a3)
+                   
                     if i == 0:
                         a4 = f"w_fan_lvl_{y//2}({u}) := my_adder_{i}.io.o_adder"
                         print(a4)
@@ -161,20 +171,27 @@ for level in reversed(range(numlevels)):
                         u += 1
                      
                 else:
-                   
+                    
                     b0 = f"adder(32,{y},2,2) = {i}"
                     b1 = f"my_adder_{i}.io.i_data_bus = VecInit(Seq(w_fan_lvl_{(y//2)-1}({i//2}) w_fan_lvl_{(y//2)-1}(({((i-1)//2)-1}))"
                     b2 = f"my_adder_{i}.io.i_en_bus:= io.ien_bus({f})"
-                    b3 = f"my_adder_{i}.io.i_sel := 0"
+                    print(b0)
+                    print(b1)
+                    print(b2)
+                    if value == 8:
+                        b3 = f"my_adder_{i}.io.i_sel := Cat(io.i_sel_bus({e+1}),io.i_sel_bus({e}))"
+                        print(b3)
+                    else:
+                        e += 1
+                        b3 = f"my_adder_{i}.io.i_sel := Cat(io.i_sel_bus({e+2}),io.i_sel_bus({e+1}),io.i_sel_bus({e}),io.i_sel_bus({e-1}))"
+                        e += 1
+                        print(b3)
                     b4 = f"w_fan_lvl_{y//2}({u}) := my_adder_{i}.io.o_adder(0)"
                     u += 1
                     b5 = f"w_fan_lvl_{y//2}({u}) := my_adder_{i}.io.o_adder(1)"
                     u += 1
-                    print(b0)
-                    print(b1)
-                    print(b2)
-                    print(b3)
+                  
+                   
                     print(b4)
                     print(b5)
-
 
