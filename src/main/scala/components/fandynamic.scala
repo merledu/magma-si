@@ -65,5 +65,106 @@ class FanNetworkcom(Num : Int = 32 , Data_type : 32 ) extends Module {
 		r_fan_ff_lvl(i) := z2
 		println(s"$name = $z2")
 	      }
-	     }
-	}		
+	     
+val e = WireDefault(-2.U)
+      val f = WireDefault(23.U)
+      var d = 4.U
+
+      for (i <- (value / 2 - 1).toInt to (Num - 1).toInt by value) {
+        if (value == 4) {
+          if (i == (value / 2 - 1).toInt || i == (Num - (value / 2).toInt - 1)) {
+            printf(p"edge adder(32,${y},2,2) = $i\n")
+            val a1 = WireDefault(VecInit(Seq(w_fan_lvl(0)(i), w_fan_lvl(0)(i - 1.U)))
+            val a2 = WireDefault(io.ien_bus(16.U + (i / 4.U)))
+            val a3 = WireDefault(0.U(1.W))
+            printf(p"my_adder_$i.io.i_data_bus = $a1\n")
+            printf(p"my_adder_$i.io.i_en_bus = $a2\n")
+            printf(p"my_adder_$i.io.i_sel = $a3\n")
+            if (i == 0) {
+              val a4 = WireDefault(w_fan_lvl(1)(i))
+              printf(p"w_fan_lvl_1($i) := my_adder_$i.io.o_adder = $a4\n")
+            } else {
+              val a5 = WireDefault(w_fan_lvl(1)(i - 1))
+              printf(p"w_fan_lvl_1(${i - 1}) := my_adder_$i.io.o_adder = $a5\n")
+            }
+          } else {
+            printf(p"adder(32,${y},2,2) = $i\n")
+            val b1 = WireDefault(VecInit(Seq(w_fan_lvl(0)(i), w_fan_lvl(0)(i - 1)))
+            val b2 = WireDefault(io.ien_bus(16.U + (i / 4.U)))
+            val b3 = WireDefault(0.U(1.W))
+            val b4 = WireDefault(w_fan_lvl(1)(i / 2 - 1.U))
+            val b5 = WireDefault(w_fan_lvl(1)(i / 2.U))
+            printf(p"my_adder_$i.io.i_data_bus = $b1\n")
+            printf(p"my_adder_$i.io.i_en_bus = $b2\n")
+            printf(p"my_adder_$i.io.i_sel = $b3\n")
+            printf(p"w_fan_lvl_1(${i / 2 - 1.U}) := my_adder_$i.io.o_adder = $b4\n")
+            printf(p"w_fan_lvl_1(${i / 2.U}) := my_adder_$i.io.o_adder = $b5\n")
+          }
+        } else {
+          e := e + 2.U
+          f := f + 1.U
+          val exponent = Wire(UInt(3.W))
+          exponent := 0.U
+          when(2.U ** exponent < value.U) {
+            exponent := exponent + 1.U
+          }
+          val y = WireDefault(((exponent * 2.U) - 2.U))
+          if (i == (value / 2).toInt - 1 || i == (Num - (value / 2).toInt - 1)) {
+            printf(p"edge adder(32,${y},2,2) = $i\n")
+            val a1 = WireDefault(VecInit(Seq(w_fan_lvl(y / 2 - 1.U)(i / 2.U), w_fan_lvl(y / 2 - 1.U)((i - 1).U / 2.U)))
+            val a2 = WireDefault(io.ien_bus(f))
+            printf(p"my_adder_$i.io.i_data_bus = $a1\n")
+            printf(p"my_adder_$i.io.i_en_bus = $a2\n")
+            val a3 = if (value == 8) {
+              val a3_0 = WireDefault(Cat(io.i_sel_bus(e + 1.U), io.i_sel_bus(e)))
+              printf(p"my_adder_$i.io.i_sel = $a3_0\n")
+              e := e + 1.U
+              a3_0
+            } else {
+              e := e + 1.U
+              val a3_1 = WireDefault(Cat(io.i_sel_bus(e + 2.U), io.i_sel_bus(e + 1.U), io.i_sel_bus(e), io.i_sel_bus(e - 1.U)))
+              printf(p"my_adder_$i.io.i_sel = $a3_1\n")
+              e := e + 1.U
+              a3_1
+            }
+            printf(p"my_adder_$i.io.i_sel = $a3\n")
+            if (i == 0) {
+              val a4 = WireDefault(w_fan_lvl(y / 2)(u))
+              printf(p"w_fan_lvl_${y / 2}($u) := my_adder_$i.io.o_adder = $a4\n")
+              u := u + 1.U
+            } else {
+              val a5 = WireDefault(w_fan_lvl(y / 2)(u))
+              printf(p"w_fan_lvl_${y / 2}($u) := my_adder_$i.io.o_adder = $a5\n")
+              u := u + 1.U
+            }
+          } else {
+            printf(p"adder(32,${y},2,2) = $i\n")
+            val b1 = WireDefault(VecInit(Seq(w_fan_lvl(y / 2 - 1.U)(i / 2.U), w_fan_lvl(y / 2 - 1.U)((i - 1).U / 2.U)))
+            val b2 = WireDefault(io.ien_bus(f))
+            printf(p"my_adder_$i.io.i_data_bus = $b1\n")
+            printf(p"my_adder_$i.io.i_en_bus = $b2\n")
+            val b3 = if (value == 8) {
+              val b3_0 = WireDefault(Cat(io.i_sel_bus(e + 1.U), io.i_sel_bus(e)))
+              printf(p"my_adder_$i.io.i_sel = $b3_0\n")
+              e := e + 1.U
+              b3_0
+            } else {
+              e := e + 1.U
+              val b3_1 = WireDefault(Cat(io.i_sel_bus(e + 2.U), io.i_sel_bus(e + 1.U), io.i_sel_bus(e), io.i_sel_bus(e - 1.U)))
+              printf(p"my_adder_$i.io.i_sel = $b3_1\n")
+              e := e + 1.U
+              b3_1
+            }
+            printf(p"my_adder_$i.io.i_sel = $b3\n")
+            val b4 = WireDefault(w_fan_lvl(y / 2)(u))
+            printf(p"w_fan_lvl_${y / 2}($u) := my_adder_$i.io.o_adder(0) = $b4\n")
+            u := u + 1.U
+            val b5 = WireDefault(w_fan_lvl(y / 2)(u))
+            printf(p"w_fan_lvl_${y / 2}($u) := my_adder_$i.io.o_adder(1) = $b5\n")
+            u := u + 1.U
+          }
+        }
+      }
+    }
+  }
+		
