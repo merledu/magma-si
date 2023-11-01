@@ -16,6 +16,7 @@ class Muxes(implicit val config: MagmasiConfig) extends Module{
     })
 
     val prevStationary_matrix = RegNext(io.mat1)
+    val prevStreaming_matrix = RegNext(io.mat2)
     val matricesAreEqual = Reg(Bool())
     matricesAreEqual := true.B
 
@@ -24,6 +25,9 @@ class Muxes(implicit val config: MagmasiConfig) extends Module{
         when(io.mat1(i)(j) =/= prevStationary_matrix(i)(j)) {
           matricesAreEqual := false.B
         }
+      }
+      when(io.mat2(i) =/= prevStreaming_matrix(i)){
+        matricesAreEqual := false.B
       }
     }
 
