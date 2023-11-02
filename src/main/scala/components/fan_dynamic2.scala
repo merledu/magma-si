@@ -72,40 +72,56 @@ object FanLevelGenerator extends App {
   for (level <- (numlevels - 1) to 0 by -1) {
     val value = Num / (1 << level)
 
-    if (value == 2) {
+    when (value == 2) {
       for (i <- 0 until (Num - 1) by value) {
-        if (i == 0 || i == Num -2):
+        when (i == 0 || i == Num -2){
           val my_adder_(i) = Module(new EdgeAdderSwitch(32, 2, 2, 2))
           my_adder_i.io.i_data_bus := VecInit(io.i_data_bus(i + 1), io.i_data_bus(i))
           my_adder_i.io.i_en_bus := io.ien_bus(i / 2)
           my_adder_i.io.i_sel := 0.U
 
-          if (i == 0) {
+          when (i == 0) {
             w_fan_lvl_0(i) := my_adder_i.io.o_adder
-          } else {
+          }.otherwise {
             w_fan_lvl_0(i - 1) := my_adder_i.io.o_adder
+          
           }
-        else:
-          val my_adder_{i} = Module(new AdderSwitch(32,2,2,2))
-          my_adder_i.io.i_data_bus := VecInit(io.i_data_bus(i + 1), io.i_data_bus(i))
-          my_adder_i.io.i_en_bus := io.ien_bus(i / 2)
-          my_adder_i.io.i_sel := 0.U
-          w_fan_lvl_0({i-1}) := my_adder_{i}.io.o_adder({0})
-          w_fan_lvl_0({i}) := my_adder_{i}.io.o_adder({1})
-      }
-    } else if (value == 4) {
-      for (i <- (value / 2 - 1) until (Num - 1) by value) {
-        val my_adder_i = Module(new EdgeAdderSwitch(32, 2, 2, 2))
-        my_adder_i.io.i_data_bus := VecInit(w_fan_lvl_0(i), w_fan_lvl_0(i - 1))
-        my_adder_i.io.i_en_bus := io.ien_bus(16 + (i / 4))
-        my_adder_i.io.i_sel := 0.U
-
-        if (i == 0) {
-          w_fan_lvl_1(i) := my_adder_i.io.o_adder
-        } else {
-          w_fan_lvl_1(i - 1) := my_adder_i.io.o_adder
+        }.otherwise{
+            val my_adder_(i) = Module(new AdderSwitch(32,2,2,2))
+            my_adder_i.io.i_data_bus := VecInit(io.i_data_bus(i + 1), io.i_data_bus(i))
+            my_adder_i.io.i_en_bus := io.ien_bus(i / 2)
+            my_adder_i.io.i_sel := 0.U
+            w_fan_lvl_0(i-1) := my_adder_(i)=.io.o_adder(1)
+            w_fan_lvl_0(i) := my_adder_(i).io.o_adder(1)
         }
       }
+    }.otherwise{
+      var U = 0
+      for (i <- (value / 2 - 1) until (Num - 1) by value) {
+
+    
+        when(value == 4) {
+          when (i.U === ((value / 2).U - 1.U) || i.U === (Num.U - (value / 2).U - 1.U)) {
+
+            val my_adder_(i) = Module(new EdgeAdderSwitch(32, 2, 2, 2))
+            my_adder_i.io.i_data_bus := VecInit(w_fan_lvl_0(i), w_fan_lvl_0(i - 1))
+            my_adder_i.io.i_en_bus := io.ien_bus(16 + (i / 4))
+            my_adder_i.io.i_sel := 0.U
+
+            when (i == 0) {
+              w_fan_lvl_1(i) := my_adder_i.io.o_adder
+            }.otherwise {
+              w_fan_lvl_1(i - 1) := my_adder_i.io.o_adder
+            }
+          }.otherwise{
+              val my_adder_(i) = Module(new AdderSwitch(32,2,2,2))
+              my_adder_(i).io.i_data_bus =VecInit(Seq(w_fan_lvl_0(i) w_fan_lvl_0(i-1)))
+              my_adder_(i).io.i_en_bus:= io.ien_bus(int(16 + i/4))
+              my_adder_(i).io.i_sel := (0)
+              w_fan_lvl_1(int((i-1)/2-1)) := my_adder_(i).io.o_adder(0)
+              w_fan_lvl_1(int((i-1)/2)) := my_adder_(i).io.o_adder(1)
+          }
+
     } else {
       e += 2
       f += 1
