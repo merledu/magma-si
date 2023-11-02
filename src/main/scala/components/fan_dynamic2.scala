@@ -115,35 +115,36 @@ object FanLevelGenerator extends App {
             }
           }.otherwise{
               val my_adder_(i) = Module(new AdderSwitch(32,2,2,2))
-              my_adder_(i).io.i_data_bus =VecInit(Seq(w_fan_lvl_0(i) w_fan_lvl_0(i-1)))
+              my_adder_(i).io.i_data_bus =VecInit(Seq(w_fan_lvl_0(i), w_fan_lvl(((i - 1) / 2 - 1).U)))
               my_adder_(i).io.i_en_bus:= io.ien_bus(int(16 + i/4))
               my_adder_(i).io.i_sel := (0)
               w_fan_lvl_1(int((i-1)/2-1)) := my_adder_(i).io.o_adder(0)
               w_fan_lvl_1(int((i-1)/2)) := my_adder_(i).io.o_adder(1)
           }
 
-    } else {
-      e += 2
-      f += 1
+    	} else {
+		e += 2
+		f += 1
 
-      var exponent = 0
-      while (math.pow(2, exponent) < value) {
+		var exponent = 0
+		while (math.pow(2, exponent) < value) {
         exponent += 1
-      }
-      val y = (exponent * 2) - 2
+      	}
+		when((1.U << exponent.U) === value.U) {
+      		val y = (exponent * 2) - 2
+		when(i === (value / 2.U - 1.U) || i === (Num.U - (value / 2.U) - 1.U)) {
 
-      for (i <- (value / 2 - 1) until (Num - 1) by value) {
-        val my_adder_i = Module(new AdderSwitch(32, y, 2, 2))
-        my_adder_i.io.i_data_bus := VecInit(w_fan_lvl_0(i / 2), w_fan_lvl_0((i - 1) / 2 - 1))
-        my_adder_i.io.i_en_bus := io.ien_bus(f)
+			val my_adder_i = Module(new AdderSwitch(32, y, 2, 2))
+			my_adder_(i).io.i_data_bus := VecInit(Seq(w_fan_lvl((i / 2).U), w_fan_lvl_0((i - 1) / 2 - 1)))
+			my_adder_(i).io.i_en_bus := io.ien_bus(f)
 
-        if (value == 8) {
-          my_adder_i.io.i_sel := Cat(io.i_sel_bus(e + 1), io.i_sel_bus(e))
-        } else {
-          e += 1
-          my_adder_i.io.i_sel := Cat(io.i_sel_bus(e + 2), io.i_sel_bus(e + 1), io.i_sel_bus(e), io.i_sel_bus(e - 1))
-          e += 1
-        }
+			if (value == 8) {
+			my_adder_i.io.i_sel := Cat(io.i_sel_bus(e + 1), io.i_sel_bus(e))
+			} else {
+			e += 1
+			my_adder_i.io.i_sel := Cat(io.i_sel_bus(e + 2), io.i_sel_bus(e + 1), io.i_sel_bus(e), io.i_sel_bus(e - 1))
+			e += 1
+			}
 
         if (i == (value / 2 - 1) || i == (Num - (value / 2) - 1)) {
           if (i == 0) {
@@ -159,3 +160,4 @@ object FanLevelGenerator extends App {
     }
   }
 }
+  }
