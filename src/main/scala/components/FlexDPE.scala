@@ -2,6 +2,7 @@ package magmasi.components
 
 import chisel3._
 import chisel3.util._
+import chisel3.stage.ChiselStage
 
 class flexdpecom2(IN_DATA_TYPE : Int = 32 ,DATA_TYPE: Int = 32, NUM_PES: Int = 32, LOG2_PES: Int = 5) extends Module {
     implicit val config = MagmasiConfig()
@@ -79,4 +80,11 @@ class flexdpecom2(IN_DATA_TYPE : Int = 32 ,DATA_TYPE: Int = 32, NUM_PES: Int = 3
     io.o_valid := my_fan_network.io.o_valid
     io.o_data_bus := my_fan_network.io.o_data_bus
     io.o_adder :=  my_fan_network.io.o_adder
+
+
+}
+  object FlexDPEDriver extends App {
+
+  (new ChiselStage).emitVerilog(new flexdpecom2)
+
 }
