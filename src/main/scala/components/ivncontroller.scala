@@ -145,3 +145,24 @@ when(nonZeroCount === 4){
 
 }
 }
+//python
+// inputData = [
+//     [0, 0, 0, 0],
+//     [0, 0, 0, 0],
+//     [0, 0, 0, 0],
+//     [0, 1, 0, 1]
+// ]
+
+// # Initialize a list to store the number of non-zero elements in each row
+// nonZeroCountsInEachRow = []
+
+// for row in inputData:
+//     nonZeroCountInRow = 0
+//     for element in row:
+//         if element != 0:
+//             nonZeroCountInRow += 1
+//     if nonZeroCountInRow > 0:
+//         nonZeroCountsInEachRow.append(nonZeroCountInRow)
+
+// print(nonZeroCountsInEachRow)
+
