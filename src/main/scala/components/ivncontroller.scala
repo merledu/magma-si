@@ -59,9 +59,9 @@ when(nonZeroCount === 4){
  
         // i_vn(11) := "b01111".U
         // i_vn(12) := "b01111".U
-
-        i_vn(15) := "b11110".U
-        i_vn(16) := "b11110".U
+      // FOR EN ADDER 0
+      i_vn(0) := "b10000".U
+      i_vn(1) := "b10000".U
 
         // i_vn(23) := "b11111".U
         // i_vn(24) := "b11111".U
@@ -69,18 +69,19 @@ when(nonZeroCount === 4){
         // i_vn(18) := "b11111".U
         // i_vn(13) := "b11000".U
     }.elsewhen(noneachrow(0) === 4 ){
-        i_vn(2) := "b01111".U
-        i_vn(3):= "b01111".U
+      // FOR ADDER 0,1,2 EN
+        i_vn(2) := "b10000".U
+        i_vn(3):= "b10000".U
         // i_vn(4):= "b11101".U
 
-        i_vn(7) := "b10111".U
-        i_vn(8):= "b10111".U
+        // i_vn(7) := "b10111".U
+        // i_vn(8):= "b10111".U
 
         // i_vn(11) := "b01111".U
         // i_vn(12) := "b01111".U
-
-        i_vn(15) := "b11011".U
-        i_vn(16) := "b11011".U
+      // FOR EN ADDER 0
+      i_vn(0) := "b10000".U
+      i_vn(1) := "b10000".U
 
         // i_vn(23) := "b11111".U
         // i_vn(24) := "b11111".U
@@ -89,61 +90,93 @@ when(nonZeroCount === 4){
         // i_vn(13) := "b11000".U
 
     }.elsewhen(noneachrow(0) === 3){
-      i_vn(15) := "b11011".U
-      i_vn(16) := "b11011".U
-
-      i_vn(11) := "b11101".U
-      i_vn(12) := "b11101".U
-
-      i_vn(7) := "b10111".U
+      //for adder 0 en
+    i_vn(0) := "b10000".U
+    i_vn(1) := "b10000"
+    //for adder 1 en
+    i_vn(1) := "b11000".U
+    i_vn(2) := "b11000".U
+    // for adder 2 cmd right select
+    i_vn(3) := "b11100".U
+    i_vn(4) := "b11110".U
     }
     when (noneachrow(1) === 2 ){
-      i_vn(7) := "b10111".U
-      i_vn(8):= "b10111".U
+      // FOR ADDER 2 EN
+      i_vn(2) := "b10111".U
+      i_vn(3):= "b10111".U
 
-      i_vn(16) := "b11011".
+    
 
 
     }.elsewhen(noneachrow(1) === 3){
-        i_vn(7) := "b10111".U
-        i_vn(8):= "b10111".U
+        // FOR ADDER 2 EN
+      i_vn(2) := "b10111".U
+      i_vn(3):= "b10111".U
+
+      // FOR ADDER 0 CMD LEFT SELECT AND ADDER 1 EN
+      i_vn(1) := "b10111".U
+
+       i_vn(0) := "b10011".U
+
+
 
     }
 }.elsewhen(nonZeroCount === 2){
   when(noneachrow(0) === 2){
-    i_vn(15) := "b11011".U
-    i_vn(16) := "b11011".U
+    //for adder 0 en
+    i_vn(0) := "b10000".U
+    i_vn(1) := "b10000".U
   }
     
 }.elsewhen(nonZeroCount === 3){
   when(noneachrow(0) === 2){
-    i_vn(15) := "b11011".U
-    i_vn(16) := "b11011".U
+    //for adder 0 en
+    i_vn(0) := "b10000".U
+    i_vn(1) := "b10000".U
   }.elsewhen(noneachrow(0) === 3){
-    i_vn(15) := "b11011".U
-    i_vn(16) := "b11011".U
+    //for adder 0 en
+    i_vn(0) := "b10000".U
+    i_vn(1) := "b10000"
+    //for adder 1 en
+    i_vn(1) := "b11000".U
+    i_vn(2) := "b11000".U
+    // for adder 2 cmd right select
+    i_vn(3) := "b11100".U
+    i_vn(4) := "b11110".U
 
-    i_vn(11) := "b11101".U
-    i_vn(12) := "b11101".U
 
-    i_vn(7) := "b10111".U
+
+    
   }
   when(noneachrow(1) === 2){
+    // FOR CMD ADDER LEFT SELECT AND ADDER 1 EN
+    i_vn(0) := "b10000".U
+
+    i_vn(1) := "b11000".U
+    i_vn(2) := "b11000".U
+
+    // for adder 2 cmd right select
+    i_vn(3) := "b11100".U
+    i_vn(4) := "b11110".U
+
+
+  }
+
+}.elsewhen(nonZeroCount === 5){
+  when(noneachrow(0) === 5){
+    i_vn(15) := "b11011".U
+    i_vn(16) := "b11011".U
+
     i_vn(2) := "b01111".U
     i_vn(3):= "b01111".U
 
     i_vn(7) := "b10111".U
     i_vn(8):= "b10111".U
 
-    i_vn(16) := "b11011".U
 
-    i_vn(11) := "b11101".U
-    i_vn(12) := "b11101".U
 
 
   }
-
-}
 }
 //python
 // inputData = [
@@ -165,4 +198,3 @@ when(nonZeroCount === 4){
 //         nonZeroCountsInEachRow.append(nonZeroCountInRow)
 
 // print(nonZeroCountsInEachRow)
-
