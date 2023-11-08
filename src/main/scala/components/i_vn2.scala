@@ -49,7 +49,7 @@ for (i <- 0 until inputData.length) {
 for (i <- 0 until NUM_PES) {
   i_vn(i) := random_values(i)
 }
-when(noneachrow(0) === 2 && (noneachrow(0)=== 2 || noneachrow(1) === 1 )){
+when(noneachrow(0) === 2){
      
       // FOR EN ADDER 0
 
@@ -78,4 +78,58 @@ when(noneachrow(0) === 2 && (noneachrow(0)=== 2 || noneachrow(1) === 1 )){
     // for adder 2 cmd right select
     i_vn(3) := "b11100".U
     i_vn(4) := "b11110".U
+    }.elsewhen(noneachrow(0) === 5){
+      // FOR ADDER 0,1,2,3EN
+        i_vn(2) := "b10000".U
+        i_vn(3):= "b10000".U
+  
+      // FOR EN ADDER 0
+      i_vn(0) := "b10000".U
+      i_vn(1) := "b10000".U
+
+      // FOR CMD 4 RIGHT SELECT
+      i_vn(4) := "b10000".U
+
+      i_vn(0) := "b10001".U
+      i_vn(1) := "b10011".U
+
+      // SELECTION LOGIC LEFT OR RIGHT IS IMPLEMENTED IN ABOVE
+    }.elsewhen(noneachrow(0) === 6){
+      // FOR ADDER 0,1,2,3,4 EN
+        i_vn(2) := "b10000".U
+        i_vn(3):= "b10000".U
+  
+      // FOR EN ADDER 0
+      i_vn(0) := "b10000".U
+      i_vn(1) := "b10000".U
+
+      // FOR CMD 4 RIGHT SELECT
+      i_vn(4) := "b10000".U
+      i_vn(5) := "b10000".U
+
+      // SELECTION LOGIC LEFT OR RIGHT IS IMPLEMENTED IN ABOVE
+      i_vn(0) := "b10001".U
+      i_vn(1) := "b10011".U
+
+    }.elsewhen(noneachrow(0) === 6){
+      // FOR ADDER 0,1,2,3,4,5 EN
+        i_vn(2) := "b10000".U
+        i_vn(3):= "b10000".U
+
+        i_vn(6) := "b10000".U
+  
+      // FOR EN ADDER 0
+      i_vn(0) := "b10000".U
+      i_vn(1) := "b10000".U
+
+      // FOR CMD 6 RIGHT SELECT
+      i_vn(4) := "b10000".U
+      i_vn(5) := "b10000".U
+
+      i_vn(6) := "b10000".U
+      i_vn(7) := "b10000".U
+    // SELECTION LOGIC LEFT OR RIGHT IS IMPLEMENTED IN ABOVE
+
+      i_vn(0) := "b10001".U
+      i_vn(1) := "b10011".U
     }
