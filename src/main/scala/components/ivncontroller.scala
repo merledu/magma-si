@@ -49,129 +49,111 @@ for (i <- 0 until inputData.length) {
 for (i <- 0 until NUM_PES) {
   i_vn(i) := random_values(i)
 }
-when(nonZeroCount === 4){
-    when(noneachrow(0) === 2 ){
-        // i_vn(3):= "b11101".U
-        // i_vn(4):= "b11101".U
 
-        // i_vn(7) := "b10111".U
-        // i_vn(8):= "b10111".U
+for (j <- 0 until noneachrow(0)) {
+    i_vn(j) := "b00111".U
+  }
+for (j <- 0 until noneachrow(1)) {
+    i_vn(j + noneachrow(0)) := "b11001".U
+  }
+for (j <- 0 until noneachrow(2)) {
+    i_vn(j +  noneachrow(0) + noneachrow(1)) := "b00010".U
+  }
+for (j <- 0 until noneachrow(3)) {
+    i_vn(j +  noneachrow(0) + noneachrow(1) + noneachrow(2)) := "b10111".U
+  }
+for (j <- 0 until noneachrow(4)) {
+    i_vn(j + noneachrow(0) +noneachrow(1) + noneachrow(2) + noneachrow(3)) := "b10000".U
+  }
+for (j <- 0 until noneachrow(5)) {
+    i_vn(j + noneachrow(0) + noneachrow(1) + noneachrow(2) +noneachrow(3) + noneachrow(4)) := "b10101".U
+  }
+for (j <- 0 until noneachrow(6)) {
+    i_vn(j + noneachrow(0) + noneachrow(1) + noneachrow(2) +noneachrow(3) + noneachrow(4) + noneachrow(5)) := "b10100".U
+  }
+for (j <- 0 until noneachrow(7)) {
+    i_vn(j + noneachrow(0) + noneachrow(1) + noneachrow(2) + noneachrow(3) + noneachrow(4) + noneachrow(5) +  noneachrow(6)) := "b01110".U
+  }
+for (j <- 0 until noneachrow(8)) {
+    i_vn(j + noneachrow(0) + noneachrow(1) + noneachrow(2) + noneachrow(3) + noneachrow(4) + noneachrow(5) + noneachrow(6) + noneachrow(7)) := "b01000".U
+  }
+for (j <- 0 until noneachrow(9)) {
+    i_vn(j + noneachrow(0) + noneachrow(1) + noneachrow(2) + noneachrow(3) + noneachrow(4) + noneachrow(5) + noneachrow(6) + noneachrow(7) + noneachrow(8)) := "b10000".U
+  }
+for (j <- 0 until noneachrow(10)) {
+    i_vn(j + noneachrow(0) + noneachrow(1) + noneachrow(2) + noneachrow(3) + noneachrow(4) + noneachrow(5) + noneachrow(6) + noneachrow(7) + noneachrow(8) + noneachrow(9)) := "b11111".U
+  }
+for (j <- 0 until noneachrow(11)) {
+    i_vn(j + noneachrow(0) + noneachrow(1) + noneachrow(2) + noneachrow(3) + noneachrow(4) + noneachrow(5) + noneachrow(6) + noneachrow(7) + noneachrow(8) + noneachrow(9)+noneachrow(10)) := "b11110".U
+  }
+for (j <- 0 until noneachrow(12)) {
+    i_vn(j + noneachrow(0) + noneachrow(1) + noneachrow(2) + noneachrow(3) + noneachrow(4) + noneachrow(5) + noneachrow(6) + noneachrow(7) + noneachrow(8) + noneachrow(9)+noneachrow(10)+ noneachrow(11)) := "b00001".U
+  }
+for (j <- 0 until noneachrow(13)) {
+    i_vn(j + noneachrow(0) + noneachrow(1) + noneachrow(2) + noneachrow(3) + noneachrow(4) + noneachrow(5) + noneachrow(6) + noneachrow(7) + noneachrow(8) + noneachrow(9)+noneachrow(10)+ noneachrow(11)+ noneachrow(12)) := "b01000".U
+  }
+for (j <- 0 until noneachrow(14)) {
+    i_vn(j +noneachrow(0) + noneachrow(1) + noneachrow(2) + noneachrow(3) + noneachrow(4) + noneachrow(5) + noneachrow(6) + noneachrow(7) + noneachrow(8) + noneachrow(9)+noneachrow(10)+ noneachrow(11)+ noneachrow(12) + noneachrow(13)) := "b01101".U
+  }
+for (j <- 0 until noneachrow(15)) {
+    i_vn(j + noneachrow(0) + noneachrow(1) + noneachrow(2) + noneachrow(3) + noneachrow(4) + noneachrow(5) + noneachrow(6) + noneachrow(7) + noneachrow(8) + noneachrow(9)+noneachrow(10)+ noneachrow(11)+ noneachrow(12) + noneachrow(13)+noneachrow(14)) := "b01110".U
+  }
+for (j <- 0 until noneachrow(16)) {
+    i_vn(j + noneachrow(0) + noneachrow(1) + noneachrow(2) + noneachrow(3) + noneachrow(4) + noneachrow(5) + noneachrow(6) + noneachrow(7) + noneachrow(8) + noneachrow(9)+noneachrow(10)+ noneachrow(11)+ noneachrow(12) + noneachrow(13)+noneachrow(14)noneachrow(15)) := "b10010".U
+  }
+for (j <- 0 until noneachrow(17)) {
+    i_vn(j + noneachrow(0) + noneachrow(1) + noneachrow(2) + noneachrow(3) + noneachrow(4) + noneachrow(5) + noneachrow(6) + noneachrow(7) + noneachrow(8) + noneachrow(9)+noneachrow(10)+ noneachrow(11)+ noneachrow(12) + noneachrow(13)+noneachrow(14)noneachrow(15)+noneachrow(16)) := "b11110".U
+  }
+for (j <- 0 until noneachrow(18)) {
+    i_vn(j + noneachrow(0) + noneachrow(1) + noneachrow(2) + noneachrow(3) + noneachrow(4) + noneachrow(5) + noneachrow(6) + noneachrow(7) + noneachrow(8) + noneachrow(9)+noneachrow(10)+ noneachrow(11)+ noneachrow(12) + noneachrow(13)+noneachrow(14)noneachrow(15)+noneachrow(16)+noneachrow(17)) := "b01011".U
+  }
+for (j <- 0 until noneachrow(19)) {
+    i_vn(j +  noneachrow(0) + noneachrow(1) + noneachrow(2) + noneachrow(3) + noneachrow(4) + noneachrow(5) + noneachrow(6) + noneachrow(7) + noneachrow(8) + noneachrow(9)+noneachrow(10)+ noneachrow(11)+ noneachrow(12) + noneachrow(13)+noneachrow(14)noneachrow(15)+noneachrow(16)+noneachrow(17) + noneachrow(18)) := "b10100".U
+  }
+for (j <- 0 until noneachrow(20)) {
+    i_vn(j + noneachrow(0) + noneachrow(1) + noneachrow(2) + noneachrow(3) + noneachrow(4) + noneachrow(5) + noneachrow(6) + noneachrow(7) + noneachrow(8) + noneachrow(9)+noneachrow(10)+ noneachrow(11)+ noneachrow(12) + noneachrow(13)+noneachrow(14)noneachrow(15)+noneachrow(16)+noneachrow(17) + noneachrow(18)+noneachrow(19)) := "b00100".U
+  }
+for (j <- 0 until noneachrow(21)) {
+    i_vn(j + noneachrow(0) + noneachrow(1) + noneachrow(2) + noneachrow(3) + noneachrow(4) + noneachrow(5) + noneachrow(6) + noneachrow(7) + noneachrow(8) + noneachrow(9)+noneachrow(10)+ noneachrow(11)+ noneachrow(12) + noneachrow(13)+noneachrow(14)noneachrow(15)+noneachrow(16)+noneachrow(17) + noneachrow(18)+noneachrow(19) +noneachrow(20)) := "b00010".U
+
+  }
+for (j <- 0 until noneachrow(22)) {
+    i_vn(j + noneachrow(0) + noneachrow(1) + noneachrow(2) + noneachrow(3) + noneachrow(4) + noneachrow(5) + noneachrow(6) + noneachrow(7) + noneachrow(8) + noneachrow(9)+noneachrow(10)+ noneachrow(11)+ noneachrow(12) + noneachrow(13)+noneachrow(14)noneachrow(15)+noneachrow(16)+noneachrow(17) + noneachrow(18)+noneachrow(19)+noneachrow(20)+noneachrow(21)) := "b01101".U
  
-        // i_vn(11) := "b01111".U
-        // i_vn(12) := "b01111".U
-      // FOR EN ADDER 0
-      i_vn(0) := "b10000".U
-      i_vn(1) := "b10000".U
-
-        // i_vn(23) := "b11111".U
-        // i_vn(24) := "b11111".U
-
-        // i_vn(18) := "b11111".U
-        // i_vn(13) := "b11000".U
-    }.elsewhen(noneachrow(0) === 4 ){
-      // FOR ADDER 0,1,2 EN
-        i_vn(2) := "b10000".U
-        i_vn(3):= "b10000".U
-        // i_vn(4):= "b11101".U
-
-        // i_vn(7) := "b10111".U
-        // i_vn(8):= "b10111".U
-
-        // i_vn(11) := "b01111".U
-        // i_vn(12) := "b01111".U
-      // FOR EN ADDER 0
-      i_vn(0) := "b10000".U
-      i_vn(1) := "b10000".U
-
-        // i_vn(23) := "b11111".U
-        // i_vn(24) := "b11111".U
-
-        // i_vn(18) := "b11111".U
-        // i_vn(13) := "b11000".U
-
-    }.elsewhen(noneachrow(0) === 3){
-      //for adder 0 en
-    i_vn(0) := "b10000".U
-    i_vn(1) := "b10000"
-    //for adder 1 en
-    i_vn(1) := "b11000".U
-    i_vn(2) := "b11000".U
-    // for adder 2 cmd right select
-    i_vn(3) := "b11100".U
-    i_vn(4) := "b11110".U
-    }
-    when (noneachrow(1) === 2 ){
-      // FOR ADDER 2 EN
-      i_vn(2) := "b10111".U
-      i_vn(3):= "b10111".U
-
-    
-
-
-    }.elsewhen(noneachrow(1) === 3){
-        // FOR ADDER 2 EN
-      i_vn(2) := "b10111".U
-      i_vn(3):= "b10111".U
-
-      // FOR ADDER 0 CMD LEFT SELECT AND ADDER 1 EN
-      i_vn(1) := "b10111".U
-
-       i_vn(0) := "b10011".U
-
-
-
-    }
-}.elsewhen(nonZeroCount === 2){
-  when(noneachrow(0) === 2){
-    //for adder 0 en
-    i_vn(0) := "b10000".U
-    i_vn(1) := "b10000".U
   }
-    
-}.elsewhen(nonZeroCount === 3){
-  when(noneachrow(0) === 2){
-    //for adder 0 en
-    i_vn(0) := "b10000".U
-    i_vn(1) := "b10000".U
-  }.elsewhen(noneachrow(0) === 3){
-    //for adder 0 en
-    i_vn(0) := "b10000".U
-    i_vn(1) := "b10000"
-    //for adder 1 en
-    i_vn(1) := "b11000".U
-    i_vn(2) := "b11000".U
-    // for adder 2 cmd right select
-    i_vn(3) := "b11100".U
-    i_vn(4) := "b11110".U
-
-
-
+for (j <- 0 until noneachrow(23)) {
+    i_vn(j + noneachrow(0) + noneachrow(1) + noneachrow(2) + noneachrow(3) + noneachrow(4) + noneachrow(5) + noneachrow(6) + noneachrow(7) + noneachrow(8) + noneachrow(9)+noneachrow(10)+ noneachrow(11)+ noneachrow(12) + noneachrow(13)+noneachrow(14)noneachrow(15)+noneachrow(16)+noneachrow(17) + noneachrow(18)+noneachrow(19)+noneachrow(20)+noneachrow(21)+noneachrow(22)) := "b10000".U
+   
+  }
+for (j <- 0 until noneachrow(24)) {
+    i_vn(j + noneachrow(0) + noneachrow(1) + noneachrow(2) + noneachrow(3) + noneachrow(4) + noneachrow(5) + noneachrow(6) + noneachrow(7) + noneachrow(8) + noneachrow(9)+noneachrow(10)+ noneachrow(11)+ noneachrow(12) + noneachrow(13)+noneachrow(14)noneachrow(15)+noneachrow(16)+noneachrow(17) + noneachrow(18)+noneachrow(19)+noneachrow(20)+noneachrow(21)+noneachrow(22)+noneachrow(23)) := "b11010".U
+   
+  }
+for (j <- 0 until noneachrow(25)) {
+    i_vn(j + noneachrow(0) + noneachrow(1) + noneachrow(2) + noneachrow(3) + noneachrow(4) + noneachrow(5) + noneachrow(6) + noneachrow(7) + noneachrow(8) + noneachrow(9)+noneachrow(10)+ noneachrow(11)+ noneachrow(12) + noneachrow(13)+noneachrow(14)noneachrow(15)+noneachrow(16)+noneachrow(17) + noneachrow(18)+noneachrow(19)+noneachrow(20)+noneachrow(21)+noneachrow(22)+noneachrow(23)+noneachrow(24)) := "b11010".U
+   
+  }
+for (j <- 0 until noneachrow(26)) {
+    i_vn(j + noneachrow(0) + noneachrow(1) + noneachrow(2) + noneachrow(3) + noneachrow(4) + noneachrow(5) + noneachrow(6) + noneachrow(7) + noneachrow(8) + noneachrow(9)+noneachrow(10)+ noneachrow(11)+ noneachrow(12) + noneachrow(13)+noneachrow(14)noneachrow(15)+noneachrow(16)+noneachrow(17) + noneachrow(18)+noneachrow(19)+noneachrow(20)+noneachrow(21)+noneachrow(22)+noneachrow(23)+noneachrow(24)+noneachrow(25)) := "b00111".U
     
   }
-  when(noneachrow(1) === 2){
-    // FOR CMD ADDER LEFT SELECT AND ADDER 1 EN
-    i_vn(0) := "b10000".U
-
-    i_vn(1) := "b11000".U
-    i_vn(2) := "b11000".U
-
-    // for adder 2 cmd right select
-    i_vn(3) := "b11100".U
-    i_vn(4) := "b11110".U
-
+for (j <- 0 until noneachrow(27)) {
+    i_vn(j + noneachrow(0) + noneachrow(1) + noneachrow(2) + noneachrow(3) + noneachrow(4) + noneachrow(5) + noneachrow(6) + noneachrow(7) + noneachrow(8) + noneachrow(9)+noneachrow(10)+ noneachrow(11)+ noneachrow(12) + noneachrow(13)+noneachrow(14)noneachrow(15)+noneachrow(16)+noneachrow(17) + noneachrow(18)+noneachrow(19)+noneachrow(20)+noneachrow(21)+noneachrow(22)+noneachrow(23)+noneachrow(24)+noneachrow(25)+noneachrow(26)) := "b00010".U
 
   }
+for (j <- 0 until noneachrow(28)) {
+    i_vn(j + noneachrow(0) + noneachrow(1) + noneachrow(2) + noneachrow(3) + noneachrow(4) + noneachrow(5) + noneachrow(6) + noneachrow(7) + noneachrow(8) + noneachrow(9)+noneachrow(10)+ noneachrow(11)+ noneachrow(12) + noneachrow(13)+noneachrow(14)noneachrow(15)+noneachrow(16)+noneachrow(17) + noneachrow(18)+noneachrow(19)+noneachrow(20)+noneachrow(21)+noneachrow(22)+noneachrow(23)+noneachrow(24)+noneachrow(25)+noneachrow(26)+noneachrow(27)) := "b01100".U
+    
+  }
+for (j <- 0 until noneachrow(29)) {
+    i_vn(j +  noneachrow(0) + noneachrow(1) + noneachrow(2) + noneachrow(3) + noneachrow(4) + noneachrow(5) + noneachrow(6) + noneachrow(7) + noneachrow(8) + noneachrow(9)+noneachrow(10)+ noneachrow(11)+ noneachrow(12) + noneachrow(13)+noneachrow(14)noneachrow(15)+noneachrow(16)+noneachrow(17) + noneachrow(18)+noneachrow(19)+noneachrow(20)+noneachrow(21)+noneachrow(22)+noneachrow(23)+noneachrow(24)+noneachrow(25)+noneachrow(26)+noneachrow(27)+noneachrow(28)) := "b11100".U
+  }
+for (j <- 0 until noneachrow(30)) {
+    i_vn(j + noneachrow(0) + noneachrow(1) + noneachrow(2) + noneachrow(3) + noneachrow(4) + noneachrow(5) + noneachrow(6) + noneachrow(7) + noneachrow(8) + noneachrow(9)+noneachrow(10)+ noneachrow(11)+ noneachrow(12) + noneachrow(13)+noneachrow(14)noneachrow(15)+noneachrow(16)+noneachrow(17) + noneachrow(18)+noneachrow(19)+noneachrow(20)+noneachrow(21)+noneachrow(22)+noneachrow(23)+noneachrow(24)+noneachrow(25)+noneachrow(26)+noneachrow(27)+noneachrow(28)+noneachrow(29)) := "b00001".U
+  }
 
-}.elsewhen(nonZeroCount === 5){
-  when(noneachrow(0) === 5){
-    i_vn(15) := "b11011".U
-    i_vn(16) := "b11011".U
 
-    i_vn(2) := "b01111".U
-    i_vn(3):= "b01111".U
 
-    i_vn(7) := "b10111".U
-    i_vn(8):= "b10111".U
 
 
 
@@ -198,3 +180,50 @@ when(nonZeroCount === 4){
 //         nonZeroCountsInEachRow.append(nonZeroCountInRow)
 
 // print(nonZeroCountsInEachRow)
+
+
+//  FOR EANDOM I VN IN PYTHON
+// import random
+
+// # Generate 32 random 5-bit values
+// random_values = [random.randint(0, 31) for _ in range(32)]
+
+// # Define a list of variable names
+// variable_names = [f"i_vn({i})" for i in range(32)]
+
+// # Create a dictionary to store the variable-value pairs
+// variables = {}
+
+// # Assign the values to the variables and store them in the dictionary
+// for i, value in enumerate(random_values):
+//     binary_value = format(value, '05b')  # Convert to 5-bit binary format
+//     variable_name = variable_names[i]
+//     variables[variable_name] = binary_value
+
+// # Now you can access the values using the variable names
+// for variable_name, value in variables.items():
+//     print(f'{variable_name} = "b{value}".U')
+
+
+
+// inputData = [
+//     [1, 7, 2, 0],
+//     [0, 0, 0, 0],
+//     [0, 8, 9, 0]
+// ]
+
+// noneachrow = []
+
+// for i in range(len(inputData)):
+//     count_non_zero = 0
+//     for j in range(len(inputData[i])):
+//         if inputData[i][j] != 0:
+//             count_non_zero += 1
+//     if count_non_zero > 0:
+//         noneachrow.append(count_non_zero)
+// for j in range(noneachrow[1]):
+//     print(j)
+// # for x in range(noneachrow[1]):
+// #     print(x + 2)
+// # print(noneachrow)
+
