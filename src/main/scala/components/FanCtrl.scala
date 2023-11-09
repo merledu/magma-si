@@ -1009,21 +1009,6 @@ class fancontrol(DATA_TYPE: Int = 32, NUM_PES: Int = 32, LOG2_PES: Int = 5) exte
 
     io.o_reduction_valid := r_valid(3)
     io.o_reduction_add :=  VecInit(Seq(
-      r_add_lvl_4Reg(4), 
-      r_add_lvl_3Reg(6),
-      r_add_lvl_3Reg(7), 
-      r_add_lvl_2Reg(8), 
-      r_add_lvl_2Reg(9), 
-      r_add_lvl_2Reg(10), 
-      r_add_lvl_2Reg(11), 
-      r_add_lvl_1Reg(8),
-      r_add_lvl_1Reg(9),
-      r_add_lvl_1Reg(10),
-      r_add_lvl_1Reg(11),
-      r_add_lvl_1Reg(12),
-      r_add_lvl_1Reg(13),
-      r_add_lvl_1Reg(14),
-      r_add_lvl_1Reg(15),        
       r_add_lvl_0Reg(0),
       r_add_lvl_0Reg(1),
       r_add_lvl_0Reg(2),
@@ -1039,28 +1024,32 @@ class fancontrol(DATA_TYPE: Int = 32, NUM_PES: Int = 32, LOG2_PES: Int = 5) exte
       r_add_lvl_0Reg(12),
       r_add_lvl_0Reg(13),
       r_add_lvl_0Reg(14),
-      r_add_lvl_0Reg(15)
+      r_add_lvl_0Reg(15),
+      r_add_lvl_1Reg(8),
+      r_add_lvl_1Reg(9),
+      r_add_lvl_1Reg(10),
+      r_add_lvl_1Reg(11),
+      r_add_lvl_1Reg(12),
+      r_add_lvl_1Reg(13),
+      r_add_lvl_1Reg(14),
+      r_add_lvl_1Reg(15),
+      r_add_lvl_2Reg(8), 
+      r_add_lvl_2Reg(9), 
+      r_add_lvl_2Reg(10), 
+      r_add_lvl_2Reg(11), 
+      r_add_lvl_3Reg(6),
+      r_add_lvl_3Reg(7),    
+      r_add_lvl_4Reg(4)
+  
+      
+        
+
       ))
 
 
     
     io.o_reduction_cmd := VecInit(Seq(
-      r_cmd_lvl_4Reg(4),
-      r_cmd_lvl_3Reg(6),
-      r_cmd_lvl_3Reg(7),
-      r_cmd_lvl_2Reg(8),
-      r_cmd_lvl_2Reg(9),
-      r_cmd_lvl_2Reg(10),
-      r_cmd_lvl_2Reg(11),
-      r_cmd_lvl_1Reg(8),
-      r_cmd_lvl_1Reg(9),
-      r_cmd_lvl_1Reg(10),
-      r_cmd_lvl_1Reg(11),
-      r_cmd_lvl_1Reg(12),
-      r_cmd_lvl_1Reg(13),
-      r_cmd_lvl_1Reg(14),
-      r_cmd_lvl_1Reg(15),
-      r_cmd_lvl_0Reg(0),
+        r_cmd_lvl_0Reg(0),
       r_cmd_lvl_0Reg(1),
       r_cmd_lvl_0Reg(2),
       r_cmd_lvl_0Reg(3),
@@ -1075,15 +1064,38 @@ class fancontrol(DATA_TYPE: Int = 32, NUM_PES: Int = 32, LOG2_PES: Int = 5) exte
       r_cmd_lvl_0Reg(12),
       r_cmd_lvl_0Reg(13),
       r_cmd_lvl_0Reg(14),
-      r_cmd_lvl_0Reg(15)
+      r_cmd_lvl_0Reg(15),
+      r_cmd_lvl_1Reg(8),
+      r_cmd_lvl_1Reg(9),
+      r_cmd_lvl_1Reg(10),
+      r_cmd_lvl_1Reg(11),
+      r_cmd_lvl_1Reg(12),
+      r_cmd_lvl_1Reg(13),
+      r_cmd_lvl_1Reg(14),
+      r_cmd_lvl_1Reg(15),
+      r_cmd_lvl_2Reg(8),
+      r_cmd_lvl_2Reg(9),
+      r_cmd_lvl_2Reg(10),
+      r_cmd_lvl_2Reg(11),
+      r_cmd_lvl_3Reg(6),
+      r_cmd_lvl_3Reg(7),
+      r_cmd_lvl_4Reg(4)
+      
+  
+
+    
 
       ))
 
     io.o_reduction_sel := VecInit(Seq(
-      r_sel_lvl_4Reg(16),
-      r_sel_lvl_4Reg(17), 
-      r_sel_lvl_4Reg(18), 
-      r_sel_lvl_4Reg(19),  
+         r_sel_lvl_2Reg(16),
+      r_sel_lvl_2Reg(17),
+      r_sel_lvl_2Reg(18),
+      r_sel_lvl_2Reg(19),
+      r_sel_lvl_2Reg(20),
+      r_sel_lvl_2Reg(21),
+      r_sel_lvl_2Reg(22),
+      r_sel_lvl_2Reg(23),
       r_sel_lvl_3Reg(24),
       r_sel_lvl_3Reg(25), 
       r_sel_lvl_3Reg(26),  
@@ -1091,15 +1103,13 @@ class fancontrol(DATA_TYPE: Int = 32, NUM_PES: Int = 32, LOG2_PES: Int = 5) exte
       r_sel_lvl_3Reg(28), 
       r_sel_lvl_3Reg(29), 
       r_sel_lvl_3Reg(30),
-      r_sel_lvl_3Reg(31),  
-      r_sel_lvl_2Reg(16),
-      r_sel_lvl_2Reg(17),
-      r_sel_lvl_2Reg(18),
-      r_sel_lvl_2Reg(19),
-      r_sel_lvl_2Reg(20),
-      r_sel_lvl_2Reg(21),
-      r_sel_lvl_2Reg(22),
-      r_sel_lvl_2Reg(23)
+      r_sel_lvl_3Reg(31),
+      r_sel_lvl_4Reg(16),
+      r_sel_lvl_4Reg(17), 
+      r_sel_lvl_4Reg(18), 
+      r_sel_lvl_4Reg(19)
+  
+   
       
       ))
 }
