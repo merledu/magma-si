@@ -3,7 +3,7 @@ package magmasi.components
 import chisel3._
 import chisel3.util._
 
-class Fan(Num : Int = 4 , Data_type : 32 ) extends Module {
+class Fan4(Num : Int = 4 , Data_type : 32 ) extends Module {
     val io = IO(new Bundle{
         val i_valid = Input(UInt(1.W))
         val i_data_bus = Input(Vec(Num, UInt(Data_type.W)))
@@ -13,6 +13,7 @@ class Fan(Num : Int = 4 , Data_type : 32 ) extends Module {
          val i_sel_bus = Input(Vec(20, UInt(1.W)))
         val o_valid = Output(Vec(Num, UInt(1.W)))
         val o_data_bus = Output(Vec(Num, UInt(Data_type.W)))
+        val o_adder = Output(Vec(Num-1, UInt(Data_type.W)))
     })
 
 
@@ -196,6 +197,16 @@ class Fan(Num : Int = 4 , Data_type : 32 ) extends Module {
     }
     io.o_valid(2) := r_lvl_output_ff_valid(6)
     io.o_valid(3) := r_lvl_output_ff_valid(7)
+
+
+
+    io.o_adder(0) :=  0.U
+    io.o_adder(1) :=  0.U
+    io.o_adder(2) :=  0.U
+
+    io.o_adder(0) :=  w_fan_lvl_0(0)
+    io.o_adder(1) :=  w_fan_lvl_1(0)
+    io.o_adder(2) :=  w_fan_lvl_0(1)
 
 }
 
