@@ -20,6 +20,14 @@ class ivncontrol4(DATA_TYPE: Int = 32, NUM_PES: Int = 4, LOG2_PES: Int = 5) exte
 
     var valid = WireDefault(false.B)
 
+    var valid1 = WireDefault(false.B)
+
+    val numRows = io.Stationary_matrix.length.U
+    val numCols = io.Stationary_matrix(0).length.U 
+
+    // dontTouch(numRows)
+    // dontTouch(numCols)
+
     val i = RegInit(0.U(32.W))
     val j = RegInit(0.U(32.W))
     
@@ -34,10 +42,19 @@ class ivncontrol4(DATA_TYPE: Int = 32, NUM_PES: Int = 4, LOG2_PES: Int = 5) exte
 
 
     mat(i)(j) := io.Stationary_matrix(i)(j)
-
-    when ( io.Stationary_matrix(i)(j) =/= 0.U){
-        count(i) := count(i)+1.U
+    when(valid1=== false.B){
+        when ( io.Stationary_matrix(i)(j) =/= 0.U){
+            count(i) := count(i)+1.U
+            dontTouch(count)
     }
+    }
+    
+
+    when (count(1) >= 2.U) {
+        valid1 := true.B 
+    
+    }
+    dontTouch(valid1)
 
     when ( i === 1.U && (j === 1.U)){
     for ( i <- 0 until 2){
@@ -72,9 +89,9 @@ class ivncontrol4(DATA_TYPE: Int = 32, NUM_PES: Int = 4, LOG2_PES: Int = 5) exte
     
     
 
-    println(rowcount(0))
-     printf("Value of data: %d\n", rowcount(0))
-     printf("Value of data: %d\n", rowcount(1))
+   // println(rowcount(0))
+    //  printf("Value of data: %d\n", rowcount(0))
+    //  printf("Value of data: %d\n", rowcount(1))
 
 
     when ( i === 1.U && (j === 1.U)){
