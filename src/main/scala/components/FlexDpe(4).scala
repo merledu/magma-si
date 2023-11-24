@@ -25,9 +25,10 @@ class flexdpecom4(IN_DATA_TYPE : Int = 32 ,DATA_TYPE: Int = 32, NUM_PES: Int = 4
     val LEVELS   : Int = (2 * (math.log(NUM_PES) / math.log(2))).toInt + 1
 
      val r_mult = RegInit(VecInit(Seq.fill(NUM_PES)(0.U((DATA_TYPE-1).W))))
- val matrix = Reg(Vec(2, Vec(2, UInt(DATA_TYPE.W))))
+    val matrix = Reg(Vec(2, Vec(2, UInt(DATA_TYPE.W))))
 
-    matrix(0)(0) := 0.U
+    matrix(0)(0) := 1.U
+    dontTouch(matrix)
     val r_stationary_ff = Reg(Bool())
     val r_stationary_ff2 = Reg(Bool())
 
@@ -87,4 +88,10 @@ class flexdpecom4(IN_DATA_TYPE : Int = 32 ,DATA_TYPE: Int = 32, NUM_PES: Int = 4
     io.o_valid := my_fan_network.io.o_valid
     io.o_data_bus := my_fan_network.io.o_data_bus
     io.o_adder :=  my_fan_network.io.o_adder
+
+   matrix(0)(0) := io.o_adder(0)
+   matrix(1)(0) := io.o_adder(2)
+    dontTouch(matrix)
+
+    clock(200)
 }
