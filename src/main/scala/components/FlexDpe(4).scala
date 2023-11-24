@@ -25,7 +25,9 @@ class flexdpecom4(IN_DATA_TYPE : Int = 32 ,DATA_TYPE: Int = 32, NUM_PES: Int = 4
     val LEVELS   : Int = (2 * (math.log(NUM_PES) / math.log(2))).toInt + 1
 
      val r_mult = RegInit(VecInit(Seq.fill(NUM_PES)(0.U((DATA_TYPE-1).W))))
+ val matrix = Reg(Vec(2, Vec(2, UInt(DATA_TYPE.W))))
 
+    matrix(0)(0) := 0.U
     val r_stationary_ff = Reg(Bool())
     val r_stationary_ff2 = Reg(Bool())
 
@@ -68,7 +70,7 @@ class flexdpecom4(IN_DATA_TYPE : Int = 32 ,DATA_TYPE: Int = 32, NUM_PES: Int = 4
       
       buffer_mult.io.buffer1 := w_dist_bus1
       buffer_mult.io.buffer2 := w_dist_bus2 
-     
+      
       r_mult := buffer_mult.io.out
 
 
