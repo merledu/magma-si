@@ -43,7 +43,7 @@ class flexdpecom4test extends AnyFreeSpec with ChiselScalatestTester {
             c.io.i_stationary.poke(1.B)
             c.io.i_data_valid.poke(1.B)
 
-        c.clock.step(100)
+        c.clock.step(60)
 
              // for input data base 1
             c.io.i_data_bus(0).poke(1.U)
@@ -80,7 +80,7 @@ class flexdpecom4test extends AnyFreeSpec with ChiselScalatestTester {
             c.io.i_data_valid.poke(1.B)
     
             
-        c.clock.step(200)
+        c.clock.step(120)
     }
   }
 }
