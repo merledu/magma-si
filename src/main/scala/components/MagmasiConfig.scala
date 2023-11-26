@@ -10,8 +10,7 @@ case class MagmasiConfig (
     val MaxRows :Int = 4,
     val MaxCols :Int = 4,
     val LOG2_PES :Int = 5,
-    val NoOfFDPE :Int = 3
+    val NoOfFDPE :Int = 1 // 2 FlexDPE will be generated always
 ) {
     val LEVELS   : Int = (2 * (math.log(NUM_IN) / math.log(2))).toInt + 1
-    println(LEVELS)
 }

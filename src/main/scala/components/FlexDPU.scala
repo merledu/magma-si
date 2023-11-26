@@ -31,12 +31,17 @@ class FlexDPU(implicit val config:MagmasiConfig) extends Module{
     PathFInder.io.Stationary_matrix := io.Stationary_matrix
 
 
+
     val i = RegInit(0.U(32.W))
-    val mat2_column = WireInit(VecInit(Seq.fill(config.MaxRows)(0.U(config.DATA_TYPE.W))))
+    val mat2_column = WireInit(VecInit(Seq.fill(config.MaxCols)(0.U(config.DATA_TYPE.W))))
+    val mat1_row = WireInit(VecInit(Seq.fill(config.MaxRows)(0.U(config.DATA_TYPE.W))))
+
     for (j <- 0 until config.MaxRows){
+      mat1_row(j) := io.Stationary_matrix(i)(j)
       mat2_column(j) := io.Streaming_matrix(j)(i)
     }
     PathFInder.io.Streaming_matrix := mat2_column
+    PathFInder.io.NoDPE := 1.U
     val a = Wire(UInt(config.DATA_TYPE.W))
     a := io.Streaming_matrix(0)(0)
     dontTouch(a)
@@ -47,12 +52,28 @@ class FlexDPU(implicit val config:MagmasiConfig) extends Module{
     dontTouch(mux)
     dontTouch(src)
     dontTouch(dest)
+
+    
     when (PathFInder.io.PF_Valid === 1.B){
+      
+      
+      
+      
+      
+      
+      
+      
+      
       for (i <- 0 until config.MaxRows*config.MaxCols){
           mux(i) := PathFInder.io.i_mux_bus(i)
           src(i) := PathFInder.io.Source(i)
           dest(i) := PathFInder.io.destination(i)
         }
+      i := i + 1.U
+      
+      
+      
+      
       }
     
 

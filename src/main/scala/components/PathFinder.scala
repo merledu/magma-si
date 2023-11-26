@@ -11,6 +11,7 @@ class PathFinder(implicit val config: MagmasiConfig) extends Module {
     val Source = Output(Vec(config.MaxRows * config.MaxCols, UInt(config.DATA_TYPE.W)))
     val destination = Output(Vec(config.MaxRows * config.MaxCols, UInt(config.DATA_TYPE.W)))
     val PF_Valid = Output(Bool())
+    val NoDPE = Input(UInt(32.W))
   })
 io.PF_Valid := 1.B
 
@@ -29,13 +30,19 @@ io.PF_Valid := 1.B
   myCounter.io.Stationary_matrix := io.Stationary_matrix
   myCounter.io.Streaming_matrix := io.Streaming_matrix
 
-  when((delay >= (config.MaxRows * config.MaxCols).U) && myCounter.io.counterMatrix1.valid && myCounter.io.counterMatrix2.valid) {
-    
+
+  val Distribution = Module(new Distribution)
+  Distribution.io.s := io.NoDPE
+
+  Distribution.io.matrix := myCounter.io.counterMatrix1.bits
+
+  // when((delay >= (config.MaxRows * config.MaxCols).U) && myCounter.io.counterMatrix1.valid && myCounter.io.counterMatrix2.valid) {
+    when (Distribution.io.ProcessValid){
     myCounter.io.counterMatrix1.ready := 1.B
     myCounter.io.counterMatrix2.ready := 1.B
     myMuxes.io.mat1 := io.Stationary_matrix
     myMuxes.io.mat2 := io.Streaming_matrix
-    myMuxes.io.counterMatrix1 <> myCounter.io.counterMatrix1.bits
+    myMuxes.io.counterMatrix1 <> Distribution.io.out
     myMuxes.io.counterMatrix2 <> myCounter.io.counterMatrix2.bits
     
   }.otherwise{
@@ -47,6 +54,9 @@ io.PF_Valid := 1.B
     myMuxes.io.counterMatrix2 := counterRegs2
   
   }
+
+
+
   io.PF_Valid := myMuxes.io.valid
   io.i_mux_bus := myMuxes.io.i_mux_bus
   io.Source := myMuxes.io.Source
