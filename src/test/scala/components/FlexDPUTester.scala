@@ -8,7 +8,7 @@ import org.scalatest.freespec.AnyFreeSpec
 class FlexDPUTester extends AnyFreeSpec with ChiselScalatestTester {
     "FlexDPU tester" in {
         implicit val config = MagmasiConfig()
-        test(new FlexDPU()){ c =>
+        test(new FlexDPU2()){ c =>
         val inputData = Seq(
            Seq(1, 7, 2, 0),
             Seq(3, 4, 1, 0),
