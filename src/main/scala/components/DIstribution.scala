@@ -21,14 +21,13 @@ class Distribution(implicit val config:MagmasiConfig) extends Module{
     dontTouch(count)
     dontTouch(Idex)
     dontTouch(Jdex)
-    dontTouch(ValidDex)
     
 
-    when (a && (i < (config.MaxRows-1).U) && (j < (config.MaxCols-1).U)){
+    when ((io.matrix(i)(j) === 1.U) && (i < (config.MaxRows-1).U) && (j < (config.MaxCols-1).U)){
         count := count + 1.U
         Idex(count) := i
         Jdex(count) := j
-    }.elsewhen(a && (i === (config.MaxRows-1).U) && (j === (config.MaxCols-1).U)){
+    }.elsewhen((io.matrix(i)(j) === 1.U) && (i === (config.MaxRows-1).U) && (j === (config.MaxCols-1).U)){
         Idex(count) := i
         Jdex(count) := j
     }

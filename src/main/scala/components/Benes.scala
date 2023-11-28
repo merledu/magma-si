@@ -3,20 +3,20 @@ package magmasi.components
 import chisel3._
 import chisel3.util._
 
-class MyBenes4(DATA_TYPE:Int,NUM_PES:Int) extends Module {
-  val LEVELS   : Int = (2 * (math.log(NUM_PES) / math.log(2))).toInt + 1
+class Benes(implicit val config: MagmasiConfig) extends Module {
+  val LEVELS   : Int = (2 * (math.log(config.NUM_PES) / math.log(2))).toInt + 1
   val io = IO(new Bundle {
-    val i_data_bus2 = Input(Vec(NUM_PES, UInt(DATA_TYPE.W)))
-    val i_data_bus1  = Input(Vec(NUM_PES, UInt(DATA_TYPE.W)))
-    val i_mux_bus   = Input(Vec(NUM_PES, UInt((LEVELS-1).W)))
-    val o_dist_bus1  = Output(Vec(NUM_PES, UInt(DATA_TYPE.W)))
-    val o_dist_bus2  = Output(Vec(NUM_PES, UInt(DATA_TYPE.W)))
+    val i_data_bus2 = Input(Vec(config.NUM_PES, UInt(config.DATA_TYPE.W)))
+    val i_data_bus1  = Input(Vec(config.NUM_PES, UInt(config.DATA_TYPE.W)))
+    val i_mux_bus   = Input(Vec(config.NUM_PES, UInt((LEVELS-1).W)))
+    val o_dist_bus1  = Output(Vec(config.NUM_PES, UInt(config.DATA_TYPE.W)))
+    val o_dist_bus2  = Output(Vec(config.NUM_PES, UInt(config.DATA_TYPE.W)))
   })
 
   io.o_dist_bus1 <> io.i_data_bus1
 
   val inputArrayIndexes = io.i_data_bus1.toArray.zipWithIndex
-  val parse_array = WireInit(VecInit(Seq.fill(NUM_PES+1)(0.U(DATA_TYPE.W))))
+  val parse_array = WireInit(VecInit(Seq.fill(config.NUM_PES+1)(0.U(config.DATA_TYPE.W))))
   //parsing logic here
 
   def BenesLogic( input:UInt , inputindex:UInt , muxes:UInt) : UInt = {
@@ -24,8 +24,8 @@ class MyBenes4(DATA_TYPE:Int,NUM_PES:Int) extends Module {
     val first_stage = Mux(muxes(0), Mux(inputindex % 2.U === 0.U, inputindex + 1.U, inputindex - 1.U), inputindex)
     // first is completed 
 
-    val muxMiddleWidth = muxes(NUM_PES - 2,1).getWidth
-    val boolArray = VecInit(Seq.tabulate(muxMiddleWidth)(i => (muxes(NUM_PES - 2,1))(i)))
+    val muxMiddleWidth = muxes(config.NUM_PES - 2,1).getWidth
+    val boolArray = VecInit(Seq.tabulate(muxMiddleWidth)(i => (muxes(config.NUM_PES - 2,1))(i)))
 
     val newlevel = muxMiddleWidth
     var second_stage = WireInit(first_stage)
@@ -51,7 +51,7 @@ class MyBenes4(DATA_TYPE:Int,NUM_PES:Int) extends Module {
 
   }
 
-  for (i <- 1 until NUM_PES ) {
+  for (i <- 1 until config.NUM_PES ) {
 
     when ( io.i_data_bus2(i) =/= 0.U) {
 
@@ -82,7 +82,7 @@ class MyBenes4(DATA_TYPE:Int,NUM_PES:Int) extends Module {
 
     }.otherwise{
 
-        parse_array(NUM_PES.U ) := 0.U   
+        parse_array(config.NUM_PES.U ) := 0.U   
 
     }
 
@@ -95,11 +95,11 @@ class MyBenes4(DATA_TYPE:Int,NUM_PES:Int) extends Module {
 
   }.otherwise{
 
-    parse_array(NUM_PES) := 0.U
+    parse_array(config.NUM_PES) := 0.U
   
   }
 
-for ( index <- 0 until NUM_PES){
+for ( index <- 0 until config.NUM_PES){
     io.o_dist_bus2(index) := parse_array(index)
 }
 
