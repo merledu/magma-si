@@ -3,7 +3,7 @@ package magmasi.components
 import chisel3._
 import chisel3.util._
 
-class flexdpecom4(IN_DATA_TYPE : Int = 32 ,DATA_TYPE: Int = 32, NUM_PES: Int = 4, LOG2_PES: Int = 5) extends Module {
+class flexdpecom2(IN_DATA_TYPE : Int = 32 ,DATA_TYPE: Int = 32, NUM_PES: Int = 4, LOG2_PES: Int = 5) extends Module {
     implicit val config = MagmasiConfig()
   val io = IO(new Bundle {
     //val i_vn = Input(Vec(NUM_PES, UInt(LOG2_PES.W)))
@@ -18,7 +18,7 @@ class flexdpecom4(IN_DATA_TYPE : Int = 32 ,DATA_TYPE: Int = 32, NUM_PES: Int = 4
 
     val o_valid = Output(Vec(NUM_PES, UInt(1.W)))
     val o_data_bus = Output(Vec(NUM_PES, UInt(DATA_TYPE.W)))
-     val o_adder = Output(Vec(NUM_PES-1, UInt(DATA_TYPE.W)))
+     val o_adder = Output(Vec(NUM_PES, UInt(DATA_TYPE.W)))
     val LEVELS   : Int = (2 * (math.log(NUM_PES) / math.log(2))).toInt + 1
      val i_mux_bus   = Input(Vec(2 * (LEVELS - 2) * NUM_PES + NUM_PES, Bool()))
   })
