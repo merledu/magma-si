@@ -25,7 +25,7 @@ class ivncontrol4(implicit val Config: MagmasiConfig) extends Module {
     val j = RegInit(0.U(32.W))
 
     var rowlength = WireDefault(0.U)
-    
+    var matlength = WireDefault(0.U)
     //var valid = 0.U
     val mat = Reg(Vec(Config.MaxRows, Vec(Config.MaxCols,UInt(32.W))))
 
@@ -39,16 +39,23 @@ class ivncontrol4(implicit val Config: MagmasiConfig) extends Module {
    mat(i)(j) := io.Stationary_matrix(i)(j)
     when(valid1=== false.B){
         when ( io.Stationary_matrix(i)(j) =/= 0.U){
+
             count(i) := count(i)+1.U
             dontTouch(count)
     }
     }
     
+    matlength := mat(1).length.U
+    dontTouch(matlength)
 
-    when (count(1) >= 2.U) {
+
+    when (count(0) > 4.U) {
         valid1 := true.B 
     
     }
+    // when(count(1) >= 0.U){
+    //     valid1 := true.B
+    // }
     dontTouch(valid1) 
 
     when ( i === (Config.MaxRows-1).U && (j === (Config.MaxCols-1).U)){
@@ -56,7 +63,8 @@ class ivncontrol4(implicit val Config: MagmasiConfig) extends Module {
     for ( i <- 0 until Config.MaxRows){
         rowcount(i) := count(i)  
     }}
-
+    dontTouch(i)
+    dontTouch(j)
     dontTouch(rowcount)
 
     when ((i < (Config.MaxRows-1).U) && (j === (Config.MaxCols-1).U)){
@@ -98,6 +106,7 @@ class ivncontrol4(implicit val Config: MagmasiConfig) extends Module {
     dontTouch(valid)
 
      rowlength := rowcount.length.U
+     
 
      dontTouch(rowlength)
 
@@ -109,38 +118,112 @@ class ivncontrol4(implicit val Config: MagmasiConfig) extends Module {
                 when(rowcount(1) === 2.U){
                     i_vn(2) := "b00001".U
                     i_vn(3) := "b00001".U
-                }.otherwise{
+                }.elsewhen(rowcount(1)===1.U){
                     i_vn(2) := "b00001".U
-
+                }.elsewhen(rowcount(1) > 2.U){
+                    i_vn(2) := "b00001".U
+                    i_vn(3) := "b00001".U
                 }
-           }.elsewhen(rowcount(0) === 3.U){
+
+
+            }.elsewhen(rowcount(0)=== 1.U){
+                i_vn(0) := "b00000".U
+                when(rowcount(1)===3.U){
+                    i_vn(1) := "b00001".U
+                    i_vn(2) := "b00001".U
+                    i_vn(3) := "b00001".U
+                }.elsewhen(rowcount(1)===2.U){
+                    i_vn(1) := "b00001".U
+                    i_vn(2) := "b00001".U
+            
+                }.elsewhen(rowcount(1)===1.U){
+                      i_vn(1) := "b00001".U
+                
+                }.elsewhen(rowcount(1)>3.U){
+                     i_vn(1) := "b00001".U
+                    i_vn(2) := "b00001".U
+                    i_vn(3) := "b00001".U
+                }
+            
+            
+                
+
+            }.elsewhen(rowcount(0)=== 3.U){
                 i_vn(0) := "b00000".U
                 i_vn(1) := "b00000".U
                 i_vn(2) := "b00000".U
                 when(rowcount(1) === 1.U){
-                    i_vn(1) := "b00001".U
+                    i_vn(3) := "b00001".U
                 }
 
-           
-            }.elsewhen(rowcount(0) === 1.U){
-                i_vn(0) := "b00000".U
-                when(rowcount(1) === 2.U){
+            }.elsewhen(rowcount(0)=== 0.U){
+                when(rowcount(1)=== 4.U){
+                    i_vn(0) := "b00001".U
                     i_vn(1) := "b00001".U
                     i_vn(2) := "b00001".U
-
-                }.otherwise{
+                    i_vn(3) := "b00001".U
+                }.elsewhen(rowcount(1)===3.U){
+                    i_vn(0) := "b00001".U
                     i_vn(1) := "b00001".U
+                    i_vn(2) := "b00001".U
+                }.elsewhen(rowcount(1)===2.U){
+                    i_vn(0) := "b00001".U
+                    i_vn(1) := "b00001".U
+                }.elsewhen(rowcount(1)===1.U){
+                    i_vn(0) := "b00001".U
                 }
-            }
-        }.elsewhen(rowlength === 1.U){
-            when(rowcount(0) === 2.U ){
+            }.elsewhen(rowcount(0)===4.U){
                 i_vn(0) := "b00000".U
-                i_vn(1) := "b00000".U 
-
-            }.otherwise{
-                i_vn(0) := "b00000".U
+                i_vn(1) := "b00000".U
+                i_vn(2) := "b00000".U
+                i_vn(3) := "b00000".U
             }
+            
+        // // }.elsewhen(rowlength === 2.U){
+        //     when(rowcount(0) === 2.U ){
+        //         i_vn(0) := "b00000".U
+        //         i_vn(1) := "b00000".U 
+        //         when(rowcount(1) === 2.U){
+        //             i_vn(2) := "b00001".U
+        //             i_vn(3) := "b00001".U
+        //         }
+        //     }.elsewhen(rowcount(0) === 3.U){
+        //         i_vn(0) := "b00000".U
+        //         i_vn(1) := "b00000".U
+        //         i_vn(2) := "b00000".U
+        //         when(rowcount(1) === 1.U){
+        //             i_vn(3) := "b00001".U
+        //         }
+        //     }.elsewhen(rowcount(0) === 1.U){
+        //         i_vn(0) := "b00000".U
+        //         when(rowcount(1) === 2.U){
+        //             i_vn(1) := "b00001".U
+        //             i_vn(2) := "b00001".U
+        //         }.elsewhen(rowcount(1) === 1.U){
+        //             i_vn(1) := "b00001".U
+        //             when(rowcount(1)===1.U){
+        //                 i_vn(2) := "b00010".U
+        //                  i_vn(3) := "b00010".U
+        //             }
+        //         }
+        //     }.elsewhen(rowcount(0) >= 4.U){
+        //         i_vn(0) := "b00000".U
+        //         i_vn(1) := "b00000".U
+        //         i_vn(2) := "b00000".U
+        //         i_vn(3) := "b00000".U
+        // }
+        // }
 
-        }
+        // }.elsewhen(rowlength === 1.U){
+        //     when(rowcount(0) === 2.U ){
+        //         i_vn(0) := "b00000".U
+        //         i_vn(1) := "b00000".U 
+
+        //     }.otherwise{
+        //         i_vn(0) := "b00000".U
+        //     }
+
+        // }
+    }
     }
 }
