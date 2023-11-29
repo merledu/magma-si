@@ -8,14 +8,14 @@ import org.scalatest.freespec.AnyFreeSpec
 
 class ivncontrol4Tester extends AnyFreeSpec with ChiselScalatestTester {
     "path finder tester" in {
-        
-        test(new ivncontrol4(32,4,5)){ c =>
+        implicit val Config = MagmasiConfig()
+        test(new ivncontrol4()){ c =>
     
 
         val inputData = Seq(
 
-           Seq(0, 1,0,1),
-           Seq(2, 0,0,4)      
+           Seq(0, 7,0,0),
+          Seq(4, 6,6,9)      
         ) 
 
         val numRows = inputData.length
