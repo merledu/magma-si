@@ -3,29 +3,35 @@ package magmasi.components
 import chisel3._
 import chisel3.util._
 
-class flexdpecom2(IN_DATA_TYPE : Int = 32 ,DATA_TYPE: Int = 32, NUM_PES: Int = 4, LOG2_PES: Int = 5) extends Module {
-    implicit val config = MagmasiConfig()
+class flexdpecom4(implicit val Config: MagmasiConfig) extends Module {
+    //implicit val config = MagmasiConfig()
   val io = IO(new Bundle {
     //val i_vn = Input(Vec(NUM_PES, UInt(LOG2_PES.W)))
     val i_stationary = Input(Bool())
     val i_data_valid = Input(Bool())
-    val i_data_bus = Input(Vec(NUM_PES, UInt(DATA_TYPE.W)))
-    val i_data_bus2  = Input(Vec(NUM_PES, UInt(DATA_TYPE.W)))
+    val i_data_bus = Input(Vec(Config.NUM_PES, UInt(Config.DATA_TYPE.W)))
+    val i_data_bus2  = Input(Vec(Config.NUM_PES, UInt(Config.DATA_TYPE.W)))
 
-    val Stationary_matrix = Input(Vec(2, Vec(2, UInt(DATA_TYPE.W))))
+    val Stationary_matrix = Input(Vec(Config.MaxRows, Vec(Config.MaxCols, UInt(Config.DATA_TYPE.W))))
      
 
 
-    val o_valid = Output(Vec(NUM_PES, UInt(1.W)))
-    val o_data_bus = Output(Vec(NUM_PES, UInt(DATA_TYPE.W)))
-     val o_adder = Output(Vec(NUM_PES, UInt(DATA_TYPE.W)))
-    val LEVELS   : Int = (2 * (math.log(NUM_PES) / math.log(2))).toInt + 1
-     val i_mux_bus   = Input(Vec(2 * (LEVELS - 2) * NUM_PES + NUM_PES, Bool()))
+    val o_valid = Output(Vec(Config.NUM_PES, UInt(1.W)))
+    val o_data_bus = Output(Vec(Config.NUM_PES, UInt(Config.DATA_TYPE.W)))
+     val o_adder = Output(Vec(Config.NUM_PES-1, UInt(Config.DATA_TYPE.W)))
+    val LEVELS   : Int = (2 * (math.log(Config.NUM_PES) / math.log(2))).toInt + 1
+     val i_mux_bus   = Input(Vec(2 * (Config.LEVELS - 2) * Config.NUM_PES + Config.NUM_PES, Bool()))
   })
-    val LEVELS   : Int = (2 * (math.log(NUM_PES) / math.log(2))).toInt + 1
+    val LEVELS   : Int = (2 * (math.log(Config.NUM_PES) / math.log(2))).toInt + 1
 
-     val r_mult = RegInit(VecInit(Seq.fill(NUM_PES)(0.U((DATA_TYPE-1).W))))
+     val r_mult = RegInit(VecInit(Seq.fill(Config.NUM_PES)(0.U((Config.DATA_TYPE-1).W))))
+    val matrix = Reg(Vec(Config.MaxRows, Vec(Config.MaxCols, UInt(Config.DATA_TYPE.W))))
 
+
+    var counter = RegInit(0.U(32.W))
+
+    // matrix(0)(0) := 1.U
+    dontTouch(matrix)
     val r_stationary_ff = Reg(Bool())
     val r_stationary_ff2 = Reg(Bool())
 
@@ -39,7 +45,7 @@ class flexdpecom2(IN_DATA_TYPE : Int = 32 ,DATA_TYPE: Int = 32, NUM_PES: Int = 4
      r_data_valid_ff2 := r_data_valid_ff
     
 
-    val my_ivn= Module(new ivncontrol4(32,4,5))
+    val my_ivn= Module(new ivncontrol4())
     my_ivn.io.Stationary_matrix := io.Stationary_matrix
     val i_vn = my_ivn.io.o_vn
 
@@ -68,7 +74,7 @@ class flexdpecom2(IN_DATA_TYPE : Int = 32 ,DATA_TYPE: Int = 32, NUM_PES: Int = 4
       
       buffer_mult.io.buffer1 := w_dist_bus1
       buffer_mult.io.buffer2 := w_dist_bus2 
-     
+      
       r_mult := buffer_mult.io.out
 
 
@@ -85,4 +91,26 @@ class flexdpecom2(IN_DATA_TYPE : Int = 32 ,DATA_TYPE: Int = 32, NUM_PES: Int = 4
     io.o_valid := my_fan_network.io.o_valid
     io.o_data_bus := my_fan_network.io.o_data_bus
     io.o_adder :=  my_fan_network.io.o_adder
+
+    //  when (counter < 60.U){
+    //   matrix(0)(0) := io.o_adder(0)
+    //   matrix(1)(0) := io.o_adder(2)
+
+    // }
+
+    // // matrix(0)(0) := io.o_adder(0)
+    // // matrix(1)(0) := io.o_adder(2)
+    // dontTouch(matrix)
+
+    // counter := counter + 1.U
+    // dontTouch(counter)
+
+    // when (counter > 100.U){
+    //   matrix(0)(1) := io.o_adder(0)
+    //   matrix(1)(1) := io.o_adder(2)
+
+    // }
+
+
+    
 }
