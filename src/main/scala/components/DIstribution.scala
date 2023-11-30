@@ -9,27 +9,32 @@ class Distribution(implicit val config:MagmasiConfig) extends Module{
     val s = Input(UInt(32.W))
     val out = Output(Vec(config.MaxRows,Vec(config.MaxCols,UInt(32.W))))
     val ProcessValid = Output(Bool())
+    val valid = Input(Bool())
 
     })
+
     val i = RegInit(0.U(32.W))
     val j = RegInit(0.U(32.W))
     val count = RegInit(0.U(32.W))
     val Idex = RegInit(VecInit(Seq.fill(config.MaxRows)(0.U(32.W))))
     val Jdex = RegInit(VecInit(Seq.fill(config.MaxCols)(0.U(32.W))))
+    val mat = RegInit(VecInit(Seq.fill(config.MaxRows)(VecInit(Seq.fill(config.MaxCols)(0.U)))))
+    when ( io.valid){
+    mat := io.matrix
     dontTouch(i)
     dontTouch(j)
     dontTouch(count)
     dontTouch(Idex)
     dontTouch(Jdex)
     
-    val d = 
-    dontTouch(d)
+    val e = (mat(i)(j) === 1.U)
+    dontTouch(e)
 
-    when ((io.matrix(i)(j) === 1.U) && (i < 3.U) && (j < 3.U)){
+    when ((io.matrix(i)(j) === 1.U)  && (i =/= (config.MaxRows-1).U) && (j =/= (config.MaxCols-1).U)){
         count := count + 1.U
         Idex(count) := i
         Jdex(count) := j
-    }.elsewhen((io.matrix(i)(j) === 1.U) && (i === 3.U) && (j === 3.U)){
+    }.elsewhen((io.matrix(i)(j) === 1.U) && (i === (config.MaxRows-1).U) && (j === (config.MaxCols-1).U)){
         Idex(count) := i
         Jdex(count) := j
     }
@@ -48,19 +53,31 @@ part2.io.mat := io.matrix
     dontTouch(part2.io.IDex)
 
     val part3 = Module(new abc3)
+    // part3.io.merge := RegNext(c)
+    // part3.io.mat := io.matrix
+    // part3.io.i_valid := part2.io.ProcessValid
+    //val d = part3.io.valid
+    val check = WireInit(0.B)
+    when(part2.io.Ovalid){
+        check := 0.B
+    }.otherwise{
+        check := 1.B
+    }
+    
+    when (part2.io.ProcessValid && check){
     part3.io.merge := RegNext(c)
     part3.io.mat := io.matrix
     part3.io.i_valid := part2.io.ProcessValid
-    //val d = part3.io.valid
     part3.io.PreMat := part2.io.OutMat
-    when (part2.io.ProcessValid){
-    
     part3.io.mat := io.matrix
     part3.io.IDex := Idex(io.s)
     part3.io.JDex := Jdex(io.s)
     io.out := part3.io.Omat 
     io.ProcessValid := part3.io.valid
-    }.otherwise{
+    }.otherwise{ 
+        part3.io.merge := 0.B
+        part3.io.mat :=VecInit(Seq.fill(4)(VecInit(Seq.fill(4)(0.U(32.W)))))
+        part3.io.i_valid := 0.B
     part3.io.PreMat := VecInit(Seq.fill(4)(VecInit(Seq.fill(4)(0.U(32.W)))))
     part3.io.IDex := 0.U
     part3.io.JDex := 0.U
@@ -87,6 +104,9 @@ part2.io.mat := io.matrix
 
 
 
-
+    }.otherwise{
+        io.out := WireInit(VecInit(Seq.fill(config.MaxRows)(VecInit(Seq.fill(config.MaxCols)(0.U)))))
+        io.ProcessValid := 0.B
+    }
 }
 

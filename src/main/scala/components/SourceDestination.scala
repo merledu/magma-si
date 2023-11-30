@@ -90,7 +90,7 @@ class SourceDestination(implicit val config: MagmasiConfig) extends Module {
       }
     }
 
-    io.valid :=valid1
+    io.valid :=(i === 3.U) && (j === 3.U)//valid1
 
     when ((j === (config.MaxCols - 1).U) && (i === (config.MaxRows - 1).U)){
       io.counterMatrix1.valid := 1.B

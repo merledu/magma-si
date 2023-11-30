@@ -13,12 +13,12 @@ class DistributionTester extends FreeSpec with ChiselScalatestTester {
         test(new Distribution) { a =>
 
         val inputData = Seq(
-           Seq(1, 2, 3, 0),
-            Seq(4, 1, 0,0),
            Seq(1, 2, 3, 4),
-           Seq(0, 0, 0, 1)
+            Seq(0, 0, 0,0),
+           Seq(1, 2, 3, 4),
+           Seq(0, 0, 0, 0)
         ) 
-            a.io.s.poke(0.U)
+            a.io.s.poke(1.U)
         for (i <- 0 until 4) {
           for (j <- 0 until 4) {
             println(j)

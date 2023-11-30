@@ -23,15 +23,25 @@ when (io.DataValid){
   val delay = RegInit(0.U(32.W))
   val myMuxes = Module(new Muxes())
 
-  when(delay < (config.MaxRows*config.MaxCols).U) {
-    delay := delay + 1.U
-  }
+  // when(delay < (config.MaxRows).U) {
+  //   delay := delay + 1.U
+  // }
 
   val myCounter = Module(new SourceDestination())
   myCounter.io.Stationary_matrix := io.Stationary_matrix
   myCounter.io.Streaming_matrix := io.Streaming_matrix
 
+  val Distribution = Module(new Distribution)
 
+  Distribution.io.valid := myCounter.io.valid
+  Distribution.io.s := io.NoDPE
+
+  Distribution.io.matrix := myCounter.io.counterMatrix1.bits
+// }.otherwise{
+//     Distribution.io.s := 0.U
+
+//   Distribution.io.matrix := RegInit(VecInit(Seq.fill(config.MaxRows)(VecInit(Seq.fill(config.MaxCols)(0.U(config.DATA_TYPE.W))))))
+// }
 
 
   // when((delay >= (config.MaxRows * config.MaxCols).U) && myCounter.io.counterMatrix1.valid && myCounter.io.counterMatrix2.valid) {

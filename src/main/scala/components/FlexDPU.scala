@@ -63,7 +63,7 @@ class FlexDPU(implicit val config:MagmasiConfig) extends Module{
         val PF1 = Module(new PathFinder)
         PF1.io.DataValid := 1.B
         PF1.io.Stationary_matrix := io.Stationary_matrix
-        PF1.io.NoDPE := 2.U // 0 means we need the src, muxes a/c to 1st DPE
+        PF1.io.NoDPE := 1.U // 0 means we need the src, muxes a/c to 1st DPE
         PF1.io.Streaming_matrix := PF_Stream_Col
         mux := PF1.io.i_mux_bus
         src := PF1.io.Source
