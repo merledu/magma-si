@@ -12,6 +12,8 @@ class stationary(implicit val Config: MagmasiConfig) extends Module {
     val o_Stationary_matrix2 =  Output(Vec(Config.MaxRows, Vec(Config.MaxCols, UInt(Config.DATA_TYPE.W))))
   })
      //val stationary2 =  Reg(Vec(Config.MaxRows, Vec(Config.MaxCols, UInt(Config.DATA_TYPE.W))))
+     
+       var count = RegInit(0.U(32.W))
     io.o_Stationary_matrix1 := io.Stationary_matrix
 
      val Station2 =  Reg(Vec(Config.MaxRows, Vec(Config.MaxCols, UInt(Config.DATA_TYPE.W))))
@@ -20,7 +22,7 @@ class stationary(implicit val Config: MagmasiConfig) extends Module {
     var valid = WireDefault(false.B)
     var valid1 = WireDefault(false.B)
 
-    when(valid1 === false.B){
+    when(count === 0.U){
      Station2 := io.Stationary_matrix
 
     }
@@ -35,8 +37,8 @@ class stationary(implicit val Config: MagmasiConfig) extends Module {
 
 
 
-    var count = RegInit(0.U(32.W))
-     var count1 = RegInit(0.U(32.W))
+   
+    
     dontTouch(count) 
     dontTouch(count1) 
 
@@ -48,9 +50,11 @@ class stationary(implicit val Config: MagmasiConfig) extends Module {
                 Station2(i)(j) := 0.U
                 
             count:= count + 1.U
-           count1:= count1 +1.U
+            count1:= count1 +1.U
+           
     }
     }
+   //ount1:= count1 +1.U
     //count1:= count1 +1.U
     io.o_Stationary_matrix2 := Station2
 
@@ -59,11 +63,7 @@ class stationary(implicit val Config: MagmasiConfig) extends Module {
     
     }
 
-   when (count1 === 4.U) {
-        valid1 := true.B 
-    
-    }
-
+ 
 
     when ((i < (Config.MaxRows - 1).U) && (j === (Config.MaxCols - 1).U)){
         i := i + 1.U
