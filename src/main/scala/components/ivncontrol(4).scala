@@ -50,7 +50,7 @@ class ivncontrol4(implicit val Config: MagmasiConfig) extends Module {
     }
     
 
-    when (count(1) >= 4.U) {
+    when (count(3) >= 4.U) {
         valid1 := true.B 
     
     }
@@ -60,7 +60,7 @@ class ivncontrol4(implicit val Config: MagmasiConfig) extends Module {
 
 
     
-    for ( i <- 0 until 2){
+    for ( i <- 0 until 4){
 
 
         rowcount(i) := count(i)  
@@ -68,17 +68,17 @@ class ivncontrol4(implicit val Config: MagmasiConfig) extends Module {
 
             
 
-            when((io.Stationary_matrix(1)(0) =/= 0.U && io.Stationary_matrix(1)(1) === 0.U && io.Stationary_matrix(1)(2) === 0.U) || (io.Stationary_matrix(1)(1) =/= 0.U && io.Stationary_matrix(1)(0) === 0.U && io.Stationary_matrix(1)(2) === 0.U)||(io.Stationary_matrix(1)(2) =/= 0.U && io.Stationary_matrix(1)(1) === 0.U && io.Stationary_matrix(1)(0) === 0.U)){
-                rowcount(1) := count(1) - 2.U
-            }.elsewhen((io.Stationary_matrix(1)(0) =/= 0.U && io.Stationary_matrix(1)(1) =/= 0.U) || (io.Stationary_matrix(1)(0) =/= 0.U &&  io.Stationary_matrix(1)(2) =/= 0.U) || (io.Stationary_matrix(1)(1) =/= 0.U && io.Stationary_matrix(1)(2) =/= 0.U)){
-                rowcount(1) := count(1) - 1.U
-            }.elsewhen((io.Stationary_matrix(1)(0) =/= 0.U && io.Stationary_matrix(1)(1) =/= 0.U && io.Stationary_matrix(1)(2) === 0.U)|| (io.Stationary_matrix(1)(0) =/= 0.U && io.Stationary_matrix(1)(1) === 0.U && io.Stationary_matrix(1)(2) =/= 0.U ) || ( io.Stationary_matrix(1)(0) === 0.U && io.Stationary_matrix(1)(1) =/= 0.U && io.Stationary_matrix(1)(2) =/= 0.U) ){
-                rowcount(1) := count(1) - 3.U
-            }
+            // when((io.Stationary_matrix(1)(0) =/= 0.U && io.Stationary_matrix(1)(1) === 0.U && io.Stationary_matrix(1)(2) === 0.U) || (io.Stationary_matrix(1)(1) =/= 0.U && io.Stationary_matrix(1)(0) === 0.U && io.Stationary_matrix(1)(2) === 0.U)||(io.Stationary_matrix(1)(2) =/= 0.U && io.Stationary_matrix(1)(1) === 0.U && io.Stationary_matrix(1)(0) === 0.U)){
+            //     rowcount(1) := count(1) - 2.U
+            // }.elsewhen((io.Stationary_matrix(1)(0) =/= 0.U && io.Stationary_matrix(1)(1) =/= 0.U) || (io.Stationary_matrix(1)(0) =/= 0.U &&  io.Stationary_matrix(1)(2) =/= 0.U) || (io.Stationary_matrix(1)(1) =/= 0.U && io.Stationary_matrix(1)(2) =/= 0.U)){
+            //     rowcount(1) := count(1) - 1.U
+            // }.elsewhen((io.Stationary_matrix(1)(0) =/= 0.U && io.Stationary_matrix(1)(1) =/= 0.U && io.Stationary_matrix(1)(2) === 0.U)|| (io.Stationary_matrix(1)(0) =/= 0.U && io.Stationary_matrix(1)(1) === 0.U && io.Stationary_matrix(1)(2) =/= 0.U ) || ( io.Stationary_matrix(1)(0) === 0.U && io.Stationary_matrix(1)(1) =/= 0.U && io.Stationary_matrix(1)(2) =/= 0.U) ){
+            //     rowcount(1) := count(1) - 3.U
+            // }
         // }.otherwise{
 
         
-        // rowcount(i) := count(i)  
+        rowcount(i) := count(i)  
         }
     }}
 
