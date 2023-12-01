@@ -20,7 +20,7 @@ class stationary(implicit val Config: MagmasiConfig) extends Module {
 
      //Station2 := io.Stationary_matrix
     var valid = WireDefault(false.B)
-    var valid1 = WireDefault(false.B)
+    
 
     when(count === 0.U){
      Station2 := io.Stationary_matrix
@@ -40,8 +40,7 @@ class stationary(implicit val Config: MagmasiConfig) extends Module {
    
     
     dontTouch(count) 
-    dontTouch(count1) 
-
+   
 
 
     
@@ -50,7 +49,7 @@ class stationary(implicit val Config: MagmasiConfig) extends Module {
                 Station2(i)(j) := 0.U
                 
             count:= count + 1.U
-            count1:= count1 +1.U
+          
            
     }
     }
