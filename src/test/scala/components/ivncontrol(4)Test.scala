@@ -14,8 +14,14 @@ class ivncontrol4Tester extends AnyFreeSpec with ChiselScalatestTester {
 
         val inputData = Seq(
 
-           Seq(0, 7,0,0),
-          Seq(4, 6,6,9)      
+             Seq(0, 0,0,0,0,0,0,0),
+          Seq(4, 6,6,9,1,1,1,1),  
+           Seq(0, 7,5,5,4,3,2,1),
+          Seq(4, 6,6,9,1,1,1,1),        
+           Seq(0, 7,5,5,4,3,2,1),
+          Seq(4, 6,6,9,1,1,1,1),    
+           Seq(0, 7,5,5,4,3,2,1),
+          Seq(4, 6,6,9,1,1,1,0)    
         ) 
 
         val numRows = inputData.length
@@ -28,7 +34,7 @@ class ivncontrol4Tester extends AnyFreeSpec with ChiselScalatestTester {
           }
     
     }
-      c.clock.step(30)
+      c.clock.step(300)
 }
 }
 }
