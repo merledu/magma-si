@@ -57,7 +57,7 @@ class stationary(implicit val Config: MagmasiConfig) extends Module {
     //count1:= count1 +1.U
     io.o_Stationary_matrix2 := Station2
 
-    when (count === 4.U) {
+    when (count === 8.U) {
         valid := true.B 
     
     }
