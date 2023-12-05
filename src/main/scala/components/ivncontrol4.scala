@@ -153,47 +153,47 @@ class ivncontrol4(implicit val Config: MagmasiConfig) extends Module {
      when(rowcount(0) === 0.U && rowcount(1) === 0.U && rowcount(2) === 0.U && rowcount(3) === 0.U && rowcount(4) === 0.U && rowcount(5) =/= 0.U && rowcount(6) =/= 0.U){
         pin := 6.U
     }
-     when(rowcount(0) === 0.U && rowcount(1) === 0.U && rowcount(2) === 0.U && rowcount(3) === 0.U && rowcount(4) === 0.U && rowcount(5) =/= 0.U && rowcount(6) =/= 0.U && nrowcount(7) =/= 0.U){
+     when(rowcount(0) === 0.U && rowcount(1) === 0.U && rowcount(2) === 0.U && rowcount(3) === 0.U && rowcount(4) === 0.U && rowcount(5) =/= 0.U && rowcount(6) =/= 0.U && rowcount(7) =/= 0.U){
         pin := 7.U
     }
 
     
 
      when(valid === true.B){
-        when(rowcount(0.U + pin.U ) === 0.U){
-            i_vn(0) := 0.U + pin.U 
-            i_vn(1) := 0.U + pin.U 
-            i_vn(2) := 0.U + pin.U  
-            i_vn(3) := 0.U+ pin.U  
-            i_vn2(0) := 0.U+ pin.U  
-            i_vn2(1) := 0.U+ pin.U  
-            i_vn2(2) := 0.U+ pin.U  
-            i_vn2(3) := 0.U+ pin.U  
+        when(rowcount(0.U + pin ) === 0.U){
+            i_vn(0) := 0.U + pin
+            i_vn(1) := 0.U + pin 
+            i_vn(2) := 0.U + pin  
+            i_vn(3) := 0.U+ pin  
+            i_vn2(0) := 0.U+ pin  
+            i_vn2(1) := 0.U+ pin  
+            i_vn2(2) := 0.U+ pin  
+            i_vn2(3) := 0.U+ pin  
 
-        }.elsewhen(rowcount(0.U + pin.U  ) === 7.U  ){
-            i_vn(0) := 0.U+ pin.U  
-            i_vn(1) := 0.U+ pin.U  
-            i_vn(2) := 0.U+ pin.U  
-            i_vn(3) := 0.U+ pin.U  
-            i_vn2(0) := 0.U+ pin.U  
-            i_vn2(1) := 0.U+ pin.U  
-            i_vn2(2) := 0.U+ pin.U  
-        }.elsewhen(rowcount(0.U  + pin.U  ) === 6.U ){
-            i_vn(0) := 0.U+ pin.U  
-            i_vn(1) := 0.U+ pin.U  
-            i_vn(2) := 0.U+ pin.U  
-            i_vn(3) := 0.U+ pin.U  
-            i_vn2(0) := 0.U+ pin.U  
-            i_vn2(1) := 0.U+ pin.U  
+        }.elsewhen(rowcount(0.U + pin  ) === 7.U  ){
+            i_vn(0) := 0.U+ pin  
+            i_vn(1) := 0.U+ pin  
+            i_vn(2) := 0.U+ pin  
+            i_vn(3) := 0.U+ pin  
+            i_vn2(0) := 0.U+ pin  
+            i_vn2(1) := 0.U+ pin  
+            i_vn2(2) := 0.U+ pin  
+        }.elsewhen(rowcount(0.U  + pin  ) === 6.U ){
+            i_vn(0) := 0.U+ pin  
+            i_vn(1) := 0.U+ pin  
+            i_vn(2) := 0.U+ pin  
+            i_vn(3) := 0.U+ pin  
+            i_vn2(0) := 0.U+ pin  
+            i_vn2(1) := 0.U+ pin  
     
-        }.elsewhen(rowcount(0+ pin ) === 5.U  ){
+        }.elsewhen(rowcount(0.U+ pin ) === 5.U  ){
             i_vn(0) := 0.U+ pin 
             i_vn(1) := 0.U+ pin 
             i_vn(2) := 0.U+ pin 
             i_vn(3) := 0.U+ pin 
             i_vn2(0) := 0.U+ pin 
    
-        }.elsewhen(rowcount(0+ pin ) === 4.U ){
+        }.elsewhen(rowcount(0.U + pin ) === 4.U ){
             i_vn(0) := 0.U+ pin 
             i_vn(1) := 0.U+ pin 
             i_vn(2) := 0.U+ pin 
@@ -201,16 +201,16 @@ class ivncontrol4(implicit val Config: MagmasiConfig) extends Module {
     
 
      
-        }.elsewhen(rowcount(0+ pin ) === 3.U ){
+        }.elsewhen(rowcount(0.U + pin ) === 3.U ){
             i_vn(0) := 0.U+ pin 
             i_vn(1) := 0.U+ pin 
             i_vn(2) := 0.U+ pin 
        
-        }.elsewhen(rowcount(0+ pin ) === 2.U  ){
+        }.elsewhen(rowcount(0.U + pin ) === 2.U  ){
             i_vn(0) := 0.U+ pin 
             i_vn(1) := 0.U+ pin 
         
-        }.elsewhen(rowcount(0+ pin ) === 1.U ){
+        }.elsewhen(rowcount(0.U + pin ) === 1.U ){
             i_vn(0) := 0.U + pin 
         }
 
@@ -218,7 +218,7 @@ class ivncontrol4(implicit val Config: MagmasiConfig) extends Module {
 
 
         // 1 main 8
-        when(rowcount(1+ pin ) === 8.U && rowcount(0+ pin ) === 0.U){
+        when(rowcount(1.U + pin ) === 8.U && rowcount(0.U + pin ) === 0.U){
             i_vn(0) := 1.U+ pin 
             i_vn(1) := 1.U+ pin 
             i_vn(2) := 1.U+ pin 
@@ -229,7 +229,7 @@ class ivncontrol4(implicit val Config: MagmasiConfig) extends Module {
             i_vn2(3) := 1.U+ pin 
         
         // a main 7
-        }.elsewhen(rowcount(1+ pin )===7.U && rowcount(0+ pin ) === 0.U){
+        }.elsewhen(rowcount(1.U + pin )===7.U && rowcount(0.U + pin ) === 0.U){
              i_vn(0) := 1.U+ pin 
             i_vn(1) := 1.U+ pin 
             i_vn(2) := 1.U+ pin 
@@ -237,7 +237,7 @@ class ivncontrol4(implicit val Config: MagmasiConfig) extends Module {
             i_vn2(0) := 1.U+ pin 
             i_vn2(1) := 1.U+ pin 
             i_vn2(2) := 1.U+ pin 
-        }.elsewhen(rowcount(1+ pin )===7.U && rowcount(0+ pin ) === 1.U){
+        }.elsewhen(rowcount(1.U + pin )===7.U && rowcount(0.U + pin ) === 1.U){
           
             i_vn(1) := 1.U+ pin 
             i_vn(2) := 1.U+ pin 
@@ -248,7 +248,7 @@ class ivncontrol4(implicit val Config: MagmasiConfig) extends Module {
             i_vn2(3) := 1.U+ pin 
         
         // 1 main 6
-        }.elsewhen(rowcount(1+ pin )===6.U && rowcount(0+ pin ) === 2.U){
+        }.elsewhen(rowcount(1.U + pin )===6.U && rowcount(0.U+ pin ) === 2.U){
             i_vn(2) := 1.U+ pin 
             i_vn(3) := 1.U+ pin 
             i_vn2(0) := 1.U+ pin 
@@ -257,7 +257,7 @@ class ivncontrol4(implicit val Config: MagmasiConfig) extends Module {
             i_vn2(3) := 1.U+ pin 
 
 
-        }.elsewhen(rowcount(1+ pin )===6.U && rowcount(0+ pin ) === 1.U){
+        }.elsewhen(rowcount(1.U+ pin )===6.U && rowcount(0.U+ pin ) === 1.U){
              i_vn(1) := 1.U+ pin 
             i_vn(2) := 1.U+ pin 
             i_vn(3) := 1.U+ pin 
@@ -265,7 +265,7 @@ class ivncontrol4(implicit val Config: MagmasiConfig) extends Module {
             i_vn2(1) := 1.U+ pin 
             i_vn2(2) := 1.U+ pin 
 
-        }.elsewhen(rowcount(1+ pin )===6.U && rowcount(0+ pin ) === 0.U){
+        }.elsewhen(rowcount(1.U+ pin )===6.U && rowcount(0.U+ pin ) === 0.U){
             i_vn(0) := 1.U+ pin 
             i_vn(1) := 1.U+ pin 
             i_vn(2) := 1.U+ pin 
@@ -275,14 +275,14 @@ class ivncontrol4(implicit val Config: MagmasiConfig) extends Module {
 
         // 1 main 5
 
-        }.elsewhen(rowcount(1+ pin )===5.U && rowcount(0+ pin ) === 3.U){
+        }.elsewhen(rowcount(1.U+ pin )===5.U && rowcount(0.U+ pin ) === 3.U){
             i_vn(3) := 1.U+ pin 
             i_vn2(0) := 1.U+ pin 
             i_vn2(1) := 1.U+ pin 
             i_vn2(2) := 1.U+ pin 
             i_vn2(3) := 1.U+ pin 
 
-        }.elsewhen(rowcount(1+ pin )===5.U && rowcount(0+ pin ) === 2.U){
+        }.elsewhen(rowcount(1.U+ pin )===5.U && rowcount(0.U+ pin ) === 2.U){
             i_vn(2) := 1.U+ pin 
             i_vn(3) := 1.U+ pin 
             i_vn2(0) := 1.U+ pin 
@@ -291,7 +291,7 @@ class ivncontrol4(implicit val Config: MagmasiConfig) extends Module {
        
 
 
-        }.elsewhen(rowcount(1+ pin )===5.U && rowcount(0+ pin ) === 1.U){
+        }.elsewhen(rowcount(1.U+ pin )===5.U && rowcount(0.U+ pin ) === 1.U){
              i_vn(1) := 1.U+ pin 
             i_vn(2) := 1.U+ pin 
             i_vn(3) := 1.U+ pin 
@@ -299,7 +299,7 @@ class ivncontrol4(implicit val Config: MagmasiConfig) extends Module {
             i_vn2(1) := 1.U+ pin 
     
 
-        }.elsewhen(rowcount(1+ pin )===5.U && rowcount(0+ pin ) === 0.U){
+        }.elsewhen(rowcount(1.U+ pin )===5.U && rowcount(0.U+ pin ) === 0.U){
             i_vn(0) := 1.U+ pin 
             i_vn(1) := 1.U+ pin 
             i_vn(2) := 1.U+ pin 
@@ -308,21 +308,21 @@ class ivncontrol4(implicit val Config: MagmasiConfig) extends Module {
 
          // 1 main 4
 
-         }.elsewhen(rowcount(1+ pin )===4.U && rowcount(0+ pin ) === 4.U){
+         }.elsewhen(rowcount(1.U+ pin )===4.U && rowcount(0.U+ pin ) === 4.U){
        
             i_vn2(0) := 1.U+ pin 
             i_vn2(1) := 1.U+ pin 
             i_vn2(2) := 1.U+ pin 
             i_vn2(3) := 1.U+ pin 
 
-        }.elsewhen(rowcount(1+ pin )===4.U && rowcount(0+ pin ) === 3.U){
+        }.elsewhen(rowcount(1.U+ pin )===4.U && rowcount(0.U+ pin ) === 3.U){
             i_vn(3) := 1.U+ pin 
             i_vn2(0) := 1.U+ pin 
             i_vn2(1) := 1.U+ pin 
             i_vn2(2) := 1.U+ pin 
       
 
-        }.elsewhen(rowcount(1+ pin )===4.U && rowcount(0+ pin ) === 2.U){
+        }.elsewhen(rowcount(1.U+ pin )===4.U && rowcount(0.U+ pin ) === 2.U){
             i_vn(2) := 1.U+ pin 
             i_vn(3) := 1.U+ pin 
             i_vn2(0) := 1.U+ pin 
@@ -331,7 +331,7 @@ class ivncontrol4(implicit val Config: MagmasiConfig) extends Module {
        
 
 
-        }.elsewhen(rowcount(1+ pin )===4.U && rowcount(0+ pin ) === 1.U){
+        }.elsewhen(rowcount(1.U+ pin )===4.U && rowcount(0.U+ pin ) === 1.U){
              i_vn(1) := 1.U+ pin 
             i_vn(2) := 1.U+ pin 
             i_vn(3) := 1.U+ pin 
@@ -339,7 +339,7 @@ class ivncontrol4(implicit val Config: MagmasiConfig) extends Module {
         
     
 
-        }.elsewhen(rowcount(1+ pin )===4.U && rowcount(0+ pin ) === 0.U){
+        }.elsewhen(rowcount(1.U+ pin )===4.U && rowcount(0.U+ pin ) === 0.U){
             i_vn(0) := 1.U+ pin 
             i_vn(1) := 1.U+ pin 
             i_vn(2) := 1.U+ pin 
@@ -350,28 +350,28 @@ class ivncontrol4(implicit val Config: MagmasiConfig) extends Module {
         
          // 1 main 3
 
-        }.elsewhen(rowcount(1+ pin )===3.U && rowcount(0+ pin ) === 5.U){
+        }.elsewhen(rowcount(1.U+ pin )===3.U && rowcount(0.U+ pin ) === 5.U){
        
      
             i_vn2(1) := 1.U+ pin 
             i_vn2(2) := 1.U+ pin 
             i_vn2(3) := 1.U+ pin 
 
-         }.elsewhen(rowcount(1+ pin )===3.U && rowcount(0+ pin ) === 4.U){
+         }.elsewhen(rowcount(1.U+ pin )===3.U && rowcount(0.U+ pin ) === 4.U){
        
             i_vn2(0) := 1.U+ pin 
             i_vn2(1) := 1.U+ pin 
             i_vn2(2) := 1.U+ pin 
        
 
-        }.elsewhen(rowcount(1+ pin )===3.U && rowcount(0+ pin ) === 3.U){
+        }.elsewhen(rowcount(1.U+ pin )===3.U && rowcount(0.U+ pin ) === 3.U){
             i_vn(3) := 1.U+ pin 
             i_vn2(0) := 1.U+ pin 
             i_vn2(1) := 1.U+ pin 
        
       
 
-        }.elsewhen(rowcount(1+ pin )===3.U && rowcount(0+ pin ) === 2.U){
+        }.elsewhen(rowcount(1.U+ pin )===3.U && rowcount(0.U+ pin ) === 2.U){
             i_vn(2) := 1.U+ pin 
             i_vn(3) := 1.U+ pin 
             i_vn2(0) := 1.U+ pin 
@@ -380,7 +380,7 @@ class ivncontrol4(implicit val Config: MagmasiConfig) extends Module {
        
 
 
-        }.elsewhen(rowcount(1+ pin )===3.U && rowcount(0+ pin ) === 1.U){
+        }.elsewhen(rowcount(1.U+ pin )===3.U && rowcount(0.U+ pin ) === 1.U){
              i_vn(1) := 1.U+ pin 
             i_vn(2) := 1.U+ pin 
             i_vn(3) := 1.U+ pin 
@@ -388,7 +388,7 @@ class ivncontrol4(implicit val Config: MagmasiConfig) extends Module {
         
     
 
-        }.elsewhen(rowcount(1+ pin )===3.U && rowcount(0+ pin ) === 0.U){
+        }.elsewhen(rowcount(1.U+ pin )===3.U && rowcount(0.U+ pin ) === 0.U){
             i_vn(0) := 1.U+ pin 
             i_vn(1) := 1.U+ pin 
             i_vn(2) := 1.U+ pin 
@@ -400,35 +400,35 @@ class ivncontrol4(implicit val Config: MagmasiConfig) extends Module {
 
         
         
-        }.elsewhen(rowcount(1+ pin )===2.U && rowcount(0+ pin ) === 6.U){
+        }.elsewhen(rowcount(1.U+ pin )===2.U && rowcount(0.U+ pin ) === 6.U){
        
      
       
             i_vn2(2) := 1.U+ pin 
             i_vn2(3) := 1.U+ pin 
 
-        }.elsewhen(rowcount(1+ pin )===2.U && rowcount(0+ pin ) === 5.U){
+        }.elsewhen(rowcount(1.U+ pin )===2.U && rowcount(0.U+ pin ) === 5.U){
        
      
             i_vn2(1) := 1.U+ pin 
             i_vn2(2) := 1.U+ pin 
     
 
-         }.elsewhen(rowcount(1+ pin )===2.U && rowcount(0+ pin ) === 4.U){
+         }.elsewhen(rowcount(1.U+ pin )===2.U && rowcount(0.U+ pin ) === 4.U){
        
             i_vn2(0) := 1.U+ pin 
             i_vn2(1) := 1.U+ pin 
      
        
 
-        }.elsewhen(rowcount(1+ pin )===2.U && rowcount(0+ pin ) === 3.U){
+        }.elsewhen(rowcount(1.U+ pin )===2.U && rowcount(0.U+ pin ) === 3.U){
             i_vn(3) := 1.U+ pin 
             i_vn2(0) := 1.U+ pin 
 
        
       
 
-        }.elsewhen(rowcount(1+ pin )===2.U && rowcount(0+ pin ) === 2.U){
+        }.elsewhen(rowcount(1.U+ pin )===2.U && rowcount(0.U+ pin ) === 2.U){
             i_vn(2) := 1.U+ pin 
             i_vn(3) := 1.U+ pin 
       
@@ -437,7 +437,7 @@ class ivncontrol4(implicit val Config: MagmasiConfig) extends Module {
        
 
 
-        }.elsewhen(rowcount(1+ pin )===2.U && rowcount(0+ pin ) === 1.U){
+        }.elsewhen(rowcount(1.U+ pin )===2.U && rowcount(0.U+ pin ) === 1.U){
              i_vn(1) := 1.U+ pin 
             i_vn(2) := 1.U+ pin 
        
@@ -445,7 +445,7 @@ class ivncontrol4(implicit val Config: MagmasiConfig) extends Module {
         
     
 
-        }.elsewhen(rowcount(1+ pin )===2.U && rowcount(0+ pin ) === 0.U){
+        }.elsewhen(rowcount(1.U+ pin )===2.U && rowcount(0.U+ pin ) === 0.U){
             i_vn(0) := 1.U+ pin 
             i_vn(1) := 1.U+ pin 
       
@@ -453,49 +453,49 @@ class ivncontrol4(implicit val Config: MagmasiConfig) extends Module {
   
            // 1 main 2
 
-         }.elsewhen(rowcount(1+ pin )===1.U && rowcount(0+ pin ) === 7.U){
+         }.elsewhen(rowcount(1.U+ pin )===1.U && rowcount(0.U+ pin ) === 7.U){
        
      
       
   
             i_vn2(3) := 1.U+ pin
         
-        }.elsewhen(rowcount(1+ pin )===1.U && rowcount(0+ pin ) === 6.U){
+        }.elsewhen(rowcount(1.U+ pin )===1.U && rowcount(0.U+ pin ) === 6.U){
        
      
       
             i_vn2(2) := 1.U+ pin 
    
 
-        }.elsewhen(rowcount(1+ pin )===1.U && rowcount(0+ pin ) === 5.U){
+        }.elsewhen(rowcount(1.U+ pin )===1.U && rowcount(0.U+ pin ) === 5.U){
          
             i_vn2(1) := 1.U+ pin 
 
     
-         }.elsewhen(rowcount(1+ pin )===1.U && rowcount(0+ pin ) === 4.U){
+         }.elsewhen(rowcount(1.U+ pin )===1.U && rowcount(0.U+ pin ) === 4.U){
        
             i_vn2(0) := 1.U+ pin 
       
 
 
-        }.elsewhen(rowcount(1+ pin )===1.U && rowcount(0+ pin ) === 3.U){
+        }.elsewhen(rowcount(1.U+ pin )===1.U && rowcount(0.U+ pin ) === 3.U){
             i_vn(3) := 1.U+ pin 
 
-        }.elsewhen(rowcount(1+ pin )===1.U && rowcount(0+ pin ) === 2.U){
+        }.elsewhen(rowcount(1.U+ pin )===1.U && rowcount(0.U+ pin ) === 2.U){
             i_vn(2) := 1.U+ pin 
       
 
-        }.elsewhen(rowcount(1+ pin )===1.U && rowcount(0+ pin ) === 1.U){
+        }.elsewhen(rowcount(1.U+ pin )===1.U && rowcount(0.U+ pin ) === 1.U){
              i_vn(1) := 1.U+ pin 
         
 
-        }.elsewhen(rowcount(1+ pin )===1.U && rowcount(0+ pin ) === 0.U){
+        }.elsewhen(rowcount(1.U+ pin )===1.U && rowcount(0.U+ pin ) === 0.U){
             i_vn(0) := 1.U+ pin 
         }
 
 
          // 2 main 8
-        when(rowcount(2+ pin ) === 8.U && rowcount(0+ pin ) === 0.U && rowcount(1 + pin ) === 0.U){
+        when(rowcount(2.U+ pin ) === 8.U && rowcount(0.U+ pin ) === 0.U && rowcount(1.U + pin ) === 0.U){
             i_vn(0) := 2.U+ pin 
             i_vn(1) := 2.U+ pin 
             i_vn(2) := 2.U+ pin 
@@ -506,7 +506,7 @@ class ivncontrol4(implicit val Config: MagmasiConfig) extends Module {
             i_vn2(3) := 2.U+ pin 
         
         // 2 main 7
-        }.elsewhen(rowcount(2+ pin )===7.U && rowcount(1+ pin ) === 0.U && rowcount(0+ pin ) === 0.U){
+        }.elsewhen(rowcount(2.U+ pin )===7.U && rowcount(1.U+ pin ) === 0.U && rowcount(0.U+ pin ) === 0.U){
              i_vn(0) := 2.U+ pin 
             i_vn(1) := 2.U+ pin 
             i_vn(2) := 2.U+ pin 
@@ -515,7 +515,7 @@ class ivncontrol4(implicit val Config: MagmasiConfig) extends Module {
             i_vn2(1) := 2.U+ pin 
             i_vn2(2) := 2.U+ pin 
 
-        }.elsewhen(rowcount(2+ pin )===7.U && ((rowcount(0+ pin ) === 1.U && rowcount(1 + pin) === 0.U) || (rowcount(1+ pin ) === 1.U && rowcount(0 + pin) === 0.U))){
+        }.elsewhen(rowcount(2.U+ pin )===7.U && ((rowcount(0.U+ pin ) === 1.U && rowcount(1.U + pin) === 0.U) || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 0.U))){
           
             i_vn(1) := 2.U+ pin 
             i_vn(2) := 2.U+ pin 
@@ -528,7 +528,7 @@ class ivncontrol4(implicit val Config: MagmasiConfig) extends Module {
         
         // 2 main 6
 
-        }.elsewhen(rowcount(2+ pin )===6.U && ((rowcount(1+ pin ) === 2.U && rowcount(0+ pin ) === 0.U ) || (rowcount(0+ pin ) === 2.U && rowcount(1+ pin ) === 0.U ))){
+        }.elsewhen(rowcount(2.U+ pin )===6.U && ((rowcount(1.U+ pin ) === 2.U && rowcount(0.U+ pin ) === 0.U ) || (rowcount(0.U+ pin ) === 2.U && rowcount(1.U+ pin ) === 0.U ))){
              i_vn(2) := 2.U+ pin 
             i_vn(3) := 2.U+ pin 
             i_vn2(0) := 2.U+ pin 
@@ -538,7 +538,7 @@ class ivncontrol4(implicit val Config: MagmasiConfig) extends Module {
         
 
 
-        }.elsewhen(rowcount(2+ pin )===6.U && ((rowcount(0+ pin ) === 1.U && rowcount(1+ pin ) === 0.U ) || (rowcount(1+ pin ) === 1.U && rowcount(0+ pin ) === 0.U ))){
+        }.elsewhen(rowcount(2.U+ pin )===6.U && ((rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 0.U ) || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U+ pin ) === 0.U ))){
              i_vn(1) := 2.U+ pin 
             i_vn(2) := 2.U+ pin 
             i_vn(3) := 2.U+ pin 
@@ -547,7 +547,8 @@ class ivncontrol4(implicit val Config: MagmasiConfig) extends Module {
             i_vn2(2) := 2.U+ pin 
 
 
-        }.elsewhen(rowcount(2+ pin )===6.U && rowcount(0+ pin ) === 0.U  && rowcount(1+ pin ) === 0.U){
+        }.elsewhen(rowcount(2.U + pin )===6.U && rowcount(0.U
+         + pin ) === 0.U  && rowcount(1.U + pin ) === 0.U){
             i_vn(0) := 2.U+ pin 
               i_vn(1) := 2.U+ pin 
             i_vn(2) := 2.U+ pin 
@@ -557,8 +558,8 @@ class ivncontrol4(implicit val Config: MagmasiConfig) extends Module {
 
         // 2 main 5
 
-        }.elsewhen(rowcount(2+ pin )===5.U && ((rowcount(0+ pin ) === 3.U &&  rowcount(1+ pin) === 0.U  ) ||(rowcount(1+ pin ) === 3.U &&  rowcount(0+ pin )=== 0.U )
-        || (rowcount(0+ pin ) === 2.U && rowcount(1+ pin ) === 1.U) || (rowcount(0+ pin ) === 1.U && rowcount(1+ pin ) === 2.U))){
+        }.elsewhen(rowcount(2.U+ pin )===5.U && ((rowcount(0.U+ pin ) === 3.U &&  rowcount(1.U+ pin) === 0.U  ) ||(rowcount(1.U+ pin ) === 3.U &&  rowcount(0.U+ pin )=== 0.U )
+        || (rowcount(0.U+ pin ) === 2.U && rowcount(1.U+ pin ) === 1.U) || (rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 2.U))){
              i_vn(3) := 2.U+ pin 
             i_vn2(0) := 2.U+ pin 
             i_vn2(1) := 2.U+ pin 
@@ -567,8 +568,8 @@ class ivncontrol4(implicit val Config: MagmasiConfig) extends Module {
 
      
 
-        }.elsewhen(rowcount(2+ pin )===5.U && rowcount(0+ pin ) === 2.U && rowcount(1+ pin ) === 0.U || (rowcount(1+ pin ) === 2.U && rowcount(0+ pin ) === 0.U) || 
-        rowcount(0+ pin ) === 1.U && rowcount(1+ pin ) === 1.U){
+        }.elsewhen(rowcount(2.U+ pin )===5.U && rowcount(0.U+ pin ) === 2.U && rowcount(1.U+ pin ) === 0.U || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U+ pin ) === 0.U) || 
+        rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 1.U){
             i_vn(2) := 2.U+ pin 
             i_vn(3) := 2.U+ pin 
             i_vn2(0) := 2.U+ pin 
@@ -577,7 +578,7 @@ class ivncontrol4(implicit val Config: MagmasiConfig) extends Module {
        
 
 
-        }.elsewhen(rowcount(2+ pin )===5.U && (rowcount(0+ pin ) === 1.U && rowcount(1 + pin) === 0.U) || (rowcount(1+ pin ) === 1.U && rowcount(0 + pin) === 0.U)){
+        }.elsewhen(rowcount(2.U+ pin )===5.U && (rowcount(0.U+ pin ) === 1.U && rowcount(1.U + pin) === 0.U) || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 0.U)){
              i_vn(1) := 2.U+ pin 
             i_vn(2) := 2.U+ pin 
             i_vn(3) := 2.U+ pin 
@@ -585,7 +586,7 @@ class ivncontrol4(implicit val Config: MagmasiConfig) extends Module {
             i_vn2(1) := 2.U+ pin  
     
 
-        }.elsewhen(rowcount(2+ pin )===5.U && rowcount(0+ pin ) === 0.U && rowcount(0) === 0.U){
+        }.elsewhen(rowcount(2.U+ pin )===5.U && rowcount(0.U+ pin ) === 0.U && rowcount(0.U) === 0.U){
             i_vn(0) := 2.U+ pin 
             i_vn(1) := 2.U+ pin 
             i_vn(2) := 2.U+ pin 
@@ -594,25 +595,25 @@ class ivncontrol4(implicit val Config: MagmasiConfig) extends Module {
 
          // 2 main 4
 
-         }.elsewhen(rowcount(2+ pin )=== 4.U && ((rowcount(0+ pin ) === 4.U && rowcount(1+ pin ) === 0.U  ) || (rowcount(1+ pin ) === 4.U && rowcount(0+ pin ) === 0.U  )
-         ||  (rowcount(0+ pin ) === 3.U && rowcount(1+ pin ) === 1.U  ) ||  (rowcount(0+ pin ) === 1.U && rowcount(1+ pin ) === 3.U  ) || 
-          (rowcount(0+ pin ) === 2.U && rowcount(1+ pin ) === 2.U  ))){
+         }.elsewhen(rowcount(2.U+ pin )=== 4.U && ((rowcount(0.U+ pin ) === 4.U && rowcount(1.U+ pin ) === 0.U  ) || (rowcount(1.U+ pin ) === 4.U && rowcount(0.U+ pin ) === 0.U  )
+         ||  (rowcount(0.U+ pin ) === 3.U && rowcount(1.U+ pin ) === 1.U  ) ||  (rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 3.U  ) || 
+          (rowcount(0.U+ pin ) === 2.U && rowcount(1.U+ pin ) === 2.U  ))){
        
             i_vn2(0) := 2.U+ pin 
             i_vn2(1) := 2.U+ pin 
             i_vn2(2) := 2.U+ pin 
             i_vn2(3) := 2.U+ pin 
 
-        }.elsewhen(rowcount(2+ pin )===4.U && ((rowcount(0+ pin ) === 2.U && rowcount(1+ pin ) === 1.U  ) || (rowcount(1+ pin ) === 1.U && rowcount(0+ pin ) === 2.U  )
-         ||  (rowcount(0+ pin ) === 3.U && rowcount(1+ pin ) === 0.U  ) ||  (rowcount(0+ pin ) === 0.U && rowcount(1+ pin ) === 3.U  ))){
+        }.elsewhen(rowcount(2.U+ pin )===4.U && ((rowcount(0.U+ pin ) === 2.U && rowcount(1.U+ pin ) === 1.U  ) || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U+ pin ) === 2.U  )
+         ||  (rowcount(0.U+ pin ) === 3.U && rowcount(1.U+ pin ) === 0.U  ) ||  (rowcount(0.U+ pin ) === 0.U && rowcount(1.U+ pin ) === 3.U  ))){
             i_vn(3) := 2.U+ pin 
             i_vn2(0) := 2.U+ pin 
             i_vn2(1) := 2.U+ pin 
             i_vn2(2) := 2.U+ pin 
       
 
-        }.elsewhen(rowcount(2+ pin )===4.U && ((rowcount(0+ pin ) === 1.U && rowcount(1+ pin ) === 1.U  ) || (rowcount(1+ pin ) === 2.U && rowcount(0+ pin ) === 0.U  )
-         ||  (rowcount(0+ pin ) === 2.U && rowcount(1+ pin ) === 0.U  ) )){
+        }.elsewhen(rowcount(2.U+ pin )===4.U && ((rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 1.U  ) || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U+ pin ) === 0.U  )
+         ||  (rowcount(0.U+ pin ) === 2.U && rowcount(1.U+ pin ) === 0.U  ) )){
             i_vn(2) := 2.U+ pin 
              i_vn(3) := 2.U+ pin 
             i_vn2(0) := 2.U+ pin 
@@ -620,7 +621,7 @@ class ivncontrol4(implicit val Config: MagmasiConfig) extends Module {
        
 
 
-        }.elsewhen(rowcount(2+ pin )===4.U &&  ((rowcount(0+ pin ) === 1.U && rowcount(1+ pin ) === 0.U  ) || (rowcount(1+ pin ) === 0.U && rowcount(0+ pin ) === 1.U  )
+        }.elsewhen(rowcount(2.U+ pin )===4.U &&  ((rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 0.U  ) || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U+ pin ) === 1.U  )
          )){
              i_vn(1) := 2.U+ pin 
             i_vn(2) := 2.U+ pin 
@@ -629,7 +630,7 @@ class ivncontrol4(implicit val Config: MagmasiConfig) extends Module {
         
     
 
-        }.elsewhen(rowcount(2+ pin )===4.U && rowcount(0+ pin ) === 0.U && rowcount(1+ pin ) === 0.U){
+        }.elsewhen(rowcount(2.U+ pin )===4.U && rowcount(0.U+ pin ) === 0.U && rowcount(1.U+ pin ) === 0.U){
             i_vn(0) := 2.U+ pin 
             i_vn(1) := 2.U+ pin 
             i_vn(2) := 2.U+ pin 
@@ -640,17 +641,17 @@ class ivncontrol4(implicit val Config: MagmasiConfig) extends Module {
         
          // 2 main 3
 
-        }.elsewhen(rowcount(2+ pin )===3.U && ((rowcount(0+ pin ) === 5.U && rowcount(1+ pin ) === 0.U ) || (rowcount(0+ pin ) === 0.U && rowcount(1+ pin ) === 5.U ) 
-        || (rowcount(0+ pin ) === 4.U && rowcount(1+ pin ) === 1.U ) || (rowcount(0+ pin ) === 1.U && rowcount(1+ pin ) === 4.U ) || (rowcount(0+ pin ) === 2.U && rowcount(1+ pin ) === 3.U )
-        || (rowcount(0+ pin ) === 3.U && rowcount(1+ pin ) === 2.U ))){
+        }.elsewhen(rowcount(2.U+ pin )===3.U && ((rowcount(0.U+ pin ) === 5.U && rowcount(1.U+ pin ) === 0.U ) || (rowcount(0.U+ pin ) === 0.U && rowcount(1.U+ pin ) === 5.U ) 
+        || (rowcount(0.U+ pin ) === 4.U && rowcount(1.U+ pin ) === 1.U ) || (rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 4.U ) || (rowcount(0.U+ pin ) === 2.U && rowcount(1.U+ pin ) === 3.U )
+        || (rowcount(0.U+ pin ) === 3.U && rowcount(1.U+ pin ) === 2.U ))){
        
      
             i_vn2(1) := 2.U+ pin 
             i_vn2(2) := 2.U+ pin 
             i_vn2(3) := 2.U+ pin 
 
-         }.elsewhen(rowcount(2+ pin )===3.U && ((rowcount(0+ pin ) === 4.U && rowcount(1+ pin ) === 0.U ) || (rowcount(0+ pin ) === 0.U && rowcount(1+ pin ) === 4.U ) 
-        || (rowcount(0+ pin ) === 3.U && rowcount(1+ pin ) === 1.U ) || (rowcount(0+ pin ) === 1.U && rowcount(1+ pin ) === 3.U ) || (rowcount(0+ pin ) === 2.U && rowcount(1+ pin ) === 2.U )
+         }.elsewhen(rowcount(2.U+ pin )===3.U && ((rowcount(0.U+ pin ) === 4.U && rowcount(1.U+ pin ) === 0.U ) || (rowcount(0.U+ pin ) === 0.U && rowcount(1.U+ pin ) === 4.U ) 
+        || (rowcount(0.U+ pin ) === 3.U && rowcount(1.U+ pin ) === 1.U ) || (rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 3.U ) || (rowcount(0.U+ pin ) === 2.U && rowcount(1.U+ pin ) === 2.U )
         )){
        
             i_vn2(0) := 2.U+ pin 
@@ -658,16 +659,16 @@ class ivncontrol4(implicit val Config: MagmasiConfig) extends Module {
             i_vn2(2) := 2.U+ pin 
        
 
-        }.elsewhen(rowcount(2+ pin )===3.U && ((rowcount(0+ pin ) === 3.U && rowcount(1+ pin ) === 0.U ) || (rowcount(0+ pin ) === 0.U && rowcount(1+ pin ) === 3.U ) 
-        || (rowcount(0+ pin ) === 2.U && rowcount(1+ pin ) === 1.U ) || (rowcount(0+ pin ) === 1.U && rowcount(1+ pin ) === 2.U ))){
+        }.elsewhen(rowcount(2.U+ pin )===3.U && ((rowcount(0.U+ pin ) === 3.U && rowcount(1.U+ pin ) === 0.U ) || (rowcount(0.U+ pin ) === 0.U && rowcount(1.U+ pin ) === 3.U ) 
+        || (rowcount(0.U+ pin ) === 2.U && rowcount(1.U+ pin ) === 1.U ) || (rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 2.U ))){
             i_vn(3) := 2.U+ pin 
             i_vn2(0) := 2.U+ pin 
             i_vn2(1) := 2.U+ pin 
        
       
 
-        }.elsewhen(rowcount(2+ pin )===3.U && ((rowcount(0+ pin ) === 2.U && rowcount(1+ pin ) === 0.U ) || (rowcount(0+ pin ) === 0.U && rowcount(1+ pin ) === 2.U ) 
-        || (rowcount(0+ pin ) === 1.U && rowcount(1+ pin ) === 1.U ))){
+        }.elsewhen(rowcount(2.U+ pin )===3.U && ((rowcount(0.U+ pin ) === 2.U && rowcount(1.U+ pin ) === 0.U ) || (rowcount(0.U+ pin ) === 0.U && rowcount(1.U+ pin ) === 2.U ) 
+        || (rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 1.U ))){
             i_vn(2) := 2.U+ pin 
             i_vn(3) := 2.U+ pin 
             i_vn2(0) := 2.U+ pin 
@@ -676,7 +677,7 @@ class ivncontrol4(implicit val Config: MagmasiConfig) extends Module {
        
 
 
-        }.elsewhen(rowcount(2+ pin )===3.U && ((rowcount(0+ pin ) === 1.U && rowcount(1+ pin ) === 0.U ) || (rowcount(0+ pin ) === 0.U && rowcount(1+ pin ) === 1.U ) )){
+        }.elsewhen(rowcount(2.U+ pin )===3.U && ((rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 0.U ) || (rowcount(0.U+ pin ) === 0.U && rowcount(1.U+ pin ) === 1.U ) )){
              i_vn(1) := 2.U+ pin 
             i_vn(2) := 2.U+ pin 
             i_vn(3) := 2.U+ pin 
@@ -684,7 +685,7 @@ class ivncontrol4(implicit val Config: MagmasiConfig) extends Module {
         
     
 
-        }.elsewhen(rowcount(2+ pin )===3.U && rowcount(0+ pin ) === 0.U && rowcount(1+ pin ) === 0.U){
+        }.elsewhen(rowcount(2.U+ pin )===3.U && rowcount(0.U+ pin ) === 0.U && rowcount(1.U+ pin ) === 0.U){
             i_vn(0) := 2.U+ pin 
             i_vn(1) := 2.U+ pin 
             i_vn(2) := 2.U+ pin 
@@ -696,26 +697,26 @@ class ivncontrol4(implicit val Config: MagmasiConfig) extends Module {
 
         
         
-        }.elsewhen(rowcount(2+ pin )===2.U && ((rowcount(0+ pin ) === 6.U && rowcount(1+ pin ) === 0.U ) || (rowcount(0+ pin ) === 0.U && rowcount(1+ pin ) === 6.U ) 
-        || (rowcount(0+ pin ) === 5.U && rowcount(1+ pin ) === 1.U ) || (rowcount(0+ pin ) === 1.U && rowcount(1+ pin ) === 5.U ) || (rowcount(0+ pin ) === 2.U && rowcount(1+ pin ) === 4.U )
-        || (rowcount(0+ pin ) === 4.U && rowcount(1+ pin ) === 2.U ))){
+        }.elsewhen(rowcount(2.U+ pin )>=2.U && ((rowcount(0.U+ pin ) === 6.U && rowcount(1.U+ pin ) === 0.U ) || (rowcount(0.U+ pin ) === 0.U && rowcount(1.U+ pin ) === 6.U ) 
+        || (rowcount(0.U+ pin ) === 5.U && rowcount(1.U+ pin ) === 1.U ) || (rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 5.U ) || (rowcount(0.U+ pin ) === 2.U && rowcount(1.U+ pin ) === 4.U )
+        || (rowcount(0.U+ pin ) === 4.U && rowcount(1.U+ pin ) === 2.U ))){
        
      
       
             i_vn2(2) := 2.U+ pin 
             i_vn2(3) := 2.U+ pin 
 
-        }.elsewhen(rowcount(2+ pin )===2.U && ((rowcount(0+ pin ) === 5.U && rowcount(1+ pin ) === 0.U ) || (rowcount(0+ pin ) === 0.U && rowcount(1+ pin ) === 5.U ) 
-        || (rowcount(0+ pin ) === 4.U && rowcount(1+ pin ) === 1.U ) || (rowcount(0+ pin ) === 1.U && rowcount(1+ pin ) === 4.U ) || (rowcount(0+ pin ) === 2.U && rowcount(1+ pin ) === 3.U )
-        || (rowcount(0+ pin ) === 3.U && rowcount(1+ pin ) === 2.U ))){
+        }.elsewhen(rowcount(2.U+ pin )===2.U && ((rowcount(0.U+ pin ) === 5.U && rowcount(1.U+ pin ) === 0.U ) || (rowcount(0.U+ pin ) === 0.U && rowcount(1.U+ pin ) === 5.U ) 
+        || (rowcount(0.U+ pin ) === 4.U && rowcount(1.U+ pin ) === 1.U ) || (rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 4.U ) || (rowcount(0.U+ pin ) === 2.U && rowcount(1.U+ pin ) === 3.U )
+        || (rowcount(0.U+ pin ) === 3.U && rowcount(1.U+ pin ) === 2.U ))){
        
      
             i_vn2(1) := 2.U+ pin 
             i_vn2(2) := 2.U+ pin 
     
 
-         }.elsewhen(rowcount(2+ pin )===2.U  && ((rowcount(0+ pin ) === 4.U && rowcount(1+ pin ) === 0.U ) || (rowcount(0+ pin ) === 0.U && rowcount(1+ pin ) === 4.U ) 
-        || (rowcount(0+ pin ) === 3.U && rowcount(1+ pin ) === 1.U ) || (rowcount(0+ pin ) === 1.U && rowcount(1+ pin ) === 3.U ) || (rowcount(0+ pin ) === 2.U && rowcount(1+ pin ) === 2.U )
+         }.elsewhen(rowcount(2.U+ pin )===2.U  && ((rowcount(0.U+ pin ) === 4.U && rowcount(1.U+ pin ) === 0.U ) || (rowcount(0.U+ pin ) === 0.U && rowcount(1.U+ pin ) === 4.U ) 
+        || (rowcount(0.U+ pin ) === 3.U && rowcount(1.U+ pin ) === 1.U ) || (rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 3.U ) || (rowcount(0.U+ pin ) === 2.U && rowcount(1.U+ pin ) === 2.U )
         )){
        
             i_vn2(0) := 2.U+ pin 
@@ -723,16 +724,16 @@ class ivncontrol4(implicit val Config: MagmasiConfig) extends Module {
      
        
 
-        }.elsewhen(rowcount(2+ pin )===2.U  && ((rowcount(0+ pin ) === 3.U && rowcount(1+ pin ) === 0.U ) || (rowcount(0+ pin ) === 0.U && rowcount(1+ pin ) === 3.U ) 
-        || (rowcount(0+ pin ) === 2.U && rowcount(1+ pin ) === 1.U ) || (rowcount(0+ pin ) === 1.U && rowcount(1+ pin ) === 2.U ))){
+        }.elsewhen(rowcount(2.U+ pin )===2.U  && ((rowcount(0.U+ pin ) === 3.U && rowcount(1.U+ pin ) === 0.U ) || (rowcount(0.U+ pin ) === 0.U && rowcount(1.U+ pin ) === 3.U ) 
+        || (rowcount(0.U+ pin ) === 2.U && rowcount(1.U+ pin ) === 1.U ) || (rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 2.U ))){
             i_vn(3) := 2.U+ pin 
             i_vn2(0) := 2.U+ pin 
 
        
       
 
-        }.elsewhen(rowcount(2+ pin )===2.U && ((rowcount(0+ pin ) === 2.U && rowcount(1+ pin ) === 0.U ) || (rowcount(0+ pin ) === 0.U && rowcount(1+ pin ) === 2.U ) 
-        || (rowcount(0+ pin ) === 1.U && rowcount(1+ pin ) === 1.U ))){
+        }.elsewhen(rowcount(2.U+ pin )===2.U && ((rowcount(0.U+ pin ) === 2.U && rowcount(1.U+ pin ) === 0.U ) || (rowcount(0.U+ pin ) === 0.U && rowcount(1.U+ pin ) === 2.U ) 
+        || (rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 1.U ))){
             i_vn(2) := 2.U+ pin 
             i_vn(3) := 2.U+ pin 
       
@@ -741,7 +742,7 @@ class ivncontrol4(implicit val Config: MagmasiConfig) extends Module {
        
 
 
-        }.elsewhen(rowcount(2+ pin )===2.U && ((rowcount(0+ pin ) === 1.U && rowcount(1+ pin ) === 0.U ) || (rowcount(0+ pin ) === 0.U && rowcount(1+ pin ) === 1.U ) )){
+        }.elsewhen(rowcount(2.U+ pin )===2.U && ((rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 0.U ) || (rowcount(0.U+ pin ) === 0.U && rowcount(1.U+ pin ) === 1.U ) )){
              i_vn(1) := 2.U+ pin 
             i_vn(2) := 2.U+ pin 
        
@@ -749,7 +750,7 @@ class ivncontrol4(implicit val Config: MagmasiConfig) extends Module {
         
     
 
-        }.elsewhen(rowcount(2+ pin )===2.U && rowcount(0+ pin ) === 0.U && rowcount(1+ pin ) === 0.U){
+        }.elsewhen(rowcount(2.U+ pin )===2.U && rowcount(0.U+ pin ) === 0.U && rowcount(1.U+ pin ) === 0.U){
             i_vn(0) := 2.U+ pin 
             i_vn(1) := 2.U+ pin 
       
@@ -757,51 +758,51 @@ class ivncontrol4(implicit val Config: MagmasiConfig) extends Module {
   
            // 2 main 1
 
-         }.elsewhen(rowcount(2+ pin )===1.U &&  && ((rowcount(0+ pin ) === 7.U && rowcount(1+ pin ) === 0.U ) || (rowcount(0+ pin ) === 0.U && rowcount(1+ pin ) === 7.U ) 
-        || (rowcount(0+ pin ) === 5.U && rowcount(1+ pin ) === 2.U ) || (rowcount(0+ pin ) === 2.U && rowcount(1+ pin ) === 5.U ) || (rowcount(0+ pin ) === 3.U && rowcount(1+ pin ) === 4.U )
-        || (rowcount(0+ pin ) === 4.U && rowcount(1+ pin ) === 3.U ))){
+         }.elsewhen(rowcount(2.U+ pin )===1.U && ((rowcount(0.U+ pin ) === 7.U && rowcount(1.U+ pin ) === 0.U ) || (rowcount(0.U+ pin ) === 0.U && rowcount(1.U+ pin ) === 7.U ) 
+        || (rowcount(0.U+ pin ) === 5.U && rowcount(1.U+ pin ) === 2.U ) || (rowcount(0.U+ pin ) === 2.U && rowcount(1.U+ pin ) === 5.U ) || (rowcount(0.U+ pin ) === 3.U && rowcount(1.U+ pin ) === 4.U )
+        || (rowcount(0.U+ pin ) === 4.U && rowcount(1.U+ pin ) === 3.U ))){
        
      
             i_vn2(3) := 2.U+ pin
         
-        }.elsewhen(rowcount(2+ pin )===1.U && ((rowcount(0+ pin ) === 6.U && rowcount(1+ pin ) === 0.U ) || (rowcount(0+ pin ) === 0.U && rowcount(1+ pin ) === 6.U ) 
-        || (rowcount(0+ pin ) === 5.U && rowcount(1+ pin ) === 1.U ) || (rowcount(0+ pin ) === 1.U && rowcount(1+ pin ) === 5.U ) || (rowcount(0+ pin ) === 2.U && rowcount(1+ pin ) === 4.U )
-        || (rowcount(0+ pin ) === 4.U && rowcount(1+ pin ) === 2.U ))){
+        }.elsewhen(rowcount(2.U+ pin )===1.U && ((rowcount(0.U+ pin ) === 6.U && rowcount(1.U+ pin ) === 0.U ) || (rowcount(0.U+ pin ) === 0.U && rowcount(1.U+ pin ) === 6.U ) 
+        || (rowcount(0.U+ pin ) === 5.U && rowcount(1.U+ pin ) === 1.U ) || (rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 5.U ) || (rowcount(0.U+ pin ) === 2.U && rowcount(1.U+ pin ) === 4.U )
+        || (rowcount(0.U+ pin ) === 4.U && rowcount(1.U+ pin ) === 2.U ))){
        
      
       
             i_vn2(2) := 2.U+ pin 
    
 
-        }.elsewhen(rowcount(2+ pin )===1.U && ((rowcount(0+ pin ) === 5.U && rowcount(1+ pin ) === 0.U ) || (rowcount(0+ pin ) === 0.U && rowcount(1+ pin ) === 5.U ) 
-        || (rowcount(0+ pin ) === 4.U && rowcount(1+ pin ) === 1.U ) || (rowcount(0+ pin ) === 1.U && rowcount(1+ pin ) === 4.U ) || (rowcount(0+ pin ) === 2.U && rowcount(1+ pin ) === 3.U )
-        || (rowcount(0+ pin ) === 3.U && rowcount(1+ pin ) === 2.U ))){
+        }.elsewhen(rowcount(2.U+ pin )===1.U && ((rowcount(0.U+ pin ) === 5.U && rowcount(1.U+ pin ) === 0.U ) || (rowcount(0.U+ pin ) === 0.U && rowcount(1.U+ pin ) === 5.U ) 
+        || (rowcount(0.U+ pin ) === 4.U && rowcount(1.U+ pin ) === 1.U ) || (rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 4.U ) || (rowcount(0.U+ pin ) === 2.U && rowcount(1.U+ pin ) === 3.U )
+        || (rowcount(0.U+ pin ) === 3.U && rowcount(1.U+ pin ) === 2.U ))){
          
             i_vn2(1) := 2.U+ pin 
 
     
-         }.elsewhen(rowcount(2+ pin )===1.U && ((rowcount(0+ pin ) === 4.U && rowcount(1+ pin ) === 0.U ) || (rowcount(0+ pin ) === 0.U && rowcount(1+ pin ) === 4.U ) 
-        || (rowcount(0+ pin ) === 3.U && rowcount(1+ pin ) === 1.U ) || (rowcount(0+ pin ) === 1.U && rowcount(1+ pin ) === 3.U ) || (rowcount(0+ pin ) === 2.U && rowcount(1+ pin ) === 2.U )
+         }.elsewhen(rowcount(2.U+ pin )===1.U && ((rowcount(0.U+ pin ) === 4.U && rowcount(1.U+ pin ) === 0.U ) || (rowcount(0.U+ pin ) === 0.U && rowcount(1.U+ pin ) === 4.U ) 
+        || (rowcount(0.U+ pin ) === 3.U && rowcount(1.U+ pin ) === 1.U ) || (rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 3.U ) || (rowcount(0.U+ pin ) === 2.U && rowcount(1.U+ pin ) === 2.U )
         )){
        
             i_vn2(0) := 2.U+ pin 
       
 
 
-        }.elsewhen(rowcount(2+ pin )===1.U && ((rowcount(0+ pin ) === 3.U && rowcount(1+ pin ) === 0.U ) || (rowcount(0+ pin ) === 0.U && rowcount(1+ pin ) === 3.U ) 
-        || (rowcount(0+ pin ) === 2.U && rowcount(1+ pin ) === 1.U ) || (rowcount(0+ pin ) === 1.U && rowcount(1+ pin ) === 2.U ))){
+        }.elsewhen(rowcount(2.U+ pin )===1.U && ((rowcount(0.U+ pin ) === 3.U && rowcount(1.U+ pin ) === 0.U ) || (rowcount(0.U+ pin ) === 0.U && rowcount(1.U+ pin ) === 3.U ) 
+        || (rowcount(0.U+ pin ) === 2.U && rowcount(1.U+ pin ) === 1.U ) || (rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 2.U ))){
             i_vn(3) := 2.U+ pin 
 
-        }.elsewhen(rowcount(2+ pin )===1.U && ((rowcount(0+ pin ) === 2.U && rowcount(1+ pin ) === 0.U ) || (rowcount(0+ pin ) === 0.U && rowcount(1+ pin ) === 2.U ) 
-        || (rowcount(0+ pin ) === 1.U && rowcount(1+ pin ) === 1.U ))){
+        }.elsewhen(rowcount(2.U+ pin )===1.U && ((rowcount(0.U+ pin ) === 2.U && rowcount(1.U+ pin ) === 0.U ) || (rowcount(0.U+ pin ) === 0.U && rowcount(1.U+ pin ) === 2.U ) 
+        || (rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 1.U ))){
             i_vn(2) := 2.U+ pin 
       
 
-        }.elsewhen(rowcount(2+ pin )===1.U  && ((rowcount(0+ pin ) === 1.U && rowcount(1+ pin ) === 0.U ) || (rowcount(0+ pin ) === 0.U && rowcount(1+ pin ) === 1.U ) )){
+        }.elsewhen(rowcount(2.U+ pin )===1.U  && ((rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 0.U ) || (rowcount(0.U+ pin ) === 0.U && rowcount(1.U+ pin ) === 1.U ) )){
              i_vn(1) := 2.U+ pin 
         
 
-        }.elsewhen(rowcount(2+ pin )===1.U && rowcount(0+ pin ) === 0.U && rowcount(1+ pin ) === 0.U){
+        }.elsewhen(rowcount(2.U+ pin )===1.U && rowcount(0.U+ pin ) === 0.U && rowcount(1.U+ pin ) === 0.U){
             i_vn(0) := 2.U+ pin 
         }
 
@@ -809,7 +810,7 @@ class ivncontrol4(implicit val Config: MagmasiConfig) extends Module {
     // next for 3 row 
 
      // 3 main 8
-        when(rowcount(3+ pin ) === 8.U && rowcount(0+ pin ) === 0.U && rowcount(1 + pin ) === 0.U && && rowcount(2 + pin ) === 0.U){
+        when(rowcount(3.U+ pin ) === 8.U && rowcount(0.U+ pin ) === 0.U && rowcount(1.U + pin ) === 0.U  && rowcount(2.U + pin ) === 0.U){
             i_vn(0) := 3.U+ pin 
             i_vn(1) := 3.U+ pin 
             i_vn(2) := 3.U+ pin 
@@ -820,7 +821,7 @@ class ivncontrol4(implicit val Config: MagmasiConfig) extends Module {
             i_vn2(3) := 3.U+ pin 
         
         // 3 main 7
-        }.elsewhen(rowcount(3+ pin )===7.U & & rowcount(1+ pin ) === 0.U && rowcount(0+ pin ) === 0.U && rowcount(2 + pin ) === 0.U){
+        }.elsewhen(rowcount(3.U+ pin )===7.U  && rowcount(1.U+ pin ) === 0.U && rowcount(0.U+ pin ) === 0.U && rowcount(2.U + pin ) === 0.U){
              i_vn(0) := 3.U+ pin 
             i_vn(1) := 3.U+ pin 
             i_vn(2) := 3.U+ pin 
@@ -829,8 +830,8 @@ class ivncontrol4(implicit val Config: MagmasiConfig) extends Module {
             i_vn2(1) := 3.U+ pin 
             i_vn2(2) := 3.U+ pin 
 
-        }.elsewhen(rowcount(3+ pin )===7.U && ((rowcount(0+ pin ) === 1.U && rowcount(1 + pin) === 0.U && rowcount(2 + pin ) === 0.U) || (rowcount(1+ pin ) === 1.U && rowcount(0 + pin) === 0.U && 
-        rowcount(2 + pin ) === 0.U) || || (rowcount(1+ pin ) === 0.U && rowcount(0 + pin) === 0.U &&  rowcount(2 + pin ) === 1.U))){
+        }.elsewhen(rowcount(3.U+ pin )===7.U && ((rowcount(0.U+ pin ) === 1.U && rowcount(1.U + pin) === 0.U && rowcount(2.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 0.U && 
+        rowcount(2.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 1.U))){
           
             i_vn(1) := 3.U+ pin 
             i_vn(2) := 3.U+ pin 
@@ -843,11 +844,11 @@ class ivncontrol4(implicit val Config: MagmasiConfig) extends Module {
         
         // 3 main 6
 
-        }.elsewhen(rowcount(3+ pin )===6.U && ((rowcount(1+ pin ) === 2.U && rowcount(0+ pin ) === 0.U && rowcount(2 + pin ) === 0.U) 
-        || (rowcount(0+ pin ) === 2.U && rowcount(1+ pin ) === 0.U && rowcount(2 + pin ) === 0.U) ||  (rowcount(0+ pin ) === 0.U && rowcount(1+ pin ) === 0.U 
-        && rowcount(2 + pin ) === 2.U) ||  (rowcount(0+ pin ) === 0.U && rowcount(1+ pin ) === 1.U && rowcount(2 + pin ) === 1.U)||  (rowcount(0+ pin ) === 1.U && rowcount(1+ pin ) === 0.U 
-        && rowcount(2 + pin ) === 1.U) ||  (rowcount(0+ pin ) === 1.U && rowcount(1+ pin ) === 1.U 
-        && rowcount(2 + pin ) === 0.U))){
+        }.elsewhen(rowcount(3.U+ pin )===6.U && ((rowcount(1.U+ pin ) === 2.U && rowcount(0.U+ pin ) === 0.U && rowcount(2.U + pin ) === 0.U) 
+        || (rowcount(0.U+ pin ) === 2.U && rowcount(1.U+ pin ) === 0.U && rowcount(2.U + pin ) === 0.U) ||  (rowcount(0.U+ pin ) === 0.U && rowcount(1.U+ pin ) === 0.U 
+        && rowcount(2.U + pin ) === 2.U) ||  (rowcount(0.U+ pin ) === 0.U && rowcount(1.U+ pin ) === 1.U && rowcount(2.U + pin ) === 1.U)||  (rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 0.U 
+        && rowcount(2.U + pin ) === 1.U) ||  (rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 1.U 
+        && rowcount(2.U + pin ) === 0.U))){
              i_vn(2) := 3.U+ pin 
             i_vn(3) := 3.U+ pin 
             i_vn2(0) := 3.U+ pin 
@@ -857,8 +858,8 @@ class ivncontrol4(implicit val Config: MagmasiConfig) extends Module {
         
 
 
-        }.elsewhen(rowcount(3+ pin )===6.U && ((rowcount(0+ pin ) === 1.U && rowcount(1+ pin ) === 0.U && rowcount(2+ pin ) === 0.U ) || (rowcount(1+ pin ) === 1.U && rowcount(0+ pin ) === 0.U && rowcount(2+ pin ) === 0.U )
-        || (rowcount(1+ pin ) === 0.U && rowcount(0+ pin ) === 0.U && rowcount(2+ pin ) === 1.U ))){
+        }.elsewhen(rowcount(3.U+ pin )===6.U && ((rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 0.U && rowcount(2.U+ pin ) === 0.U ) || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U+ pin ) === 0.U && rowcount(2.U+ pin ) === 0.U )
+        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U+ pin ) === 0.U && rowcount(2.U+ pin ) === 1.U ))){
              i_vn(1) := 3.U+ pin 
             i_vn(2) := 3.U+ pin 
             i_vn(3) := 3.U+ pin 
@@ -867,7 +868,7 @@ class ivncontrol4(implicit val Config: MagmasiConfig) extends Module {
             i_vn2(2) := 3.U+ pin 
 
 
-        }.elsewhen(rowcount(3+ pin )===6.U && rowcount(0+ pin ) === 0.U  && rowcount(1+ pin ) === 0.U && rowcount(2+ pin ) === 0.U){
+        }.elsewhen(rowcount(3.U+ pin )===6.U && rowcount(0.U+ pin ) === 0.U  && rowcount(1.U+ pin ) === 0.U && rowcount(2.U+ pin ) === 0.U){
             i_vn(0) := 3.U+ pin 
             i_vn(1) := 3.U+ pin 
             i_vn(2) := 3.U+ pin 
@@ -877,253 +878,253 @@ class ivncontrol4(implicit val Config: MagmasiConfig) extends Module {
 
         // 3 main 5
 
-        }.elsewhen(rowcount(2+ pin )===5.U && ((rowcount(0+ pin ) === 3.U &&  rowcount(1+ pin) === 0.U  ) ||(rowcount(1+ pin ) === 3.U &&  rowcount(0+ pin )=== 0.U )
-        || (rowcount(0+ pin ) === 2.U && rowcount(1+ pin ) === 1.U) || (rowcount(0+ pin ) === 1.U && rowcount(1+ pin ) === 2.U))){
-             i_vn(3) := 2.U+ pin 
-            i_vn2(0) := 2.U+ pin 
-            i_vn2(1) := 2.U+ pin 
-            i_vn2(2) := 2.U+ pin 
-            i_vn2(3) := 2.U+ pin
+     //    }.elsewhen(rowcount(2.U+ pin )===5.U && ((rowcount(0.U+ pin ) === 3.U &&  rowcount(1.U+ pin) === 0.U  ) ||(rowcount(1.U+ pin ) === 3.U &&  rowcount(0.U+ pin )=== 0.U )
+     //    || (rowcount(0.U+ pin ) === 2.U && rowcount(1.U+ pin ) === 1.U) || (rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 2.U))){
+     //         i_vn(3) := 2.U+ pin 
+     //        i_vn2(0) := 2.U+ pin 
+     //        i_vn2(1) := 2.U+ pin 
+     //        i_vn2(2) := 2.U+ pin 
+     //        i_vn2(3) := 2.U+ pin
 
      
 
-        }.elsewhen(rowcount(2+ pin )===5.U && rowcount(0+ pin ) === 2.U && rowcount(1+ pin ) === 0.U || (rowcount(1+ pin ) === 2.U && rowcount(0+ pin ) === 0.U) || 
-        rowcount(0+ pin ) === 1.U && rowcount(1+ pin ) === 1.U){
-            i_vn(2) := 2.U+ pin 
-            i_vn(3) := 2.U+ pin 
-            i_vn2(0) := 2.U+ pin 
-            i_vn2(1) := 2.U+ pin 
-            i_vn2(2) := 2.U+ pin
+     //    }.elsewhen(rowcount(2.U+ pin )===5.U && rowcount(0.U+ pin ) === 2.U && rowcount(1.U+ pin ) === 0.U || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U+ pin ) === 0.U) || 
+     //    rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 1.U){
+     //        i_vn(2) := 2.U+ pin 
+     //        i_vn(3) := 2.U+ pin 
+     //        i_vn2(0) := 2.U+ pin 
+     //        i_vn2(1) := 2.U+ pin 
+     //        i_vn2(2) := 2.U+ pin
        
 
 
-        }.elsewhen(rowcount(1+ pin )===5.U && (rowcount(0+ pin ) === 1.U && rowcount(1 + pin) === 0.U) || (rowcount(1+ pin ) === 1.U && rowcount(0 + pin) === 0.U)){
-             i_vn(1) := 2.U+ pin 
-            i_vn(2) := 2.U+ pin 
-            i_vn(3) := 2.U+ pin 
-            i_vn2(0) := 2.U+ pin 
-            i_vn2(1) := 2.U+ pin  
+     //    }.elsewhen(rowcount(2.U+ pin )===5.U && (rowcount(0.U+ pin ) === 1.U && rowcount(1.U + pin) === 0.U) || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 0.U)){
+     //         i_vn(1) := 2.U+ pin 
+     //        i_vn(2) := 2.U+ pin 
+     //        i_vn(3) := 2.U+ pin 
+     //        i_vn2(0) := 2.U+ pin 
+     //        i_vn2(1) := 2.U+ pin  
     
 
-        }.elsewhen(rowcount(2+ pin )===5.U && rowcount(0+ pin ) === 0.U && rowcount(0) === 0.U){
-            i_vn(0) := 1.U+ pin 
-            i_vn(1) := 1.U+ pin 
-            i_vn(2) := 1.U+ pin 
-            i_vn(3) := 1.U+ pin 
-            i_vn2(0) := 1.U+ pin 
+     //    }.elsewhen(rowcount(2+ pin )===5.U && rowcount(0+ pin ) === 0.U && rowcount(0) === 0.U){
+     //        i_vn(0) := 1.U+ pin 
+     //        i_vn(1) := 1.U+ pin 
+     //        i_vn(2) := 1.U+ pin 
+     //        i_vn(3) := 1.U+ pin 
+     //        i_vn2(0) := 1.U+ pin 
 
-         // 2 main 4
+     //     // 2 main 4
 
-         }.elsewhen(rowcount(2+ pin )=== 4.U && ((rowcount(0+ pin ) === 4.U && rowcount(1+ pin ) === 0.U  ) || (rowcount(1+ pin ) === 4.U && rowcount(0+ pin ) === 0.U  )
-         ||  (rowcount(0+ pin ) === 3.U && rowcount(1+ pin ) === 1.U  ) ||  (rowcount(0+ pin ) === 1.U && rowcount(1+ pin ) === 3.U  ) || 
-          (rowcount(0+ pin ) === 2.U && rowcount(1+ pin ) === 2.U  ))){
+     //     }.elsewhen(rowcount(2+ pin )=== 4.U && ((rowcount(0+ pin ) === 4.U && rowcount(1+ pin ) === 0.U  ) || (rowcount(1+ pin ) === 4.U && rowcount(0+ pin ) === 0.U  )
+     //     ||  (rowcount(0+ pin ) === 3.U && rowcount(1+ pin ) === 1.U  ) ||  (rowcount(0+ pin ) === 1.U && rowcount(1+ pin ) === 3.U  ) || 
+     //      (rowcount(0+ pin ) === 2.U && rowcount(1+ pin ) === 2.U  ))){
        
-            i_vn2(0) := 2.U+ pin 
-            i_vn2(1) := 2.U+ pin 
-            i_vn2(2) := 2.U+ pin 
-            i_vn2(3) := 2.U+ pin 
+     //        i_vn2(0) := 2.U+ pin 
+     //        i_vn2(1) := 2.U+ pin 
+     //        i_vn2(2) := 2.U+ pin 
+     //        i_vn2(3) := 2.U+ pin 
 
-        }.elsewhen(rowcount(2+ pin )===4.U && ((rowcount(0+ pin ) === 2.U && rowcount(1+ pin ) === 1.U  ) || (rowcount(1+ pin ) === 1.U && rowcount(0+ pin ) === 2.U  )
-         ||  (rowcount(0+ pin ) === 3.U && rowcount(1+ pin ) === 0.U  ) ||  (rowcount(0+ pin ) === 0.U && rowcount(1+ pin ) === 3.U  ))){
-            i_vn(3) := 2.U+ pin 
-            i_vn2(0) := 2.U+ pin 
-            i_vn2(1) := 2.U+ pin 
-            i_vn2(2) := 2.U+ pin 
+     //    }.elsewhen(rowcount(2+ pin )===4.U && ((rowcount(0+ pin ) === 2.U && rowcount(1+ pin ) === 1.U  ) || (rowcount(1+ pin ) === 1.U && rowcount(0+ pin ) === 2.U  )
+     //     ||  (rowcount(0+ pin ) === 3.U && rowcount(1+ pin ) === 0.U  ) ||  (rowcount(0+ pin ) === 0.U && rowcount(1+ pin ) === 3.U  ))){
+     //        i_vn(3) := 2.U+ pin 
+     //        i_vn2(0) := 2.U+ pin 
+     //        i_vn2(1) := 2.U+ pin 
+     //        i_vn2(2) := 2.U+ pin 
       
 
-        }.elsewhen(rowcount(2+ pin )===4.U && ((rowcount(0+ pin ) === 1.U && rowcount(1+ pin ) === 1.U  ) || (rowcount(1+ pin ) === 2.U && rowcount(0+ pin ) === 0.U  )
-         ||  (rowcount(0+ pin ) === 2.U && rowcount(1+ pin ) === 0.U  ) )){
-            i_vn(2) := 2.U+ pin 
-             i_vn(3) := 2.U+ pin 
-            i_vn2(0) := 2.U+ pin 
-            i_vn2(1) := 2.U+ pin 
+     //    }.elsewhen(rowcount(2+ pin )===4.U && ((rowcount(0+ pin ) === 1.U && rowcount(1+ pin ) === 1.U  ) || (rowcount(1+ pin ) === 2.U && rowcount(0+ pin ) === 0.U  )
+     //     ||  (rowcount(0+ pin ) === 2.U && rowcount(1+ pin ) === 0.U  ) )){
+     //        i_vn(2) := 2.U+ pin 
+     //         i_vn(3) := 2.U+ pin 
+     //        i_vn2(0) := 2.U+ pin 
+     //        i_vn2(1) := 2.U+ pin 
        
 
 
-        }.elsewhen(rowcount(2+ pin )===4.U &&  ((rowcount(0+ pin ) === 1.U && rowcount(1+ pin ) === 0.U  ) || (rowcount(1+ pin ) === 0.U && rowcount(0+ pin ) === 1.U  )
-         )){
-             i_vn(1) := 2.U+ pin 
-            i_vn(2) := 2.U+ pin 
-            i_vn(3) := 2.U+ pin 
-            i_vn2(0) := 2.U+ pin 
+     //    }.elsewhen(rowcount(2+ pin )===4.U &&  ((rowcount(0+ pin ) === 1.U && rowcount(1+ pin ) === 0.U  ) || (rowcount(1+ pin ) === 0.U && rowcount(0+ pin ) === 1.U  )
+     //     )){
+     //         i_vn(1) := 2.U+ pin 
+     //        i_vn(2) := 2.U+ pin 
+     //        i_vn(3) := 2.U+ pin 
+     //        i_vn2(0) := 2.U+ pin 
         
     
 
-        }.elsewhen(rowcount(2+ pin )===4.U && rowcount(0+ pin ) === 0.U && rowcount(1+ pin ) === 0.U){
-            i_vn(0) := 2.U+ pin 
-            i_vn(1) := 2.U+ pin 
-            i_vn(2) := 2.U+ pin 
-            i_vn(3) := 2.U+ pin 
+     //    }.elsewhen(rowcount(2+ pin )===4.U && rowcount(0+ pin ) === 0.U && rowcount(1+ pin ) === 0.U){
+     //        i_vn(0) := 2.U+ pin 
+     //        i_vn(1) := 2.U+ pin 
+     //        i_vn(2) := 2.U+ pin 
+     //        i_vn(3) := 2.U+ pin 
   
      
 
         
-         // 2 main 3
+     //     // 2 main 3
 
-        }.elsewhen(rowcount(2+ pin )===3.U && ((rowcount(0+ pin ) === 5.U && rowcount(1+ pin ) === 0.U ) || (rowcount(0+ pin ) === 0.U && rowcount(1+ pin ) === 5.U ) 
-        || (rowcount(0+ pin ) === 4.U && rowcount(1+ pin ) === 1.U ) || (rowcount(0+ pin ) === 1.U && rowcount(1+ pin ) === 4.U ) || (rowcount(0+ pin ) === 2.U && rowcount(1+ pin ) === 3.U )
-        || (rowcount(0+ pin ) === 3.U && rowcount(1+ pin ) === 2.U ))){
+     //    }.elsewhen(rowcount(2+ pin )===3.U && ((rowcount(0+ pin ) === 5.U && rowcount(1+ pin ) === 0.U ) || (rowcount(0+ pin ) === 0.U && rowcount(1+ pin ) === 5.U ) 
+     //    || (rowcount(0+ pin ) === 4.U && rowcount(1+ pin ) === 1.U ) || (rowcount(0+ pin ) === 1.U && rowcount(1+ pin ) === 4.U ) || (rowcount(0+ pin ) === 2.U && rowcount(1+ pin ) === 3.U )
+     //    || (rowcount(0+ pin ) === 3.U && rowcount(1+ pin ) === 2.U ))){
        
      
-            i_vn2(1) := 2.U+ pin 
-            i_vn2(2) := 2.U+ pin 
-            i_vn2(3) := 2.U+ pin 
+     //        i_vn2(1) := 2.U+ pin 
+     //        i_vn2(2) := 2.U+ pin 
+     //        i_vn2(3) := 2.U+ pin 
 
-         }.elsewhen(rowcount(2+ pin )===3.U && ((rowcount(0+ pin ) === 4.U && rowcount(1+ pin ) === 0.U ) || (rowcount(0+ pin ) === 0.U && rowcount(1+ pin ) === 4.U ) 
-        || (rowcount(0+ pin ) === 3.U && rowcount(1+ pin ) === 1.U ) || (rowcount(0+ pin ) === 1.U && rowcount(1+ pin ) === 3.U ) || (rowcount(0+ pin ) === 2.U && rowcount(1+ pin ) === 2.U )
-        )){
+     //     }.elsewhen(rowcount(2+ pin )===3.U && ((rowcount(0+ pin ) === 4.U && rowcount(1+ pin ) === 0.U ) || (rowcount(0+ pin ) === 0.U && rowcount(1+ pin ) === 4.U ) 
+     //    || (rowcount(0+ pin ) === 3.U && rowcount(1+ pin ) === 1.U ) || (rowcount(0+ pin ) === 1.U && rowcount(1+ pin ) === 3.U ) || (rowcount(0+ pin ) === 2.U && rowcount(1+ pin ) === 2.U )
+     //    )){
        
-            i_vn2(0) := 2.U+ pin 
-            i_vn2(1) := 2.U+ pin 
-            i_vn2(2) := 2.U+ pin 
+     //        i_vn2(0) := 2.U+ pin 
+     //        i_vn2(1) := 2.U+ pin 
+     //        i_vn2(2) := 2.U+ pin 
        
 
-        }.elsewhen(rowcount(2+ pin )===3.U && ((rowcount(0+ pin ) === 3.U && rowcount(1+ pin ) === 0.U ) || (rowcount(0+ pin ) === 0.U && rowcount(1+ pin ) === 3.U ) 
-        || (rowcount(0+ pin ) === 2.U && rowcount(1+ pin ) === 1.U ) || (rowcount(0+ pin ) === 1.U && rowcount(1+ pin ) === 2.U ))){
-            i_vn(3) := 2.U+ pin 
-            i_vn2(0) := 2.U+ pin 
-            i_vn2(1) := 2.U+ pin 
+     //    }.elsewhen(rowcount(2+ pin )===3.U && ((rowcount(0+ pin ) === 3.U && rowcount(1+ pin ) === 0.U ) || (rowcount(0+ pin ) === 0.U && rowcount(1+ pin ) === 3.U ) 
+     //    || (rowcount(0+ pin ) === 2.U && rowcount(1+ pin ) === 1.U ) || (rowcount(0+ pin ) === 1.U && rowcount(1+ pin ) === 2.U ))){
+     //        i_vn(3) := 2.U+ pin 
+     //        i_vn2(0) := 2.U+ pin 
+     //        i_vn2(1) := 2.U+ pin 
        
       
 
-        }.elsewhen(rowcount(2+ pin )===3.U && ((rowcount(0+ pin ) === 2.U && rowcount(1+ pin ) === 0.U ) || (rowcount(0+ pin ) === 0.U && rowcount(1+ pin ) === 2.U ) 
-        || (rowcount(0+ pin ) === 1.U && rowcount(1+ pin ) === 1.U ))){
-            i_vn(2) := 2.U+ pin 
-            i_vn(3) := 2.U+ pin 
-            i_vn2(0) := 2.U+ pin 
+     //    }.elsewhen(rowcount(2+ pin )===3.U && ((rowcount(0+ pin ) === 2.U && rowcount(1+ pin ) === 0.U ) || (rowcount(0+ pin ) === 0.U && rowcount(1+ pin ) === 2.U ) 
+     //    || (rowcount(0+ pin ) === 1.U && rowcount(1+ pin ) === 1.U ))){
+     //        i_vn(2) := 2.U+ pin 
+     //        i_vn(3) := 2.U+ pin 
+     //        i_vn2(0) := 2.U+ pin 
       
      
        
 
 
-        }.elsewhen(rowcount(2+ pin )===3.U && ((rowcount(0+ pin ) === 1.U && rowcount(1+ pin ) === 0.U ) || (rowcount(0+ pin ) === 0.U && rowcount(1+ pin ) === 1.U ) )){
-             i_vn(1) := 2.U+ pin 
-            i_vn(2) := 2.U+ pin 
-            i_vn(3) := 2.U+ pin 
+     //    }.elsewhen(rowcount(2+ pin )===3.U && ((rowcount(0+ pin ) === 1.U && rowcount(1+ pin ) === 0.U ) || (rowcount(0+ pin ) === 0.U && rowcount(1+ pin ) === 1.U ) )){
+     //         i_vn(1) := 2.U+ pin 
+     //        i_vn(2) := 2.U+ pin 
+     //        i_vn(3) := 2.U+ pin 
  
         
     
 
-        }.elsewhen(rowcount(2+ pin )===3.U && rowcount(0+ pin ) === 0.U && rowcount(1+ pin ) === 0.U){
-            i_vn(0) := 2.U+ pin 
-            i_vn(1) := 2.U+ pin 
-            i_vn(2) := 2.U+ pin 
+     //    }.elsewhen(rowcount(2+ pin )===3.U && rowcount(0+ pin ) === 0.U && rowcount(1+ pin ) === 0.U){
+     //        i_vn(0) := 2.U+ pin 
+     //        i_vn(1) := 2.U+ pin 
+     //        i_vn(2) := 2.U+ pin 
       
   
 
     
-         // 2 main 2
+     //     // 2 main 2
 
         
         
-        }.elsewhen(rowcount(2+ pin )===2.U && ((rowcount(0+ pin ) === 6.U && rowcount(1+ pin ) === 0.U ) || (rowcount(0+ pin ) === 0.U && rowcount(1+ pin ) === 6.U ) 
-        || (rowcount(0+ pin ) === 5.U && rowcount(1+ pin ) === 1.U ) || (rowcount(0+ pin ) === 1.U && rowcount(1+ pin ) === 5.U ) || (rowcount(0+ pin ) === 2.U && rowcount(1+ pin ) === 4.U )
-        || (rowcount(0+ pin ) === 4.U && rowcount(1+ pin ) === 2.U ))){
+     //    }.elsewhen(rowcount(2+ pin )===2.U && ((rowcount(0+ pin ) === 6.U && rowcount(1+ pin ) === 0.U ) || (rowcount(0+ pin ) === 0.U && rowcount(1+ pin ) === 6.U ) 
+     //    || (rowcount(0+ pin ) === 5.U && rowcount(1+ pin ) === 1.U ) || (rowcount(0+ pin ) === 1.U && rowcount(1+ pin ) === 5.U ) || (rowcount(0+ pin ) === 2.U && rowcount(1+ pin ) === 4.U )
+     //    || (rowcount(0+ pin ) === 4.U && rowcount(1+ pin ) === 2.U ))){
        
      
       
-            i_vn2(2) := 2.U+ pin 
-            i_vn2(3) := 2.U+ pin 
+     //        i_vn2(2) := 2.U+ pin 
+     //        i_vn2(3) := 2.U+ pin 
 
-        }.elsewhen(rowcount(2+ pin )===2.U && ((rowcount(0+ pin ) === 5.U && rowcount(1+ pin ) === 0.U ) || (rowcount(0+ pin ) === 0.U && rowcount(1+ pin ) === 5.U ) 
-        || (rowcount(0+ pin ) === 4.U && rowcount(1+ pin ) === 1.U ) || (rowcount(0+ pin ) === 1.U && rowcount(1+ pin ) === 4.U ) || (rowcount(0+ pin ) === 2.U && rowcount(1+ pin ) === 3.U )
-        || (rowcount(0+ pin ) === 3.U && rowcount(1+ pin ) === 2.U ))){
+     //    }.elsewhen(rowcount(2+ pin )===2.U && ((rowcount(0+ pin ) === 5.U && rowcount(1+ pin ) === 0.U ) || (rowcount(0+ pin ) === 0.U && rowcount(1+ pin ) === 5.U ) 
+     //    || (rowcount(0+ pin ) === 4.U && rowcount(1+ pin ) === 1.U ) || (rowcount(0+ pin ) === 1.U && rowcount(1+ pin ) === 4.U ) || (rowcount(0+ pin ) === 2.U && rowcount(1+ pin ) === 3.U )
+     //    || (rowcount(0+ pin ) === 3.U && rowcount(1+ pin ) === 2.U ))){
        
      
-            i_vn2(1) := 2.U+ pin 
-            i_vn2(2) := 2.U+ pin 
+     //        i_vn2(1) := 2.U+ pin 
+     //        i_vn2(2) := 2.U+ pin 
     
 
-         }.elsewhen(rowcount(2+ pin )===2.U  && ((rowcount(0+ pin ) === 4.U && rowcount(1+ pin ) === 0.U ) || (rowcount(0+ pin ) === 0.U && rowcount(1+ pin ) === 4.U ) 
-        || (rowcount(0+ pin ) === 3.U && rowcount(1+ pin ) === 1.U ) || (rowcount(0+ pin ) === 1.U && rowcount(1+ pin ) === 3.U ) || (rowcount(0+ pin ) === 2.U && rowcount(1+ pin ) === 2.U )
-        )){
+     //     }.elsewhen(rowcount(2+ pin )===2.U  && ((rowcount(0+ pin ) === 4.U && rowcount(1+ pin ) === 0.U ) || (rowcount(0+ pin ) === 0.U && rowcount(1+ pin ) === 4.U ) 
+     //    || (rowcount(0+ pin ) === 3.U && rowcount(1+ pin ) === 1.U ) || (rowcount(0+ pin ) === 1.U && rowcount(1+ pin ) === 3.U ) || (rowcount(0+ pin ) === 2.U && rowcount(1+ pin ) === 2.U )
+     //    )){
        
-            i_vn2(0) := 2.U+ pin 
-            i_vn2(1) := 2.U+ pin 
+     //        i_vn2(0) := 2.U+ pin 
+     //        i_vn2(1) := 2.U+ pin 
      
        
 
-        }.elsewhen(rowcount(1+ pin )===2.U  && ((rowcount(0+ pin ) === 3.U && rowcount(1+ pin ) === 0.U ) || (rowcount(0+ pin ) === 0.U && rowcount(1+ pin ) === 3.U ) 
-        || (rowcount(0+ pin ) === 2.U && rowcount(1+ pin ) === 1.U ) || (rowcount(0+ pin ) === 1.U && rowcount(1+ pin ) === 2.U ))){
-            i_vn(3) := 1.U+ pin 
-            i_vn2(0) := 1.U+ pin 
+     //    }.elsewhen(rowcount(1+ pin )===2.U  && ((rowcount(0+ pin ) === 3.U && rowcount(1+ pin ) === 0.U ) || (rowcount(0+ pin ) === 0.U && rowcount(1+ pin ) === 3.U ) 
+     //    || (rowcount(0+ pin ) === 2.U && rowcount(1+ pin ) === 1.U ) || (rowcount(0+ pin ) === 1.U && rowcount(1+ pin ) === 2.U ))){
+     //        i_vn(3) := 1.U+ pin 
+     //        i_vn2(0) := 1.U+ pin 
 
        
       
 
-        }.elsewhen(rowcount(1+ pin )===2.U && ((rowcount(0+ pin ) === 2.U && rowcount(1+ pin ) === 0.U ) || (rowcount(0+ pin ) === 0.U && rowcount(1+ pin ) === 2.U ) 
-        || (rowcount(0+ pin ) === 1.U && rowcount(1+ pin ) === 1.U ))){
-            i_vn(2) := 1.U+ pin 
-            i_vn(3) := 1.U+ pin 
+     //    }.elsewhen(rowcount(1+ pin )===2.U && ((rowcount(0+ pin ) === 2.U && rowcount(1+ pin ) === 0.U ) || (rowcount(0+ pin ) === 0.U && rowcount(1+ pin ) === 2.U ) 
+     //    || (rowcount(0+ pin ) === 1.U && rowcount(1+ pin ) === 1.U ))){
+     //        i_vn(2) := 1.U+ pin 
+     //        i_vn(3) := 1.U+ pin 
       
       
      
        
 
 
-        }.elsewhen(rowcount(1+ pin )===2.U && ((rowcount(0+ pin ) === 1.U && rowcount(1+ pin ) === 0.U ) || (rowcount(0+ pin ) === 0.U && rowcount(1+ pin ) === 1.U ) )){
-             i_vn(1) := 1.U+ pin 
-            i_vn(2) := 1.U+ pin 
+     //    }.elsewhen(rowcount(1+ pin )===2.U && ((rowcount(0+ pin ) === 1.U && rowcount(1+ pin ) === 0.U ) || (rowcount(0+ pin ) === 0.U && rowcount(1+ pin ) === 1.U ) )){
+     //         i_vn(1) := 1.U+ pin 
+     //        i_vn(2) := 1.U+ pin 
        
  
         
     
 
-        }.elsewhen(rowcount(1+ pin )===2.U && rowcount(0+ pin ) === 0.U && rowcount(1+ pin ) === 0.U){
-            i_vn(0) := 1.U+ pin 
-            i_vn(1) := 1.U+ pin 
+     //    }.elsewhen(rowcount(1+ pin )===2.U && rowcount(0+ pin ) === 0.U && rowcount(1+ pin ) === 0.U){
+     //        i_vn(0) := 1.U+ pin 
+     //        i_vn(1) := 1.U+ pin 
       
       
   
-           // 2 main 1
+     //       // 2 main 1
 
-         }.elsewhen(rowcount(1+ pin )===1.U &&  && ((rowcount(0+ pin ) === 7.U && rowcount(1+ pin ) === 0.U ) || (rowcount(0+ pin ) === 0.U && rowcount(1+ pin ) === 7.U ) 
-        || (rowcount(0+ pin ) === 5.U && rowcount(1+ pin ) === 2.U ) || (rowcount(0+ pin ) === 2.U && rowcount(1+ pin ) === 5.U ) || (rowcount(0+ pin ) === 3.U && rowcount(1+ pin ) === 4.U )
-        || (rowcount(0+ pin ) === 4.U && rowcount(1+ pin ) === 3.U ))){
+     //     }.elsewhen(rowcount(1+ pin )===1.U &&  && ((rowcount(0+ pin ) === 7.U && rowcount(1+ pin ) === 0.U ) || (rowcount(0+ pin ) === 0.U && rowcount(1+ pin ) === 7.U ) 
+     //    || (rowcount(0+ pin ) === 5.U && rowcount(1+ pin ) === 2.U ) || (rowcount(0+ pin ) === 2.U && rowcount(1+ pin ) === 5.U ) || (rowcount(0+ pin ) === 3.U && rowcount(1+ pin ) === 4.U )
+     //    || (rowcount(0+ pin ) === 4.U && rowcount(1+ pin ) === 3.U ))){
        
      
-            i_vn2(3) := 1.U+ pin
+     //        i_vn2(3) := 1.U+ pin
         
-        }.elsewhen(rowcount(1+ pin )===1.U && ((rowcount(0+ pin ) === 6.U && rowcount(1+ pin ) === 0.U ) || (rowcount(0+ pin ) === 0.U && rowcount(1+ pin ) === 6.U ) 
-        || (rowcount(0+ pin ) === 5.U && rowcount(1+ pin ) === 1.U ) || (rowcount(0+ pin ) === 1.U && rowcount(1+ pin ) === 5.U ) || (rowcount(0+ pin ) === 2.U && rowcount(1+ pin ) === 4.U )
-        || (rowcount(0+ pin ) === 4.U && rowcount(1+ pin ) === 2.U ))){
+     //    }.elsewhen(rowcount(1+ pin )===1.U && ((rowcount(0+ pin ) === 6.U && rowcount(1+ pin ) === 0.U ) || (rowcount(0+ pin ) === 0.U && rowcount(1+ pin ) === 6.U ) 
+     //    || (rowcount(0+ pin ) === 5.U && rowcount(1+ pin ) === 1.U ) || (rowcount(0+ pin ) === 1.U && rowcount(1+ pin ) === 5.U ) || (rowcount(0+ pin ) === 2.U && rowcount(1+ pin ) === 4.U )
+     //    || (rowcount(0+ pin ) === 4.U && rowcount(1+ pin ) === 2.U ))){
        
      
       
-            i_vn2(2) := 1.U+ pin 
+     //        i_vn2(2) := 1.U+ pin 
    
 
-        }.elsewhen(rowcount(1+ pin )===1.U && ((rowcount(0+ pin ) === 5.U && rowcount(1+ pin ) === 0.U ) || (rowcount(0+ pin ) === 0.U && rowcount(1+ pin ) === 5.U ) 
-        || (rowcount(0+ pin ) === 4.U && rowcount(1+ pin ) === 1.U ) || (rowcount(0+ pin ) === 1.U && rowcount(1+ pin ) === 4.U ) || (rowcount(0+ pin ) === 2.U && rowcount(1+ pin ) === 3.U )
-        || (rowcount(0+ pin ) === 3.U && rowcount(1+ pin ) === 2.U ))){
+     //    }.elsewhen(rowcount(1+ pin )===1.U && ((rowcount(0+ pin ) === 5.U && rowcount(1+ pin ) === 0.U ) || (rowcount(0+ pin ) === 0.U && rowcount(1+ pin ) === 5.U ) 
+     //    || (rowcount(0+ pin ) === 4.U && rowcount(1+ pin ) === 1.U ) || (rowcount(0+ pin ) === 1.U && rowcount(1+ pin ) === 4.U ) || (rowcount(0+ pin ) === 2.U && rowcount(1+ pin ) === 3.U )
+     //    || (rowcount(0+ pin ) === 3.U && rowcount(1+ pin ) === 2.U ))){
          
-            i_vn2(1) := 1.U+ pin 
+     //        i_vn2(1) := 1.U+ pin 
 
     
-         }.elsewhen(rowcount(1+ pin )===1.U && ((rowcount(0+ pin ) === 4.U && rowcount(1+ pin ) === 0.U ) || (rowcount(0+ pin ) === 0.U && rowcount(1+ pin ) === 4.U ) 
-        || (rowcount(0+ pin ) === 3.U && rowcount(1+ pin ) === 1.U ) || (rowcount(0+ pin ) === 1.U && rowcount(1+ pin ) === 3.U ) || (rowcount(0+ pin ) === 2.U && rowcount(1+ pin ) === 2.U )
-        )){
+     //     }.elsewhen(rowcount(1+ pin )===1.U && ((rowcount(0+ pin ) === 4.U && rowcount(1+ pin ) === 0.U ) || (rowcount(0+ pin ) === 0.U && rowcount(1+ pin ) === 4.U ) 
+     //    || (rowcount(0+ pin ) === 3.U && rowcount(1+ pin ) === 1.U ) || (rowcount(0+ pin ) === 1.U && rowcount(1+ pin ) === 3.U ) || (rowcount(0+ pin ) === 2.U && rowcount(1+ pin ) === 2.U )
+     //    )){
        
-            i_vn2(0) := 1.U+ pin 
+     //        i_vn2(0) := 1.U+ pin 
       
 
 
-        }.elsewhen(rowcount(1+ pin )===1.U && ((rowcount(0+ pin ) === 3.U && rowcount(1+ pin ) === 0.U ) || (rowcount(0+ pin ) === 0.U && rowcount(1+ pin ) === 3.U ) 
-        || (rowcount(0+ pin ) === 2.U && rowcount(1+ pin ) === 1.U ) || (rowcount(0+ pin ) === 1.U && rowcount(1+ pin ) === 2.U ))){
-            i_vn(3) := 1.U+ pin 
+     //    }.elsewhen(rowcount(1+ pin )===1.U && ((rowcount(0+ pin ) === 3.U && rowcount(1+ pin ) === 0.U ) || (rowcount(0+ pin ) === 0.U && rowcount(1+ pin ) === 3.U ) 
+     //    || (rowcount(0+ pin ) === 2.U && rowcount(1+ pin ) === 1.U ) || (rowcount(0+ pin ) === 1.U && rowcount(1+ pin ) === 2.U ))){
+     //        i_vn(3) := 1.U+ pin 
 
-        }.elsewhen(rowcount(1+ pin )===1.U && ((rowcount(0+ pin ) === 2.U && rowcount(1+ pin ) === 0.U ) || (rowcount(0+ pin ) === 0.U && rowcount(1+ pin ) === 2.U ) 
-        || (rowcount(0+ pin ) === 1.U && rowcount(1+ pin ) === 1.U ))){
-            i_vn(2) := 1.U+ pin 
+     //    }.elsewhen(rowcount(1+ pin )===1.U && ((rowcount(0+ pin ) === 2.U && rowcount(1+ pin ) === 0.U ) || (rowcount(0+ pin ) === 0.U && rowcount(1+ pin ) === 2.U ) 
+     //    || (rowcount(0+ pin ) === 1.U && rowcount(1+ pin ) === 1.U ))){
+     //        i_vn(2) := 1.U+ pin 
       
 
-        }.elsewhen(rowcount(1+ pin )===1.U  && ((rowcount(0+ pin ) === 1.U && rowcount(1+ pin ) === 0.U ) || (rowcount(0+ pin ) === 0.U && rowcount(1+ pin ) === 1.U ) )){
-             i_vn(1) := 1.U+ pin 
+     //    }.elsewhen(rowcount(1+ pin )===1.U  && ((rowcount(0+ pin ) === 1.U && rowcount(1+ pin ) === 0.U ) || (rowcount(0+ pin ) === 0.U && rowcount(1+ pin ) === 1.U ) )){
+     //         i_vn(1) := 1.U+ pin 
         
 
-        }.elsewhen(rowcount(1+ pin )===1.U && rowcount(0+ pin ) === 0.U && rowcount(1+ pin ) === 0.U){
-            i_vn(0) := 1.U+ pin 
-        }
+     //    }.elsewhen(rowcount(1+ pin )===1.U && rowcount(0+ pin ) === 0.U && rowcount(1+ pin ) === 0.U){
+     //        i_vn(0) := 1.U+ pin 
+     //    }
 
 
 
@@ -1138,3 +1139,4 @@ class ivncontrol4(implicit val Config: MagmasiConfig) extends Module {
 
      }
     }
+}
