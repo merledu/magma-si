@@ -160,31 +160,31 @@ class ivncontrol4(implicit val Config: MagmasiConfig) extends Module {
     
 
      when(valid === true.B){
-        when(rowcount(0 + pin ) === 0.U){
-            i_vn(0) := 0.U + pin 
-            i_vn(1) := 0.U + pin 
-            i_vn(2) := 0.U + pin 
-            i_vn(3) := 0.U+ pin 
-            i_vn2(0) := 0.U+ pin 
-            i_vn2(1) := 0.U+ pin 
-            i_vn2(2) := 0.U+ pin 
-            i_vn2(3) := 0.U+ pin 
+        when(rowcount(0.U + pin.U ) === 0.U){
+            i_vn(0) := 0.U + pin.U 
+            i_vn(1) := 0.U + pin.U 
+            i_vn(2) := 0.U + pin.U  
+            i_vn(3) := 0.U+ pin.U  
+            i_vn2(0) := 0.U+ pin.U  
+            i_vn2(1) := 0.U+ pin.U  
+            i_vn2(2) := 0.U+ pin.U  
+            i_vn2(3) := 0.U+ pin.U  
 
-        }.elsewhen(rowcount(0+ pin ) === 7.U  ){
-            i_vn(0) := 0.U+ pin 
-            i_vn(1) := 0.U+ pin 
-            i_vn(2) := 0.U+ pin 
-            i_vn(3) := 0.U+ pin 
-            i_vn2(0) := 0.U+ pin 
-            i_vn2(1) := 0.U+ pin 
-            i_vn2(2) := 0.U+ pin 
-        }.elsewhen(rowcount(0+ pin ) === 6.U ){
-            i_vn(0) := 0.U+ pin 
-            i_vn(1) := 0.U+ pin 
-            i_vn(2) := 0.U+ pin 
-            i_vn(3) := 0.U+ pin 
-            i_vn2(0) := 0.U+ pin 
-            i_vn2(1) := 0.U+ pin 
+        }.elsewhen(rowcount(0.U + pin.U  ) === 7.U  ){
+            i_vn(0) := 0.U+ pin.U  
+            i_vn(1) := 0.U+ pin.U  
+            i_vn(2) := 0.U+ pin.U  
+            i_vn(3) := 0.U+ pin.U  
+            i_vn2(0) := 0.U+ pin.U  
+            i_vn2(1) := 0.U+ pin.U  
+            i_vn2(2) := 0.U+ pin.U  
+        }.elsewhen(rowcount(0.U  + pin.U  ) === 6.U ){
+            i_vn(0) := 0.U+ pin.U  
+            i_vn(1) := 0.U+ pin.U  
+            i_vn(2) := 0.U+ pin.U  
+            i_vn(3) := 0.U+ pin.U  
+            i_vn2(0) := 0.U+ pin.U  
+            i_vn2(1) := 0.U+ pin.U  
     
         }.elsewhen(rowcount(0+ pin ) === 5.U  ){
             i_vn(0) := 0.U+ pin 
@@ -706,7 +706,7 @@ class ivncontrol4(implicit val Config: MagmasiConfig) extends Module {
             i_vn2(3) := 2.U+ pin 
 
         }.elsewhen(rowcount(2+ pin )===2.U && ((rowcount(0+ pin ) === 5.U && rowcount(1+ pin ) === 0.U ) || (rowcount(0+ pin ) === 0.U && rowcount(1+ pin ) === 5.U ) 
-        || (rowcount(0+ pin ) === 4.U && rowcount(1+ pin ) === 1.U ) || (rowcount(0+ pin ) === 1.U && rowcount(1+ pin ) === 4.U ) || (rowcount(0+ pin ) === .U && rowcount(1+ pin ) === 3.U )
+        || (rowcount(0+ pin ) === 4.U && rowcount(1+ pin ) === 1.U ) || (rowcount(0+ pin ) === 1.U && rowcount(1+ pin ) === 4.U ) || (rowcount(0+ pin ) === 2.U && rowcount(1+ pin ) === 3.U )
         || (rowcount(0+ pin ) === 3.U && rowcount(1+ pin ) === 2.U ))){
        
      
@@ -774,7 +774,7 @@ class ivncontrol4(implicit val Config: MagmasiConfig) extends Module {
    
 
         }.elsewhen(rowcount(2+ pin )===1.U && ((rowcount(0+ pin ) === 5.U && rowcount(1+ pin ) === 0.U ) || (rowcount(0+ pin ) === 0.U && rowcount(1+ pin ) === 5.U ) 
-        || (rowcount(0+ pin ) === 4.U && rowcount(1+ pin ) === 1.U ) || (rowcount(0+ pin ) === 1.U && rowcount(1+ pin ) === 4.U ) || (rowcount(0+ pin ) === .U && rowcount(1+ pin ) === 3.U )
+        || (rowcount(0+ pin ) === 4.U && rowcount(1+ pin ) === 1.U ) || (rowcount(0+ pin ) === 1.U && rowcount(1+ pin ) === 4.U ) || (rowcount(0+ pin ) === 2.U && rowcount(1+ pin ) === 3.U )
         || (rowcount(0+ pin ) === 3.U && rowcount(1+ pin ) === 2.U ))){
          
             i_vn2(1) := 2.U+ pin 
@@ -1026,7 +1026,7 @@ class ivncontrol4(implicit val Config: MagmasiConfig) extends Module {
             i_vn2(3) := 2.U+ pin 
 
         }.elsewhen(rowcount(2+ pin )===2.U && ((rowcount(0+ pin ) === 5.U && rowcount(1+ pin ) === 0.U ) || (rowcount(0+ pin ) === 0.U && rowcount(1+ pin ) === 5.U ) 
-        || (rowcount(0+ pin ) === 4.U && rowcount(1+ pin ) === 1.U ) || (rowcount(0+ pin ) === 1.U && rowcount(1+ pin ) === 4.U ) || (rowcount(0+ pin ) === .U && rowcount(1+ pin ) === 3.U )
+        || (rowcount(0+ pin ) === 4.U && rowcount(1+ pin ) === 1.U ) || (rowcount(0+ pin ) === 1.U && rowcount(1+ pin ) === 4.U ) || (rowcount(0+ pin ) === 2.U && rowcount(1+ pin ) === 3.U )
         || (rowcount(0+ pin ) === 3.U && rowcount(1+ pin ) === 2.U ))){
        
      
@@ -1094,7 +1094,7 @@ class ivncontrol4(implicit val Config: MagmasiConfig) extends Module {
    
 
         }.elsewhen(rowcount(1+ pin )===1.U && ((rowcount(0+ pin ) === 5.U && rowcount(1+ pin ) === 0.U ) || (rowcount(0+ pin ) === 0.U && rowcount(1+ pin ) === 5.U ) 
-        || (rowcount(0+ pin ) === 4.U && rowcount(1+ pin ) === 1.U ) || (rowcount(0+ pin ) === 1.U && rowcount(1+ pin ) === 4.U ) || (rowcount(0+ pin ) === .U && rowcount(1+ pin ) === 3.U )
+        || (rowcount(0+ pin ) === 4.U && rowcount(1+ pin ) === 1.U ) || (rowcount(0+ pin ) === 1.U && rowcount(1+ pin ) === 4.U ) || (rowcount(0+ pin ) === 2.U && rowcount(1+ pin ) === 3.U )
         || (rowcount(0+ pin ) === 3.U && rowcount(1+ pin ) === 2.U ))){
          
             i_vn2(1) := 1.U+ pin 
