@@ -10,6 +10,9 @@ class Distribution(implicit val config:MagmasiConfig) extends Module{
     val out = Output(Vec(config.MaxRows,Vec(config.MaxCols,UInt(32.W))))
     val ProcessValid = Output(Bool())
     val valid = Input(Bool())
+    val iteration = Output(UInt(32.W))
+    val validIteration = Output(Bool())
+
 
     })
 
@@ -19,7 +22,19 @@ class Distribution(implicit val config:MagmasiConfig) extends Module{
     val Idex = RegInit(VecInit(Seq.fill(config.MaxRows)(0.U(32.W))))
     val Jdex = RegInit(VecInit(Seq.fill(config.MaxCols)(0.U(32.W))))
     val mat = RegInit(VecInit(Seq.fill(config.MaxRows)(VecInit(Seq.fill(config.MaxCols)(0.U)))))
+    val iterationNo = RegInit(0.U(32.W))
+
     when ( io.valid){
+
+
+    io.validIteration := (i === (config.MaxRows -1).U) && (j === (config.MaxCols -1).U)
+    io.iteration := iterationNo
+    dontTouch(iterationNo)
+
+    when (io.matrix(i)(j) === 1.U){
+      iterationNo := iterationNo + 1.U
+    }
+
     mat := io.matrix
     dontTouch(i)
     dontTouch(j)
@@ -27,10 +42,9 @@ class Distribution(implicit val config:MagmasiConfig) extends Module{
     dontTouch(Idex)
     dontTouch(Jdex)
     
-    val e = (mat(i)(j) === 1.U)
-    dontTouch(e)
 
-    when ((io.matrix(i)(j) === 1.U)  && (i =/= (config.MaxRows-1).U) && (j =/= (config.MaxCols-1).U)){
+
+    when ((io.matrix(i)(j) === 1.U) ){//&& (i =/= (config.MaxRows-1).U) && (j =/= (config.MaxCols-1).U)){
         count := count + 1.U
         Idex(count) := i
         Jdex(count) := j
@@ -63,7 +77,8 @@ part2.io.mat := io.matrix
     }.otherwise{
         check := 1.B
     }
-    
+    val e = ((i === (config.MaxRows-1).U) && (j === (config.MaxCols-1).U) && ((count-1.U) < io.s))
+    dontTouch(e)
     when (part2.io.ProcessValid && check){
     part3.io.merge := RegNext(c)
     part3.io.mat := io.matrix
@@ -72,16 +87,22 @@ part2.io.mat := io.matrix
     part3.io.mat := io.matrix
     part3.io.IDex := Idex(io.s)
     part3.io.JDex := Jdex(io.s)
-    io.out := part3.io.Omat 
+    when ((i === (config.MaxRows-1).U) && (j === (config.MaxCols-1).U) && ((count-1.U) < io.s)){
+        io.out := WireInit(VecInit(Seq.fill(config.MaxRows)(VecInit(Seq.fill(config.MaxCols)(0.U)))))
+    }.otherwise{
+    io.out := part3.io.Omat }
     io.ProcessValid := part3.io.valid
     }.otherwise{ 
         part3.io.merge := 0.B
-        part3.io.mat :=VecInit(Seq.fill(4)(VecInit(Seq.fill(4)(0.U(32.W)))))
+        part3.io.mat :=VecInit(Seq.fill((config.MaxRows))(VecInit(Seq.fill(config.MaxCols)(0.U(32.W)))))
         part3.io.i_valid := 0.B
-    part3.io.PreMat := VecInit(Seq.fill(4)(VecInit(Seq.fill(4)(0.U(32.W)))))
+    part3.io.PreMat := VecInit(Seq.fill(config.MaxRows)(VecInit(Seq.fill(config.MaxCols)(0.U(32.W)))))
     part3.io.IDex := 0.U
     part3.io.JDex := 0.U
-    io.out := part2.io.OutMat
+    when ((i === (config.MaxRows-1).U) && (j === (config.MaxCols-1).U) && ((count-1.U) < io.s)){
+        io.out := WireInit(VecInit(Seq.fill(config.MaxRows)(VecInit(Seq.fill(config.MaxCols)(0.U)))))
+    }.otherwise{
+    io.out := part2.io.OutMat}
     io.ProcessValid := part2.io.Ovalid
     }
    
@@ -89,13 +110,13 @@ part2.io.mat := io.matrix
 
 
 
-    when ( i < 3.U && (j === 3.U)){
+    when ( i < (config.MaxRows-1).U && (j === (config.MaxCols-1).U)){
         i := i + 1.U
     }
 
-    when ( i <= 3.U && (j < 3.U)){
+    when ( i <= (config.MaxRows-1).U && (j < (config.MaxCols-1).U)){
         j := j + 1.U
-    }.elsewhen(i === 3.U && (j === 3.U)){
+    }.elsewhen(i === (config.MaxRows-1).U && (j === (config.MaxCols-1).U)){
         j := j
     }.otherwise{
         j := 0.U
@@ -107,6 +128,8 @@ part2.io.mat := io.matrix
     }.otherwise{
         io.out := WireInit(VecInit(Seq.fill(config.MaxRows)(VecInit(Seq.fill(config.MaxCols)(0.U)))))
         io.ProcessValid := 0.B
+        io.iteration := 0.U
+        io.validIteration := 0.B
     }
 }
 

@@ -19,9 +19,9 @@ class DistributionTester extends FreeSpec with ChiselScalatestTester {
            Seq(0, 0, 0, 0)
         ) 
             a.io.s.poke(1.U)
+            a.io.valid.poke(1.B)
         for (i <- 0 until 4) {
           for (j <- 0 until 4) {
-            println(j)
             a.io.matrix(i)(j).poke(inputData(i)(j).U)
           }
         }

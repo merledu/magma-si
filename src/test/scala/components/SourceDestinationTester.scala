@@ -18,8 +18,8 @@ class SourceDestinationTester extends AnyFreeSpec with ChiselScalatestTester {
         )
         val inputData2 = Seq(0,1,1,0,1)
 
-        for (i <- 0 until inputData.length) {
-          for (j <- 0 until inputData(i).length) {
+        for (i <- 0 until 4) {
+          for (j <- 0 until 4) {
             dut.io.Stationary_matrix(i)(j).poke(inputData(i)(j).U)
           }
         }

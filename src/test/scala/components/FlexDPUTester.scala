@@ -9,17 +9,17 @@ class FlexDPUTester extends AnyFreeSpec with ChiselScalatestTester {
     "FlexDPU tester" in {
         implicit val config = MagmasiConfig()
         test(new FlexDPU()){ c =>
-        val inputData = Seq(
-           Seq(0, 0, 0, 0),
-            Seq(3, 4, 1, 2),
-           Seq(2, 5, 4, 8),
-           Seq(0, 0, 0, 0)
-        ) 
+val inputData = Seq(
+          Seq(11,12,13,14),
+          Seq(3, 4, 5, 6),
+            Seq(7, 8, 9, 10),
+            Seq(21,22,23,25)
+        )
         val inputData2 = Seq(
-           Seq(2,0, 0, 0),
-            Seq(1, 0, 0, 0),
-           Seq(6, 0, 0, 0),
-           Seq(7, 0, 0, 0)
+           Seq(2,6,0,0),
+            Seq(1,9,0,0,0),
+           Seq(6,3,0,0,0),
+           Seq(7,1,0,0,0)
         ) 
         for ( i <- 0 until config.MaxRows){
           for ( j <- 0 until config.MaxCols){

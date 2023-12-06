@@ -12,8 +12,8 @@ class PathFinderTester extends AnyFreeSpec with ChiselScalatestTester {
 
         val inputData = Seq(
            Seq(0, 0, 0, 0),
-            Seq(1, 2, 3, 4),
-           Seq(1, 2, 3, 4),
+            Seq(22, 22, 23, 24),
+           Seq(5, 6, 7, 8),
            Seq(0, 0, 0, 0)
         ) 
         val inputData2 = Seq(1, 2, 3, 4)
@@ -27,7 +27,7 @@ class PathFinderTester extends AnyFreeSpec with ChiselScalatestTester {
         for (i <- 0 until 4){
           dut.io.Streaming_matrix(i).poke(inputData2(i).U)
         }
-        dut.io.NoDPE.poke(1.U)
+        dut.io.NoDPE.poke(0.U)
         // dut.clock.step(50)
         // dut.io.DataValid.poke(1.B)  
         dut.clock.step(200)
