@@ -104,25 +104,29 @@ class FlexDPU(implicit val config:MagmasiConfig) extends Module{
         PF1dest := PF(i).destination
         }
 
-        val FDPE = VecInit(Seq.fill(4)(Module(new flexdpecom4).io))
+        //val FDPE = VecInit(Seq.fill(4)(Module(new flexdpecom4).io))
 
-        for(i <- 0 until 4 ){
-            FDPE(i).i_stationary := 1.B
-            FDPE(i).i_data_valid := 1.B
-            FDPE(i).Stationary_matrix := io.Stationary_matrix
-            for (j <- 0 until 4){
-                //when (PF(0).PF_Valid){
-                    FDPE(i).i_mux_bus(j) := PF(i).i_mux_bus(j)
-                    FDPE(i).i_data_bus(j) := PF(i).Source(j)
-                    FDPE(i).i_data_bus2(j) := PF(i).destination(j)
-                // }.otherwise{
-                //     FDPE(i).i_mux_bus(j) := PF1mux(j)
-                //     FDPE(i).i_data_bus(j) := PF1src(j)
-                //     FDPE(i).i_data_bus2(j) := PF1dest(j)
-                // }
-        }
-        dontTouch(FDPE(i).o_adder)
-        }
+        // for(i <- 0 until 4 ){
+        //     FDPE(i).i_stationary := 1.B
+        //     FDPE(i).i_data_valid := 1.B
+        //     FDPE(i).Stationary_matrix := io.Stationary_matrix
+        //     for (j <- 0 until 4){
+        //         //when (PF(0).PF_Valid){
+        //             FDPE(i).i_mux_bus(j) := PF(i).i_mux_bus(j)
+        //             FDPE(i).i_data_bus(j) := PF(i).Source(j)
+        //             FDPE(i).i_data_bus2(j) := PF(i).destination(j)
+        //         // }.otherwise{
+        //         //     FDPE(i).i_mux_bus(j) := PF1mux(j)
+        //         //     FDPE(i).i_data_bus(j) := PF1src(j)
+        //         //     FDPE(i).i_data_bus2(j) := PF1dest(j)
+        //         // }
+        // }
+        // dontTouch(FDPE(i).o_adder)
+        // }
+
+
+//--------------------------------------------- ZArori chees ------------------------------
+
         
 
         // PF(1).DataValid := Statvalid

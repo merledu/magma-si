@@ -1,40 +1,40 @@
 
-package magmasi.components
+// package magmasi.components
 
-import chisel3._
-import chisel3.util._
-import chiseltest._ 
-import org.scalatest.freespec.AnyFreeSpec
+// import chisel3._
+// import chisel3.util._
+// import chiseltest._ 
+// import org.scalatest.freespec.AnyFreeSpec
 
-class ivncontrol4Tester extends AnyFreeSpec with ChiselScalatestTester {
-    "path finder tester" in {
-        implicit val Config = MagmasiConfig()
-        test(new ivncontrol4()){ c =>
+// class ivncontrol4Tester extends AnyFreeSpec with ChiselScalatestTester {
+//     "path finder tester" in {
+//         implicit val Config = MagmasiConfig()
+//         test(new ivncontrol4()){ c =>
     
 
-        val inputData = Seq(
+//         val inputData = Seq(
 
-             Seq(0, 0,0,0,0,0,0,0),
-          Seq(4, 6,6,9,1,1,1,1),  
-           Seq(0, 7,5,5,4,3,2,1),
-          Seq(4, 6,6,9,1,1,1,1),        
-           Seq(0, 7,5,5,4,3,2,1),
-          Seq(4, 6,6,9,1,1,1,1),    
-           Seq(0, 7,5,5,4,3,2,1),
-          Seq(4, 6,6,9,1,1,1,0)    
-        ) 
+//              Seq(0, 0,0,0,0,0,0,0),
+//           Seq(4, 6,6,9,1,1,1,1),  
+//            Seq(0, 7,5,5,4,3,2,1),
+//           Seq(4, 6,6,9,1,1,1,1),        
+//            Seq(0, 7,5,5,4,3,2,1),
+//           Seq(4, 6,6,9,1,1,1,1),    
+//            Seq(0, 7,5,5,4,3,2,1),
+//           Seq(4, 6,6,9,1,1,1,0)    
+//         ) 
 
-        val numRows = inputData.length
-        val numCols = if (numRows > 0) inputData.head.length else 0
+//         val numRows = inputData.length
+//         val numCols = if (numRows > 0) inputData.head.length else 0
 
-        for (i <- 0 until numRows) {
-          for (j <- 0 until numCols) {
-            c.io.Stationary_matrix(i)(j).poke(inputData(i)(j).U)
+//         for (i <- 0 until numRows) {
+//           for (j <- 0 until numCols) {
+//             c.io.Stationary_matrix(i)(j).poke(inputData(i)(j).U)
             
-          }
+//           }
     
-    }
-      c.clock.step(300)
-}
-}
-}
+//     }
+//       c.clock.step(300)
+// }
+// }
+// }
