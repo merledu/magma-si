@@ -5,17 +5,17 @@ import chisel3.util._
 
 class abc3(implicit val config:MagmasiConfig) extends Module{
     val io = IO(new Bundle{
-        val PreMat = Input(Vec(4,Vec(4,UInt(32.W))))
+        val PreMat = Input(Vec(config.MaxRows,Vec(config.MaxCols,UInt(32.W))))
         val IDex = Input(UInt(32.W))
         val JDex = Input(UInt(32.W))
-        val mat = Input(Vec(4,Vec(4,UInt(32.W))))
+        val mat = Input(Vec(config.MaxRows,Vec(config.MaxCols,UInt(32.W))))
         val i_valid = Input(Bool())
         //val OutMat = Output(Vec(4,Vec(4,UInt(32.W))))
         val valid = Output(Bool())
-        val Omat = Output(Vec(4,(Vec(4,UInt(32.W)))))
+        val Omat = Output(Vec(config.MaxRows,(Vec(config.MaxCols,UInt(32.W)))))
         val merge = Input(Bool())
     })
-    val b = RegInit(VecInit(Seq.fill(4)(VecInit(Seq.fill(4)(0.U(32.W))))))
+    val b = RegInit(VecInit(Seq.fill(config.MaxRows)(VecInit(Seq.fill(config.MaxCols)(0.U(32.W))))))
     io.Omat := b
     val check = RegInit(0.U(32.W))
     val counter = WireInit(0.B)
@@ -40,12 +40,12 @@ class abc3(implicit val config:MagmasiConfig) extends Module{
 
     when(io.merge && (delay === (config.MaxRows).U)){
 
-    when ( k < io.IDex && (l === 3.U)){
+    when ( k < io.IDex && (l === (config.MaxCols-1).U)){
         k := k + 1.U
         l := 0.U
-    }.elsewhen ( k <= io.IDex && (l < 3.U)){
+    }.elsewhen ( k <= io.IDex && (l < (config.MaxCols-1).U)){
         l := l + 1.U
-    }.elsewhen(k === io.IDex && (l === 3.U)){
+    }.elsewhen(k === io.IDex && (l === (config.MaxCols-1).U)){
         l := l
     }
     //when (io.merge){
@@ -97,23 +97,18 @@ class abc3(implicit val config:MagmasiConfig) extends Module{
 when(counter){
 
     
-    when(io.mat(i)(j) === 4.U){
+    when(io.mat(i)(j) === config.NUM_PES.U){
         i := i
         j := j
         io.valid := 1.B
-    }.elsewhen ( i < 3.U && (j === 3.U)){
+    }.elsewhen ( i < (config.MaxRows-1).U && (j === (config.MaxCols-1).U)){
         i := i + 1.U
         j := 0.U
-    }.elsewhen ( i <= 3.U && (j < 3.U)){
+    }.elsewhen ( i <= (config.MaxRows-1).U && (j < (config.MaxCols-1).U)){
         j := j + 1.U
-    }.elsewhen(i === 3.U && (j === 3.U)){
+    }.elsewhen(i === (config.MaxRows-1).U && (j === (config.MaxCols-1).U)){
         j := j
     }
 
 }
-val c = ( i <= 3.U && (j < 3.U))
-dontTouch(c)
-val d = counter
-dontTouch(d)
-
 }

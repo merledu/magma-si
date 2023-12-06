@@ -2,6 +2,7 @@ package magmasi.components
 
 import chisel3._
 import chisel3.util._
+import chisel3.stage.ChiselStage
 
 class FlexDPU(implicit val config:MagmasiConfig) extends Module{
     val io = IO(new Bundle{
@@ -51,66 +52,186 @@ class FlexDPU(implicit val config:MagmasiConfig) extends Module{
 
     //------------------ Destination of flexdpe is complete ---------------------------------
     val PF1mux = WireInit(VecInit(Seq.fill(config.MaxRows * config.MaxCols)(0.U((config.LEVELS - 1).W))))
-    val PF1src = WireInit(VecInit(Seq.fill(config.MaxRows * config.MaxCols)(0.U((config.LEVELS - 1).W))))
-    val PF1dest = WireInit(VecInit(Seq.fill(config.MaxRows * config.MaxCols)(0.U((config.LEVELS - 1).W))))
-    val PF2mux = WireInit(VecInit(Seq.fill(config.MaxRows * config.MaxCols)(0.U((config.LEVELS - 1).W))))
-    val PF2src = WireInit(VecInit(Seq.fill(config.MaxRows * config.MaxCols)(0.U((config.LEVELS - 1).W))))
-    val PF2dest = WireInit(VecInit(Seq.fill(config.MaxRows * config.MaxCols)(0.U((config.LEVELS - 1).W))))
+    val PF1src = WireInit(VecInit(Seq.fill(config.MaxRows * config.MaxCols)(0.U((config.DATA_TYPE).W))))
+    val PF1dest = WireInit(VecInit(Seq.fill(config.MaxRows * config.MaxCols)(0.U((config.DATA_TYPE).W))))
     val PF1CountIteration = RegInit(0.U(32.W))
     val PF1_Stream_Col = RegInit(VecInit(Seq.fill(config.MaxRows)(0.U(32.W))))
-    val PF2CountIteration = RegInit(0.U(32.W))
-    val PF2_Stream_Col = RegInit(VecInit(Seq.fill(config.MaxRows)(0.U(32.W))))
+    val ModuleIndex = RegInit(0.U(32.W))
+    val cc = RegInit(0.U(32.W))
 
-    dontTouch(mux)
-    dontTouch(src)
-    dontTouch(dest)
+
+    def Reverse(in:UInt):UInt={
+        val rev =(0 until 4).foldLeft(0.U) { (acc, i) =>
+            acc | ((in >> i.U)(0) << (4 - i - 1).U)
+        }
+        rev
+    }
+
+
+    val IterationIndex = RegInit(0.U(32.W))
+
+
+    val PF = VecInit(Seq.fill(16)(Module(new PathFinder).io))
+    //val FDPE = VecInit(Seq.fill(1)(Module(new flexdpecom4).io))
+  //val FDPE =
+    for ( i <- 0 until 16){
+        PF(i).DataValid := 0.B
+        PF(i).Stationary_matrix := WireInit(VecInit(Seq.fill(config.MaxRows)(VecInit(Seq.fill(config.MaxCols)(0.U(config.DATA_TYPE.W))))))
+        PF(i).NoDPE := 0.B
+        PF(i).Streaming_matrix := WireInit(VecInit(Seq.fill(config.MaxRows)(0.U(32.W))))
+    }
+
+    // for ( i <- 0 until 1){
+    //     FDPE(i).i_stationary := 0.B
+    //     FDPE(i).i_data_valid := 0.B
+    //     FDPE(i).Stationary_matrix := WireInit(VecInit(Seq.fill(config.MaxRows)(VecInit(Seq.fill(config.MaxCols)(0.U(config.DATA_TYPE.W))))))
+    //     FDPE(i).i_mux_bus := VecInit(0.U,0.U,0.U,0.U)
+    //     FDPE(i).i_data_bus := VecInit(0.U,0.U,0.U,0.U)
+    //     FDPE(i).i_data_bus2 := VecInit(0.U,0.U,0.U,0.U)
+    // }
+
+
+
     when(Statvalid){
-        val PF1 = Module(new PathFinder)
-        PF1.io.DataValid := 1.B
-        PF1.io.Stationary_matrix := io.Stationary_matrix
-        PF1.io.NoDPE := 0.U // 0 means we need the src, muxes a/c to 1st DPE
-        PF1.io.Streaming_matrix := PF1_Stream_Col
-        PF1mux := PF1.io.i_mux_bus
-        PF1src := PF1.io.Source
-        PF1dest := PF1.io.destination
+        //val PF1 = Module(new PathFinder)
+        for (i <- 0 until 16){
+        PF(i).DataValid := Statvalid
+        PF(i).Stationary_matrix := io.Stationary_matrix
+        PF(i).NoDPE := i.U // 0 means we need the src, muxes a/c to 1st DPE
+        PF(i).Streaming_matrix := PF1_Stream_Col
+        PF1mux := PF(i).i_mux_bus
+        PF1src := PF(i).Source
+        PF1dest := PF(i).destination
+        }
 
-        for (j <- 0 until config.MaxRows){
-            PF_Stream_Col(j) := io.Streaming_matrix(j)(PF1CountIteration)
+        val FDPE = VecInit(Seq.fill(4)(Module(new flexdpecom4).io))
+
+        for(i <- 0 until 4 ){
+            FDPE(i).i_stationary := 1.B
+            FDPE(i).i_data_valid := 1.B
+            FDPE(i).Stationary_matrix := io.Stationary_matrix
+            for (j <- 0 until 4){
+                //when (PF(0).PF_Valid){
+                    FDPE(i).i_mux_bus(j) := PF(i).i_mux_bus(j)
+                    FDPE(i).i_data_bus(j) := PF(i).Source(j)
+                    FDPE(i).i_data_bus2(j) := PF(i).destination(j)
+                // }.otherwise{
+                //     FDPE(i).i_mux_bus(j) := PF1mux(j)
+                //     FDPE(i).i_data_bus(j) := PF1src(j)
+                //     FDPE(i).i_data_bus2(j) := PF1dest(j)
+                // }
+        }
+        dontTouch(FDPE(i).o_adder)
         }
         
-        when (PF1.io.PF_Valid){
-        PF1CountIteration := PF1CountIteration + 1.U
+
+        // PF(1).DataValid := Statvalid
+        // PF(1).Stationary_matrix := io.Stationary_matrix
+        // PF(1).NoDPE := 3.U // 0 means we need the src, muxes a/c to 1st DPE
+        // PF(1).Streaming_matrix := PF1_Stream_Col
+        // PF1mux := PF(1).i_mux_bus
+        // PF1src := PF(1).Source
+        // PF1dest := PF(1).destination
+
+        // when (cc < 15.U){
+        //     cc := cc + 1.U
+        // }
+
+        // when (cc === 15.U && (PF(0).PF_Valid)){
+        //     cc := cc
+        // }
+
+        when(PF(0).PF_Valid){
+            //IterationIndex := 0.U
+            ModuleIndex := ModuleIndex + 1.U
         }
 
-        when (CountIteration === (config.MaxCols-1).U){
-            PF1CountIteration := PF1CountIteration
-            val FDPE1 = Module(new flexdpecom4)
-            FDPE1.io.i_stationary := 1.B
-            FDPE1.io.i_data_valid := 1.B
-            FDPE1.io.
+        when (ModuleIndex === (config.MaxRows -1).U && PF(0).PF_Valid){
+            ModuleIndex := ModuleIndex
+        }
 
+
+
+        for (j <- 0 until config.MaxRows){
+            PF1_Stream_Col(j) := io.Streaming_matrix(j)(ModuleIndex)
+        }
+
+        
+        // when (PF(0).PF_Valid){
+        // //PF1CountIteration := PF1CountIteration + 1.U
+        // IterationIndex := IterationIndex + 1.U
+        // }
+
+        // when (PF(0).PF_Valid && (PF1CountIteration=/=3.U) ){
+        //     PF1CountIteration := PF1CountIteration + 1.U
+        // }.elsewhen (PF1CountIteration=/=3.U) {
+        //     PF1CountIteration := PF1CountIteration
+        // }
+        
+
+        when (PF1CountIteration === (config.MaxCols-1).U){
+    //     val FDPE = VecInit(Seq.fill(1)(Module(new flexdpecom4).io))
+    //     for ( i <- 0 until 1){
+    //     FDPE(i).i_stationary := 0.B
+    //     FDPE(i).i_data_valid := 0.B
+    //     FDPE(i).Stationary_matrix := WireInit(VecInit(Seq.fill(config.MaxRows)(VecInit(Seq.fill(config.MaxCols)(0.U(config.DATA_TYPE.W))))))
+    //     FDPE(i).i_mux_bus := VecInit(0.U,0.U,0.U,0.U)
+    //     FDPE(i).i_data_bus := VecInit(0.U,0.U,0.U,0.U)
+    //     FDPE(i).i_data_bus2 := VecInit(0.U,0.U,0.U,0.U)
+    // }
+    //         PF1CountIteration := PF1CountIteration
+    //         FDPE(0).valid := 0.B//PF(0).PF_Valid
+    //         FDPE(0).i_stationary := 1.B
+    //         FDPE(0).i_data_valid := PF(0).PF_Valid
+    //         FDPE(0).Stationary_matrix := io.Stationary_matrix
+
+
+    //         for ( i <- 0 until 4){
+    //             FDPE(0).i_mux_bus(i) := Reverse(PF1mux(i))
+    //             FDPE(0).i_data_bus2(i) := PF1src(i)
+    //             FDPE(0).i_data_bus(i) := nonZeroValues(i)
+    //         }
+    //         dontTouch(FDPE(0).o_adder)
+
+    // -------------------------------------FlexDPU implementation -------------------------------------------
+        val reserve = WireInit(0.U(32.W))
         } 
-
-        val PF2 = Module(new PathFinder)
-        PF2.io.DataValid := 1.B
-        PF2.io.Stationary_matrix := io.Stationary_matrix
-        PF2.io.NoDPE := 1.U // 0 means we need the src, muxes a/c to 1st DPE
-        PF2.io.Streaming_matrix := PF2_Stream_Col
-        mux := PF2.io.i_mux_bus
-        src := PF2.io.Source
-        dest := PF2.io.destination
-
-        for (j <- 0 until config.MaxRows){
-            PF2_Stream_Col(j) := io.Streaming_matrix(j)(PF2CountIteration)
-        }
         
-        when (PF2.io.PF_Valid){
-        PF2CountIteration := PF2CountIteration + 1.U
-        }
 
-        when (PF2CountIteration === (config.MaxCols-1).U){
-            PF2CountIteration := PF2CountIteration
-        }
+        // val PF2 = Module(new PathFinder)
+        // PF2.io.DataValid := 1.B
+        // PF2.io.Stationary_matrix := io.Stationary_matrix
+        // PF2.io.NoDPE := 1.U // 0 means we need the src, muxes a/c to 1st DPE
+        // PF2.io.Streaming_matrix := PF2_Stream_Col
+        // PF2mux := PF2.io.i_mux_bus
+        // PF2src := PF2.io.Source
+        // PF2dest := PF2.io.destination
+
+        // for (j <- 0 until config.MaxRows){
+        //     PF2_Stream_Col(j) := io.Streaming_matrix(j)(PF2CountIteration)
+        // }
+        
+        // when (PF2.io.PF_Valid){
+        // PF2CountIteration := PF2CountIteration + 1.U
+        //     val FDPE2 = Module(new flexdpecom4)
+        //     FDPE2.io.i_stationary := 1.B
+        //     FDPE2.io.i_data_valid := 1.B
+        //     FDPE2.io.Stationary_matrix := io.Stationary_matrix
+
+
+
+        //     val range1 = Range(0, 4)
+        //     val range2 = Range(4, 8)
+        //     for ((i, j) <- range1.zip(range2)) {
+        //         FDPE2.io.i_data_bus(i) := nonZeroValues(j)
+        //         FDPE2.io.i_mux_bus(i) := Reverse(PF2mux(i))
+        //         FDPE2.io.i_data_bus2(i) := PF2src(i)
+        //     }
+        // }
+
+        // when (PF2CountIteration === (config.MaxCols-1).U){
+        //     PF2CountIteration := PF2CountIteration
+        // }
 
 
 
@@ -119,7 +240,10 @@ class FlexDPU(implicit val config:MagmasiConfig) extends Module{
 
 
     }
-    dontTouch(PF_Stream_Col)
-    dontTouch(CountIteration)
 
+
+}
+object FlexDPUDriver extends App {
+    implicit val config:MagmasiConfig = MagmasiConfig()
+  (new ChiselStage).emitVerilog(new FlexDPU)
 }

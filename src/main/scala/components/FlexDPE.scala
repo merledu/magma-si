@@ -20,8 +20,13 @@ class flexdpecom4(implicit val Config: MagmasiConfig) extends Module {
     val o_data_bus = Output(Vec(Config.NUM_PES, UInt(Config.DATA_TYPE.W)))
      val o_adder = Output(Vec(Config.NUM_PES-1, UInt(Config.DATA_TYPE.W)))
     val LEVELS   : Int = (2 * (math.log(Config.NUM_PES) / math.log(2))).toInt + 1
-     val i_mux_bus   = Input(Vec(2 * (Config.LEVELS - 2) * Config.NUM_PES + Config.NUM_PES, Bool()))
+     val i_mux_bus   = Input(Vec(Config.NUM_PES, UInt(4.W)))
+
   })
+  dontTouch(io.i_data_valid)
+
+
+  //when(io.valid){
     val LEVELS   : Int = (2 * (math.log(Config.NUM_PES) / math.log(2))).toInt + 1
 
      val r_mult = RegInit(VecInit(Seq.fill(Config.NUM_PES)(0.U((Config.DATA_TYPE-1).W))))
@@ -37,12 +42,12 @@ class flexdpecom4(implicit val Config: MagmasiConfig) extends Module {
 
     val r_data_valid_ff = Reg(Bool())
     val r_data_valid_ff2 = Reg(Bool())
-    
+
     r_stationary_ff := io.i_stationary
     r_stationary_ff2 := r_stationary_ff
 
-     r_data_valid_ff := io.i_data_valid
-     r_data_valid_ff2 := r_data_valid_ff
+    r_data_valid_ff := io.i_data_valid
+    r_data_valid_ff2 := r_data_valid_ff
     
 
     val my_ivn= Module(new ivncontrol4())
@@ -113,4 +118,10 @@ class flexdpecom4(implicit val Config: MagmasiConfig) extends Module {
 
 
     
+
+// }.otherwise{
+//   io.o_adder := VecInit(Seq.fill(Config.NUM_PES-1)(0.U))
+//   io.o_valid := VecInit(Seq.fill(Config.NUM_PES)(0.B))
+//   io.o_data_bus := VecInit(Seq.fill(Config.NUM_PES)(0.U))
+// }
 }
