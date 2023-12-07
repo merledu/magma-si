@@ -9,7 +9,8 @@ class ivncontrol4(implicit val Config: MagmasiConfig) extends Module {
   val io = IO(new Bundle {
     val Stationary_matrix = Input(Vec(Config.MaxRows, Vec(Config.MaxCols, UInt(Config.DATA_TYPE.W))))
     val o_vn = Output(Vec(Config.NUM_PES, UInt(Config.LOG2_PES.W)))         //row: Int = 3,col: Int = 3
-    val o_vn2 = Output(Vec(Config.NUM_PES, UInt(Config.LOG2_PES.W)))    
+    val o_vn2 = Output(Vec(Config.NUM_PES, UInt(Config.LOG2_PES.W)))
+    val ProcessValid = Output(Bool())    
   })
 
     val i_vn = RegInit(VecInit(Seq.fill(Config.NUM_PES)(0.U(Config.LOG2_PES.W))))
@@ -33,6 +34,15 @@ class ivncontrol4(implicit val Config: MagmasiConfig) extends Module {
 
     val i = RegInit(0.U(32.W))
     val j = RegInit(0.U(32.W))
+
+    val k = RegNext(i === 7.U && (j === 7.U))
+
+
+    when (i === 7.U && (j === 7.U)){
+        io.ProcessValid := RegNext(k)
+    }.otherwise{
+        io.ProcessValid := 0.B
+    }
     
     //var valid = 0.U
     val mat = Reg(Vec(Config.MaxRows, Vec(Config.MaxCols,UInt(32.W))))
@@ -150,10 +160,10 @@ class ivncontrol4(implicit val Config: MagmasiConfig) extends Module {
      when(rowcount(0) === 0.U && rowcount(1) === 0.U && rowcount(2) === 0.U && rowcount(3) === 0.U && rowcount(4) === 0.U && rowcount(5) =/= 0.U){
         pin := 5.U
     }
-     when(rowcount(0) === 0.U && rowcount(1) === 0.U && rowcount(2) === 0.U && rowcount(3) === 0.U && rowcount(4) === 0.U && rowcount(5) =/= 0.U && rowcount(6) =/= 0.U){
+     when(rowcount(0) === 0.U && rowcount(1) === 0.U && rowcount(2) === 0.U && rowcount(3) === 0.U && rowcount(4) === 0.U && rowcount(5) === 0.U && rowcount(6) =/= 0.U){
         pin := 6.U
     }
-     when(rowcount(0) === 0.U && rowcount(1) === 0.U && rowcount(2) === 0.U && rowcount(3) === 0.U && rowcount(4) === 0.U && rowcount(5) =/= 0.U && rowcount(6) =/= 0.U && rowcount(7) =/= 0.U){
+     when(rowcount(0) === 0.U && rowcount(1) === 0.U && rowcount(2) === 0.U && rowcount(3) === 0.U && rowcount(4) === 0.U && rowcount(5) === 0.U && rowcount(6) === 0.U && rowcount(7) =/= 0.U){
         pin := 7.U
     }
 
@@ -161,7 +171,7 @@ class ivncontrol4(implicit val Config: MagmasiConfig) extends Module {
 
      when(valid === true.B){
         //0
-        when(rowcount(0.U + pin ) === 8.U){
+        when(rowcount(0.U + pin ) >= 8.U){
             i_vn(0) := 0.U + pin
             i_vn(1) := 0.U + pin 
             i_vn(2) := 0.U + pin  
