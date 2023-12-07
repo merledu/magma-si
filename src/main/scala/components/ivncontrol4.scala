@@ -160,7 +160,8 @@ class ivncontrol4(implicit val Config: MagmasiConfig) extends Module {
     
 
      when(valid === true.B){
-        when(rowcount(0.U + pin ) === 0.U){
+        //0
+        when(rowcount(0.U + pin ) === 8.U){
             i_vn(0) := 0.U + pin
             i_vn(1) := 0.U + pin 
             i_vn(2) := 0.U + pin  
@@ -213,2042 +214,359 @@ class ivncontrol4(implicit val Config: MagmasiConfig) extends Module {
         }.elsewhen(rowcount(0.U + pin ) === 1.U ){
             i_vn(0) := 0.U + pin 
         }
+        // 1
+        when(8.U - rowcount(0.U + pin) === 7.U ){
+             i_vn(1) := 1.U + pin 
+            i_vn(2) := 1.U + pin  
+            i_vn(3) := 1.U+ pin  
+            i_vn2(0) := 1.U+ pin  
+            i_vn2(1) := 1.U+ pin  
+            i_vn2(2) := 1.U+ pin  
+            i_vn2(3) := 1.U+ pin  
 
-
-
-
-        // 1 main 8
-        when(rowcount(1.U + pin ) === 8.U && rowcount(0.U + pin ) === 0.U){
-            i_vn(0) := 1.U+ pin 
-            i_vn(1) := 1.U+ pin 
-            i_vn(2) := 1.U+ pin 
-            i_vn(3) := 1.U+ pin 
-            i_vn2(0) := 1.U+ pin 
-            i_vn2(1) := 1.U+ pin 
-            i_vn2(2) := 1.U+ pin 
+        }.elsewhen(8.U - rowcount(0.U + pin) === 6.U){
+             i_vn(2) := 1.U + pin  
+            i_vn(3) := 1.U+ pin  
+            i_vn2(0) := 1.U+ pin  
+            i_vn2(1) := 1.U+ pin  
+            i_vn2(2) := 1.U+ pin  
+            i_vn2(3) := 1.U+ pin 
+        }.elsewhen(8.U - rowcount(0.U + pin) === 5.U){
+        
+            i_vn(3) := 1.U+ pin  
+            i_vn2(0) := 1.U+ pin  
+            i_vn2(1) := 1.U+ pin  
+            i_vn2(2) := 1.U+ pin  
+            i_vn2(3) := 1.U+ pin 
+        }.elsewhen(8.U - rowcount(0.U + pin) === 4.U){
+       
+            i_vn2(0) := 1.U+ pin  
+            i_vn2(1) := 1.U+ pin  
+            i_vn2(2) := 1.U+ pin  
+            i_vn2(3) := 1.U+ pin 
+        }.elsewhen(8.U - rowcount(0.U + pin) === 3.U){
+           
+            i_vn2(1) := 1.U+ pin  
+            i_vn2(2) := 1.U+ pin  
             i_vn2(3) := 1.U+ pin 
         
-        // a main 7
-        }.elsewhen(rowcount(1.U + pin )===7.U && rowcount(0.U + pin ) === 0.U){
-             i_vn(0) := 1.U+ pin 
-            i_vn(1) := 1.U+ pin 
-            i_vn(2) := 1.U+ pin 
-            i_vn(3) := 1.U+ pin 
-            i_vn2(0) := 1.U+ pin 
-            i_vn2(1) := 1.U+ pin 
-            i_vn2(2) := 1.U+ pin 
-        }.elsewhen(rowcount(1.U + pin )>=7.U && rowcount(0.U + pin ) === 1.U){
-          
-            i_vn(1) := 1.U+ pin 
-            i_vn(2) := 1.U+ pin 
-            i_vn(3) := 1.U+ pin 
-            i_vn2(0) := 1.U+ pin 
-            i_vn2(1) := 1.U+ pin 
-            i_vn2(2) := 1.U+ pin 
+        
+        }.elsewhen(8.U - rowcount(0.U + pin) === 2.U){
+           
+           
+            i_vn2(2) := 1.U+ pin  
             i_vn2(3) := 1.U+ pin 
-        
-        // 1 main 6
-        }.elsewhen(rowcount(1.U + pin )>=6.U && rowcount(0.U+ pin ) === 2.U){
-            i_vn(2) := 1.U+ pin 
-            i_vn(3) := 1.U+ pin 
-            i_vn2(0) := 1.U+ pin 
-            i_vn2(1) := 1.U+ pin 
-            i_vn2(2) := 1.U+ pin 
+        }.elsewhen(8.U - rowcount(0.U + pin) === 1.U){
+           
+           
             i_vn2(3) := 1.U+ pin 
-
-
-        }.elsewhen(rowcount(1.U+ pin )===6.U && rowcount(0.U+ pin ) === 1.U){
-             i_vn(1) := 1.U+ pin 
-            i_vn(2) := 1.U+ pin 
-            i_vn(3) := 1.U+ pin 
-            i_vn2(0) := 1.U+ pin 
-            i_vn2(1) := 1.U+ pin 
-            i_vn2(2) := 1.U+ pin 
-
-        }.elsewhen(rowcount(1.U+ pin )===6.U && rowcount(0.U+ pin ) === 0.U){
-            i_vn(0) := 1.U+ pin 
-            i_vn(1) := 1.U+ pin 
-            i_vn(2) := 1.U+ pin 
-            i_vn(3) := 1.U+ pin 
-            i_vn2(0) := 1.U+ pin 
-            i_vn2(1) := 1.U+ pin 
-
-        // 1 main 5
-
-        }.elsewhen(rowcount(1.U+ pin )>=5.U && rowcount(0.U+ pin ) === 3.U){
-            i_vn(3) := 1.U+ pin 
-            i_vn2(0) := 1.U+ pin 
-            i_vn2(1) := 1.U+ pin 
-            i_vn2(2) := 1.U+ pin 
-            i_vn2(3) := 1.U+ pin 
-
-        }.elsewhen(rowcount(1.U+ pin )===5.U && rowcount(0.U+ pin ) === 2.U){
-            i_vn(2) := 1.U+ pin 
-            i_vn(3) := 1.U+ pin 
-            i_vn2(0) := 1.U+ pin 
-            i_vn2(1) := 1.U+ pin 
-            i_vn2(2) := 1.U+ pin 
-       
-
-
-        }.elsewhen(rowcount(1.U+ pin )===5.U && rowcount(0.U+ pin ) === 1.U){
-             i_vn(1) := 1.U+ pin 
-            i_vn(2) := 1.U+ pin 
-            i_vn(3) := 1.U+ pin 
-            i_vn2(0) := 1.U+ pin 
-            i_vn2(1) := 1.U+ pin 
-    
-
-        }.elsewhen(rowcount(1.U+ pin )===5.U && rowcount(0.U+ pin ) === 0.U){
-            i_vn(0) := 1.U+ pin 
-            i_vn(1) := 1.U+ pin 
-            i_vn(2) := 1.U+ pin 
-            i_vn(3) := 1.U+ pin 
-            i_vn2(0) := 1.U+ pin 
-
-         // 1 main 4
-
-         }.elsewhen(rowcount(1.U+ pin )>=4.U && rowcount(0.U+ pin ) === 4.U){
-       
-            i_vn2(0) := 1.U+ pin 
-            i_vn2(1) := 1.U+ pin 
-            i_vn2(2) := 1.U+ pin 
-            i_vn2(3) := 1.U+ pin 
-
-        }.elsewhen(rowcount(1.U+ pin )===4.U && rowcount(0.U+ pin ) === 3.U){
-            i_vn(3) := 1.U+ pin 
-            i_vn2(0) := 1.U+ pin 
-            i_vn2(1) := 1.U+ pin 
-            i_vn2(2) := 1.U+ pin 
-      
-
-        }.elsewhen(rowcount(1.U+ pin )===4.U && rowcount(0.U+ pin ) === 2.U){
-            i_vn(2) := 1.U+ pin 
-            i_vn(3) := 1.U+ pin 
-            i_vn2(0) := 1.U+ pin 
-            i_vn2(1) := 1.U+ pin 
-     
-       
-
-
-        }.elsewhen(rowcount(1.U+ pin )===4.U && rowcount(0.U+ pin ) === 1.U){
-             i_vn(1) := 1.U+ pin 
-            i_vn(2) := 1.U+ pin 
-            i_vn(3) := 1.U+ pin 
-            i_vn2(0) := 1.U+ pin 
-        
-    
-
-        }.elsewhen(rowcount(1.U+ pin )===4.U && rowcount(0.U+ pin ) === 0.U){
-            i_vn(0) := 1.U+ pin 
-            i_vn(1) := 1.U+ pin 
-            i_vn(2) := 1.U+ pin 
-            i_vn(3) := 1.U+ pin 
-  
-     
-
-        
-         // 1 main 3
-
-        }.elsewhen(rowcount(1.U+ pin )>=3.U && rowcount(0.U+ pin ) === 5.U){
-       
-     
-            i_vn2(1) := 1.U+ pin 
-            i_vn2(2) := 1.U+ pin 
-            i_vn2(3) := 1.U+ pin 
-
-         }.elsewhen(rowcount(1.U+ pin )===3.U && rowcount(0.U+ pin ) === 4.U){
-       
-            i_vn2(0) := 1.U+ pin 
-            i_vn2(1) := 1.U+ pin 
-            i_vn2(2) := 1.U+ pin 
-       
-
-        }.elsewhen(rowcount(1.U+ pin )===3.U && rowcount(0.U+ pin ) === 3.U){
-            i_vn(3) := 1.U+ pin 
-            i_vn2(0) := 1.U+ pin 
-            i_vn2(1) := 1.U+ pin 
-       
-      
-
-        }.elsewhen(rowcount(1.U+ pin )===3.U && rowcount(0.U+ pin ) === 2.U){
-            i_vn(2) := 1.U+ pin 
-            i_vn(3) := 1.U+ pin 
-            i_vn2(0) := 1.U+ pin 
-      
-     
-       
-
-
-        }.elsewhen(rowcount(1.U+ pin )===3.U && rowcount(0.U+ pin ) === 1.U){
-             i_vn(1) := 1.U+ pin 
-            i_vn(2) := 1.U+ pin 
-            i_vn(3) := 1.U+ pin 
- 
-        
-    
-
-        }.elsewhen(rowcount(1.U+ pin )===3.U && rowcount(0.U+ pin ) === 0.U){
-            i_vn(0) := 1.U+ pin 
-            i_vn(1) := 1.U+ pin 
-            i_vn(2) := 1.U+ pin 
-      
-  
-
-    
-         // 1 main 1
-
-        
-        
-        }.elsewhen(rowcount(1.U+ pin )>=2.U && rowcount(0.U+ pin ) === 6.U){
-       
-     
-      
-            i_vn2(2) := 1.U+ pin 
-            i_vn2(3) := 1.U+ pin 
-
-        }.elsewhen(rowcount(1.U+ pin )===2.U && rowcount(0.U+ pin ) === 5.U){
-       
-     
-            i_vn2(1) := 1.U+ pin 
-            i_vn2(2) := 1.U+ pin 
-    
-
-         }.elsewhen(rowcount(1.U+ pin )===2.U && rowcount(0.U+ pin ) === 4.U){
-       
-            i_vn2(0) := 1.U+ pin 
-            i_vn2(1) := 1.U+ pin 
-     
-       
-
-        }.elsewhen(rowcount(1.U+ pin )===2.U && rowcount(0.U+ pin ) === 3.U){
-            i_vn(3) := 1.U+ pin 
-            i_vn2(0) := 1.U+ pin 
-
-       
-      
-
-        }.elsewhen(rowcount(1.U+ pin )===2.U && rowcount(0.U+ pin ) === 2.U){
-            i_vn(2) := 1.U+ pin 
-            i_vn(3) := 1.U+ pin 
-      
-      
-     
-       
-
-
-        }.elsewhen(rowcount(1.U+ pin )===2.U && rowcount(0.U+ pin ) === 1.U){
-             i_vn(1) := 1.U+ pin 
-            i_vn(2) := 1.U+ pin 
-       
- 
-        
-    
-
-        }.elsewhen(rowcount(1.U+ pin )===2.U && rowcount(0.U+ pin ) === 0.U){
-            i_vn(0) := 1.U+ pin 
-            i_vn(1) := 1.U+ pin 
-      
-      
-  
-           // 1 main 2
-
-         }.elsewhen(rowcount(1.U+ pin )>=1.U && rowcount(0.U+ pin ) === 7.U){
-       
-     
-      
-  
-            i_vn2(3) := 1.U+ pin
-        
-        }.elsewhen(rowcount(1.U+ pin )===1.U && rowcount(0.U+ pin ) === 6.U){
-       
-     
-      
-            i_vn2(2) := 1.U+ pin 
-   
-
-        }.elsewhen(rowcount(1.U+ pin )===1.U && rowcount(0.U+ pin ) === 5.U){
-         
-            i_vn2(1) := 1.U+ pin 
-
-    
-         }.elsewhen(rowcount(1.U+ pin )===1.U && rowcount(0.U+ pin ) === 4.U){
-       
-            i_vn2(0) := 1.U+ pin 
-      
-
-
-        }.elsewhen(rowcount(1.U+ pin )===1.U && rowcount(0.U+ pin ) === 3.U){
-            i_vn(3) := 1.U+ pin 
-
-        }.elsewhen(rowcount(1.U+ pin )===1.U && rowcount(0.U+ pin ) === 2.U){
-            i_vn(2) := 1.U+ pin 
-      
-
-        }.elsewhen(rowcount(1.U+ pin )===1.U && rowcount(0.U+ pin ) === 1.U){
-             i_vn(1) := 1.U+ pin 
-        
-
-        }.elsewhen(rowcount(1.U+ pin )===1.U && rowcount(0.U+ pin ) === 0.U){
-            i_vn(0) := 1.U+ pin 
         }
-
-
-         // 2 main 8
-        when(rowcount(2.U+ pin ) === 8.U && rowcount(0.U+ pin ) === 0.U && rowcount(1.U + pin ) === 0.U){
-            i_vn(0) := 2.U+ pin 
-            i_vn(1) := 2.U+ pin 
-            i_vn(2) := 2.U+ pin 
-            i_vn(3) := 2.U+ pin 
-            i_vn2(0) := 2.U+ pin 
-            i_vn2(1) := 2.U+ pin 
-            i_vn2(2) := 2.U+ pin 
-            i_vn2(3) := 2.U+ pin 
-        
-        // 2 main 7
-        }.elsewhen(rowcount(2.U+ pin )===7.U && rowcount(1.U+ pin ) === 0.U && rowcount(0.U+ pin ) === 0.U){
-             i_vn(0) := 2.U+ pin 
-            i_vn(1) := 2.U+ pin 
-            i_vn(2) := 2.U+ pin 
-            i_vn(3) := 2.U+ pin 
-            i_vn2(0) := 2.U+ pin 
-            i_vn2(1) := 2.U+ pin 
-            i_vn2(2) := 2.U+ pin 
-
-        }.elsewhen(rowcount(2.U+ pin )>=7.U && ((rowcount(0.U+ pin ) === 1.U && rowcount(1.U + pin) === 0.U) || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 0.U))){
-          
-            i_vn(1) := 2.U+ pin 
-            i_vn(2) := 2.U+ pin 
-            i_vn(3) := 2.U+ pin 
-            i_vn2(0) := 2.U+ pin 
-            i_vn2(1) := 2.U+ pin 
-            i_vn2(2) := 2.U+ pin 
-            i_vn2(3) := 2.U+ pin 
- 
-        
-        // 2 main 6
-
-        }.elsewhen(rowcount(2.U+ pin )>=6.U && ((rowcount(1.U+ pin ) === 2.U && rowcount(0.U+ pin ) === 0.U ) || (rowcount(0.U+ pin ) === 2.U && rowcount(1.U+ pin ) === 0.U ))){
-             i_vn(2) := 2.U+ pin 
-            i_vn(3) := 2.U+ pin 
-            i_vn2(0) := 2.U+ pin 
-            i_vn2(1) := 2.U+ pin 
-            i_vn2(2) := 2.U+ pin 
-            i_vn2(3) := 2.U+ pin
-        
-
-
-        }.elsewhen(rowcount(2.U+ pin )===6.U && ((rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 0.U ) || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U+ pin ) === 0.U ))){
-             i_vn(1) := 2.U+ pin 
-            i_vn(2) := 2.U+ pin 
-            i_vn(3) := 2.U+ pin 
-            i_vn2(0) := 2.U+ pin 
-            i_vn2(1) := 2.U+ pin 
-            i_vn2(2) := 2.U+ pin 
-
-
-        }.elsewhen(rowcount(2.U + pin )===6.U && rowcount(0.U
-         + pin ) === 0.U  && rowcount(1.U + pin ) === 0.U){
-            i_vn(0) := 2.U+ pin 
-              i_vn(1) := 2.U+ pin 
-            i_vn(2) := 2.U+ pin 
-            i_vn(3) := 2.U+ pin 
-            i_vn2(0) := 2.U+ pin 
-            i_vn2(1) := 2.U+ pin
-
-        // 2 main 5
-
-        }.elsewhen(rowcount(2.U+ pin )>=5.U && ((rowcount(0.U+ pin ) === 3.U &&  rowcount(1.U+ pin) === 0.U  ) ||(rowcount(1.U+ pin ) === 3.U &&  rowcount(0.U+ pin )=== 0.U )
-        || (rowcount(0.U+ pin ) === 2.U && rowcount(1.U+ pin ) === 1.U) || (rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 2.U))){
-             i_vn(3) := 2.U+ pin 
-            i_vn2(0) := 2.U+ pin 
-            i_vn2(1) := 2.U+ pin 
-            i_vn2(2) := 2.U+ pin 
-            i_vn2(3) := 2.U+ pin
-
-     
-
-        }.elsewhen(rowcount(2.U+ pin )===5.U && rowcount(0.U+ pin ) === 2.U && rowcount(1.U+ pin ) === 0.U || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U+ pin ) === 0.U) || 
-        rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 1.U){
-            i_vn(2) := 2.U+ pin 
-            i_vn(3) := 2.U+ pin 
-            i_vn2(0) := 2.U+ pin 
-            i_vn2(1) := 2.U+ pin 
-            i_vn2(2) := 2.U+ pin
-       
-
-
-        }.elsewhen(rowcount(2.U+ pin )===5.U && (rowcount(0.U+ pin ) === 1.U && rowcount(1.U + pin) === 0.U) || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 0.U)){
-             i_vn(1) := 2.U+ pin 
-            i_vn(2) := 2.U+ pin 
-            i_vn(3) := 2.U+ pin 
-            i_vn2(0) := 2.U+ pin 
+        // 2
+        when(8.U - (rowcount(0.U + pin) + rowcount(1.U + pin)) === 7.U ){
+             i_vn(1) := 2.U + pin 
+            i_vn(2) := 2.U + pin  
+            i_vn(3) := 2.U+ pin  
+            i_vn2(0) := 2.U+ pin  
             i_vn2(1) := 2.U+ pin  
-    
+            i_vn2(2) := 2.U+ pin  
+            i_vn2(3) := 2.U+ pin  
 
-        }.elsewhen(rowcount(2.U+ pin )===5.U && rowcount(0.U+ pin ) === 0.U && rowcount(0.U) === 0.U){
-            i_vn(0) := 2.U+ pin 
-            i_vn(1) := 2.U+ pin 
-            i_vn(2) := 2.U+ pin 
-            i_vn(3) := 2.U+ pin 
-            i_vn2(0) := 2.U+ pin 
-
-         // 2 main 4
-
-         }.elsewhen(rowcount(2.U+ pin )>= 4.U && ((rowcount(0.U+ pin ) === 4.U && rowcount(1.U+ pin ) === 0.U  ) || (rowcount(1.U+ pin ) === 4.U && rowcount(0.U+ pin ) === 0.U  )
-         ||  (rowcount(0.U+ pin ) === 3.U && rowcount(1.U+ pin ) === 1.U  ) ||  (rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 3.U  ) || 
-          (rowcount(0.U+ pin ) === 2.U && rowcount(1.U+ pin ) === 2.U  ))){
+        }.elsewhen(8.U - (rowcount(0.U + pin) + rowcount(1.U + pin))=== 6.U){
+             i_vn(2) := 1.U + pin  
+             i_vn(2) := 2.U + pin  
+            i_vn(3) := 2.U+ pin  
+            i_vn2(0) := 2.U+ pin  
+            i_vn2(1) := 2.U+ pin  
+            i_vn2(2) := 2.U+ pin  
+            i_vn2(3) := 2.U+ pin  
+        }.elsewhen(8.U -(rowcount(0.U + pin) + rowcount(1.U + pin))=== 5.U){
+        
+              i_vn(3) := 2.U+ pin  
+            i_vn2(0) := 2.U+ pin  
+            i_vn2(1) := 2.U+ pin  
+            i_vn2(2) := 2.U+ pin  
+            i_vn2(3) := 2.U+ pin  
+        }.elsewhen(8.U - (rowcount(0.U + pin) + rowcount(1.U + pin)) === 4.U){
        
-            i_vn2(0) := 2.U+ pin 
-            i_vn2(1) := 2.U+ pin 
-            i_vn2(2) := 2.U+ pin 
+            i_vn2(0) := 2.U+ pin  
+            i_vn2(1) := 2.U+ pin  
+            i_vn2(2) := 2.U+ pin  
             i_vn2(3) := 2.U+ pin 
-
-        }.elsewhen(rowcount(2.U+ pin )===4.U && ((rowcount(0.U+ pin ) === 2.U && rowcount(1.U+ pin ) === 1.U  ) || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U+ pin ) === 2.U  )
-         ||  (rowcount(0.U+ pin ) === 3.U && rowcount(1.U+ pin ) === 0.U  ) ||  (rowcount(0.U+ pin ) === 0.U && rowcount(1.U+ pin ) === 3.U  ))){
-            i_vn(3) := 2.U+ pin 
-            i_vn2(0) := 2.U+ pin 
-            i_vn2(1) := 2.U+ pin 
-            i_vn2(2) := 2.U+ pin 
-      
-
-        }.elsewhen(rowcount(2.U+ pin )===4.U && ((rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 1.U  ) || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U+ pin ) === 0.U  )
-         ||  (rowcount(0.U+ pin ) === 2.U && rowcount(1.U+ pin ) === 0.U  ) )){
-            i_vn(2) := 2.U+ pin 
-             i_vn(3) := 2.U+ pin 
-            i_vn2(0) := 2.U+ pin 
-            i_vn2(1) := 2.U+ pin 
-       
-
-
-        }.elsewhen(rowcount(2.U+ pin )===4.U &&  ((rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 0.U  ) || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U+ pin ) === 1.U  )
-         )){
-             i_vn(1) := 2.U+ pin 
-            i_vn(2) := 2.U+ pin 
-            i_vn(3) := 2.U+ pin 
-            i_vn2(0) := 2.U+ pin 
-        
-    
-
-        }.elsewhen(rowcount(2.U+ pin )===4.U && rowcount(0.U+ pin ) === 0.U && rowcount(1.U+ pin ) === 0.U){
-            i_vn(0) := 2.U+ pin 
-            i_vn(1) := 2.U+ pin 
-            i_vn(2) := 2.U+ pin 
-            i_vn(3) := 2.U+ pin 
-  
-     
-
-        
-         // 2 main 3
-
-        }.elsewhen(rowcount(2.U+ pin )>=3.U && ((rowcount(0.U+ pin ) === 5.U && rowcount(1.U+ pin ) === 0.U ) || (rowcount(0.U+ pin ) === 0.U && rowcount(1.U+ pin ) === 5.U ) 
-        || (rowcount(0.U+ pin ) === 4.U && rowcount(1.U+ pin ) === 1.U ) || (rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 4.U ) || (rowcount(0.U+ pin ) === 2.U && rowcount(1.U+ pin ) === 3.U )
-        || (rowcount(0.U+ pin ) === 3.U && rowcount(1.U+ pin ) === 2.U ))){
-       
-     
-            i_vn2(1) := 2.U+ pin 
-            i_vn2(2) := 2.U+ pin 
+        }.elsewhen(8.U - (rowcount(0.U + pin) + rowcount(1.U + pin)) === 3.U){
+           
+             i_vn2(1) := 2.U+ pin  
+            i_vn2(2) := 2.U+ pin  
             i_vn2(3) := 2.U+ pin 
-
-         }.elsewhen(rowcount(2.U+ pin )===3.U && ((rowcount(0.U+ pin ) === 4.U && rowcount(1.U+ pin ) === 0.U ) || (rowcount(0.U+ pin ) === 0.U && rowcount(1.U+ pin ) === 4.U ) 
-        || (rowcount(0.U+ pin ) === 3.U && rowcount(1.U+ pin ) === 1.U ) || (rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 3.U ) || (rowcount(0.U+ pin ) === 2.U && rowcount(1.U+ pin ) === 2.U )
-        )){
-       
-            i_vn2(0) := 2.U+ pin 
-            i_vn2(1) := 2.U+ pin 
-            i_vn2(2) := 2.U+ pin 
-       
-
-        }.elsewhen(rowcount(2.U+ pin )===3.U && ((rowcount(0.U+ pin ) === 3.U && rowcount(1.U+ pin ) === 0.U ) || (rowcount(0.U+ pin ) === 0.U && rowcount(1.U+ pin ) === 3.U ) 
-        || (rowcount(0.U+ pin ) === 2.U && rowcount(1.U+ pin ) === 1.U ) || (rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 2.U ))){
-            i_vn(3) := 2.U+ pin 
-            i_vn2(0) := 2.U+ pin 
-            i_vn2(1) := 2.U+ pin 
-       
-      
-
-        }.elsewhen(rowcount(2.U+ pin )===3.U && ((rowcount(0.U+ pin ) === 2.U && rowcount(1.U+ pin ) === 0.U ) || (rowcount(0.U+ pin ) === 0.U && rowcount(1.U+ pin ) === 2.U ) 
-        || (rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 1.U ))){
-            i_vn(2) := 2.U+ pin 
-            i_vn(3) := 2.U+ pin 
-            i_vn2(0) := 2.U+ pin 
-      
-     
-       
-
-
-        }.elsewhen(rowcount(2.U+ pin )===3.U && ((rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 0.U ) || (rowcount(0.U+ pin ) === 0.U && rowcount(1.U+ pin ) === 1.U ) )){
-             i_vn(1) := 2.U+ pin 
-            i_vn(2) := 2.U+ pin 
-            i_vn(3) := 2.U+ pin 
- 
-        
-    
-
-        }.elsewhen(rowcount(2.U+ pin )===3.U && rowcount(0.U+ pin ) === 0.U && rowcount(1.U+ pin ) === 0.U){
-            i_vn(0) := 2.U+ pin 
-            i_vn(1) := 2.U+ pin 
-            i_vn(2) := 2.U+ pin 
-      
-  
-
-    
-         // 2 main 2
-
         
         
-        }.elsewhen(rowcount(2.U+ pin )>=2.U && ((rowcount(0.U+ pin ) === 6.U && rowcount(1.U+ pin ) === 0.U ) || (rowcount(0.U+ pin ) === 0.U && rowcount(1.U+ pin ) === 6.U ) 
-        || (rowcount(0.U+ pin ) === 5.U && rowcount(1.U+ pin ) === 1.U ) || (rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 5.U ) || (rowcount(0.U+ pin ) === 2.U && rowcount(1.U+ pin ) === 4.U )
-        || (rowcount(0.U+ pin ) === 4.U && rowcount(1.U+ pin ) === 2.U ))){
-       
-     
-      
-            i_vn2(2) := 2.U+ pin 
+        }.elsewhen(8.U -(rowcount(0.U + pin) + rowcount(1.U + pin))=== 2.U){
+           
+           
+            i_vn2(2) := 2.U+ pin  
             i_vn2(3) := 2.U+ pin 
-
-        }.elsewhen(rowcount(2.U+ pin )===2.U && ((rowcount(0.U+ pin ) === 5.U && rowcount(1.U+ pin ) === 0.U ) || (rowcount(0.U+ pin ) === 0.U && rowcount(1.U+ pin ) === 5.U ) 
-        || (rowcount(0.U+ pin ) === 4.U && rowcount(1.U+ pin ) === 1.U ) || (rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 4.U ) || (rowcount(0.U+ pin ) === 2.U && rowcount(1.U+ pin ) === 3.U )
-        || (rowcount(0.U+ pin ) === 3.U && rowcount(1.U+ pin ) === 2.U ))){
-       
-     
-            i_vn2(1) := 2.U+ pin 
-            i_vn2(2) := 2.U+ pin 
-    
-
-         }.elsewhen(rowcount(2.U+ pin )===2.U  && ((rowcount(0.U+ pin ) === 4.U && rowcount(1.U+ pin ) === 0.U ) || (rowcount(0.U+ pin ) === 0.U && rowcount(1.U+ pin ) === 4.U ) 
-        || (rowcount(0.U+ pin ) === 3.U && rowcount(1.U+ pin ) === 1.U ) || (rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 3.U ) || (rowcount(0.U+ pin ) === 2.U && rowcount(1.U+ pin ) === 2.U )
-        )){
-       
-            i_vn2(0) := 2.U+ pin 
-            i_vn2(1) := 2.U+ pin 
-     
-       
-
-        }.elsewhen(rowcount(2.U+ pin )===2.U  && ((rowcount(0.U+ pin ) === 3.U && rowcount(1.U+ pin ) === 0.U ) || (rowcount(0.U+ pin ) === 0.U && rowcount(1.U+ pin ) === 3.U ) 
-        || (rowcount(0.U+ pin ) === 2.U && rowcount(1.U+ pin ) === 1.U ) || (rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 2.U ))){
-            i_vn(3) := 2.U+ pin 
-            i_vn2(0) := 2.U+ pin 
-
-       
-      
-
-        }.elsewhen(rowcount(2.U+ pin )===2.U && ((rowcount(0.U+ pin ) === 2.U && rowcount(1.U+ pin ) === 0.U ) || (rowcount(0.U+ pin ) === 0.U && rowcount(1.U+ pin ) === 2.U ) 
-        || (rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 1.U ))){
-            i_vn(2) := 2.U+ pin 
-            i_vn(3) := 2.U+ pin 
-      
-      
-     
-       
-
-
-        }.elsewhen(rowcount(2.U+ pin )===2.U && ((rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 0.U ) || (rowcount(0.U+ pin ) === 0.U && rowcount(1.U+ pin ) === 1.U ) )){
-             i_vn(1) := 2.U+ pin 
-            i_vn(2) := 2.U+ pin 
-       
- 
         
-    
-
-        }.elsewhen(rowcount(2.U+ pin )===2.U && rowcount(0.U+ pin ) === 0.U && rowcount(1.U+ pin ) === 0.U){
-            i_vn(0) := 2.U+ pin 
-            i_vn(1) := 2.U+ pin 
-      
-      
-  
-           // 2 main 1
-
-         }.elsewhen(rowcount(2.U+ pin )>=1.U && ((rowcount(0.U+ pin ) === 7.U && rowcount(1.U+ pin ) === 0.U ) || (rowcount(0.U+ pin ) === 0.U && rowcount(1.U+ pin ) === 7.U ) 
-        || (rowcount(0.U+ pin ) === 5.U && rowcount(1.U+ pin ) === 2.U ) || (rowcount(0.U+ pin ) === 2.U && rowcount(1.U+ pin ) === 5.U ) || (rowcount(0.U+ pin ) === 3.U && rowcount(1.U+ pin ) === 4.U )
-        || (rowcount(0.U+ pin ) === 4.U && rowcount(1.U+ pin ) === 3.U ))){
-       
-     
-            i_vn2(3) := 2.U+ pin
+        }.elsewhen(8.U - (rowcount(0.U + pin) + rowcount(1.U + pin)) === 1.U){
+           
+           
+            i_vn2(3) := 2.U+ pin 
         
-        }.elsewhen(rowcount(2.U+ pin )===1.U && ((rowcount(0.U+ pin ) === 6.U && rowcount(1.U+ pin ) === 0.U ) || (rowcount(0.U+ pin ) === 0.U && rowcount(1.U+ pin ) === 6.U ) 
-        || (rowcount(0.U+ pin ) === 5.U && rowcount(1.U+ pin ) === 1.U ) || (rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 5.U ) || (rowcount(0.U+ pin ) === 2.U && rowcount(1.U+ pin ) === 4.U )
-        || (rowcount(0.U+ pin ) === 4.U && rowcount(1.U+ pin ) === 2.U ))){
-       
-     
-      
-            i_vn2(2) := 2.U+ pin 
-   
-
-        }.elsewhen(rowcount(2.U+ pin )===1.U && ((rowcount(0.U+ pin ) === 5.U && rowcount(1.U+ pin ) === 0.U ) || (rowcount(0.U+ pin ) === 0.U && rowcount(1.U+ pin ) === 5.U ) 
-        || (rowcount(0.U+ pin ) === 4.U && rowcount(1.U+ pin ) === 1.U ) || (rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 4.U ) || (rowcount(0.U+ pin ) === 2.U && rowcount(1.U+ pin ) === 3.U )
-        || (rowcount(0.U+ pin ) === 3.U && rowcount(1.U+ pin ) === 2.U ))){
-         
-            i_vn2(1) := 2.U+ pin 
-
-    
-         }.elsewhen(rowcount(2.U+ pin )===1.U && ((rowcount(0.U+ pin ) === 4.U && rowcount(1.U+ pin ) === 0.U ) || (rowcount(0.U+ pin ) === 0.U && rowcount(1.U+ pin ) === 4.U ) 
-        || (rowcount(0.U+ pin ) === 3.U && rowcount(1.U+ pin ) === 1.U ) || (rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 3.U ) || (rowcount(0.U+ pin ) === 2.U && rowcount(1.U+ pin ) === 2.U )
-        )){
-       
-            i_vn2(0) := 2.U+ pin 
-      
-
-
-        }.elsewhen(rowcount(2.U+ pin )===1.U && ((rowcount(0.U+ pin ) === 3.U && rowcount(1.U+ pin ) === 0.U ) || (rowcount(0.U+ pin ) === 0.U && rowcount(1.U+ pin ) === 3.U ) 
-        || (rowcount(0.U+ pin ) === 2.U && rowcount(1.U+ pin ) === 1.U ) || (rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 2.U ))){
-            i_vn(3) := 2.U+ pin 
-
-        }.elsewhen(rowcount(2.U+ pin )===1.U && ((rowcount(0.U+ pin ) === 2.U && rowcount(1.U+ pin ) === 0.U ) || (rowcount(0.U+ pin ) === 0.U && rowcount(1.U+ pin ) === 2.U ) 
-        || (rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 1.U ))){
-            i_vn(2) := 2.U+ pin 
-      
-
-        }.elsewhen(rowcount(2.U+ pin )===1.U  && ((rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 0.U ) || (rowcount(0.U+ pin ) === 0.U && rowcount(1.U+ pin ) === 1.U ) )){
-             i_vn(1) := 2.U+ pin 
-        
-
-        }.elsewhen(rowcount(2.U+ pin )===1.U && rowcount(0.U+ pin ) === 0.U && rowcount(1.U+ pin ) === 0.U){
-            i_vn(0) := 2.U+ pin 
         }
 
-        
-    // next for 3 row 
+         // 3
+       when(8.U - (rowcount(0.U + pin) + rowcount(1.U + pin) + rowcount(2.U + pin)) === 7.U ){
+             i_vn(1) := 3.U + pin 
+            i_vn(2) := 3.U + pin  
+            i_vn(3) := 3.U+ pin  
+            i_vn2(0) := 3.U+ pin  
+            i_vn2(1) := 3.U+ pin  
+            i_vn2(2) := 3.U+ pin  
+            i_vn2(3) := 3.U+ pin  
 
-     // 3 main 8
-        when(rowcount(3.U+ pin ) === 8.U && rowcount(0.U+ pin ) === 0.U && rowcount(1.U + pin ) === 0.U  && rowcount(2.U + pin ) === 0.U){
-            i_vn(0) := 3.U+ pin 
-            i_vn(1) := 3.U+ pin 
-            i_vn(2) := 3.U+ pin 
-            i_vn(3) := 3.U+ pin 
-            i_vn2(0) := 3.U+ pin 
-            i_vn2(1) := 3.U+ pin 
-            i_vn2(2) := 3.U+ pin 
+        }.elsewhen(8.U - (rowcount(0.U + pin) + rowcount(1.U + pin) + rowcount(2.U + pin))=== 6.U){
+             i_vn(2) := 3.U + pin  
+             i_vn(2) := 3.U + pin  
+            i_vn(3) := 3.U+ pin  
+            i_vn2(0) := 3.U+ pin  
+            i_vn2(1) :=3.U+ pin  
+            i_vn2(2) := 3.U+ pin  
+            i_vn2(3) := 3.U+ pin  
+        }.elsewhen(8.U -(rowcount(0.U + pin) + rowcount(1.U + pin) + rowcount(2.U + pin))=== 5.U){
+        
+              i_vn(3) := 3.U+ pin  
+            i_vn2(0) := 3.U+ pin  
+            i_vn2(1) := 3.U+ pin  
+            i_vn2(2) := 3.U+ pin  
+            i_vn2(3) := 3.U+ pin  
+        }.elsewhen(8.U - (rowcount(0.U + pin) + rowcount(1.U + pin) + rowcount(2.U + pin)) === 4.U){
+       
+            i_vn2(0) := 3.U+ pin  
+            i_vn2(1) := 3.U+ pin  
+            i_vn2(2) := 3.U+ pin  
+            i_vn2(3) := 3.U+ pin 
+        }.elsewhen(8.U - (rowcount(0.U + pin) + rowcount(1.U + pin) + rowcount(2.U + pin)) === 3.U){
+           
+             i_vn2(1) := 3.U+ pin  
+            i_vn2(2) := 3.U+ pin  
             i_vn2(3) := 3.U+ pin 
         
-        // 3 main 7
-        }.elsewhen(rowcount(3.U+ pin )>=7.U  && rowcount(1.U+ pin ) === 0.U && rowcount(0.U+ pin ) === 0.U && rowcount(2.U + pin ) === 0.U){
-             i_vn(0) := 3.U+ pin 
-            i_vn(1) := 3.U+ pin 
-            i_vn(2) := 3.U+ pin 
-            i_vn(3) := 3.U+ pin 
-            i_vn2(0) := 3.U+ pin 
-            i_vn2(1) := 3.U+ pin 
-            i_vn2(2) := 3.U+ pin 
-
-        }.elsewhen(rowcount(3.U+ pin )===7.U && ((rowcount(0.U+ pin ) === 1.U && rowcount(1.U + pin) === 0.U && rowcount(2.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 0.U && 
-        rowcount(2.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 1.U))){
-          
-            i_vn(1) := 3.U+ pin 
-            i_vn(2) := 3.U+ pin 
-            i_vn(3) := 3.U+ pin 
-            i_vn2(0) := 3.U+ pin 
-            i_vn2(1) := 3.U+ pin 
-            i_vn2(2) := 3.U+ pin 
+        
+        }.elsewhen(8.U -(rowcount(0.U + pin) + rowcount(1.U + pin) + rowcount(2.U + pin))=== 2.U){
+           
+           
+            i_vn2(2) := 3.U+ pin  
             i_vn2(3) := 3.U+ pin 
- 
         
-        // 3 main 6
-
-        }.elsewhen(rowcount(3.U+ pin )>=6.U && ((rowcount(1.U+ pin ) === 2.U && rowcount(0.U+ pin ) === 0.U && rowcount(2.U + pin ) === 0.U) 
-        || (rowcount(0.U+ pin ) === 2.U && rowcount(1.U+ pin ) === 0.U && rowcount(2.U + pin ) === 0.U) ||  (rowcount(0.U+ pin ) === 0.U && rowcount(1.U+ pin ) === 0.U 
-        && rowcount(2.U + pin ) === 2.U) ||  (rowcount(0.U+ pin ) === 0.U && rowcount(1.U+ pin ) === 1.U && rowcount(2.U + pin ) === 1.U)||  (rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 0.U 
-        && rowcount(2.U + pin ) === 1.U) ||  (rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 1.U 
-        && rowcount(2.U + pin ) === 0.U))){
-             i_vn(2) := 3.U+ pin 
-            i_vn(3) := 3.U+ pin 
-            i_vn2(0) := 3.U+ pin 
-            i_vn2(1) := 3.U+ pin 
-            i_vn2(2) := 3.U+ pin 
-            i_vn2(3) := 3.U+ pin
-        
-
-
-        }.elsewhen(rowcount(3.U+ pin )===6.U && ((rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 0.U && rowcount(2.U+ pin ) === 0.U ) || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U+ pin ) === 0.U && rowcount(2.U+ pin ) === 0.U )
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U+ pin ) === 0.U && rowcount(2.U+ pin ) === 1.U ))){
-             i_vn(1) := 3.U+ pin 
-            i_vn(2) := 3.U+ pin 
-            i_vn(3) := 3.U+ pin 
-            i_vn2(0) := 3.U+ pin 
-            i_vn2(1) := 3.U+ pin 
-            i_vn2(2) := 3.U+ pin 
-
-
-        }.elsewhen(rowcount(3.U+ pin )===6.U && rowcount(0.U+ pin ) === 0.U  && rowcount(1.U+ pin ) === 0.U && rowcount(2.U+ pin ) === 0.U){
-            i_vn(0) := 3.U+ pin 
-            i_vn(1) := 3.U+ pin 
-            i_vn(2) := 3.U+ pin 
-            i_vn(3) := 3.U+ pin 
-            i_vn2(0) := 3.U+ pin 
-            i_vn2(1) := 3.U+ pin 
-
-        // 3 main 5
-
-        }.elsewhen(rowcount(2.U+ pin )>=5.U && ((rowcount(0.U+ pin ) === 3.U &&  rowcount(1.U+ pin) === 0.U &&  rowcount(2.U+ pin) === 0.U ) ||(rowcount(1.U+ pin ) === 3.U &&  rowcount(0.U+ pin )=== 0.U 
-        &&  rowcount(2.U+ pin) === 0.U) || (rowcount(0.U+ pin ) === 0.U &&  rowcount(1.U+ pin) === 0.U &&  rowcount(2.U+ pin) === 3.U )
-        || (rowcount(0.U+ pin ) === 2.U && rowcount(1.U+ pin ) === 1.U && rowcount(2.U+ pin ) === 0.U) || (rowcount(0.U+ pin ) === 2.U && rowcount(1.U+ pin ) === 0.U && rowcount(2.U+ pin ) === 1.U)||
-        (rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 2.U && rowcount(2.U+ pin ) === 0.U)||(rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 0.U && rowcount(2.U+ pin ) === 2.U)
-        || (rowcount(0.U+ pin ) === 0.U && rowcount(1.U+ pin ) === 1.U && rowcount(2.U+ pin ) === 2.U) || (rowcount(0.U+ pin ) === 0.U && rowcount(1.U+ pin ) === 2.U && rowcount(2.U+ pin ) === 1.U)
-        || (rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 1.U && rowcount(2.U+ pin ) === 1.U))){
-             i_vn(3) := 3.U+ pin 
-            i_vn2(0) := 3.U+ pin 
-            i_vn2(1) := 3.U+ pin 
-            i_vn2(2) := 3.U+ pin 
-            i_vn2(3) := 3.U+ pin
-
-     
-
-        }.elsewhen(rowcount(2.U+ pin )===5.U && ((rowcount(0.U+ pin ) === 2.U &&  rowcount(1.U+ pin) === 0.U &&  rowcount(2.U+ pin) === 0.U ) ||(rowcount(1.U+ pin ) === 2.U &&  rowcount(0.U+ pin )=== 0.U 
-        &&  rowcount(2.U+ pin) === 0.U) || (rowcount(0.U+ pin ) === 0.U &&  rowcount(1.U+ pin) === 0.U &&  rowcount(2.U+ pin) === 2.U ) || (rowcount(0.U+ pin ) === 1.U &&  rowcount(1.U+ pin) === 1.U &&  rowcount(2.U+ pin) === 0.U ) 
-        ||(rowcount(1.U+ pin ) === 1.U &&  rowcount(0.U+ pin )=== 0.U 
-        &&  rowcount(2.U+ pin) === 1.U) || (rowcount(0.U+ pin ) === 0.U &&  rowcount(1.U+ pin) === 1.U &&  rowcount(2.U+ pin) === 1.U ))){
-            i_vn(2) := 3.U+ pin 
-             i_vn(3) := 3.U+ pin 
-            i_vn2(0) := 3.U+ pin 
-            i_vn2(1) := 3.U+ pin 
-            i_vn2(2) := 3.U+ pin 
-       
-
-
-        }.elsewhen(rowcount(2.U+ pin )===5.U  && ((rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 0.U && rowcount(2.U+ pin ) === 0.U ) || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U+ pin ) === 0.U && rowcount(2.U+ pin ) === 0.U )
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U+ pin ) === 0.U && rowcount(2.U+ pin ) === 1.U ))){
-             i_vn(1) := 3.U+ pin 
-            i_vn(2) := 3.U+ pin 
-             i_vn(3) := 3.U+ pin 
-            i_vn2(0) := 3.U+ pin 
-            i_vn2(1) := 3.U+ pin 
-    
-
-        }.elsewhen(rowcount(2.U+ pin )===5.U && rowcount(0.U+ pin ) === 0.U  && rowcount(1.U+ pin ) === 0.U && rowcount(2.U+ pin ) === 0.U){
-            i_vn(0) := 3.U+ pin 
-            i_vn(1) := 3.U+ pin 
-            i_vn(2) := 3.U+ pin 
-             i_vn(3) := 3.U+ pin 
-            i_vn2(0) := 3.U+ pin 
-
-         // 3 main 4
-
-         }.elsewhen(rowcount(2.U+ pin )>= 4.U && ((rowcount(0.U+ pin ) === 4.U &&  rowcount(1.U+ pin) === 0.U &&  rowcount(2.U+ pin) === 0.U ) ||(rowcount(1.U+ pin ) === 4.U &&  rowcount(0.U+ pin )=== 0.U 
-        &&  rowcount(2.U+ pin) === 0.U) || (rowcount(0.U+ pin ) === 0.U &&  rowcount(1.U+ pin) === 0.U &&  rowcount(2.U+ pin) === 4.U )
-        || (rowcount(0.U+ pin ) === 3.U && rowcount(1.U+ pin ) === 1.U && rowcount(2.U+ pin ) === 0.U) || (rowcount(0.U+ pin ) === 3.U && rowcount(1.U+ pin ) === 0.U && rowcount(2.U+ pin ) === 1.U)||
-        (rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 3.U && rowcount(2.U+ pin ) === 0.U)||(rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 0.U && rowcount(2.U+ pin ) === 3.U)
-        || (rowcount(0.U+ pin ) === 0.U && rowcount(1.U+ pin ) === 1.U && rowcount(2.U+ pin ) === 3.U) || (rowcount(0.U+ pin ) === 0.U && rowcount(1.U+ pin ) === 3.U && rowcount(2.U+ pin ) === 1.U)
-        || (rowcount(0.U+ pin ) === 0.U && rowcount(1.U+ pin ) === 2.U && rowcount(2.U+ pin ) === 2.U) || (rowcount(0.U+ pin ) === 2.U && rowcount(1.U+ pin ) === 0.U && rowcount(2.U+ pin ) === 2.U)
-        || (rowcount(0.U+ pin ) === 2.U && rowcount(1.U+ pin ) === 2.U && rowcount(2.U+ pin ) === 0.U))){
-       
-            i_vn2(0) := 3.U+ pin 
-            i_vn2(1) := 3.U+ pin 
-            i_vn2(2) := 3.U+ pin 
+        }.elsewhen(8.U - (rowcount(0.U + pin) + rowcount(1.U + pin) + rowcount(2.U + pin)) === 1.U){
+           
+           
             i_vn2(3) := 3.U+ pin 
-
-        }.elsewhen(rowcount(2.U+ pin )===4.U && ((rowcount(0.U+ pin ) === 3.U &&  rowcount(1.U+ pin) === 0.U &&  rowcount(2.U+ pin) === 0.U ) ||(rowcount(1.U+ pin ) === 3.U &&  rowcount(0.U+ pin )=== 0.U 
-        &&  rowcount(2.U+ pin) === 0.U) || (rowcount(0.U+ pin ) === 0.U &&  rowcount(1.U+ pin) === 0.U &&  rowcount(2.U+ pin) === 3.U )
-        || (rowcount(0.U+ pin ) === 2.U && rowcount(1.U+ pin ) === 1.U && rowcount(2.U+ pin ) === 0.U) || (rowcount(0.U+ pin ) === 2.U && rowcount(1.U+ pin ) === 0.U && rowcount(2.U+ pin ) === 1.U)||
-        (rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 2.U && rowcount(2.U+ pin ) === 0.U)||(rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 0.U && rowcount(2.U+ pin ) === 2.U)
-        || (rowcount(0.U+ pin ) === 0.U && rowcount(1.U+ pin ) === 1.U && rowcount(2.U+ pin ) === 2.U) || (rowcount(0.U+ pin ) === 0.U && rowcount(1.U+ pin ) === 2.U && rowcount(2.U+ pin ) === 1.U)
-        || (rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 1.U && rowcount(2.U+ pin ) === 1.U))){
-            i_vn(3) := 3.U+ pin 
-            i_vn2(0) := 3.U+ pin 
-            i_vn2(1) := 3.U+ pin 
-            i_vn2(2) := 3.U+ pin 
-      
-
-        }.elsewhen(rowcount(2.U+ pin )===4.U  && ((rowcount(0.U+ pin ) === 2.U &&  rowcount(1.U+ pin) === 0.U &&  rowcount(2.U+ pin) === 0.U ) ||(rowcount(1.U+ pin ) === 2.U &&  rowcount(0.U+ pin )=== 0.U 
-        &&  rowcount(2.U+ pin) === 0.U) || (rowcount(0.U+ pin ) === 0.U &&  rowcount(1.U+ pin) === 0.U &&  rowcount(2.U+ pin) === 2.U ) || (rowcount(0.U+ pin ) === 1.U &&  rowcount(1.U+ pin) === 1.U &&  rowcount(2.U+ pin) === 0.U ) 
-        ||(rowcount(1.U+ pin ) === 1.U &&  rowcount(0.U+ pin )=== 0.U 
-        &&  rowcount(2.U+ pin) === 1.U) || (rowcount(0.U+ pin ) === 0.U &&  rowcount(1.U+ pin) === 1.U &&  rowcount(2.U+ pin) === 1.U ))){
-            i_vn(2) := 3.U+ pin 
-             i_vn(3) := 3.U+ pin 
-            i_vn2(0) := 3.U+ pin 
-            i_vn2(1) := 3.U+ pin 
-       
-
-
-        }.elsewhen(rowcount(2.U+ pin )===4.U & ((rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 0.U && rowcount(2.U+ pin ) === 0.U ) || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U+ pin ) === 0.U && rowcount(2.U+ pin ) === 0.U )
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U+ pin ) === 0.U && rowcount(2.U+ pin ) === 1.U ))){
-             i_vn(1) := 3.U+ pin 
-            i_vn(2) := 3.U+ pin 
-            i_vn(3) := 3.U+ pin 
-            i_vn2(0) := 3.U+ pin 
         
-    
+        }
+        // 4
+         when(8.U - (rowcount(0.U + pin) + rowcount(1.U + pin) + rowcount(2.U + pin) + rowcount(3.U + pin)) === 7.U ){
+             i_vn(1) := 4.U + pin 
+            i_vn(2) := 4.U + pin  
+            i_vn(3) := 4.U+ pin  
+            i_vn2(0) := 4.U+ pin  
+            i_vn2(1) := 4.U+ pin  
+            i_vn2(2) := 4.U+ pin  
+            i_vn2(3) := 4.U+ pin  
 
-        }.elsewhen(rowcount(2.U+ pin )===4.U&& rowcount(0.U+ pin ) === 0.U  && rowcount(1.U+ pin ) === 0.U && rowcount(2.U+ pin ) === 0.U){
-            i_vn(0) := 3.U+ pin 
-            i_vn(1) := 3.U+ pin 
-            i_vn(2) := 3.U+ pin 
-            i_vn(3) := 3.U+ pin 
-  
-     
-
+        }.elsewhen(8.U - (rowcount(0.U + pin) + rowcount(1.U + pin) + rowcount(2.U + pin) + rowcount(3.U + pin))=== 6.U){
+             i_vn(2) := 4.U + pin  
+             i_vn(2) := 4.U + pin  
+            i_vn(3) := 4.U+ pin  
+            i_vn2(0) := 4.U+ pin  
+            i_vn2(1) :=4.U+ pin  
+            i_vn2(2) := 4.U+ pin  
+            i_vn2(3) := 4.U+ pin  
+        }.elsewhen(8.U - (rowcount(0.U + pin) + rowcount(1.U + pin) + rowcount(2.U + pin) + rowcount(3.U + pin))=== 5.U){
         
-         // 3 main 3
-
-        }.elsewhen(rowcount(2.U+ pin )===3.U && ((rowcount(0.U+ pin ) === 5.U &&  rowcount(1.U+ pin) === 0.U &&  rowcount(2.U+ pin) === 0.U ) ||(rowcount(1.U+ pin ) === 5.U &&  rowcount(0.U+ pin )=== 0.U 
-        &&  rowcount(2.U+ pin) === 0.U) || (rowcount(0.U+ pin ) === 0.U &&  rowcount(1.U+ pin) === 0.U &&  rowcount(2.U+ pin) === 5.U )
-        || (rowcount(0.U+ pin ) === 3.U && rowcount(1.U+ pin ) === 2.U && rowcount(2.U+ pin ) === 0.U) || (rowcount(0.U+ pin ) === 3.U && rowcount(1.U+ pin ) === 0.U && rowcount(2.U+ pin ) === 2.U)||
-        (rowcount(0.U+ pin ) === 2.U && rowcount(1.U+ pin ) === 3.U && rowcount(2.U+ pin ) === 0.U)||(rowcount(0.U+ pin ) === 2.U && rowcount(1.U+ pin ) === 0.U && rowcount(2.U+ pin ) === 3.U)
-        || (rowcount(0.U+ pin ) === 0.U && rowcount(1.U+ pin ) === 2.U && rowcount(2.U+ pin ) === 3.U) || (rowcount(0.U+ pin ) === 0.U && rowcount(1.U+ pin ) === 3.U && rowcount(2.U+ pin ) === 2.U)
-        || (rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 2.U && rowcount(2.U+ pin ) === 2.U) || (rowcount(0.U+ pin ) === 2.U && rowcount(1.U+ pin ) === 1.U && rowcount(2.U+ pin ) === 2.U)
-        || (rowcount(0.U+ pin ) === 2.U && rowcount(1.U+ pin ) === 2.U && rowcount(2.U+ pin ) === 1.U)
-        || (rowcount(0.U+ pin ) === 4.U && rowcount(1.U+ pin ) === 1.U && rowcount(2.U+ pin ) === 0.U) || (rowcount(0.U+ pin ) === 4.U && rowcount(1.U+ pin ) === 0.U && rowcount(2.U+ pin ) === 1.U)||
-        (rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 4.U && rowcount(2.U+ pin ) === 0.U)||(rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 0.U && rowcount(2.U+ pin ) === 4.U)
-        || (rowcount(0.U+ pin ) === 0.U && rowcount(1.U+ pin ) === 1.U && rowcount(2.U+ pin ) === 4.U) || (rowcount(0.U+ pin ) === 0.U && rowcount(1.U+ pin ) === 4.U && rowcount(2.U+ pin ) === 1.U)
-        || (rowcount(0.U+ pin ) === 3.U && rowcount(1.U+ pin ) === 1.U && rowcount(2.U+ pin ) === 1.U) || (rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 3.U && rowcount(1.U+ pin ) === 1.U)
-        || (rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 1.U && rowcount(2.U+ pin ) === 3.U))){
+              i_vn(3) := 4.U+ pin  
+            i_vn2(0) := 4.U+ pin  
+            i_vn2(1) := 4.U+ pin  
+            i_vn2(2) := 4.U+ pin  
+            i_vn2(3) := 4.U+ pin  
+        }.elsewhen(8.U - (rowcount(0.U + pin) + rowcount(1.U + pin) + rowcount(2.U + pin) + rowcount(3.U + pin)) === 4.U){
        
-     
-            i_vn2(1) := 3.U+ pin 
-            i_vn2(2) := 3.U+ pin 
-            i_vn2(3) := 3.U+ pin 
-
-         }.elsewhen(rowcount(2.U+ pin )===3.U && ((rowcount(0.U+ pin ) === 4.U &&  rowcount(1.U+ pin) === 0.U &&  rowcount(2.U+ pin) === 0.U ) ||(rowcount(1.U+ pin ) === 4.U &&  rowcount(0.U+ pin )=== 0.U 
-        &&  rowcount(2.U+ pin) === 0.U) || (rowcount(0.U+ pin ) === 0.U &&  rowcount(1.U+ pin) === 0.U &&  rowcount(2.U+ pin) === 4.U )
-        || (rowcount(0.U+ pin ) === 3.U && rowcount(1.U+ pin ) === 1.U && rowcount(2.U+ pin ) === 0.U) || (rowcount(0.U+ pin ) === 3.U && rowcount(1.U+ pin ) === 0.U && rowcount(2.U+ pin ) === 1.U)||
-        (rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 3.U && rowcount(2.U+ pin ) === 0.U)||(rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 0.U && rowcount(2.U+ pin ) === 3.U)
-        || (rowcount(0.U+ pin ) === 0.U && rowcount(1.U+ pin ) === 1.U && rowcount(2.U+ pin ) === 3.U) || (rowcount(0.U+ pin ) === 0.U && rowcount(1.U+ pin ) === 3.U && rowcount(2.U+ pin ) === 1.U)
-        || (rowcount(0.U+ pin ) === 0.U && rowcount(1.U+ pin ) === 2.U && rowcount(2.U+ pin ) === 2.U) || (rowcount(0.U+ pin ) === 2.U && rowcount(1.U+ pin ) === 0.U && rowcount(2.U+ pin ) === 2.U)
-        || (rowcount(0.U+ pin ) === 2.U && rowcount(1.U+ pin ) === 2.U && rowcount(2.U+ pin ) === 0.U))){
-       
-            i_vn2(0) := 3.U+ pin 
-            i_vn2(1) := 3.U+ pin 
-            i_vn2(2) := 3.U+ pin 
-       
-
-        }.elsewhen(rowcount(2.U+ pin )===3.U && ((rowcount(0.U+ pin ) === 3.U &&  rowcount(1.U+ pin) === 0.U &&  rowcount(2.U+ pin) === 0.U ) ||(rowcount(1.U+ pin ) === 3.U &&  rowcount(0.U+ pin )=== 0.U 
-        &&  rowcount(2.U+ pin) === 0.U) || (rowcount(0.U+ pin ) === 0.U &&  rowcount(1.U+ pin) === 0.U &&  rowcount(2.U+ pin) === 3.U )
-        || (rowcount(0.U+ pin ) === 2.U && rowcount(1.U+ pin ) === 1.U && rowcount(2.U+ pin ) === 0.U) || (rowcount(0.U+ pin ) === 2.U && rowcount(1.U+ pin ) === 0.U && rowcount(2.U+ pin ) === 1.U)||
-        (rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 2.U && rowcount(2.U+ pin ) === 0.U)||(rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 0.U && rowcount(2.U+ pin ) === 2.U)
-        || (rowcount(0.U+ pin ) === 0.U && rowcount(1.U+ pin ) === 1.U && rowcount(2.U+ pin ) === 2.U) || (rowcount(0.U+ pin ) === 0.U && rowcount(1.U+ pin ) === 2.U && rowcount(2.U+ pin ) === 1.U)
-        || (rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 1.U && rowcount(2.U+ pin ) === 1.U))){
-            i_vn(3) := 3.U+ pin 
-            i_vn2(0) := 3.U+ pin 
-            i_vn2(1) := 3.U+ pin 
-       
-      
-
-        }.elsewhen(rowcount(2.U+ pin )===3.U && ((rowcount(0.U+ pin ) === 2.U &&  rowcount(1.U+ pin) === 0.U &&  rowcount(2.U+ pin) === 0.U ) ||(rowcount(1.U+ pin ) === 2.U &&  rowcount(0.U+ pin )=== 0.U 
-        &&  rowcount(2.U+ pin) === 0.U) || (rowcount(0.U+ pin ) === 0.U &&  rowcount(1.U+ pin) === 0.U &&  rowcount(2.U+ pin) === 2.U ) || (rowcount(0.U+ pin ) === 1.U &&  rowcount(1.U+ pin) === 1.U &&  rowcount(2.U+ pin) === 0.U ) 
-        ||(rowcount(1.U+ pin ) === 1.U &&  rowcount(0.U+ pin )=== 0.U 
-        &&  rowcount(2.U+ pin) === 1.U) || (rowcount(0.U+ pin ) === 0.U &&  rowcount(1.U+ pin) === 1.U &&  rowcount(2.U+ pin) === 1.U ))){
-            i_vn(2) := 3.U+ pin 
-            i_vn(3) := 3.U+ pin 
-            i_vn2(0) := 3.U+ pin 
-      
-     
-       
-
-
-        }.elsewhen(rowcount(2.U+ pin )===3.U && ((rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 0.U && rowcount(2.U+ pin ) === 0.U ) || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U+ pin ) === 0.U && rowcount(2.U+ pin ) === 0.U )
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U+ pin ) === 0.U && rowcount(2.U+ pin ) === 1.U ))){
-             i_vn(1) := 3.U+ pin 
-            i_vn(2) := 3.U+ pin 
-            i_vn(3) := 3.U+ pin 
- 
-        
-    
-
-        }.elsewhen(rowcount(2.U+ pin )===3.U && rowcount(0.U+ pin ) === 0.U  && rowcount(1.U+ pin ) === 0.U && rowcount(2.U+ pin ) === 0.U){
-            i_vn(0) := 3.U+ pin 
-            i_vn(1) := 3.U+ pin 
-            i_vn(2) := 3.U+ pin 
-      
-  
-
-    
-         // 3 main 2
-
+            i_vn2(0) := 4.U+ pin  
+            i_vn2(1) := 4.U+ pin  
+            i_vn2(2) := 4.U+ pin  
+            i_vn2(3) := 4.U+ pin 
+        }.elsewhen(8.U -  (rowcount(0.U + pin) + rowcount(1.U + pin) + rowcount(2.U + pin) + rowcount(3.U + pin)) === 3.U){
+           
+             i_vn2(1) := 4.U+ pin  
+            i_vn2(2) := 4.U+ pin  
+            i_vn2(3) := 4.U+ pin 
         
         
-        }.elsewhen(rowcount(2.U+ pin )>=2.U && ((rowcount(0.U+ pin ) === 6.U &&  rowcount(1.U+ pin) === 0.U &&  rowcount(2.U+ pin) === 0.U ) ||(rowcount(1.U+ pin ) === 6.U &&  rowcount(0.U+ pin )=== 0.U 
-        &&  rowcount(2.U+ pin) === 0.U) || (rowcount(0.U+ pin ) === 0.U &&  rowcount(1.U+ pin) === 0.U &&  rowcount(2.U+ pin) === 6.U )
-        || (rowcount(0.U+ pin ) === 4.U && rowcount(1.U+ pin ) === 2.U && rowcount(2.U+ pin ) === 0.U) || (rowcount(0.U+ pin ) === 4.U && rowcount(1.U+ pin ) === 0.U && rowcount(2.U+ pin ) === 2.U)||
-        (rowcount(0.U+ pin ) === 2.U && rowcount(1.U+ pin ) === 4.U && rowcount(2.U+ pin ) === 0.U)||(rowcount(0.U+ pin ) === 2.U && rowcount(1.U+ pin ) === 0.U && rowcount(2.U+ pin ) === 4.U)
-        || (rowcount(0.U+ pin ) === 0.U && rowcount(1.U+ pin ) === 2.U && rowcount(2.U+ pin ) === 4.U) || (rowcount(0.U+ pin ) === 0.U && rowcount(1.U+ pin ) === 4.U && rowcount(2.U+ pin ) === 2.U)
-        || (rowcount(0.U+ pin ) === 0.U && rowcount(1.U+ pin ) === 3.U && rowcount(2.U+ pin ) === 3.U) || (rowcount(0.U+ pin ) === 3.U && rowcount(1.U+ pin ) === 0.U && rowcount(2.U+ pin ) === 3.U)
-        || (rowcount(0.U+ pin ) === 3.U && rowcount(1.U+ pin ) === 3.U && rowcount(2.U+ pin ) === 0.U)
-        || (rowcount(0.U+ pin ) === 3.U && rowcount(1.U+ pin ) === 1.U && rowcount(2.U+ pin ) === 2.U) || (rowcount(0.U+ pin ) === 3.U && rowcount(1.U+ pin ) === 2.U && rowcount(2.U+ pin ) === 1.U)||
-        (rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 3.U && rowcount(2.U+ pin ) === 2.U)||(rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 2.U && rowcount(2.U+ pin ) === 3.U)
-        || (rowcount(0.U+ pin ) === 2.U && rowcount(1.U+ pin ) === 1.U && rowcount(2.U+ pin ) === 3.U) || (rowcount(0.U+ pin ) === 2.U && rowcount(1.U+ pin ) === 3.U && rowcount(2.U+ pin ) === 1.U)
-        || (rowcount(0.U+ pin ) === 4.U && rowcount(1.U+ pin ) === 1.U && rowcount(2.U+ pin ) === 1.U) || (rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 4.U && rowcount(1.U+ pin ) === 1.U)
-        || (rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 1.U && rowcount(2.U+ pin ) === 4.U) || (rowcount(0.U+ pin ) === 2.U && rowcount(1.U+ pin ) === 2.U && rowcount(2.U+ pin ) === 2.U)
-        || (rowcount(0.U+ pin ) === 5.U && rowcount(1.U+ pin ) === 1.U && rowcount(2.U+ pin ) === 0.U) || (rowcount(0.U+ pin ) === 5.U && rowcount(1.U+ pin ) === 0.U && rowcount(1.U+ pin ) === 2.U)||
-        (rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 5.U && rowcount(2.U+ pin ) === 0.U)||(rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 0.U && rowcount(2.U+ pin ) === 5.U)
-        || (rowcount(0.U+ pin ) === 0.U && rowcount(1.U+ pin ) === 1.U && rowcount(2.U+ pin ) === 5.U) || (rowcount(0.U+ pin ) === 0.U && rowcount(1.U+ pin ) === 5.U && rowcount(2.U+ pin ) === 1.U))){
-     
-      
-            i_vn2(2) := 3.U+ pin 
-            i_vn2(3) := 3.U+ pin 
-
-        }.elsewhen(rowcount(2.U+ pin )===2.U && ((rowcount(0.U+ pin ) === 5.U &&  rowcount(1.U+ pin) === 0.U &&  rowcount(2.U+ pin) === 0.U ) ||(rowcount(1.U+ pin ) === 5.U &&  rowcount(0.U+ pin )=== 0.U 
-        &&  rowcount(2.U+ pin) === 0.U) || (rowcount(0.U+ pin ) === 0.U &&  rowcount(1.U+ pin) === 0.U &&  rowcount(2.U+ pin) === 5.U )
-        || (rowcount(0.U+ pin ) === 3.U && rowcount(1.U+ pin ) === 2.U && rowcount(2.U+ pin ) === 0.U) || (rowcount(0.U+ pin ) === 3.U && rowcount(1.U+ pin ) === 0.U && rowcount(2.U+ pin ) === 2.U)||
-        (rowcount(0.U+ pin ) === 2.U && rowcount(1.U+ pin ) === 3.U && rowcount(2.U+ pin ) === 0.U)||(rowcount(0.U+ pin ) === 2.U && rowcount(1.U+ pin ) === 0.U && rowcount(2.U+ pin ) === 3.U)
-        || (rowcount(0.U+ pin ) === 0.U && rowcount(1.U+ pin ) === 2.U && rowcount(2.U+ pin ) === 3.U) || (rowcount(0.U+ pin ) === 0.U && rowcount(1.U+ pin ) === 3.U && rowcount(2.U+ pin ) === 2.U)
-        || (rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 2.U && rowcount(2.U+ pin ) === 2.U) || (rowcount(0.U+ pin ) === 2.U && rowcount(1.U+ pin ) === 1.U && rowcount(2.U+ pin ) === 2.U)
-        || (rowcount(0.U+ pin ) === 2.U && rowcount(1.U+ pin ) === 2.U && rowcount(2.U+ pin ) === 1.U)
-        || (rowcount(0.U+ pin ) === 4.U && rowcount(1.U+ pin ) === 1.U && rowcount(2.U+ pin ) === 0.U) || (rowcount(0.U+ pin ) === 4.U && rowcount(1.U+ pin ) === 0.U && rowcount(2.U+ pin ) === 1.U)||
-        (rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 4.U && rowcount(2.U+ pin ) === 0.U)||(rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 0.U && rowcount(2.U+ pin ) === 4.U)
-        || (rowcount(0.U+ pin ) === 0.U && rowcount(1.U+ pin ) === 1.U && rowcount(2.U+ pin ) === 4.U) || (rowcount(0.U+ pin ) === 0.U && rowcount(1.U+ pin ) === 4.U && rowcount(2.U+ pin ) === 1.U)
-        || (rowcount(0.U+ pin ) === 3.U && rowcount(1.U+ pin ) === 1.U && rowcount(2.U+ pin ) === 1.U) || (rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 3.U && rowcount(1.U+ pin ) === 1.U)
-        || (rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 1.U && rowcount(2.U+ pin ) === 3.U))){
-       
-     
-            i_vn2(1) := 3.U+ pin 
-            i_vn2(2) := 3.U+ pin 
-    
-
-         }.elsewhen(rowcount(2.U+ pin )===2.U   && ((rowcount(0.U+ pin ) === 4.U &&  rowcount(1.U+ pin) === 0.U &&  rowcount(2.U+ pin) === 0.U ) ||(rowcount(1.U+ pin ) === 4.U &&  rowcount(0.U+ pin )=== 0.U 
-        &&  rowcount(2.U+ pin) === 0.U) || (rowcount(0.U+ pin ) === 0.U &&  rowcount(1.U+ pin) === 0.U &&  rowcount(2.U+ pin) === 4.U )
-        || (rowcount(0.U+ pin ) === 3.U && rowcount(1.U+ pin ) === 1.U && rowcount(2.U+ pin ) === 0.U) || (rowcount(0.U+ pin ) === 3.U && rowcount(1.U+ pin ) === 0.U && rowcount(2.U+ pin ) === 1.U)||
-        (rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 3.U && rowcount(2.U+ pin ) === 0.U)||(rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 0.U && rowcount(2.U+ pin ) === 3.U)
-        || (rowcount(0.U+ pin ) === 0.U && rowcount(1.U+ pin ) === 1.U && rowcount(2.U+ pin ) === 3.U) || (rowcount(0.U+ pin ) === 0.U && rowcount(1.U+ pin ) === 3.U && rowcount(2.U+ pin ) === 1.U)
-        || (rowcount(0.U+ pin ) === 0.U && rowcount(1.U+ pin ) === 2.U && rowcount(2.U+ pin ) === 2.U) || (rowcount(0.U+ pin ) === 2.U && rowcount(1.U+ pin ) === 0.U && rowcount(2.U+ pin ) === 2.U)
-        || (rowcount(0.U+ pin ) === 2.U && rowcount(1.U+ pin ) === 2.U && rowcount(2.U+ pin ) === 0.U))){
-       
-            i_vn2(0) := 3.U+ pin 
-            i_vn2(1) := 3.U+ pin 
-     
-       
-
-        }.elsewhen(rowcount(1.U+ pin )===2.U  && ((rowcount(0.U+ pin ) === 3.U &&  rowcount(1.U+ pin) === 0.U &&  rowcount(2.U+ pin) === 0.U ) ||(rowcount(1.U+ pin ) === 3.U &&  rowcount(0.U+ pin )=== 0.U 
-        &&  rowcount(2.U+ pin) === 0.U) || (rowcount(0.U+ pin ) === 0.U &&  rowcount(1.U+ pin) === 0.U &&  rowcount(2.U+ pin) === 3.U )
-        || (rowcount(0.U+ pin ) === 2.U && rowcount(1.U+ pin ) === 1.U && rowcount(2.U+ pin ) === 0.U) || (rowcount(0.U+ pin ) === 2.U && rowcount(1.U+ pin ) === 0.U && rowcount(2.U+ pin ) === 1.U)||
-        (rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 2.U && rowcount(2.U+ pin ) === 0.U)||(rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 0.U && rowcount(2.U+ pin ) === 2.U)
-        || (rowcount(0.U+ pin ) === 0.U && rowcount(1.U+ pin ) === 1.U && rowcount(2.U+ pin ) === 2.U) || (rowcount(0.U+ pin ) === 0.U && rowcount(1.U+ pin ) === 2.U && rowcount(2.U+ pin ) === 1.U)
-        || (rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 1.U && rowcount(2.U+ pin ) === 1.U))){
-            i_vn(3) := 3.U+ pin 
-            i_vn2(0) := 3.U+ pin 
-
-       
-      
-
-        }.elsewhen(rowcount(1.U+ pin )===2.U && ((rowcount(0.U+ pin ) === 2.U &&  rowcount(1.U+ pin) === 0.U &&  rowcount(2.U+ pin) === 0.U ) ||(rowcount(1.U+ pin ) === 2.U &&  rowcount(0.U+ pin )=== 0.U 
-        &&  rowcount(2.U+ pin) === 0.U) || (rowcount(0.U+ pin ) === 0.U &&  rowcount(1.U+ pin) === 0.U &&  rowcount(2.U+ pin) === 2.U ) || (rowcount(0.U+ pin ) === 1.U &&  rowcount(1.U+ pin) === 1.U &&  rowcount(2.U+ pin) === 0.U ) 
-        ||(rowcount(1.U+ pin ) === 1.U &&  rowcount(0.U+ pin )=== 0.U 
-        &&  rowcount(2.U+ pin) === 1.U) || (rowcount(0.U+ pin ) === 0.U &&  rowcount(1.U+ pin) === 1.U &&  rowcount(2.U+ pin) === 1.U ))){
-            i_vn(2) := 3.U+ pin 
-            i_vn(3) := 3.U+ pin 
-      
-      
-     
-       
-
-
-        }.elsewhen(rowcount(1.U+ pin )===2.U && ((rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 0.U && rowcount(2.U+ pin ) === 0.U ) || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U+ pin ) === 0.U && rowcount(2.U+ pin ) === 0.U )
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U+ pin ) === 0.U && rowcount(2.U+ pin ) === 1.U ))){
-             i_vn(1) := 3.U+ pin 
-            i_vn(2) := 3.U+ pin 
-       
- 
+        }.elsewhen(8.U - (rowcount(0.U + pin) + rowcount(1.U + pin) + rowcount(2.U + pin) + rowcount(3.U + pin))=== 2.U){
+           
+           
+            i_vn2(2) := 4.U+ pin  
+            i_vn2(3) := 4.U+ pin 
         
-    
-
-        }.elsewhen(rowcount(1.U+ pin )===2.U && rowcount(0.U+ pin ) === 0.U  && rowcount(1.U+ pin ) === 0.U && rowcount(2.U+ pin ) === 0.U){
-            i_vn(0) := 3.U+ pin 
-            i_vn(1) := 3.U+ pin 
-      
-      
-  
-           // 3 main 1
-
-         }.elsewhen(rowcount(1.U+ pin )>=1.U && ((rowcount(0.U+ pin ) === 7.U &&  rowcount(1.U+ pin) === 0.U &&  rowcount(2.U+ pin) === 0.U ) ||(rowcount(1.U+ pin ) === 7.U &&  rowcount(0.U+ pin )=== 0.U 
-        &&  rowcount(2.U+ pin) === 0.U) || (rowcount(0.U+ pin ) === 0.U &&  rowcount(1.U+ pin) === 0.U &&  rowcount(2.U+ pin) === 7.U )
-        || (rowcount(0.U+ pin ) === 4.U && rowcount(1.U+ pin ) === 3.U && rowcount(2.U+ pin ) === 0.U) || (rowcount(0.U+ pin ) === 4.U && rowcount(1.U+ pin ) === 0.U && rowcount(2.U+ pin ) === 3.U)||
-        (rowcount(0.U+ pin ) === 3.U && rowcount(1.U+ pin ) === 4.U && rowcount(2.U+ pin ) === 0.U)||(rowcount(0.U+ pin ) === 3.U && rowcount(1.U+ pin ) === 0.U && rowcount(2.U+ pin ) === 4.U)
-        || (rowcount(0.U+ pin ) === 0.U && rowcount(1.U+ pin ) === 3.U && rowcount(2.U+ pin ) === 4.U) || (rowcount(0.U+ pin ) === 0.U && rowcount(1.U+ pin ) === 4.U && rowcount(2.U+ pin ) === 3.U)
-        || (rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 3.U && rowcount(2.U+ pin ) === 3.U) || (rowcount(0.U+ pin ) === 3.U && rowcount(1.U+ pin ) === 1.U && rowcount(2.U+ pin ) === 3.U)
-        || (rowcount(0.U+ pin ) === 3.U && rowcount(1.U+ pin ) === 3.U && rowcount(2.U+ pin ) === 1.U)
-        || (rowcount(0.U+ pin ) === 4.U && rowcount(1.U+ pin ) === 1.U && rowcount(2.U+ pin ) === 2.U) || (rowcount(0.U+ pin ) === 4.U && rowcount(1.U+ pin ) === 2.U && rowcount(2.U+ pin ) === 1.U)||
-        (rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 4.U && rowcount(2.U+ pin ) === 2.U)||(rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 2.U && rowcount(2.U+ pin ) === 4.U)
-        || (rowcount(0.U+ pin ) === 2.U && rowcount(1.U+ pin ) === 1.U && rowcount(2.U+ pin ) === 4.U) || (rowcount(0.U+ pin ) === 2.U && rowcount(1.U+ pin ) === 4.U && rowcount(2.U+ pin ) === 1.U)
-        || (rowcount(0.U+ pin ) === 3.U && rowcount(1.U+ pin ) === 2.U && rowcount(2.U+ pin ) === 2.U) || (rowcount(0.U+ pin ) === 2.U && rowcount(1.U+ pin ) === 3.U && rowcount(1.U+ pin ) === 2.U)
-        || (rowcount(0.U+ pin ) === 2.U && rowcount(1.U+ pin ) === 2.U && rowcount(2.U+ pin ) === 3.U) 
-        || (rowcount(0.U+ pin ) === 5.U && rowcount(1.U+ pin ) === 2.U && rowcount(2.U+ pin ) === 0.U) || (rowcount(0.U+ pin ) === 5.U && rowcount(1.U+ pin ) === 0.U && rowcount(2.U+ pin ) === 2.U)||
-        (rowcount(0.U+ pin ) === 2.U && rowcount(1.U+ pin ) === 5.U && rowcount(2.U+ pin ) === 0.U)||(rowcount(0.U+ pin ) === 2.U && rowcount(1.U+ pin ) === 0.U && rowcount(2.U+ pin ) === 5.U)
-        || (rowcount(0.U+ pin ) === 0.U && rowcount(1.U+ pin ) === 2.U && rowcount(2.U+ pin ) === 5.U) || (rowcount(0.U+ pin ) === 0.U && rowcount(1.U+ pin ) === 5.U && rowcount(2.U+ pin ) === 2.U))){
-       
-     
-            i_vn2(3) := 3.U+ pin
+        }.elsewhen(8.U - (rowcount(0.U + pin) + rowcount(1.U + pin) + rowcount(2.U + pin) + rowcount(3.U + pin)) === 1.U){
+           
+           
+            i_vn2(3) := 4.U+ pin 
         
-        }.elsewhen(rowcount(1.U+ pin )===1.U&& ((rowcount(0.U+ pin ) === 6.U &&  rowcount(1.U+ pin) === 0.U &&  rowcount(2.U+ pin) === 0.U ) ||(rowcount(1.U+ pin ) === 6.U &&  rowcount(0.U+ pin )=== 0.U 
-        &&  rowcount(2.U+ pin) === 0.U) || (rowcount(0.U+ pin ) === 0.U &&  rowcount(1.U+ pin) === 0.U &&  rowcount(2.U+ pin) === 6.U )
-        || (rowcount(0.U+ pin ) === 4.U && rowcount(1.U+ pin ) === 2.U && rowcount(2.U+ pin ) === 0.U) || (rowcount(0.U+ pin ) === 4.U && rowcount(1.U+ pin ) === 0.U && rowcount(2.U+ pin ) === 2.U)||
-        (rowcount(0.U+ pin ) === 2.U && rowcount(1.U+ pin ) === 4.U && rowcount(2.U+ pin ) === 0.U)||(rowcount(0.U+ pin ) === 2.U && rowcount(1.U+ pin ) === 0.U && rowcount(2.U+ pin ) === 4.U)
-        || (rowcount(0.U+ pin ) === 0.U && rowcount(1.U+ pin ) === 2.U && rowcount(2.U+ pin ) === 4.U) || (rowcount(0.U+ pin ) === 0.U && rowcount(1.U+ pin ) === 4.U && rowcount(2.U+ pin ) === 2.U)
-        || (rowcount(0.U+ pin ) === 0.U && rowcount(1.U+ pin ) === 3.U && rowcount(2.U+ pin ) === 3.U) || (rowcount(0.U+ pin ) === 3.U && rowcount(1.U+ pin ) === 0.U && rowcount(2.U+ pin ) === 3.U)
-        || (rowcount(0.U+ pin ) === 3.U && rowcount(1.U+ pin ) === 3.U && rowcount(2.U+ pin ) === 0.U)
-        || (rowcount(0.U+ pin ) === 3.U && rowcount(1.U+ pin ) === 1.U && rowcount(2.U+ pin ) === 2.U) || (rowcount(0.U+ pin ) === 3.U && rowcount(1.U+ pin ) === 2.U && rowcount(2.U+ pin ) === 1.U)||
-        (rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 3.U && rowcount(2.U+ pin ) === 2.U)||(rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 2.U && rowcount(2.U+ pin ) === 3.U)
-        || (rowcount(0.U+ pin ) === 2.U && rowcount(1.U+ pin ) === 1.U && rowcount(2.U+ pin ) === 3.U) || (rowcount(0.U+ pin ) === 2.U && rowcount(1.U+ pin ) === 3.U && rowcount(2.U+ pin ) === 1.U)
-        || (rowcount(0.U+ pin ) === 4.U && rowcount(1.U+ pin ) === 1.U && rowcount(2.U+ pin ) === 1.U) || (rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 4.U && rowcount(1.U+ pin ) === 1.U)
-        || (rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 1.U && rowcount(2.U+ pin ) === 4.U) || (rowcount(0.U+ pin ) === 2.U && rowcount(1.U+ pin ) === 2.U && rowcount(2.U+ pin ) === 2.U
-        || (rowcount(0.U+ pin ) === 5.U && rowcount(1.U+ pin ) === 1.U && rowcount(2.U+ pin ) === 0.U) || (rowcount(0.U+ pin ) === 5.U && rowcount(1.U+ pin ) === 0.U && rowcount(1.U+ pin ) === 2.U)||
-        (rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 5.U && rowcount(2.U+ pin ) === 0.U)||(rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 0.U && rowcount(2.U+ pin ) === 5.U)
-        || (rowcount(0.U+ pin ) === 0.U && rowcount(1.U+ pin ) === 1.U && rowcount(2.U+ pin ) === 5.U) || (rowcount(0.U+ pin ) === 0.U && rowcount(1.U+ pin ) === 5.U && rowcount(2.U+ pin ) === 1.U)))){
-       
-     
-      
-            i_vn2(2) := 3.U+ pin 
-   
+        }
+     // 5
+         when(8.U - (rowcount(0.U + pin) + rowcount(1.U + pin) + rowcount(2.U + pin) + rowcount(3.U + pin) + rowcount(4.U + pin)) === 7.U ){
+             i_vn(1) := 5.U + pin 
+            i_vn(2) := 5.U + pin  
+            i_vn(3) := 5.U+ pin  
+            i_vn2(0) := 5.U+ pin  
+            i_vn2(1) := 5.U+ pin  
+            i_vn2(2) := 5.U+ pin  
+            i_vn2(3) := 5.U+ pin  
 
-        }.elsewhen(rowcount(1.U+ pin )===1.U && ((rowcount(0.U+ pin ) === 5.U &&  rowcount(1.U+ pin) === 0.U &&  rowcount(2.U+ pin) === 0.U ) ||(rowcount(1.U+ pin ) === 5.U &&  rowcount(0.U+ pin )=== 0.U 
-        &&  rowcount(2.U+ pin) === 0.U) || (rowcount(0.U+ pin ) === 0.U &&  rowcount(1.U+ pin) === 0.U &&  rowcount(2.U+ pin) === 5.U )
-        || (rowcount(0.U+ pin ) === 3.U && rowcount(1.U+ pin ) === 2.U && rowcount(2.U+ pin ) === 0.U) || (rowcount(0.U+ pin ) === 3.U && rowcount(1.U+ pin ) === 0.U && rowcount(2.U+ pin ) === 2.U)||
-        (rowcount(0.U+ pin ) === 2.U && rowcount(1.U+ pin ) === 3.U && rowcount(2.U+ pin ) === 0.U)||(rowcount(0.U+ pin ) === 2.U && rowcount(1.U+ pin ) === 0.U && rowcount(2.U+ pin ) === 3.U)
-        || (rowcount(0.U+ pin ) === 0.U && rowcount(1.U+ pin ) === 2.U && rowcount(2.U+ pin ) === 3.U) || (rowcount(0.U+ pin ) === 0.U && rowcount(1.U+ pin ) === 3.U && rowcount(2.U+ pin ) === 2.U)
-        || (rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 2.U && rowcount(2.U+ pin ) === 2.U) || (rowcount(0.U+ pin ) === 2.U && rowcount(1.U+ pin ) === 1.U && rowcount(2.U+ pin ) === 2.U)
-        || (rowcount(0.U+ pin ) === 2.U && rowcount(1.U+ pin ) === 2.U && rowcount(2.U+ pin ) === 1.U)
-        || (rowcount(0.U+ pin ) === 4.U && rowcount(1.U+ pin ) === 1.U && rowcount(2.U+ pin ) === 0.U) || (rowcount(0.U+ pin ) === 4.U && rowcount(1.U+ pin ) === 0.U && rowcount(2.U+ pin ) === 1.U)||
-        (rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 4.U && rowcount(2.U+ pin ) === 0.U)||(rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 0.U && rowcount(2.U+ pin ) === 4.U)
-        || (rowcount(0.U+ pin ) === 0.U && rowcount(1.U+ pin ) === 1.U && rowcount(2.U+ pin ) === 4.U) || (rowcount(0.U+ pin ) === 0.U && rowcount(1.U+ pin ) === 4.U && rowcount(2.U+ pin ) === 1.U)
-        || (rowcount(0.U+ pin ) === 3.U && rowcount(1.U+ pin ) === 1.U && rowcount(2.U+ pin ) === 1.U) || (rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 3.U && rowcount(1.U+ pin ) === 1.U)
-        || (rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 1.U && rowcount(2.U+ pin ) === 3.U))){
-         
-            i_vn2(1) := 3.U+ pin 
-
-    
-         }.elsewhen(rowcount(1.U+ pin )===1.U && ((rowcount(0.U+ pin ) === 4.U &&  rowcount(1.U+ pin) === 0.U &&  rowcount(2.U+ pin) === 0.U ) ||(rowcount(1.U+ pin ) === 4.U &&  rowcount(0.U+ pin )=== 0.U 
-        &&  rowcount(2.U+ pin) === 0.U) || (rowcount(0.U+ pin ) === 0.U &&  rowcount(1.U+ pin) === 0.U &&  rowcount(2.U+ pin) === 4.U )
-        || (rowcount(0.U+ pin ) === 3.U && rowcount(1.U+ pin ) === 1.U && rowcount(2.U+ pin ) === 0.U) || (rowcount(0.U+ pin ) === 3.U && rowcount(1.U+ pin ) === 0.U && rowcount(2.U+ pin ) === 1.U)||
-        (rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 3.U && rowcount(2.U+ pin ) === 0.U)||(rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 0.U && rowcount(2.U+ pin ) === 3.U)
-        || (rowcount(0.U+ pin ) === 0.U && rowcount(1.U+ pin ) === 1.U && rowcount(2.U+ pin ) === 3.U) || (rowcount(0.U+ pin ) === 0.U && rowcount(1.U+ pin ) === 3.U && rowcount(2.U+ pin ) === 1.U)
-        || (rowcount(0.U+ pin ) === 0.U && rowcount(1.U+ pin ) === 2.U && rowcount(2.U+ pin ) === 2.U) || (rowcount(0.U+ pin ) === 2.U && rowcount(1.U+ pin ) === 0.U && rowcount(2.U+ pin ) === 2.U)
-        || (rowcount(0.U+ pin ) === 2.U && rowcount(1.U+ pin ) === 2.U && rowcount(2.U+ pin ) === 0.U))){
-       
-            i_vn2(0) := 3.U+ pin 
-      
-
-
-        }.elsewhen(rowcount(1.U+ pin )===1.U&& ((rowcount(0.U+ pin ) === 3.U &&  rowcount(1.U+ pin) === 0.U &&  rowcount(2.U+ pin) === 0.U ) ||(rowcount(1.U+ pin ) === 3.U &&  rowcount(0.U+ pin )=== 0.U 
-        &&  rowcount(2.U+ pin) === 0.U) || (rowcount(0.U+ pin ) === 0.U &&  rowcount(1.U+ pin) === 0.U &&  rowcount(2.U+ pin) === 3.U )
-        || (rowcount(0.U+ pin ) === 2.U && rowcount(1.U+ pin ) === 1.U && rowcount(2.U+ pin ) === 0.U) || (rowcount(0.U+ pin ) === 2.U && rowcount(1.U+ pin ) === 0.U && rowcount(2.U+ pin ) === 1.U)||
-        (rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 2.U && rowcount(2.U+ pin ) === 0.U)||(rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 0.U && rowcount(2.U+ pin ) === 2.U)
-        || (rowcount(0.U+ pin ) === 0.U && rowcount(1.U+ pin ) === 1.U && rowcount(2.U+ pin ) === 2.U) || (rowcount(0.U+ pin ) === 0.U && rowcount(1.U+ pin ) === 2.U && rowcount(2.U+ pin ) === 1.U)
-        || (rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 1.U && rowcount(2.U+ pin ) === 1.U))){
-            i_vn(3) := 3.U+ pin 
-
-        }.elsewhen(rowcount(1.U+ pin )===1.U && ((rowcount(0.U+ pin ) === 2.U &&  rowcount(1.U+ pin) === 0.U &&  rowcount(2.U+ pin) === 0.U ) ||(rowcount(1.U+ pin ) === 2.U &&  rowcount(0.U+ pin )=== 0.U 
-        &&  rowcount(2.U+ pin) === 0.U) || (rowcount(0.U+ pin ) === 0.U &&  rowcount(1.U+ pin) === 0.U &&  rowcount(2.U+ pin) === 2.U ) || (rowcount(0.U+ pin ) === 1.U &&  rowcount(1.U+ pin) === 1.U &&  rowcount(2.U+ pin) === 0.U ) 
-        ||(rowcount(1.U+ pin ) === 1.U &&  rowcount(0.U+ pin )=== 0.U 
-        &&  rowcount(2.U+ pin) === 1.U) || (rowcount(0.U+ pin ) === 0.U &&  rowcount(1.U+ pin) === 1.U &&  rowcount(2.U+ pin) === 1.U ))){
-
-            i_vn(2) := 3.U+ pin 
-      
-
-        }.elsewhen(rowcount(1.U+ pin )===1.U  && ((rowcount(0.U+ pin ) === 1.U && rowcount(1.U+ pin ) === 0.U && rowcount(2.U+ pin ) === 0.U ) || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U+ pin ) === 0.U && rowcount(2.U+ pin ) === 0.U )
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U+ pin ) === 0.U && rowcount(2.U+ pin ) === 1.U ))){
-             i_vn(1) := 3.U+ pin 
+        }.elsewhen(8.U - (rowcount(0.U + pin) + rowcount(1.U + pin) + rowcount(2.U + pin) + rowcount(3.U + pin) + rowcount(4.U + pin))=== 6.U){
+             i_vn(2) := 5.U + pin  
+             i_vn(2) := 5.U + pin  
+            i_vn(3) := 5.U+ pin  
+            i_vn2(0) := 5.U+ pin  
+            i_vn2(1) :=5.U+ pin  
+            i_vn2(2) := 5.U+ pin  
+            i_vn2(3) := 5.U+ pin  
+        }.elsewhen(8.U - (rowcount(0.U + pin) + rowcount(1.U + pin) + rowcount(2.U + pin) + rowcount(3.U + pin) + rowcount(4.U + pin))=== 5.U){
         
-
-        }.elsewhen(rowcount(1.U+ pin )===1.U && rowcount(0.U+ pin ) === 0.U  && rowcount(1.U+ pin ) === 0.U && rowcount(2.U+ pin ) === 0.U){
-            i_vn(0) := 3.U+ pin 
+              i_vn(3) := 5.U+ pin  
+            i_vn2(0) := 5.U+ pin  
+            i_vn2(1) := 5.U+ pin  
+            i_vn2(2) := 5.U+ pin  
+            i_vn2(3) := 5.U+ pin  
+        }.elsewhen(8.U -(rowcount(0.U + pin) + rowcount(1.U + pin) + rowcount(2.U + pin) + rowcount(3.U + pin) + rowcount(4.U + pin)) === 4.U){
+       
+            i_vn2(0) := 5.U+ pin  
+            i_vn2(1) := 5.U+ pin  
+            i_vn2(2) := 5.U+ pin  
+            i_vn2(3) := 5.U+ pin 
+        }.elsewhen(8.U -  (rowcount(0.U + pin) + rowcount(1.U + pin) + rowcount(2.U + pin) + rowcount(3.U + pin) + rowcount(4.U + pin)) === 3.U){
+           
+             i_vn2(1) := 5.U+ pin  
+            i_vn2(2) := 5.U+ pin  
+            i_vn2(3) := 5.U+ pin 
+        
+        
+        }.elsewhen(8.U - (rowcount(0.U + pin) + rowcount(1.U + pin) + rowcount(2.U + pin) + rowcount(3.U + pin) + rowcount(4.U + pin))=== 2.U){
+           
+           
+            i_vn2(2) := 5.U+ pin  
+            i_vn2(3) := 5.U+ pin 
+        
+        }.elsewhen(8.U - (rowcount(0.U + pin) + rowcount(1.U + pin) + rowcount(2.U + pin) + rowcount(3.U + pin) + rowcount(4.U + pin)) === 1.U){
+           
+           
+            i_vn2(3) := 5.U+ pin 
+        
         }
 
+          // 6
+         when(8.U - (rowcount(0.U + pin) + rowcount(1.U + pin) + rowcount(2.U + pin) + rowcount(3.U + pin) + rowcount(4.U + pin) + rowcount(5.U + pin)) === 7.U ){
+             i_vn(1) := 6.U + pin 
+            i_vn(2) := 6.U + pin  
+            i_vn(3) := 6.U+ pin  
+            i_vn2(0) := 6.U+ pin  
+            i_vn2(1) := 6.U+ pin  
+            i_vn2(2) := 6.U+ pin  
+            i_vn2(3) := 6.U+ pin  
 
-
-        // next for 4 row 
-
-     // 4 main 8
-        when(rowcount(4.U+ pin ) === 8.U && rowcount(0.U+ pin ) === 0.U && rowcount(1.U + pin ) === 0.U  && rowcount(2.U + pin ) === 0.U  && rowcount(3.U + pin ) === 0.U){
-            i_vn(0) := 4.U+ pin 
-            i_vn(1) := 4.U+ pin 
-            i_vn(2) := 4.U+ pin 
-            i_vn(3) := 4.U+ pin 
-            i_vn2(0) := 4.U+ pin 
-            i_vn2(1) := 4.U+ pin 
-            i_vn2(2) := 4.U+ pin 
-            i_vn2(3) := 4.U+ pin 
+        }.elsewhen(8.U - (rowcount(0.U + pin) + rowcount(1.U + pin) + rowcount(2.U + pin) + rowcount(3.U + pin) + rowcount(4.U + pin) + rowcount(5.U + pin)) === 6.U){
+             i_vn(2) := 6.U + pin  
+             i_vn(2) := 6.U + pin  
+            i_vn(3) := 6.U+ pin  
+            i_vn2(0) := 6.U+ pin  
+            i_vn2(1) :=6.U+ pin  
+            i_vn2(2) := 6.U+ pin  
+            i_vn2(3) := 6.U+ pin  
+        }.elsewhen(8.U - (rowcount(0.U + pin) + rowcount(1.U + pin) + rowcount(2.U + pin) + rowcount(3.U + pin) + rowcount(4.U + pin) + rowcount(5.U + pin)) === 5.U){
         
-        // 4 main 7
-        }.elsewhen(rowcount(4.U+ pin )>=7.U  && rowcount(1.U+ pin ) === 0.U && rowcount(0.U+ pin ) === 0.U && rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U){
-             i_vn(0) := 4.U+ pin 
-            i_vn(1) := 4.U+ pin 
-            i_vn(2) := 4.U+ pin 
-            i_vn(3) := 4.U+ pin 
-            i_vn2(0) := 4.U+ pin 
-            i_vn2(1) := 4.U+ pin 
-            i_vn2(2) := 4.U+ pin 
-
-        }.elsewhen(rowcount(4.U+ pin )===7.U && ((rowcount(0.U+ pin ) === 1.U && rowcount(1.U + pin) === 0.U && rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 0.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 1.U))){
-          
-           i_vn(1) := 4.U+ pin 
-            i_vn(2) := 4.U+ pin 
-            i_vn(3) := 4.U+ pin 
-            i_vn2(0) := 4.U+ pin 
-            i_vn2(1) := 4.U+ pin 
-            i_vn2(2) := 4.U+ pin 
-            i_vn2(3) := 4.U+ pin 
- 
-        
-        // 4 main 6
-
-        }.elsewhen(rowcount(3.U+ pin )>=6.U && ((rowcount(0.U+ pin ) === 2.U && rowcount(1.U + pin) === 0.U && rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 0.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 2.U) 
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 1.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 0.U) 
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U && 
-        rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 1.U) || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 0.U))){
-             i_vn(2) := 4.U+ pin 
-            i_vn(3) := 4.U+ pin 
-            i_vn2(0) := 4.U+ pin 
-            i_vn2(1) := 4.U+ pin 
-            i_vn2(2) := 4.U+ pin 
-            i_vn2(3) := 4.U+ pin
-        
-
-
-        }.elsewhen(rowcount(3.U+ pin )===6.U && ((rowcount(0.U+ pin ) === 1.U && rowcount(1.U + pin) === 0.U && rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 0.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 1.U))){
-             i_vn(1) := 4.U+ pin 
-            i_vn(2) := 4.U+ pin 
-            i_vn(3) := 4.U+ pin 
-            i_vn2(0) := 4.U+ pin 
-            i_vn2(1) := 4.U+ pin 
-            i_vn2(2) := 4.U+ pin 
-
-
-        }.elsewhen(rowcount(3.U+ pin )===6.U  && rowcount(1.U+ pin ) === 0.U && rowcount(0.U+ pin ) === 0.U && rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U){
-            i_vn(0) := 4.U+ pin 
-             i_vn(1) := 4.U+ pin 
-            i_vn(2) := 4.U+ pin 
-            i_vn(3) := 4.U+ pin 
-            i_vn2(0) := 4.U+ pin 
-            i_vn2(1) := 4.U+ pin 
-
-        // 4 main 5
-
-        }.elsewhen(rowcount(2.U+ pin )>=5.U && ((rowcount(0.U+ pin ) === 3.U && rowcount(1.U + pin) === 0.U && rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U) 
-        || (rowcount(1.U+ pin ) === 3.U && rowcount(0.U + pin) === 0.U && rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 3.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 3.U) 
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 2.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 2.U) 
-        || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 1.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 1.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 2.U) || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 2.U) 
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 2.U && 
-        rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 2.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 0.U) 
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 0.U && 
-        rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 1.U) || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 1.U))){
-             i_vn(3) := 4.U+ pin 
-            i_vn2(0) := 4.U+ pin 
-            i_vn2(1) := 4.U+ pin 
-            i_vn2(2) := 4.U+ pin 
-            i_vn2(3) := 4.U+ pin
-
-     
-
-        }.elsewhen(rowcount(2.U+ pin )===5.U && ((rowcount(0.U+ pin ) === 2.U && rowcount(1.U + pin) === 0.U && rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 0.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 2.U) 
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 1.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 0.U) 
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U && 
-        rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 1.U) || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 0.U))){
-            i_vn(2) := 4.U+ pin 
-            i_vn(3) := 4.U+ pin 
-            i_vn2(0) := 4.U+ pin 
-            i_vn2(1) := 4.U+ pin 
-            i_vn2(2) := 4.U+ pin 
+              i_vn(3) := 6.U+ pin  
+            i_vn2(0) := 6.U+ pin  
+            i_vn2(1) := 6.U+ pin  
+            i_vn2(2) := 6.U+ pin  
+            i_vn2(3) := 6.U+ pin  
+        }.elsewhen(8.U -(rowcount(0.U + pin) + rowcount(1.U + pin) + rowcount(2.U + pin) + rowcount(3.U + pin) + rowcount(4.U + pin) + rowcount(5.U + pin))  === 4.U){
        
-
-
-        }.elsewhen(rowcount(2.U+ pin )===5.U  && ((rowcount(0.U+ pin ) === 1.U && rowcount(1.U + pin) === 0.U && rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 0.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 1.U))){
-             i_vn(1) := 4.U+ pin 
-            i_vn(2) := 4.U+ pin 
-            i_vn(3) := 4.U+ pin 
-            i_vn2(0) := 4.U+ pin 
-            i_vn2(1) := 4.U+ pin 
-    
-
-        }.elsewhen(rowcount(2.U+ pin )===5.U&& rowcount(1.U+ pin ) === 0.U && rowcount(0.U+ pin ) === 0.U && rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U){
-            i_vn(0) := 4.U+ pin 
-             i_vn(1) := 2.U+ pin 
-            i_vn(2) := 4.U+ pin 
-            i_vn(3) := 4.U+ pin 
-            i_vn2(0) := 4.U+ pin
-
-         // 4 main 4
-
-         }.elsewhen(rowcount(2.U+ pin )>= 4.U&& ((rowcount(0.U+ pin ) === 4.U && rowcount(1.U + pin) === 0.U && rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 4.U && rowcount(0.U + pin) === 0.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 4.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 4.U) 
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 3.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 3.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 3.U) 
-        || (rowcount(1.U+ pin ) === 3.U && rowcount(0.U + pin) === 1.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 3.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 3.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 1.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 3.U) || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 3.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 3.U) 
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 3.U && 
-        rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 3.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 3.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 1.U)
-         || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 1.U && 
-        rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 2.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 2.U)
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 0.U && 
-        rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 2.U) || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 2.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 1.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 1.U) || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 1.U && 
-        rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 2.U) || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 2.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(2.U+ pin ) === 2.U && rowcount(2.U + pin) === 0.U && 
-        rowcount(0.U + pin ) === 2.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 2.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 2.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 2.U) || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 2.U &&  rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 2.U)
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 1.U) 
-        )){
-       
-            i_vn2(0) := 4.U+ pin 
-            i_vn2(1) := 4.U+ pin 
-            i_vn2(2) := 4.U+ pin 
-            i_vn2(3) := 4.U+ pin 
-
-        }.elsewhen(rowcount(2.U+ pin )===4.U  && ((rowcount(0.U+ pin ) === 3.U && rowcount(1.U + pin) === 0.U && rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 3.U && rowcount(0.U + pin) === 0.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 3.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 3.U) 
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 2.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 2.U) 
-        || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 1.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 1.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 2.U) || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 2.U) 
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 2.U && 
-        rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 2.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 0.U) 
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 0.U && 
-        rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 1.U) || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 1.U))){
-            i_vn(3) := 4.U+ pin 
-            i_vn2(0) := 4.U+ pin 
-            i_vn2(1) := 4.U+ pin 
-            i_vn2(2) := 4.U+ pin 
-      
-
-        }.elsewhen(rowcount(2.U+ pin )===4.U && ((rowcount(0.U+ pin ) === 2.U && rowcount(1.U + pin) === 0.U && rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 0.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 2.U) 
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 1.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 0.U) 
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U && 
-        rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 1.U) || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 0.U))){
-            i_vn(2) := 4.U+ pin 
-             i_vn(3) := 4.U+ pin 
-            i_vn2(0) := 4.U+ pin 
-            i_vn2(1) := 4.U+ pin 
-       
-
-
-        }.elsewhen(rowcount(2.U+ pin )===4.U&& ((rowcount(0.U+ pin ) === 1.U && rowcount(1.U + pin) === 0.U && rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 0.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 1.U))){
-             i_vn(1) := 4.U+ pin 
-            i_vn(2) := 4.U+ pin 
-            i_vn(3) := 4.U+ pin 
-            i_vn2(0) := 4.U+ pin 
-        
-    
-
-        }.elsewhen(rowcount(2.U+ pin )===4.U && rowcount(1.U+ pin ) === 0.U && rowcount(0.U+ pin ) === 0.U && rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U){
-            i_vn(0) := 4.U+ pin 
-            i_vn(1) := 4.U+ pin 
-            i_vn(2) := 4.U+ pin 
-            i_vn(3) := 4.U+ pin 
-  
-     
-
-        
-         // 4 main 3
-
-        }.elsewhen(rowcount(2.U+ pin )>=4.U && ((rowcount(0.U+ pin ) === 5.U && rowcount(1.U + pin) === 0.U && rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 5.U && rowcount(0.U + pin) === 0.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 5.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 5.U) 
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 4.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 4.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 4.U) 
-        || (rowcount(1.U+ pin ) === 4.U && rowcount(0.U + pin) === 1.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 4.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 4.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 1.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 4.U) || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 4.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 4.U) 
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 4.U && 
-        rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 4.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 4.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 1.U)
-         || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 1.U && 
-        rowcount(2.U + pin ) === 3.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 3.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 3.U)
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 0.U && 
-        rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 3.U) || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 3.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 3.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 3.U && rowcount(0.U + pin) === 1.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 1.U) || (rowcount(1.U+ pin ) === 3.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 3.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 1.U && 
-        rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 3.U) || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 3.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 3.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(2.U+ pin ) === 2.U && rowcount(2.U + pin) === 1.U && 
-        rowcount(0.U + pin ) === 1.U && rowcount(3.U + pin ) === 1.U) || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 2.U)
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 2.U && 
-        rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 1.U) 
-        || (rowcount(2.U+ pin ) === 2.U && rowcount(2.U + pin) === 2.U && 
-        rowcount(0.U + pin ) === 1.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 2.U)
-        || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 2.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 1.U) || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 2.U)
-        || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 2.U &&  rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 2.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 2.U)
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 2.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 1.U)  || (rowcount(2.U+ pin ) === 0.U && rowcount(2.U + pin) === 1.U && 
-        rowcount(0.U + pin ) === 1.U && rowcount(3.U + pin ) === 2.U) || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 2.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 3.U && rowcount(0.U + pin) === 2.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 3.U && rowcount(0.U + pin) === 0.U && 
-        rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 0.U)  || (rowcount(1.U+ pin ) === 3.U && rowcount(0.U + pin) === 0.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 2.U) || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 3.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 3.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 3.U) || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 2.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 3.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 2.U &&  rowcount(2.U + pin ) === 3.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 3.U)  || (rowcount(2.U+ pin ) === 0.U && rowcount(2.U + pin) === 3.U && 
-        rowcount(0.U + pin ) === 2.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 3.U && rowcount(3.U + pin ) === 2.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 3.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 2.U)
-    
-        )){
-       
-     
-            i_vn2(1) := 4.U+ pin 
-            i_vn2(2) := 4.U+ pin 
-            i_vn2(3) := 4.U+ pin 
-
-         }.elsewhen(rowcount(2.U+ pin )===4.U && ((rowcount(0.U+ pin ) === 4.U && rowcount(1.U + pin) === 0.U && rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 4.U && rowcount(0.U + pin) === 0.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 4.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 4.U) 
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 3.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 3.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 3.U) 
-        || (rowcount(1.U+ pin ) === 3.U && rowcount(0.U + pin) === 1.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 3.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 3.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 1.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 3.U) || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 3.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 3.U) 
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 3.U && 
-        rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 3.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 3.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 1.U)
-         || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 1.U && 
-        rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 2.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 2.U)
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 0.U && 
-        rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 2.U) || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 2.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 1.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 1.U) || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 1.U && 
-        rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 2.U) || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 2.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(2.U+ pin ) === 2.U && rowcount(2.U + pin) === 0.U && 
-        rowcount(0.U + pin ) === 2.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 2.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 2.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 2.U) || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 2.U &&  rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 2.U)
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 1.U) 
-        )){
-       
-            i_vn2(0) := 4.U+ pin 
-            i_vn2(1) := 4.U+ pin 
-            i_vn2(2) := 4.U+ pin 
-       
-
-        }.elsewhen(rowcount(2.U+ pin )===3.U  && ((rowcount(0.U+ pin ) === 3.U && rowcount(1.U + pin) === 0.U && rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 3.U && rowcount(0.U + pin) === 0.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 3.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 3.U) 
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 2.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 2.U) 
-        || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 1.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 1.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 2.U) || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 2.U) 
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 2.U && 
-        rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 2.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 0.U) 
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 0.U && 
-        rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 1.U) || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 1.U))){
-            i_vn(3) := 4.U+ pin 
-            i_vn2(0) := 4.U+ pin 
-            i_vn2(1) := 4.U+ pin 
-       
-      
-
-        }.elsewhen(rowcount(2.U+ pin )===3.U && ((rowcount(0.U+ pin ) === 2.U && rowcount(1.U + pin) === 0.U && rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 0.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 2.U) 
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 1.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 0.U) 
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U && 
-        rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 1.U) || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 0.U))){
-            i_vn(2) := 4.U+ pin 
-            i_vn(3) := 4.U+ pin 
-            i_vn2(0) := 4.U+ pin 
-      
-     
-       
-
-
-        }.elsewhen(rowcount(2.U+ pin )===3.U && ((rowcount(0.U+ pin ) === 1.U && rowcount(1.U + pin) === 0.U && rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 0.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 1.U))){
-             i_vn(1) := 4.U+ pin 
-            i_vn(2) := 4.U+ pin 
-            i_vn(3) := 4.U+ pin 
- 
-        
-    
-
-        }.elsewhen(rowcount(2.U+ pin )===3.U && rowcount(1.U+ pin ) === 0.U && rowcount(0.U+ pin ) === 0.U && rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U){
-            i_vn(0) := 4.U+ pin 
-            i_vn(1) := 4.U+ pin 
-            i_vn(2) := 4.U+ pin 
-      
-  
-
-    
-         // 4 main 2
-
+            i_vn2(0) := 6.U+ pin  
+            i_vn2(1) := 6.U+ pin  
+            i_vn2(2) := 6.U+ pin  
+            i_vn2(3) := 6.U+ pin 
+        }.elsewhen(8.U -  (rowcount(0.U + pin) + rowcount(1.U + pin) + rowcount(2.U + pin) + rowcount(3.U + pin) + rowcount(4.U + pin) + rowcount(5.U + pin))  === 3.U){
+           
+             i_vn2(1) := 6.U+ pin  
+            i_vn2(2) := 6.U+ pin  
+            i_vn2(3) := 6.U+ pin 
         
         
-        }.elsewhen(rowcount(2.U+ pin )>=2.U && ((rowcount(0.U+ pin ) === 6.U && rowcount(1.U + pin) === 0.U && rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 6.U && rowcount(0.U + pin) === 0.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 6.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 6.U) 
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 5.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 5.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 5.U) 
-        || (rowcount(1.U+ pin ) === 5.U && rowcount(0.U + pin) === 1.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 5.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 5.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 1.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 5.U) || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 5.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 5.U) 
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 5.U && 
-        rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 5.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 5.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 1.U)
-         || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 1.U && 
-        rowcount(2.U + pin ) === 4.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 4.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 4.U)
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 0.U && 
-        rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 4.U) || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 4.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 4.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 4.U && rowcount(0.U + pin) === 1.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 1.U) || (rowcount(1.U+ pin ) === 4.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 4.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 1.U && 
-        rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 4.U) || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 4.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 4.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(2.U+ pin ) === 0.U && rowcount(2.U + pin) === 2.U && 
-        rowcount(0.U + pin ) === 2.U && rowcount(3.U + pin ) === 2.U) || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 2.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 2.U)
-        || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 2.U &&  rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 0.U && 
-        rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 2.U) 
-       || (rowcount(2.U+ pin ) === 3.U && rowcount(2.U + pin) === 3.U && 
-        rowcount(0.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 3.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 3.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 3.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 3.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U && 
-        rowcount(2.U + pin ) === 3.U && rowcount(3.U + pin ) === 3.U) || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 2.U)
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 2.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 2.U)
-        || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 1.U) || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 2.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 1.U)
-
-        || (rowcount(1.U+ pin ) === 4.U && rowcount(0.U + pin) === 2.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 4.U && rowcount(0.U + pin) === 0.U && 
-        rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 0.U)  || (rowcount(1.U+ pin ) === 4.U && rowcount(0.U + pin) === 0.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 2.U) || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 4.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 4.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 4.U) || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 2.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 4.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 2.U &&  rowcount(2.U + pin ) === 4.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 4.U)  || (rowcount(2.U+ pin ) === 0.U && rowcount(2.U + pin) === 4.U && 
-        rowcount(0.U + pin ) === 2.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 4.U && rowcount(3.U + pin ) === 2.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 4.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 2.U) || (rowcount(2.U+ pin ) === 3.U && rowcount(2.U + pin) === 1.U && 
-        rowcount(0.U + pin ) === 2.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 3.U && rowcount(0.U + pin) === 2.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 3.U && rowcount(0.U + pin) === 2.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 3.U && rowcount(0.U + pin) === 1.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 2.U) || (rowcount(1.U+ pin ) === 3.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 2.U)
-        || (rowcount(1.U+ pin ) === 3.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 3.U && rowcount(3.U + pin ) === 1.U) || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 3.U)
-        || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 3.U)
-        || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 3.U && rowcount(3.U + pin ) === 0.U)  || (rowcount(2.U+ pin ) === 2.U && rowcount(2.U + pin) === 3.U && 
-        rowcount(0.U + pin ) === 1.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 3.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 3.U && rowcount(3.U + pin ) === 2.U)
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 0.U && 
-        rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 3.U)  || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 2.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 3.U) || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 3.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 2.U)
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 3.U)
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 3.U && rowcount(3.U + pin ) === 2.U) || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 3.U && rowcount(3.U + pin ) === 2.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 3.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 2.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 3.U)  || (rowcount(2.U+ pin ) === 0.U && rowcount(2.U + pin) === 2.U && 
-        rowcount(0.U + pin ) === 3.U && rowcount(3.U + pin ) === 1.U) || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 3.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 2.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 3.U &&  rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 1.U)
-    
-        )){
-     
-      
-            i_vn2(2) := 4.U+ pin 
-            i_vn2(3) := 4.U+ pin 
-
-        }.elsewhen(rowcount(2.U+ pin )===2.U&& ((rowcount(0.U+ pin ) === 5.U && rowcount(1.U + pin) === 0.U && rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 5.U && rowcount(0.U + pin) === 0.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 5.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 5.U) 
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 4.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 4.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 4.U) 
-        || (rowcount(1.U+ pin ) === 4.U && rowcount(0.U + pin) === 1.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 4.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 4.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 1.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 4.U) || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 4.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 4.U) 
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 4.U && 
-        rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 4.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 4.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 1.U)
-         || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 1.U && 
-        rowcount(2.U + pin ) === 3.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 3.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 3.U)
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 0.U && 
-        rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 3.U) || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 3.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 3.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 3.U && rowcount(0.U + pin) === 1.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 1.U) || (rowcount(1.U+ pin ) === 3.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 3.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 1.U && 
-        rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 3.U) || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 3.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 3.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(2.U+ pin ) === 2.U && rowcount(2.U + pin) === 1.U && 
-        rowcount(0.U + pin ) === 1.U && rowcount(3.U + pin ) === 1.U) || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 2.U)
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 2.U && 
-        rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 1.U) 
-        || (rowcount(2.U+ pin ) === 2.U && rowcount(2.U + pin) === 2.U && 
-        rowcount(0.U + pin ) === 1.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 2.U)
-        || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 2.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 1.U) || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 2.U)
-        || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 2.U &&  rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 2.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 2.U)
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 2.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 1.U)  || (rowcount(2.U+ pin ) === 0.U && rowcount(2.U + pin) === 1.U && 
-        rowcount(0.U + pin ) === 1.U && rowcount(3.U + pin ) === 2.U) || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 2.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 3.U && rowcount(0.U + pin) === 2.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 3.U && rowcount(0.U + pin) === 0.U && 
-        rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 0.U)  || (rowcount(1.U+ pin ) === 3.U && rowcount(0.U + pin) === 0.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 2.U) || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 3.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 3.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 3.U) || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 2.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 3.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 2.U &&  rowcount(2.U + pin ) === 3.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 3.U)  || (rowcount(2.U+ pin ) === 0.U && rowcount(2.U + pin) === 3.U && 
-        rowcount(0.U + pin ) === 2.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 3.U && rowcount(3.U + pin ) === 2.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 3.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 2.U)
-    
-        )){
-       
-     
-            i_vn2(1) := 4.U+ pin 
-            i_vn2(2) := 4.U+ pin 
-    
-
-         }.elsewhen(rowcount(2.U+ pin )===2.U   && ((rowcount(0.U+ pin ) === 4.U && rowcount(1.U + pin) === 0.U && rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 4.U && rowcount(0.U + pin) === 0.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 4.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 4.U) 
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 3.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 3.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 3.U) 
-        || (rowcount(1.U+ pin ) === 3.U && rowcount(0.U + pin) === 1.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 3.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 3.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 1.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 3.U) || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 3.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 3.U) 
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 3.U && 
-        rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 3.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 3.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 1.U)
-         || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 1.U && 
-        rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 2.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 2.U)
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 0.U && 
-        rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 2.U) || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 2.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 1.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 1.U) || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 1.U && 
-        rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 2.U) || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 2.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(2.U+ pin ) === 2.U && rowcount(2.U + pin) === 0.U && 
-        rowcount(0.U + pin ) === 2.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 2.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 2.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 2.U) || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 2.U &&  rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 2.U)
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 1.U) 
-        )){
-       
-            i_vn2(0) := 4.U+ pin 
-            i_vn2(1) := 4.U+ pin 
-     
-       
-
-        }.elsewhen(rowcount(1.U+ pin )===2.U   && ((rowcount(0.U+ pin ) === 3.U && rowcount(1.U + pin) === 0.U && rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 3.U && rowcount(0.U + pin) === 0.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 3.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 3.U) 
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 2.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 2.U) 
-        || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 1.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 1.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 2.U) || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 2.U) 
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 2.U && 
-        rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 2.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 0.U) 
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 0.U && 
-        rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 1.U) || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 1.U))){
-            i_vn(3) := 4.U+ pin 
-            i_vn2(0) := 4.U+ pin 
-
-       
-      
-
-        }.elsewhen(rowcount(1.U+ pin )===2.U && ((rowcount(0.U+ pin ) === 2.U && rowcount(1.U + pin) === 0.U && rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 0.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 2.U) 
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 1.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 0.U) 
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U && 
-        rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 1.U) || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 0.U))){
-            i_vn(2) := 4.U+ pin 
-            i_vn(3) := 4.U+ pin 
-      
-      
-     
-       
-
-
-        }.elsewhen(rowcount(1.U+ pin )===2.U  && ((rowcount(0.U+ pin ) === 1.U && rowcount(1.U + pin) === 0.U && rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 0.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 1.U))){
-             i_vn(1) := 4.U+ pin 
-            i_vn(2) := 4.U+ pin 
-       
- 
+        }.elsewhen(8.U - (rowcount(0.U + pin) + rowcount(1.U + pin) + rowcount(2.U + pin) + rowcount(3.U + pin) + rowcount(4.U + pin) + rowcount(5.U + pin)) === 2.U){
+           
+           
+            i_vn2(2) := 6.U+ pin  
+            i_vn2(3) := 6.U+ pin 
         
-    
-
-        }.elsewhen(rowcount(1.U+ pin )===2.U && rowcount(1.U+ pin ) === 0.U && rowcount(0.U+ pin ) === 0.U && rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U){
-            i_vn(0) := 4.U+ pin 
-            i_vn(1) := 4.U+ pin 
-      
-      
-  
-           // 4 main 1
-
-         }.elsewhen(rowcount(1.U+ pin )>=1.U && ((rowcount(0.U+ pin ) === 7.U && rowcount(1.U + pin) === 0.U && rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 7.U && rowcount(0.U + pin) === 0.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 7.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 7.U) 
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 6.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 6.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 6.U) 
-        || (rowcount(1.U+ pin ) === 6.U && rowcount(0.U + pin) === 1.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 6.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 6.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 1.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 6.U) || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 6.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 6.U) 
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 6.U && 
-        rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 6.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 6.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 1.U)
-         || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 1.U && 
-        rowcount(2.U + pin ) === 5.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 5.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 5.U)
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 0.U && 
-        rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 5.U) || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 5.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 5.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 5.U && rowcount(0.U + pin) === 1.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 1.U) || (rowcount(1.U+ pin ) === 5.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 5.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 1.U && 
-        rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 5.U) || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 5.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 5.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(2.U+ pin ) === 1.U && rowcount(2.U + pin) === 2.U && 
-        rowcount(0.U + pin ) === 2.U && rowcount(3.U + pin ) === 2.U) || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 2.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 2.U)
-        || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 2.U &&  rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 1.U && 
-        rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 2.U) 
+        }.elsewhen(8.U -(rowcount(0.U + pin) + rowcount(1.U + pin) + rowcount(2.U + pin) + rowcount(3.U + pin) + rowcount(4.U + pin) + rowcount(5.U + pin))  === 1.U){
+           
+           
+            i_vn2(3) := 6.U+ pin 
         
-        || (rowcount(1.U+ pin ) === 3.U && rowcount(0.U + pin) === 3.U && 
-        rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 3.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 3.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 3.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 3.U)
-        || (rowcount(1.U+ pin ) === 3.U && rowcount(0.U + pin) === 3.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 1.U) || (rowcount(1.U+ pin ) === 3.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 3.U)
-        || (rowcount(1.U+ pin ) === 3.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 3.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 3.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 3.U) || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 3.U && rowcount(3.U + pin ) === 3.U)
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 3.U &&  rowcount(2.U + pin ) === 3.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 3.U && rowcount(3.U + pin ) === 3.U)  || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 3.U && 
-        rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 3.U) || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 3.U &&  rowcount(2.U + pin ) === 3.U && rowcount(3.U + pin ) === 1.U)
-
-        || (rowcount(2.U+ pin ) === 2.U && rowcount(2.U + pin) === 2.U && 
-        rowcount(0.U + pin ) === 3.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 3.U &&  rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 3.U && rowcount(3.U + pin ) === 2.U)
-        || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 2.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 3.U) || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 3.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 2.U)
-        || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 3.U)
-        || (rowcount(1.U+ pin ) === 3.U && rowcount(0.U + pin) === 2.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 2.U) || (rowcount(1.U+ pin ) === 3.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 2.U)
-        || (rowcount(1.U+ pin ) === 3.U && rowcount(0.U + pin) === 2.U &&  rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 3.U &&  rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 2.U)  || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 2.U && 
-        rowcount(2.U + pin ) === 3.U && rowcount(3.U + pin ) === 2.U) || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 2.U &&  rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 3.U)
-
-        || (rowcount(1.U+ pin ) === 4.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 4.U && 
-        rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 1.U)  || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 1.U && 
-        rowcount(2.U + pin ) === 4.U && rowcount(3.U + pin ) === 1.U) || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 4.U)
-
-        || (rowcount(1.U+ pin ) === 5.U && rowcount(0.U + pin) === 2.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 5.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 2.U) || (rowcount(1.U+ pin ) === 5.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 5.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 5.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U)  || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 0.U && 
-        rowcount(2.U + pin ) === 3.U && rowcount(3.U + pin ) === 5.U) || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 2.U &&  rowcount(2.U + pin ) === 5.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 2.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 5.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 5.U)  || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 5.U && 
-        rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 5.U && rowcount(3.U + pin ) === 2.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 5.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 2.U)
-
-        || (rowcount(1.U + pin) === 6.U && rowcount(0.U + pin) === 1.U && rowcount(2.U + pin) === 0.U && rowcount(3.U + pin) === 0.U)
-        || (rowcount(1.U + pin) === 6.U && rowcount(0.U + pin) === 0.U && rowcount(2.U + pin) === 0.U && rowcount(3.U + pin) === 1.U) || (rowcount(1.U + pin) === 6.U && rowcount(0.U + pin) === 0.U && rowcount(2.U + pin) === 1.U && rowcount(3.U + pin) === 0.U)
-        || (rowcount(1.U + pin) === 1.U && rowcount(0.U + pin) === 0.U && rowcount(2.U + pin) === 6.U && rowcount(3.U + pin) === 0.U)
-        || (rowcount(1.U + pin) === 1.U && rowcount(0.U + pin) === 6.U && rowcount(2.U + pin) === 0.U && rowcount(3.U + pin) === 0.U) || (rowcount(1.U + pin) === 1.U && rowcount(0.U + pin) === 0.U &&
-        rowcount(2.U + pin) === 3.U && rowcount(3.U + pin) === 6.U) || (rowcount(1.U + pin) === 0.U && rowcount(0.U + pin) === 1.U && rowcount(2.U + pin) === 6.U && rowcount(3.U + pin) === 0.U)
-        || (rowcount(1.U + pin) === 0.U && rowcount(0.U + pin) === 1.U && rowcount(2.U + pin) === 0.U && rowcount(3.U + pin) === 6.U)
-        || (rowcount(1.U + pin) === 0.U && rowcount(0.U + pin) === 0.U && rowcount(2.U + pin) === 1.U && rowcount(3.U + pin) === 6.U) || (rowcount(1.U + pin) === 0.U && rowcount(0.U + pin) === 6.U &&
-        rowcount(2.U + pin) === 1.U && rowcount(3.U + pin) === 0.U) || (rowcount(1.U + pin) === 0.U && rowcount(0.U + pin) === 0.U && rowcount(2.U + pin) === 6.U && rowcount(3.U + pin) === 1.U)
-        || (rowcount(1.U + pin) === 0.U && rowcount(0.U + pin) === 6.U && rowcount(2.U + pin) === 0.U && rowcount(3.U + pin) === 1.U)
-        || (rowcount(1.U + pin) === 0.U && rowcount(0.U + pin) === 6.U && rowcount(2.U + pin) === 0.U && rowcount(3.U + pin) === 1.U)
-
-         || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 1.U && 
-        rowcount(2.U + pin ) === 3.U && rowcount(3.U + pin ) === 2.U) || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 3.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 2.U)
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 2.U &&  rowcount(2.U + pin ) === 3.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 1.U && 
-        rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 3.U) || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 3.U &&  rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 2.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 3.U)
-        || (rowcount(1.U+ pin ) === 3.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 1.U) || (rowcount(1.U+ pin ) === 3.U && rowcount(0.U + pin) === 2.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 3.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 2.U)
-        || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 3.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 1.U)  || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 1.U && 
-        rowcount(2.U + pin ) === 3.U && rowcount(3.U + pin ) === 1.U) || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 3.U)
-
-        || (rowcount(1.U+ pin ) === 4.U && rowcount(0.U + pin) === 3.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 4.U && rowcount(0.U + pin) === 0.U && 
-        rowcount(2.U + pin ) === 3.U && rowcount(3.U + pin ) === 0.U)  || (rowcount(1.U+ pin ) === 4.U && rowcount(0.U + pin) === 0.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 3.U) || (rowcount(1.U+ pin ) === 3.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 4.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 3.U && rowcount(0.U + pin) === 4.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 3.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 4.U) || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 3.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 4.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 3.U &&  rowcount(2.U + pin ) === 4.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 3.U && rowcount(3.U + pin ) === 4.U)  || (rowcount(2.U+ pin ) === 0.U && rowcount(2.U + pin) === 4.U && 
-        rowcount(0.U + pin ) === 3.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 4.U && rowcount(3.U + pin ) === 3.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 4.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 3.U) || (rowcount(2.U+ pin ) === 4.U && rowcount(2.U + pin) === 1.U && 
-        rowcount(0.U + pin ) === 2.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 4.U && rowcount(0.U + pin) === 2.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 4.U && rowcount(0.U + pin) === 2.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 4.U && rowcount(0.U + pin) === 1.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 2.U) || (rowcount(1.U+ pin ) === 4.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 2.U)
-        || (rowcount(1.U+ pin ) === 4.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 4.U && rowcount(3.U + pin ) === 1.U) || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 4.U)
-        || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 4.U)
-        || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 4.U && rowcount(3.U + pin ) === 0.U)  || (rowcount(2.U+ pin ) === 2.U && rowcount(2.U + pin) === 4.U && 
-        rowcount(0.U + pin ) === 1.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 4.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 4.U && rowcount(3.U + pin ) === 2.U)
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 0.U && 
-        rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 4.U)  || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 2.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 4.U) || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 4.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 2.U)
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 4.U)
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 4.U && rowcount(3.U + pin ) === 2.U) || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 4.U && rowcount(3.U + pin ) === 2.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 4.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 2.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 4.U)  || (rowcount(2.U+ pin ) === 0.U && rowcount(2.U + pin) === 2.U && 
-        rowcount(0.U + pin ) === 4.U && rowcount(3.U + pin ) === 1.U) || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 4.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 2.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 4.U &&  rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 1.U)
-    
-        )){
-       
-     
-            i_vn2(3) := 4.U+ pin
-        
-        }.elsewhen(rowcount(1.U+ pin )===1.U&& ((rowcount(0.U+ pin ) === 6.U && rowcount(1.U + pin) === 0.U && rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 6.U && rowcount(0.U + pin) === 0.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 6.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 6.U) 
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 5.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 5.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 5.U) 
-        || (rowcount(1.U+ pin ) === 5.U && rowcount(0.U + pin) === 1.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 5.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 5.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 1.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 5.U) || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 5.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 5.U) 
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 5.U && 
-        rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 5.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 5.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 1.U)
-         || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 1.U && 
-        rowcount(2.U + pin ) === 4.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 4.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 4.U)
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 0.U && 
-        rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 4.U) || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 4.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 4.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 4.U && rowcount(0.U + pin) === 1.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 1.U) || (rowcount(1.U+ pin ) === 4.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 4.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 1.U && 
-        rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 4.U) || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 4.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 4.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(2.U+ pin ) === 0.U && rowcount(2.U + pin) === 2.U && 
-        rowcount(0.U + pin ) === 2.U && rowcount(3.U + pin ) === 2.U) || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 2.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 2.U)
-        || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 2.U &&  rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 0.U && 
-        rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 2.U) 
-       || (rowcount(2.U+ pin ) === 3.U && rowcount(2.U + pin) === 3.U && 
-        rowcount(0.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 3.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 3.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 3.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 3.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U && 
-        rowcount(2.U + pin ) === 3.U && rowcount(3.U + pin ) === 3.U) || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 2.U)
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 2.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 2.U)
-        || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 1.U) || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 2.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 1.U)
-
-        || (rowcount(1.U+ pin ) === 4.U && rowcount(0.U + pin) === 2.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 4.U && rowcount(0.U + pin) === 0.U && 
-        rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 0.U)  || (rowcount(1.U+ pin ) === 4.U && rowcount(0.U + pin) === 0.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 2.U) || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 4.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 4.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 4.U) || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 2.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 4.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 2.U &&  rowcount(2.U + pin ) === 4.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 4.U)  || (rowcount(2.U+ pin ) === 0.U && rowcount(2.U + pin) === 4.U && 
-        rowcount(0.U + pin ) === 2.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 4.U && rowcount(3.U + pin ) === 2.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 4.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 2.U) || (rowcount(2.U+ pin ) === 3.U && rowcount(2.U + pin) === 1.U && 
-        rowcount(0.U + pin ) === 2.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 3.U && rowcount(0.U + pin) === 2.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 3.U && rowcount(0.U + pin) === 2.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 3.U && rowcount(0.U + pin) === 1.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 2.U) || (rowcount(1.U+ pin ) === 3.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 2.U)
-        || (rowcount(1.U+ pin ) === 3.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 3.U && rowcount(3.U + pin ) === 1.U) || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 3.U)
-        || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 3.U)
-        || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 3.U && rowcount(3.U + pin ) === 0.U)  || (rowcount(2.U+ pin ) === 2.U && rowcount(2.U + pin) === 3.U && 
-        rowcount(0.U + pin ) === 1.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 3.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 3.U && rowcount(3.U + pin ) === 2.U)
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 0.U && 
-        rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 3.U)  || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 2.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 3.U) || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 3.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 2.U)
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 3.U)
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 3.U && rowcount(3.U + pin ) === 2.U) || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 3.U && rowcount(3.U + pin ) === 2.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 3.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 2.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 3.U)  || (rowcount(2.U+ pin ) === 0.U && rowcount(2.U + pin) === 2.U && 
-        rowcount(0.U + pin ) === 3.U && rowcount(3.U + pin ) === 1.U) || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 3.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 2.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 3.U &&  rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 1.U)
-    
-        )){
-       
-     
-      
-            i_vn2(2) := 4.U+ pin 
-   
-
-        }.elsewhen(rowcount(1.U+ pin )===1.U ((rowcount(0.U+ pin ) === 5.U && rowcount(1.U + pin) === 0.U && rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 5.U && rowcount(0.U + pin) === 0.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 5.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 5.U) 
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 4.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 4.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 4.U) 
-        || (rowcount(1.U+ pin ) === 4.U && rowcount(0.U + pin) === 1.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 4.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 4.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 1.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 4.U) || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 4.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 4.U) 
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 4.U && 
-        rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 4.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 4.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 1.U)
-         || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 1.U && 
-        rowcount(2.U + pin ) === 3.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 3.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 3.U)
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 0.U && 
-        rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 3.U) || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 3.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 3.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 3.U && rowcount(0.U + pin) === 1.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 1.U) || (rowcount(1.U+ pin ) === 3.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 3.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 1.U && 
-        rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 3.U) || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 3.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 3.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(2.U+ pin ) === 2.U && rowcount(2.U + pin) === 1.U && 
-        rowcount(0.U + pin ) === 1.U && rowcount(3.U + pin ) === 1.U) || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 2.U)
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 2.U && 
-        rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 1.U) 
-        || (rowcount(2.U+ pin ) === 2.U && rowcount(2.U + pin) === 2.U && 
-        rowcount(0.U + pin ) === 1.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 2.U)
-        || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 2.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 1.U) || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 2.U)
-        || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 2.U &&  rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 2.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 2.U)
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 2.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 1.U)  || (rowcount(2.U+ pin ) === 0.U && rowcount(2.U + pin) === 1.U && 
-        rowcount(0.U + pin ) === 1.U && rowcount(3.U + pin ) === 2.U) || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 2.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 3.U && rowcount(0.U + pin) === 2.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 3.U && rowcount(0.U + pin) === 0.U && 
-        rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 0.U)  || (rowcount(1.U+ pin ) === 3.U && rowcount(0.U + pin) === 0.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 2.U) || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 3.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 3.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 3.U) || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 2.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 3.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 2.U &&  rowcount(2.U + pin ) === 3.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 3.U)  || (rowcount(2.U+ pin ) === 0.U && rowcount(2.U + pin) === 3.U && 
-        rowcount(0.U + pin ) === 2.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 3.U && rowcount(3.U + pin ) === 2.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 3.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 2.U)
-    
-        )){
-         
-            i_vn2(1) := 4.U+ pin 
-
-    
-         }.elsewhen(rowcount(1.U+ pin )===1.U  && ((rowcount(0.U+ pin ) === 4.U && rowcount(1.U + pin) === 0.U && rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 4.U && rowcount(0.U + pin) === 0.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 4.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 4.U) 
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 3.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 3.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 3.U) 
-        || (rowcount(1.U+ pin ) === 3.U && rowcount(0.U + pin) === 1.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 3.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 3.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 1.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 3.U) || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 3.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 3.U) 
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 3.U && 
-        rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 3.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 3.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 1.U)
-         || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 1.U && 
-        rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 2.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 2.U)
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 0.U && 
-        rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 2.U) || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 2.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 1.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 1.U) || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 1.U && 
-        rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 2.U) || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 2.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(2.U+ pin ) === 2.U && rowcount(2.U + pin) === 0.U && 
-        rowcount(0.U + pin ) === 2.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 2.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 2.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 2.U) || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 2.U &&  rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 2.U)
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 1.U) 
-        )){
-       
-            i_vn2(0) := 4.U+ pin 
-      
-
-
-        }.elsewhen(rowcount(1.U+ pin )===1.U&& ((rowcount(0.U+ pin ) === 3.U && rowcount(1.U + pin) === 0.U && rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 3.U && rowcount(0.U + pin) === 0.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 3.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 3.U) 
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 2.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 2.U) 
-        || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 1.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 1.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 2.U) || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 2.U) 
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 2.U && 
-        rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 2.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 0.U) 
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 0.U && 
-        rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 1.U) || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 1.U))){
-            i_vn(3) := 4.U+ pin 
-
-        }.elsewhen(rowcount(1.U+ pin )===1.U  && ((rowcount(0.U+ pin ) === 2.U && rowcount(1.U + pin) === 0.U && rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 2.U && rowcount(0.U + pin) === 0.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 2.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 2.U) 
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 1.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 0.U) 
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U && 
-        rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 1.U) || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 1.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 1.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 0.U))){
-
-            i_vn(2) := 4.U+ pin 
-      
-
-        }.elsewhen(rowcount(1.U+ pin )===1.U   && ((rowcount(0.U+ pin ) === 1.U && rowcount(1.U + pin) === 0.U && rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 1.U && rowcount(0.U + pin) === 0.U && 
-        rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U) || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 1.U && rowcount(3.U + pin ) === 0.U)
-        || (rowcount(1.U+ pin ) === 0.U && rowcount(0.U + pin) === 0.U &&  rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 1.U))){
-             i_vn(1) := 4.U+ pin 
-        
-
-        }.elsewhen(rowcount(1.U+ pin )===1.U && rowcount(1.U+ pin ) === 0.U && rowcount(0.U+ pin ) === 0.U && rowcount(2.U + pin ) === 0.U && rowcount(3.U + pin ) === 0.U){
-            i_vn(0) := 4.U+ pin 
         }
 
+        // 7
+         when(8.U - (rowcount(0.U + pin) + rowcount(1.U + pin) + rowcount(2.U + pin) + rowcount(3.U + pin) + rowcount(4.U + pin) + rowcount(5.U + pin) + rowcount(6.U + pin)) === 7.U ){
+             i_vn(1) := 7.U + pin 
+            i_vn(2) := 7.U + pin  
+            i_vn(3) := 7.U+ pin  
+            i_vn2(0) := 7.U+ pin  
+            i_vn2(1) := 7.U+ pin  
+            i_vn2(2) := 7.U+ pin  
+            i_vn2(3) := 7.U+ pin  
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        }.elsewhen(8.U - (rowcount(0.U + pin) + rowcount(1.U + pin) + rowcount(2.U + pin) + rowcount(3.U + pin) + rowcount(4.U + pin) + rowcount(5.U + pin) + rowcount(6.U + pin)) === 6.U){
+             i_vn(2) := 7.U + pin  
+             i_vn(2) := 7.U + pin  
+            i_vn(3) := 7.U+ pin  
+            i_vn2(0) := 7.U+ pin  
+            i_vn2(1) :=7.U+ pin  
+            i_vn2(2) := 7.U+ pin  
+            i_vn2(3) := 7.U+ pin  
+        }.elsewhen(8.U - (rowcount(0.U + pin) + rowcount(1.U + pin) + rowcount(2.U + pin) + rowcount(3.U + pin) + rowcount(4.U + pin) + rowcount(5.U + pin) + rowcount(6.U + pin)) === 5.U){
+        
+              i_vn(3) := 7.U+ pin  
+            i_vn2(0) := 7.U+ pin  
+            i_vn2(1) := 7.U+ pin  
+            i_vn2(2) := 7.U+ pin  
+            i_vn2(3) := 7.U+ pin  
+        }.elsewhen(8.U -(rowcount(0.U + pin) + rowcount(1.U + pin) + rowcount(2.U + pin) + rowcount(3.U + pin) + rowcount(4.U + pin) + rowcount(5.U + pin) + rowcount(6.U + pin))  === 4.U){
        
+            i_vn2(0) := 7.U+ pin  
+            i_vn2(1) := 7.U+ pin  
+            i_vn2(2) := 7.U+ pin  
+            i_vn2(3) := 7.U+ pin 
+        }.elsewhen(8.U -  (rowcount(0.U + pin) + rowcount(1.U + pin) + rowcount(2.U + pin) + rowcount(3.U + pin) + rowcount(4.U + pin) + rowcount(5.U + pin) + rowcount(6.U + pin))  === 3.U){
+           
+             i_vn2(1) := 7.U+ pin  
+            i_vn2(2) := 7.U+ pin  
+            i_vn2(3) := 7.U+ pin 
+        
+        
+        }.elsewhen(8.U - (rowcount(0.U + pin) + rowcount(1.U + pin) + rowcount(2.U + pin) + rowcount(3.U + pin) + rowcount(4.U + pin) + rowcount(5.U + pin) + rowcount(6.U + pin)) === 2.U){
+           
+           
+            i_vn2(2) := 7.U+ pin  
+            i_vn2(3) := 7.U+ pin 
+        
+        }.elsewhen(8.U -(rowcount(0.U + pin) + rowcount(1.U + pin) + rowcount(2.U + pin) + rowcount(3.U + pin) + rowcount(4.U + pin) + rowcount(5.U + pin) + rowcount(6.U + pin))  === 1.U){
+           
+           
+            i_vn2(3) := 7.U+ pin 
+        
+        }
+
+      
+
 
      }
     }
