@@ -21,10 +21,6 @@ VL_MODULE(VFlexDPU_PathFinder) {
     // PORTS
     VL_IN8(clock,0,0);
     VL_IN8(reset,0,0);
-    VL_OUT8(io_i_mux_bus_0,3,0);
-    VL_OUT8(io_i_mux_bus_1,3,0);
-    VL_OUT8(io_i_mux_bus_2,3,0);
-    VL_OUT8(io_i_mux_bus_3,3,0);
     VL_OUT8(io_PF_Valid,0,0);
     VL_IN8(io_DataValid,0,0);
     VL_IN16(io_Stationary_matrix_0_0,15,0);
@@ -47,14 +43,6 @@ VL_MODULE(VFlexDPU_PathFinder) {
     VL_IN16(io_Streaming_matrix_1,15,0);
     VL_IN16(io_Streaming_matrix_2,15,0);
     VL_IN16(io_Streaming_matrix_3,15,0);
-    VL_OUT16(io_Source_0,15,0);
-    VL_OUT16(io_Source_1,15,0);
-    VL_OUT16(io_Source_2,15,0);
-    VL_OUT16(io_Source_3,15,0);
-    VL_OUT16(io_destination_0,15,0);
-    VL_OUT16(io_destination_1,15,0);
-    VL_OUT16(io_destination_2,15,0);
-    VL_OUT16(io_destination_3,15,0);
     VL_IN(io_NoDPE,31,0);
     
     // LOCAL SIGNALS
@@ -107,11 +95,11 @@ VL_MODULE(VFlexDPU_PathFinder) {
         CData/*0:0*/ __PVT__Distribution__DOT__part2_io_Ovalid;
         CData/*0:0*/ __PVT__Distribution__DOT__part3_io_i_valid;
         CData/*0:0*/ __PVT__Distribution__DOT__part3_io_merge;
-        CData/*0:0*/ __PVT__Distribution__DOT___io_validIteration_T_1;
         CData/*0:0*/ __PVT__Distribution__DOT___io_validIteration_T_2;
         CData/*0:0*/ __PVT__Distribution__DOT__c;
         CData/*0:0*/ __PVT__Distribution__DOT__e;
         CData/*0:0*/ __PVT__Distribution__DOT__part3_io_merge_REG;
+        CData/*0:0*/ __PVT__Distribution__DOT__ab;
         CData/*0:0*/ __PVT__Distribution__DOT__part2__DOT___T_4;
         CData/*0:0*/ __PVT__Distribution__DOT__part2__DOT__io_Ovalid_REG;
         CData/*0:0*/ __PVT__Distribution__DOT__part3__DOT___io_valid_T_1;
@@ -297,14 +285,6 @@ VL_MODULE(VFlexDPU_PathFinder) {
         SData/*15:0*/ __PVT__myCounter__DOT___GEN_124;
         SData/*15:0*/ __PVT__myCounter__DOT___GEN_125;
         SData/*15:0*/ __PVT__myCounter__DOT___GEN_126;
-        IData/*31:0*/ __PVT___GEN_44;
-        IData/*31:0*/ __PVT___GEN_45;
-        IData/*31:0*/ __PVT___GEN_46;
-        IData/*31:0*/ __PVT___GEN_47;
-        IData/*31:0*/ __PVT___GEN_76;
-        IData/*31:0*/ __PVT___GEN_77;
-        IData/*31:0*/ __PVT___GEN_78;
-        IData/*31:0*/ __PVT___GEN_79;
         IData/*31:0*/ __PVT__myMuxes__DOT__i;
         IData/*31:0*/ __PVT__myMuxes__DOT__j;
         IData/*31:0*/ __PVT__myMuxes__DOT__k;
@@ -322,8 +302,6 @@ VL_MODULE(VFlexDPU_PathFinder) {
         IData/*31:0*/ __PVT__myCounter__DOT___GEN_114;
         IData/*31:0*/ __PVT__myCounter__DOT___GEN_129;
         IData/*31:0*/ __PVT__myCounter__DOT___GEN_130;
-    };
-    struct {
         IData/*31:0*/ __PVT__myCounter__DOT___j_T_1;
         IData/*31:0*/ __PVT__myCounter__DOT___GEN_133;
         IData/*31:0*/ __PVT__myCounter__DOT___GEN_134;
@@ -332,6 +310,8 @@ VL_MODULE(VFlexDPU_PathFinder) {
         IData/*31:0*/ __PVT__myCounter__DOT___GEN_222;
         IData/*31:0*/ __PVT__myCounter__DOT___GEN_223;
         IData/*31:0*/ __PVT__myCounter__DOT___GEN_224;
+    };
+    struct {
         IData/*31:0*/ __PVT__myCounter__DOT___GEN_225;
         IData/*31:0*/ __PVT__myCounter__DOT___GEN_226;
         IData/*31:0*/ __PVT__myCounter__DOT___GEN_227;
@@ -388,8 +368,6 @@ VL_MODULE(VFlexDPU_PathFinder) {
         IData/*31:0*/ __PVT__Distribution__DOT__part2__DOT__b_2_3;
         IData/*31:0*/ __PVT__Distribution__DOT__part2__DOT__b_3_0;
         IData/*31:0*/ __PVT__Distribution__DOT__part2__DOT__b_3_1;
-    };
-    struct {
         IData/*31:0*/ __PVT__Distribution__DOT__part2__DOT__b_3_2;
         IData/*31:0*/ __PVT__Distribution__DOT__part2__DOT__b_3_3;
         IData/*31:0*/ __PVT__Distribution__DOT__part2__DOT__j;
@@ -398,6 +376,8 @@ VL_MODULE(VFlexDPU_PathFinder) {
         IData/*31:0*/ __PVT__Distribution__DOT__part2__DOT___GEN_28;
         IData/*31:0*/ __PVT__Distribution__DOT__part2__DOT___GEN_30;
         IData/*31:0*/ __PVT__Distribution__DOT__part2__DOT___a_T_1;
+    };
+    struct {
         IData/*31:0*/ __PVT__Distribution__DOT__part2__DOT___j_T_1;
         IData/*31:0*/ __PVT__Distribution__DOT__part3__DOT__b_0_0;
         IData/*31:0*/ __PVT__Distribution__DOT__part3__DOT__b_0_1;
@@ -460,7 +440,6 @@ VL_MODULE(VFlexDPU_PathFinder) {
     IData/*31:0*/ __Vdly__myMuxes__DOT__j;
     IData/*31:0*/ __Vdly__myCounter__DOT__j;
     IData/*31:0*/ __Vdly__Distribution__DOT__i;
-    IData/*31:0*/ __Vdly__Distribution__DOT__j;
     IData/*31:0*/ __Vdly__Distribution__DOT__part3__DOT__check;
     IData/*31:0*/ __Vdly__Distribution__DOT__part3__DOT__i;
     IData/*31:0*/ __Vdly__Distribution__DOT__part3__DOT__j;
@@ -482,73 +461,25 @@ VL_MODULE(VFlexDPU_PathFinder) {
     
     // INTERNAL METHODS
     void __Vconfigure(VFlexDPU__Syms* symsp, bool first);
-    void _combo__TOP__FlexDPU__DOT__PathFinder_10__59(VFlexDPU__Syms* __restrict vlSymsp);
-    void _combo__TOP__FlexDPU__DOT__PathFinder_11__60(VFlexDPU__Syms* __restrict vlSymsp);
-    void _combo__TOP__FlexDPU__DOT__PathFinder_12__61(VFlexDPU__Syms* __restrict vlSymsp);
-    void _combo__TOP__FlexDPU__DOT__PathFinder_13__62(VFlexDPU__Syms* __restrict vlSymsp);
-    void _combo__TOP__FlexDPU__DOT__PathFinder_14__63(VFlexDPU__Syms* __restrict vlSymsp);
-    void _combo__TOP__FlexDPU__DOT__PathFinder_15__64(VFlexDPU__Syms* __restrict vlSymsp);
-    void _combo__TOP__FlexDPU__DOT__PathFinder_1__50(VFlexDPU__Syms* __restrict vlSymsp);
-    void _combo__TOP__FlexDPU__DOT__PathFinder_2__51(VFlexDPU__Syms* __restrict vlSymsp);
-    void _combo__TOP__FlexDPU__DOT__PathFinder_3__52(VFlexDPU__Syms* __restrict vlSymsp);
-    void _combo__TOP__FlexDPU__DOT__PathFinder_4__53(VFlexDPU__Syms* __restrict vlSymsp);
-    void _combo__TOP__FlexDPU__DOT__PathFinder_5__54(VFlexDPU__Syms* __restrict vlSymsp);
-    void _combo__TOP__FlexDPU__DOT__PathFinder_6__55(VFlexDPU__Syms* __restrict vlSymsp);
-    void _combo__TOP__FlexDPU__DOT__PathFinder_7__56(VFlexDPU__Syms* __restrict vlSymsp);
-    void _combo__TOP__FlexDPU__DOT__PathFinder_8__57(VFlexDPU__Syms* __restrict vlSymsp);
-    void _combo__TOP__FlexDPU__DOT__PathFinder_9__58(VFlexDPU__Syms* __restrict vlSymsp);
-    void _combo__TOP__FlexDPU__DOT__PathFinder__49(VFlexDPU__Syms* __restrict vlSymsp);
+    void _combo__TOP__FlexDPU__DOT__PathFinder_1__14(VFlexDPU__Syms* __restrict vlSymsp);
+    void _combo__TOP__FlexDPU__DOT__PathFinder_2__15(VFlexDPU__Syms* __restrict vlSymsp);
+    void _combo__TOP__FlexDPU__DOT__PathFinder_3__16(VFlexDPU__Syms* __restrict vlSymsp);
+    void _combo__TOP__FlexDPU__DOT__PathFinder__13(VFlexDPU__Syms* __restrict vlSymsp);
   private:
     void _ctor_var_reset() VL_ATTR_COLD;
   public:
-    void _sequent__TOP__FlexDPU__DOT__PathFinder_10__11(VFlexDPU__Syms* __restrict vlSymsp);
-    void _sequent__TOP__FlexDPU__DOT__PathFinder_10__27(VFlexDPU__Syms* __restrict vlSymsp);
-    void _sequent__TOP__FlexDPU__DOT__PathFinder_11__12(VFlexDPU__Syms* __restrict vlSymsp);
-    void _sequent__TOP__FlexDPU__DOT__PathFinder_11__28(VFlexDPU__Syms* __restrict vlSymsp);
-    void _sequent__TOP__FlexDPU__DOT__PathFinder_12__13(VFlexDPU__Syms* __restrict vlSymsp);
-    void _sequent__TOP__FlexDPU__DOT__PathFinder_12__29(VFlexDPU__Syms* __restrict vlSymsp);
-    void _sequent__TOP__FlexDPU__DOT__PathFinder_13__14(VFlexDPU__Syms* __restrict vlSymsp);
-    void _sequent__TOP__FlexDPU__DOT__PathFinder_13__30(VFlexDPU__Syms* __restrict vlSymsp);
-    void _sequent__TOP__FlexDPU__DOT__PathFinder_14__15(VFlexDPU__Syms* __restrict vlSymsp);
-    void _sequent__TOP__FlexDPU__DOT__PathFinder_14__31(VFlexDPU__Syms* __restrict vlSymsp);
-    void _sequent__TOP__FlexDPU__DOT__PathFinder_15__16(VFlexDPU__Syms* __restrict vlSymsp);
-    void _sequent__TOP__FlexDPU__DOT__PathFinder_15__32(VFlexDPU__Syms* __restrict vlSymsp);
-    void _sequent__TOP__FlexDPU__DOT__PathFinder_1__18(VFlexDPU__Syms* __restrict vlSymsp);
     void _sequent__TOP__FlexDPU__DOT__PathFinder_1__2(VFlexDPU__Syms* __restrict vlSymsp);
-    void _sequent__TOP__FlexDPU__DOT__PathFinder_2__19(VFlexDPU__Syms* __restrict vlSymsp);
+    void _sequent__TOP__FlexDPU__DOT__PathFinder_1__5(VFlexDPU__Syms* __restrict vlSymsp);
     void _sequent__TOP__FlexDPU__DOT__PathFinder_2__3(VFlexDPU__Syms* __restrict vlSymsp);
-    void _sequent__TOP__FlexDPU__DOT__PathFinder_3__20(VFlexDPU__Syms* __restrict vlSymsp);
+    void _sequent__TOP__FlexDPU__DOT__PathFinder_2__6(VFlexDPU__Syms* __restrict vlSymsp);
     void _sequent__TOP__FlexDPU__DOT__PathFinder_3__4(VFlexDPU__Syms* __restrict vlSymsp);
-    void _sequent__TOP__FlexDPU__DOT__PathFinder_4__21(VFlexDPU__Syms* __restrict vlSymsp);
-    void _sequent__TOP__FlexDPU__DOT__PathFinder_4__5(VFlexDPU__Syms* __restrict vlSymsp);
-    void _sequent__TOP__FlexDPU__DOT__PathFinder_5__22(VFlexDPU__Syms* __restrict vlSymsp);
-    void _sequent__TOP__FlexDPU__DOT__PathFinder_5__6(VFlexDPU__Syms* __restrict vlSymsp);
-    void _sequent__TOP__FlexDPU__DOT__PathFinder_6__23(VFlexDPU__Syms* __restrict vlSymsp);
-    void _sequent__TOP__FlexDPU__DOT__PathFinder_6__7(VFlexDPU__Syms* __restrict vlSymsp);
-    void _sequent__TOP__FlexDPU__DOT__PathFinder_7__24(VFlexDPU__Syms* __restrict vlSymsp);
-    void _sequent__TOP__FlexDPU__DOT__PathFinder_7__8(VFlexDPU__Syms* __restrict vlSymsp);
-    void _sequent__TOP__FlexDPU__DOT__PathFinder_8__25(VFlexDPU__Syms* __restrict vlSymsp);
-    void _sequent__TOP__FlexDPU__DOT__PathFinder_8__9(VFlexDPU__Syms* __restrict vlSymsp);
-    void _sequent__TOP__FlexDPU__DOT__PathFinder_9__10(VFlexDPU__Syms* __restrict vlSymsp);
-    void _sequent__TOP__FlexDPU__DOT__PathFinder_9__26(VFlexDPU__Syms* __restrict vlSymsp);
+    void _sequent__TOP__FlexDPU__DOT__PathFinder_3__7(VFlexDPU__Syms* __restrict vlSymsp);
     void _sequent__TOP__FlexDPU__DOT__PathFinder__1(VFlexDPU__Syms* __restrict vlSymsp);
-    void _sequent__TOP__FlexDPU__DOT__PathFinder__17(VFlexDPU__Syms* __restrict vlSymsp);
-    void _settle__TOP__FlexDPU__DOT__PathFinder_10__43(VFlexDPU__Syms* __restrict vlSymsp) VL_ATTR_COLD;
-    void _settle__TOP__FlexDPU__DOT__PathFinder_11__44(VFlexDPU__Syms* __restrict vlSymsp) VL_ATTR_COLD;
-    void _settle__TOP__FlexDPU__DOT__PathFinder_12__45(VFlexDPU__Syms* __restrict vlSymsp) VL_ATTR_COLD;
-    void _settle__TOP__FlexDPU__DOT__PathFinder_13__46(VFlexDPU__Syms* __restrict vlSymsp) VL_ATTR_COLD;
-    void _settle__TOP__FlexDPU__DOT__PathFinder_14__47(VFlexDPU__Syms* __restrict vlSymsp) VL_ATTR_COLD;
-    void _settle__TOP__FlexDPU__DOT__PathFinder_15__48(VFlexDPU__Syms* __restrict vlSymsp) VL_ATTR_COLD;
-    void _settle__TOP__FlexDPU__DOT__PathFinder_1__34(VFlexDPU__Syms* __restrict vlSymsp) VL_ATTR_COLD;
-    void _settle__TOP__FlexDPU__DOT__PathFinder_2__35(VFlexDPU__Syms* __restrict vlSymsp) VL_ATTR_COLD;
-    void _settle__TOP__FlexDPU__DOT__PathFinder_3__36(VFlexDPU__Syms* __restrict vlSymsp) VL_ATTR_COLD;
-    void _settle__TOP__FlexDPU__DOT__PathFinder_4__37(VFlexDPU__Syms* __restrict vlSymsp) VL_ATTR_COLD;
-    void _settle__TOP__FlexDPU__DOT__PathFinder_5__38(VFlexDPU__Syms* __restrict vlSymsp) VL_ATTR_COLD;
-    void _settle__TOP__FlexDPU__DOT__PathFinder_6__39(VFlexDPU__Syms* __restrict vlSymsp) VL_ATTR_COLD;
-    void _settle__TOP__FlexDPU__DOT__PathFinder_7__40(VFlexDPU__Syms* __restrict vlSymsp) VL_ATTR_COLD;
-    void _settle__TOP__FlexDPU__DOT__PathFinder_8__41(VFlexDPU__Syms* __restrict vlSymsp) VL_ATTR_COLD;
-    void _settle__TOP__FlexDPU__DOT__PathFinder_9__42(VFlexDPU__Syms* __restrict vlSymsp) VL_ATTR_COLD;
-    void _settle__TOP__FlexDPU__DOT__PathFinder__33(VFlexDPU__Syms* __restrict vlSymsp) VL_ATTR_COLD;
+    void _sequent__TOP__FlexDPU__DOT__PathFinder__8(VFlexDPU__Syms* __restrict vlSymsp);
+    void _settle__TOP__FlexDPU__DOT__PathFinder_1__10(VFlexDPU__Syms* __restrict vlSymsp) VL_ATTR_COLD;
+    void _settle__TOP__FlexDPU__DOT__PathFinder_2__11(VFlexDPU__Syms* __restrict vlSymsp) VL_ATTR_COLD;
+    void _settle__TOP__FlexDPU__DOT__PathFinder_3__12(VFlexDPU__Syms* __restrict vlSymsp) VL_ATTR_COLD;
+    void _settle__TOP__FlexDPU__DOT__PathFinder__9(VFlexDPU__Syms* __restrict vlSymsp) VL_ATTR_COLD;
   private:
     static void traceInit(void* userp, VerilatedVcd* tracep, uint32_t code) VL_ATTR_COLD;
 } VL_ATTR_ALIGNED(VL_CACHE_LINE_BYTES);

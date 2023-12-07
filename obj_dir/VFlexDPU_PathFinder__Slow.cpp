@@ -22,8 +22,8 @@ void VFlexDPU_PathFinder::__Vconfigure(VFlexDPU__Syms* vlSymsp, bool first) {
 VFlexDPU_PathFinder::~VFlexDPU_PathFinder() {
 }
 
-void VFlexDPU_PathFinder::_settle__TOP__FlexDPU__DOT__PathFinder__33(VFlexDPU__Syms* __restrict vlSymsp) {
-    VL_DEBUG_IF(VL_DBG_MSGF("+        VFlexDPU_PathFinder::_settle__TOP__FlexDPU__DOT__PathFinder__33\n"); );
+void VFlexDPU_PathFinder::_settle__TOP__FlexDPU__DOT__PathFinder__9(VFlexDPU__Syms* __restrict vlSymsp) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+        VFlexDPU_PathFinder::_settle__TOP__FlexDPU__DOT__PathFinder__9\n"); );
     VFlexDPU* const __restrict vlTOPp VL_ATTR_UNUSED = vlSymsp->TOPp;
     // Body
     this->__PVT__myCounter__DOT___GEN_129 = ((3U == this->__PVT__myCounter__DOT__k)
@@ -72,15 +72,8 @@ void VFlexDPU_PathFinder::_settle__TOP__FlexDPU__DOT__PathFinder__33(VFlexDPU__S
                                             ? ((IData)(1U) 
                                                + this->__PVT__myMuxes__DOT__i)
                                             : this->__PVT__myMuxes__DOT__i);
-    this->__PVT__Distribution__DOT___io_validIteration_T_1 
-        = (3U == this->__PVT__Distribution__DOT__j);
     this->__PVT__Distribution__DOT___i_T_1 = ((IData)(1U) 
                                               + this->__PVT__Distribution__DOT__i);
-    this->__PVT__Distribution__DOT___j_T_1 = ((IData)(1U) 
-                                              + this->__PVT__Distribution__DOT__j);
-    this->__PVT__Distribution__DOT___io_validIteration_T_2 
-        = ((3U == this->__PVT__Distribution__DOT__i) 
-           & (3U == this->__PVT__Distribution__DOT__j));
     this->__PVT__Distribution__DOT___GEN_33 = ((0U 
                                                 == 
                                                 (3U 
@@ -105,6 +98,57 @@ void VFlexDPU_PathFinder::_settle__TOP__FlexDPU__DOT__PathFinder__33(VFlexDPU__S
                                                  & this->__PVT__Distribution__DOT__count))
                                                 ? this->__PVT__Distribution__DOT__i
                                                 : this->__PVT__Distribution__DOT__Idex_3);
+    this->__PVT__myMuxes__DOT___T_39 = ((3U == this->__PVT__myMuxes__DOT__j) 
+                                        & (3U == this->__PVT__myMuxes__DOT__i));
+    this->__PVT__Distribution__DOT__part2_io_IDex = 
+        ((IData)(this->__PVT__Distribution__DOT__c)
+          ? this->__PVT__Distribution__DOT__Idex_0 : 0U);
+    if (this->__PVT__myCounter_io_start_REG) {
+        this->__PVT__myCounter__DOT___GEN_235 = this->__PVT__myCounter__DOT__counterRegs1_3_3;
+        this->__PVT__myCounter__DOT___GEN_233 = this->__PVT__myCounter__DOT__counterRegs1_3_1;
+        this->__PVT__myCounter__DOT___GEN_234 = this->__PVT__myCounter__DOT__counterRegs1_3_2;
+        this->__PVT__myCounter__DOT___GEN_229 = this->__PVT__myCounter__DOT__counterRegs1_2_1;
+        this->__PVT__myCounter__DOT___GEN_230 = this->__PVT__myCounter__DOT__counterRegs1_2_2;
+        this->__PVT__myCounter__DOT___GEN_231 = this->__PVT__myCounter__DOT__counterRegs1_2_3;
+        this->__PVT__myCounter__DOT___GEN_232 = this->__PVT__myCounter__DOT__counterRegs1_3_0;
+        this->__PVT__myCounter__DOT___GEN_227 = this->__PVT__myCounter__DOT__counterRegs1_1_3;
+        this->__PVT__myCounter__DOT___GEN_228 = this->__PVT__myCounter__DOT__counterRegs1_2_0;
+        this->__PVT__myCounter__DOT___GEN_225 = this->__PVT__myCounter__DOT__counterRegs1_1_1;
+        this->__PVT__myCounter__DOT___GEN_226 = this->__PVT__myCounter__DOT__counterRegs1_1_2;
+        this->__PVT__myCounter__DOT___GEN_220 = this->__PVT__myCounter__DOT__counterRegs1_0_0;
+        this->__PVT__myCounter__DOT___GEN_221 = this->__PVT__myCounter__DOT__counterRegs1_0_1;
+        this->__PVT__myCounter__DOT___GEN_222 = this->__PVT__myCounter__DOT__counterRegs1_0_2;
+        this->__PVT__myCounter__DOT___GEN_223 = this->__PVT__myCounter__DOT__counterRegs1_0_3;
+        this->__PVT__myCounter__DOT___GEN_224 = this->__PVT__myCounter__DOT__counterRegs1_1_0;
+        this->__PVT__myCounter_io_valid = (((3U == this->__PVT__myCounter__DOT__i) 
+                                            & (3U == this->__PVT__myCounter__DOT__j)) 
+                                           & 1U);
+    } else {
+        this->__PVT__myCounter__DOT___GEN_235 = 0U;
+        this->__PVT__myCounter__DOT___GEN_233 = 0U;
+        this->__PVT__myCounter__DOT___GEN_234 = 0U;
+        this->__PVT__myCounter__DOT___GEN_229 = 0U;
+        this->__PVT__myCounter__DOT___GEN_230 = 0U;
+        this->__PVT__myCounter__DOT___GEN_231 = 0U;
+        this->__PVT__myCounter__DOT___GEN_232 = 0U;
+        this->__PVT__myCounter__DOT___GEN_227 = 0U;
+        this->__PVT__myCounter__DOT___GEN_228 = 0U;
+        this->__PVT__myCounter__DOT___GEN_225 = 0U;
+        this->__PVT__myCounter__DOT___GEN_226 = 0U;
+        this->__PVT__myCounter__DOT___GEN_220 = 0U;
+        this->__PVT__myCounter__DOT___GEN_221 = 0U;
+        this->__PVT__myCounter__DOT___GEN_222 = 0U;
+        this->__PVT__myCounter__DOT___GEN_223 = 0U;
+        this->__PVT__myCounter__DOT___GEN_224 = 0U;
+        this->__PVT__myCounter_io_valid = 0U;
+    }
+    this->__PVT__Distribution__DOT___j_T_1 = ((IData)(1U) 
+                                              + this->__PVT__Distribution__DOT__j);
+    this->__PVT__Distribution__DOT___io_validIteration_T_2 
+        = ((3U == this->__PVT__Distribution__DOT__i) 
+           & (3U == this->__PVT__Distribution__DOT__j));
+    this->__PVT__Distribution__DOT__ab = ((3U >= this->__PVT__Distribution__DOT__i) 
+                                          & (3U > this->__PVT__Distribution__DOT__j));
     this->__PVT__Distribution__DOT___GEN_37 = ((0U 
                                                 == 
                                                 (3U 
@@ -129,68 +173,6 @@ void VFlexDPU_PathFinder::_settle__TOP__FlexDPU__DOT__PathFinder__33(VFlexDPU__S
                                                  & this->__PVT__Distribution__DOT__count))
                                                 ? this->__PVT__Distribution__DOT__j
                                                 : this->__PVT__Distribution__DOT__Jdex_3);
-    this->__PVT__myMuxes__DOT___T_39 = ((3U == this->__PVT__myMuxes__DOT__j) 
-                                        & (3U == this->__PVT__myMuxes__DOT__i));
-    this->__PVT__Distribution__DOT__part2_io_IDex = 
-        ((IData)(this->__PVT__Distribution__DOT__c)
-          ? this->__PVT__Distribution__DOT__Idex_0 : 0U);
-    this->__PVT__myCounter_io_valid = ((IData)(this->__PVT__myCounter_io_start_REG) 
-                                       & ((3U == this->__PVT__myCounter__DOT__i) 
-                                          & (3U == this->__PVT__myCounter__DOT__j)));
-    if (this->__PVT__myCounter_io_start_REG) {
-        this->__PVT__myCounter__DOT___GEN_235 = this->__PVT__myCounter__DOT__counterRegs1_3_3;
-        this->__PVT__myCounter__DOT___GEN_233 = this->__PVT__myCounter__DOT__counterRegs1_3_1;
-        this->__PVT__myCounter__DOT___GEN_234 = this->__PVT__myCounter__DOT__counterRegs1_3_2;
-        this->__PVT__myCounter__DOT___GEN_229 = this->__PVT__myCounter__DOT__counterRegs1_2_1;
-        this->__PVT__myCounter__DOT___GEN_230 = this->__PVT__myCounter__DOT__counterRegs1_2_2;
-        this->__PVT__myCounter__DOT___GEN_231 = this->__PVT__myCounter__DOT__counterRegs1_2_3;
-        this->__PVT__myCounter__DOT___GEN_232 = this->__PVT__myCounter__DOT__counterRegs1_3_0;
-        this->__PVT__myCounter__DOT___GEN_227 = this->__PVT__myCounter__DOT__counterRegs1_1_3;
-        this->__PVT__myCounter__DOT___GEN_228 = this->__PVT__myCounter__DOT__counterRegs1_2_0;
-        this->__PVT__myCounter__DOT___GEN_225 = this->__PVT__myCounter__DOT__counterRegs1_1_1;
-        this->__PVT__myCounter__DOT___GEN_226 = this->__PVT__myCounter__DOT__counterRegs1_1_2;
-        this->__PVT__myCounter__DOT___GEN_220 = this->__PVT__myCounter__DOT__counterRegs1_0_0;
-        this->__PVT__myCounter__DOT___GEN_221 = this->__PVT__myCounter__DOT__counterRegs1_0_1;
-        this->__PVT__myCounter__DOT___GEN_222 = this->__PVT__myCounter__DOT__counterRegs1_0_2;
-        this->__PVT__myCounter__DOT___GEN_223 = this->__PVT__myCounter__DOT__counterRegs1_0_3;
-        this->__PVT__myCounter__DOT___GEN_224 = this->__PVT__myCounter__DOT__counterRegs1_1_0;
-    } else {
-        this->__PVT__myCounter__DOT___GEN_235 = 0U;
-        this->__PVT__myCounter__DOT___GEN_233 = 0U;
-        this->__PVT__myCounter__DOT___GEN_234 = 0U;
-        this->__PVT__myCounter__DOT___GEN_229 = 0U;
-        this->__PVT__myCounter__DOT___GEN_230 = 0U;
-        this->__PVT__myCounter__DOT___GEN_231 = 0U;
-        this->__PVT__myCounter__DOT___GEN_232 = 0U;
-        this->__PVT__myCounter__DOT___GEN_227 = 0U;
-        this->__PVT__myCounter__DOT___GEN_228 = 0U;
-        this->__PVT__myCounter__DOT___GEN_225 = 0U;
-        this->__PVT__myCounter__DOT___GEN_226 = 0U;
-        this->__PVT__myCounter__DOT___GEN_220 = 0U;
-        this->__PVT__myCounter__DOT___GEN_221 = 0U;
-        this->__PVT__myCounter__DOT___GEN_222 = 0U;
-        this->__PVT__myCounter__DOT___GEN_223 = 0U;
-        this->__PVT__myCounter__DOT___GEN_224 = 0U;
-    }
-    if (vlTOPp->FlexDPU__DOT__Statvalid) {
-        this->__PVT___GEN_79 = this->__PVT__myMuxes__DOT__dest_3;
-        this->__PVT___GEN_44 = this->__PVT__myMuxes__DOT__mux_0;
-        this->__PVT___GEN_78 = this->__PVT__myMuxes__DOT__dest_2;
-        this->__PVT___GEN_76 = this->__PVT__myMuxes__DOT__dest_0;
-        this->__PVT___GEN_77 = this->__PVT__myMuxes__DOT__dest_1;
-        this->__PVT___GEN_47 = this->__PVT__myMuxes__DOT__mux_3;
-        this->__PVT___GEN_46 = this->__PVT__myMuxes__DOT__mux_2;
-        this->__PVT___GEN_45 = this->__PVT__myMuxes__DOT__mux_1;
-    } else {
-        this->__PVT___GEN_79 = 0U;
-        this->__PVT___GEN_44 = 0U;
-        this->__PVT___GEN_78 = 0U;
-        this->__PVT___GEN_76 = 0U;
-        this->__PVT___GEN_77 = 0U;
-        this->__PVT___GEN_47 = 0U;
-        this->__PVT___GEN_46 = 0U;
-        this->__PVT___GEN_45 = 0U;
-    }
     this->__PVT__myCounter__DOT___GEN_23 = (((1U == 
                                               (3U & this->__PVT__myCounter__DOT__i)) 
                                              & (3U 
@@ -366,6 +348,40 @@ void VFlexDPU_PathFinder::_settle__TOP__FlexDPU__DOT__PathFinder__33(VFlexDPU__S
                                 & (1U == (3U & this->__PVT__Distribution__DOT__part2__DOT__j)))
                                 ? (0xffffU & this->__PVT__myCounter__DOT___GEN_221)
                                 : (0xffffU & this->__PVT__myCounter__DOT___GEN_220)))))));
+    this->__PVT__Distribution__DOT__part3__DOT___GEN_80 
+        = (((1U == (3U & this->__PVT__Distribution__DOT__part3__DOT__i)) 
+            & (0U == (3U & this->__PVT__Distribution__DOT__part3__DOT__j)))
+            ? (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
+                & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
+                ? (0xffffU & this->__PVT__myCounter__DOT___GEN_224)
+                : 0U) : (((0U == (3U & this->__PVT__Distribution__DOT__part3__DOT__i)) 
+                          & (3U == (3U & this->__PVT__Distribution__DOT__part3__DOT__j)))
+                          ? (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
+                              & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
+                              ? (0xffffU & this->__PVT__myCounter__DOT___GEN_223)
+                              : 0U) : (((0U == (3U 
+                                                & this->__PVT__Distribution__DOT__part3__DOT__i)) 
+                                        & (2U == (3U 
+                                                  & this->__PVT__Distribution__DOT__part3__DOT__j)))
+                                        ? (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
+                                            & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
+                                            ? (0xffffU 
+                                               & this->__PVT__myCounter__DOT___GEN_222)
+                                            : 0U) : 
+                                       (((0U == (3U 
+                                                 & this->__PVT__Distribution__DOT__part3__DOT__i)) 
+                                         & (1U == (3U 
+                                                   & this->__PVT__Distribution__DOT__part3__DOT__j)))
+                                         ? (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
+                                             & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
+                                             ? (0xffffU 
+                                                & this->__PVT__myCounter__DOT___GEN_221)
+                                             : 0U) : 
+                                        (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
+                                          & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
+                                          ? (0xffffU 
+                                             & this->__PVT__myCounter__DOT___GEN_220)
+                                          : 0U)))));
     this->__PVT__Distribution__DOT___GEN_6 = (((1U 
                                                 == 
                                                 (3U 
@@ -439,40 +455,6 @@ void VFlexDPU_PathFinder::_settle__TOP__FlexDPU__DOT__PathFinder__33(VFlexDPU__S
                                                        : 
                                                       (0xffffU 
                                                        & this->__PVT__myCounter__DOT___GEN_220)))))));
-    this->__PVT__Distribution__DOT__part3__DOT___GEN_80 
-        = (((1U == (3U & this->__PVT__Distribution__DOT__part3__DOT__i)) 
-            & (0U == (3U & this->__PVT__Distribution__DOT__part3__DOT__j)))
-            ? (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
-                & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
-                ? (0xffffU & this->__PVT__myCounter__DOT___GEN_224)
-                : 0U) : (((0U == (3U & this->__PVT__Distribution__DOT__part3__DOT__i)) 
-                          & (3U == (3U & this->__PVT__Distribution__DOT__part3__DOT__j)))
-                          ? (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
-                              & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
-                              ? (0xffffU & this->__PVT__myCounter__DOT___GEN_223)
-                              : 0U) : (((0U == (3U 
-                                                & this->__PVT__Distribution__DOT__part3__DOT__i)) 
-                                        & (2U == (3U 
-                                                  & this->__PVT__Distribution__DOT__part3__DOT__j)))
-                                        ? (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
-                                            & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
-                                            ? (0xffffU 
-                                               & this->__PVT__myCounter__DOT___GEN_222)
-                                            : 0U) : 
-                                       (((0U == (3U 
-                                                 & this->__PVT__Distribution__DOT__part3__DOT__i)) 
-                                         & (1U == (3U 
-                                                   & this->__PVT__Distribution__DOT__part3__DOT__j)))
-                                         ? (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
-                                             & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
-                                             ? (0xffffU 
-                                                & this->__PVT__myCounter__DOT___GEN_221)
-                                             : 0U) : 
-                                        (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
-                                          & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
-                                          ? (0xffffU 
-                                             & this->__PVT__myCounter__DOT___GEN_220)
-                                          : 0U)))));
     this->__PVT__myCounter__DOT___GEN_30 = (((3U == 
                                               (3U & this->__PVT__myCounter__DOT__i)) 
                                              & (2U 
@@ -660,6 +642,35 @@ void VFlexDPU_PathFinder::_settle__TOP__FlexDPU__DOT__PathFinder__33(VFlexDPU__S
                                 & (3U == (3U & this->__PVT__Distribution__DOT__part2__DOT__j)))
                                 ? (0xffffU & this->__PVT__myCounter__DOT___GEN_227)
                                 : this->__PVT__Distribution__DOT__part2__DOT___GEN_22))))));
+    this->__PVT__Distribution__DOT__part3__DOT___GEN_84 
+        = (((2U == (3U & this->__PVT__Distribution__DOT__part3__DOT__i)) 
+            & (0U == (3U & this->__PVT__Distribution__DOT__part3__DOT__j)))
+            ? (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
+                & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
+                ? (0xffffU & this->__PVT__myCounter__DOT___GEN_228)
+                : 0U) : (((1U == (3U & this->__PVT__Distribution__DOT__part3__DOT__i)) 
+                          & (3U == (3U & this->__PVT__Distribution__DOT__part3__DOT__j)))
+                          ? (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
+                              & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
+                              ? (0xffffU & this->__PVT__myCounter__DOT___GEN_227)
+                              : 0U) : (((1U == (3U 
+                                                & this->__PVT__Distribution__DOT__part3__DOT__i)) 
+                                        & (2U == (3U 
+                                                  & this->__PVT__Distribution__DOT__part3__DOT__j)))
+                                        ? (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
+                                            & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
+                                            ? (0xffffU 
+                                               & this->__PVT__myCounter__DOT___GEN_226)
+                                            : 0U) : 
+                                       (((1U == (3U 
+                                                 & this->__PVT__Distribution__DOT__part3__DOT__i)) 
+                                         & (1U == (3U 
+                                                   & this->__PVT__Distribution__DOT__part3__DOT__j)))
+                                         ? (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
+                                             & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
+                                             ? (0xffffU 
+                                                & this->__PVT__myCounter__DOT___GEN_225)
+                                             : 0U) : this->__PVT__Distribution__DOT__part3__DOT___GEN_80))));
     this->__PVT__Distribution__DOT___GEN_12 = (((3U 
                                                  == 
                                                  (3U 
@@ -731,35 +742,6 @@ void VFlexDPU_PathFinder::_settle__TOP__FlexDPU__DOT__PathFinder__33(VFlexDPU__S
                                                        (0xffffU 
                                                         & this->__PVT__myCounter__DOT___GEN_227)
                                                         : this->__PVT__Distribution__DOT___GEN_6))))));
-    this->__PVT__Distribution__DOT__part3__DOT___GEN_84 
-        = (((2U == (3U & this->__PVT__Distribution__DOT__part3__DOT__i)) 
-            & (0U == (3U & this->__PVT__Distribution__DOT__part3__DOT__j)))
-            ? (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
-                & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
-                ? (0xffffU & this->__PVT__myCounter__DOT___GEN_228)
-                : 0U) : (((1U == (3U & this->__PVT__Distribution__DOT__part3__DOT__i)) 
-                          & (3U == (3U & this->__PVT__Distribution__DOT__part3__DOT__j)))
-                          ? (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
-                              & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
-                              ? (0xffffU & this->__PVT__myCounter__DOT___GEN_227)
-                              : 0U) : (((1U == (3U 
-                                                & this->__PVT__Distribution__DOT__part3__DOT__i)) 
-                                        & (2U == (3U 
-                                                  & this->__PVT__Distribution__DOT__part3__DOT__j)))
-                                        ? (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
-                                            & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
-                                            ? (0xffffU 
-                                               & this->__PVT__myCounter__DOT___GEN_226)
-                                            : 0U) : 
-                                       (((1U == (3U 
-                                                 & this->__PVT__Distribution__DOT__part3__DOT__i)) 
-                                         & (1U == (3U 
-                                                   & this->__PVT__Distribution__DOT__part3__DOT__j)))
-                                         ? (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
-                                             & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
-                                             ? (0xffffU 
-                                                & this->__PVT__myCounter__DOT___GEN_225)
-                                             : 0U) : this->__PVT__Distribution__DOT__part3__DOT___GEN_80))));
     this->__PVT__myCounter__DOT___GEN_31 = (((3U == 
                                               (3U & this->__PVT__myCounter__DOT__i)) 
                                              & (3U 
@@ -812,6 +794,35 @@ void VFlexDPU_PathFinder::_settle__TOP__FlexDPU__DOT__PathFinder__33(VFlexDPU__S
                 & (1U == (3U & this->__PVT__Distribution__DOT__part2__DOT__j)))
                 ? (0xffffU & this->__PVT__myCounter__DOT___GEN_233)
                 : this->__PVT__Distribution__DOT__part2__DOT___GEN_28));
+    this->__PVT__Distribution__DOT__part3__DOT___GEN_88 
+        = (((3U == (3U & this->__PVT__Distribution__DOT__part3__DOT__i)) 
+            & (0U == (3U & this->__PVT__Distribution__DOT__part3__DOT__j)))
+            ? (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
+                & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
+                ? (0xffffU & this->__PVT__myCounter__DOT___GEN_232)
+                : 0U) : (((2U == (3U & this->__PVT__Distribution__DOT__part3__DOT__i)) 
+                          & (3U == (3U & this->__PVT__Distribution__DOT__part3__DOT__j)))
+                          ? (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
+                              & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
+                              ? (0xffffU & this->__PVT__myCounter__DOT___GEN_231)
+                              : 0U) : (((2U == (3U 
+                                                & this->__PVT__Distribution__DOT__part3__DOT__i)) 
+                                        & (2U == (3U 
+                                                  & this->__PVT__Distribution__DOT__part3__DOT__j)))
+                                        ? (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
+                                            & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
+                                            ? (0xffffU 
+                                               & this->__PVT__myCounter__DOT___GEN_230)
+                                            : 0U) : 
+                                       (((2U == (3U 
+                                                 & this->__PVT__Distribution__DOT__part3__DOT__i)) 
+                                         & (1U == (3U 
+                                                   & this->__PVT__Distribution__DOT__part3__DOT__j)))
+                                         ? (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
+                                             & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
+                                             ? (0xffffU 
+                                                & this->__PVT__myCounter__DOT___GEN_229)
+                                             : 0U) : this->__PVT__Distribution__DOT__part3__DOT___GEN_84))));
     this->__PVT__Distribution__DOT___GEN_15 = (((3U 
                                                  == 
                                                  (3U 
@@ -847,35 +858,6 @@ void VFlexDPU_PathFinder::_settle__TOP__FlexDPU__DOT__PathFinder__33(VFlexDPU__S
                                                     (0xffffU 
                                                      & this->__PVT__myCounter__DOT___GEN_233)
                                                      : this->__PVT__Distribution__DOT___GEN_12)));
-    this->__PVT__Distribution__DOT__part3__DOT___GEN_88 
-        = (((3U == (3U & this->__PVT__Distribution__DOT__part3__DOT__i)) 
-            & (0U == (3U & this->__PVT__Distribution__DOT__part3__DOT__j)))
-            ? (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
-                & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
-                ? (0xffffU & this->__PVT__myCounter__DOT___GEN_232)
-                : 0U) : (((2U == (3U & this->__PVT__Distribution__DOT__part3__DOT__i)) 
-                          & (3U == (3U & this->__PVT__Distribution__DOT__part3__DOT__j)))
-                          ? (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
-                              & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
-                              ? (0xffffU & this->__PVT__myCounter__DOT___GEN_231)
-                              : 0U) : (((2U == (3U 
-                                                & this->__PVT__Distribution__DOT__part3__DOT__i)) 
-                                        & (2U == (3U 
-                                                  & this->__PVT__Distribution__DOT__part3__DOT__j)))
-                                        ? (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
-                                            & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
-                                            ? (0xffffU 
-                                               & this->__PVT__myCounter__DOT___GEN_230)
-                                            : 0U) : 
-                                       (((2U == (3U 
-                                                 & this->__PVT__Distribution__DOT__part3__DOT__i)) 
-                                         & (1U == (3U 
-                                                   & this->__PVT__Distribution__DOT__part3__DOT__j)))
-                                         ? (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
-                                             & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
-                                             ? (0xffffU 
-                                                & this->__PVT__myCounter__DOT___GEN_229)
-                                             : 0U) : this->__PVT__Distribution__DOT__part3__DOT___GEN_84))));
     if ((0U != (IData)(this->__PVT__myCounter__DOT___GEN_31))) {
         this->__PVT__myCounter__DOT___GEN_114 = ((5U 
                                                   > this->__PVT__myCounter__DOT__counter1)
@@ -2717,8 +2699,8 @@ void VFlexDPU_PathFinder::_settle__TOP__FlexDPU__DOT__PathFinder__33(VFlexDPU__S
     }
 }
 
-void VFlexDPU_PathFinder::_settle__TOP__FlexDPU__DOT__PathFinder_1__34(VFlexDPU__Syms* __restrict vlSymsp) {
-    VL_DEBUG_IF(VL_DBG_MSGF("+        VFlexDPU_PathFinder::_settle__TOP__FlexDPU__DOT__PathFinder_1__34\n"); );
+void VFlexDPU_PathFinder::_settle__TOP__FlexDPU__DOT__PathFinder_1__10(VFlexDPU__Syms* __restrict vlSymsp) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+        VFlexDPU_PathFinder::_settle__TOP__FlexDPU__DOT__PathFinder_1__10\n"); );
     VFlexDPU* const __restrict vlTOPp VL_ATTR_UNUSED = vlSymsp->TOPp;
     // Body
     this->__PVT__myMuxes__DOT___k_T_1 = ((IData)(1U) 
@@ -2758,8 +2740,6 @@ void VFlexDPU_PathFinder::_settle__TOP__FlexDPU__DOT__PathFinder_1__34(VFlexDPU_
     this->__PVT__Distribution__DOT__part2_io_Ovalid 
         = ((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
            & (IData)(this->__PVT__Distribution__DOT__part2__DOT__io_Ovalid_REG));
-    this->__PVT__Distribution__DOT__part2__DOT___a_T_1 
-        = ((IData)(1U) + this->__PVT__Distribution__DOT__part2__DOT__a);
     this->__PVT__myMuxes__DOT___T_36 = (1U & (~ (IData)(this->__PVT__myMuxes__DOT__jValid)));
     this->__PVT__myMuxes__DOT___j_T_1 = ((IData)(1U) 
                                          + this->__PVT__myMuxes__DOT__j);
@@ -2767,12 +2747,12 @@ void VFlexDPU_PathFinder::_settle__TOP__FlexDPU__DOT__PathFinder_1__34(VFlexDPU_
                                             ? ((IData)(1U) 
                                                + this->__PVT__myMuxes__DOT__i)
                                             : this->__PVT__myMuxes__DOT__i);
-    this->__PVT__Distribution__DOT___io_validIteration_T_1 
-        = (3U == this->__PVT__Distribution__DOT__j);
+    this->__PVT__Distribution__DOT__part2__DOT___a_T_1 
+        = ((IData)(1U) + this->__PVT__Distribution__DOT__part2__DOT__a);
+    this->__PVT__myMuxes__DOT___T_39 = ((3U == this->__PVT__myMuxes__DOT__j) 
+                                        & (3U == this->__PVT__myMuxes__DOT__i));
     this->__PVT__Distribution__DOT___i_T_1 = ((IData)(1U) 
                                               + this->__PVT__Distribution__DOT__i);
-    this->__PVT__Distribution__DOT___j_T_1 = ((IData)(1U) 
-                                              + this->__PVT__Distribution__DOT__j);
     this->__PVT__Distribution__DOT___GEN_33 = ((0U 
                                                 == 
                                                 (3U 
@@ -2797,6 +2777,49 @@ void VFlexDPU_PathFinder::_settle__TOP__FlexDPU__DOT__PathFinder_1__34(VFlexDPU_
                                                  & this->__PVT__Distribution__DOT__count))
                                                 ? this->__PVT__Distribution__DOT__i
                                                 : this->__PVT__Distribution__DOT__Idex_3);
+    if (this->__PVT__myCounter_io_start_REG) {
+        this->__PVT__myCounter__DOT___GEN_235 = this->__PVT__myCounter__DOT__counterRegs1_3_3;
+        this->__PVT__myCounter__DOT___GEN_233 = this->__PVT__myCounter__DOT__counterRegs1_3_1;
+        this->__PVT__myCounter__DOT___GEN_234 = this->__PVT__myCounter__DOT__counterRegs1_3_2;
+        this->__PVT__myCounter__DOT___GEN_229 = this->__PVT__myCounter__DOT__counterRegs1_2_1;
+        this->__PVT__myCounter__DOT___GEN_230 = this->__PVT__myCounter__DOT__counterRegs1_2_2;
+        this->__PVT__myCounter__DOT___GEN_231 = this->__PVT__myCounter__DOT__counterRegs1_2_3;
+        this->__PVT__myCounter__DOT___GEN_232 = this->__PVT__myCounter__DOT__counterRegs1_3_0;
+        this->__PVT__myCounter__DOT___GEN_227 = this->__PVT__myCounter__DOT__counterRegs1_1_3;
+        this->__PVT__myCounter__DOT___GEN_228 = this->__PVT__myCounter__DOT__counterRegs1_2_0;
+        this->__PVT__myCounter__DOT___GEN_225 = this->__PVT__myCounter__DOT__counterRegs1_1_1;
+        this->__PVT__myCounter__DOT___GEN_226 = this->__PVT__myCounter__DOT__counterRegs1_1_2;
+        this->__PVT__myCounter__DOT___GEN_220 = this->__PVT__myCounter__DOT__counterRegs1_0_0;
+        this->__PVT__myCounter__DOT___GEN_221 = this->__PVT__myCounter__DOT__counterRegs1_0_1;
+        this->__PVT__myCounter__DOT___GEN_222 = this->__PVT__myCounter__DOT__counterRegs1_0_2;
+        this->__PVT__myCounter__DOT___GEN_223 = this->__PVT__myCounter__DOT__counterRegs1_0_3;
+        this->__PVT__myCounter__DOT___GEN_224 = this->__PVT__myCounter__DOT__counterRegs1_1_0;
+        this->__PVT__myCounter_io_valid = (((3U == this->__PVT__myCounter__DOT__i) 
+                                            & (3U == this->__PVT__myCounter__DOT__j)) 
+                                           & 1U);
+    } else {
+        this->__PVT__myCounter__DOT___GEN_235 = 0U;
+        this->__PVT__myCounter__DOT___GEN_233 = 0U;
+        this->__PVT__myCounter__DOT___GEN_234 = 0U;
+        this->__PVT__myCounter__DOT___GEN_229 = 0U;
+        this->__PVT__myCounter__DOT___GEN_230 = 0U;
+        this->__PVT__myCounter__DOT___GEN_231 = 0U;
+        this->__PVT__myCounter__DOT___GEN_232 = 0U;
+        this->__PVT__myCounter__DOT___GEN_227 = 0U;
+        this->__PVT__myCounter__DOT___GEN_228 = 0U;
+        this->__PVT__myCounter__DOT___GEN_225 = 0U;
+        this->__PVT__myCounter__DOT___GEN_226 = 0U;
+        this->__PVT__myCounter__DOT___GEN_220 = 0U;
+        this->__PVT__myCounter__DOT___GEN_221 = 0U;
+        this->__PVT__myCounter__DOT___GEN_222 = 0U;
+        this->__PVT__myCounter__DOT___GEN_223 = 0U;
+        this->__PVT__myCounter__DOT___GEN_224 = 0U;
+        this->__PVT__myCounter_io_valid = 0U;
+    }
+    this->__PVT__Distribution__DOT___j_T_1 = ((IData)(1U) 
+                                              + this->__PVT__Distribution__DOT__j);
+    this->__PVT__Distribution__DOT__ab = ((3U >= this->__PVT__Distribution__DOT__i) 
+                                          & (3U > this->__PVT__Distribution__DOT__j));
     this->__PVT__Distribution__DOT___GEN_37 = ((0U 
                                                 == 
                                                 (3U 
@@ -2821,58 +2844,6 @@ void VFlexDPU_PathFinder::_settle__TOP__FlexDPU__DOT__PathFinder_1__34(VFlexDPU_
                                                  & this->__PVT__Distribution__DOT__count))
                                                 ? this->__PVT__Distribution__DOT__j
                                                 : this->__PVT__Distribution__DOT__Jdex_3);
-    this->__PVT__myMuxes__DOT___T_39 = ((3U == this->__PVT__myMuxes__DOT__j) 
-                                        & (3U == this->__PVT__myMuxes__DOT__i));
-    this->__PVT__Distribution__DOT___io_validIteration_T_2 
-        = ((3U == this->__PVT__Distribution__DOT__i) 
-           & (3U == this->__PVT__Distribution__DOT__j));
-    this->__PVT__myCounter_io_valid = ((IData)(this->__PVT__myCounter_io_start_REG) 
-                                       & ((3U == this->__PVT__myCounter__DOT__i) 
-                                          & (3U == this->__PVT__myCounter__DOT__j)));
-    if (this->__PVT__myCounter_io_start_REG) {
-        this->__PVT__myCounter__DOT___GEN_235 = this->__PVT__myCounter__DOT__counterRegs1_3_3;
-        this->__PVT__myCounter__DOT___GEN_233 = this->__PVT__myCounter__DOT__counterRegs1_3_1;
-        this->__PVT__myCounter__DOT___GEN_234 = this->__PVT__myCounter__DOT__counterRegs1_3_2;
-        this->__PVT__myCounter__DOT___GEN_229 = this->__PVT__myCounter__DOT__counterRegs1_2_1;
-        this->__PVT__myCounter__DOT___GEN_230 = this->__PVT__myCounter__DOT__counterRegs1_2_2;
-        this->__PVT__myCounter__DOT___GEN_231 = this->__PVT__myCounter__DOT__counterRegs1_2_3;
-        this->__PVT__myCounter__DOT___GEN_232 = this->__PVT__myCounter__DOT__counterRegs1_3_0;
-        this->__PVT__myCounter__DOT___GEN_227 = this->__PVT__myCounter__DOT__counterRegs1_1_3;
-        this->__PVT__myCounter__DOT___GEN_228 = this->__PVT__myCounter__DOT__counterRegs1_2_0;
-        this->__PVT__myCounter__DOT___GEN_225 = this->__PVT__myCounter__DOT__counterRegs1_1_1;
-        this->__PVT__myCounter__DOT___GEN_226 = this->__PVT__myCounter__DOT__counterRegs1_1_2;
-        this->__PVT__myCounter__DOT___GEN_220 = this->__PVT__myCounter__DOT__counterRegs1_0_0;
-        this->__PVT__myCounter__DOT___GEN_221 = this->__PVT__myCounter__DOT__counterRegs1_0_1;
-        this->__PVT__myCounter__DOT___GEN_222 = this->__PVT__myCounter__DOT__counterRegs1_0_2;
-        this->__PVT__myCounter__DOT___GEN_223 = this->__PVT__myCounter__DOT__counterRegs1_0_3;
-        this->__PVT__myCounter__DOT___GEN_224 = this->__PVT__myCounter__DOT__counterRegs1_1_0;
-    } else {
-        this->__PVT__myCounter__DOT___GEN_235 = 0U;
-        this->__PVT__myCounter__DOT___GEN_233 = 0U;
-        this->__PVT__myCounter__DOT___GEN_234 = 0U;
-        this->__PVT__myCounter__DOT___GEN_229 = 0U;
-        this->__PVT__myCounter__DOT___GEN_230 = 0U;
-        this->__PVT__myCounter__DOT___GEN_231 = 0U;
-        this->__PVT__myCounter__DOT___GEN_232 = 0U;
-        this->__PVT__myCounter__DOT___GEN_227 = 0U;
-        this->__PVT__myCounter__DOT___GEN_228 = 0U;
-        this->__PVT__myCounter__DOT___GEN_225 = 0U;
-        this->__PVT__myCounter__DOT___GEN_226 = 0U;
-        this->__PVT__myCounter__DOT___GEN_220 = 0U;
-        this->__PVT__myCounter__DOT___GEN_221 = 0U;
-        this->__PVT__myCounter__DOT___GEN_222 = 0U;
-        this->__PVT__myCounter__DOT___GEN_223 = 0U;
-        this->__PVT__myCounter__DOT___GEN_224 = 0U;
-    }
-    if (vlTOPp->FlexDPU__DOT__Statvalid) {
-        this->__PVT___GEN_79 = this->__PVT__myMuxes__DOT__dest_3;
-        this->__PVT___GEN_44 = this->__PVT__myMuxes__DOT__mux_0;
-        this->__PVT___GEN_78 = this->__PVT__myMuxes__DOT__dest_2;
-    } else {
-        this->__PVT___GEN_79 = 0U;
-        this->__PVT___GEN_44 = 0U;
-        this->__PVT___GEN_78 = 0U;
-    }
     this->__PVT__Distribution__DOT___GEN_85 = ((3U 
                                                 == 
                                                 (3U 
@@ -2891,19 +2862,9 @@ void VFlexDPU_PathFinder::_settle__TOP__FlexDPU__DOT__PathFinder_1__34(VFlexDPU_
                                                       & (IData)(vlTOPp->FlexDPU__DOT__Statvalid)))
                                                      ? this->__PVT__Distribution__DOT__Idex_1
                                                      : this->__PVT__Distribution__DOT__Idex_0)));
-    if (vlTOPp->FlexDPU__DOT__Statvalid) {
-        this->__PVT___GEN_76 = this->__PVT__myMuxes__DOT__dest_0;
-        this->__PVT___GEN_77 = this->__PVT__myMuxes__DOT__dest_1;
-        this->__PVT___GEN_47 = this->__PVT__myMuxes__DOT__mux_3;
-        this->__PVT___GEN_46 = this->__PVT__myMuxes__DOT__mux_2;
-        this->__PVT___GEN_45 = this->__PVT__myMuxes__DOT__mux_1;
-    } else {
-        this->__PVT___GEN_76 = 0U;
-        this->__PVT___GEN_77 = 0U;
-        this->__PVT___GEN_47 = 0U;
-        this->__PVT___GEN_46 = 0U;
-        this->__PVT___GEN_45 = 0U;
-    }
+    this->__PVT__Distribution__DOT___io_validIteration_T_2 
+        = ((3U == this->__PVT__Distribution__DOT__i) 
+           & (3U == this->__PVT__Distribution__DOT__j));
     this->__PVT__myCounter__DOT___GEN_23 = (((1U == 
                                               (3U & this->__PVT__myCounter__DOT__i)) 
                                              & (3U 
@@ -3047,15 +3008,45 @@ void VFlexDPU_PathFinder::_settle__TOP__FlexDPU__DOT__PathFinder_1__34(VFlexDPU_
                                           : 0U)))));
     this->__PVT__myMuxes__DOT___GEN_336 = ((IData)(this->__PVT__myMuxes__DOT___T_39) 
                                            | (IData)(this->__PVT__myMuxes__DOT__jValid));
-    this->__PVT__Distribution__DOT__e = ((IData)(this->__PVT__Distribution__DOT___io_validIteration_T_2) 
-                                         & ((this->__PVT__Distribution__DOT__count 
-                                             - (IData)(1U)) 
-                                            < (IData)(vlTOPp->FlexDPU__DOT__Statvalid)));
     this->__PVT__Distribution__DOT__part3_io_mat_3_3 
         = (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
             & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
             ? (0xffffU & this->__PVT__myCounter__DOT___GEN_235)
             : 0U);
+    this->__PVT__Distribution__DOT__part3__DOT___GEN_80 
+        = (((1U == (3U & this->__PVT__Distribution__DOT__part3__DOT__i)) 
+            & (0U == (3U & this->__PVT__Distribution__DOT__part3__DOT__j)))
+            ? (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
+                & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
+                ? (0xffffU & this->__PVT__myCounter__DOT___GEN_224)
+                : 0U) : (((0U == (3U & this->__PVT__Distribution__DOT__part3__DOT__i)) 
+                          & (3U == (3U & this->__PVT__Distribution__DOT__part3__DOT__j)))
+                          ? (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
+                              & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
+                              ? (0xffffU & this->__PVT__myCounter__DOT___GEN_223)
+                              : 0U) : (((0U == (3U 
+                                                & this->__PVT__Distribution__DOT__part3__DOT__i)) 
+                                        & (2U == (3U 
+                                                  & this->__PVT__Distribution__DOT__part3__DOT__j)))
+                                        ? (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
+                                            & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
+                                            ? (0xffffU 
+                                               & this->__PVT__myCounter__DOT___GEN_222)
+                                            : 0U) : 
+                                       (((0U == (3U 
+                                                 & this->__PVT__Distribution__DOT__part3__DOT__i)) 
+                                         & (1U == (3U 
+                                                   & this->__PVT__Distribution__DOT__part3__DOT__j)))
+                                         ? (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
+                                             & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
+                                             ? (0xffffU 
+                                                & this->__PVT__myCounter__DOT___GEN_221)
+                                             : 0U) : 
+                                        (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
+                                          & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
+                                          ? (0xffffU 
+                                             & this->__PVT__myCounter__DOT___GEN_220)
+                                          : 0U)))));
     this->__PVT__Distribution__DOT___GEN_6 = (((1U 
                                                 == 
                                                 (3U 
@@ -3129,40 +3120,6 @@ void VFlexDPU_PathFinder::_settle__TOP__FlexDPU__DOT__PathFinder_1__34(VFlexDPU_
                                                        : 
                                                       (0xffffU 
                                                        & this->__PVT__myCounter__DOT___GEN_220)))))));
-    this->__PVT__Distribution__DOT__part3__DOT___GEN_80 
-        = (((1U == (3U & this->__PVT__Distribution__DOT__part3__DOT__i)) 
-            & (0U == (3U & this->__PVT__Distribution__DOT__part3__DOT__j)))
-            ? (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
-                & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
-                ? (0xffffU & this->__PVT__myCounter__DOT___GEN_224)
-                : 0U) : (((0U == (3U & this->__PVT__Distribution__DOT__part3__DOT__i)) 
-                          & (3U == (3U & this->__PVT__Distribution__DOT__part3__DOT__j)))
-                          ? (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
-                              & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
-                              ? (0xffffU & this->__PVT__myCounter__DOT___GEN_223)
-                              : 0U) : (((0U == (3U 
-                                                & this->__PVT__Distribution__DOT__part3__DOT__i)) 
-                                        & (2U == (3U 
-                                                  & this->__PVT__Distribution__DOT__part3__DOT__j)))
-                                        ? (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
-                                            & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
-                                            ? (0xffffU 
-                                               & this->__PVT__myCounter__DOT___GEN_222)
-                                            : 0U) : 
-                                       (((0U == (3U 
-                                                 & this->__PVT__Distribution__DOT__part3__DOT__i)) 
-                                         & (1U == (3U 
-                                                   & this->__PVT__Distribution__DOT__part3__DOT__j)))
-                                         ? (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
-                                             & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
-                                             ? (0xffffU 
-                                                & this->__PVT__myCounter__DOT___GEN_221)
-                                             : 0U) : 
-                                        (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
-                                          & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
-                                          ? (0xffffU 
-                                             & this->__PVT__myCounter__DOT___GEN_220)
-                                          : 0U)))));
     this->__PVT__Distribution__DOT__part3_io_IDex = 
         (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
           & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
@@ -3172,6 +3129,10 @@ void VFlexDPU_PathFinder::_settle__TOP__FlexDPU__DOT__PathFinder_1__34(VFlexDPU_
         ((IData)(this->__PVT__Distribution__DOT__c)
           ? this->__PVT__Distribution__DOT___GEN_85
           : 0U);
+    this->__PVT__Distribution__DOT__e = ((IData)(this->__PVT__Distribution__DOT___io_validIteration_T_2) 
+                                         & ((this->__PVT__Distribution__DOT__count 
+                                             - (IData)(1U)) 
+                                            < (IData)(vlTOPp->FlexDPU__DOT__Statvalid)));
     this->__PVT__myCounter__DOT___GEN_30 = (((3U == 
                                               (3U & this->__PVT__myCounter__DOT__i)) 
                                              & (2U 
@@ -3333,6 +3294,35 @@ void VFlexDPU_PathFinder::_settle__TOP__FlexDPU__DOT__PathFinder_1__34(VFlexDPU_
                                               ? this->__PVT__Distribution__DOT__part2__DOT__b_1_1
                                               : 0U)
                                           : this->__PVT__Distribution__DOT__part3__DOT___GEN_25)))));
+    this->__PVT__Distribution__DOT__part3__DOT___GEN_84 
+        = (((2U == (3U & this->__PVT__Distribution__DOT__part3__DOT__i)) 
+            & (0U == (3U & this->__PVT__Distribution__DOT__part3__DOT__j)))
+            ? (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
+                & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
+                ? (0xffffU & this->__PVT__myCounter__DOT___GEN_228)
+                : 0U) : (((1U == (3U & this->__PVT__Distribution__DOT__part3__DOT__i)) 
+                          & (3U == (3U & this->__PVT__Distribution__DOT__part3__DOT__j)))
+                          ? (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
+                              & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
+                              ? (0xffffU & this->__PVT__myCounter__DOT___GEN_227)
+                              : 0U) : (((1U == (3U 
+                                                & this->__PVT__Distribution__DOT__part3__DOT__i)) 
+                                        & (2U == (3U 
+                                                  & this->__PVT__Distribution__DOT__part3__DOT__j)))
+                                        ? (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
+                                            & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
+                                            ? (0xffffU 
+                                               & this->__PVT__myCounter__DOT___GEN_226)
+                                            : 0U) : 
+                                       (((1U == (3U 
+                                                 & this->__PVT__Distribution__DOT__part3__DOT__i)) 
+                                         & (1U == (3U 
+                                                   & this->__PVT__Distribution__DOT__part3__DOT__j)))
+                                         ? (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
+                                             & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
+                                             ? (0xffffU 
+                                                & this->__PVT__myCounter__DOT___GEN_225)
+                                             : 0U) : this->__PVT__Distribution__DOT__part3__DOT___GEN_80))));
     this->__PVT__Distribution__DOT___GEN_12 = (((3U 
                                                  == 
                                                  (3U 
@@ -3404,35 +3394,6 @@ void VFlexDPU_PathFinder::_settle__TOP__FlexDPU__DOT__PathFinder_1__34(VFlexDPU_
                                                        (0xffffU 
                                                         & this->__PVT__myCounter__DOT___GEN_227)
                                                         : this->__PVT__Distribution__DOT___GEN_6))))));
-    this->__PVT__Distribution__DOT__part3__DOT___GEN_84 
-        = (((2U == (3U & this->__PVT__Distribution__DOT__part3__DOT__i)) 
-            & (0U == (3U & this->__PVT__Distribution__DOT__part3__DOT__j)))
-            ? (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
-                & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
-                ? (0xffffU & this->__PVT__myCounter__DOT___GEN_228)
-                : 0U) : (((1U == (3U & this->__PVT__Distribution__DOT__part3__DOT__i)) 
-                          & (3U == (3U & this->__PVT__Distribution__DOT__part3__DOT__j)))
-                          ? (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
-                              & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
-                              ? (0xffffU & this->__PVT__myCounter__DOT___GEN_227)
-                              : 0U) : (((1U == (3U 
-                                                & this->__PVT__Distribution__DOT__part3__DOT__i)) 
-                                        & (2U == (3U 
-                                                  & this->__PVT__Distribution__DOT__part3__DOT__j)))
-                                        ? (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
-                                            & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
-                                            ? (0xffffU 
-                                               & this->__PVT__myCounter__DOT___GEN_226)
-                                            : 0U) : 
-                                       (((1U == (3U 
-                                                 & this->__PVT__Distribution__DOT__part3__DOT__i)) 
-                                         & (1U == (3U 
-                                                   & this->__PVT__Distribution__DOT__part3__DOT__j)))
-                                         ? (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
-                                             & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
-                                             ? (0xffffU 
-                                                & this->__PVT__myCounter__DOT___GEN_225)
-                                             : 0U) : this->__PVT__Distribution__DOT__part3__DOT___GEN_80))));
     this->__PVT__Distribution__DOT__part3__DOT___GEN_55 
         = ((((IData)(this->__PVT__Distribution__DOT__part3_io_i_valid) 
              & (0U == this->__PVT__Distribution__DOT__part3__DOT__i)) 
@@ -3503,6 +3464,35 @@ void VFlexDPU_PathFinder::_settle__TOP__FlexDPU__DOT__PathFinder_1__34(VFlexDPU_
                                               ? this->__PVT__Distribution__DOT__part2__DOT__b_2_2
                                               : 0U)
                                           : this->__PVT__Distribution__DOT__part3__DOT___GEN_30)))));
+    this->__PVT__Distribution__DOT__part3__DOT___GEN_88 
+        = (((3U == (3U & this->__PVT__Distribution__DOT__part3__DOT__i)) 
+            & (0U == (3U & this->__PVT__Distribution__DOT__part3__DOT__j)))
+            ? (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
+                & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
+                ? (0xffffU & this->__PVT__myCounter__DOT___GEN_232)
+                : 0U) : (((2U == (3U & this->__PVT__Distribution__DOT__part3__DOT__i)) 
+                          & (3U == (3U & this->__PVT__Distribution__DOT__part3__DOT__j)))
+                          ? (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
+                              & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
+                              ? (0xffffU & this->__PVT__myCounter__DOT___GEN_231)
+                              : 0U) : (((2U == (3U 
+                                                & this->__PVT__Distribution__DOT__part3__DOT__i)) 
+                                        & (2U == (3U 
+                                                  & this->__PVT__Distribution__DOT__part3__DOT__j)))
+                                        ? (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
+                                            & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
+                                            ? (0xffffU 
+                                               & this->__PVT__myCounter__DOT___GEN_230)
+                                            : 0U) : 
+                                       (((2U == (3U 
+                                                 & this->__PVT__Distribution__DOT__part3__DOT__i)) 
+                                         & (1U == (3U 
+                                                   & this->__PVT__Distribution__DOT__part3__DOT__j)))
+                                         ? (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
+                                             & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
+                                             ? (0xffffU 
+                                                & this->__PVT__myCounter__DOT___GEN_229)
+                                             : 0U) : this->__PVT__Distribution__DOT__part3__DOT___GEN_84))));
     this->__PVT__Distribution__DOT___GEN_15 = (((3U 
                                                  == 
                                                  (3U 
@@ -3538,35 +3528,6 @@ void VFlexDPU_PathFinder::_settle__TOP__FlexDPU__DOT__PathFinder_1__34(VFlexDPU_
                                                     (0xffffU 
                                                      & this->__PVT__myCounter__DOT___GEN_233)
                                                      : this->__PVT__Distribution__DOT___GEN_12)));
-    this->__PVT__Distribution__DOT__part3__DOT___GEN_88 
-        = (((3U == (3U & this->__PVT__Distribution__DOT__part3__DOT__i)) 
-            & (0U == (3U & this->__PVT__Distribution__DOT__part3__DOT__j)))
-            ? (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
-                & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
-                ? (0xffffU & this->__PVT__myCounter__DOT___GEN_232)
-                : 0U) : (((2U == (3U & this->__PVT__Distribution__DOT__part3__DOT__i)) 
-                          & (3U == (3U & this->__PVT__Distribution__DOT__part3__DOT__j)))
-                          ? (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
-                              & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
-                              ? (0xffffU & this->__PVT__myCounter__DOT___GEN_231)
-                              : 0U) : (((2U == (3U 
-                                                & this->__PVT__Distribution__DOT__part3__DOT__i)) 
-                                        & (2U == (3U 
-                                                  & this->__PVT__Distribution__DOT__part3__DOT__j)))
-                                        ? (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
-                                            & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
-                                            ? (0xffffU 
-                                               & this->__PVT__myCounter__DOT___GEN_230)
-                                            : 0U) : 
-                                       (((2U == (3U 
-                                                 & this->__PVT__Distribution__DOT__part3__DOT__i)) 
-                                         & (1U == (3U 
-                                                   & this->__PVT__Distribution__DOT__part3__DOT__j)))
-                                         ? (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
-                                             & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
-                                             ? (0xffffU 
-                                                & this->__PVT__myCounter__DOT___GEN_229)
-                                             : 0U) : this->__PVT__Distribution__DOT__part3__DOT___GEN_84))));
     this->__PVT__Distribution__DOT__part2__DOT___GEN_28 
         = (((3U == (3U & this->__PVT__Distribution__DOT__part2_io_IDex)) 
             & (0U == (3U & this->__PVT__Distribution__DOT__part2__DOT__j)))
@@ -5532,8 +5493,8 @@ void VFlexDPU_PathFinder::_settle__TOP__FlexDPU__DOT__PathFinder_1__34(VFlexDPU_
     }
 }
 
-void VFlexDPU_PathFinder::_settle__TOP__FlexDPU__DOT__PathFinder_2__35(VFlexDPU__Syms* __restrict vlSymsp) {
-    VL_DEBUG_IF(VL_DBG_MSGF("+        VFlexDPU_PathFinder::_settle__TOP__FlexDPU__DOT__PathFinder_2__35\n"); );
+void VFlexDPU_PathFinder::_settle__TOP__FlexDPU__DOT__PathFinder_2__11(VFlexDPU__Syms* __restrict vlSymsp) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+        VFlexDPU_PathFinder::_settle__TOP__FlexDPU__DOT__PathFinder_2__11\n"); );
     VFlexDPU* const __restrict vlTOPp VL_ATTR_UNUSED = vlSymsp->TOPp;
     // Body
     this->__PVT__myMuxes__DOT___k_T_1 = ((IData)(1U) 
@@ -5573,8 +5534,6 @@ void VFlexDPU_PathFinder::_settle__TOP__FlexDPU__DOT__PathFinder_2__35(VFlexDPU_
     this->__PVT__Distribution__DOT__part2_io_Ovalid 
         = ((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
            & (IData)(this->__PVT__Distribution__DOT__part2__DOT__io_Ovalid_REG));
-    this->__PVT__Distribution__DOT__part2__DOT___a_T_1 
-        = ((IData)(1U) + this->__PVT__Distribution__DOT__part2__DOT__a);
     this->__PVT__myMuxes__DOT___T_36 = (1U & (~ (IData)(this->__PVT__myMuxes__DOT__jValid)));
     this->__PVT__myMuxes__DOT___j_T_1 = ((IData)(1U) 
                                          + this->__PVT__myMuxes__DOT__j);
@@ -5582,12 +5541,12 @@ void VFlexDPU_PathFinder::_settle__TOP__FlexDPU__DOT__PathFinder_2__35(VFlexDPU_
                                             ? ((IData)(1U) 
                                                + this->__PVT__myMuxes__DOT__i)
                                             : this->__PVT__myMuxes__DOT__i);
-    this->__PVT__Distribution__DOT___io_validIteration_T_1 
-        = (3U == this->__PVT__Distribution__DOT__j);
+    this->__PVT__Distribution__DOT__part2__DOT___a_T_1 
+        = ((IData)(1U) + this->__PVT__Distribution__DOT__part2__DOT__a);
+    this->__PVT__myMuxes__DOT___T_39 = ((3U == this->__PVT__myMuxes__DOT__j) 
+                                        & (3U == this->__PVT__myMuxes__DOT__i));
     this->__PVT__Distribution__DOT___i_T_1 = ((IData)(1U) 
                                               + this->__PVT__Distribution__DOT__i);
-    this->__PVT__Distribution__DOT___j_T_1 = ((IData)(1U) 
-                                              + this->__PVT__Distribution__DOT__j);
     this->__PVT__Distribution__DOT___GEN_33 = ((0U 
                                                 == 
                                                 (3U 
@@ -5612,6 +5571,49 @@ void VFlexDPU_PathFinder::_settle__TOP__FlexDPU__DOT__PathFinder_2__35(VFlexDPU_
                                                  & this->__PVT__Distribution__DOT__count))
                                                 ? this->__PVT__Distribution__DOT__i
                                                 : this->__PVT__Distribution__DOT__Idex_3);
+    if (this->__PVT__myCounter_io_start_REG) {
+        this->__PVT__myCounter__DOT___GEN_235 = this->__PVT__myCounter__DOT__counterRegs1_3_3;
+        this->__PVT__myCounter__DOT___GEN_233 = this->__PVT__myCounter__DOT__counterRegs1_3_1;
+        this->__PVT__myCounter__DOT___GEN_234 = this->__PVT__myCounter__DOT__counterRegs1_3_2;
+        this->__PVT__myCounter__DOT___GEN_229 = this->__PVT__myCounter__DOT__counterRegs1_2_1;
+        this->__PVT__myCounter__DOT___GEN_230 = this->__PVT__myCounter__DOT__counterRegs1_2_2;
+        this->__PVT__myCounter__DOT___GEN_231 = this->__PVT__myCounter__DOT__counterRegs1_2_3;
+        this->__PVT__myCounter__DOT___GEN_232 = this->__PVT__myCounter__DOT__counterRegs1_3_0;
+        this->__PVT__myCounter__DOT___GEN_227 = this->__PVT__myCounter__DOT__counterRegs1_1_3;
+        this->__PVT__myCounter__DOT___GEN_228 = this->__PVT__myCounter__DOT__counterRegs1_2_0;
+        this->__PVT__myCounter__DOT___GEN_225 = this->__PVT__myCounter__DOT__counterRegs1_1_1;
+        this->__PVT__myCounter__DOT___GEN_226 = this->__PVT__myCounter__DOT__counterRegs1_1_2;
+        this->__PVT__myCounter__DOT___GEN_220 = this->__PVT__myCounter__DOT__counterRegs1_0_0;
+        this->__PVT__myCounter__DOT___GEN_221 = this->__PVT__myCounter__DOT__counterRegs1_0_1;
+        this->__PVT__myCounter__DOT___GEN_222 = this->__PVT__myCounter__DOT__counterRegs1_0_2;
+        this->__PVT__myCounter__DOT___GEN_223 = this->__PVT__myCounter__DOT__counterRegs1_0_3;
+        this->__PVT__myCounter__DOT___GEN_224 = this->__PVT__myCounter__DOT__counterRegs1_1_0;
+        this->__PVT__myCounter_io_valid = (((3U == this->__PVT__myCounter__DOT__i) 
+                                            & (3U == this->__PVT__myCounter__DOT__j)) 
+                                           & 1U);
+    } else {
+        this->__PVT__myCounter__DOT___GEN_235 = 0U;
+        this->__PVT__myCounter__DOT___GEN_233 = 0U;
+        this->__PVT__myCounter__DOT___GEN_234 = 0U;
+        this->__PVT__myCounter__DOT___GEN_229 = 0U;
+        this->__PVT__myCounter__DOT___GEN_230 = 0U;
+        this->__PVT__myCounter__DOT___GEN_231 = 0U;
+        this->__PVT__myCounter__DOT___GEN_232 = 0U;
+        this->__PVT__myCounter__DOT___GEN_227 = 0U;
+        this->__PVT__myCounter__DOT___GEN_228 = 0U;
+        this->__PVT__myCounter__DOT___GEN_225 = 0U;
+        this->__PVT__myCounter__DOT___GEN_226 = 0U;
+        this->__PVT__myCounter__DOT___GEN_220 = 0U;
+        this->__PVT__myCounter__DOT___GEN_221 = 0U;
+        this->__PVT__myCounter__DOT___GEN_222 = 0U;
+        this->__PVT__myCounter__DOT___GEN_223 = 0U;
+        this->__PVT__myCounter__DOT___GEN_224 = 0U;
+        this->__PVT__myCounter_io_valid = 0U;
+    }
+    this->__PVT__Distribution__DOT___j_T_1 = ((IData)(1U) 
+                                              + this->__PVT__Distribution__DOT__j);
+    this->__PVT__Distribution__DOT__ab = ((3U >= this->__PVT__Distribution__DOT__i) 
+                                          & (3U > this->__PVT__Distribution__DOT__j));
     this->__PVT__Distribution__DOT___GEN_37 = ((0U 
                                                 == 
                                                 (3U 
@@ -5636,58 +5638,6 @@ void VFlexDPU_PathFinder::_settle__TOP__FlexDPU__DOT__PathFinder_2__35(VFlexDPU_
                                                  & this->__PVT__Distribution__DOT__count))
                                                 ? this->__PVT__Distribution__DOT__j
                                                 : this->__PVT__Distribution__DOT__Jdex_3);
-    this->__PVT__myMuxes__DOT___T_39 = ((3U == this->__PVT__myMuxes__DOT__j) 
-                                        & (3U == this->__PVT__myMuxes__DOT__i));
-    this->__PVT__Distribution__DOT___io_validIteration_T_2 
-        = ((3U == this->__PVT__Distribution__DOT__i) 
-           & (3U == this->__PVT__Distribution__DOT__j));
-    this->__PVT__myCounter_io_valid = ((IData)(this->__PVT__myCounter_io_start_REG) 
-                                       & ((3U == this->__PVT__myCounter__DOT__i) 
-                                          & (3U == this->__PVT__myCounter__DOT__j)));
-    if (this->__PVT__myCounter_io_start_REG) {
-        this->__PVT__myCounter__DOT___GEN_235 = this->__PVT__myCounter__DOT__counterRegs1_3_3;
-        this->__PVT__myCounter__DOT___GEN_233 = this->__PVT__myCounter__DOT__counterRegs1_3_1;
-        this->__PVT__myCounter__DOT___GEN_234 = this->__PVT__myCounter__DOT__counterRegs1_3_2;
-        this->__PVT__myCounter__DOT___GEN_229 = this->__PVT__myCounter__DOT__counterRegs1_2_1;
-        this->__PVT__myCounter__DOT___GEN_230 = this->__PVT__myCounter__DOT__counterRegs1_2_2;
-        this->__PVT__myCounter__DOT___GEN_231 = this->__PVT__myCounter__DOT__counterRegs1_2_3;
-        this->__PVT__myCounter__DOT___GEN_232 = this->__PVT__myCounter__DOT__counterRegs1_3_0;
-        this->__PVT__myCounter__DOT___GEN_227 = this->__PVT__myCounter__DOT__counterRegs1_1_3;
-        this->__PVT__myCounter__DOT___GEN_228 = this->__PVT__myCounter__DOT__counterRegs1_2_0;
-        this->__PVT__myCounter__DOT___GEN_225 = this->__PVT__myCounter__DOT__counterRegs1_1_1;
-        this->__PVT__myCounter__DOT___GEN_226 = this->__PVT__myCounter__DOT__counterRegs1_1_2;
-        this->__PVT__myCounter__DOT___GEN_220 = this->__PVT__myCounter__DOT__counterRegs1_0_0;
-        this->__PVT__myCounter__DOT___GEN_221 = this->__PVT__myCounter__DOT__counterRegs1_0_1;
-        this->__PVT__myCounter__DOT___GEN_222 = this->__PVT__myCounter__DOT__counterRegs1_0_2;
-        this->__PVT__myCounter__DOT___GEN_223 = this->__PVT__myCounter__DOT__counterRegs1_0_3;
-        this->__PVT__myCounter__DOT___GEN_224 = this->__PVT__myCounter__DOT__counterRegs1_1_0;
-    } else {
-        this->__PVT__myCounter__DOT___GEN_235 = 0U;
-        this->__PVT__myCounter__DOT___GEN_233 = 0U;
-        this->__PVT__myCounter__DOT___GEN_234 = 0U;
-        this->__PVT__myCounter__DOT___GEN_229 = 0U;
-        this->__PVT__myCounter__DOT___GEN_230 = 0U;
-        this->__PVT__myCounter__DOT___GEN_231 = 0U;
-        this->__PVT__myCounter__DOT___GEN_232 = 0U;
-        this->__PVT__myCounter__DOT___GEN_227 = 0U;
-        this->__PVT__myCounter__DOT___GEN_228 = 0U;
-        this->__PVT__myCounter__DOT___GEN_225 = 0U;
-        this->__PVT__myCounter__DOT___GEN_226 = 0U;
-        this->__PVT__myCounter__DOT___GEN_220 = 0U;
-        this->__PVT__myCounter__DOT___GEN_221 = 0U;
-        this->__PVT__myCounter__DOT___GEN_222 = 0U;
-        this->__PVT__myCounter__DOT___GEN_223 = 0U;
-        this->__PVT__myCounter__DOT___GEN_224 = 0U;
-    }
-    if (vlTOPp->FlexDPU__DOT__Statvalid) {
-        this->__PVT___GEN_79 = this->__PVT__myMuxes__DOT__dest_3;
-        this->__PVT___GEN_44 = this->__PVT__myMuxes__DOT__mux_0;
-        this->__PVT___GEN_78 = this->__PVT__myMuxes__DOT__dest_2;
-    } else {
-        this->__PVT___GEN_79 = 0U;
-        this->__PVT___GEN_44 = 0U;
-        this->__PVT___GEN_78 = 0U;
-    }
     this->__PVT__Distribution__DOT___GEN_85 = ((3U 
                                                 == 
                                                 ((IData)(vlTOPp->FlexDPU__DOT__Statvalid)
@@ -5709,19 +5659,9 @@ void VFlexDPU_PathFinder::_settle__TOP__FlexDPU__DOT__PathFinder_2__35(VFlexDPU_
                                                        : 0U))
                                                      ? this->__PVT__Distribution__DOT__Idex_1
                                                      : this->__PVT__Distribution__DOT__Idex_0)));
-    if (vlTOPp->FlexDPU__DOT__Statvalid) {
-        this->__PVT___GEN_76 = this->__PVT__myMuxes__DOT__dest_0;
-        this->__PVT___GEN_77 = this->__PVT__myMuxes__DOT__dest_1;
-        this->__PVT___GEN_47 = this->__PVT__myMuxes__DOT__mux_3;
-        this->__PVT___GEN_46 = this->__PVT__myMuxes__DOT__mux_2;
-        this->__PVT___GEN_45 = this->__PVT__myMuxes__DOT__mux_1;
-    } else {
-        this->__PVT___GEN_76 = 0U;
-        this->__PVT___GEN_77 = 0U;
-        this->__PVT___GEN_47 = 0U;
-        this->__PVT___GEN_46 = 0U;
-        this->__PVT___GEN_45 = 0U;
-    }
+    this->__PVT__Distribution__DOT___io_validIteration_T_2 
+        = ((3U == this->__PVT__Distribution__DOT__i) 
+           & (3U == this->__PVT__Distribution__DOT__j));
     this->__PVT__myCounter__DOT___GEN_23 = (((1U == 
                                               (3U & this->__PVT__myCounter__DOT__i)) 
                                              & (3U 
@@ -5865,17 +5805,45 @@ void VFlexDPU_PathFinder::_settle__TOP__FlexDPU__DOT__PathFinder_2__35(VFlexDPU_
                                           : 0U)))));
     this->__PVT__myMuxes__DOT___GEN_336 = ((IData)(this->__PVT__myMuxes__DOT___T_39) 
                                            | (IData)(this->__PVT__myMuxes__DOT__jValid));
-    this->__PVT__Distribution__DOT__e = ((IData)(this->__PVT__Distribution__DOT___io_validIteration_T_2) 
-                                         & ((this->__PVT__Distribution__DOT__count 
-                                             - (IData)(1U)) 
-                                            < ((IData)(vlTOPp->FlexDPU__DOT__Statvalid)
-                                                ? 2U
-                                                : 0U)));
     this->__PVT__Distribution__DOT__part3_io_mat_3_3 
         = (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
             & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
             ? (0xffffU & this->__PVT__myCounter__DOT___GEN_235)
             : 0U);
+    this->__PVT__Distribution__DOT__part3__DOT___GEN_80 
+        = (((1U == (3U & this->__PVT__Distribution__DOT__part3__DOT__i)) 
+            & (0U == (3U & this->__PVT__Distribution__DOT__part3__DOT__j)))
+            ? (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
+                & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
+                ? (0xffffU & this->__PVT__myCounter__DOT___GEN_224)
+                : 0U) : (((0U == (3U & this->__PVT__Distribution__DOT__part3__DOT__i)) 
+                          & (3U == (3U & this->__PVT__Distribution__DOT__part3__DOT__j)))
+                          ? (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
+                              & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
+                              ? (0xffffU & this->__PVT__myCounter__DOT___GEN_223)
+                              : 0U) : (((0U == (3U 
+                                                & this->__PVT__Distribution__DOT__part3__DOT__i)) 
+                                        & (2U == (3U 
+                                                  & this->__PVT__Distribution__DOT__part3__DOT__j)))
+                                        ? (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
+                                            & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
+                                            ? (0xffffU 
+                                               & this->__PVT__myCounter__DOT___GEN_222)
+                                            : 0U) : 
+                                       (((0U == (3U 
+                                                 & this->__PVT__Distribution__DOT__part3__DOT__i)) 
+                                         & (1U == (3U 
+                                                   & this->__PVT__Distribution__DOT__part3__DOT__j)))
+                                         ? (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
+                                             & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
+                                             ? (0xffffU 
+                                                & this->__PVT__myCounter__DOT___GEN_221)
+                                             : 0U) : 
+                                        (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
+                                          & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
+                                          ? (0xffffU 
+                                             & this->__PVT__myCounter__DOT___GEN_220)
+                                          : 0U)))));
     this->__PVT__Distribution__DOT___GEN_6 = (((1U 
                                                 == 
                                                 (3U 
@@ -5949,40 +5917,6 @@ void VFlexDPU_PathFinder::_settle__TOP__FlexDPU__DOT__PathFinder_2__35(VFlexDPU_
                                                        : 
                                                       (0xffffU 
                                                        & this->__PVT__myCounter__DOT___GEN_220)))))));
-    this->__PVT__Distribution__DOT__part3__DOT___GEN_80 
-        = (((1U == (3U & this->__PVT__Distribution__DOT__part3__DOT__i)) 
-            & (0U == (3U & this->__PVT__Distribution__DOT__part3__DOT__j)))
-            ? (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
-                & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
-                ? (0xffffU & this->__PVT__myCounter__DOT___GEN_224)
-                : 0U) : (((0U == (3U & this->__PVT__Distribution__DOT__part3__DOT__i)) 
-                          & (3U == (3U & this->__PVT__Distribution__DOT__part3__DOT__j)))
-                          ? (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
-                              & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
-                              ? (0xffffU & this->__PVT__myCounter__DOT___GEN_223)
-                              : 0U) : (((0U == (3U 
-                                                & this->__PVT__Distribution__DOT__part3__DOT__i)) 
-                                        & (2U == (3U 
-                                                  & this->__PVT__Distribution__DOT__part3__DOT__j)))
-                                        ? (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
-                                            & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
-                                            ? (0xffffU 
-                                               & this->__PVT__myCounter__DOT___GEN_222)
-                                            : 0U) : 
-                                       (((0U == (3U 
-                                                 & this->__PVT__Distribution__DOT__part3__DOT__i)) 
-                                         & (1U == (3U 
-                                                   & this->__PVT__Distribution__DOT__part3__DOT__j)))
-                                         ? (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
-                                             & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
-                                             ? (0xffffU 
-                                                & this->__PVT__myCounter__DOT___GEN_221)
-                                             : 0U) : 
-                                        (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
-                                          & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
-                                          ? (0xffffU 
-                                             & this->__PVT__myCounter__DOT___GEN_220)
-                                          : 0U)))));
     this->__PVT__Distribution__DOT__part3_io_IDex = 
         (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
           & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
@@ -5992,6 +5926,12 @@ void VFlexDPU_PathFinder::_settle__TOP__FlexDPU__DOT__PathFinder_2__35(VFlexDPU_
         ((IData)(this->__PVT__Distribution__DOT__c)
           ? this->__PVT__Distribution__DOT___GEN_85
           : 0U);
+    this->__PVT__Distribution__DOT__e = ((IData)(this->__PVT__Distribution__DOT___io_validIteration_T_2) 
+                                         & ((this->__PVT__Distribution__DOT__count 
+                                             - (IData)(1U)) 
+                                            < ((IData)(vlTOPp->FlexDPU__DOT__Statvalid)
+                                                ? 2U
+                                                : 0U)));
     this->__PVT__myCounter__DOT___GEN_30 = (((3U == 
                                               (3U & this->__PVT__myCounter__DOT__i)) 
                                              & (2U 
@@ -6153,6 +6093,35 @@ void VFlexDPU_PathFinder::_settle__TOP__FlexDPU__DOT__PathFinder_2__35(VFlexDPU_
                                               ? this->__PVT__Distribution__DOT__part2__DOT__b_1_1
                                               : 0U)
                                           : this->__PVT__Distribution__DOT__part3__DOT___GEN_25)))));
+    this->__PVT__Distribution__DOT__part3__DOT___GEN_84 
+        = (((2U == (3U & this->__PVT__Distribution__DOT__part3__DOT__i)) 
+            & (0U == (3U & this->__PVT__Distribution__DOT__part3__DOT__j)))
+            ? (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
+                & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
+                ? (0xffffU & this->__PVT__myCounter__DOT___GEN_228)
+                : 0U) : (((1U == (3U & this->__PVT__Distribution__DOT__part3__DOT__i)) 
+                          & (3U == (3U & this->__PVT__Distribution__DOT__part3__DOT__j)))
+                          ? (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
+                              & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
+                              ? (0xffffU & this->__PVT__myCounter__DOT___GEN_227)
+                              : 0U) : (((1U == (3U 
+                                                & this->__PVT__Distribution__DOT__part3__DOT__i)) 
+                                        & (2U == (3U 
+                                                  & this->__PVT__Distribution__DOT__part3__DOT__j)))
+                                        ? (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
+                                            & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
+                                            ? (0xffffU 
+                                               & this->__PVT__myCounter__DOT___GEN_226)
+                                            : 0U) : 
+                                       (((1U == (3U 
+                                                 & this->__PVT__Distribution__DOT__part3__DOT__i)) 
+                                         & (1U == (3U 
+                                                   & this->__PVT__Distribution__DOT__part3__DOT__j)))
+                                         ? (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
+                                             & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
+                                             ? (0xffffU 
+                                                & this->__PVT__myCounter__DOT___GEN_225)
+                                             : 0U) : this->__PVT__Distribution__DOT__part3__DOT___GEN_80))));
     this->__PVT__Distribution__DOT___GEN_12 = (((3U 
                                                  == 
                                                  (3U 
@@ -6224,35 +6193,6 @@ void VFlexDPU_PathFinder::_settle__TOP__FlexDPU__DOT__PathFinder_2__35(VFlexDPU_
                                                        (0xffffU 
                                                         & this->__PVT__myCounter__DOT___GEN_227)
                                                         : this->__PVT__Distribution__DOT___GEN_6))))));
-    this->__PVT__Distribution__DOT__part3__DOT___GEN_84 
-        = (((2U == (3U & this->__PVT__Distribution__DOT__part3__DOT__i)) 
-            & (0U == (3U & this->__PVT__Distribution__DOT__part3__DOT__j)))
-            ? (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
-                & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
-                ? (0xffffU & this->__PVT__myCounter__DOT___GEN_228)
-                : 0U) : (((1U == (3U & this->__PVT__Distribution__DOT__part3__DOT__i)) 
-                          & (3U == (3U & this->__PVT__Distribution__DOT__part3__DOT__j)))
-                          ? (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
-                              & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
-                              ? (0xffffU & this->__PVT__myCounter__DOT___GEN_227)
-                              : 0U) : (((1U == (3U 
-                                                & this->__PVT__Distribution__DOT__part3__DOT__i)) 
-                                        & (2U == (3U 
-                                                  & this->__PVT__Distribution__DOT__part3__DOT__j)))
-                                        ? (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
-                                            & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
-                                            ? (0xffffU 
-                                               & this->__PVT__myCounter__DOT___GEN_226)
-                                            : 0U) : 
-                                       (((1U == (3U 
-                                                 & this->__PVT__Distribution__DOT__part3__DOT__i)) 
-                                         & (1U == (3U 
-                                                   & this->__PVT__Distribution__DOT__part3__DOT__j)))
-                                         ? (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
-                                             & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
-                                             ? (0xffffU 
-                                                & this->__PVT__myCounter__DOT___GEN_225)
-                                             : 0U) : this->__PVT__Distribution__DOT__part3__DOT___GEN_80))));
     this->__PVT__Distribution__DOT__part3__DOT___GEN_55 
         = ((((IData)(this->__PVT__Distribution__DOT__part3_io_i_valid) 
              & (0U == this->__PVT__Distribution__DOT__part3__DOT__i)) 
@@ -6323,6 +6263,35 @@ void VFlexDPU_PathFinder::_settle__TOP__FlexDPU__DOT__PathFinder_2__35(VFlexDPU_
                                               ? this->__PVT__Distribution__DOT__part2__DOT__b_2_2
                                               : 0U)
                                           : this->__PVT__Distribution__DOT__part3__DOT___GEN_30)))));
+    this->__PVT__Distribution__DOT__part3__DOT___GEN_88 
+        = (((3U == (3U & this->__PVT__Distribution__DOT__part3__DOT__i)) 
+            & (0U == (3U & this->__PVT__Distribution__DOT__part3__DOT__j)))
+            ? (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
+                & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
+                ? (0xffffU & this->__PVT__myCounter__DOT___GEN_232)
+                : 0U) : (((2U == (3U & this->__PVT__Distribution__DOT__part3__DOT__i)) 
+                          & (3U == (3U & this->__PVT__Distribution__DOT__part3__DOT__j)))
+                          ? (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
+                              & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
+                              ? (0xffffU & this->__PVT__myCounter__DOT___GEN_231)
+                              : 0U) : (((2U == (3U 
+                                                & this->__PVT__Distribution__DOT__part3__DOT__i)) 
+                                        & (2U == (3U 
+                                                  & this->__PVT__Distribution__DOT__part3__DOT__j)))
+                                        ? (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
+                                            & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
+                                            ? (0xffffU 
+                                               & this->__PVT__myCounter__DOT___GEN_230)
+                                            : 0U) : 
+                                       (((2U == (3U 
+                                                 & this->__PVT__Distribution__DOT__part3__DOT__i)) 
+                                         & (1U == (3U 
+                                                   & this->__PVT__Distribution__DOT__part3__DOT__j)))
+                                         ? (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
+                                             & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
+                                             ? (0xffffU 
+                                                & this->__PVT__myCounter__DOT___GEN_229)
+                                             : 0U) : this->__PVT__Distribution__DOT__part3__DOT___GEN_84))));
     this->__PVT__Distribution__DOT___GEN_15 = (((3U 
                                                  == 
                                                  (3U 
@@ -6358,35 +6327,6 @@ void VFlexDPU_PathFinder::_settle__TOP__FlexDPU__DOT__PathFinder_2__35(VFlexDPU_
                                                     (0xffffU 
                                                      & this->__PVT__myCounter__DOT___GEN_233)
                                                      : this->__PVT__Distribution__DOT___GEN_12)));
-    this->__PVT__Distribution__DOT__part3__DOT___GEN_88 
-        = (((3U == (3U & this->__PVT__Distribution__DOT__part3__DOT__i)) 
-            & (0U == (3U & this->__PVT__Distribution__DOT__part3__DOT__j)))
-            ? (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
-                & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
-                ? (0xffffU & this->__PVT__myCounter__DOT___GEN_232)
-                : 0U) : (((2U == (3U & this->__PVT__Distribution__DOT__part3__DOT__i)) 
-                          & (3U == (3U & this->__PVT__Distribution__DOT__part3__DOT__j)))
-                          ? (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
-                              & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
-                              ? (0xffffU & this->__PVT__myCounter__DOT___GEN_231)
-                              : 0U) : (((2U == (3U 
-                                                & this->__PVT__Distribution__DOT__part3__DOT__i)) 
-                                        & (2U == (3U 
-                                                  & this->__PVT__Distribution__DOT__part3__DOT__j)))
-                                        ? (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
-                                            & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
-                                            ? (0xffffU 
-                                               & this->__PVT__myCounter__DOT___GEN_230)
-                                            : 0U) : 
-                                       (((2U == (3U 
-                                                 & this->__PVT__Distribution__DOT__part3__DOT__i)) 
-                                         & (1U == (3U 
-                                                   & this->__PVT__Distribution__DOT__part3__DOT__j)))
-                                         ? (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
-                                             & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
-                                             ? (0xffffU 
-                                                & this->__PVT__myCounter__DOT___GEN_229)
-                                             : 0U) : this->__PVT__Distribution__DOT__part3__DOT___GEN_84))));
     this->__PVT__Distribution__DOT__part2__DOT___GEN_28 
         = (((3U == (3U & this->__PVT__Distribution__DOT__part2_io_IDex)) 
             & (0U == (3U & this->__PVT__Distribution__DOT__part2__DOT__j)))
@@ -8352,8 +8292,8 @@ void VFlexDPU_PathFinder::_settle__TOP__FlexDPU__DOT__PathFinder_2__35(VFlexDPU_
     }
 }
 
-void VFlexDPU_PathFinder::_settle__TOP__FlexDPU__DOT__PathFinder_3__36(VFlexDPU__Syms* __restrict vlSymsp) {
-    VL_DEBUG_IF(VL_DBG_MSGF("+        VFlexDPU_PathFinder::_settle__TOP__FlexDPU__DOT__PathFinder_3__36\n"); );
+void VFlexDPU_PathFinder::_settle__TOP__FlexDPU__DOT__PathFinder_3__12(VFlexDPU__Syms* __restrict vlSymsp) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+        VFlexDPU_PathFinder::_settle__TOP__FlexDPU__DOT__PathFinder_3__12\n"); );
     VFlexDPU* const __restrict vlTOPp VL_ATTR_UNUSED = vlSymsp->TOPp;
     // Body
     this->__PVT__myMuxes__DOT___k_T_1 = ((IData)(1U) 
@@ -8393,8 +8333,6 @@ void VFlexDPU_PathFinder::_settle__TOP__FlexDPU__DOT__PathFinder_3__36(VFlexDPU_
     this->__PVT__Distribution__DOT__part2_io_Ovalid 
         = ((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
            & (IData)(this->__PVT__Distribution__DOT__part2__DOT__io_Ovalid_REG));
-    this->__PVT__Distribution__DOT__part2__DOT___a_T_1 
-        = ((IData)(1U) + this->__PVT__Distribution__DOT__part2__DOT__a);
     this->__PVT__myMuxes__DOT___T_36 = (1U & (~ (IData)(this->__PVT__myMuxes__DOT__jValid)));
     this->__PVT__myMuxes__DOT___j_T_1 = ((IData)(1U) 
                                          + this->__PVT__myMuxes__DOT__j);
@@ -8402,12 +8340,12 @@ void VFlexDPU_PathFinder::_settle__TOP__FlexDPU__DOT__PathFinder_3__36(VFlexDPU_
                                             ? ((IData)(1U) 
                                                + this->__PVT__myMuxes__DOT__i)
                                             : this->__PVT__myMuxes__DOT__i);
-    this->__PVT__Distribution__DOT___io_validIteration_T_1 
-        = (3U == this->__PVT__Distribution__DOT__j);
+    this->__PVT__Distribution__DOT__part2__DOT___a_T_1 
+        = ((IData)(1U) + this->__PVT__Distribution__DOT__part2__DOT__a);
+    this->__PVT__myMuxes__DOT___T_39 = ((3U == this->__PVT__myMuxes__DOT__j) 
+                                        & (3U == this->__PVT__myMuxes__DOT__i));
     this->__PVT__Distribution__DOT___i_T_1 = ((IData)(1U) 
                                               + this->__PVT__Distribution__DOT__i);
-    this->__PVT__Distribution__DOT___j_T_1 = ((IData)(1U) 
-                                              + this->__PVT__Distribution__DOT__j);
     this->__PVT__Distribution__DOT___GEN_33 = ((0U 
                                                 == 
                                                 (3U 
@@ -8432,6 +8370,49 @@ void VFlexDPU_PathFinder::_settle__TOP__FlexDPU__DOT__PathFinder_3__36(VFlexDPU_
                                                  & this->__PVT__Distribution__DOT__count))
                                                 ? this->__PVT__Distribution__DOT__i
                                                 : this->__PVT__Distribution__DOT__Idex_3);
+    if (this->__PVT__myCounter_io_start_REG) {
+        this->__PVT__myCounter__DOT___GEN_235 = this->__PVT__myCounter__DOT__counterRegs1_3_3;
+        this->__PVT__myCounter__DOT___GEN_233 = this->__PVT__myCounter__DOT__counterRegs1_3_1;
+        this->__PVT__myCounter__DOT___GEN_234 = this->__PVT__myCounter__DOT__counterRegs1_3_2;
+        this->__PVT__myCounter__DOT___GEN_229 = this->__PVT__myCounter__DOT__counterRegs1_2_1;
+        this->__PVT__myCounter__DOT___GEN_230 = this->__PVT__myCounter__DOT__counterRegs1_2_2;
+        this->__PVT__myCounter__DOT___GEN_231 = this->__PVT__myCounter__DOT__counterRegs1_2_3;
+        this->__PVT__myCounter__DOT___GEN_232 = this->__PVT__myCounter__DOT__counterRegs1_3_0;
+        this->__PVT__myCounter__DOT___GEN_227 = this->__PVT__myCounter__DOT__counterRegs1_1_3;
+        this->__PVT__myCounter__DOT___GEN_228 = this->__PVT__myCounter__DOT__counterRegs1_2_0;
+        this->__PVT__myCounter__DOT___GEN_225 = this->__PVT__myCounter__DOT__counterRegs1_1_1;
+        this->__PVT__myCounter__DOT___GEN_226 = this->__PVT__myCounter__DOT__counterRegs1_1_2;
+        this->__PVT__myCounter__DOT___GEN_220 = this->__PVT__myCounter__DOT__counterRegs1_0_0;
+        this->__PVT__myCounter__DOT___GEN_221 = this->__PVT__myCounter__DOT__counterRegs1_0_1;
+        this->__PVT__myCounter__DOT___GEN_222 = this->__PVT__myCounter__DOT__counterRegs1_0_2;
+        this->__PVT__myCounter__DOT___GEN_223 = this->__PVT__myCounter__DOT__counterRegs1_0_3;
+        this->__PVT__myCounter__DOT___GEN_224 = this->__PVT__myCounter__DOT__counterRegs1_1_0;
+        this->__PVT__myCounter_io_valid = (((3U == this->__PVT__myCounter__DOT__i) 
+                                            & (3U == this->__PVT__myCounter__DOT__j)) 
+                                           & 1U);
+    } else {
+        this->__PVT__myCounter__DOT___GEN_235 = 0U;
+        this->__PVT__myCounter__DOT___GEN_233 = 0U;
+        this->__PVT__myCounter__DOT___GEN_234 = 0U;
+        this->__PVT__myCounter__DOT___GEN_229 = 0U;
+        this->__PVT__myCounter__DOT___GEN_230 = 0U;
+        this->__PVT__myCounter__DOT___GEN_231 = 0U;
+        this->__PVT__myCounter__DOT___GEN_232 = 0U;
+        this->__PVT__myCounter__DOT___GEN_227 = 0U;
+        this->__PVT__myCounter__DOT___GEN_228 = 0U;
+        this->__PVT__myCounter__DOT___GEN_225 = 0U;
+        this->__PVT__myCounter__DOT___GEN_226 = 0U;
+        this->__PVT__myCounter__DOT___GEN_220 = 0U;
+        this->__PVT__myCounter__DOT___GEN_221 = 0U;
+        this->__PVT__myCounter__DOT___GEN_222 = 0U;
+        this->__PVT__myCounter__DOT___GEN_223 = 0U;
+        this->__PVT__myCounter__DOT___GEN_224 = 0U;
+        this->__PVT__myCounter_io_valid = 0U;
+    }
+    this->__PVT__Distribution__DOT___j_T_1 = ((IData)(1U) 
+                                              + this->__PVT__Distribution__DOT__j);
+    this->__PVT__Distribution__DOT__ab = ((3U >= this->__PVT__Distribution__DOT__i) 
+                                          & (3U > this->__PVT__Distribution__DOT__j));
     this->__PVT__Distribution__DOT___GEN_37 = ((0U 
                                                 == 
                                                 (3U 
@@ -8456,58 +8437,6 @@ void VFlexDPU_PathFinder::_settle__TOP__FlexDPU__DOT__PathFinder_3__36(VFlexDPU_
                                                  & this->__PVT__Distribution__DOT__count))
                                                 ? this->__PVT__Distribution__DOT__j
                                                 : this->__PVT__Distribution__DOT__Jdex_3);
-    this->__PVT__myMuxes__DOT___T_39 = ((3U == this->__PVT__myMuxes__DOT__j) 
-                                        & (3U == this->__PVT__myMuxes__DOT__i));
-    this->__PVT__Distribution__DOT___io_validIteration_T_2 
-        = ((3U == this->__PVT__Distribution__DOT__i) 
-           & (3U == this->__PVT__Distribution__DOT__j));
-    this->__PVT__myCounter_io_valid = ((IData)(this->__PVT__myCounter_io_start_REG) 
-                                       & ((3U == this->__PVT__myCounter__DOT__i) 
-                                          & (3U == this->__PVT__myCounter__DOT__j)));
-    if (this->__PVT__myCounter_io_start_REG) {
-        this->__PVT__myCounter__DOT___GEN_235 = this->__PVT__myCounter__DOT__counterRegs1_3_3;
-        this->__PVT__myCounter__DOT___GEN_233 = this->__PVT__myCounter__DOT__counterRegs1_3_1;
-        this->__PVT__myCounter__DOT___GEN_234 = this->__PVT__myCounter__DOT__counterRegs1_3_2;
-        this->__PVT__myCounter__DOT___GEN_229 = this->__PVT__myCounter__DOT__counterRegs1_2_1;
-        this->__PVT__myCounter__DOT___GEN_230 = this->__PVT__myCounter__DOT__counterRegs1_2_2;
-        this->__PVT__myCounter__DOT___GEN_231 = this->__PVT__myCounter__DOT__counterRegs1_2_3;
-        this->__PVT__myCounter__DOT___GEN_232 = this->__PVT__myCounter__DOT__counterRegs1_3_0;
-        this->__PVT__myCounter__DOT___GEN_227 = this->__PVT__myCounter__DOT__counterRegs1_1_3;
-        this->__PVT__myCounter__DOT___GEN_228 = this->__PVT__myCounter__DOT__counterRegs1_2_0;
-        this->__PVT__myCounter__DOT___GEN_225 = this->__PVT__myCounter__DOT__counterRegs1_1_1;
-        this->__PVT__myCounter__DOT___GEN_226 = this->__PVT__myCounter__DOT__counterRegs1_1_2;
-        this->__PVT__myCounter__DOT___GEN_220 = this->__PVT__myCounter__DOT__counterRegs1_0_0;
-        this->__PVT__myCounter__DOT___GEN_221 = this->__PVT__myCounter__DOT__counterRegs1_0_1;
-        this->__PVT__myCounter__DOT___GEN_222 = this->__PVT__myCounter__DOT__counterRegs1_0_2;
-        this->__PVT__myCounter__DOT___GEN_223 = this->__PVT__myCounter__DOT__counterRegs1_0_3;
-        this->__PVT__myCounter__DOT___GEN_224 = this->__PVT__myCounter__DOT__counterRegs1_1_0;
-    } else {
-        this->__PVT__myCounter__DOT___GEN_235 = 0U;
-        this->__PVT__myCounter__DOT___GEN_233 = 0U;
-        this->__PVT__myCounter__DOT___GEN_234 = 0U;
-        this->__PVT__myCounter__DOT___GEN_229 = 0U;
-        this->__PVT__myCounter__DOT___GEN_230 = 0U;
-        this->__PVT__myCounter__DOT___GEN_231 = 0U;
-        this->__PVT__myCounter__DOT___GEN_232 = 0U;
-        this->__PVT__myCounter__DOT___GEN_227 = 0U;
-        this->__PVT__myCounter__DOT___GEN_228 = 0U;
-        this->__PVT__myCounter__DOT___GEN_225 = 0U;
-        this->__PVT__myCounter__DOT___GEN_226 = 0U;
-        this->__PVT__myCounter__DOT___GEN_220 = 0U;
-        this->__PVT__myCounter__DOT___GEN_221 = 0U;
-        this->__PVT__myCounter__DOT___GEN_222 = 0U;
-        this->__PVT__myCounter__DOT___GEN_223 = 0U;
-        this->__PVT__myCounter__DOT___GEN_224 = 0U;
-    }
-    if (vlTOPp->FlexDPU__DOT__Statvalid) {
-        this->__PVT___GEN_79 = this->__PVT__myMuxes__DOT__dest_3;
-        this->__PVT___GEN_44 = this->__PVT__myMuxes__DOT__mux_0;
-        this->__PVT___GEN_78 = this->__PVT__myMuxes__DOT__dest_2;
-    } else {
-        this->__PVT___GEN_79 = 0U;
-        this->__PVT___GEN_44 = 0U;
-        this->__PVT___GEN_78 = 0U;
-    }
     this->__PVT__Distribution__DOT___GEN_85 = ((3U 
                                                 == 
                                                 ((IData)(vlTOPp->FlexDPU__DOT__Statvalid)
@@ -8529,19 +8458,9 @@ void VFlexDPU_PathFinder::_settle__TOP__FlexDPU__DOT__PathFinder_3__36(VFlexDPU_
                                                        : 0U))
                                                      ? this->__PVT__Distribution__DOT__Idex_1
                                                      : this->__PVT__Distribution__DOT__Idex_0)));
-    if (vlTOPp->FlexDPU__DOT__Statvalid) {
-        this->__PVT___GEN_76 = this->__PVT__myMuxes__DOT__dest_0;
-        this->__PVT___GEN_77 = this->__PVT__myMuxes__DOT__dest_1;
-        this->__PVT___GEN_47 = this->__PVT__myMuxes__DOT__mux_3;
-        this->__PVT___GEN_46 = this->__PVT__myMuxes__DOT__mux_2;
-        this->__PVT___GEN_45 = this->__PVT__myMuxes__DOT__mux_1;
-    } else {
-        this->__PVT___GEN_76 = 0U;
-        this->__PVT___GEN_77 = 0U;
-        this->__PVT___GEN_47 = 0U;
-        this->__PVT___GEN_46 = 0U;
-        this->__PVT___GEN_45 = 0U;
-    }
+    this->__PVT__Distribution__DOT___io_validIteration_T_2 
+        = ((3U == this->__PVT__Distribution__DOT__i) 
+           & (3U == this->__PVT__Distribution__DOT__j));
     this->__PVT__myCounter__DOT___GEN_23 = (((1U == 
                                               (3U & this->__PVT__myCounter__DOT__i)) 
                                              & (3U 
@@ -8685,17 +8604,45 @@ void VFlexDPU_PathFinder::_settle__TOP__FlexDPU__DOT__PathFinder_3__36(VFlexDPU_
                                           : 0U)))));
     this->__PVT__myMuxes__DOT___GEN_336 = ((IData)(this->__PVT__myMuxes__DOT___T_39) 
                                            | (IData)(this->__PVT__myMuxes__DOT__jValid));
-    this->__PVT__Distribution__DOT__e = ((IData)(this->__PVT__Distribution__DOT___io_validIteration_T_2) 
-                                         & ((this->__PVT__Distribution__DOT__count 
-                                             - (IData)(1U)) 
-                                            < ((IData)(vlTOPp->FlexDPU__DOT__Statvalid)
-                                                ? 3U
-                                                : 0U)));
     this->__PVT__Distribution__DOT__part3_io_mat_3_3 
         = (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
             & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
             ? (0xffffU & this->__PVT__myCounter__DOT___GEN_235)
             : 0U);
+    this->__PVT__Distribution__DOT__part3__DOT___GEN_80 
+        = (((1U == (3U & this->__PVT__Distribution__DOT__part3__DOT__i)) 
+            & (0U == (3U & this->__PVT__Distribution__DOT__part3__DOT__j)))
+            ? (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
+                & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
+                ? (0xffffU & this->__PVT__myCounter__DOT___GEN_224)
+                : 0U) : (((0U == (3U & this->__PVT__Distribution__DOT__part3__DOT__i)) 
+                          & (3U == (3U & this->__PVT__Distribution__DOT__part3__DOT__j)))
+                          ? (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
+                              & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
+                              ? (0xffffU & this->__PVT__myCounter__DOT___GEN_223)
+                              : 0U) : (((0U == (3U 
+                                                & this->__PVT__Distribution__DOT__part3__DOT__i)) 
+                                        & (2U == (3U 
+                                                  & this->__PVT__Distribution__DOT__part3__DOT__j)))
+                                        ? (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
+                                            & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
+                                            ? (0xffffU 
+                                               & this->__PVT__myCounter__DOT___GEN_222)
+                                            : 0U) : 
+                                       (((0U == (3U 
+                                                 & this->__PVT__Distribution__DOT__part3__DOT__i)) 
+                                         & (1U == (3U 
+                                                   & this->__PVT__Distribution__DOT__part3__DOT__j)))
+                                         ? (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
+                                             & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
+                                             ? (0xffffU 
+                                                & this->__PVT__myCounter__DOT___GEN_221)
+                                             : 0U) : 
+                                        (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
+                                          & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
+                                          ? (0xffffU 
+                                             & this->__PVT__myCounter__DOT___GEN_220)
+                                          : 0U)))));
     this->__PVT__Distribution__DOT___GEN_6 = (((1U 
                                                 == 
                                                 (3U 
@@ -8769,40 +8716,6 @@ void VFlexDPU_PathFinder::_settle__TOP__FlexDPU__DOT__PathFinder_3__36(VFlexDPU_
                                                        : 
                                                       (0xffffU 
                                                        & this->__PVT__myCounter__DOT___GEN_220)))))));
-    this->__PVT__Distribution__DOT__part3__DOT___GEN_80 
-        = (((1U == (3U & this->__PVT__Distribution__DOT__part3__DOT__i)) 
-            & (0U == (3U & this->__PVT__Distribution__DOT__part3__DOT__j)))
-            ? (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
-                & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
-                ? (0xffffU & this->__PVT__myCounter__DOT___GEN_224)
-                : 0U) : (((0U == (3U & this->__PVT__Distribution__DOT__part3__DOT__i)) 
-                          & (3U == (3U & this->__PVT__Distribution__DOT__part3__DOT__j)))
-                          ? (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
-                              & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
-                              ? (0xffffU & this->__PVT__myCounter__DOT___GEN_223)
-                              : 0U) : (((0U == (3U 
-                                                & this->__PVT__Distribution__DOT__part3__DOT__i)) 
-                                        & (2U == (3U 
-                                                  & this->__PVT__Distribution__DOT__part3__DOT__j)))
-                                        ? (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
-                                            & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
-                                            ? (0xffffU 
-                                               & this->__PVT__myCounter__DOT___GEN_222)
-                                            : 0U) : 
-                                       (((0U == (3U 
-                                                 & this->__PVT__Distribution__DOT__part3__DOT__i)) 
-                                         & (1U == (3U 
-                                                   & this->__PVT__Distribution__DOT__part3__DOT__j)))
-                                         ? (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
-                                             & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
-                                             ? (0xffffU 
-                                                & this->__PVT__myCounter__DOT___GEN_221)
-                                             : 0U) : 
-                                        (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
-                                          & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
-                                          ? (0xffffU 
-                                             & this->__PVT__myCounter__DOT___GEN_220)
-                                          : 0U)))));
     this->__PVT__Distribution__DOT__part3_io_IDex = 
         (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
           & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
@@ -8812,6 +8725,12 @@ void VFlexDPU_PathFinder::_settle__TOP__FlexDPU__DOT__PathFinder_3__36(VFlexDPU_
         ((IData)(this->__PVT__Distribution__DOT__c)
           ? this->__PVT__Distribution__DOT___GEN_85
           : 0U);
+    this->__PVT__Distribution__DOT__e = ((IData)(this->__PVT__Distribution__DOT___io_validIteration_T_2) 
+                                         & ((this->__PVT__Distribution__DOT__count 
+                                             - (IData)(1U)) 
+                                            < ((IData)(vlTOPp->FlexDPU__DOT__Statvalid)
+                                                ? 3U
+                                                : 0U)));
     this->__PVT__myCounter__DOT___GEN_30 = (((3U == 
                                               (3U & this->__PVT__myCounter__DOT__i)) 
                                              & (2U 
@@ -8973,6 +8892,35 @@ void VFlexDPU_PathFinder::_settle__TOP__FlexDPU__DOT__PathFinder_3__36(VFlexDPU_
                                               ? this->__PVT__Distribution__DOT__part2__DOT__b_1_1
                                               : 0U)
                                           : this->__PVT__Distribution__DOT__part3__DOT___GEN_25)))));
+    this->__PVT__Distribution__DOT__part3__DOT___GEN_84 
+        = (((2U == (3U & this->__PVT__Distribution__DOT__part3__DOT__i)) 
+            & (0U == (3U & this->__PVT__Distribution__DOT__part3__DOT__j)))
+            ? (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
+                & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
+                ? (0xffffU & this->__PVT__myCounter__DOT___GEN_228)
+                : 0U) : (((1U == (3U & this->__PVT__Distribution__DOT__part3__DOT__i)) 
+                          & (3U == (3U & this->__PVT__Distribution__DOT__part3__DOT__j)))
+                          ? (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
+                              & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
+                              ? (0xffffU & this->__PVT__myCounter__DOT___GEN_227)
+                              : 0U) : (((1U == (3U 
+                                                & this->__PVT__Distribution__DOT__part3__DOT__i)) 
+                                        & (2U == (3U 
+                                                  & this->__PVT__Distribution__DOT__part3__DOT__j)))
+                                        ? (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
+                                            & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
+                                            ? (0xffffU 
+                                               & this->__PVT__myCounter__DOT___GEN_226)
+                                            : 0U) : 
+                                       (((1U == (3U 
+                                                 & this->__PVT__Distribution__DOT__part3__DOT__i)) 
+                                         & (1U == (3U 
+                                                   & this->__PVT__Distribution__DOT__part3__DOT__j)))
+                                         ? (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
+                                             & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
+                                             ? (0xffffU 
+                                                & this->__PVT__myCounter__DOT___GEN_225)
+                                             : 0U) : this->__PVT__Distribution__DOT__part3__DOT___GEN_80))));
     this->__PVT__Distribution__DOT___GEN_12 = (((3U 
                                                  == 
                                                  (3U 
@@ -9044,35 +8992,6 @@ void VFlexDPU_PathFinder::_settle__TOP__FlexDPU__DOT__PathFinder_3__36(VFlexDPU_
                                                        (0xffffU 
                                                         & this->__PVT__myCounter__DOT___GEN_227)
                                                         : this->__PVT__Distribution__DOT___GEN_6))))));
-    this->__PVT__Distribution__DOT__part3__DOT___GEN_84 
-        = (((2U == (3U & this->__PVT__Distribution__DOT__part3__DOT__i)) 
-            & (0U == (3U & this->__PVT__Distribution__DOT__part3__DOT__j)))
-            ? (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
-                & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
-                ? (0xffffU & this->__PVT__myCounter__DOT___GEN_228)
-                : 0U) : (((1U == (3U & this->__PVT__Distribution__DOT__part3__DOT__i)) 
-                          & (3U == (3U & this->__PVT__Distribution__DOT__part3__DOT__j)))
-                          ? (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
-                              & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
-                              ? (0xffffU & this->__PVT__myCounter__DOT___GEN_227)
-                              : 0U) : (((1U == (3U 
-                                                & this->__PVT__Distribution__DOT__part3__DOT__i)) 
-                                        & (2U == (3U 
-                                                  & this->__PVT__Distribution__DOT__part3__DOT__j)))
-                                        ? (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
-                                            & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
-                                            ? (0xffffU 
-                                               & this->__PVT__myCounter__DOT___GEN_226)
-                                            : 0U) : 
-                                       (((1U == (3U 
-                                                 & this->__PVT__Distribution__DOT__part3__DOT__i)) 
-                                         & (1U == (3U 
-                                                   & this->__PVT__Distribution__DOT__part3__DOT__j)))
-                                         ? (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
-                                             & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
-                                             ? (0xffffU 
-                                                & this->__PVT__myCounter__DOT___GEN_225)
-                                             : 0U) : this->__PVT__Distribution__DOT__part3__DOT___GEN_80))));
     this->__PVT__Distribution__DOT__part3__DOT___GEN_55 
         = ((((IData)(this->__PVT__Distribution__DOT__part3_io_i_valid) 
              & (0U == this->__PVT__Distribution__DOT__part3__DOT__i)) 
@@ -9143,6 +9062,35 @@ void VFlexDPU_PathFinder::_settle__TOP__FlexDPU__DOT__PathFinder_3__36(VFlexDPU_
                                               ? this->__PVT__Distribution__DOT__part2__DOT__b_2_2
                                               : 0U)
                                           : this->__PVT__Distribution__DOT__part3__DOT___GEN_30)))));
+    this->__PVT__Distribution__DOT__part3__DOT___GEN_88 
+        = (((3U == (3U & this->__PVT__Distribution__DOT__part3__DOT__i)) 
+            & (0U == (3U & this->__PVT__Distribution__DOT__part3__DOT__j)))
+            ? (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
+                & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
+                ? (0xffffU & this->__PVT__myCounter__DOT___GEN_232)
+                : 0U) : (((2U == (3U & this->__PVT__Distribution__DOT__part3__DOT__i)) 
+                          & (3U == (3U & this->__PVT__Distribution__DOT__part3__DOT__j)))
+                          ? (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
+                              & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
+                              ? (0xffffU & this->__PVT__myCounter__DOT___GEN_231)
+                              : 0U) : (((2U == (3U 
+                                                & this->__PVT__Distribution__DOT__part3__DOT__i)) 
+                                        & (2U == (3U 
+                                                  & this->__PVT__Distribution__DOT__part3__DOT__j)))
+                                        ? (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
+                                            & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
+                                            ? (0xffffU 
+                                               & this->__PVT__myCounter__DOT___GEN_230)
+                                            : 0U) : 
+                                       (((2U == (3U 
+                                                 & this->__PVT__Distribution__DOT__part3__DOT__i)) 
+                                         & (1U == (3U 
+                                                   & this->__PVT__Distribution__DOT__part3__DOT__j)))
+                                         ? (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
+                                             & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
+                                             ? (0xffffU 
+                                                & this->__PVT__myCounter__DOT___GEN_229)
+                                             : 0U) : this->__PVT__Distribution__DOT__part3__DOT___GEN_84))));
     this->__PVT__Distribution__DOT___GEN_15 = (((3U 
                                                  == 
                                                  (3U 
@@ -9178,35 +9126,6 @@ void VFlexDPU_PathFinder::_settle__TOP__FlexDPU__DOT__PathFinder_3__36(VFlexDPU_
                                                     (0xffffU 
                                                      & this->__PVT__myCounter__DOT___GEN_233)
                                                      : this->__PVT__Distribution__DOT___GEN_12)));
-    this->__PVT__Distribution__DOT__part3__DOT___GEN_88 
-        = (((3U == (3U & this->__PVT__Distribution__DOT__part3__DOT__i)) 
-            & (0U == (3U & this->__PVT__Distribution__DOT__part3__DOT__j)))
-            ? (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
-                & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
-                ? (0xffffU & this->__PVT__myCounter__DOT___GEN_232)
-                : 0U) : (((2U == (3U & this->__PVT__Distribution__DOT__part3__DOT__i)) 
-                          & (3U == (3U & this->__PVT__Distribution__DOT__part3__DOT__j)))
-                          ? (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
-                              & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
-                              ? (0xffffU & this->__PVT__myCounter__DOT___GEN_231)
-                              : 0U) : (((2U == (3U 
-                                                & this->__PVT__Distribution__DOT__part3__DOT__i)) 
-                                        & (2U == (3U 
-                                                  & this->__PVT__Distribution__DOT__part3__DOT__j)))
-                                        ? (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
-                                            & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
-                                            ? (0xffffU 
-                                               & this->__PVT__myCounter__DOT___GEN_230)
-                                            : 0U) : 
-                                       (((2U == (3U 
-                                                 & this->__PVT__Distribution__DOT__part3__DOT__i)) 
-                                         & (1U == (3U 
-                                                   & this->__PVT__Distribution__DOT__part3__DOT__j)))
-                                         ? (((3U == this->__PVT__Distribution__DOT__part2__DOT__j) 
-                                             & (~ (IData)(this->__PVT__Distribution__DOT__part2_io_Ovalid)))
-                                             ? (0xffffU 
-                                                & this->__PVT__myCounter__DOT___GEN_229)
-                                             : 0U) : this->__PVT__Distribution__DOT__part3__DOT___GEN_84))));
     this->__PVT__Distribution__DOT__part2__DOT___GEN_28 
         = (((3U == (3U & this->__PVT__Distribution__DOT__part2_io_IDex)) 
             & (0U == (3U & this->__PVT__Distribution__DOT__part2__DOT__j)))

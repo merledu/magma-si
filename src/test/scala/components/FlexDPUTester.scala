@@ -21,8 +21,8 @@ val inputData = Seq(
            Seq(6,3,0,0,0),
            Seq(7,1,0,0,0)
         ) 
-        for ( i <- 0 until config.MaxRows){
-          for ( j <- 0 until config.MaxCols){
+        for ( i <- 0 until 4){
+          for ( j <- 0 until 4){
               c.io.Streaming_matrix(i)(j).poke(inputData2(i)(j).U)
           }
         }

@@ -6,9 +6,9 @@ import chisel3.util._
 class Benes(implicit val config: MagmasiConfig) extends Module {
   val LEVELS   : Int = (2 * (math.log(config.NUM_PES) / math.log(2))).toInt + 1
   val io = IO(new Bundle {
-    val i_data_bus2 = Input(Vec(config.NUM_PES, UInt(config.DATA_TYPE.W)))
+    val i_data_bus2 = Input(Vec(config.NUM_PES,  UInt(config.DATA_TYPE.W)))
     val i_data_bus1  = Input(Vec(config.NUM_PES, UInt(config.DATA_TYPE.W)))
-    val i_mux_bus   = Input(Vec(config.NUM_PES, UInt((LEVELS-1).W)))
+    val i_mux_bus   = Input(Vec(config.NUM_PES,Vec(config.NUM_PES, UInt((LEVELS-1).W))))
     val o_dist_bus1  = Output(Vec(config.NUM_PES, UInt(config.DATA_TYPE.W)))
     val o_dist_bus2  = Output(Vec(config.NUM_PES, UInt(config.DATA_TYPE.W)))
   })
@@ -53,17 +53,19 @@ class Benes(implicit val config: MagmasiConfig) extends Module {
 
   for (i <- 1 until config.NUM_PES ) {
 
+    for (j <- 0 until config.NUM_PES){
+
     when ( io.i_data_bus2(i) =/= 0.U) {
 
-        when (io.i_mux_bus(i).orR){
+        when (io.i_mux_bus(i)(j).orR){
 
             when(io.i_data_bus2(i) === io.i_data_bus2(i-1)) {
 
-                val parsedindexvalue = BenesLogic(io.i_data_bus2(i),(inputArrayIndexes(i)._2).U - 1.U,io.i_mux_bus(i))//function call for same input numbers with same indexes  
+                val parsedindexvalue = BenesLogic(io.i_data_bus2(i),(inputArrayIndexes(i)._2).U - 1.U,io.i_mux_bus(i)(j))//function call for same input numbers with same indexes  
                 parse_array(parsedindexvalue) := io.i_data_bus2(i)
             }.otherwise {
 
-                val parsedindexvalue = BenesLogic(io.i_data_bus2(i),(inputArrayIndexes(i)._2).U,io.i_mux_bus(i))// normal function call
+                val parsedindexvalue = BenesLogic(io.i_data_bus2(i),(inputArrayIndexes(i)._2).U,io.i_mux_bus(i)(j))// normal function call
                 parse_array(parsedindexvalue) := io.i_data_bus2(i)
             }    
 
@@ -81,18 +83,19 @@ class Benes(implicit val config: MagmasiConfig) extends Module {
         }
 
     }.otherwise{
-
         parse_array(config.NUM_PES.U ) := 0.U   
 
     }
 
   }
+}
 
-  when (io.i_data_bus2(0) =/= 0.U){
+  when (io.i_data_bus2(0) =/= 0.U){ 
 
-    val parsedindexvalue = BenesLogic(io.i_data_bus2(0),(inputArrayIndexes(0)._2).U,io.i_mux_bus(0))
-    parse_array(parsedindexvalue) := io.i_data_bus2(0)
-
+    for (i <- 0 until 4){
+        val parsedindexvalue = BenesLogic(io.i_data_bus2(0),(inputArrayIndexes(0)._2).U,io.i_mux_bus(0)(i))
+        parse_array(parsedindexvalue) := io.i_data_bus2(0)
+    }
   }.otherwise{
 
     parse_array(config.NUM_PES) := 0.U

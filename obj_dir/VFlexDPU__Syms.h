@@ -12,7 +12,6 @@
 // INCLUDE MODULE CLASSES
 #include "VFlexDPU.h"
 #include "VFlexDPU_PathFinder.h"
-#include "VFlexDPU_Benes.h"
 
 // SYMS CLASS
 class VFlexDPU__Syms : public VerilatedSyms {
@@ -28,24 +27,8 @@ class VFlexDPU__Syms : public VerilatedSyms {
     VFlexDPU*                      TOPp;
     VFlexDPU_PathFinder            TOP__FlexDPU__DOT__PathFinder;
     VFlexDPU_PathFinder            TOP__FlexDPU__DOT__PathFinder_1;
-    VFlexDPU_PathFinder            TOP__FlexDPU__DOT__PathFinder_10;
-    VFlexDPU_PathFinder            TOP__FlexDPU__DOT__PathFinder_11;
-    VFlexDPU_PathFinder            TOP__FlexDPU__DOT__PathFinder_12;
-    VFlexDPU_PathFinder            TOP__FlexDPU__DOT__PathFinder_13;
-    VFlexDPU_PathFinder            TOP__FlexDPU__DOT__PathFinder_14;
-    VFlexDPU_PathFinder            TOP__FlexDPU__DOT__PathFinder_15;
     VFlexDPU_PathFinder            TOP__FlexDPU__DOT__PathFinder_2;
     VFlexDPU_PathFinder            TOP__FlexDPU__DOT__PathFinder_3;
-    VFlexDPU_PathFinder            TOP__FlexDPU__DOT__PathFinder_4;
-    VFlexDPU_PathFinder            TOP__FlexDPU__DOT__PathFinder_5;
-    VFlexDPU_PathFinder            TOP__FlexDPU__DOT__PathFinder_6;
-    VFlexDPU_PathFinder            TOP__FlexDPU__DOT__PathFinder_7;
-    VFlexDPU_PathFinder            TOP__FlexDPU__DOT__PathFinder_8;
-    VFlexDPU_PathFinder            TOP__FlexDPU__DOT__PathFinder_9;
-    VFlexDPU_Benes                 TOP__FlexDPU__DOT__flexdpecom4_1__DOT__my_Benes;
-    VFlexDPU_Benes                 TOP__FlexDPU__DOT__flexdpecom4_2__DOT__my_Benes;
-    VFlexDPU_Benes                 TOP__FlexDPU__DOT__flexdpecom4_3__DOT__my_Benes;
-    VFlexDPU_Benes                 TOP__FlexDPU__DOT__flexdpecom4__DOT__my_Benes;
     
     // CREATORS
     VFlexDPU__Syms(VFlexDPU* topp, const char* namep);

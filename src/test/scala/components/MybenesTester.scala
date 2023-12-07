@@ -10,15 +10,15 @@ class MybenesTester extends AnyFreeSpec with ChiselScalatestTester {
     "Benes Test" in {
         implicit val config = MagmasiConfig()
         test(new Benes()).withAnnotations(Seq(VerilatorBackendAnnotation)) { dut =>
-          val inputData = Seq(2,1,6,7)
+          val inputData = Seq(1,0,0,0)
           for (i <- 0 until 4) {
             dut.io.i_data_bus2(i).poke(inputData(i).U)
             //dut.io.i_data_bus2(i).poke(inputData(i).U)
           }
-          dut.io.i_mux_bus(0).poke(15.U)
-          dut.io.i_mux_bus(1).poke(3.U)
-          dut.io.i_mux_bus(2).poke(7.U)
-          dut.io.i_mux_bus(3).poke(7.U)
+          dut.io.i_mux_bus(0)(0).poke(8.U)
+          dut.io.i_mux_bus(0)(1).poke(1.U)
+          dut.io.i_mux_bus(0)(2).poke(11.U)
+          dut.io.i_mux_bus(0)(3).poke(3.U)
           val LEVELS   : Int = (2 * (math.log(4) / math.log(2))).toInt + 1
           dut.clock.step(50)
         }

@@ -114,6 +114,8 @@ part2.io.mat := io.matrix
         i := i + 1.U
     }
 
+    val ab = ( i <= (config.MaxRows-1).U && (j < (config.MaxCols-1).U))
+    dontTouch(ab)
     when ( i <= (config.MaxRows-1).U && (j < (config.MaxCols-1).U)){
         j := j + 1.U
     }.elsewhen(i === (config.MaxRows-1).U && (j === (config.MaxCols-1).U)){

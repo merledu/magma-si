@@ -7,12 +7,15 @@ import chisel3.stage.ChiselStage
 class FlexDPU(implicit val config:MagmasiConfig) extends Module{
     val io = IO(new Bundle{
         val CalFDE = Input(UInt(32.W))
-        val i_vn = Input(Vec(config.NUM_PES, UInt(config.LOG2_PES.W)))
+        //val i_vn = Input(Vec(config.NUM_PES, UInt(config.LOG2_PES.W)))
         val i_stationary = Input(Bool())
         val i_data_valid = Input(Bool())
         val Stationary_matrix = Input(Vec(config.MaxRows, Vec(config.MaxCols, UInt(config.DATA_TYPE.W))))
         val Streaming_matrix = Input(Vec(config.MaxRows, Vec(config.MaxCols, UInt(config.DATA_TYPE.W))))
+        val output = Output(Vec(config.MaxRows, Vec(config.MaxCols, UInt(config.DATA_TYPE.W))))
     }) 
+
+    io.output := WireInit(VecInit(Seq.fill(config.MaxRows)(VecInit(Seq.fill(config.MaxCols)(0.U(config.DATA_TYPE.W))))))
     val used_FlexDPE = Reg(Vec(config.NoOfFDPE, UInt(32.W)))
     dontTouch(used_FlexDPE)
     val equalDistribution = io.CalFDE / config.NoOfFDPE.U
@@ -71,10 +74,10 @@ class FlexDPU(implicit val config:MagmasiConfig) extends Module{
     val IterationIndex = RegInit(0.U(32.W))
 
 
-    val PF = VecInit(Seq.fill(16)(Module(new PathFinder).io))
+    val PF = VecInit(Seq.fill(4)(Module(new PathFinder).io))
     //val FDPE = VecInit(Seq.fill(1)(Module(new flexdpecom4).io))
   //val FDPE =
-    for ( i <- 0 until 16){
+    for ( i <- 0 until 4){
         PF(i).DataValid := 0.B
         PF(i).Stationary_matrix := WireInit(VecInit(Seq.fill(config.MaxRows)(VecInit(Seq.fill(config.MaxCols)(0.U(config.DATA_TYPE.W))))))
         PF(i).NoDPE := 0.B
@@ -94,7 +97,7 @@ class FlexDPU(implicit val config:MagmasiConfig) extends Module{
 
     when(Statvalid){
         //val PF1 = Module(new PathFinder)
-        for (i <- 0 until 16){
+        for (i <- 0 until 4){
         PF(i).DataValid := Statvalid
         PF(i).Stationary_matrix := io.Stationary_matrix
         PF(i).NoDPE := i.U // 0 means we need the src, muxes a/c to 1st DPE
@@ -111,7 +114,7 @@ class FlexDPU(implicit val config:MagmasiConfig) extends Module{
         //     FDPE(i).i_data_valid := 1.B
         //     FDPE(i).Stationary_matrix := io.Stationary_matrix
         //     for (j <- 0 until 4){
-        //         //when (PF(0).PF_Valid){
+        //         //wheWireInit(VecInit(Seq.fill(config.MaxRows)(VecInit(Seq.fill(config.MaxCols)(0.U(config.DATA_TYPE.W))))))n (PF(0).PF_Valid){
         //             FDPE(i).i_mux_bus(j) := PF(i).i_mux_bus(j)
         //             FDPE(i).i_data_bus(j) := PF(i).Source(j)
         //             FDPE(i).i_data_bus2(j) := PF(i).destination(j)

@@ -7,8 +7,8 @@ case class MagmasiConfig (
     val NUM_IN  : Int = 4,
     val SEL_IN: Int = 2,
     val NUM_OUT: Int =2,
-    val MaxRows :Int = 4,
-    val MaxCols :Int = 4,
+    val MaxRows :Int = 8,
+    val MaxCols :Int = 8,
     val LOG2_PES :Int = 5,
     val NoOfFDPE :Int = 2
 
