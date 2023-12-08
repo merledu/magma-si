@@ -10,7 +10,8 @@ class ivncontrol4(implicit val Config: MagmasiConfig) extends Module {
     val Stationary_matrix = Input(Vec(Config.MaxRows, Vec(Config.MaxCols, UInt(Config.DATA_TYPE.W))))
     val o_vn = Output(Vec(Config.NUM_PES, UInt(Config.LOG2_PES.W)))         //row: Int = 3,col: Int = 3
     val o_vn2 = Output(Vec(Config.NUM_PES, UInt(Config.LOG2_PES.W)))
-    val ProcessValid = Output(Bool())    
+    val ProcessValid = Output(Bool())   
+    val validpin = Input(Bool())    
   })
 
     val i_vn = RegInit(VecInit(Seq.fill(Config.NUM_PES)(0.U(Config.LOG2_PES.W))))
@@ -37,7 +38,7 @@ class ivncontrol4(implicit val Config: MagmasiConfig) extends Module {
 
     val k = RegNext(i === 7.U && (j === 7.U))
 
-
+when(io.validpin === true.B){
     when (i === 7.U && (j === 7.U)){
         io.ProcessValid := RegNext(k)
     }.otherwise{
@@ -54,7 +55,7 @@ class ivncontrol4(implicit val Config: MagmasiConfig) extends Module {
     dontTouch(count) 
 
 
-    mat(i)(j) := io.Stationary_matrix(i)(j)
+      mat(i)(j) := io.Stationary_matrix(i)(j)
     when(valid1=== false.B){
         when ( io.Stationary_matrix(i)(j) =/= 0.U){
             count(i) := count(i)+1.U
@@ -63,7 +64,7 @@ class ivncontrol4(implicit val Config: MagmasiConfig) extends Module {
     }
     
 
-    when (count(7) >= 8.U) {
+   when (count(7) >= 8.U) {
         valid1 := true.B 
     
     }
@@ -80,22 +81,24 @@ class ivncontrol4(implicit val Config: MagmasiConfig) extends Module {
     }else {
       rowcount(i) := 0.U
     }
-     //    when(io.Stationary_matrix(1)(3) =/= 0.U){
+        //  when(io.Stationary_matrix(7)(7) =/= 0.U){
+
+        // when(io.Stationary_matrix(6)(6) =/= 0.U){
 
             
 
-     //        // when((io.Stationary_matrix(1)(0) =/= 0.U && io.Stationary_matrix(1)(1) === 0.U && io.Stationary_matrix(1)(2) === 0.U) || (io.Stationary_matrix(1)(1) =/= 0.U && io.Stationary_matrix(1)(0) === 0.U && io.Stationary_matrix(1)(2) === 0.U)||(io.Stationary_matrix(1)(2) =/= 0.U && io.Stationary_matrix(1)(1) === 0.U && io.Stationary_matrix(1)(0) === 0.U)){
-     //        //     rowcount(1) := count(1) - 2.U
-     //        // }.elsewhen((io.Stationary_matrix(1)(0) =/= 0.U && io.Stationary_matrix(1)(1) =/= 0.U) || (io.Stationary_matrix(1)(0) =/= 0.U &&  io.Stationary_matrix(1)(2) =/= 0.U) || (io.Stationary_matrix(1)(1) =/= 0.U && io.Stationary_matrix(1)(2) =/= 0.U)){
-     //        //     rowcount(1) := count(1) - 1.U
-     //        // }.elsewhen((io.Stationary_matrix(1)(0) =/= 0.U && io.Stationary_matrix(1)(1) =/= 0.U && io.Stationary_matrix(1)(2) === 0.U)|| (io.Stationary_matrix(1)(0) =/= 0.U && io.Stationary_matrix(1)(1) === 0.U && io.Stationary_matrix(1)(2) =/= 0.U ) || ( io.Stationary_matrix(1)(0) === 0.U && io.Stationary_matrix(1)(1) =/= 0.U && io.Stationary_matrix(1)(2) =/= 0.U) ){
-     //        //     rowcount(1) := count(1) - 3.U
-     //        // }
-     //    // }.otherwise{
+        // //     when((io.Stationary_matrix(1)(0) =/= 0.U && io.Stationary_matrix(1)(1) === 0.U && io.Stationary_matrix(1)(2) === 0.U) || (io.Stationary_matrix(1)(1) =/= 0.U && io.Stationary_matrix(1)(0) === 0.U && io.Stationary_matrix(1)(2) === 0.U)||(io.Stationary_matrix(1)(2) =/= 0.U && io.Stationary_matrix(1)(1) === 0.U && io.Stationary_matrix(1)(0) === 0.U)){
+        // //         rowcount(1) := count(1) - 2.U
+        // //     }.elsewhen((io.Stationary_matrix(1)(0) =/= 0.U && io.Stationary_matrix(1)(1) =/= 0.U) || (io.Stationary_matrix(1)(0) =/= 0.U &&  io.Stationary_matrix(1)(2) =/= 0.U) || (io.Stationary_matrix(1)(1) =/= 0.U && io.Stationary_matrix(1)(2) =/= 0.U)){
+        // //         rowcount(1) := count(1) - 1.U
+        // //     }.elsewhen((io.Stationary_matrix(1)(0) =/= 0.U && io.Stationary_matrix(1)(1) =/= 0.U && io.Stationary_matrix(1)(2) === 0.U)|| (io.Stationary_matrix(1)(0) =/= 0.U && io.Stationary_matrix(1)(1) === 0.U && io.Stationary_matrix(1)(2) =/= 0.U ) || ( io.Stationary_matrix(1)(0) === 0.U && io.Stationary_matrix(1)(1) =/= 0.U && io.Stationary_matrix(1)(2) =/= 0.U) ){
+        // //         rowcount(1) := count(1) - 3.U
+        // //     }
+        // // }.otherwise{
 
         
-     //    rowcount(i) := count(i)  
-     //    }
+        // rowcount(i) := count(i)  
+        // }
     }}
 
     dontTouch(rowcount)
@@ -116,7 +119,9 @@ class ivncontrol4(implicit val Config: MagmasiConfig) extends Module {
     }
     dontTouch(j)
     dontTouch(i)
-
+}.otherwise{
+    io.ProcessValid := 0.B
+}
 
     io.o_vn := i_vn
     io.o_vn2 := i_vn2
