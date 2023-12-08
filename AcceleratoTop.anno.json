@@ -3830,5 +3830,13 @@
   {
     "class":"firrtl.transforms.BlackBoxTargetDirAnno",
     "targetDir":"."
+  },
+  {
+    "class":"firrtl.transforms.CombinationalPath",
+    "sink":"~AcceleratoTop|AcceleratoTop>io_wbs_dat_o",
+    "sources":[
+      "~AcceleratoTop|AcceleratoTop>io_wbs_we_i",
+      "~AcceleratoTop|AcceleratoTop>io_wbs_adr_i"
+    ]
   }
 ]
