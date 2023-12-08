@@ -23,6 +23,8 @@ class AcceleratoTop(implicit val config:MagmasiConfig) extends Module{
     val stateReg = RegInit(idl)
 
     val ACCL = Module(new Top)
+    ACCL.io.Stationary_matrix := WireInit(VecInit(Seq.fill(config.MaxRows)(VecInit(Seq.fill(config.MaxCols)(0.U)))))
+    ACCL.io.Streaming_matrix := WireInit(VecInit(Seq.fill(config.MaxRows)(VecInit(Seq.fill(config.MaxCols)(0.U)))))
     val MMU  = Module(new MMU)
 
     MMU.io.top_adr := io.wbs_adr_i
@@ -195,6 +197,9 @@ class AcceleratoTop(implicit val config:MagmasiConfig) extends Module{
         stateReg := idl
         MatStrDone := 0.B
     }
+
+    io.wbs_ack_o := 0.B
+    io.wbs_dat_o := 0.U
     
 
 }
