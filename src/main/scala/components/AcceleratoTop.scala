@@ -31,6 +31,9 @@ class AcceleratoTop(implicit val config:MagmasiConfig) extends Module{
     MMU.io.top_we  := io.wbs_we_i
     MMU.io.top_dat := io.wbs_dat_i
     MMU.io.top_val := io.wbs_adr_i >= 12.U
+    io.wbs_dat_o   := Mux(MMU.io.top_out.valid,MMU.io.top_out.bits,0.U) 
+    io.wbs_ack_o := 0.B
+
 
     MMU.io.acc_adr := 0.U
     MMU.io.acc_we  := 0.U
@@ -198,8 +201,7 @@ class AcceleratoTop(implicit val config:MagmasiConfig) extends Module{
         MatStrDone := 0.B
     }
 
-    io.wbs_ack_o := 0.B
-    io.wbs_dat_o := 0.U
+    // io.wbs_dat_o := MatC
     
 
 }
