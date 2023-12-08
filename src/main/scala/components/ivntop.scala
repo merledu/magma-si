@@ -40,7 +40,7 @@ class ivntop(implicit val Config: MagmasiConfig) extends Module {
     val station7 = my_stationary.io.o_Stationary_matrix7
     val station8 = my_stationary.io.o_Stationary_matrix8
 
-  when(counter >=10.U){
+  when(counter >=0.U){
     valid := true.B
   }
   when(counter >=20.U){
@@ -68,7 +68,7 @@ class ivntop(implicit val Config: MagmasiConfig) extends Module {
 
   dontTouch(valid)
 
-  when(valid === true.B){
+//   when(valid === true.B){
     val my_ivn1= Module(new ivncontrol4())
     my_ivn1.io.Stationary_matrix := station1 
 
@@ -151,9 +151,9 @@ class ivntop(implicit val Config: MagmasiConfig) extends Module {
     i_vn(13) := i_vn14
     i_vn(14) := i_vn15
     i_vn(15) := i_vn16
-  }.otherwise{
-    io.ProcessValid := 0.U
-  }
+//   }.otherwise{
+//     io.ProcessValid := 0.U
+//   }
 
   
   counter := counter + 1.U
