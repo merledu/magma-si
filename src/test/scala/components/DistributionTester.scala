@@ -10,13 +10,13 @@ class DistributionTester extends FreeSpec with ChiselScalatestTester {
     "Distribution" in {
                 implicit val config = MagmasiConfig()
 
-        test(new Distribution) { a =>
+        test(new Distribution2) { a =>
 
 
         val inputData = Seq(
-           Seq(0, 0, 0, 1),
-            Seq(2, 0, 3,4),
-           Seq(0, 0, 0, 0),
+           Seq(1, 0, 0, 0),
+            Seq(2, 0, 3,0),
+           Seq(0, 0, 4, 0),
            Seq(1, 2, 3, 4)
         ) 
             a.io.s.poke(0.U)
