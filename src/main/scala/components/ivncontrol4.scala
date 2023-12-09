@@ -11,7 +11,7 @@ class ivncontrol4(implicit val Config: MagmasiConfig) extends Module {
     val o_vn = Output(Vec(Config.NUM_PES, UInt(Config.LOG2_PES.W)))         //row: Int = 3,col: Int = 3
     val o_vn2 = Output(Vec(Config.NUM_PES, UInt(Config.LOG2_PES.W)))
     val ProcessValid = Output(Bool())   
-    val validpin = Input(Bool())    
+    //val validpin = Input(Bool())    
   })
 
     val i_vn = RegInit(VecInit(Seq.fill(Config.NUM_PES)(0.U(Config.LOG2_PES.W))))
@@ -38,7 +38,7 @@ class ivncontrol4(implicit val Config: MagmasiConfig) extends Module {
 
     val k = RegNext(i === 7.U && (j === 7.U))
 
-when(io.validpin === true.B){
+//when(io.validpin === true.B){
     when (i === 7.U && (j === 7.U)){
         io.ProcessValid := RegNext(k)
     }.otherwise{
@@ -56,18 +56,18 @@ when(io.validpin === true.B){
 
 
       mat(i)(j) := io.Stationary_matrix(i)(j)
-    when(valid1=== false.B){
+    // when(valid1=== false.B){
         when ( io.Stationary_matrix(i)(j) =/= 0.U){
             count(i) := count(i)+1.U
             dontTouch(count)
     }
-    }
+    //}
     
 
-   when (count(7) >= 8.U) {
-        valid1 := true.B 
+//    when (count(7) >= 8.U) {
+//         valid1 := true.B 
     
-    }
+//     }
     dontTouch(valid1)
 
     when ( i === (Config.MaxRows - 1).U && (j === (Config.MaxCols - 1).U)){
@@ -119,9 +119,9 @@ when(io.validpin === true.B){
     }
     dontTouch(j)
     dontTouch(i)
-}.otherwise{
-    io.ProcessValid := 0.B
-}
+// }.otherwise{
+//     io.ProcessValid := 0.B
+// }
 
     io.o_vn := i_vn
     io.o_vn2 := i_vn2
