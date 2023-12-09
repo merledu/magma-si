@@ -13,8 +13,7 @@ class PathFinder(implicit val config: MagmasiConfig) extends Module {
     val PF_Valid = Output(Bool())
     val NoDPE = Input(UInt(32.W))
     val DataValid = Input(Bool())
-    val iteration = Output(UInt(32.W))
-    val validIteration = Output(Bool())
+
   })
 
 when (io.DataValid){
@@ -34,12 +33,12 @@ when (io.DataValid){
   myCounter.io.Stationary_matrix := io.Stationary_matrix
   myCounter.io.Streaming_matrix := io.Streaming_matrix
 
-  val Distribution = Module(new Distribution)
+  val Distribution = Module(new Distribution2)
 
   Distribution.io.valid := myCounter.io.valid
   Distribution.io.s := io.NoDPE
-  io.iteration := Distribution.io.iteration
-  io.validIteration := Distribution.io.validIteration
+  // io.iteration := Distribution.io.iteration
+  // io.validIteration := Distribution.io.validIteration
   Distribution.io.matrix := myCounter.io.counterMatrix1.bits
 // }.otherwise{
 //     Distribution.io.s := 0.U
@@ -76,8 +75,7 @@ when (io.DataValid){
   io.Source := myMuxes.io.Source
   io.destination := myMuxes.io.destination
 }.otherwise{
-  io.validIteration := 0.B
-  io.iteration := 0.U
+
   io.PF_Valid := 0.B
   io.i_mux_bus := WireInit(VecInit(Seq.fill(config.MaxRows*config.MaxCols)(0.U(32.W))))
   io.Source := WireInit(VecInit(Seq.fill(config.MaxRows*config.MaxCols)(0.U(32.W))))

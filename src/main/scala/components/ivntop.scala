@@ -10,12 +10,9 @@ class ivntop(implicit val Config: MagmasiConfig) extends Module {
   val io = IO(new Bundle {
     val ProcessValid = Output(Bool())
     val Stationary_matrix = Input(Vec(Config.MaxRows, Vec(Config.MaxCols, UInt(Config.DATA_TYPE.W))))
-    val o_vn = Output(Vec(2, Vec(Config.NUM_PES, UInt(5.W))))
-
-
-
+    val o_vn = Output(Vec(Config.NoOfFDPE, Vec(Config.NUM_PES, UInt(5.W))))
   })
-  val i_vn = Reg(Vec(2, Vec(Config.NUM_PES, UInt(5.W))))
+  val i_vn = Reg(Vec(Config.NoOfFDPE, Vec(Config.NUM_PES, UInt(5.W))))
    io.o_vn := i_vn
     var valid = WireDefault(false.B)
     var valid1 = WireDefault(false.B)

@@ -2949,6 +2949,10 @@
   },
   {
     "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~ivntop|ivntop>valid"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
     "target":"~ivntop|stationary>count"
   },
   {
