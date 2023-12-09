@@ -84,6 +84,10 @@ class FlexDPU(implicit val config:MagmasiConfig) extends Module{
         PF(i).Streaming_matrix := WireInit(VecInit(Seq.fill(config.MaxRows)(0.U(32.W))))
     }
 
+    val ivn = Module(new ivntop).io
+    ivn.Stationary_matrix := io.Stationary_matrix
+
+
     // for ( i <- 0 until 1){
     //     FDPE(i).i_stationary := 0.B
     //     FDPE(i).i_data_valid := 0.B
@@ -95,7 +99,7 @@ class FlexDPU(implicit val config:MagmasiConfig) extends Module{
 
 
 
-    when(Statvalid){
+    when(Statvalid && ivn.ProcessValid){
         //val PF1 = Module(new PathFinder)
         for (i <- 0 until 16){
         PF(i).DataValid := Statvalid
@@ -115,7 +119,7 @@ class FlexDPU(implicit val config:MagmasiConfig) extends Module{
             FDPE(i).Stationary_matrix := io.Stationary_matrix
             for (j <- 0 until 4){
                 //wheWireInit(VecInit(Seq.fill(config.MaxRows)(VecInit(Seq.fill(config.MaxCols)(0.U(config.DATA_TYPE.W))))))n (PF(0).PF_Valid){
-                    FDPE(i).i_vn(j) := 1.U
+                    FDPE(i).i_vn(j) := ivn.o_vn(i)(j)
                     FDPE(i).i_mux_bus(j) := PF(i).i_mux_bus(j)
                     FDPE(i).i_data_bus(j) := PF(i).Source(j)
                     FDPE(i).i_data_bus2(j) := PF(i).destination(j)
