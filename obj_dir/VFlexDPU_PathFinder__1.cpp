@@ -172,23 +172,23 @@ VL_INLINE_OPT void VFlexDPU_PathFinder::_sequent__TOP__FlexDPU__DOT__PathFinder_
     VFlexDPU* const __restrict vlTOPp VL_ATTR_UNUSED = vlSymsp->TOPp;
     // Body
     if (vlTOPp->FlexDPU__DOT__PathFinder_io_DataValid) {
-        this->__PVT___GEN_277 = this->__PVT__myMuxes__DOT__dest_3;
-        this->__PVT___GEN_146 = this->__PVT__myMuxes__DOT__mux_0;
-        this->__PVT___GEN_276 = this->__PVT__myMuxes__DOT__dest_2;
-        this->__PVT___GEN_274 = this->__PVT__myMuxes__DOT__dest_0;
-        this->__PVT___GEN_275 = this->__PVT__myMuxes__DOT__dest_1;
-        this->__PVT___GEN_149 = this->__PVT__myMuxes__DOT__mux_3;
-        this->__PVT___GEN_148 = this->__PVT__myMuxes__DOT__mux_2;
-        this->__PVT___GEN_147 = this->__PVT__myMuxes__DOT__mux_1;
+        this->__PVT___GEN_219 = this->__PVT__myMuxes__DOT__src_3;
+        this->__PVT___GEN_152 = this->__PVT__myMuxes__DOT__mux_0;
+        this->__PVT___GEN_218 = this->__PVT__myMuxes__DOT__src_2;
+        this->__PVT___GEN_216 = this->__PVT__myMuxes__DOT__src_0;
+        this->__PVT___GEN_217 = this->__PVT__myMuxes__DOT__src_1;
+        this->__PVT___GEN_155 = this->__PVT__myMuxes__DOT__mux_3;
+        this->__PVT___GEN_154 = this->__PVT__myMuxes__DOT__mux_2;
+        this->__PVT___GEN_153 = this->__PVT__myMuxes__DOT__mux_1;
     } else {
-        this->__PVT___GEN_277 = 0U;
-        this->__PVT___GEN_146 = 0U;
-        this->__PVT___GEN_276 = 0U;
-        this->__PVT___GEN_274 = 0U;
-        this->__PVT___GEN_275 = 0U;
-        this->__PVT___GEN_149 = 0U;
-        this->__PVT___GEN_148 = 0U;
-        this->__PVT___GEN_147 = 0U;
+        this->__PVT___GEN_219 = 0U;
+        this->__PVT___GEN_152 = 0U;
+        this->__PVT___GEN_218 = 0U;
+        this->__PVT___GEN_216 = 0U;
+        this->__PVT___GEN_217 = 0U;
+        this->__PVT___GEN_155 = 0U;
+        this->__PVT___GEN_154 = 0U;
+        this->__PVT___GEN_153 = 0U;
     }
 }
 
@@ -196,7 +196,7 @@ VL_INLINE_OPT void VFlexDPU_PathFinder::_combo__TOP__FlexDPU__DOT__PathFinder__6
     VL_DEBUG_IF(VL_DBG_MSGF("+        VFlexDPU_PathFinder::_combo__TOP__FlexDPU__DOT__PathFinder__66\n"); );
     VFlexDPU* const __restrict vlTOPp VL_ATTR_UNUSED = vlSymsp->TOPp;
     // Body
-    if (this->__PVT__Distribution_io_ProcessValid) {
+    if (this->__PVT__Distribution__DOT___GEN_486) {
         this->__PVT__myMuxes_io_mat1_6_3 = vlTOPp->FlexDPU__DOT__PathFinder_io_Stationary_matrix_6_3;
         this->__PVT__myMuxes_io_mat1_6_2 = vlTOPp->FlexDPU__DOT__PathFinder_io_Stationary_matrix_6_2;
         this->__PVT__myMuxes_io_mat1_6_0 = vlTOPp->FlexDPU__DOT__PathFinder_io_Stationary_matrix_6_0;
@@ -420,7 +420,7 @@ VL_INLINE_OPT void VFlexDPU_PathFinder::_combo__TOP__FlexDPU__DOT__PathFinder__6
                                                           & this->__PVT__myCounter__DOT__j)))
                                                       ? (IData)(vlTOPp->FlexDPU__DOT__PathFinder_io_Stationary_matrix_0_1)
                                                       : (IData)(vlTOPp->FlexDPU__DOT__PathFinder_io_Stationary_matrix_0_0))))))));
-    if (this->__PVT__Distribution_io_ProcessValid) {
+    if (this->__PVT__Distribution__DOT___GEN_486) {
         this->__PVT__myMuxes_io_mat1_0_7 = vlTOPp->FlexDPU__DOT__PathFinder_io_Stationary_matrix_0_7;
         this->__PVT__myMuxes_io_mat1_7_7 = vlTOPp->FlexDPU__DOT__PathFinder_io_Stationary_matrix_7_7;
         this->__PVT__myMuxes_io_mat1_7_6 = vlTOPp->FlexDPU__DOT__PathFinder_io_Stationary_matrix_7_6;
@@ -4516,6 +4516,7 @@ VL_INLINE_OPT void VFlexDPU_PathFinder::_sequent__TOP__FlexDPU__DOT__PathFinder_
     VL_DEBUG_IF(VL_DBG_MSGF("+        VFlexDPU_PathFinder::_sequent__TOP__FlexDPU__DOT__PathFinder_1__4\n"); );
     VFlexDPU* const __restrict vlTOPp VL_ATTR_UNUSED = vlSymsp->TOPp;
     // Body
+    this->__Vdly__delay = this->__PVT__delay;
     this->__Vdly__myMuxes__DOT__jValid = this->__PVT__myMuxes__DOT__jValid;
     this->__Vdly__myMuxes__DOT__j = this->__PVT__myMuxes__DOT__j;
     this->__Vdly__Distribution__DOT__i = this->__PVT__Distribution__DOT__i;
@@ -4525,6 +4526,15 @@ VL_INLINE_OPT void VFlexDPU_PathFinder::_sequent__TOP__FlexDPU__DOT__PathFinder_
         = this->__PVT__Distribution__DOT__part3__DOT__j;
     this->__Vdly__Distribution__DOT__part3__DOT__i 
         = this->__PVT__Distribution__DOT__part3__DOT__i;
+    if (vlTOPp->reset) {
+        this->__Vdly__delay = 0U;
+    } else {
+        if ((1U & (~ (IData)(this->__PVT__myCounter_io_valid)))) {
+            if (((0x48U > this->__PVT__delay) & (IData)(this->__PVT__high2))) {
+                this->__Vdly__delay = this->__PVT___delay_T_1;
+            }
+        }
+    }
     this->__PVT__myMuxes__DOT__prevStreaming_matrix_4 
         = this->__PVT__myMuxes_io_mat2_4;
     this->__PVT__myMuxes__DOT__prevStreaming_matrix_3 
@@ -6584,7 +6594,7 @@ VL_INLINE_OPT void VFlexDPU_PathFinder::_sequent__TOP__FlexDPU__DOT__PathFinder_
                         : ((IData)(1U) + ((0xfU == 
                                            (0xfU & (IData)(vlTOPp->FlexDPU__DOT___T_13)))
                                            ? this->__PVT__Distribution__DOT__Idex_15
-                                           : this->__PVT__Distribution__DOT___GEN_336)));
+                                           : this->__PVT__Distribution__DOT___GEN_369)));
             }
         }
     }
@@ -9018,7 +9028,7 @@ VL_INLINE_OPT void VFlexDPU_PathFinder::_sequent__TOP__FlexDPU__DOT__PathFinder_
                                 ? this->__PVT__Distribution__DOT__Jdex_14
                                 : ((0xdU == (0xfU & (IData)(vlTOPp->FlexDPU__DOT___T_13)))
                                     ? this->__PVT__Distribution__DOT__Jdex_13
-                                    : this->__PVT__Distribution__DOT___GEN_350)))
+                                    : this->__PVT__Distribution__DOT___GEN_383)))
                         : 0U);
             }
         }
@@ -9211,7 +9221,7 @@ VL_INLINE_OPT void VFlexDPU_PathFinder::_sequent__TOP__FlexDPU__DOT__PathFinder_
     if (vlTOPp->reset) {
         this->__Vdly__Distribution__DOT__i = 0U;
     } else {
-        if (this->__PVT__myCounter_io_valid) {
+        if (this->__PVT__high) {
             if (((7U > this->__PVT__Distribution__DOT__i) 
                  & (IData)(this->__PVT__Distribution__DOT___T_17))) {
                 this->__Vdly__Distribution__DOT__i 
@@ -9222,7 +9232,7 @@ VL_INLINE_OPT void VFlexDPU_PathFinder::_sequent__TOP__FlexDPU__DOT__PathFinder_
     if (vlTOPp->reset) {
         this->__Vdly__Distribution__DOT__j = 0U;
     } else {
-        if (this->__PVT__myCounter_io_valid) {
+        if (this->__PVT__high) {
             if (((7U >= this->__PVT__Distribution__DOT__i) 
                  & (7U > this->__PVT__Distribution__DOT__j))) {
                 this->__Vdly__Distribution__DOT__j 
@@ -9237,7 +9247,7 @@ VL_INLINE_OPT void VFlexDPU_PathFinder::_sequent__TOP__FlexDPU__DOT__PathFinder_
     if (vlTOPp->reset) {
         this->__PVT__Distribution__DOT__count = 0U;
     } else {
-        if (this->__PVT__myCounter_io_valid) {
+        if (this->__PVT__high) {
             if (((1U == this->__PVT__Distribution__DOT___GEN_63) 
                  & ((7U != this->__PVT__Distribution__DOT__i) 
                     | (7U != this->__PVT__Distribution__DOT__j)))) {
@@ -9249,7 +9259,7 @@ VL_INLINE_OPT void VFlexDPU_PathFinder::_sequent__TOP__FlexDPU__DOT__PathFinder_
     if (vlTOPp->reset) {
         this->__PVT__Distribution__DOT__Idex_0 = 0U;
     } else {
-        if (this->__PVT__myCounter_io_valid) {
+        if (this->__PVT__high) {
             if (((1U == this->__PVT__Distribution__DOT___GEN_63) 
                  & ((7U != this->__PVT__Distribution__DOT__i) 
                     | (7U != this->__PVT__Distribution__DOT__j)))) {
@@ -9268,7 +9278,7 @@ VL_INLINE_OPT void VFlexDPU_PathFinder::_sequent__TOP__FlexDPU__DOT__PathFinder_
     if (vlTOPp->reset) {
         this->__PVT__Distribution__DOT__Idex_1 = 0U;
     } else {
-        if (this->__PVT__myCounter_io_valid) {
+        if (this->__PVT__high) {
             if (((1U == this->__PVT__Distribution__DOT___GEN_63) 
                  & ((7U != this->__PVT__Distribution__DOT__i) 
                     | (7U != this->__PVT__Distribution__DOT__j)))) {
@@ -9287,7 +9297,7 @@ VL_INLINE_OPT void VFlexDPU_PathFinder::_sequent__TOP__FlexDPU__DOT__PathFinder_
     if (vlTOPp->reset) {
         this->__PVT__Distribution__DOT__Idex_2 = 0U;
     } else {
-        if (this->__PVT__myCounter_io_valid) {
+        if (this->__PVT__high) {
             if (((1U == this->__PVT__Distribution__DOT___GEN_63) 
                  & ((7U != this->__PVT__Distribution__DOT__i) 
                     | (7U != this->__PVT__Distribution__DOT__j)))) {
@@ -9306,7 +9316,7 @@ VL_INLINE_OPT void VFlexDPU_PathFinder::_sequent__TOP__FlexDPU__DOT__PathFinder_
     if (vlTOPp->reset) {
         this->__PVT__Distribution__DOT__Idex_3 = 0U;
     } else {
-        if (this->__PVT__myCounter_io_valid) {
+        if (this->__PVT__high) {
             if (((1U == this->__PVT__Distribution__DOT___GEN_63) 
                  & ((7U != this->__PVT__Distribution__DOT__i) 
                     | (7U != this->__PVT__Distribution__DOT__j)))) {
@@ -9325,7 +9335,7 @@ VL_INLINE_OPT void VFlexDPU_PathFinder::_sequent__TOP__FlexDPU__DOT__PathFinder_
     if (vlTOPp->reset) {
         this->__PVT__Distribution__DOT__Idex_4 = 0U;
     } else {
-        if (this->__PVT__myCounter_io_valid) {
+        if (this->__PVT__high) {
             if (((1U == this->__PVT__Distribution__DOT___GEN_63) 
                  & ((7U != this->__PVT__Distribution__DOT__i) 
                     | (7U != this->__PVT__Distribution__DOT__j)))) {
@@ -9344,7 +9354,7 @@ VL_INLINE_OPT void VFlexDPU_PathFinder::_sequent__TOP__FlexDPU__DOT__PathFinder_
     if (vlTOPp->reset) {
         this->__PVT__Distribution__DOT__Idex_5 = 0U;
     } else {
-        if (this->__PVT__myCounter_io_valid) {
+        if (this->__PVT__high) {
             if (((1U == this->__PVT__Distribution__DOT___GEN_63) 
                  & ((7U != this->__PVT__Distribution__DOT__i) 
                     | (7U != this->__PVT__Distribution__DOT__j)))) {
@@ -9363,7 +9373,7 @@ VL_INLINE_OPT void VFlexDPU_PathFinder::_sequent__TOP__FlexDPU__DOT__PathFinder_
     if (vlTOPp->reset) {
         this->__PVT__Distribution__DOT__Idex_6 = 0U;
     } else {
-        if (this->__PVT__myCounter_io_valid) {
+        if (this->__PVT__high) {
             if (((1U == this->__PVT__Distribution__DOT___GEN_63) 
                  & ((7U != this->__PVT__Distribution__DOT__i) 
                     | (7U != this->__PVT__Distribution__DOT__j)))) {
@@ -9382,7 +9392,7 @@ VL_INLINE_OPT void VFlexDPU_PathFinder::_sequent__TOP__FlexDPU__DOT__PathFinder_
     if (vlTOPp->reset) {
         this->__PVT__Distribution__DOT__Idex_7 = 0U;
     } else {
-        if (this->__PVT__myCounter_io_valid) {
+        if (this->__PVT__high) {
             if (((1U == this->__PVT__Distribution__DOT___GEN_63) 
                  & ((7U != this->__PVT__Distribution__DOT__i) 
                     | (7U != this->__PVT__Distribution__DOT__j)))) {
@@ -9401,7 +9411,7 @@ VL_INLINE_OPT void VFlexDPU_PathFinder::_sequent__TOP__FlexDPU__DOT__PathFinder_
     if (vlTOPp->reset) {
         this->__PVT__Distribution__DOT__Idex_8 = 0U;
     } else {
-        if (this->__PVT__myCounter_io_valid) {
+        if (this->__PVT__high) {
             if (((1U == this->__PVT__Distribution__DOT___GEN_63) 
                  & ((7U != this->__PVT__Distribution__DOT__i) 
                     | (7U != this->__PVT__Distribution__DOT__j)))) {
@@ -9420,7 +9430,7 @@ VL_INLINE_OPT void VFlexDPU_PathFinder::_sequent__TOP__FlexDPU__DOT__PathFinder_
     if (vlTOPp->reset) {
         this->__PVT__Distribution__DOT__Idex_9 = 0U;
     } else {
-        if (this->__PVT__myCounter_io_valid) {
+        if (this->__PVT__high) {
             if (((1U == this->__PVT__Distribution__DOT___GEN_63) 
                  & ((7U != this->__PVT__Distribution__DOT__i) 
                     | (7U != this->__PVT__Distribution__DOT__j)))) {
@@ -9439,7 +9449,7 @@ VL_INLINE_OPT void VFlexDPU_PathFinder::_sequent__TOP__FlexDPU__DOT__PathFinder_
     if (vlTOPp->reset) {
         this->__PVT__Distribution__DOT__Idex_10 = 0U;
     } else {
-        if (this->__PVT__myCounter_io_valid) {
+        if (this->__PVT__high) {
             if (((1U == this->__PVT__Distribution__DOT___GEN_63) 
                  & ((7U != this->__PVT__Distribution__DOT__i) 
                     | (7U != this->__PVT__Distribution__DOT__j)))) {
@@ -9458,7 +9468,7 @@ VL_INLINE_OPT void VFlexDPU_PathFinder::_sequent__TOP__FlexDPU__DOT__PathFinder_
     if (vlTOPp->reset) {
         this->__PVT__Distribution__DOT__Idex_11 = 0U;
     } else {
-        if (this->__PVT__myCounter_io_valid) {
+        if (this->__PVT__high) {
             if (((1U == this->__PVT__Distribution__DOT___GEN_63) 
                  & ((7U != this->__PVT__Distribution__DOT__i) 
                     | (7U != this->__PVT__Distribution__DOT__j)))) {
@@ -9477,7 +9487,7 @@ VL_INLINE_OPT void VFlexDPU_PathFinder::_sequent__TOP__FlexDPU__DOT__PathFinder_
     if (vlTOPp->reset) {
         this->__PVT__Distribution__DOT__Idex_12 = 0U;
     } else {
-        if (this->__PVT__myCounter_io_valid) {
+        if (this->__PVT__high) {
             if (((1U == this->__PVT__Distribution__DOT___GEN_63) 
                  & ((7U != this->__PVT__Distribution__DOT__i) 
                     | (7U != this->__PVT__Distribution__DOT__j)))) {
@@ -9496,7 +9506,7 @@ VL_INLINE_OPT void VFlexDPU_PathFinder::_sequent__TOP__FlexDPU__DOT__PathFinder_
     if (vlTOPp->reset) {
         this->__PVT__Distribution__DOT__Idex_13 = 0U;
     } else {
-        if (this->__PVT__myCounter_io_valid) {
+        if (this->__PVT__high) {
             if (((1U == this->__PVT__Distribution__DOT___GEN_63) 
                  & ((7U != this->__PVT__Distribution__DOT__i) 
                     | (7U != this->__PVT__Distribution__DOT__j)))) {
@@ -9515,7 +9525,7 @@ VL_INLINE_OPT void VFlexDPU_PathFinder::_sequent__TOP__FlexDPU__DOT__PathFinder_
     if (vlTOPp->reset) {
         this->__PVT__Distribution__DOT__Idex_14 = 0U;
     } else {
-        if (this->__PVT__myCounter_io_valid) {
+        if (this->__PVT__high) {
             if (((1U == this->__PVT__Distribution__DOT___GEN_63) 
                  & ((7U != this->__PVT__Distribution__DOT__i) 
                     | (7U != this->__PVT__Distribution__DOT__j)))) {
@@ -9534,7 +9544,7 @@ VL_INLINE_OPT void VFlexDPU_PathFinder::_sequent__TOP__FlexDPU__DOT__PathFinder_
     if (vlTOPp->reset) {
         this->__PVT__Distribution__DOT__Idex_15 = 0U;
     } else {
-        if (this->__PVT__myCounter_io_valid) {
+        if (this->__PVT__high) {
             if (((1U == this->__PVT__Distribution__DOT___GEN_63) 
                  & ((7U != this->__PVT__Distribution__DOT__i) 
                     | (7U != this->__PVT__Distribution__DOT__j)))) {
@@ -9553,7 +9563,7 @@ VL_INLINE_OPT void VFlexDPU_PathFinder::_sequent__TOP__FlexDPU__DOT__PathFinder_
     if (vlTOPp->reset) {
         this->__PVT__Distribution__DOT__Jdex_0 = 0U;
     } else {
-        if (this->__PVT__myCounter_io_valid) {
+        if (this->__PVT__high) {
             if (((1U == this->__PVT__Distribution__DOT___GEN_63) 
                  & ((7U != this->__PVT__Distribution__DOT__i) 
                     | (7U != this->__PVT__Distribution__DOT__j)))) {
@@ -9572,7 +9582,7 @@ VL_INLINE_OPT void VFlexDPU_PathFinder::_sequent__TOP__FlexDPU__DOT__PathFinder_
     if (vlTOPp->reset) {
         this->__PVT__Distribution__DOT__Jdex_1 = 0U;
     } else {
-        if (this->__PVT__myCounter_io_valid) {
+        if (this->__PVT__high) {
             if (((1U == this->__PVT__Distribution__DOT___GEN_63) 
                  & ((7U != this->__PVT__Distribution__DOT__i) 
                     | (7U != this->__PVT__Distribution__DOT__j)))) {
@@ -9591,7 +9601,7 @@ VL_INLINE_OPT void VFlexDPU_PathFinder::_sequent__TOP__FlexDPU__DOT__PathFinder_
     if (vlTOPp->reset) {
         this->__PVT__Distribution__DOT__Jdex_2 = 0U;
     } else {
-        if (this->__PVT__myCounter_io_valid) {
+        if (this->__PVT__high) {
             if (((1U == this->__PVT__Distribution__DOT___GEN_63) 
                  & ((7U != this->__PVT__Distribution__DOT__i) 
                     | (7U != this->__PVT__Distribution__DOT__j)))) {
@@ -9610,7 +9620,7 @@ VL_INLINE_OPT void VFlexDPU_PathFinder::_sequent__TOP__FlexDPU__DOT__PathFinder_
     if (vlTOPp->reset) {
         this->__PVT__Distribution__DOT__Jdex_3 = 0U;
     } else {
-        if (this->__PVT__myCounter_io_valid) {
+        if (this->__PVT__high) {
             if (((1U == this->__PVT__Distribution__DOT___GEN_63) 
                  & ((7U != this->__PVT__Distribution__DOT__i) 
                     | (7U != this->__PVT__Distribution__DOT__j)))) {
@@ -9629,7 +9639,7 @@ VL_INLINE_OPT void VFlexDPU_PathFinder::_sequent__TOP__FlexDPU__DOT__PathFinder_
     if (vlTOPp->reset) {
         this->__PVT__Distribution__DOT__Jdex_4 = 0U;
     } else {
-        if (this->__PVT__myCounter_io_valid) {
+        if (this->__PVT__high) {
             if (((1U == this->__PVT__Distribution__DOT___GEN_63) 
                  & ((7U != this->__PVT__Distribution__DOT__i) 
                     | (7U != this->__PVT__Distribution__DOT__j)))) {
@@ -9648,7 +9658,7 @@ VL_INLINE_OPT void VFlexDPU_PathFinder::_sequent__TOP__FlexDPU__DOT__PathFinder_
     if (vlTOPp->reset) {
         this->__PVT__Distribution__DOT__Jdex_5 = 0U;
     } else {
-        if (this->__PVT__myCounter_io_valid) {
+        if (this->__PVT__high) {
             if (((1U == this->__PVT__Distribution__DOT___GEN_63) 
                  & ((7U != this->__PVT__Distribution__DOT__i) 
                     | (7U != this->__PVT__Distribution__DOT__j)))) {
@@ -9667,7 +9677,7 @@ VL_INLINE_OPT void VFlexDPU_PathFinder::_sequent__TOP__FlexDPU__DOT__PathFinder_
     if (vlTOPp->reset) {
         this->__PVT__Distribution__DOT__Jdex_6 = 0U;
     } else {
-        if (this->__PVT__myCounter_io_valid) {
+        if (this->__PVT__high) {
             if (((1U == this->__PVT__Distribution__DOT___GEN_63) 
                  & ((7U != this->__PVT__Distribution__DOT__i) 
                     | (7U != this->__PVT__Distribution__DOT__j)))) {
@@ -9686,7 +9696,7 @@ VL_INLINE_OPT void VFlexDPU_PathFinder::_sequent__TOP__FlexDPU__DOT__PathFinder_
     if (vlTOPp->reset) {
         this->__PVT__Distribution__DOT__Jdex_7 = 0U;
     } else {
-        if (this->__PVT__myCounter_io_valid) {
+        if (this->__PVT__high) {
             if (((1U == this->__PVT__Distribution__DOT___GEN_63) 
                  & ((7U != this->__PVT__Distribution__DOT__i) 
                     | (7U != this->__PVT__Distribution__DOT__j)))) {
@@ -9705,7 +9715,7 @@ VL_INLINE_OPT void VFlexDPU_PathFinder::_sequent__TOP__FlexDPU__DOT__PathFinder_
     if (vlTOPp->reset) {
         this->__PVT__Distribution__DOT__Jdex_8 = 0U;
     } else {
-        if (this->__PVT__myCounter_io_valid) {
+        if (this->__PVT__high) {
             if (((1U == this->__PVT__Distribution__DOT___GEN_63) 
                  & ((7U != this->__PVT__Distribution__DOT__i) 
                     | (7U != this->__PVT__Distribution__DOT__j)))) {
@@ -9724,7 +9734,7 @@ VL_INLINE_OPT void VFlexDPU_PathFinder::_sequent__TOP__FlexDPU__DOT__PathFinder_
     if (vlTOPp->reset) {
         this->__PVT__Distribution__DOT__Jdex_9 = 0U;
     } else {
-        if (this->__PVT__myCounter_io_valid) {
+        if (this->__PVT__high) {
             if (((1U == this->__PVT__Distribution__DOT___GEN_63) 
                  & ((7U != this->__PVT__Distribution__DOT__i) 
                     | (7U != this->__PVT__Distribution__DOT__j)))) {
@@ -9743,7 +9753,7 @@ VL_INLINE_OPT void VFlexDPU_PathFinder::_sequent__TOP__FlexDPU__DOT__PathFinder_
     if (vlTOPp->reset) {
         this->__PVT__Distribution__DOT__Jdex_10 = 0U;
     } else {
-        if (this->__PVT__myCounter_io_valid) {
+        if (this->__PVT__high) {
             if (((1U == this->__PVT__Distribution__DOT___GEN_63) 
                  & ((7U != this->__PVT__Distribution__DOT__i) 
                     | (7U != this->__PVT__Distribution__DOT__j)))) {
@@ -9762,7 +9772,7 @@ VL_INLINE_OPT void VFlexDPU_PathFinder::_sequent__TOP__FlexDPU__DOT__PathFinder_
     if (vlTOPp->reset) {
         this->__PVT__Distribution__DOT__Jdex_11 = 0U;
     } else {
-        if (this->__PVT__myCounter_io_valid) {
+        if (this->__PVT__high) {
             if (((1U == this->__PVT__Distribution__DOT___GEN_63) 
                  & ((7U != this->__PVT__Distribution__DOT__i) 
                     | (7U != this->__PVT__Distribution__DOT__j)))) {
@@ -9781,7 +9791,7 @@ VL_INLINE_OPT void VFlexDPU_PathFinder::_sequent__TOP__FlexDPU__DOT__PathFinder_
     if (vlTOPp->reset) {
         this->__PVT__Distribution__DOT__Jdex_12 = 0U;
     } else {
-        if (this->__PVT__myCounter_io_valid) {
+        if (this->__PVT__high) {
             if (((1U == this->__PVT__Distribution__DOT___GEN_63) 
                  & ((7U != this->__PVT__Distribution__DOT__i) 
                     | (7U != this->__PVT__Distribution__DOT__j)))) {
@@ -9800,7 +9810,7 @@ VL_INLINE_OPT void VFlexDPU_PathFinder::_sequent__TOP__FlexDPU__DOT__PathFinder_
     if (vlTOPp->reset) {
         this->__PVT__Distribution__DOT__Jdex_13 = 0U;
     } else {
-        if (this->__PVT__myCounter_io_valid) {
+        if (this->__PVT__high) {
             if (((1U == this->__PVT__Distribution__DOT___GEN_63) 
                  & ((7U != this->__PVT__Distribution__DOT__i) 
                     | (7U != this->__PVT__Distribution__DOT__j)))) {
@@ -9819,7 +9829,7 @@ VL_INLINE_OPT void VFlexDPU_PathFinder::_sequent__TOP__FlexDPU__DOT__PathFinder_
     if (vlTOPp->reset) {
         this->__PVT__Distribution__DOT__Jdex_14 = 0U;
     } else {
-        if (this->__PVT__myCounter_io_valid) {
+        if (this->__PVT__high) {
             if (((1U == this->__PVT__Distribution__DOT___GEN_63) 
                  & ((7U != this->__PVT__Distribution__DOT__i) 
                     | (7U != this->__PVT__Distribution__DOT__j)))) {
@@ -9838,7 +9848,7 @@ VL_INLINE_OPT void VFlexDPU_PathFinder::_sequent__TOP__FlexDPU__DOT__PathFinder_
     if (vlTOPp->reset) {
         this->__PVT__Distribution__DOT__Jdex_15 = 0U;
     } else {
-        if (this->__PVT__myCounter_io_valid) {
+        if (this->__PVT__high) {
             if (((1U == this->__PVT__Distribution__DOT___GEN_63) 
                  & ((7U != this->__PVT__Distribution__DOT__i) 
                     | (7U != this->__PVT__Distribution__DOT__j)))) {
@@ -9898,9 +9908,6 @@ VL_INLINE_OPT void VFlexDPU_PathFinder::_sequent__TOP__FlexDPU__DOT__PathFinder_
         = this->__PVT__myMuxes_io_mat1_6_0;
     this->__PVT__myMuxes__DOT__prevStationary_matrix_5_7 
         = this->__PVT__myMuxes_io_mat1_5_7;
-    this->__PVT__myCounter_io_valid = ((IData)(this->__PVT__myCounter_io_start_REG) 
-                                       & ((3U == this->__PVT__myCounter__DOT__i) 
-                                          & (3U == this->__PVT__myCounter__DOT__j)));
     if (this->__PVT__myCounter_io_start_REG) {
         this->__PVT__myCounter__DOT___GEN_787 = this->__PVT__myCounter__DOT__counterRegs1_7_7;
         this->__PVT__myCounter__DOT___GEN_785 = this->__PVT__myCounter__DOT__counterRegs1_7_5;
@@ -10034,14 +10041,19 @@ VL_INLINE_OPT void VFlexDPU_PathFinder::_sequent__TOP__FlexDPU__DOT__PathFinder_
     }
     this->__PVT__Distribution__DOT___count_T_1 = ((IData)(1U) 
                                                   + this->__PVT__Distribution__DOT__count);
+    if (vlTOPp->reset) {
+        this->__PVT__high = 0U;
+    } else {
+        if ((1U & (~ (IData)(this->__PVT__myCounter_io_valid)))) {
+            this->__PVT__high = ((0x48U > this->__PVT__delay) 
+                                 & (IData)(this->__PVT__high2));
+        }
+    }
     this->__PVT__Distribution__DOT___i_T_1 = ((IData)(1U) 
                                               + this->__PVT__Distribution__DOT__i);
     this->__PVT__Distribution__DOT___T_17 = (7U == this->__PVT__Distribution__DOT__j);
     this->__PVT__Distribution__DOT___j_T_1 = ((IData)(1U) 
                                               + this->__PVT__Distribution__DOT__j);
-    this->__PVT__Distribution__DOT___complete_T_2 = 
-        ((7U == this->__PVT__Distribution__DOT__i) 
-         & (7U == this->__PVT__Distribution__DOT__j));
     this->__PVT__Distribution__DOT___GEN_145 = ((0U 
                                                  == 
                                                  (0xfU 
@@ -10132,13 +10144,21 @@ VL_INLINE_OPT void VFlexDPU_PathFinder::_sequent__TOP__FlexDPU__DOT__PathFinder_
                                                   & this->__PVT__Distribution__DOT__count))
                                                  ? this->__PVT__Distribution__DOT__j
                                                  : this->__PVT__Distribution__DOT__Jdex_14);
-    if ((0xfU == (0xfU & this->__PVT__Distribution__DOT__count))) {
-        this->__PVT__Distribution__DOT___GEN_160 = this->__PVT__Distribution__DOT__j;
-        this->__PVT__Distribution__DOT___GEN_144 = this->__PVT__Distribution__DOT__i;
-    } else {
-        this->__PVT__Distribution__DOT___GEN_160 = this->__PVT__Distribution__DOT__Jdex_15;
-        this->__PVT__Distribution__DOT___GEN_144 = this->__PVT__Distribution__DOT__Idex_15;
-    }
+    this->__PVT__Distribution__DOT___GEN_160 = ((0xfU 
+                                                 == 
+                                                 (0xfU 
+                                                  & this->__PVT__Distribution__DOT__count))
+                                                 ? this->__PVT__Distribution__DOT__j
+                                                 : this->__PVT__Distribution__DOT__Jdex_15);
+    this->__PVT__Distribution__DOT___complete_T_2 = 
+        ((7U == this->__PVT__Distribution__DOT__i) 
+         & (7U == this->__PVT__Distribution__DOT__j));
+    this->__PVT__Distribution__DOT___GEN_144 = ((0xfU 
+                                                 == 
+                                                 (0xfU 
+                                                  & this->__PVT__Distribution__DOT__count))
+                                                 ? this->__PVT__Distribution__DOT__i
+                                                 : this->__PVT__Distribution__DOT__Idex_15);
     this->__PVT__Distribution__DOT___GEN_142 = ((0xdU 
                                                  == 
                                                  (0xfU 
@@ -10322,6 +10342,10 @@ VL_INLINE_OPT void VFlexDPU_PathFinder::_sequent__TOP__FlexDPU__DOT__PathFinder_
                                 & (1U == (7U & this->__PVT__Distribution__DOT__part3__DOT__j)))
                                 ? (0xffffU & this->__PVT__myCounter__DOT___GEN_725)
                                 : (0xffffU & this->__PVT__myCounter__DOT___GEN_724)))))));
+    this->__PVT__delay = this->__Vdly__delay;
+    this->__PVT__myCounter_io_valid = ((IData)(this->__PVT__myCounter_io_start_REG) 
+                                       & ((3U == this->__PVT__myCounter__DOT__i) 
+                                          & (3U == this->__PVT__myCounter__DOT__j)));
     this->__PVT__Distribution__DOT___GEN_12 = (((1U 
                                                  == 
                                                  (7U 
@@ -10413,6 +10437,9 @@ VL_INLINE_OPT void VFlexDPU_PathFinder::_sequent__TOP__FlexDPU__DOT__PathFinder_
                                 & (7U == (7U & this->__PVT__Distribution__DOT__part3__DOT__j)))
                                 ? (0xffffU & this->__PVT__myCounter__DOT___GEN_731)
                                 : this->__PVT__Distribution__DOT__part3__DOT___GEN_70))))));
+    this->__PVT___delay_T_1 = ((IData)(1U) + this->__PVT__delay);
+    this->__PVT__high2 = ((~ (IData)(vlTOPp->reset)) 
+                          & (IData)(this->__PVT___GEN_3));
     this->__PVT__Distribution__DOT___GEN_18 = (((2U 
                                                  == 
                                                  (7U 
@@ -10595,6 +10622,10 @@ VL_INLINE_OPT void VFlexDPU_PathFinder::_sequent__TOP__FlexDPU__DOT__PathFinder_
                                 & (3U == (7U & this->__PVT__Distribution__DOT__part3__DOT__j)))
                                 ? (0xffffU & this->__PVT__myCounter__DOT___GEN_743)
                                 : this->__PVT__Distribution__DOT__part3__DOT___GEN_82))))));
+    this->__PVT___GEN_3 = ((IData)(this->__PVT__myCounter_io_valid) 
+                           | (((0x48U > this->__PVT__delay) 
+                               & (IData)(this->__PVT__high2)) 
+                              & (IData)(this->__PVT__high2)));
     this->__PVT__Distribution__DOT___GEN_30 = (((3U 
                                                  == 
                                                  (7U 

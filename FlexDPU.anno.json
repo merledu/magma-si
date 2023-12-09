@@ -9645,11 +9645,19 @@
   },
   {
     "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~FlexDPU|FlexDPU/PathFinder_15:PathFinder>high2"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
     "target":"~FlexDPU|FlexDPU/PathFinder_15:PathFinder/myCounter:SourceDestination>counter2"
   },
   {
     "class":"firrtl.transforms.DontTouchAnnotation",
     "target":"~FlexDPU|FlexDPU/PathFinder_15:PathFinder/myCounter:SourceDestination>matricesAreEqual"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~FlexDPU|FlexDPU/PathFinder_15:PathFinder>high"
   },
   {
     "class":"firrtl.transforms.DontTouchAnnotation",
@@ -10861,11 +10869,19 @@
   },
   {
     "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~FlexDPU|FlexDPU/PathFinder_14:PathFinder>high2"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
     "target":"~FlexDPU|FlexDPU/PathFinder_14:PathFinder/myCounter:SourceDestination>counter2"
   },
   {
     "class":"firrtl.transforms.DontTouchAnnotation",
     "target":"~FlexDPU|FlexDPU/PathFinder_14:PathFinder/myCounter:SourceDestination>matricesAreEqual"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~FlexDPU|FlexDPU/PathFinder_14:PathFinder>high"
   },
   {
     "class":"firrtl.transforms.DontTouchAnnotation",
@@ -12077,11 +12093,19 @@
   },
   {
     "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~FlexDPU|FlexDPU/PathFinder_13:PathFinder>high2"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
     "target":"~FlexDPU|FlexDPU/PathFinder_13:PathFinder/myCounter:SourceDestination>counter2"
   },
   {
     "class":"firrtl.transforms.DontTouchAnnotation",
     "target":"~FlexDPU|FlexDPU/PathFinder_13:PathFinder/myCounter:SourceDestination>matricesAreEqual"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~FlexDPU|FlexDPU/PathFinder_13:PathFinder>high"
   },
   {
     "class":"firrtl.transforms.DontTouchAnnotation",
@@ -13293,11 +13317,19 @@
   },
   {
     "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~FlexDPU|FlexDPU/PathFinder_12:PathFinder>high2"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
     "target":"~FlexDPU|FlexDPU/PathFinder_12:PathFinder/myCounter:SourceDestination>counter2"
   },
   {
     "class":"firrtl.transforms.DontTouchAnnotation",
     "target":"~FlexDPU|FlexDPU/PathFinder_12:PathFinder/myCounter:SourceDestination>matricesAreEqual"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~FlexDPU|FlexDPU/PathFinder_12:PathFinder>high"
   },
   {
     "class":"firrtl.transforms.DontTouchAnnotation",
@@ -14509,11 +14541,19 @@
   },
   {
     "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~FlexDPU|FlexDPU/PathFinder_11:PathFinder>high2"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
     "target":"~FlexDPU|FlexDPU/PathFinder_11:PathFinder/myCounter:SourceDestination>counter2"
   },
   {
     "class":"firrtl.transforms.DontTouchAnnotation",
     "target":"~FlexDPU|FlexDPU/PathFinder_11:PathFinder/myCounter:SourceDestination>matricesAreEqual"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~FlexDPU|FlexDPU/PathFinder_11:PathFinder>high"
   },
   {
     "class":"firrtl.transforms.DontTouchAnnotation",
@@ -15725,11 +15765,19 @@
   },
   {
     "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~FlexDPU|FlexDPU/PathFinder_10:PathFinder>high2"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
     "target":"~FlexDPU|FlexDPU/PathFinder_10:PathFinder/myCounter:SourceDestination>counter2"
   },
   {
     "class":"firrtl.transforms.DontTouchAnnotation",
     "target":"~FlexDPU|FlexDPU/PathFinder_10:PathFinder/myCounter:SourceDestination>matricesAreEqual"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~FlexDPU|FlexDPU/PathFinder_10:PathFinder>high"
   },
   {
     "class":"firrtl.transforms.DontTouchAnnotation",
@@ -16941,11 +16989,19 @@
   },
   {
     "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~FlexDPU|FlexDPU/PathFinder_9:PathFinder>high2"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
     "target":"~FlexDPU|FlexDPU/PathFinder_9:PathFinder/myCounter:SourceDestination>counter2"
   },
   {
     "class":"firrtl.transforms.DontTouchAnnotation",
     "target":"~FlexDPU|FlexDPU/PathFinder_9:PathFinder/myCounter:SourceDestination>matricesAreEqual"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~FlexDPU|FlexDPU/PathFinder_9:PathFinder>high"
   },
   {
     "class":"firrtl.transforms.DontTouchAnnotation",
@@ -18157,11 +18213,19 @@
   },
   {
     "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~FlexDPU|FlexDPU/PathFinder_8:PathFinder>high2"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
     "target":"~FlexDPU|FlexDPU/PathFinder_8:PathFinder/myCounter:SourceDestination>counter2"
   },
   {
     "class":"firrtl.transforms.DontTouchAnnotation",
     "target":"~FlexDPU|FlexDPU/PathFinder_8:PathFinder/myCounter:SourceDestination>matricesAreEqual"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~FlexDPU|FlexDPU/PathFinder_8:PathFinder>high"
   },
   {
     "class":"firrtl.transforms.DontTouchAnnotation",
@@ -19373,11 +19437,19 @@
   },
   {
     "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~FlexDPU|FlexDPU/PathFinder_7:PathFinder>high2"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
     "target":"~FlexDPU|FlexDPU/PathFinder_7:PathFinder/myCounter:SourceDestination>counter2"
   },
   {
     "class":"firrtl.transforms.DontTouchAnnotation",
     "target":"~FlexDPU|FlexDPU/PathFinder_7:PathFinder/myCounter:SourceDestination>matricesAreEqual"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~FlexDPU|FlexDPU/PathFinder_7:PathFinder>high"
   },
   {
     "class":"firrtl.transforms.DontTouchAnnotation",
@@ -20589,11 +20661,19 @@
   },
   {
     "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~FlexDPU|FlexDPU/PathFinder_6:PathFinder>high2"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
     "target":"~FlexDPU|FlexDPU/PathFinder_6:PathFinder/myCounter:SourceDestination>counter2"
   },
   {
     "class":"firrtl.transforms.DontTouchAnnotation",
     "target":"~FlexDPU|FlexDPU/PathFinder_6:PathFinder/myCounter:SourceDestination>matricesAreEqual"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~FlexDPU|FlexDPU/PathFinder_6:PathFinder>high"
   },
   {
     "class":"firrtl.transforms.DontTouchAnnotation",
@@ -21805,11 +21885,19 @@
   },
   {
     "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~FlexDPU|FlexDPU/PathFinder_5:PathFinder>high2"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
     "target":"~FlexDPU|FlexDPU/PathFinder_5:PathFinder/myCounter:SourceDestination>counter2"
   },
   {
     "class":"firrtl.transforms.DontTouchAnnotation",
     "target":"~FlexDPU|FlexDPU/PathFinder_5:PathFinder/myCounter:SourceDestination>matricesAreEqual"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~FlexDPU|FlexDPU/PathFinder_5:PathFinder>high"
   },
   {
     "class":"firrtl.transforms.DontTouchAnnotation",
@@ -23021,11 +23109,19 @@
   },
   {
     "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~FlexDPU|FlexDPU/PathFinder_4:PathFinder>high2"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
     "target":"~FlexDPU|FlexDPU/PathFinder_4:PathFinder/myCounter:SourceDestination>counter2"
   },
   {
     "class":"firrtl.transforms.DontTouchAnnotation",
     "target":"~FlexDPU|FlexDPU/PathFinder_4:PathFinder/myCounter:SourceDestination>matricesAreEqual"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~FlexDPU|FlexDPU/PathFinder_4:PathFinder>high"
   },
   {
     "class":"firrtl.transforms.DontTouchAnnotation",
@@ -24237,11 +24333,19 @@
   },
   {
     "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~FlexDPU|FlexDPU/PathFinder_3:PathFinder>high2"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
     "target":"~FlexDPU|FlexDPU/PathFinder_3:PathFinder/myCounter:SourceDestination>counter2"
   },
   {
     "class":"firrtl.transforms.DontTouchAnnotation",
     "target":"~FlexDPU|FlexDPU/PathFinder_3:PathFinder/myCounter:SourceDestination>matricesAreEqual"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~FlexDPU|FlexDPU/PathFinder_3:PathFinder>high"
   },
   {
     "class":"firrtl.transforms.DontTouchAnnotation",
@@ -25453,11 +25557,19 @@
   },
   {
     "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~FlexDPU|FlexDPU/PathFinder_2:PathFinder>high2"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
     "target":"~FlexDPU|FlexDPU/PathFinder_2:PathFinder/myCounter:SourceDestination>counter2"
   },
   {
     "class":"firrtl.transforms.DontTouchAnnotation",
     "target":"~FlexDPU|FlexDPU/PathFinder_2:PathFinder/myCounter:SourceDestination>matricesAreEqual"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~FlexDPU|FlexDPU/PathFinder_2:PathFinder>high"
   },
   {
     "class":"firrtl.transforms.DontTouchAnnotation",
@@ -26669,11 +26781,19 @@
   },
   {
     "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~FlexDPU|FlexDPU/PathFinder_1:PathFinder>high2"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
     "target":"~FlexDPU|FlexDPU/PathFinder_1:PathFinder/myCounter:SourceDestination>counter2"
   },
   {
     "class":"firrtl.transforms.DontTouchAnnotation",
     "target":"~FlexDPU|FlexDPU/PathFinder_1:PathFinder/myCounter:SourceDestination>matricesAreEqual"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~FlexDPU|FlexDPU/PathFinder_1:PathFinder>high"
   },
   {
     "class":"firrtl.transforms.DontTouchAnnotation",
@@ -27885,11 +28005,19 @@
   },
   {
     "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~FlexDPU|FlexDPU/PathFinder:PathFinder>high2"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
     "target":"~FlexDPU|FlexDPU/PathFinder:PathFinder/myCounter:SourceDestination>counter2"
   },
   {
     "class":"firrtl.transforms.DontTouchAnnotation",
     "target":"~FlexDPU|FlexDPU/PathFinder:PathFinder/myCounter:SourceDestination>matricesAreEqual"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~FlexDPU|FlexDPU/PathFinder:PathFinder>high"
   },
   {
     "class":"firrtl.transforms.DontTouchAnnotation",

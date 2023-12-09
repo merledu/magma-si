@@ -653,6 +653,61 @@ VL_INLINE_OPT void VFlexDPU::_combo__TOP__12(VFlexDPU__Syms* __restrict vlSymsp)
         vlTOPp->FlexDPU__DOT__ivntop__DOT__my_stationary__DOT___GEN_63 
             = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_stationary__DOT__Station2_7_7;
     }
+    vlTOPp->FlexDPU__DOT___GEN_7 = (((0U == (7U & vlTOPp->FlexDPU__DOT__iloop)) 
+                                     & (7U == (7U & vlTOPp->FlexDPU__DOT__jloop)))
+                                     ? (IData)(vlTOPp->io_Stationary_matrix_0_7)
+                                     : (((0U == (7U 
+                                                 & vlTOPp->FlexDPU__DOT__iloop)) 
+                                         & (6U == (7U 
+                                                   & vlTOPp->FlexDPU__DOT__jloop)))
+                                         ? (IData)(vlTOPp->io_Stationary_matrix_0_6)
+                                         : (((0U == 
+                                              (7U & vlTOPp->FlexDPU__DOT__iloop)) 
+                                             & (5U 
+                                                == 
+                                                (7U 
+                                                 & vlTOPp->FlexDPU__DOT__jloop)))
+                                             ? (IData)(vlTOPp->io_Stationary_matrix_0_5)
+                                             : (((0U 
+                                                  == 
+                                                  (7U 
+                                                   & vlTOPp->FlexDPU__DOT__iloop)) 
+                                                 & (4U 
+                                                    == 
+                                                    (7U 
+                                                     & vlTOPp->FlexDPU__DOT__jloop)))
+                                                 ? (IData)(vlTOPp->io_Stationary_matrix_0_4)
+                                                 : 
+                                                (((0U 
+                                                   == 
+                                                   (7U 
+                                                    & vlTOPp->FlexDPU__DOT__iloop)) 
+                                                  & (3U 
+                                                     == 
+                                                     (7U 
+                                                      & vlTOPp->FlexDPU__DOT__jloop)))
+                                                  ? (IData)(vlTOPp->io_Stationary_matrix_0_3)
+                                                  : 
+                                                 (((0U 
+                                                    == 
+                                                    (7U 
+                                                     & vlTOPp->FlexDPU__DOT__iloop)) 
+                                                   & (2U 
+                                                      == 
+                                                      (7U 
+                                                       & vlTOPp->FlexDPU__DOT__jloop)))
+                                                   ? (IData)(vlTOPp->io_Stationary_matrix_0_2)
+                                                   : 
+                                                  (((0U 
+                                                     == 
+                                                     (7U 
+                                                      & vlTOPp->FlexDPU__DOT__iloop)) 
+                                                    & (1U 
+                                                       == 
+                                                       (7U 
+                                                        & vlTOPp->FlexDPU__DOT__jloop)))
+                                                    ? (IData)(vlTOPp->io_Stationary_matrix_0_1)
+                                                    : (IData)(vlTOPp->io_Stationary_matrix_0_0))))))));
     vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT___GEN_72 
         = (((0U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__i)) 
             & (7U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__j)))
@@ -3774,6 +3829,63 @@ VL_INLINE_OPT void VFlexDPU::_combo__TOP__12(VFlexDPU__Syms* __restrict vlSymsp)
                                     & (0U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_stationary__DOT__j)))
                                     ? (IData)(vlTOPp->io_Stationary_matrix_1_0)
                                     : (IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_stationary__DOT___GEN_455))))))));
+    vlTOPp->FlexDPU__DOT___GEN_14 = (((1U == (7U & vlTOPp->FlexDPU__DOT__iloop)) 
+                                      & (6U == (7U 
+                                                & vlTOPp->FlexDPU__DOT__jloop)))
+                                      ? (IData)(vlTOPp->io_Stationary_matrix_1_6)
+                                      : (((1U == (7U 
+                                                  & vlTOPp->FlexDPU__DOT__iloop)) 
+                                          & (5U == 
+                                             (7U & vlTOPp->FlexDPU__DOT__jloop)))
+                                          ? (IData)(vlTOPp->io_Stationary_matrix_1_5)
+                                          : (((1U == 
+                                               (7U 
+                                                & vlTOPp->FlexDPU__DOT__iloop)) 
+                                              & (4U 
+                                                 == 
+                                                 (7U 
+                                                  & vlTOPp->FlexDPU__DOT__jloop)))
+                                              ? (IData)(vlTOPp->io_Stationary_matrix_1_4)
+                                              : (((1U 
+                                                   == 
+                                                   (7U 
+                                                    & vlTOPp->FlexDPU__DOT__iloop)) 
+                                                  & (3U 
+                                                     == 
+                                                     (7U 
+                                                      & vlTOPp->FlexDPU__DOT__jloop)))
+                                                  ? (IData)(vlTOPp->io_Stationary_matrix_1_3)
+                                                  : 
+                                                 (((1U 
+                                                    == 
+                                                    (7U 
+                                                     & vlTOPp->FlexDPU__DOT__iloop)) 
+                                                   & (2U 
+                                                      == 
+                                                      (7U 
+                                                       & vlTOPp->FlexDPU__DOT__jloop)))
+                                                   ? (IData)(vlTOPp->io_Stationary_matrix_1_2)
+                                                   : 
+                                                  (((1U 
+                                                     == 
+                                                     (7U 
+                                                      & vlTOPp->FlexDPU__DOT__iloop)) 
+                                                    & (1U 
+                                                       == 
+                                                       (7U 
+                                                        & vlTOPp->FlexDPU__DOT__jloop)))
+                                                    ? (IData)(vlTOPp->io_Stationary_matrix_1_1)
+                                                    : 
+                                                   (((1U 
+                                                      == 
+                                                      (7U 
+                                                       & vlTOPp->FlexDPU__DOT__iloop)) 
+                                                     & (0U 
+                                                        == 
+                                                        (7U 
+                                                         & vlTOPp->FlexDPU__DOT__jloop)))
+                                                     ? (IData)(vlTOPp->io_Stationary_matrix_1_0)
+                                                     : (IData)(vlTOPp->FlexDPU__DOT___GEN_7))))))));
     vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT___GEN_79 
         = (((1U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__i)) 
             & (6U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__j)))
@@ -3820,6 +3932,63 @@ VL_INLINE_OPT void VFlexDPU::_combo__TOP__12(VFlexDPU__Syms* __restrict vlSymsp)
                                     & (7U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_stationary__DOT__j)))
                                     ? (IData)(vlTOPp->io_Stationary_matrix_1_7)
                                     : (IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_stationary__DOT___GEN_462))))))));
+    vlTOPp->FlexDPU__DOT___GEN_21 = (((2U == (7U & vlTOPp->FlexDPU__DOT__iloop)) 
+                                      & (5U == (7U 
+                                                & vlTOPp->FlexDPU__DOT__jloop)))
+                                      ? (IData)(vlTOPp->io_Stationary_matrix_2_5)
+                                      : (((2U == (7U 
+                                                  & vlTOPp->FlexDPU__DOT__iloop)) 
+                                          & (4U == 
+                                             (7U & vlTOPp->FlexDPU__DOT__jloop)))
+                                          ? (IData)(vlTOPp->io_Stationary_matrix_2_4)
+                                          : (((2U == 
+                                               (7U 
+                                                & vlTOPp->FlexDPU__DOT__iloop)) 
+                                              & (3U 
+                                                 == 
+                                                 (7U 
+                                                  & vlTOPp->FlexDPU__DOT__jloop)))
+                                              ? (IData)(vlTOPp->io_Stationary_matrix_2_3)
+                                              : (((2U 
+                                                   == 
+                                                   (7U 
+                                                    & vlTOPp->FlexDPU__DOT__iloop)) 
+                                                  & (2U 
+                                                     == 
+                                                     (7U 
+                                                      & vlTOPp->FlexDPU__DOT__jloop)))
+                                                  ? (IData)(vlTOPp->io_Stationary_matrix_2_2)
+                                                  : 
+                                                 (((2U 
+                                                    == 
+                                                    (7U 
+                                                     & vlTOPp->FlexDPU__DOT__iloop)) 
+                                                   & (1U 
+                                                      == 
+                                                      (7U 
+                                                       & vlTOPp->FlexDPU__DOT__jloop)))
+                                                   ? (IData)(vlTOPp->io_Stationary_matrix_2_1)
+                                                   : 
+                                                  (((2U 
+                                                     == 
+                                                     (7U 
+                                                      & vlTOPp->FlexDPU__DOT__iloop)) 
+                                                    & (0U 
+                                                       == 
+                                                       (7U 
+                                                        & vlTOPp->FlexDPU__DOT__jloop)))
+                                                    ? (IData)(vlTOPp->io_Stationary_matrix_2_0)
+                                                    : 
+                                                   (((1U 
+                                                      == 
+                                                      (7U 
+                                                       & vlTOPp->FlexDPU__DOT__iloop)) 
+                                                     & (7U 
+                                                        == 
+                                                        (7U 
+                                                         & vlTOPp->FlexDPU__DOT__jloop)))
+                                                     ? (IData)(vlTOPp->io_Stationary_matrix_1_7)
+                                                     : (IData)(vlTOPp->FlexDPU__DOT___GEN_14))))))));
     vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT___GEN_86 
         = (((2U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__i)) 
             & (5U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__j)))
@@ -3866,6 +4035,63 @@ VL_INLINE_OPT void VFlexDPU::_combo__TOP__12(VFlexDPU__Syms* __restrict vlSymsp)
                                     & (6U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_stationary__DOT__j)))
                                     ? (IData)(vlTOPp->io_Stationary_matrix_2_6)
                                     : (IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_stationary__DOT___GEN_469))))))));
+    vlTOPp->FlexDPU__DOT___GEN_28 = (((3U == (7U & vlTOPp->FlexDPU__DOT__iloop)) 
+                                      & (4U == (7U 
+                                                & vlTOPp->FlexDPU__DOT__jloop)))
+                                      ? (IData)(vlTOPp->io_Stationary_matrix_3_4)
+                                      : (((3U == (7U 
+                                                  & vlTOPp->FlexDPU__DOT__iloop)) 
+                                          & (3U == 
+                                             (7U & vlTOPp->FlexDPU__DOT__jloop)))
+                                          ? (IData)(vlTOPp->io_Stationary_matrix_3_3)
+                                          : (((3U == 
+                                               (7U 
+                                                & vlTOPp->FlexDPU__DOT__iloop)) 
+                                              & (2U 
+                                                 == 
+                                                 (7U 
+                                                  & vlTOPp->FlexDPU__DOT__jloop)))
+                                              ? (IData)(vlTOPp->io_Stationary_matrix_3_2)
+                                              : (((3U 
+                                                   == 
+                                                   (7U 
+                                                    & vlTOPp->FlexDPU__DOT__iloop)) 
+                                                  & (1U 
+                                                     == 
+                                                     (7U 
+                                                      & vlTOPp->FlexDPU__DOT__jloop)))
+                                                  ? (IData)(vlTOPp->io_Stationary_matrix_3_1)
+                                                  : 
+                                                 (((3U 
+                                                    == 
+                                                    (7U 
+                                                     & vlTOPp->FlexDPU__DOT__iloop)) 
+                                                   & (0U 
+                                                      == 
+                                                      (7U 
+                                                       & vlTOPp->FlexDPU__DOT__jloop)))
+                                                   ? (IData)(vlTOPp->io_Stationary_matrix_3_0)
+                                                   : 
+                                                  (((2U 
+                                                     == 
+                                                     (7U 
+                                                      & vlTOPp->FlexDPU__DOT__iloop)) 
+                                                    & (7U 
+                                                       == 
+                                                       (7U 
+                                                        & vlTOPp->FlexDPU__DOT__jloop)))
+                                                    ? (IData)(vlTOPp->io_Stationary_matrix_2_7)
+                                                    : 
+                                                   (((2U 
+                                                      == 
+                                                      (7U 
+                                                       & vlTOPp->FlexDPU__DOT__iloop)) 
+                                                     & (6U 
+                                                        == 
+                                                        (7U 
+                                                         & vlTOPp->FlexDPU__DOT__jloop)))
+                                                     ? (IData)(vlTOPp->io_Stationary_matrix_2_6)
+                                                     : (IData)(vlTOPp->FlexDPU__DOT___GEN_21))))))));
     vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT___GEN_93 
         = (((3U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__i)) 
             & (4U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__j)))
@@ -3912,6 +4138,63 @@ VL_INLINE_OPT void VFlexDPU::_combo__TOP__12(VFlexDPU__Syms* __restrict vlSymsp)
                                     & (5U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_stationary__DOT__j)))
                                     ? (IData)(vlTOPp->io_Stationary_matrix_3_5)
                                     : (IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_stationary__DOT___GEN_476))))))));
+    vlTOPp->FlexDPU__DOT___GEN_35 = (((4U == (7U & vlTOPp->FlexDPU__DOT__iloop)) 
+                                      & (3U == (7U 
+                                                & vlTOPp->FlexDPU__DOT__jloop)))
+                                      ? (IData)(vlTOPp->io_Stationary_matrix_4_3)
+                                      : (((4U == (7U 
+                                                  & vlTOPp->FlexDPU__DOT__iloop)) 
+                                          & (2U == 
+                                             (7U & vlTOPp->FlexDPU__DOT__jloop)))
+                                          ? (IData)(vlTOPp->io_Stationary_matrix_4_2)
+                                          : (((4U == 
+                                               (7U 
+                                                & vlTOPp->FlexDPU__DOT__iloop)) 
+                                              & (1U 
+                                                 == 
+                                                 (7U 
+                                                  & vlTOPp->FlexDPU__DOT__jloop)))
+                                              ? (IData)(vlTOPp->io_Stationary_matrix_4_1)
+                                              : (((4U 
+                                                   == 
+                                                   (7U 
+                                                    & vlTOPp->FlexDPU__DOT__iloop)) 
+                                                  & (0U 
+                                                     == 
+                                                     (7U 
+                                                      & vlTOPp->FlexDPU__DOT__jloop)))
+                                                  ? (IData)(vlTOPp->io_Stationary_matrix_4_0)
+                                                  : 
+                                                 (((3U 
+                                                    == 
+                                                    (7U 
+                                                     & vlTOPp->FlexDPU__DOT__iloop)) 
+                                                   & (7U 
+                                                      == 
+                                                      (7U 
+                                                       & vlTOPp->FlexDPU__DOT__jloop)))
+                                                   ? (IData)(vlTOPp->io_Stationary_matrix_3_7)
+                                                   : 
+                                                  (((3U 
+                                                     == 
+                                                     (7U 
+                                                      & vlTOPp->FlexDPU__DOT__iloop)) 
+                                                    & (6U 
+                                                       == 
+                                                       (7U 
+                                                        & vlTOPp->FlexDPU__DOT__jloop)))
+                                                    ? (IData)(vlTOPp->io_Stationary_matrix_3_6)
+                                                    : 
+                                                   (((3U 
+                                                      == 
+                                                      (7U 
+                                                       & vlTOPp->FlexDPU__DOT__iloop)) 
+                                                     & (5U 
+                                                        == 
+                                                        (7U 
+                                                         & vlTOPp->FlexDPU__DOT__jloop)))
+                                                     ? (IData)(vlTOPp->io_Stationary_matrix_3_5)
+                                                     : (IData)(vlTOPp->FlexDPU__DOT___GEN_28))))))));
     vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT___GEN_100 
         = (((4U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__i)) 
             & (3U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__j)))
@@ -3958,6 +4241,63 @@ VL_INLINE_OPT void VFlexDPU::_combo__TOP__12(VFlexDPU__Syms* __restrict vlSymsp)
                                     & (4U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_stationary__DOT__j)))
                                     ? (IData)(vlTOPp->io_Stationary_matrix_4_4)
                                     : (IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_stationary__DOT___GEN_483))))))));
+    vlTOPp->FlexDPU__DOT___GEN_42 = (((5U == (7U & vlTOPp->FlexDPU__DOT__iloop)) 
+                                      & (2U == (7U 
+                                                & vlTOPp->FlexDPU__DOT__jloop)))
+                                      ? (IData)(vlTOPp->io_Stationary_matrix_5_2)
+                                      : (((5U == (7U 
+                                                  & vlTOPp->FlexDPU__DOT__iloop)) 
+                                          & (1U == 
+                                             (7U & vlTOPp->FlexDPU__DOT__jloop)))
+                                          ? (IData)(vlTOPp->io_Stationary_matrix_5_1)
+                                          : (((5U == 
+                                               (7U 
+                                                & vlTOPp->FlexDPU__DOT__iloop)) 
+                                              & (0U 
+                                                 == 
+                                                 (7U 
+                                                  & vlTOPp->FlexDPU__DOT__jloop)))
+                                              ? (IData)(vlTOPp->io_Stationary_matrix_5_0)
+                                              : (((4U 
+                                                   == 
+                                                   (7U 
+                                                    & vlTOPp->FlexDPU__DOT__iloop)) 
+                                                  & (7U 
+                                                     == 
+                                                     (7U 
+                                                      & vlTOPp->FlexDPU__DOT__jloop)))
+                                                  ? (IData)(vlTOPp->io_Stationary_matrix_4_7)
+                                                  : 
+                                                 (((4U 
+                                                    == 
+                                                    (7U 
+                                                     & vlTOPp->FlexDPU__DOT__iloop)) 
+                                                   & (6U 
+                                                      == 
+                                                      (7U 
+                                                       & vlTOPp->FlexDPU__DOT__jloop)))
+                                                   ? (IData)(vlTOPp->io_Stationary_matrix_4_6)
+                                                   : 
+                                                  (((4U 
+                                                     == 
+                                                     (7U 
+                                                      & vlTOPp->FlexDPU__DOT__iloop)) 
+                                                    & (5U 
+                                                       == 
+                                                       (7U 
+                                                        & vlTOPp->FlexDPU__DOT__jloop)))
+                                                    ? (IData)(vlTOPp->io_Stationary_matrix_4_5)
+                                                    : 
+                                                   (((4U 
+                                                      == 
+                                                      (7U 
+                                                       & vlTOPp->FlexDPU__DOT__iloop)) 
+                                                     & (4U 
+                                                        == 
+                                                        (7U 
+                                                         & vlTOPp->FlexDPU__DOT__jloop)))
+                                                     ? (IData)(vlTOPp->io_Stationary_matrix_4_4)
+                                                     : (IData)(vlTOPp->FlexDPU__DOT___GEN_35))))))));
     vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT___GEN_107 
         = (((5U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__i)) 
             & (2U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__j)))
@@ -4004,6 +4344,63 @@ VL_INLINE_OPT void VFlexDPU::_combo__TOP__12(VFlexDPU__Syms* __restrict vlSymsp)
                                     & (3U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_stationary__DOT__j)))
                                     ? (IData)(vlTOPp->io_Stationary_matrix_5_3)
                                     : (IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_stationary__DOT___GEN_490))))))));
+    vlTOPp->FlexDPU__DOT___GEN_49 = (((6U == (7U & vlTOPp->FlexDPU__DOT__iloop)) 
+                                      & (1U == (7U 
+                                                & vlTOPp->FlexDPU__DOT__jloop)))
+                                      ? (IData)(vlTOPp->io_Stationary_matrix_6_1)
+                                      : (((6U == (7U 
+                                                  & vlTOPp->FlexDPU__DOT__iloop)) 
+                                          & (0U == 
+                                             (7U & vlTOPp->FlexDPU__DOT__jloop)))
+                                          ? (IData)(vlTOPp->io_Stationary_matrix_6_0)
+                                          : (((5U == 
+                                               (7U 
+                                                & vlTOPp->FlexDPU__DOT__iloop)) 
+                                              & (7U 
+                                                 == 
+                                                 (7U 
+                                                  & vlTOPp->FlexDPU__DOT__jloop)))
+                                              ? (IData)(vlTOPp->io_Stationary_matrix_5_7)
+                                              : (((5U 
+                                                   == 
+                                                   (7U 
+                                                    & vlTOPp->FlexDPU__DOT__iloop)) 
+                                                  & (6U 
+                                                     == 
+                                                     (7U 
+                                                      & vlTOPp->FlexDPU__DOT__jloop)))
+                                                  ? (IData)(vlTOPp->io_Stationary_matrix_5_6)
+                                                  : 
+                                                 (((5U 
+                                                    == 
+                                                    (7U 
+                                                     & vlTOPp->FlexDPU__DOT__iloop)) 
+                                                   & (5U 
+                                                      == 
+                                                      (7U 
+                                                       & vlTOPp->FlexDPU__DOT__jloop)))
+                                                   ? (IData)(vlTOPp->io_Stationary_matrix_5_5)
+                                                   : 
+                                                  (((5U 
+                                                     == 
+                                                     (7U 
+                                                      & vlTOPp->FlexDPU__DOT__iloop)) 
+                                                    & (4U 
+                                                       == 
+                                                       (7U 
+                                                        & vlTOPp->FlexDPU__DOT__jloop)))
+                                                    ? (IData)(vlTOPp->io_Stationary_matrix_5_4)
+                                                    : 
+                                                   (((5U 
+                                                      == 
+                                                      (7U 
+                                                       & vlTOPp->FlexDPU__DOT__iloop)) 
+                                                     & (3U 
+                                                        == 
+                                                        (7U 
+                                                         & vlTOPp->FlexDPU__DOT__jloop)))
+                                                     ? (IData)(vlTOPp->io_Stationary_matrix_5_3)
+                                                     : (IData)(vlTOPp->FlexDPU__DOT___GEN_42))))))));
     vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT___GEN_114 
         = (((6U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__i)) 
             & (1U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__j)))
@@ -4050,6 +4447,63 @@ VL_INLINE_OPT void VFlexDPU::_combo__TOP__12(VFlexDPU__Syms* __restrict vlSymsp)
                                     & (2U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_stationary__DOT__j)))
                                     ? (IData)(vlTOPp->io_Stationary_matrix_6_2)
                                     : (IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_stationary__DOT___GEN_497))))))));
+    vlTOPp->FlexDPU__DOT___GEN_56 = (((7U == (7U & vlTOPp->FlexDPU__DOT__iloop)) 
+                                      & (0U == (7U 
+                                                & vlTOPp->FlexDPU__DOT__jloop)))
+                                      ? (IData)(vlTOPp->io_Stationary_matrix_7_0)
+                                      : (((6U == (7U 
+                                                  & vlTOPp->FlexDPU__DOT__iloop)) 
+                                          & (7U == 
+                                             (7U & vlTOPp->FlexDPU__DOT__jloop)))
+                                          ? (IData)(vlTOPp->io_Stationary_matrix_6_7)
+                                          : (((6U == 
+                                               (7U 
+                                                & vlTOPp->FlexDPU__DOT__iloop)) 
+                                              & (6U 
+                                                 == 
+                                                 (7U 
+                                                  & vlTOPp->FlexDPU__DOT__jloop)))
+                                              ? (IData)(vlTOPp->io_Stationary_matrix_6_6)
+                                              : (((6U 
+                                                   == 
+                                                   (7U 
+                                                    & vlTOPp->FlexDPU__DOT__iloop)) 
+                                                  & (5U 
+                                                     == 
+                                                     (7U 
+                                                      & vlTOPp->FlexDPU__DOT__jloop)))
+                                                  ? (IData)(vlTOPp->io_Stationary_matrix_6_5)
+                                                  : 
+                                                 (((6U 
+                                                    == 
+                                                    (7U 
+                                                     & vlTOPp->FlexDPU__DOT__iloop)) 
+                                                   & (4U 
+                                                      == 
+                                                      (7U 
+                                                       & vlTOPp->FlexDPU__DOT__jloop)))
+                                                   ? (IData)(vlTOPp->io_Stationary_matrix_6_4)
+                                                   : 
+                                                  (((6U 
+                                                     == 
+                                                     (7U 
+                                                      & vlTOPp->FlexDPU__DOT__iloop)) 
+                                                    & (3U 
+                                                       == 
+                                                       (7U 
+                                                        & vlTOPp->FlexDPU__DOT__jloop)))
+                                                    ? (IData)(vlTOPp->io_Stationary_matrix_6_3)
+                                                    : 
+                                                   (((6U 
+                                                      == 
+                                                      (7U 
+                                                       & vlTOPp->FlexDPU__DOT__iloop)) 
+                                                     & (2U 
+                                                        == 
+                                                        (7U 
+                                                         & vlTOPp->FlexDPU__DOT__jloop)))
+                                                     ? (IData)(vlTOPp->io_Stationary_matrix_6_2)
+                                                     : (IData)(vlTOPp->FlexDPU__DOT___GEN_49))))))));
     vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT___GEN_121 
         = (((7U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__i)) 
             & (0U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__j)))
@@ -4096,6 +4550,63 @@ VL_INLINE_OPT void VFlexDPU::_combo__TOP__12(VFlexDPU__Syms* __restrict vlSymsp)
                                     & (1U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_stationary__DOT__j)))
                                     ? (IData)(vlTOPp->io_Stationary_matrix_7_1)
                                     : (IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_stationary__DOT___GEN_504))))))));
+    vlTOPp->FlexDPU__DOT___GEN_63 = (((7U == (7U & vlTOPp->FlexDPU__DOT__iloop)) 
+                                      & (7U == (7U 
+                                                & vlTOPp->FlexDPU__DOT__jloop)))
+                                      ? (IData)(vlTOPp->io_Stationary_matrix_7_7)
+                                      : (((7U == (7U 
+                                                  & vlTOPp->FlexDPU__DOT__iloop)) 
+                                          & (6U == 
+                                             (7U & vlTOPp->FlexDPU__DOT__jloop)))
+                                          ? (IData)(vlTOPp->io_Stationary_matrix_7_6)
+                                          : (((7U == 
+                                               (7U 
+                                                & vlTOPp->FlexDPU__DOT__iloop)) 
+                                              & (5U 
+                                                 == 
+                                                 (7U 
+                                                  & vlTOPp->FlexDPU__DOT__jloop)))
+                                              ? (IData)(vlTOPp->io_Stationary_matrix_7_5)
+                                              : (((7U 
+                                                   == 
+                                                   (7U 
+                                                    & vlTOPp->FlexDPU__DOT__iloop)) 
+                                                  & (4U 
+                                                     == 
+                                                     (7U 
+                                                      & vlTOPp->FlexDPU__DOT__jloop)))
+                                                  ? (IData)(vlTOPp->io_Stationary_matrix_7_4)
+                                                  : 
+                                                 (((7U 
+                                                    == 
+                                                    (7U 
+                                                     & vlTOPp->FlexDPU__DOT__iloop)) 
+                                                   & (3U 
+                                                      == 
+                                                      (7U 
+                                                       & vlTOPp->FlexDPU__DOT__jloop)))
+                                                   ? (IData)(vlTOPp->io_Stationary_matrix_7_3)
+                                                   : 
+                                                  (((7U 
+                                                     == 
+                                                     (7U 
+                                                      & vlTOPp->FlexDPU__DOT__iloop)) 
+                                                    & (2U 
+                                                       == 
+                                                       (7U 
+                                                        & vlTOPp->FlexDPU__DOT__jloop)))
+                                                    ? (IData)(vlTOPp->io_Stationary_matrix_7_2)
+                                                    : 
+                                                   (((7U 
+                                                      == 
+                                                      (7U 
+                                                       & vlTOPp->FlexDPU__DOT__iloop)) 
+                                                     & (1U 
+                                                        == 
+                                                        (7U 
+                                                         & vlTOPp->FlexDPU__DOT__jloop)))
+                                                     ? (IData)(vlTOPp->io_Stationary_matrix_7_1)
+                                                     : (IData)(vlTOPp->FlexDPU__DOT___GEN_56))))))));
     vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT___GEN_128 
         = (((7U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__i)) 
             & (7U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__j)))

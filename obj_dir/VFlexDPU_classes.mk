@@ -43,6 +43,9 @@ VM_CLASSES_FAST += \
 	VFlexDPU_PathFinder__14 \
 	VFlexDPU_PathFinder__15 \
 	VFlexDPU_PathFinder__16 \
+	VFlexDPU_PathFinder__17 \
+	VFlexDPU_PathFinder__18 \
+	VFlexDPU_PathFinder__19 \
 	VFlexDPU_flexdpecom4 \
 	VFlexDPU_flexdpecom4__1 \
 	VFlexDPU_flexdpecom4__2 \
@@ -71,6 +74,7 @@ VM_SUPPORT_FAST += \
 	VFlexDPU__Trace__2 \
 	VFlexDPU__Trace__3 \
 	VFlexDPU__Trace__4 \
+	VFlexDPU__Trace__5 \
 
 # Generated support classes, non-fast-path, compile with low/medium optimization
 VM_SUPPORT_SLOW += \
@@ -81,6 +85,7 @@ VM_SUPPORT_SLOW += \
 	VFlexDPU__Trace__3__Slow \
 	VFlexDPU__Trace__4__Slow \
 	VFlexDPU__Trace__5__Slow \
+	VFlexDPU__Trace__6__Slow \
 
 # Global classes, need linked once per executable, fast-path, compile with highest optimization
 VM_GLOBAL_FAST += \

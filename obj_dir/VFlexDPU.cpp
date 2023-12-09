@@ -31,7 +31,7 @@ void VFlexDPU::eval_step() {
             Verilated::debug(1);
             __Vchange = _change_request(vlSymsp);
             Verilated::debug(__Vsaved_debug);
-            VL_FATAL_MT("FlexDPU.v", 38704, "",
+            VL_FATAL_MT("FlexDPU.v", 38711, "",
                 "Verilated model didn't converge\n"
                 "- See DIDNOTCONVERGE in the Verilator manual");
         } else {
@@ -57,7 +57,7 @@ void VFlexDPU::_eval_initial_loop(VFlexDPU__Syms* __restrict vlSymsp) {
             Verilated::debug(1);
             __Vchange = _change_request(vlSymsp);
             Verilated::debug(__Vsaved_debug);
-            VL_FATAL_MT("FlexDPU.v", 38704, "",
+            VL_FATAL_MT("FlexDPU.v", 38711, "",
                 "Verilated model didn't DC converge\n"
                 "- See DIDNOTCONVERGE in the Verilator manual");
         } else {
@@ -69,10 +69,6 @@ void VFlexDPU::_eval_initial_loop(VFlexDPU__Syms* __restrict vlSymsp) {
 VL_INLINE_OPT void VFlexDPU::_sequent__TOP__4(VFlexDPU__Syms* __restrict vlSymsp) {
     VL_DEBUG_IF(VL_DBG_MSGF("+    VFlexDPU::_sequent__TOP__4\n"); );
     VFlexDPU* const __restrict vlTOPp VL_ATTR_UNUSED = vlSymsp->TOPp;
-    // Variables
-    IData/*31:0*/ __Vdly__FlexDPU__DOT__ModuleIndex;
-    IData/*31:0*/ __Vdly__FlexDPU__DOT__ivntop__DOT__my_stationary__DOT__i;
-    IData/*31:0*/ __Vdly__FlexDPU__DOT__ivntop__DOT__my_stationary__DOT__j;
     // Body
     vlTOPp->__Vdly__FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__j 
         = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__j;
@@ -102,13 +98,13 @@ VL_INLINE_OPT void VFlexDPU::_sequent__TOP__4(VFlexDPU__Syms* __restrict vlSymsp
         = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn7__DOT__i;
     vlTOPp->__Vdly__FlexDPU__DOT__ivntop__DOT__my_ivn8__DOT__i 
         = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn8__DOT__i;
-    __Vdly__FlexDPU__DOT__ivntop__DOT__my_stationary__DOT__i 
+    vlTOPp->__Vdly__FlexDPU__DOT__ivntop__DOT__my_stationary__DOT__i 
         = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_stationary__DOT__i;
-    __Vdly__FlexDPU__DOT__ivntop__DOT__my_stationary__DOT__j 
+    vlTOPp->__Vdly__FlexDPU__DOT__ivntop__DOT__my_stationary__DOT__j 
         = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_stationary__DOT__j;
     vlTOPp->__Vdly__FlexDPU__DOT__iloop = vlTOPp->FlexDPU__DOT__iloop;
     vlTOPp->__Vdly__FlexDPU__DOT__jloop = vlTOPp->FlexDPU__DOT__jloop;
-    __Vdly__FlexDPU__DOT__ModuleIndex = vlTOPp->FlexDPU__DOT__ModuleIndex;
+    vlTOPp->__Vdly__FlexDPU__DOT__ModuleIndex = vlTOPp->FlexDPU__DOT__ModuleIndex;
     vlTOPp->__Vdly__FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__j 
         = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__j;
     vlTOPp->__Vdly__FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__i 
@@ -136,14 +132,7 @@ VL_INLINE_OPT void VFlexDPU::_sequent__TOP__4(VFlexDPU__Syms* __restrict vlSymsp
                                                    >> 4U))
                                              : (vlTOPp->io_CalFDE 
                                                 >> 4U));
-    vlTOPp->FlexDPU__DOT__used_FlexDPE_7 = ((7U < (0xfU 
-                                                   & vlTOPp->io_CalFDE))
-                                             ? ((IData)(1U) 
-                                                + (vlTOPp->io_CalFDE 
-                                                   >> 4U))
-                                             : (vlTOPp->io_CalFDE 
-                                                >> 4U));
-    vlTOPp->FlexDPU__DOT__used_FlexDPE_6 = ((6U < (0xfU 
+    vlTOPp->FlexDPU__DOT__used_FlexDPE_2 = ((2U < (0xfU 
                                                    & vlTOPp->io_CalFDE))
                                              ? ((IData)(1U) 
                                                 + (vlTOPp->io_CalFDE 
@@ -164,7 +153,7 @@ VL_INLINE_OPT void VFlexDPU::_sequent__TOP__4(VFlexDPU__Syms* __restrict vlSymsp
                                                    >> 4U))
                                              : (vlTOPp->io_CalFDE 
                                                 >> 4U));
-    vlTOPp->FlexDPU__DOT__used_FlexDPE_2 = ((2U < (0xfU 
+    vlTOPp->FlexDPU__DOT__used_FlexDPE_3 = ((3U < (0xfU 
                                                    & vlTOPp->io_CalFDE))
                                              ? ((IData)(1U) 
                                                 + (vlTOPp->io_CalFDE 
@@ -179,6 +168,15 @@ VL_INLINE_OPT void VFlexDPU::_sequent__TOP__4(VFlexDPU__Syms* __restrict vlSymsp
                                              : (vlTOPp->io_CalFDE 
                                                 >> 4U));
     vlTOPp->FlexDPU__DOT__used_FlexDPE_12 = ((0xcU 
+                                              < (0xfU 
+                                                 & vlTOPp->io_CalFDE))
+                                              ? ((IData)(1U) 
+                                                 + 
+                                                 (vlTOPp->io_CalFDE 
+                                                  >> 4U))
+                                              : (vlTOPp->io_CalFDE 
+                                                 >> 4U));
+    vlTOPp->FlexDPU__DOT__used_FlexDPE_11 = ((0xbU 
                                               < (0xfU 
                                                  & vlTOPp->io_CalFDE))
                                               ? ((IData)(1U) 
@@ -203,13 +201,6 @@ VL_INLINE_OPT void VFlexDPU::_sequent__TOP__4(VFlexDPU__Syms* __restrict vlSymsp
                                                   >> 4U))
                                               : (vlTOPp->io_CalFDE 
                                                  >> 4U));
-    vlTOPp->FlexDPU__DOT__used_FlexDPE_3 = ((3U < (0xfU 
-                                                   & vlTOPp->io_CalFDE))
-                                             ? ((IData)(1U) 
-                                                + (vlTOPp->io_CalFDE 
-                                                   >> 4U))
-                                             : (vlTOPp->io_CalFDE 
-                                                >> 4U));
     vlTOPp->FlexDPU__DOT__used_FlexDPE_14 = ((0xeU 
                                               < (0xfU 
                                                  & vlTOPp->io_CalFDE))
@@ -228,15 +219,20 @@ VL_INLINE_OPT void VFlexDPU::_sequent__TOP__4(VFlexDPU__Syms* __restrict vlSymsp
                                                   >> 4U))
                                               : (vlTOPp->io_CalFDE 
                                                  >> 4U));
-    vlTOPp->FlexDPU__DOT__used_FlexDPE_11 = ((0xbU 
-                                              < (0xfU 
-                                                 & vlTOPp->io_CalFDE))
-                                              ? ((IData)(1U) 
-                                                 + 
-                                                 (vlTOPp->io_CalFDE 
-                                                  >> 4U))
-                                              : (vlTOPp->io_CalFDE 
-                                                 >> 4U));
+    vlTOPp->FlexDPU__DOT__used_FlexDPE_6 = ((6U < (0xfU 
+                                                   & vlTOPp->io_CalFDE))
+                                             ? ((IData)(1U) 
+                                                + (vlTOPp->io_CalFDE 
+                                                   >> 4U))
+                                             : (vlTOPp->io_CalFDE 
+                                                >> 4U));
+    vlTOPp->FlexDPU__DOT__used_FlexDPE_7 = ((7U < (0xfU 
+                                                   & vlTOPp->io_CalFDE))
+                                             ? ((IData)(1U) 
+                                                + (vlTOPp->io_CalFDE 
+                                                   >> 4U))
+                                             : (vlTOPp->io_CalFDE 
+                                                >> 4U));
     vlTOPp->FlexDPU__DOT__ivntop__DOT__i_vn_6_1 = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn4__DOT__i_vn_1;
     vlTOPp->FlexDPU__DOT__ivntop__DOT__i_vn_4_1 = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT__i_vn_1;
     vlTOPp->FlexDPU__DOT__ivntop__DOT__i_vn_0_1 = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__i_vn_1;
@@ -252,6 +248,646 @@ VL_INLINE_OPT void VFlexDPU::_sequent__TOP__4(VFlexDPU__Syms* __restrict vlSymsp
     vlTOPp->FlexDPU__DOT__ivntop__DOT__i_vn_8_3 = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__i_vn_3;
     vlTOPp->FlexDPU__DOT__ivntop__DOT__i_vn_10_3 = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__i_vn_3;
     vlTOPp->FlexDPU__DOT__ivntop__DOT__i_vn_12_3 = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn7__DOT__i_vn_3;
+    if (vlTOPp->reset) {
+        vlTOPp->FlexDPU__DOT__nonZeroValues_0 = 0U;
+    } else {
+        if ((0U != (IData)(vlTOPp->FlexDPU__DOT___GEN_63))) {
+            if ((0U == (0x3fU & vlTOPp->FlexDPU__DOT__index))) {
+                vlTOPp->FlexDPU__DOT__nonZeroValues_0 
+                    = vlTOPp->FlexDPU__DOT___GEN_63;
+            }
+        }
+    }
+    if (vlTOPp->reset) {
+        vlTOPp->FlexDPU__DOT__nonZeroValues_1 = 0U;
+    } else {
+        if ((0U != (IData)(vlTOPp->FlexDPU__DOT___GEN_63))) {
+            if ((1U == (0x3fU & vlTOPp->FlexDPU__DOT__index))) {
+                vlTOPp->FlexDPU__DOT__nonZeroValues_1 
+                    = vlTOPp->FlexDPU__DOT___GEN_63;
+            }
+        }
+    }
+    if (vlTOPp->reset) {
+        vlTOPp->FlexDPU__DOT__nonZeroValues_2 = 0U;
+    } else {
+        if ((0U != (IData)(vlTOPp->FlexDPU__DOT___GEN_63))) {
+            if ((2U == (0x3fU & vlTOPp->FlexDPU__DOT__index))) {
+                vlTOPp->FlexDPU__DOT__nonZeroValues_2 
+                    = vlTOPp->FlexDPU__DOT___GEN_63;
+            }
+        }
+    }
+    if (vlTOPp->reset) {
+        vlTOPp->FlexDPU__DOT__nonZeroValues_3 = 0U;
+    } else {
+        if ((0U != (IData)(vlTOPp->FlexDPU__DOT___GEN_63))) {
+            if ((3U == (0x3fU & vlTOPp->FlexDPU__DOT__index))) {
+                vlTOPp->FlexDPU__DOT__nonZeroValues_3 
+                    = vlTOPp->FlexDPU__DOT___GEN_63;
+            }
+        }
+    }
+    if (vlTOPp->reset) {
+        vlTOPp->FlexDPU__DOT__nonZeroValues_4 = 0U;
+    } else {
+        if ((0U != (IData)(vlTOPp->FlexDPU__DOT___GEN_63))) {
+            if ((4U == (0x3fU & vlTOPp->FlexDPU__DOT__index))) {
+                vlTOPp->FlexDPU__DOT__nonZeroValues_4 
+                    = vlTOPp->FlexDPU__DOT___GEN_63;
+            }
+        }
+    }
+    if (vlTOPp->reset) {
+        vlTOPp->FlexDPU__DOT__nonZeroValues_5 = 0U;
+    } else {
+        if ((0U != (IData)(vlTOPp->FlexDPU__DOT___GEN_63))) {
+            if ((5U == (0x3fU & vlTOPp->FlexDPU__DOT__index))) {
+                vlTOPp->FlexDPU__DOT__nonZeroValues_5 
+                    = vlTOPp->FlexDPU__DOT___GEN_63;
+            }
+        }
+    }
+    if (vlTOPp->reset) {
+        vlTOPp->FlexDPU__DOT__nonZeroValues_6 = 0U;
+    } else {
+        if ((0U != (IData)(vlTOPp->FlexDPU__DOT___GEN_63))) {
+            if ((6U == (0x3fU & vlTOPp->FlexDPU__DOT__index))) {
+                vlTOPp->FlexDPU__DOT__nonZeroValues_6 
+                    = vlTOPp->FlexDPU__DOT___GEN_63;
+            }
+        }
+    }
+    if (vlTOPp->reset) {
+        vlTOPp->FlexDPU__DOT__nonZeroValues_7 = 0U;
+    } else {
+        if ((0U != (IData)(vlTOPp->FlexDPU__DOT___GEN_63))) {
+            if ((7U == (0x3fU & vlTOPp->FlexDPU__DOT__index))) {
+                vlTOPp->FlexDPU__DOT__nonZeroValues_7 
+                    = vlTOPp->FlexDPU__DOT___GEN_63;
+            }
+        }
+    }
+    if (vlTOPp->reset) {
+        vlTOPp->FlexDPU__DOT__nonZeroValues_8 = 0U;
+    } else {
+        if ((0U != (IData)(vlTOPp->FlexDPU__DOT___GEN_63))) {
+            if ((8U == (0x3fU & vlTOPp->FlexDPU__DOT__index))) {
+                vlTOPp->FlexDPU__DOT__nonZeroValues_8 
+                    = vlTOPp->FlexDPU__DOT___GEN_63;
+            }
+        }
+    }
+    if (vlTOPp->reset) {
+        vlTOPp->FlexDPU__DOT__nonZeroValues_9 = 0U;
+    } else {
+        if ((0U != (IData)(vlTOPp->FlexDPU__DOT___GEN_63))) {
+            if ((9U == (0x3fU & vlTOPp->FlexDPU__DOT__index))) {
+                vlTOPp->FlexDPU__DOT__nonZeroValues_9 
+                    = vlTOPp->FlexDPU__DOT___GEN_63;
+            }
+        }
+    }
+    if (vlTOPp->reset) {
+        vlTOPp->FlexDPU__DOT__nonZeroValues_10 = 0U;
+    } else {
+        if ((0U != (IData)(vlTOPp->FlexDPU__DOT___GEN_63))) {
+            if ((0xaU == (0x3fU & vlTOPp->FlexDPU__DOT__index))) {
+                vlTOPp->FlexDPU__DOT__nonZeroValues_10 
+                    = vlTOPp->FlexDPU__DOT___GEN_63;
+            }
+        }
+    }
+    if (vlTOPp->reset) {
+        vlTOPp->FlexDPU__DOT__nonZeroValues_11 = 0U;
+    } else {
+        if ((0U != (IData)(vlTOPp->FlexDPU__DOT___GEN_63))) {
+            if ((0xbU == (0x3fU & vlTOPp->FlexDPU__DOT__index))) {
+                vlTOPp->FlexDPU__DOT__nonZeroValues_11 
+                    = vlTOPp->FlexDPU__DOT___GEN_63;
+            }
+        }
+    }
+    if (vlTOPp->reset) {
+        vlTOPp->FlexDPU__DOT__nonZeroValues_12 = 0U;
+    } else {
+        if ((0U != (IData)(vlTOPp->FlexDPU__DOT___GEN_63))) {
+            if ((0xcU == (0x3fU & vlTOPp->FlexDPU__DOT__index))) {
+                vlTOPp->FlexDPU__DOT__nonZeroValues_12 
+                    = vlTOPp->FlexDPU__DOT___GEN_63;
+            }
+        }
+    }
+    if (vlTOPp->reset) {
+        vlTOPp->FlexDPU__DOT__nonZeroValues_13 = 0U;
+    } else {
+        if ((0U != (IData)(vlTOPp->FlexDPU__DOT___GEN_63))) {
+            if ((0xdU == (0x3fU & vlTOPp->FlexDPU__DOT__index))) {
+                vlTOPp->FlexDPU__DOT__nonZeroValues_13 
+                    = vlTOPp->FlexDPU__DOT___GEN_63;
+            }
+        }
+    }
+    if (vlTOPp->reset) {
+        vlTOPp->FlexDPU__DOT__nonZeroValues_14 = 0U;
+    } else {
+        if ((0U != (IData)(vlTOPp->FlexDPU__DOT___GEN_63))) {
+            if ((0xeU == (0x3fU & vlTOPp->FlexDPU__DOT__index))) {
+                vlTOPp->FlexDPU__DOT__nonZeroValues_14 
+                    = vlTOPp->FlexDPU__DOT___GEN_63;
+            }
+        }
+    }
+    if (vlTOPp->reset) {
+        vlTOPp->FlexDPU__DOT__nonZeroValues_15 = 0U;
+    } else {
+        if ((0U != (IData)(vlTOPp->FlexDPU__DOT___GEN_63))) {
+            if ((0xfU == (0x3fU & vlTOPp->FlexDPU__DOT__index))) {
+                vlTOPp->FlexDPU__DOT__nonZeroValues_15 
+                    = vlTOPp->FlexDPU__DOT___GEN_63;
+            }
+        }
+    }
+    if (vlTOPp->reset) {
+        vlTOPp->FlexDPU__DOT__nonZeroValues_16 = 0U;
+    } else {
+        if ((0U != (IData)(vlTOPp->FlexDPU__DOT___GEN_63))) {
+            if ((0x10U == (0x3fU & vlTOPp->FlexDPU__DOT__index))) {
+                vlTOPp->FlexDPU__DOT__nonZeroValues_16 
+                    = vlTOPp->FlexDPU__DOT___GEN_63;
+            }
+        }
+    }
+    if (vlTOPp->reset) {
+        vlTOPp->FlexDPU__DOT__nonZeroValues_17 = 0U;
+    } else {
+        if ((0U != (IData)(vlTOPp->FlexDPU__DOT___GEN_63))) {
+            if ((0x11U == (0x3fU & vlTOPp->FlexDPU__DOT__index))) {
+                vlTOPp->FlexDPU__DOT__nonZeroValues_17 
+                    = vlTOPp->FlexDPU__DOT___GEN_63;
+            }
+        }
+    }
+    if (vlTOPp->reset) {
+        vlTOPp->FlexDPU__DOT__nonZeroValues_18 = 0U;
+    } else {
+        if ((0U != (IData)(vlTOPp->FlexDPU__DOT___GEN_63))) {
+            if ((0x12U == (0x3fU & vlTOPp->FlexDPU__DOT__index))) {
+                vlTOPp->FlexDPU__DOT__nonZeroValues_18 
+                    = vlTOPp->FlexDPU__DOT___GEN_63;
+            }
+        }
+    }
+    if (vlTOPp->reset) {
+        vlTOPp->FlexDPU__DOT__nonZeroValues_19 = 0U;
+    } else {
+        if ((0U != (IData)(vlTOPp->FlexDPU__DOT___GEN_63))) {
+            if ((0x13U == (0x3fU & vlTOPp->FlexDPU__DOT__index))) {
+                vlTOPp->FlexDPU__DOT__nonZeroValues_19 
+                    = vlTOPp->FlexDPU__DOT___GEN_63;
+            }
+        }
+    }
+    if (vlTOPp->reset) {
+        vlTOPp->FlexDPU__DOT__nonZeroValues_20 = 0U;
+    } else {
+        if ((0U != (IData)(vlTOPp->FlexDPU__DOT___GEN_63))) {
+            if ((0x14U == (0x3fU & vlTOPp->FlexDPU__DOT__index))) {
+                vlTOPp->FlexDPU__DOT__nonZeroValues_20 
+                    = vlTOPp->FlexDPU__DOT___GEN_63;
+            }
+        }
+    }
+    if (vlTOPp->reset) {
+        vlTOPp->FlexDPU__DOT__nonZeroValues_21 = 0U;
+    } else {
+        if ((0U != (IData)(vlTOPp->FlexDPU__DOT___GEN_63))) {
+            if ((0x15U == (0x3fU & vlTOPp->FlexDPU__DOT__index))) {
+                vlTOPp->FlexDPU__DOT__nonZeroValues_21 
+                    = vlTOPp->FlexDPU__DOT___GEN_63;
+            }
+        }
+    }
+    if (vlTOPp->reset) {
+        vlTOPp->FlexDPU__DOT__nonZeroValues_22 = 0U;
+    } else {
+        if ((0U != (IData)(vlTOPp->FlexDPU__DOT___GEN_63))) {
+            if ((0x16U == (0x3fU & vlTOPp->FlexDPU__DOT__index))) {
+                vlTOPp->FlexDPU__DOT__nonZeroValues_22 
+                    = vlTOPp->FlexDPU__DOT___GEN_63;
+            }
+        }
+    }
+    if (vlTOPp->reset) {
+        vlTOPp->FlexDPU__DOT__nonZeroValues_23 = 0U;
+    } else {
+        if ((0U != (IData)(vlTOPp->FlexDPU__DOT___GEN_63))) {
+            if ((0x17U == (0x3fU & vlTOPp->FlexDPU__DOT__index))) {
+                vlTOPp->FlexDPU__DOT__nonZeroValues_23 
+                    = vlTOPp->FlexDPU__DOT___GEN_63;
+            }
+        }
+    }
+    if (vlTOPp->reset) {
+        vlTOPp->FlexDPU__DOT__nonZeroValues_24 = 0U;
+    } else {
+        if ((0U != (IData)(vlTOPp->FlexDPU__DOT___GEN_63))) {
+            if ((0x18U == (0x3fU & vlTOPp->FlexDPU__DOT__index))) {
+                vlTOPp->FlexDPU__DOT__nonZeroValues_24 
+                    = vlTOPp->FlexDPU__DOT___GEN_63;
+            }
+        }
+    }
+    if (vlTOPp->reset) {
+        vlTOPp->FlexDPU__DOT__nonZeroValues_25 = 0U;
+    } else {
+        if ((0U != (IData)(vlTOPp->FlexDPU__DOT___GEN_63))) {
+            if ((0x19U == (0x3fU & vlTOPp->FlexDPU__DOT__index))) {
+                vlTOPp->FlexDPU__DOT__nonZeroValues_25 
+                    = vlTOPp->FlexDPU__DOT___GEN_63;
+            }
+        }
+    }
+    if (vlTOPp->reset) {
+        vlTOPp->FlexDPU__DOT__nonZeroValues_26 = 0U;
+    } else {
+        if ((0U != (IData)(vlTOPp->FlexDPU__DOT___GEN_63))) {
+            if ((0x1aU == (0x3fU & vlTOPp->FlexDPU__DOT__index))) {
+                vlTOPp->FlexDPU__DOT__nonZeroValues_26 
+                    = vlTOPp->FlexDPU__DOT___GEN_63;
+            }
+        }
+    }
+    if (vlTOPp->reset) {
+        vlTOPp->FlexDPU__DOT__nonZeroValues_27 = 0U;
+    } else {
+        if ((0U != (IData)(vlTOPp->FlexDPU__DOT___GEN_63))) {
+            if ((0x1bU == (0x3fU & vlTOPp->FlexDPU__DOT__index))) {
+                vlTOPp->FlexDPU__DOT__nonZeroValues_27 
+                    = vlTOPp->FlexDPU__DOT___GEN_63;
+            }
+        }
+    }
+    if (vlTOPp->reset) {
+        vlTOPp->FlexDPU__DOT__nonZeroValues_28 = 0U;
+    } else {
+        if ((0U != (IData)(vlTOPp->FlexDPU__DOT___GEN_63))) {
+            if ((0x1cU == (0x3fU & vlTOPp->FlexDPU__DOT__index))) {
+                vlTOPp->FlexDPU__DOT__nonZeroValues_28 
+                    = vlTOPp->FlexDPU__DOT___GEN_63;
+            }
+        }
+    }
+    if (vlTOPp->reset) {
+        vlTOPp->FlexDPU__DOT__nonZeroValues_29 = 0U;
+    } else {
+        if ((0U != (IData)(vlTOPp->FlexDPU__DOT___GEN_63))) {
+            if ((0x1dU == (0x3fU & vlTOPp->FlexDPU__DOT__index))) {
+                vlTOPp->FlexDPU__DOT__nonZeroValues_29 
+                    = vlTOPp->FlexDPU__DOT___GEN_63;
+            }
+        }
+    }
+    if (vlTOPp->reset) {
+        vlTOPp->FlexDPU__DOT__nonZeroValues_30 = 0U;
+    } else {
+        if ((0U != (IData)(vlTOPp->FlexDPU__DOT___GEN_63))) {
+            if ((0x1eU == (0x3fU & vlTOPp->FlexDPU__DOT__index))) {
+                vlTOPp->FlexDPU__DOT__nonZeroValues_30 
+                    = vlTOPp->FlexDPU__DOT___GEN_63;
+            }
+        }
+    }
+    if (vlTOPp->reset) {
+        vlTOPp->FlexDPU__DOT__nonZeroValues_31 = 0U;
+    } else {
+        if ((0U != (IData)(vlTOPp->FlexDPU__DOT___GEN_63))) {
+            if ((0x1fU == (0x3fU & vlTOPp->FlexDPU__DOT__index))) {
+                vlTOPp->FlexDPU__DOT__nonZeroValues_31 
+                    = vlTOPp->FlexDPU__DOT___GEN_63;
+            }
+        }
+    }
+    if (vlTOPp->reset) {
+        vlTOPp->FlexDPU__DOT__nonZeroValues_32 = 0U;
+    } else {
+        if ((0U != (IData)(vlTOPp->FlexDPU__DOT___GEN_63))) {
+            if ((0x20U == (0x3fU & vlTOPp->FlexDPU__DOT__index))) {
+                vlTOPp->FlexDPU__DOT__nonZeroValues_32 
+                    = vlTOPp->FlexDPU__DOT___GEN_63;
+            }
+        }
+    }
+    if (vlTOPp->reset) {
+        vlTOPp->FlexDPU__DOT__nonZeroValues_33 = 0U;
+    } else {
+        if ((0U != (IData)(vlTOPp->FlexDPU__DOT___GEN_63))) {
+            if ((0x21U == (0x3fU & vlTOPp->FlexDPU__DOT__index))) {
+                vlTOPp->FlexDPU__DOT__nonZeroValues_33 
+                    = vlTOPp->FlexDPU__DOT___GEN_63;
+            }
+        }
+    }
+    if (vlTOPp->reset) {
+        vlTOPp->FlexDPU__DOT__nonZeroValues_34 = 0U;
+    } else {
+        if ((0U != (IData)(vlTOPp->FlexDPU__DOT___GEN_63))) {
+            if ((0x22U == (0x3fU & vlTOPp->FlexDPU__DOT__index))) {
+                vlTOPp->FlexDPU__DOT__nonZeroValues_34 
+                    = vlTOPp->FlexDPU__DOT___GEN_63;
+            }
+        }
+    }
+    if (vlTOPp->reset) {
+        vlTOPp->FlexDPU__DOT__nonZeroValues_35 = 0U;
+    } else {
+        if ((0U != (IData)(vlTOPp->FlexDPU__DOT___GEN_63))) {
+            if ((0x23U == (0x3fU & vlTOPp->FlexDPU__DOT__index))) {
+                vlTOPp->FlexDPU__DOT__nonZeroValues_35 
+                    = vlTOPp->FlexDPU__DOT___GEN_63;
+            }
+        }
+    }
+    if (vlTOPp->reset) {
+        vlTOPp->FlexDPU__DOT__nonZeroValues_36 = 0U;
+    } else {
+        if ((0U != (IData)(vlTOPp->FlexDPU__DOT___GEN_63))) {
+            if ((0x24U == (0x3fU & vlTOPp->FlexDPU__DOT__index))) {
+                vlTOPp->FlexDPU__DOT__nonZeroValues_36 
+                    = vlTOPp->FlexDPU__DOT___GEN_63;
+            }
+        }
+    }
+    if (vlTOPp->reset) {
+        vlTOPp->FlexDPU__DOT__nonZeroValues_37 = 0U;
+    } else {
+        if ((0U != (IData)(vlTOPp->FlexDPU__DOT___GEN_63))) {
+            if ((0x25U == (0x3fU & vlTOPp->FlexDPU__DOT__index))) {
+                vlTOPp->FlexDPU__DOT__nonZeroValues_37 
+                    = vlTOPp->FlexDPU__DOT___GEN_63;
+            }
+        }
+    }
+    if (vlTOPp->reset) {
+        vlTOPp->FlexDPU__DOT__nonZeroValues_38 = 0U;
+    } else {
+        if ((0U != (IData)(vlTOPp->FlexDPU__DOT___GEN_63))) {
+            if ((0x26U == (0x3fU & vlTOPp->FlexDPU__DOT__index))) {
+                vlTOPp->FlexDPU__DOT__nonZeroValues_38 
+                    = vlTOPp->FlexDPU__DOT___GEN_63;
+            }
+        }
+    }
+    if (vlTOPp->reset) {
+        vlTOPp->FlexDPU__DOT__nonZeroValues_39 = 0U;
+    } else {
+        if ((0U != (IData)(vlTOPp->FlexDPU__DOT___GEN_63))) {
+            if ((0x27U == (0x3fU & vlTOPp->FlexDPU__DOT__index))) {
+                vlTOPp->FlexDPU__DOT__nonZeroValues_39 
+                    = vlTOPp->FlexDPU__DOT___GEN_63;
+            }
+        }
+    }
+    if (vlTOPp->reset) {
+        vlTOPp->FlexDPU__DOT__nonZeroValues_40 = 0U;
+    } else {
+        if ((0U != (IData)(vlTOPp->FlexDPU__DOT___GEN_63))) {
+            if ((0x28U == (0x3fU & vlTOPp->FlexDPU__DOT__index))) {
+                vlTOPp->FlexDPU__DOT__nonZeroValues_40 
+                    = vlTOPp->FlexDPU__DOT___GEN_63;
+            }
+        }
+    }
+    if (vlTOPp->reset) {
+        vlTOPp->FlexDPU__DOT__nonZeroValues_41 = 0U;
+    } else {
+        if ((0U != (IData)(vlTOPp->FlexDPU__DOT___GEN_63))) {
+            if ((0x29U == (0x3fU & vlTOPp->FlexDPU__DOT__index))) {
+                vlTOPp->FlexDPU__DOT__nonZeroValues_41 
+                    = vlTOPp->FlexDPU__DOT___GEN_63;
+            }
+        }
+    }
+    if (vlTOPp->reset) {
+        vlTOPp->FlexDPU__DOT__nonZeroValues_42 = 0U;
+    } else {
+        if ((0U != (IData)(vlTOPp->FlexDPU__DOT___GEN_63))) {
+            if ((0x2aU == (0x3fU & vlTOPp->FlexDPU__DOT__index))) {
+                vlTOPp->FlexDPU__DOT__nonZeroValues_42 
+                    = vlTOPp->FlexDPU__DOT___GEN_63;
+            }
+        }
+    }
+    if (vlTOPp->reset) {
+        vlTOPp->FlexDPU__DOT__nonZeroValues_43 = 0U;
+    } else {
+        if ((0U != (IData)(vlTOPp->FlexDPU__DOT___GEN_63))) {
+            if ((0x2bU == (0x3fU & vlTOPp->FlexDPU__DOT__index))) {
+                vlTOPp->FlexDPU__DOT__nonZeroValues_43 
+                    = vlTOPp->FlexDPU__DOT___GEN_63;
+            }
+        }
+    }
+    if (vlTOPp->reset) {
+        vlTOPp->FlexDPU__DOT__nonZeroValues_44 = 0U;
+    } else {
+        if ((0U != (IData)(vlTOPp->FlexDPU__DOT___GEN_63))) {
+            if ((0x2cU == (0x3fU & vlTOPp->FlexDPU__DOT__index))) {
+                vlTOPp->FlexDPU__DOT__nonZeroValues_44 
+                    = vlTOPp->FlexDPU__DOT___GEN_63;
+            }
+        }
+    }
+    if (vlTOPp->reset) {
+        vlTOPp->FlexDPU__DOT__nonZeroValues_45 = 0U;
+    } else {
+        if ((0U != (IData)(vlTOPp->FlexDPU__DOT___GEN_63))) {
+            if ((0x2dU == (0x3fU & vlTOPp->FlexDPU__DOT__index))) {
+                vlTOPp->FlexDPU__DOT__nonZeroValues_45 
+                    = vlTOPp->FlexDPU__DOT___GEN_63;
+            }
+        }
+    }
+    if (vlTOPp->reset) {
+        vlTOPp->FlexDPU__DOT__nonZeroValues_46 = 0U;
+    } else {
+        if ((0U != (IData)(vlTOPp->FlexDPU__DOT___GEN_63))) {
+            if ((0x2eU == (0x3fU & vlTOPp->FlexDPU__DOT__index))) {
+                vlTOPp->FlexDPU__DOT__nonZeroValues_46 
+                    = vlTOPp->FlexDPU__DOT___GEN_63;
+            }
+        }
+    }
+    if (vlTOPp->reset) {
+        vlTOPp->FlexDPU__DOT__nonZeroValues_47 = 0U;
+    } else {
+        if ((0U != (IData)(vlTOPp->FlexDPU__DOT___GEN_63))) {
+            if ((0x2fU == (0x3fU & vlTOPp->FlexDPU__DOT__index))) {
+                vlTOPp->FlexDPU__DOT__nonZeroValues_47 
+                    = vlTOPp->FlexDPU__DOT___GEN_63;
+            }
+        }
+    }
+    if (vlTOPp->reset) {
+        vlTOPp->FlexDPU__DOT__nonZeroValues_48 = 0U;
+    } else {
+        if ((0U != (IData)(vlTOPp->FlexDPU__DOT___GEN_63))) {
+            if ((0x30U == (0x3fU & vlTOPp->FlexDPU__DOT__index))) {
+                vlTOPp->FlexDPU__DOT__nonZeroValues_48 
+                    = vlTOPp->FlexDPU__DOT___GEN_63;
+            }
+        }
+    }
+    if (vlTOPp->reset) {
+        vlTOPp->FlexDPU__DOT__nonZeroValues_49 = 0U;
+    } else {
+        if ((0U != (IData)(vlTOPp->FlexDPU__DOT___GEN_63))) {
+            if ((0x31U == (0x3fU & vlTOPp->FlexDPU__DOT__index))) {
+                vlTOPp->FlexDPU__DOT__nonZeroValues_49 
+                    = vlTOPp->FlexDPU__DOT___GEN_63;
+            }
+        }
+    }
+    if (vlTOPp->reset) {
+        vlTOPp->FlexDPU__DOT__nonZeroValues_50 = 0U;
+    } else {
+        if ((0U != (IData)(vlTOPp->FlexDPU__DOT___GEN_63))) {
+            if ((0x32U == (0x3fU & vlTOPp->FlexDPU__DOT__index))) {
+                vlTOPp->FlexDPU__DOT__nonZeroValues_50 
+                    = vlTOPp->FlexDPU__DOT___GEN_63;
+            }
+        }
+    }
+    if (vlTOPp->reset) {
+        vlTOPp->FlexDPU__DOT__nonZeroValues_51 = 0U;
+    } else {
+        if ((0U != (IData)(vlTOPp->FlexDPU__DOT___GEN_63))) {
+            if ((0x33U == (0x3fU & vlTOPp->FlexDPU__DOT__index))) {
+                vlTOPp->FlexDPU__DOT__nonZeroValues_51 
+                    = vlTOPp->FlexDPU__DOT___GEN_63;
+            }
+        }
+    }
+    if (vlTOPp->reset) {
+        vlTOPp->FlexDPU__DOT__nonZeroValues_52 = 0U;
+    } else {
+        if ((0U != (IData)(vlTOPp->FlexDPU__DOT___GEN_63))) {
+            if ((0x34U == (0x3fU & vlTOPp->FlexDPU__DOT__index))) {
+                vlTOPp->FlexDPU__DOT__nonZeroValues_52 
+                    = vlTOPp->FlexDPU__DOT___GEN_63;
+            }
+        }
+    }
+    if (vlTOPp->reset) {
+        vlTOPp->FlexDPU__DOT__nonZeroValues_53 = 0U;
+    } else {
+        if ((0U != (IData)(vlTOPp->FlexDPU__DOT___GEN_63))) {
+            if ((0x35U == (0x3fU & vlTOPp->FlexDPU__DOT__index))) {
+                vlTOPp->FlexDPU__DOT__nonZeroValues_53 
+                    = vlTOPp->FlexDPU__DOT___GEN_63;
+            }
+        }
+    }
+    if (vlTOPp->reset) {
+        vlTOPp->FlexDPU__DOT__nonZeroValues_54 = 0U;
+    } else {
+        if ((0U != (IData)(vlTOPp->FlexDPU__DOT___GEN_63))) {
+            if ((0x36U == (0x3fU & vlTOPp->FlexDPU__DOT__index))) {
+                vlTOPp->FlexDPU__DOT__nonZeroValues_54 
+                    = vlTOPp->FlexDPU__DOT___GEN_63;
+            }
+        }
+    }
+    if (vlTOPp->reset) {
+        vlTOPp->FlexDPU__DOT__nonZeroValues_55 = 0U;
+    } else {
+        if ((0U != (IData)(vlTOPp->FlexDPU__DOT___GEN_63))) {
+            if ((0x37U == (0x3fU & vlTOPp->FlexDPU__DOT__index))) {
+                vlTOPp->FlexDPU__DOT__nonZeroValues_55 
+                    = vlTOPp->FlexDPU__DOT___GEN_63;
+            }
+        }
+    }
+    if (vlTOPp->reset) {
+        vlTOPp->FlexDPU__DOT__nonZeroValues_56 = 0U;
+    } else {
+        if ((0U != (IData)(vlTOPp->FlexDPU__DOT___GEN_63))) {
+            if ((0x38U == (0x3fU & vlTOPp->FlexDPU__DOT__index))) {
+                vlTOPp->FlexDPU__DOT__nonZeroValues_56 
+                    = vlTOPp->FlexDPU__DOT___GEN_63;
+            }
+        }
+    }
+    if (vlTOPp->reset) {
+        vlTOPp->FlexDPU__DOT__nonZeroValues_57 = 0U;
+    } else {
+        if ((0U != (IData)(vlTOPp->FlexDPU__DOT___GEN_63))) {
+            if ((0x39U == (0x3fU & vlTOPp->FlexDPU__DOT__index))) {
+                vlTOPp->FlexDPU__DOT__nonZeroValues_57 
+                    = vlTOPp->FlexDPU__DOT___GEN_63;
+            }
+        }
+    }
+    if (vlTOPp->reset) {
+        vlTOPp->FlexDPU__DOT__nonZeroValues_58 = 0U;
+    } else {
+        if ((0U != (IData)(vlTOPp->FlexDPU__DOT___GEN_63))) {
+            if ((0x3aU == (0x3fU & vlTOPp->FlexDPU__DOT__index))) {
+                vlTOPp->FlexDPU__DOT__nonZeroValues_58 
+                    = vlTOPp->FlexDPU__DOT___GEN_63;
+            }
+        }
+    }
+    if (vlTOPp->reset) {
+        vlTOPp->FlexDPU__DOT__nonZeroValues_59 = 0U;
+    } else {
+        if ((0U != (IData)(vlTOPp->FlexDPU__DOT___GEN_63))) {
+            if ((0x3bU == (0x3fU & vlTOPp->FlexDPU__DOT__index))) {
+                vlTOPp->FlexDPU__DOT__nonZeroValues_59 
+                    = vlTOPp->FlexDPU__DOT___GEN_63;
+            }
+        }
+    }
+    if (vlTOPp->reset) {
+        vlTOPp->FlexDPU__DOT__nonZeroValues_60 = 0U;
+    } else {
+        if ((0U != (IData)(vlTOPp->FlexDPU__DOT___GEN_63))) {
+            if ((0x3cU == (0x3fU & vlTOPp->FlexDPU__DOT__index))) {
+                vlTOPp->FlexDPU__DOT__nonZeroValues_60 
+                    = vlTOPp->FlexDPU__DOT___GEN_63;
+            }
+        }
+    }
+    if (vlTOPp->reset) {
+        vlTOPp->FlexDPU__DOT__nonZeroValues_61 = 0U;
+    } else {
+        if ((0U != (IData)(vlTOPp->FlexDPU__DOT___GEN_63))) {
+            if ((0x3dU == (0x3fU & vlTOPp->FlexDPU__DOT__index))) {
+                vlTOPp->FlexDPU__DOT__nonZeroValues_61 
+                    = vlTOPp->FlexDPU__DOT___GEN_63;
+            }
+        }
+    }
+    if (vlTOPp->reset) {
+        vlTOPp->FlexDPU__DOT__nonZeroValues_62 = 0U;
+    } else {
+        if ((0U != (IData)(vlTOPp->FlexDPU__DOT___GEN_63))) {
+            if ((0x3eU == (0x3fU & vlTOPp->FlexDPU__DOT__index))) {
+                vlTOPp->FlexDPU__DOT__nonZeroValues_62 
+                    = vlTOPp->FlexDPU__DOT___GEN_63;
+            }
+        }
+    }
+    if (vlTOPp->reset) {
+        vlTOPp->FlexDPU__DOT__nonZeroValues_63 = 0U;
+    } else {
+        if ((0U != (IData)(vlTOPp->FlexDPU__DOT___GEN_63))) {
+            if ((0x3fU == (0x3fU & vlTOPp->FlexDPU__DOT__index))) {
+                vlTOPp->FlexDPU__DOT__nonZeroValues_63 
+                    = vlTOPp->FlexDPU__DOT___GEN_63;
+            }
+        }
+    }
     if (vlTOPp->reset) {
         vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__rowcount_15 = 0U;
     }
@@ -4813,25 +5449,25 @@ VL_INLINE_OPT void VFlexDPU::_sequent__TOP__4(VFlexDPU__Syms* __restrict vlSymsp
                 : (IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_stationary__DOT___GEN_2));
     }
     if (vlTOPp->reset) {
-        __Vdly__FlexDPU__DOT__ivntop__DOT__my_stationary__DOT__i = 0U;
+        vlTOPp->__Vdly__FlexDPU__DOT__ivntop__DOT__my_stationary__DOT__i = 0U;
     } else {
         if (((7U > vlTOPp->FlexDPU__DOT__ivntop__DOT__my_stationary__DOT__i) 
              & (7U == vlTOPp->FlexDPU__DOT__ivntop__DOT__my_stationary__DOT__j))) {
-            __Vdly__FlexDPU__DOT__ivntop__DOT__my_stationary__DOT__i 
+            vlTOPp->__Vdly__FlexDPU__DOT__ivntop__DOT__my_stationary__DOT__i 
                 = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_stationary__DOT___i_T_1;
         }
     }
     if (vlTOPp->reset) {
-        __Vdly__FlexDPU__DOT__ivntop__DOT__my_stationary__DOT__j = 0U;
+        vlTOPp->__Vdly__FlexDPU__DOT__ivntop__DOT__my_stationary__DOT__j = 0U;
     } else {
         if (((7U > vlTOPp->FlexDPU__DOT__ivntop__DOT__my_stationary__DOT__j) 
              & (7U >= vlTOPp->FlexDPU__DOT__ivntop__DOT__my_stationary__DOT__i))) {
-            __Vdly__FlexDPU__DOT__ivntop__DOT__my_stationary__DOT__j 
+            vlTOPp->__Vdly__FlexDPU__DOT__ivntop__DOT__my_stationary__DOT__j 
                 = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_stationary__DOT___j_T_1;
         } else {
             if ((1U & (~ ((7U == vlTOPp->FlexDPU__DOT__ivntop__DOT__my_stationary__DOT__i) 
                           & (IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_stationary__DOT___T_57))))) {
-                __Vdly__FlexDPU__DOT__ivntop__DOT__my_stationary__DOT__j = 0U;
+                vlTOPp->__Vdly__FlexDPU__DOT__ivntop__DOT__my_stationary__DOT__j = 0U;
             }
         }
     }
@@ -4886,7 +5522,7 @@ VL_INLINE_OPT void VFlexDPU::_sequent__TOP__4(VFlexDPU__Syms* __restrict vlSymsp
         }
     }
     if (vlTOPp->reset) {
-        __Vdly__FlexDPU__DOT__ModuleIndex = 0U;
+        vlTOPp->__Vdly__FlexDPU__DOT__ModuleIndex = 0U;
     } else {
         if (((IData)(vlTOPp->FlexDPU__DOT__Statvalid) 
              & (IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT___GEN_0))) {
@@ -4901,7 +5537,7 @@ VL_INLINE_OPT void VFlexDPU::_sequent__TOP__4(VFlexDPU__Syms* __restrict vlSymsp
                           & (7U == vlSymsp->TOP__FlexDPU__DOT__PathFinder.__PVT__myMuxes__DOT__j)) 
                          & (7U == vlSymsp->TOP__FlexDPU__DOT__PathFinder.__PVT__myMuxes__DOT__i)) 
                         & (6U == vlSymsp->TOP__FlexDPU__DOT__PathFinder.__PVT__myMuxes__DOT__jNext)))) {
-                    __Vdly__FlexDPU__DOT__ModuleIndex 
+                    vlTOPp->__Vdly__FlexDPU__DOT__ModuleIndex 
                         = vlTOPp->FlexDPU__DOT___ModuleIndex_T_1;
                 }
             }
@@ -5013,17 +5649,23 @@ VL_INLINE_OPT void VFlexDPU::_sequent__TOP__4(VFlexDPU__Syms* __restrict vlSymsp
     }
     vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__io_ProcessValid_REG 
         = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__k;
-    vlTOPp->FlexDPU__DOT__ivntop__DOT__i_vn_1_3 = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__i_vn2_3;
     vlTOPp->FlexDPU__DOT__ivntop__DOT__i_vn_1_1 = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__i_vn2_1;
+    vlTOPp->FlexDPU__DOT__ivntop__DOT__i_vn_1_3 = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__i_vn2_3;
     vlTOPp->FlexDPU__DOT__ivntop__DOT__i_vn_1_0 = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__i_vn2_0;
     vlTOPp->FlexDPU__DOT__ivntop__DOT__i_vn_1_2 = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__i_vn2_2;
     vlTOPp->FlexDPU__DOT__ivntop__DOT__i_vn_0_2 = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__i_vn_2;
     vlTOPp->FlexDPU__DOT__ivntop__DOT__i_vn_0_0 = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__i_vn_0;
+}
+
+VL_INLINE_OPT void VFlexDPU::_sequent__TOP__5(VFlexDPU__Syms* __restrict vlSymsp) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+    VFlexDPU::_sequent__TOP__5\n"); );
+    VFlexDPU* const __restrict vlTOPp VL_ATTR_UNUSED = vlSymsp->TOPp;
+    // Body
     vlTOPp->FlexDPU__DOT__ivntop__DOT__my_stationary__DOT__i 
-        = __Vdly__FlexDPU__DOT__ivntop__DOT__my_stationary__DOT__i;
+        = vlTOPp->__Vdly__FlexDPU__DOT__ivntop__DOT__my_stationary__DOT__i;
     vlTOPp->FlexDPU__DOT__ivntop__DOT__my_stationary__DOT__j 
-        = __Vdly__FlexDPU__DOT__ivntop__DOT__my_stationary__DOT__j;
-    vlTOPp->FlexDPU__DOT__ModuleIndex = __Vdly__FlexDPU__DOT__ModuleIndex;
+        = vlTOPp->__Vdly__FlexDPU__DOT__ivntop__DOT__my_stationary__DOT__j;
+    vlTOPp->FlexDPU__DOT__ModuleIndex = vlTOPp->__Vdly__FlexDPU__DOT__ModuleIndex;
     if (vlTOPp->reset) {
         vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn4__DOT__i_vn_1 = 0U;
         vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT__i_vn_1 = 0U;
@@ -5060,31 +5702,38 @@ VL_INLINE_OPT void VFlexDPU::_sequent__TOP__4(VFlexDPU__Syms* __restrict vlSymsp
         vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn8__DOT__i_vn_3 
             = ((IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn8__DOT___k_T_2)
                 ? (0x1fU & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn8__DOT___GEN_3763)
-                : 0x1cU);
+                : 0x18U);
         vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn4__DOT__i_vn_3 
             = ((IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn4__DOT___k_T_2)
                 ? (0x1fU & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn4__DOT___GEN_3763)
-                : 6U);
+                : 0x1aU);
         vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT__i_vn_3 
             = ((IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT___k_T_2)
                 ? (0x1fU & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT___GEN_3763)
-                : 0x14U);
+                : 0x1aU);
         vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__i_vn_3 
             = ((IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT___k_T_2)
                 ? (0x1fU & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT___GEN_3763)
-                : 4U);
+                : 0x16U);
         vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__i_vn_3 
             = ((IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___k_T_2)
                 ? (0x1fU & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___GEN_3763)
-                : 0xcU);
+                : 0x1dU);
         vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__i_vn_3 
             = ((IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___k_T_2)
                 ? (0x1fU & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___GEN_3763)
-                : 0xeU);
+                : 1U);
         vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn7__DOT__i_vn_3 
             = ((IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn7__DOT___k_T_2)
                 ? (0x1fU & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn7__DOT___GEN_3763)
-                : 0xdU);
+                : 0x16U);
+    }
+    if (vlTOPp->reset) {
+        vlTOPp->FlexDPU__DOT__index = 0U;
+    } else {
+        if ((0U != (IData)(vlTOPp->FlexDPU__DOT___GEN_63))) {
+            vlTOPp->FlexDPU__DOT__index = vlTOPp->FlexDPU__DOT___index_T_1;
+        }
     }
     vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT___T_33 
         = ((0U == vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__rowcount_0) 
@@ -5123,6 +5772,34 @@ VL_INLINE_OPT void VFlexDPU::_sequent__TOP__4(VFlexDPU__Syms* __restrict vlSymsp
         vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__i_vn2_1 = 0U;
         vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn7__DOT__i_vn2_1 = 0U;
         vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn8__DOT__i_vn2_2 = 0U;
+        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT__i_vn2_2 = 0U;
+        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__i_vn2_2 = 0U;
+        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn4__DOT__i_vn2_2 = 0U;
+        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__i_vn2_2 = 0U;
+        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__i_vn2_2 = 0U;
+        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn7__DOT__i_vn2_2 = 0U;
+        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn8__DOT__i_vn2_0 = 0U;
+        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn4__DOT__i_vn2_0 = 0U;
+        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT__i_vn2_0 = 0U;
+        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__i_vn2_0 = 0U;
+        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__i_vn2_0 = 0U;
+        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__i_vn2_0 = 0U;
+        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn7__DOT__i_vn2_0 = 0U;
+        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn4__DOT__i_vn_2 = 0U;
+        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT__i_vn_2 = 0U;
+        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__i_vn_2 = 0U;
+        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__i_vn_2 = 0U;
+        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__i_vn_2 = 0U;
+        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn7__DOT__i_vn_2 = 0U;
+        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn8__DOT__i_vn_2 = 0U;
+        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn4__DOT__i_vn_0 = 0U;
+        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT__i_vn_0 = 0U;
+        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__i_vn_0 = 0U;
+        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__i_vn_0 = 0U;
+        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__i_vn_0 = 0U;
+        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn7__DOT__i_vn_0 = 0U;
+        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn8__DOT__i_vn_0 = 0U;
+        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_stationary__DOT__count = 0U;
     } else {
         vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn8__DOT__i_vn2_3 
             = ((IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn8__DOT___k_T_2)
@@ -5132,7 +5809,7 @@ VL_INLINE_OPT void VFlexDPU::_sequent__TOP__4(VFlexDPU__Syms* __restrict vlSymsp
                                         - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn8__DOT___T_933))
                                  ? ((IData)(7U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn8__DOT__pin)
                                  : vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn8__DOT___GEN_3754)))
-                : 0xfU);
+                : 0xaU);
         vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT__i_vn2_3 
             = ((IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT___k_T_2)
                 ? (0x1fU & ((7U == ((IData)(8U) - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT___T_933))
@@ -5141,7 +5818,7 @@ VL_INLINE_OPT void VFlexDPU::_sequent__TOP__4(VFlexDPU__Syms* __restrict vlSymsp
                                         - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT___T_933))
                                  ? ((IData)(7U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT__pin)
                                  : vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT___GEN_3754)))
-                : 0x13U);
+                : 0x18U);
         vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__i_vn2_3 
             = ((IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT___k_T_2)
                 ? (0x1fU & ((7U == ((IData)(8U) - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT___T_933))
@@ -5150,7 +5827,7 @@ VL_INLINE_OPT void VFlexDPU::_sequent__TOP__4(VFlexDPU__Syms* __restrict vlSymsp
                                         - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT___T_933))
                                  ? ((IData)(7U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__pin)
                                  : vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT___GEN_3754)))
-                : 0x18U);
+                : 0x1eU);
         vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn4__DOT__i_vn2_3 
             = ((IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn4__DOT___k_T_2)
                 ? (0x1fU & ((7U == ((IData)(8U) - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn4__DOT___T_933))
@@ -5168,7 +5845,7 @@ VL_INLINE_OPT void VFlexDPU::_sequent__TOP__4(VFlexDPU__Syms* __restrict vlSymsp
                                         - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___T_933))
                                  ? ((IData)(7U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__pin)
                                  : vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___GEN_3754)))
-                : 0x1dU);
+                : 5U);
         vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__i_vn2_3 
             = ((IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___k_T_2)
                 ? (0x1fU & ((7U == ((IData)(8U) - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___T_933))
@@ -5177,7 +5854,7 @@ VL_INLINE_OPT void VFlexDPU::_sequent__TOP__4(VFlexDPU__Syms* __restrict vlSymsp
                                         - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___T_933))
                                  ? ((IData)(7U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__pin)
                                  : vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___GEN_3754)))
-                : 0x1fU);
+                : 0x1aU);
         vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn7__DOT__i_vn2_3 
             = ((IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn7__DOT___k_T_2)
                 ? (0x1fU & ((7U == ((IData)(8U) - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn7__DOT___T_933))
@@ -5186,31 +5863,31 @@ VL_INLINE_OPT void VFlexDPU::_sequent__TOP__4(VFlexDPU__Syms* __restrict vlSymsp
                                         - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn7__DOT___T_933))
                                  ? ((IData)(7U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn7__DOT__pin)
                                  : vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn7__DOT___GEN_3754)))
-                : 0x1bU);
+                : 0xcU);
         vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn8__DOT__i_vn2_1 
             = ((IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn8__DOT___k_T_2)
                 ? (0x1fU & ((7U == ((IData)(8U) - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn8__DOT___T_933))
                              ? ((IData)(7U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn8__DOT__pin)
                              : vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn8__DOT___GEN_3758))
-                : 7U);
+                : 0xdU);
         vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT__i_vn2_1 
             = ((IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT___k_T_2)
                 ? (0x1fU & ((7U == ((IData)(8U) - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT___T_933))
                              ? ((IData)(7U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT__pin)
                              : vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT___GEN_3758))
-                : 0xfU);
+                : 7U);
         vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__i_vn2_1 
             = ((IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT___k_T_2)
                 ? (0x1fU & ((7U == ((IData)(8U) - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT___T_933))
                              ? ((IData)(7U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__pin)
                              : vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT___GEN_3758))
-                : 0x1cU);
+                : 0xbU);
         vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn4__DOT__i_vn2_1 
             = ((IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn4__DOT___k_T_2)
                 ? (0x1fU & ((7U == ((IData)(8U) - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn4__DOT___T_933))
                              ? ((IData)(7U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn4__DOT__pin)
                              : vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn4__DOT___GEN_3758))
-                : 0x17U);
+                : 0xfU);
         vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__i_vn2_1 
             = ((IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___k_T_2)
                 ? (0x1fU & ((7U == ((IData)(8U) - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___T_933))
@@ -5222,13 +5899,13 @@ VL_INLINE_OPT void VFlexDPU::_sequent__TOP__4(VFlexDPU__Syms* __restrict vlSymsp
                 ? (0x1fU & ((7U == ((IData)(8U) - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___T_933))
                              ? ((IData)(7U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__pin)
                              : vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___GEN_3758))
-                : 2U);
+                : 7U);
         vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn7__DOT__i_vn2_1 
             = ((IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn7__DOT___k_T_2)
                 ? (0x1fU & ((7U == ((IData)(8U) - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn7__DOT___T_933))
                              ? ((IData)(7U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn7__DOT__pin)
                              : vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn7__DOT___GEN_3758))
-                : 0x15U);
+                : 7U);
         vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn8__DOT__i_vn2_2 
             = ((IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn8__DOT___k_T_2)
                 ? (0x1fU & ((7U == ((IData)(8U) - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn8__DOT___T_933))
@@ -5273,44 +5950,7 @@ VL_INLINE_OPT void VFlexDPU::_sequent__TOP__4(VFlexDPU__Syms* __restrict vlSymsp
                                                   ((IData)(6U) 
                                                    + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn8__DOT__pin)
                                                    : vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn8__DOT___GEN_2941)))))))))
-                : 0x1fU);
-    }
-}
-
-VL_INLINE_OPT void VFlexDPU::_sequent__TOP__5(VFlexDPU__Syms* __restrict vlSymsp) {
-    VL_DEBUG_IF(VL_DBG_MSGF("+    VFlexDPU::_sequent__TOP__5\n"); );
-    VFlexDPU* const __restrict vlTOPp VL_ATTR_UNUSED = vlSymsp->TOPp;
-    // Body
-    if (vlTOPp->reset) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT__i_vn2_2 = 0U;
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__i_vn2_2 = 0U;
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn4__DOT__i_vn2_2 = 0U;
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__i_vn2_2 = 0U;
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__i_vn2_2 = 0U;
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn7__DOT__i_vn2_2 = 0U;
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn8__DOT__i_vn2_0 = 0U;
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn4__DOT__i_vn2_0 = 0U;
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT__i_vn2_0 = 0U;
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__i_vn2_0 = 0U;
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__i_vn2_0 = 0U;
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__i_vn2_0 = 0U;
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn7__DOT__i_vn2_0 = 0U;
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn4__DOT__i_vn_2 = 0U;
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT__i_vn_2 = 0U;
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__i_vn_2 = 0U;
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__i_vn_2 = 0U;
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__i_vn_2 = 0U;
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn7__DOT__i_vn_2 = 0U;
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn8__DOT__i_vn_2 = 0U;
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn4__DOT__i_vn_0 = 0U;
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT__i_vn_0 = 0U;
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__i_vn_0 = 0U;
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__i_vn_0 = 0U;
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__i_vn_0 = 0U;
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn7__DOT__i_vn_0 = 0U;
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn8__DOT__i_vn_0 = 0U;
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_stationary__DOT__count = 0U;
-    } else {
+                : 0x19U);
         vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT__i_vn2_2 
             = ((IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT___k_T_2)
                 ? (0x1fU & ((7U == ((IData)(8U) - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT___T_933))
@@ -5355,7 +5995,7 @@ VL_INLINE_OPT void VFlexDPU::_sequent__TOP__5(VFlexDPU__Syms* __restrict vlSymsp
                                                   ((IData)(6U) 
                                                    + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT__pin)
                                                    : vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT___GEN_2941)))))))))
-                : 0x1fU);
+                : 9U);
         vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__i_vn2_2 
             = ((IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT___k_T_2)
                 ? (0x1fU & ((7U == ((IData)(8U) - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT___T_933))
@@ -5400,7 +6040,7 @@ VL_INLINE_OPT void VFlexDPU::_sequent__TOP__5(VFlexDPU__Syms* __restrict vlSymsp
                                                   ((IData)(6U) 
                                                    + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__pin)
                                                    : vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT___GEN_2941)))))))))
-                : 0x1eU);
+                : 0x1bU);
         vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn4__DOT__i_vn2_2 
             = ((IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn4__DOT___k_T_2)
                 ? (0x1fU & ((7U == ((IData)(8U) - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn4__DOT___T_933))
@@ -5445,7 +6085,7 @@ VL_INLINE_OPT void VFlexDPU::_sequent__TOP__5(VFlexDPU__Syms* __restrict vlSymsp
                                                   ((IData)(6U) 
                                                    + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn4__DOT__pin)
                                                    : vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn4__DOT___GEN_2941)))))))))
-                : 1U);
+                : 0x18U);
         vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__i_vn2_2 
             = ((IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___k_T_2)
                 ? (0x1fU & ((7U == ((IData)(8U) - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___T_933))
@@ -5490,7 +6130,7 @@ VL_INLINE_OPT void VFlexDPU::_sequent__TOP__5(VFlexDPU__Syms* __restrict vlSymsp
                                                   ((IData)(6U) 
                                                    + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__pin)
                                                    : vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___GEN_2941)))))))))
-                : 0x1cU);
+                : 0U);
         vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__i_vn2_2 
             = ((IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___k_T_2)
                 ? (0x1fU & ((7U == ((IData)(8U) - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___T_933))
@@ -5535,7 +6175,7 @@ VL_INLINE_OPT void VFlexDPU::_sequent__TOP__5(VFlexDPU__Syms* __restrict vlSymsp
                                                   ((IData)(6U) 
                                                    + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__pin)
                                                    : vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___GEN_2941)))))))))
-                : 6U);
+                : 0x1aU);
         vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn7__DOT__i_vn2_2 
             = ((IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn7__DOT___k_T_2)
                 ? (0x1fU & ((7U == ((IData)(8U) - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn7__DOT___T_933))
@@ -5580,7 +6220,7 @@ VL_INLINE_OPT void VFlexDPU::_sequent__TOP__5(VFlexDPU__Syms* __restrict vlSymsp
                                                   ((IData)(6U) 
                                                    + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn7__DOT__pin)
                                                    : vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn7__DOT___GEN_2941)))))))))
-                : 0x14U);
+                : 0x1cU);
         vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn8__DOT__i_vn2_0 
             = ((IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn8__DOT___k_T_2)
                 ? (0x1fU & ((7U == ((IData)(8U) - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn8__DOT___T_933))
@@ -5617,7 +6257,7 @@ VL_INLINE_OPT void VFlexDPU::_sequent__TOP__5(VFlexDPU__Syms* __restrict vlSymsp
                                                  ((IData)(6U) 
                                                   + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn8__DOT__pin)
                                                   : vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn8__DOT___GEN_2934))))))))
-                : 0x13U);
+                : 0xdU);
         vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn4__DOT__i_vn2_0 
             = ((IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn4__DOT___k_T_2)
                 ? (0x1fU & ((7U == ((IData)(8U) - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn4__DOT___T_933))
@@ -5654,7 +6294,7 @@ VL_INLINE_OPT void VFlexDPU::_sequent__TOP__5(VFlexDPU__Syms* __restrict vlSymsp
                                                  ((IData)(6U) 
                                                   + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn4__DOT__pin)
                                                   : vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn4__DOT___GEN_2934))))))))
-                : 8U);
+                : 4U);
         vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT__i_vn2_0 
             = ((IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT___k_T_2)
                 ? (0x1fU & ((7U == ((IData)(8U) - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT___T_933))
@@ -5691,7 +6331,7 @@ VL_INLINE_OPT void VFlexDPU::_sequent__TOP__5(VFlexDPU__Syms* __restrict vlSymsp
                                                  ((IData)(6U) 
                                                   + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT__pin)
                                                   : vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT___GEN_2934))))))))
-                : 0xeU);
+                : 0x12U);
         vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__i_vn2_0 
             = ((IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT___k_T_2)
                 ? (0x1fU & ((7U == ((IData)(8U) - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT___T_933))
@@ -5728,7 +6368,7 @@ VL_INLINE_OPT void VFlexDPU::_sequent__TOP__5(VFlexDPU__Syms* __restrict vlSymsp
                                                  ((IData)(6U) 
                                                   + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__pin)
                                                   : vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT___GEN_2934))))))))
-                : 8U);
+                : 0U);
         vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__i_vn2_0 
             = ((IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___k_T_2)
                 ? (0x1fU & ((7U == ((IData)(8U) - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___T_933))
@@ -5765,7 +6405,7 @@ VL_INLINE_OPT void VFlexDPU::_sequent__TOP__5(VFlexDPU__Syms* __restrict vlSymsp
                                                  ((IData)(6U) 
                                                   + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__pin)
                                                   : vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___GEN_2934))))))))
-                : 0x1cU);
+                : 1U);
         vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__i_vn2_0 
             = ((IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___k_T_2)
                 ? (0x1fU & ((7U == ((IData)(8U) - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___T_933))
@@ -5802,7 +6442,7 @@ VL_INLINE_OPT void VFlexDPU::_sequent__TOP__5(VFlexDPU__Syms* __restrict vlSymsp
                                                  ((IData)(6U) 
                                                   + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__pin)
                                                   : vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___GEN_2934))))))))
-                : 0xbU);
+                : 0x12U);
         vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn7__DOT__i_vn2_0 
             = ((IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn7__DOT___k_T_2)
                 ? (0x1fU & ((7U == ((IData)(8U) - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn7__DOT___T_933))
@@ -5839,7 +6479,7 @@ VL_INLINE_OPT void VFlexDPU::_sequent__TOP__5(VFlexDPU__Syms* __restrict vlSymsp
                                                  ((IData)(6U) 
                                                   + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn7__DOT__pin)
                                                   : vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn7__DOT___GEN_2934))))))))
-                : 0x1dU);
+                : 6U);
         vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn4__DOT__i_vn_2 
             = ((IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn4__DOT___k_T_2)
                 ? (0x1fU & ((7U == ((IData)(8U) - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn4__DOT___T_933))
@@ -5868,7 +6508,7 @@ VL_INLINE_OPT void VFlexDPU::_sequent__TOP__5(VFlexDPU__Syms* __restrict vlSymsp
                                                 ((IData)(5U) 
                                                  + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn4__DOT__pin)
                                                  : vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn4__DOT___GEN_1662)))))))
-                : 0xaU);
+                : 0U);
         vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT__i_vn_2 
             = ((IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT___k_T_2)
                 ? (0x1fU & ((7U == ((IData)(8U) - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT___T_933))
@@ -5897,7 +6537,7 @@ VL_INLINE_OPT void VFlexDPU::_sequent__TOP__5(VFlexDPU__Syms* __restrict vlSymsp
                                                 ((IData)(5U) 
                                                  + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT__pin)
                                                  : vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT___GEN_1662)))))))
-                : 0x19U);
+                : 1U);
         vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__i_vn_2 
             = ((IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT___k_T_2)
                 ? (0x1fU & ((7U == ((IData)(8U) - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT___T_933))
@@ -5926,7 +6566,7 @@ VL_INLINE_OPT void VFlexDPU::_sequent__TOP__5(VFlexDPU__Syms* __restrict vlSymsp
                                                 ((IData)(5U) 
                                                  + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__pin)
                                                  : vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT___GEN_1662)))))))
-                : 0x1fU);
+                : 7U);
         vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__i_vn_2 
             = ((IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___k_T_2)
                 ? (0x1fU & ((7U == ((IData)(8U) - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___T_933))
@@ -5955,7 +6595,7 @@ VL_INLINE_OPT void VFlexDPU::_sequent__TOP__5(VFlexDPU__Syms* __restrict vlSymsp
                                                 ((IData)(5U) 
                                                  + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__pin)
                                                  : vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___GEN_1662)))))))
-                : 0x19U);
+                : 0x13U);
         vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__i_vn_2 
             = ((IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___k_T_2)
                 ? (0x1fU & ((7U == ((IData)(8U) - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___T_933))
@@ -5984,7 +6624,7 @@ VL_INLINE_OPT void VFlexDPU::_sequent__TOP__5(VFlexDPU__Syms* __restrict vlSymsp
                                                 ((IData)(5U) 
                                                  + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__pin)
                                                  : vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___GEN_1662)))))))
-                : 0x1bU);
+                : 6U);
         vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn7__DOT__i_vn_2 
             = ((IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn7__DOT___k_T_2)
                 ? (0x1fU & ((7U == ((IData)(8U) - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn7__DOT___T_933))
@@ -6013,7 +6653,7 @@ VL_INLINE_OPT void VFlexDPU::_sequent__TOP__5(VFlexDPU__Syms* __restrict vlSymsp
                                                 ((IData)(5U) 
                                                  + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn7__DOT__pin)
                                                  : vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn7__DOT___GEN_1662)))))))
-                : 0x1bU);
+                : 0x16U);
         vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn8__DOT__i_vn_2 
             = ((IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn8__DOT___k_T_2)
                 ? (0x1fU & ((7U == ((IData)(8U) - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn8__DOT___T_933))
@@ -6042,7 +6682,7 @@ VL_INLINE_OPT void VFlexDPU::_sequent__TOP__5(VFlexDPU__Syms* __restrict vlSymsp
                                                 ((IData)(5U) 
                                                  + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn8__DOT__pin)
                                                  : vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn8__DOT___GEN_1662)))))))
-                : 6U);
+                : 0x15U);
         vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn4__DOT__i_vn_0 
             = ((IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn4__DOT___k_T_2)
                 ? (0x1fU & ((8U <= vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn4__DOT___GEN_287)
@@ -6066,8 +6706,8 @@ VL_INLINE_OPT void VFlexDPU::_sequent__TOP__5(VFlexDPU__Syms* __restrict vlSymsp
                                                  ((1U 
                                                    == vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn4__DOT___GEN_287)
                                                    ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn4__DOT__pin
-                                                   : 0x1eU)))))))))
-                : 0x1eU);
+                                                   : 6U)))))))))
+                : 6U);
         vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT__i_vn_0 
             = ((IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT___k_T_2)
                 ? (0x1fU & ((8U <= vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT___GEN_287)
@@ -6091,8 +6731,8 @@ VL_INLINE_OPT void VFlexDPU::_sequent__TOP__5(VFlexDPU__Syms* __restrict vlSymsp
                                                  ((1U 
                                                    == vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT___GEN_287)
                                                    ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT__pin
-                                                   : 0x18U)))))))))
-                : 0x18U);
+                                                   : 0x12U)))))))))
+                : 0x12U);
         vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__i_vn_0 
             = ((IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT___k_T_2)
                 ? (0x1fU & ((8U <= vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT___GEN_287)
@@ -6116,8 +6756,8 @@ VL_INLINE_OPT void VFlexDPU::_sequent__TOP__5(VFlexDPU__Syms* __restrict vlSymsp
                                                  ((1U 
                                                    == vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT___GEN_287)
                                                    ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__pin
-                                                   : 8U)))))))))
-                : 8U);
+                                                   : 3U)))))))))
+                : 3U);
         vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__i_vn_0 
             = ((IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___k_T_2)
                 ? (0x1fU & ((8U <= vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___GEN_287)
@@ -6141,8 +6781,8 @@ VL_INLINE_OPT void VFlexDPU::_sequent__TOP__5(VFlexDPU__Syms* __restrict vlSymsp
                                                  ((1U 
                                                    == vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___GEN_287)
                                                    ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__pin
-                                                   : 0x15U)))))))))
-                : 0x15U);
+                                                   : 0x1cU)))))))))
+                : 0x1cU);
         vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__i_vn_0 
             = ((IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___k_T_2)
                 ? (0x1fU & ((8U <= vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___GEN_287)
@@ -6166,8 +6806,8 @@ VL_INLINE_OPT void VFlexDPU::_sequent__TOP__5(VFlexDPU__Syms* __restrict vlSymsp
                                                  ((1U 
                                                    == vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___GEN_287)
                                                    ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__pin
-                                                   : 0x1dU)))))))))
-                : 0x1dU);
+                                                   : 5U)))))))))
+                : 5U);
         vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn7__DOT__i_vn_0 
             = ((IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn7__DOT___k_T_2)
                 ? (0x1fU & ((8U <= vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn7__DOT___GEN_287)
@@ -6191,8 +6831,8 @@ VL_INLINE_OPT void VFlexDPU::_sequent__TOP__5(VFlexDPU__Syms* __restrict vlSymsp
                                                  ((1U 
                                                    == vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn7__DOT___GEN_287)
                                                    ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn7__DOT__pin
-                                                   : 0x1fU)))))))))
-                : 0x1fU);
+                                                   : 0U)))))))))
+                : 0U);
         vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn8__DOT__i_vn_0 
             = ((IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn8__DOT___k_T_2)
                 ? (0x1fU & ((8U <= vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn8__DOT___GEN_287)
@@ -6216,8 +6856,8 @@ VL_INLINE_OPT void VFlexDPU::_sequent__TOP__5(VFlexDPU__Syms* __restrict vlSymsp
                                                  ((1U 
                                                    == vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn8__DOT___GEN_287)
                                                    ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn8__DOT__pin
-                                                   : 0x14U)))))))))
-                : 0x14U);
+                                                   : 0x1eU)))))))))
+                : 0x1eU);
         vlTOPp->FlexDPU__DOT__ivntop__DOT__my_stationary__DOT__count 
             = ((IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_stationary__DOT__valid6)
                 ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_stationary__DOT___GEN_1995
@@ -6371,7 +7011,7 @@ VL_INLINE_OPT void VFlexDPU::_sequent__TOP__5(VFlexDPU__Syms* __restrict vlSymsp
         = ((IData)(vlTOPp->reset) ? 0U : ((IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT___k_T_2)
                                            ? (0x1fU 
                                               & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT___GEN_3763)
-                                           : 7U));
+                                           : 0x1bU));
     vlTOPp->FlexDPU__DOT___ModuleIndex_T_1 = ((IData)(1U) 
                                               + vlTOPp->FlexDPU__DOT__ModuleIndex);
     if (vlTOPp->reset) {
@@ -6400,13 +7040,19 @@ VL_INLINE_OPT void VFlexDPU::_sequent__TOP__5(VFlexDPU__Syms* __restrict vlSymsp
         = ((0U == vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__rowcount_0) 
            & (0U == vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__rowcount_1));
     if (vlTOPp->reset) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__i_vn2_3 = 0U;
         vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__i_vn2_1 = 0U;
+        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__i_vn2_3 = 0U;
         vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__i_vn2_0 = 0U;
         vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__i_vn2_2 = 0U;
         vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__i_vn_2 = 0U;
         vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__i_vn_0 = 0U;
     } else {
+        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__i_vn2_1 
+            = ((IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT___k_T_2)
+                ? (0x1fU & ((7U == ((IData)(8U) - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT___T_933))
+                             ? ((IData)(7U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__pin)
+                             : vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT___GEN_3758))
+                : 0U);
         vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__i_vn2_3 
             = ((IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT___k_T_2)
                 ? (0x1fU & ((7U == ((IData)(8U) - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT___T_933))
@@ -6416,12 +7062,6 @@ VL_INLINE_OPT void VFlexDPU::_sequent__TOP__5(VFlexDPU__Syms* __restrict vlSymsp
                                  ? ((IData)(7U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__pin)
                                  : vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT___GEN_3754)))
                 : 3U);
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__i_vn2_1 
-            = ((IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT___k_T_2)
-                ? (0x1fU & ((7U == ((IData)(8U) - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT___T_933))
-                             ? ((IData)(7U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__pin)
-                             : vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT___GEN_3758))
-                : 0x15U);
         vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__i_vn2_0 
             = ((IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT___k_T_2)
                 ? (0x1fU & ((7U == ((IData)(8U) - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT___T_933))
@@ -6458,7 +7098,7 @@ VL_INLINE_OPT void VFlexDPU::_sequent__TOP__5(VFlexDPU__Syms* __restrict vlSymsp
                                                  ((IData)(6U) 
                                                   + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__pin)
                                                   : vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT___GEN_2934))))))))
-                : 0x1cU);
+                : 0xaU);
         vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__i_vn2_2 
             = ((IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT___k_T_2)
                 ? (0x1fU & ((7U == ((IData)(8U) - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT___T_933))
@@ -6503,7 +7143,7 @@ VL_INLINE_OPT void VFlexDPU::_sequent__TOP__5(VFlexDPU__Syms* __restrict vlSymsp
                                                   ((IData)(6U) 
                                                    + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__pin)
                                                    : vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT___GEN_2941)))))))))
-                : 0x1cU);
+                : 0x1aU);
         vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__i_vn_2 
             = ((IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT___k_T_2)
                 ? (0x1fU & ((7U == ((IData)(8U) - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT___T_933))
@@ -6532,7 +7172,7 @@ VL_INLINE_OPT void VFlexDPU::_sequent__TOP__5(VFlexDPU__Syms* __restrict vlSymsp
                                                 ((IData)(5U) 
                                                  + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__pin)
                                                  : vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT___GEN_1662)))))))
-                : 0x14U);
+                : 3U);
         vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__i_vn_0 
             = ((IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT___k_T_2)
                 ? (0x1fU & ((8U <= vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT___GEN_287)
@@ -6556,8 +7196,8 @@ VL_INLINE_OPT void VFlexDPU::_sequent__TOP__5(VFlexDPU__Syms* __restrict vlSymsp
                                                  ((1U 
                                                    == vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT___GEN_287)
                                                    ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__pin
-                                                   : 0x12U)))))))))
-                : 0x12U);
+                                                   : 7U)))))))))
+                : 7U);
     }
     vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT___T_40 
         = ((IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT___T_33) 
@@ -6721,6 +7361,8 @@ VL_INLINE_OPT void VFlexDPU::_sequent__TOP__5(VFlexDPU__Syms* __restrict vlSymsp
     vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT___T_40 
         = ((IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT___T_33) 
            & (0U == vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__rowcount_2));
+    vlTOPp->FlexDPU__DOT___index_T_1 = ((IData)(1U) 
+                                        + vlTOPp->FlexDPU__DOT__index);
     if (vlTOPp->reset) {
         vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn4__DOT__pin = 0U;
         vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT__pin = 0U;
@@ -9130,19 +9772,19 @@ VL_INLINE_OPT void VFlexDPU::_sequent__TOP__5(VFlexDPU__Syms* __restrict vlSymsp
         }
     }
     if (vlTOPp->reset) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__rowcount_7 = 0U;
-    } else {
-        if (vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT___k_T_2) {
-            vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__rowcount_7 
-                = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__count_7;
-        }
-    }
-    if (vlTOPp->reset) {
         vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__rowcount_4 = 0U;
     } else {
         if (vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT___k_T_2) {
             vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__rowcount_4 
                 = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__count_4;
+        }
+    }
+    if (vlTOPp->reset) {
+        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__rowcount_7 = 0U;
+    } else {
+        if (vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT___k_T_2) {
+            vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__rowcount_7 
+                = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__count_7;
         }
     }
     if (((5U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_stationary__DOT__i)) 
@@ -11302,1249 +11944,4 @@ VL_INLINE_OPT void VFlexDPU::_sequent__TOP__5(VFlexDPU__Syms* __restrict vlSymsp
                                                         + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__pin)))
                                                     ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__rowcount_1
                                                     : vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__rowcount_0)))))))))));
-    vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT___GEN_871 
-        = ((0xbU == (0xfU & ((IData)(2U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__pin)))
-            ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__rowcount_11
-            : ((0xaU == (0xfU & ((IData)(2U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__pin)))
-                ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__rowcount_10
-                : ((9U == (0xfU & ((IData)(2U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__pin)))
-                    ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__rowcount_9
-                    : ((8U == (0xfU & ((IData)(2U) 
-                                       + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__pin)))
-                        ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__rowcount_8
-                        : ((7U == (0xfU & ((IData)(2U) 
-                                           + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__pin)))
-                            ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__rowcount_7
-                            : ((6U == (0xfU & ((IData)(2U) 
-                                               + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__pin)))
-                                ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__rowcount_6
-                                : ((5U == (0xfU & ((IData)(2U) 
-                                                   + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__pin)))
-                                    ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__rowcount_5
-                                    : ((4U == (0xfU 
-                                               & ((IData)(2U) 
-                                                  + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__pin)))
-                                        ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__rowcount_4
-                                        : ((3U == (0xfU 
-                                                   & ((IData)(2U) 
-                                                      + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__pin)))
-                                            ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__rowcount_3
-                                            : ((2U 
-                                                == 
-                                                (0xfU 
-                                                 & ((IData)(2U) 
-                                                    + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__pin)))
-                                                ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__rowcount_2
-                                                : (
-                                                   (1U 
-                                                    == 
-                                                    (0xfU 
-                                                     & ((IData)(2U) 
-                                                        + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__pin)))
-                                                    ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__rowcount_1
-                                                    : vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__rowcount_0)))))))))));
-    vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT___GEN_603 
-        = ((0xbU == (0xfU & ((IData)(1U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__pin)))
-            ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__rowcount_11
-            : ((0xaU == (0xfU & ((IData)(1U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__pin)))
-                ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__rowcount_10
-                : ((9U == (0xfU & ((IData)(1U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__pin)))
-                    ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__rowcount_9
-                    : ((8U == (0xfU & ((IData)(1U) 
-                                       + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__pin)))
-                        ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__rowcount_8
-                        : ((7U == (0xfU & ((IData)(1U) 
-                                           + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__pin)))
-                            ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__rowcount_7
-                            : ((6U == (0xfU & ((IData)(1U) 
-                                               + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__pin)))
-                                ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__rowcount_6
-                                : ((5U == (0xfU & ((IData)(1U) 
-                                                   + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__pin)))
-                                    ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__rowcount_5
-                                    : ((4U == (0xfU 
-                                               & ((IData)(1U) 
-                                                  + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__pin)))
-                                        ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__rowcount_4
-                                        : ((3U == (0xfU 
-                                                   & ((IData)(1U) 
-                                                      + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__pin)))
-                                            ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__rowcount_3
-                                            : ((2U 
-                                                == 
-                                                (0xfU 
-                                                 & ((IData)(1U) 
-                                                    + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__pin)))
-                                                ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__rowcount_2
-                                                : (
-                                                   (1U 
-                                                    == 
-                                                    (0xfU 
-                                                     & ((IData)(1U) 
-                                                        + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__pin)))
-                                                    ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__rowcount_1
-                                                    : vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__rowcount_0)))))))))));
-    vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT___GEN_284 
-        = ((0xcU == (0xfU & (IData)((QData)((IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__pin)))))
-            ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__rowcount_12
-            : ((0xbU == (0xfU & (IData)((QData)((IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__pin)))))
-                ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__rowcount_11
-                : ((0xaU == (0xfU & (IData)((QData)((IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__pin)))))
-                    ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__rowcount_10
-                    : ((9U == (0xfU & (IData)((QData)((IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__pin)))))
-                        ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__rowcount_9
-                        : ((8U == (0xfU & (IData)((QData)((IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__pin)))))
-                            ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__rowcount_8
-                            : ((7U == (0xfU & (IData)((QData)((IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__pin)))))
-                                ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__rowcount_7
-                                : ((6U == (0xfU & (IData)((QData)((IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__pin)))))
-                                    ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__rowcount_6
-                                    : ((5U == (0xfU 
-                                               & (IData)((QData)((IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__pin)))))
-                                        ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__rowcount_5
-                                        : ((4U == (0xfU 
-                                                   & (IData)((QData)((IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__pin)))))
-                                            ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__rowcount_4
-                                            : ((3U 
-                                                == 
-                                                (0xfU 
-                                                 & (IData)((QData)((IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__pin)))))
-                                                ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__rowcount_3
-                                                : (
-                                                   (2U 
-                                                    == 
-                                                    (0xfU 
-                                                     & (IData)((QData)((IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__pin)))))
-                                                    ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__rowcount_2
-                                                    : 
-                                                   ((1U 
-                                                     == 
-                                                     (0xfU 
-                                                      & (IData)((QData)((IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__pin)))))
-                                                     ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__rowcount_1
-                                                     : vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__rowcount_0))))))))))));
-    if (vlTOPp->reset) {
-        vlTOPp->__Vdly__FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__i = 0U;
-    } else {
-        if ((0x32U <= vlTOPp->FlexDPU__DOT__ivntop__DOT__counter)) {
-            if (((7U > vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__i) 
-                 & (IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___k_T_1))) {
-                vlTOPp->__Vdly__FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__i 
-                    = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___i_T_1;
-            }
-        }
-    }
-    if (vlTOPp->reset) {
-        vlTOPp->__Vdly__FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__j = 0U;
-    } else {
-        if ((0x32U <= vlTOPp->FlexDPU__DOT__ivntop__DOT__counter)) {
-            if (((7U > vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__j) 
-                 & (7U >= vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__i))) {
-                vlTOPp->__Vdly__FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__j 
-                    = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___j_T_1;
-            } else {
-                if ((1U & (~ (IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___k_T_2)))) {
-                    vlTOPp->__Vdly__FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__j = 0U;
-                }
-            }
-        }
-    }
-    if (((0U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__i)) 
-         & (0U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__mat_0_0 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___GEN_128;
-    }
-    if (((0U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__i)) 
-         & (1U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__mat_0_1 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___GEN_128;
-    }
-    if (((0U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__i)) 
-         & (2U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__mat_0_2 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___GEN_128;
-    }
-    if (((0U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__i)) 
-         & (3U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__mat_0_3 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___GEN_128;
-    }
-    if (((0U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__i)) 
-         & (4U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__mat_0_4 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___GEN_128;
-    }
-    if (((0U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__i)) 
-         & (5U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__mat_0_5 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___GEN_128;
-    }
-    if (((0U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__i)) 
-         & (6U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__mat_0_6 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___GEN_128;
-    }
-    if (((0U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__i)) 
-         & (7U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__mat_0_7 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___GEN_128;
-    }
-    if (((1U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__i)) 
-         & (0U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__mat_1_0 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___GEN_128;
-    }
-    if (((1U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__i)) 
-         & (1U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__mat_1_1 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___GEN_128;
-    }
-    if (((1U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__i)) 
-         & (2U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__mat_1_2 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___GEN_128;
-    }
-    if (((1U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__i)) 
-         & (3U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__mat_1_3 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___GEN_128;
-    }
-    if (((1U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__i)) 
-         & (4U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__mat_1_4 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___GEN_128;
-    }
-    if (((1U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__i)) 
-         & (5U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__mat_1_5 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___GEN_128;
-    }
-    if (((1U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__i)) 
-         & (6U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__mat_1_6 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___GEN_128;
-    }
-    if (((1U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__i)) 
-         & (7U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__mat_1_7 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___GEN_128;
-    }
-    if (((2U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__i)) 
-         & (0U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__mat_2_0 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___GEN_128;
-    }
-    if (((2U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__i)) 
-         & (1U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__mat_2_1 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___GEN_128;
-    }
-    if (((2U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__i)) 
-         & (2U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__mat_2_2 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___GEN_128;
-    }
-    if (((2U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__i)) 
-         & (3U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__mat_2_3 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___GEN_128;
-    }
-    if (((2U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__i)) 
-         & (4U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__mat_2_4 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___GEN_128;
-    }
-    if (((2U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__i)) 
-         & (5U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__mat_2_5 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___GEN_128;
-    }
-    if (((2U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__i)) 
-         & (6U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__mat_2_6 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___GEN_128;
-    }
-    if (((2U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__i)) 
-         & (7U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__mat_2_7 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___GEN_128;
-    }
-    if (((3U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__i)) 
-         & (0U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__mat_3_0 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___GEN_128;
-    }
-    if (((3U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__i)) 
-         & (1U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__mat_3_1 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___GEN_128;
-    }
-    if (((3U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__i)) 
-         & (2U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__mat_3_2 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___GEN_128;
-    }
-    if (((3U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__i)) 
-         & (3U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__mat_3_3 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___GEN_128;
-    }
-    if (((3U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__i)) 
-         & (4U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__mat_3_4 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___GEN_128;
-    }
-    if (((3U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__i)) 
-         & (5U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__mat_3_5 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___GEN_128;
-    }
-    if (((3U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__i)) 
-         & (6U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__mat_3_6 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___GEN_128;
-    }
-    if (((3U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__i)) 
-         & (7U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__mat_3_7 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___GEN_128;
-    }
-    if (((4U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__i)) 
-         & (0U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__mat_4_0 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___GEN_128;
-    }
-    if (((4U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__i)) 
-         & (1U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__mat_4_1 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___GEN_128;
-    }
-    if (((4U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__i)) 
-         & (2U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__mat_4_2 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___GEN_128;
-    }
-    if (((4U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__i)) 
-         & (3U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__mat_4_3 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___GEN_128;
-    }
-    if (((4U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__i)) 
-         & (4U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__mat_4_4 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___GEN_128;
-    }
-    if (((4U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__i)) 
-         & (5U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__mat_4_5 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___GEN_128;
-    }
-    if (((4U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__i)) 
-         & (6U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__mat_4_6 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___GEN_128;
-    }
-    if (((4U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__i)) 
-         & (7U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__mat_4_7 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___GEN_128;
-    }
-    if (((5U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__i)) 
-         & (0U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__mat_5_0 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___GEN_128;
-    }
-    if (((5U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__i)) 
-         & (1U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__mat_5_1 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___GEN_128;
-    }
-    if (((5U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__i)) 
-         & (2U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__mat_5_2 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___GEN_128;
-    }
-    if (((5U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__i)) 
-         & (3U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__mat_5_3 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___GEN_128;
-    }
-    if (((5U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__i)) 
-         & (4U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__mat_5_4 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___GEN_128;
-    }
-    if (((5U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__i)) 
-         & (5U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__mat_5_5 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___GEN_128;
-    }
-    if (((5U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__i)) 
-         & (6U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__mat_5_6 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___GEN_128;
-    }
-    if (((5U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__i)) 
-         & (7U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__mat_5_7 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___GEN_128;
-    }
-    if (((6U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__i)) 
-         & (0U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__mat_6_0 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___GEN_128;
-    }
-    if (((6U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__i)) 
-         & (1U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__mat_6_1 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___GEN_128;
-    }
-    if (((6U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__i)) 
-         & (2U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__mat_6_2 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___GEN_128;
-    }
-    if (((6U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__i)) 
-         & (3U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__mat_6_3 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___GEN_128;
-    }
-    if (((6U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__i)) 
-         & (4U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__mat_6_4 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___GEN_128;
-    }
-    if (((6U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__i)) 
-         & (5U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__mat_6_5 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___GEN_128;
-    }
-    if (((6U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__i)) 
-         & (6U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__mat_6_6 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___GEN_128;
-    }
-    if (((6U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__i)) 
-         & (7U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__mat_6_7 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___GEN_128;
-    }
-    if (((7U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__i)) 
-         & (0U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__mat_7_0 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___GEN_128;
-    }
-    if (((7U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__i)) 
-         & (1U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__mat_7_1 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___GEN_128;
-    }
-    if (((7U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__i)) 
-         & (2U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__mat_7_2 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___GEN_128;
-    }
-    if (((7U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__i)) 
-         & (3U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__mat_7_3 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___GEN_128;
-    }
-    if (((7U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__i)) 
-         & (4U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__mat_7_4 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___GEN_128;
-    }
-    if (((7U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__i)) 
-         & (5U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__mat_7_5 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___GEN_128;
-    }
-    if (((7U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__i)) 
-         & (6U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__mat_7_6 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___GEN_128;
-    }
-    if (((7U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__i)) 
-         & (7U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__mat_7_7 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___GEN_128;
-    }
-    if ((1U & (~ (IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__valid1)))) {
-        if ((0U != (IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___GEN_128))) {
-            if ((0U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__i))) {
-                vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__count_0 
-                    = ((IData)(1U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___GEN_200);
-            }
-        }
-    }
-    if ((1U & (~ (IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__valid1)))) {
-        if ((0U != (IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___GEN_128))) {
-            if ((1U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__i))) {
-                vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__count_1 
-                    = ((IData)(1U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___GEN_200);
-            }
-        }
-    }
-    if ((1U & (~ (IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__valid1)))) {
-        if ((0U != (IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___GEN_128))) {
-            if ((2U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__i))) {
-                vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__count_2 
-                    = ((IData)(1U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___GEN_200);
-            }
-        }
-    }
-    if ((1U & (~ (IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__valid1)))) {
-        if ((0U != (IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___GEN_128))) {
-            if ((3U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__i))) {
-                vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__count_3 
-                    = ((IData)(1U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___GEN_200);
-            }
-        }
-    }
-    if ((1U & (~ (IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__valid1)))) {
-        if ((0U != (IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___GEN_128))) {
-            if ((4U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__i))) {
-                vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__count_4 
-                    = ((IData)(1U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___GEN_200);
-            }
-        }
-    }
-    if ((1U & (~ (IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__valid1)))) {
-        if ((0U != (IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___GEN_128))) {
-            if ((5U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__i))) {
-                vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__count_5 
-                    = ((IData)(1U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___GEN_200);
-            }
-        }
-    }
-    if ((1U & (~ (IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__valid1)))) {
-        if ((0U != (IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___GEN_128))) {
-            if ((6U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__i))) {
-                vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__count_6 
-                    = ((IData)(1U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___GEN_200);
-            }
-        }
-    }
-    if ((1U & (~ (IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__valid1)))) {
-        if ((0U != (IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___GEN_128))) {
-            if ((7U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__i))) {
-                vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__count_7 
-                    = ((IData)(1U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___GEN_200);
-            }
-        }
-    }
-    vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___T_60 
-        = ((IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___T_49) 
-           & (0U == vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__rowcount_4));
-    vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___GEN_268 
-        = ((((IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___T_40) 
-             & (0U == vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__rowcount_3)) 
-            & (0U != vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__rowcount_4))
-            ? 4U : ((((IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___T_33) 
-                      & (0U == vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__rowcount_2)) 
-                     & (0U != vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__rowcount_3))
-                     ? 3U : ((((0U == vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__rowcount_0) 
-                               & (0U == vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__rowcount_1)) 
-                              & (0U != vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__rowcount_2))
-                              ? 2U : (((0U == vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__rowcount_0) 
-                                       & (0U != vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__rowcount_1))
-                                       ? 1U : ((0U 
-                                                != vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__rowcount_0)
-                                                ? 0U
-                                                : vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__pin)))));
-    vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___GEN_3063 
-        = ((0xbU == (0xfU & ((IData)(6U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__pin)))
-            ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__rowcount_11
-            : ((0xaU == (0xfU & ((IData)(6U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__pin)))
-                ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__rowcount_10
-                : ((9U == (0xfU & ((IData)(6U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__pin)))
-                    ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__rowcount_9
-                    : ((8U == (0xfU & ((IData)(6U) 
-                                       + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__pin)))
-                        ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__rowcount_8
-                        : ((7U == (0xfU & ((IData)(6U) 
-                                           + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__pin)))
-                            ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__rowcount_7
-                            : ((6U == (0xfU & ((IData)(6U) 
-                                               + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__pin)))
-                                ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__rowcount_6
-                                : ((5U == (0xfU & ((IData)(6U) 
-                                                   + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__pin)))
-                                    ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__rowcount_5
-                                    : ((4U == (0xfU 
-                                               & ((IData)(6U) 
-                                                  + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__pin)))
-                                        ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__rowcount_4
-                                        : ((3U == (0xfU 
-                                                   & ((IData)(6U) 
-                                                      + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__pin)))
-                                            ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__rowcount_3
-                                            : ((2U 
-                                                == 
-                                                (0xfU 
-                                                 & ((IData)(6U) 
-                                                    + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__pin)))
-                                                ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__rowcount_2
-                                                : (
-                                                   (1U 
-                                                    == 
-                                                    (0xfU 
-                                                     & ((IData)(6U) 
-                                                        + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__pin)))
-                                                    ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__rowcount_1
-                                                    : vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__rowcount_0)))))))))));
-    vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___GEN_2347 
-        = ((0xbU == (0xfU & ((IData)(5U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__pin)))
-            ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__rowcount_11
-            : ((0xaU == (0xfU & ((IData)(5U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__pin)))
-                ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__rowcount_10
-                : ((9U == (0xfU & ((IData)(5U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__pin)))
-                    ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__rowcount_9
-                    : ((8U == (0xfU & ((IData)(5U) 
-                                       + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__pin)))
-                        ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__rowcount_8
-                        : ((7U == (0xfU & ((IData)(5U) 
-                                           + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__pin)))
-                            ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__rowcount_7
-                            : ((6U == (0xfU & ((IData)(5U) 
-                                               + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__pin)))
-                                ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__rowcount_6
-                                : ((5U == (0xfU & ((IData)(5U) 
-                                                   + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__pin)))
-                                    ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__rowcount_5
-                                    : ((4U == (0xfU 
-                                               & ((IData)(5U) 
-                                                  + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__pin)))
-                                        ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__rowcount_4
-                                        : ((3U == (0xfU 
-                                                   & ((IData)(5U) 
-                                                      + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__pin)))
-                                            ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__rowcount_3
-                                            : ((2U 
-                                                == 
-                                                (0xfU 
-                                                 & ((IData)(5U) 
-                                                    + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__pin)))
-                                                ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__rowcount_2
-                                                : (
-                                                   (1U 
-                                                    == 
-                                                    (0xfU 
-                                                     & ((IData)(5U) 
-                                                        + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__pin)))
-                                                    ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__rowcount_1
-                                                    : vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__rowcount_0)))))))))));
-    vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___GEN_1743 
-        = ((0xbU == (0xfU & ((IData)(4U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__pin)))
-            ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__rowcount_11
-            : ((0xaU == (0xfU & ((IData)(4U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__pin)))
-                ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__rowcount_10
-                : ((9U == (0xfU & ((IData)(4U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__pin)))
-                    ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__rowcount_9
-                    : ((8U == (0xfU & ((IData)(4U) 
-                                       + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__pin)))
-                        ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__rowcount_8
-                        : ((7U == (0xfU & ((IData)(4U) 
-                                           + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__pin)))
-                            ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__rowcount_7
-                            : ((6U == (0xfU & ((IData)(4U) 
-                                               + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__pin)))
-                                ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__rowcount_6
-                                : ((5U == (0xfU & ((IData)(4U) 
-                                                   + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__pin)))
-                                    ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__rowcount_5
-                                    : ((4U == (0xfU 
-                                               & ((IData)(4U) 
-                                                  + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__pin)))
-                                        ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__rowcount_4
-                                        : ((3U == (0xfU 
-                                                   & ((IData)(4U) 
-                                                      + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__pin)))
-                                            ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__rowcount_3
-                                            : ((2U 
-                                                == 
-                                                (0xfU 
-                                                 & ((IData)(4U) 
-                                                    + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__pin)))
-                                                ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__rowcount_2
-                                                : (
-                                                   (1U 
-                                                    == 
-                                                    (0xfU 
-                                                     & ((IData)(4U) 
-                                                        + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__pin)))
-                                                    ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__rowcount_1
-                                                    : vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__rowcount_0)))))))))));
-    vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___GEN_1251 
-        = ((0xbU == (0xfU & ((IData)(3U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__pin)))
-            ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__rowcount_11
-            : ((0xaU == (0xfU & ((IData)(3U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__pin)))
-                ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__rowcount_10
-                : ((9U == (0xfU & ((IData)(3U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__pin)))
-                    ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__rowcount_9
-                    : ((8U == (0xfU & ((IData)(3U) 
-                                       + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__pin)))
-                        ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__rowcount_8
-                        : ((7U == (0xfU & ((IData)(3U) 
-                                           + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__pin)))
-                            ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__rowcount_7
-                            : ((6U == (0xfU & ((IData)(3U) 
-                                               + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__pin)))
-                                ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__rowcount_6
-                                : ((5U == (0xfU & ((IData)(3U) 
-                                                   + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__pin)))
-                                    ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__rowcount_5
-                                    : ((4U == (0xfU 
-                                               & ((IData)(3U) 
-                                                  + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__pin)))
-                                        ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__rowcount_4
-                                        : ((3U == (0xfU 
-                                                   & ((IData)(3U) 
-                                                      + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__pin)))
-                                            ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__rowcount_3
-                                            : ((2U 
-                                                == 
-                                                (0xfU 
-                                                 & ((IData)(3U) 
-                                                    + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__pin)))
-                                                ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__rowcount_2
-                                                : (
-                                                   (1U 
-                                                    == 
-                                                    (0xfU 
-                                                     & ((IData)(3U) 
-                                                        + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__pin)))
-                                                    ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__rowcount_1
-                                                    : vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__rowcount_0)))))))))));
-    vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___GEN_871 
-        = ((0xbU == (0xfU & ((IData)(2U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__pin)))
-            ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__rowcount_11
-            : ((0xaU == (0xfU & ((IData)(2U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__pin)))
-                ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__rowcount_10
-                : ((9U == (0xfU & ((IData)(2U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__pin)))
-                    ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__rowcount_9
-                    : ((8U == (0xfU & ((IData)(2U) 
-                                       + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__pin)))
-                        ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__rowcount_8
-                        : ((7U == (0xfU & ((IData)(2U) 
-                                           + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__pin)))
-                            ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__rowcount_7
-                            : ((6U == (0xfU & ((IData)(2U) 
-                                               + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__pin)))
-                                ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__rowcount_6
-                                : ((5U == (0xfU & ((IData)(2U) 
-                                                   + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__pin)))
-                                    ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__rowcount_5
-                                    : ((4U == (0xfU 
-                                               & ((IData)(2U) 
-                                                  + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__pin)))
-                                        ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__rowcount_4
-                                        : ((3U == (0xfU 
-                                                   & ((IData)(2U) 
-                                                      + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__pin)))
-                                            ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__rowcount_3
-                                            : ((2U 
-                                                == 
-                                                (0xfU 
-                                                 & ((IData)(2U) 
-                                                    + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__pin)))
-                                                ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__rowcount_2
-                                                : (
-                                                   (1U 
-                                                    == 
-                                                    (0xfU 
-                                                     & ((IData)(2U) 
-                                                        + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__pin)))
-                                                    ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__rowcount_1
-                                                    : vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__rowcount_0)))))))))));
-    vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___GEN_603 
-        = ((0xbU == (0xfU & ((IData)(1U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__pin)))
-            ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__rowcount_11
-            : ((0xaU == (0xfU & ((IData)(1U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__pin)))
-                ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__rowcount_10
-                : ((9U == (0xfU & ((IData)(1U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__pin)))
-                    ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__rowcount_9
-                    : ((8U == (0xfU & ((IData)(1U) 
-                                       + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__pin)))
-                        ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__rowcount_8
-                        : ((7U == (0xfU & ((IData)(1U) 
-                                           + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__pin)))
-                            ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__rowcount_7
-                            : ((6U == (0xfU & ((IData)(1U) 
-                                               + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__pin)))
-                                ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__rowcount_6
-                                : ((5U == (0xfU & ((IData)(1U) 
-                                                   + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__pin)))
-                                    ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__rowcount_5
-                                    : ((4U == (0xfU 
-                                               & ((IData)(1U) 
-                                                  + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__pin)))
-                                        ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__rowcount_4
-                                        : ((3U == (0xfU 
-                                                   & ((IData)(1U) 
-                                                      + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__pin)))
-                                            ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__rowcount_3
-                                            : ((2U 
-                                                == 
-                                                (0xfU 
-                                                 & ((IData)(1U) 
-                                                    + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__pin)))
-                                                ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__rowcount_2
-                                                : (
-                                                   (1U 
-                                                    == 
-                                                    (0xfU 
-                                                     & ((IData)(1U) 
-                                                        + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__pin)))
-                                                    ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__rowcount_1
-                                                    : vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__rowcount_0)))))))))));
-    vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___GEN_284 
-        = ((0xcU == (0xfU & (IData)((QData)((IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__pin)))))
-            ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__rowcount_12
-            : ((0xbU == (0xfU & (IData)((QData)((IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__pin)))))
-                ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__rowcount_11
-                : ((0xaU == (0xfU & (IData)((QData)((IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__pin)))))
-                    ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__rowcount_10
-                    : ((9U == (0xfU & (IData)((QData)((IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__pin)))))
-                        ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__rowcount_9
-                        : ((8U == (0xfU & (IData)((QData)((IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__pin)))))
-                            ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__rowcount_8
-                            : ((7U == (0xfU & (IData)((QData)((IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__pin)))))
-                                ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__rowcount_7
-                                : ((6U == (0xfU & (IData)((QData)((IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__pin)))))
-                                    ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__rowcount_6
-                                    : ((5U == (0xfU 
-                                               & (IData)((QData)((IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__pin)))))
-                                        ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__rowcount_5
-                                        : ((4U == (0xfU 
-                                                   & (IData)((QData)((IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__pin)))))
-                                            ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__rowcount_4
-                                            : ((3U 
-                                                == 
-                                                (0xfU 
-                                                 & (IData)((QData)((IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__pin)))))
-                                                ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__rowcount_3
-                                                : (
-                                                   (2U 
-                                                    == 
-                                                    (0xfU 
-                                                     & (IData)((QData)((IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__pin)))))
-                                                    ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__rowcount_2
-                                                    : 
-                                                   ((1U 
-                                                     == 
-                                                     (0xfU 
-                                                      & (IData)((QData)((IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__pin)))))
-                                                     ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__rowcount_1
-                                                     : vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__rowcount_0))))))))))));
-    if (vlTOPp->reset) {
-        vlTOPp->__Vdly__FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__i = 0U;
-    } else {
-        if ((0x3cU <= vlTOPp->FlexDPU__DOT__ivntop__DOT__counter)) {
-            if (((7U > vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__i) 
-                 & (IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___k_T_1))) {
-                vlTOPp->__Vdly__FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__i 
-                    = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___i_T_1;
-            }
-        }
-    }
-    if (vlTOPp->reset) {
-        vlTOPp->__Vdly__FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__j = 0U;
-    } else {
-        if ((0x3cU <= vlTOPp->FlexDPU__DOT__ivntop__DOT__counter)) {
-            if (((7U > vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__j) 
-                 & (7U >= vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__i))) {
-                vlTOPp->__Vdly__FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__j 
-                    = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___j_T_1;
-            } else {
-                if ((1U & (~ (IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___k_T_2)))) {
-                    vlTOPp->__Vdly__FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__j = 0U;
-                }
-            }
-        }
-    }
-    if (((0U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__i)) 
-         & (0U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__mat_0_0 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___GEN_128;
-    }
-    if (((0U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__i)) 
-         & (1U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__mat_0_1 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___GEN_128;
-    }
-    if (((0U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__i)) 
-         & (2U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__mat_0_2 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___GEN_128;
-    }
-    if (((0U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__i)) 
-         & (3U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__mat_0_3 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___GEN_128;
-    }
-    if (((0U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__i)) 
-         & (4U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__mat_0_4 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___GEN_128;
-    }
-    if (((0U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__i)) 
-         & (5U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__mat_0_5 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___GEN_128;
-    }
-    if (((0U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__i)) 
-         & (6U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__mat_0_6 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___GEN_128;
-    }
-    if (((0U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__i)) 
-         & (7U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__mat_0_7 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___GEN_128;
-    }
-    if (((1U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__i)) 
-         & (0U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__mat_1_0 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___GEN_128;
-    }
-    if (((1U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__i)) 
-         & (1U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__mat_1_1 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___GEN_128;
-    }
-    if (((1U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__i)) 
-         & (2U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__mat_1_2 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___GEN_128;
-    }
-    if (((1U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__i)) 
-         & (3U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__mat_1_3 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___GEN_128;
-    }
-    if (((1U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__i)) 
-         & (4U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__mat_1_4 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___GEN_128;
-    }
-    if (((1U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__i)) 
-         & (5U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__mat_1_5 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___GEN_128;
-    }
-    if (((1U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__i)) 
-         & (6U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__mat_1_6 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___GEN_128;
-    }
-    if (((1U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__i)) 
-         & (7U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__mat_1_7 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___GEN_128;
-    }
-    if (((2U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__i)) 
-         & (0U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__mat_2_0 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___GEN_128;
-    }
-    if (((2U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__i)) 
-         & (1U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__mat_2_1 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___GEN_128;
-    }
-    if (((2U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__i)) 
-         & (2U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__mat_2_2 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___GEN_128;
-    }
-    if (((2U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__i)) 
-         & (3U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__mat_2_3 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___GEN_128;
-    }
-    if (((2U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__i)) 
-         & (4U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__mat_2_4 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___GEN_128;
-    }
-    if (((2U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__i)) 
-         & (5U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__mat_2_5 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___GEN_128;
-    }
-    if (((2U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__i)) 
-         & (6U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__mat_2_6 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___GEN_128;
-    }
-    if (((2U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__i)) 
-         & (7U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__mat_2_7 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___GEN_128;
-    }
-    if (((3U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__i)) 
-         & (0U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__mat_3_0 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___GEN_128;
-    }
-    if (((3U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__i)) 
-         & (1U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__mat_3_1 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___GEN_128;
-    }
-    if (((3U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__i)) 
-         & (2U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__mat_3_2 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___GEN_128;
-    }
-    if (((3U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__i)) 
-         & (3U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__mat_3_3 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___GEN_128;
-    }
-    if (((3U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__i)) 
-         & (4U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__mat_3_4 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___GEN_128;
-    }
-    if (((3U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__i)) 
-         & (5U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__mat_3_5 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___GEN_128;
-    }
-    if (((3U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__i)) 
-         & (6U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__mat_3_6 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___GEN_128;
-    }
-    if (((3U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__i)) 
-         & (7U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__mat_3_7 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___GEN_128;
-    }
-    if (((4U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__i)) 
-         & (0U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__mat_4_0 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___GEN_128;
-    }
-    if (((4U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__i)) 
-         & (1U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__mat_4_1 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___GEN_128;
-    }
-    if (((4U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__i)) 
-         & (2U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__mat_4_2 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___GEN_128;
-    }
-    if (((4U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__i)) 
-         & (3U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__mat_4_3 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___GEN_128;
-    }
-    if (((4U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__i)) 
-         & (4U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__mat_4_4 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___GEN_128;
-    }
-    if (((4U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__i)) 
-         & (5U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__mat_4_5 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___GEN_128;
-    }
-    if (((4U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__i)) 
-         & (6U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__mat_4_6 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___GEN_128;
-    }
-    if (((4U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__i)) 
-         & (7U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__mat_4_7 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___GEN_128;
-    }
-    if (((5U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__i)) 
-         & (0U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__mat_5_0 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___GEN_128;
-    }
-    if (((5U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__i)) 
-         & (1U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__mat_5_1 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___GEN_128;
-    }
-    if (((5U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__i)) 
-         & (2U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__mat_5_2 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___GEN_128;
-    }
-    if (((5U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__i)) 
-         & (3U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__mat_5_3 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___GEN_128;
-    }
-    if (((5U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__i)) 
-         & (4U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__mat_5_4 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___GEN_128;
-    }
-    if (((5U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__i)) 
-         & (5U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__mat_5_5 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___GEN_128;
-    }
-    if (((5U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__i)) 
-         & (6U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__mat_5_6 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___GEN_128;
-    }
-    if (((5U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__i)) 
-         & (7U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__mat_5_7 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___GEN_128;
-    }
-    if (((6U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__i)) 
-         & (0U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__mat_6_0 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___GEN_128;
-    }
-    if (((6U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__i)) 
-         & (1U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__mat_6_1 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___GEN_128;
-    }
-    if (((6U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__i)) 
-         & (2U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__mat_6_2 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___GEN_128;
-    }
-    if (((6U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__i)) 
-         & (3U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__mat_6_3 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___GEN_128;
-    }
-    if (((6U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__i)) 
-         & (4U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__mat_6_4 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___GEN_128;
-    }
-    if (((6U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__i)) 
-         & (5U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__mat_6_5 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___GEN_128;
-    }
-    if (((6U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__i)) 
-         & (6U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__mat_6_6 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___GEN_128;
-    }
-    if (((6U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__i)) 
-         & (7U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__mat_6_7 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___GEN_128;
-    }
-    if (((7U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__i)) 
-         & (0U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__mat_7_0 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___GEN_128;
-    }
-    if (((7U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__i)) 
-         & (1U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__mat_7_1 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___GEN_128;
-    }
-    if (((7U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__i)) 
-         & (2U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__mat_7_2 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___GEN_128;
-    }
-    if (((7U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__i)) 
-         & (3U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__mat_7_3 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___GEN_128;
-    }
-    if (((7U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__i)) 
-         & (4U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__mat_7_4 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___GEN_128;
-    }
-    if (((7U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__i)) 
-         & (5U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__mat_7_5 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___GEN_128;
-    }
-    if (((7U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__i)) 
-         & (6U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__mat_7_6 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___GEN_128;
-    }
-    if (((7U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__i)) 
-         & (7U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__j)))) {
-        vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__mat_7_7 
-            = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___GEN_128;
-    }
-    if ((1U & (~ (IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__valid1)))) {
-        if ((0U != (IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___GEN_128))) {
-            if ((0U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__i))) {
-                vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__count_0 
-                    = ((IData)(1U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___GEN_200);
-            }
-        }
-    }
-    if ((1U & (~ (IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__valid1)))) {
-        if ((0U != (IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___GEN_128))) {
-            if ((1U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__i))) {
-                vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__count_1 
-                    = ((IData)(1U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___GEN_200);
-            }
-        }
-    }
-    if ((1U & (~ (IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__valid1)))) {
-        if ((0U != (IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___GEN_128))) {
-            if ((2U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__i))) {
-                vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__count_2 
-                    = ((IData)(1U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___GEN_200);
-            }
-        }
-    }
-    if ((1U & (~ (IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__valid1)))) {
-        if ((0U != (IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___GEN_128))) {
-            if ((3U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__i))) {
-                vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__count_3 
-                    = ((IData)(1U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___GEN_200);
-            }
-        }
-    }
-    if ((1U & (~ (IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__valid1)))) {
-        if ((0U != (IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___GEN_128))) {
-            if ((4U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__i))) {
-                vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__count_4 
-                    = ((IData)(1U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___GEN_200);
-            }
-        }
-    }
-    if ((1U & (~ (IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__valid1)))) {
-        if ((0U != (IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___GEN_128))) {
-            if ((5U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__i))) {
-                vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__count_5 
-                    = ((IData)(1U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___GEN_200);
-            }
-        }
-    }
-    if ((1U & (~ (IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__valid1)))) {
-        if ((0U != (IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___GEN_128))) {
-            if ((6U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__i))) {
-                vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__count_6 
-                    = ((IData)(1U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___GEN_200);
-            }
-        }
-    }
-    if ((1U & (~ (IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__valid1)))) {
-        if ((0U != (IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___GEN_128))) {
-            if ((7U == (7U & vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__i))) {
-                vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__count_7 
-                    = ((IData)(1U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___GEN_200);
-            }
-        }
-    }
 }

@@ -118,18 +118,19 @@ class FlexDPU(implicit val config:MagmasiConfig) extends Module{
             FDPE(i).i_data_valid := 1.B
             FDPE(i).Stationary_matrix := io.Stationary_matrix
             for (j <- 0 until 4){
-                //wheWireInit(VecInit(Seq.fill(config.MaxRows)(VecInit(Seq.fill(config.MaxCols)(0.U(config.DATA_TYPE.W))))))n (PF(0).PF_Valid){
                     FDPE(i).i_vn(j) := ivn.o_vn(i)(j)
                     FDPE(i).i_mux_bus(j) := PF(i).i_mux_bus(j)
-                    FDPE(i).i_data_bus(j) := PF(i).Source(j)
-                    FDPE(i).i_data_bus2(j) := PF(i).destination(j)
-                // }.otherwise{
-                //     FDPE(i).i_mux_bus(j) := PF1mux(j)
-                //     FDPE(i).i_data_bus(j) := PF1src(j)
-                //     FDPE(i).i_data_bus2(j) := PF1dest(j)
-                // }
+                    FDPE(i).i_data_bus2(j) := PF(i).Source(j)
         }
         dontTouch(FDPE(i).o_adder)
+        }
+
+
+        for (i <- 0 until (config.MaxRows * config.MaxCols) by 4){
+            FDPE(i/4).i_data_bus(0) := nonZeroValues(i)
+            FDPE(i/4).i_data_bus(1) := nonZeroValues(i+1)
+            FDPE(i/4).i_data_bus(2) := nonZeroValues(i+2)
+            FDPE(i/4).i_data_bus(3) := nonZeroValues(i+3)
         }
 
 

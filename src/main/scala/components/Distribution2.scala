@@ -16,8 +16,7 @@ class Distribution2(implicit val config:MagmasiConfig) extends Module{
 
     })
 
-                io.out := WireInit(VecInit(Seq.fill(config.MaxRows)(VecInit(Seq.fill(config.MaxCols)(0.U)))))
-        io.ProcessValid := 0.B
+
     dontTouch(io.valid)
 
     val i = RegInit(0.U(32.W))
@@ -28,7 +27,23 @@ class Distribution2(implicit val config:MagmasiConfig) extends Module{
     val mat = RegInit(VecInit(Seq.fill(config.MaxRows)(VecInit(Seq.fill(config.MaxCols)(0.U)))))
     val iterationNo = RegInit(0.U(32.W))
 
-    when ( io.valid){
+    // val part2 = Module(new SingleLoop2)
+    // part2.io.mat := mat
+    // part2.io.valid := 0.B
+    // part2.io.IDex := 0.U
+    // part2.io.JDex := 0.U
+
+
+
+    // val part3 = Module(new MergeDistribution2)
+    // part3.io.PreMat := mat
+    // part3.io.IDex := 0.U
+    // part3.io.JDex := 0.U
+    // part3.io.mat := mat
+    // part3.io.i_valid := 0.U
+
+
+
     when (io.matrix(i)(j) === 1.U){
       iterationNo := iterationNo + 1.U
     }
@@ -40,6 +55,7 @@ class Distribution2(implicit val config:MagmasiConfig) extends Module{
     dontTouch(Idex)
     dontTouch(Jdex)
 
+    when (io.valid){
     when ((io.matrix(i)(j) === 1.U) && ((i =/= (config.MaxRows-1).U) || (j =/= (config.MaxCols-1).U))){
         count := count + 1.U
         Idex(count) := i
@@ -48,6 +64,7 @@ class Distribution2(implicit val config:MagmasiConfig) extends Module{
         Idex(count) := i
         Jdex(count) := j
     }
+}
 
 // -------------------------------------------------------------
     
@@ -84,20 +101,28 @@ class Distribution2(implicit val config:MagmasiConfig) extends Module{
     // }.otherwise{
     //     check := 1.B
     // }
-    
-    when(part2.io.Ovalid){
-        io.ProcessValid := part2.io.ProcessValid
-        io.out := part2.io.OutMat    
-    }.elsewhen(part3.io.valid){
-        io.ProcessValid := part3.io.valid
-        io.out := part3.io.Omat
+    when (~((i === (config.MaxRows-1).U) && (j === (config.MaxCols-1).U) && ((count-1.U) < io.s))){
+
+        when(part2.io.Ovalid && io.valid){
+            io.ProcessValid := part2.io.ProcessValid
+            io.out := part2.io.OutMat 
+        }.elsewhen(part3.io.valid){
+            io.ProcessValid := part3.io.valid
+            io.out := part3.io.Omat
+        }.otherwise{
+            io.ProcessValid := part2.io.ProcessValid
+            io.out := part2.io.OutMat         
+        }
+    }.otherwise{
+        io.out := WireInit(VecInit(Seq.fill(config.MaxRows)(VecInit(Seq.fill(config.MaxCols)(0.U)))))
+        io.ProcessValid := 0.B 
     }
 
     dontTouch(part3.io.Omat)
     dontTouch(part2.io.ProcessValid)
     
-    
-    
+
+
     
     
     
@@ -130,7 +155,7 @@ class Distribution2(implicit val config:MagmasiConfig) extends Module{
 
 
 
-
+    when (io.valid){
     when ( i < (config.MaxRows-1).U && (j === (config.MaxCols-1).U)){
         i := i + 1.U
     }
@@ -141,13 +166,8 @@ class Distribution2(implicit val config:MagmasiConfig) extends Module{
     }.otherwise{
         j := 0.U
     }
-
-
-    }.otherwise{
-        io.out := WireInit(VecInit(Seq.fill(config.MaxRows)(VecInit(Seq.fill(config.MaxCols)(0.U)))))
-        io.ProcessValid := 0.B
-        // io.iteration := 0.U
-        // io.validIteration := 0.B
     }
+
+
 
 }

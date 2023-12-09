@@ -23,19 +23,33 @@ when (io.DataValid){
 
   val delay = RegInit(0.U(32.W))
   val myMuxes = Module(new Muxes())
+  val high = RegInit(0.B)
 
-  // when(delay < (config.MaxRows).U) {
-  //   delay := delay + 1.U
-  // }
+
+  dontTouch(high)
 
   val myCounter = Module(new SourceDestination())
   myCounter.io.start := RegNext(io.DataValid)
   myCounter.io.Stationary_matrix := io.Stationary_matrix
   myCounter.io.Streaming_matrix := io.Streaming_matrix
 
+  val high2 = RegInit(0.B)
+  dontTouch(high2)
+
+  when (myCounter.io.valid){
+    high2 := 1.B
+  }.elsewhen((delay < (config.MaxRows * config.MaxCols + config.MaxRows).U ) && high2) {
+    delay := delay + 1.U
+    high := 1.B
+  }.otherwise{
+    high := 0.B
+    delay := delay
+    high2 := 0.B
+  }
+
   val Distribution = Module(new Distribution2)
 
-  Distribution.io.valid := myCounter.io.valid
+  Distribution.io.valid := high//myCounter.io.valid
   Distribution.io.s := io.NoDPE
   // io.iteration := Distribution.io.iteration
   // io.validIteration := Distribution.io.validIteration

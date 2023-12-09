@@ -103,10 +103,6 @@ VL_MODULE(VFlexDPU_PathFinder) {
     VL_OUT16(io_Source_1,15,0);
     VL_OUT16(io_Source_2,15,0);
     VL_OUT16(io_Source_3,15,0);
-    VL_OUT16(io_destination_0,15,0);
-    VL_OUT16(io_destination_1,15,0);
-    VL_OUT16(io_destination_2,15,0);
-    VL_OUT16(io_destination_3,15,0);
     VL_IN(io_NoDPE,31,0);
     
     // LOCAL SIGNALS
@@ -114,7 +110,10 @@ VL_MODULE(VFlexDPU_PathFinder) {
     struct {
         CData/*0:0*/ __PVT__myCounter_io_valid;
         CData/*0:0*/ __PVT__Distribution_io_ProcessValid;
+        CData/*0:0*/ __PVT__high;
         CData/*0:0*/ __PVT__myCounter_io_start_REG;
+        CData/*0:0*/ __PVT__high2;
+        CData/*0:0*/ __PVT___GEN_3;
         CData/*0:0*/ __PVT__myMuxes__DOT__matricesAreEqual;
         CData/*0:0*/ __PVT__myMuxes__DOT__jValid;
         CData/*3:0*/ __PVT__myMuxes__DOT__mux_0;
@@ -173,11 +172,11 @@ VL_MODULE(VFlexDPU_PathFinder) {
         CData/*3:0*/ __PVT__myMuxes__DOT__mux_53;
         CData/*3:0*/ __PVT__myMuxes__DOT__mux_54;
         CData/*3:0*/ __PVT__myMuxes__DOT__mux_55;
+    };
+    struct {
         CData/*3:0*/ __PVT__myMuxes__DOT__mux_56;
         CData/*3:0*/ __PVT__myMuxes__DOT__mux_57;
         CData/*3:0*/ __PVT__myMuxes__DOT__mux_58;
-    };
-    struct {
         CData/*3:0*/ __PVT__myMuxes__DOT__mux_59;
         CData/*3:0*/ __PVT__myMuxes__DOT__mux_60;
         CData/*3:0*/ __PVT__myMuxes__DOT__mux_61;
@@ -239,11 +238,11 @@ VL_MODULE(VFlexDPU_PathFinder) {
         CData/*3:0*/ __PVT__myMuxes__DOT___GEN_1131;
         CData/*3:0*/ __PVT__myMuxes__DOT___GEN_1132;
         CData/*3:0*/ __PVT__myMuxes__DOT___GEN_1133;
+    };
+    struct {
         CData/*3:0*/ __PVT__myMuxes__DOT___GEN_1134;
         CData/*3:0*/ __PVT__myMuxes__DOT___GEN_1135;
         CData/*3:0*/ __PVT__myMuxes__DOT___GEN_1136;
-    };
-    struct {
         CData/*3:0*/ __PVT__myMuxes__DOT___GEN_1137;
         CData/*3:0*/ __PVT__myMuxes__DOT___GEN_1138;
         CData/*3:0*/ __PVT__myMuxes__DOT___GEN_1139;
@@ -265,6 +264,7 @@ VL_MODULE(VFlexDPU_PathFinder) {
         CData/*0:0*/ __PVT__Distribution__DOT___T_17;
         CData/*0:0*/ __PVT__Distribution__DOT___complete_T_2;
         CData/*0:0*/ __PVT__Distribution__DOT__complete;
+        CData/*0:0*/ __PVT__Distribution__DOT___GEN_486;
         CData/*0:0*/ __PVT__Distribution__DOT__part2__DOT___T_5;
         SData/*15:0*/ __PVT__myMuxes_io_mat1_0_0;
         SData/*15:0*/ __PVT__myMuxes_io_mat1_0_1;
@@ -304,12 +304,12 @@ VL_MODULE(VFlexDPU_PathFinder) {
         SData/*15:0*/ __PVT__myMuxes_io_mat1_4_3;
         SData/*15:0*/ __PVT__myMuxes_io_mat1_4_4;
         SData/*15:0*/ __PVT__myMuxes_io_mat1_4_5;
+    };
+    struct {
         SData/*15:0*/ __PVT__myMuxes_io_mat1_4_6;
         SData/*15:0*/ __PVT__myMuxes_io_mat1_4_7;
         SData/*15:0*/ __PVT__myMuxes_io_mat1_5_0;
         SData/*15:0*/ __PVT__myMuxes_io_mat1_5_1;
-    };
-    struct {
         SData/*15:0*/ __PVT__myMuxes_io_mat1_5_2;
         SData/*15:0*/ __PVT__myMuxes_io_mat1_5_3;
         SData/*15:0*/ __PVT__myMuxes_io_mat1_5_4;
@@ -370,12 +370,12 @@ VL_MODULE(VFlexDPU_PathFinder) {
         SData/*15:0*/ __PVT__myMuxes__DOT__prevStationary_matrix_3_3;
         SData/*15:0*/ __PVT__myMuxes__DOT__prevStationary_matrix_3_4;
         SData/*15:0*/ __PVT__myMuxes__DOT__prevStationary_matrix_3_5;
+    };
+    struct {
         SData/*15:0*/ __PVT__myMuxes__DOT__prevStationary_matrix_3_6;
         SData/*15:0*/ __PVT__myMuxes__DOT__prevStationary_matrix_3_7;
         SData/*15:0*/ __PVT__myMuxes__DOT__prevStationary_matrix_4_0;
         SData/*15:0*/ __PVT__myMuxes__DOT__prevStationary_matrix_4_1;
-    };
-    struct {
         SData/*15:0*/ __PVT__myMuxes__DOT__prevStationary_matrix_4_2;
         SData/*15:0*/ __PVT__myMuxes__DOT__prevStationary_matrix_4_3;
         SData/*15:0*/ __PVT__myMuxes__DOT__prevStationary_matrix_4_4;
@@ -436,12 +436,12 @@ VL_MODULE(VFlexDPU_PathFinder) {
         SData/*15:0*/ __PVT__myMuxes__DOT__src_19;
         SData/*15:0*/ __PVT__myMuxes__DOT__src_20;
         SData/*15:0*/ __PVT__myMuxes__DOT__src_21;
+    };
+    struct {
         SData/*15:0*/ __PVT__myMuxes__DOT__src_22;
         SData/*15:0*/ __PVT__myMuxes__DOT__src_23;
         SData/*15:0*/ __PVT__myMuxes__DOT__src_24;
         SData/*15:0*/ __PVT__myMuxes__DOT__src_25;
-    };
-    struct {
         SData/*15:0*/ __PVT__myMuxes__DOT__src_26;
         SData/*15:0*/ __PVT__myMuxes__DOT__src_27;
         SData/*15:0*/ __PVT__myMuxes__DOT__src_28;
@@ -502,12 +502,12 @@ VL_MODULE(VFlexDPU_PathFinder) {
         SData/*15:0*/ __PVT__myMuxes__DOT__dest_19;
         SData/*15:0*/ __PVT__myMuxes__DOT__dest_20;
         SData/*15:0*/ __PVT__myMuxes__DOT__dest_21;
+    };
+    struct {
         SData/*15:0*/ __PVT__myMuxes__DOT__dest_22;
         SData/*15:0*/ __PVT__myMuxes__DOT__dest_23;
         SData/*15:0*/ __PVT__myMuxes__DOT__dest_24;
         SData/*15:0*/ __PVT__myMuxes__DOT__dest_25;
-    };
-    struct {
         SData/*15:0*/ __PVT__myMuxes__DOT__dest_26;
         SData/*15:0*/ __PVT__myMuxes__DOT__dest_27;
         SData/*15:0*/ __PVT__myMuxes__DOT__dest_28;
@@ -546,18 +546,32 @@ VL_MODULE(VFlexDPU_PathFinder) {
         SData/*15:0*/ __PVT__myMuxes__DOT__dest_61;
         SData/*15:0*/ __PVT__myMuxes__DOT__dest_62;
         SData/*15:0*/ __PVT__myMuxes__DOT__dest_63;
-        SData/*15:0*/ __PVT__myMuxes__DOT___GEN_76;
-        SData/*15:0*/ __PVT__myMuxes__DOT___GEN_81;
-        SData/*15:0*/ __PVT__myMuxes__DOT___GEN_86;
+        SData/*15:0*/ __PVT__myMuxes__DOT___GEN_75;
+        SData/*15:0*/ __PVT__myMuxes__DOT___GEN_77;
+        SData/*15:0*/ __PVT__myMuxes__DOT___GEN_79;
+        SData/*15:0*/ __PVT__myMuxes__DOT___GEN_82;
+        SData/*15:0*/ __PVT__myMuxes__DOT___GEN_83;
+        SData/*15:0*/ __PVT__myMuxes__DOT___GEN_87;
         SData/*15:0*/ __PVT__myMuxes__DOT___GEN_91;
-        SData/*15:0*/ __PVT__myMuxes__DOT___GEN_96;
-        SData/*15:0*/ __PVT__myMuxes__DOT___GEN_101;
-        SData/*15:0*/ __PVT__myMuxes__DOT___GEN_106;
+        SData/*15:0*/ __PVT__myMuxes__DOT___GEN_92;
+        SData/*15:0*/ __PVT__myMuxes__DOT___GEN_95;
+        SData/*15:0*/ __PVT__myMuxes__DOT___GEN_97;
+        SData/*15:0*/ __PVT__myMuxes__DOT___GEN_99;
+        SData/*15:0*/ __PVT__myMuxes__DOT___GEN_102;
+        SData/*15:0*/ __PVT__myMuxes__DOT___GEN_103;
+        SData/*15:0*/ __PVT__myMuxes__DOT___GEN_107;
         SData/*15:0*/ __PVT__myMuxes__DOT___GEN_111;
-        SData/*15:0*/ __PVT__myMuxes__DOT___GEN_116;
-        SData/*15:0*/ __PVT__myMuxes__DOT___GEN_121;
-        SData/*15:0*/ __PVT__myMuxes__DOT___GEN_126;
+        SData/*15:0*/ __PVT__myMuxes__DOT___GEN_112;
+        SData/*15:0*/ __PVT__myMuxes__DOT___GEN_115;
+        SData/*15:0*/ __PVT__myMuxes__DOT___GEN_117;
+        SData/*15:0*/ __PVT__myMuxes__DOT___GEN_119;
+        SData/*15:0*/ __PVT__myMuxes__DOT___GEN_122;
+        SData/*15:0*/ __PVT__myMuxes__DOT___GEN_123;
+        SData/*15:0*/ __PVT__myMuxes__DOT___GEN_127;
+    };
+    struct {
         SData/*15:0*/ __PVT__myMuxes__DOT___GEN_131;
+        SData/*15:0*/ __PVT__myMuxes__DOT___GEN_132;
         SData/*15:0*/ __PVT__myMuxes__DOT___GEN_135;
         SData/*15:0*/ __PVT__myMuxes__DOT___GEN_143;
         SData/*15:0*/ __PVT__myMuxes__DOT___GEN_215;
@@ -572,8 +586,6 @@ VL_MODULE(VFlexDPU_PathFinder) {
         SData/*15:0*/ __PVT__myMuxes__DOT___GEN_544;
         SData/*15:0*/ __PVT__myMuxes__DOT___GEN_551;
         SData/*15:0*/ __PVT__myMuxes__DOT___mux_T_17;
-    };
-    struct {
         SData/*15:0*/ __PVT__myMuxes__DOT___GEN_1146;
         SData/*15:0*/ __PVT__myMuxes__DOT___GEN_1147;
         SData/*15:0*/ __PVT__myMuxes__DOT___GEN_1148;
@@ -622,6 +634,8 @@ VL_MODULE(VFlexDPU_PathFinder) {
         SData/*15:0*/ __PVT__myMuxes__DOT___GEN_1191;
         SData/*15:0*/ __PVT__myMuxes__DOT___GEN_1192;
         SData/*15:0*/ __PVT__myMuxes__DOT___GEN_1193;
+    };
+    struct {
         SData/*15:0*/ __PVT__myMuxes__DOT___GEN_1194;
         SData/*15:0*/ __PVT__myMuxes__DOT___GEN_1195;
         SData/*15:0*/ __PVT__myMuxes__DOT___GEN_1196;
@@ -638,8 +652,6 @@ VL_MODULE(VFlexDPU_PathFinder) {
         SData/*15:0*/ __PVT__myMuxes__DOT___GEN_1207;
         SData/*15:0*/ __PVT__myMuxes__DOT___GEN_1208;
         SData/*15:0*/ __PVT__myMuxes__DOT___GEN_1209;
-    };
-    struct {
         SData/*15:0*/ __PVT__myMuxes__DOT___GEN_1210;
         SData/*15:0*/ __PVT__myMuxes__DOT___GEN_1211;
         SData/*15:0*/ __PVT__myMuxes__DOT___GEN_1212;
@@ -688,6 +700,8 @@ VL_MODULE(VFlexDPU_PathFinder) {
         SData/*15:0*/ __PVT__myMuxes__DOT___GEN_1255;
         SData/*15:0*/ __PVT__myMuxes__DOT___GEN_1256;
         SData/*15:0*/ __PVT__myMuxes__DOT___GEN_1257;
+    };
+    struct {
         SData/*15:0*/ __PVT__myMuxes__DOT___GEN_1258;
         SData/*15:0*/ __PVT__myMuxes__DOT___GEN_1259;
         SData/*15:0*/ __PVT__myMuxes__DOT___GEN_1260;
@@ -704,8 +718,6 @@ VL_MODULE(VFlexDPU_PathFinder) {
         SData/*15:0*/ __PVT__myMuxes__DOT___GEN_1271;
         SData/*15:0*/ __PVT__myMuxes__DOT___GEN_1272;
         SData/*15:0*/ __PVT__myMuxes__DOT___GEN_1273;
-    };
-    struct {
         SData/*15:0*/ __PVT__myCounter__DOT__prevStationary_matrix_0_0;
         SData/*15:0*/ __PVT__myCounter__DOT__prevStationary_matrix_0_1;
         SData/*15:0*/ __PVT__myCounter__DOT__prevStationary_matrix_0_2;
@@ -754,6 +766,8 @@ VL_MODULE(VFlexDPU_PathFinder) {
         SData/*15:0*/ __PVT__myCounter__DOT__prevStationary_matrix_5_5;
         SData/*15:0*/ __PVT__myCounter__DOT__prevStationary_matrix_5_6;
         SData/*15:0*/ __PVT__myCounter__DOT__prevStationary_matrix_5_7;
+    };
+    struct {
         SData/*15:0*/ __PVT__myCounter__DOT__prevStationary_matrix_6_0;
         SData/*15:0*/ __PVT__myCounter__DOT__prevStationary_matrix_6_1;
         SData/*15:0*/ __PVT__myCounter__DOT__prevStationary_matrix_6_2;
@@ -770,8 +784,6 @@ VL_MODULE(VFlexDPU_PathFinder) {
         SData/*15:0*/ __PVT__myCounter__DOT__prevStationary_matrix_7_5;
         SData/*15:0*/ __PVT__myCounter__DOT__prevStationary_matrix_7_6;
         SData/*15:0*/ __PVT__myCounter__DOT__prevStationary_matrix_7_7;
-    };
-    struct {
         SData/*15:0*/ __PVT__myCounter__DOT__counterRegs1_0_0;
         SData/*15:0*/ __PVT__myCounter__DOT__counterRegs1_0_1;
         SData/*15:0*/ __PVT__myCounter__DOT__counterRegs1_0_2;
@@ -820,6 +832,8 @@ VL_MODULE(VFlexDPU_PathFinder) {
         SData/*15:0*/ __PVT__myCounter__DOT__counterRegs1_5_5;
         SData/*15:0*/ __PVT__myCounter__DOT__counterRegs1_5_6;
         SData/*15:0*/ __PVT__myCounter__DOT__counterRegs1_5_7;
+    };
+    struct {
         SData/*15:0*/ __PVT__myCounter__DOT__counterRegs1_6_0;
         SData/*15:0*/ __PVT__myCounter__DOT__counterRegs1_6_1;
         SData/*15:0*/ __PVT__myCounter__DOT__counterRegs1_6_2;
@@ -836,8 +850,6 @@ VL_MODULE(VFlexDPU_PathFinder) {
         SData/*15:0*/ __PVT__myCounter__DOT__counterRegs1_7_5;
         SData/*15:0*/ __PVT__myCounter__DOT__counterRegs1_7_6;
         SData/*15:0*/ __PVT__myCounter__DOT__counterRegs1_7_7;
-    };
-    struct {
         SData/*15:0*/ __PVT__myCounter__DOT__counterRegs2_0;
         SData/*15:0*/ __PVT__myCounter__DOT__counterRegs2_1;
         SData/*15:0*/ __PVT__myCounter__DOT__counterRegs2_2;
@@ -886,6 +898,8 @@ VL_MODULE(VFlexDPU_PathFinder) {
         SData/*15:0*/ __PVT__myCounter__DOT___GEN_414;
         SData/*15:0*/ __PVT__myCounter__DOT___GEN_415;
         SData/*15:0*/ __PVT__myCounter__DOT___GEN_416;
+    };
+    struct {
         SData/*15:0*/ __PVT__myCounter__DOT___GEN_417;
         SData/*15:0*/ __PVT__myCounter__DOT___GEN_418;
         SData/*15:0*/ __PVT__myCounter__DOT___GEN_419;
@@ -902,8 +916,6 @@ VL_MODULE(VFlexDPU_PathFinder) {
         SData/*15:0*/ __PVT__myCounter__DOT___GEN_430;
         SData/*15:0*/ __PVT__myCounter__DOT___GEN_431;
         SData/*15:0*/ __PVT__myCounter__DOT___GEN_432;
-    };
-    struct {
         SData/*15:0*/ __PVT__myCounter__DOT___GEN_433;
         SData/*15:0*/ __PVT__myCounter__DOT___GEN_434;
         SData/*15:0*/ __PVT__myCounter__DOT___GEN_435;
@@ -930,14 +942,16 @@ VL_MODULE(VFlexDPU_PathFinder) {
         SData/*15:0*/ __PVT__myCounter__DOT___GEN_472;
         SData/*15:0*/ __PVT__myCounter__DOT___GEN_473;
         SData/*15:0*/ __PVT__myCounter__DOT___GEN_474;
-        IData/*31:0*/ __PVT___GEN_146;
-        IData/*31:0*/ __PVT___GEN_147;
-        IData/*31:0*/ __PVT___GEN_148;
-        IData/*31:0*/ __PVT___GEN_149;
-        IData/*31:0*/ __PVT___GEN_274;
-        IData/*31:0*/ __PVT___GEN_275;
-        IData/*31:0*/ __PVT___GEN_276;
-        IData/*31:0*/ __PVT___GEN_277;
+        IData/*31:0*/ __PVT__delay;
+        IData/*31:0*/ __PVT___delay_T_1;
+        IData/*31:0*/ __PVT___GEN_152;
+        IData/*31:0*/ __PVT___GEN_153;
+        IData/*31:0*/ __PVT___GEN_154;
+        IData/*31:0*/ __PVT___GEN_155;
+        IData/*31:0*/ __PVT___GEN_216;
+        IData/*31:0*/ __PVT___GEN_217;
+        IData/*31:0*/ __PVT___GEN_218;
+        IData/*31:0*/ __PVT___GEN_219;
         IData/*31:0*/ __PVT__myMuxes__DOT__i;
         IData/*31:0*/ __PVT__myMuxes__DOT__j;
         IData/*31:0*/ __PVT__myMuxes__DOT__k;
@@ -950,6 +964,8 @@ VL_MODULE(VFlexDPU_PathFinder) {
         IData/*31:0*/ __PVT__myCounter__DOT__i;
         IData/*31:0*/ __PVT__myCounter__DOT__j;
         IData/*31:0*/ __PVT__myCounter__DOT__k;
+    };
+    struct {
         IData/*31:0*/ __PVT__myCounter__DOT__counter1;
         IData/*31:0*/ __PVT__myCounter__DOT__counter2;
         IData/*31:0*/ __PVT__myCounter__DOT___GEN_450;
@@ -968,8 +984,6 @@ VL_MODULE(VFlexDPU_PathFinder) {
         IData/*31:0*/ __PVT__myCounter__DOT___GEN_731;
         IData/*31:0*/ __PVT__myCounter__DOT___GEN_732;
         IData/*31:0*/ __PVT__myCounter__DOT___GEN_733;
-    };
-    struct {
         IData/*31:0*/ __PVT__myCounter__DOT___GEN_734;
         IData/*31:0*/ __PVT__myCounter__DOT___GEN_735;
         IData/*31:0*/ __PVT__myCounter__DOT___GEN_736;
@@ -1016,6 +1030,8 @@ VL_MODULE(VFlexDPU_PathFinder) {
         IData/*31:0*/ __PVT__myCounter__DOT___GEN_777;
         IData/*31:0*/ __PVT__myCounter__DOT___GEN_778;
         IData/*31:0*/ __PVT__myCounter__DOT___GEN_779;
+    };
+    struct {
         IData/*31:0*/ __PVT__myCounter__DOT___GEN_780;
         IData/*31:0*/ __PVT__myCounter__DOT___GEN_781;
         IData/*31:0*/ __PVT__myCounter__DOT___GEN_782;
@@ -1034,8 +1050,6 @@ VL_MODULE(VFlexDPU_PathFinder) {
         IData/*31:0*/ __PVT__Distribution__DOT__Idex_3;
         IData/*31:0*/ __PVT__Distribution__DOT__Idex_4;
         IData/*31:0*/ __PVT__Distribution__DOT__Idex_5;
-    };
-    struct {
         IData/*31:0*/ __PVT__Distribution__DOT__Idex_6;
         IData/*31:0*/ __PVT__Distribution__DOT__Idex_7;
         IData/*31:0*/ __PVT__Distribution__DOT__Idex_8;
@@ -1082,6 +1096,8 @@ VL_MODULE(VFlexDPU_PathFinder) {
         IData/*31:0*/ __PVT__Distribution__DOT___GEN_134;
         IData/*31:0*/ __PVT__Distribution__DOT___GEN_135;
         IData/*31:0*/ __PVT__Distribution__DOT___GEN_136;
+    };
+    struct {
         IData/*31:0*/ __PVT__Distribution__DOT___GEN_137;
         IData/*31:0*/ __PVT__Distribution__DOT___GEN_138;
         IData/*31:0*/ __PVT__Distribution__DOT___GEN_139;
@@ -1100,17 +1116,15 @@ VL_MODULE(VFlexDPU_PathFinder) {
         IData/*31:0*/ __PVT__Distribution__DOT___GEN_152;
         IData/*31:0*/ __PVT__Distribution__DOT___GEN_153;
         IData/*31:0*/ __PVT__Distribution__DOT___GEN_154;
-    };
-    struct {
         IData/*31:0*/ __PVT__Distribution__DOT___GEN_155;
         IData/*31:0*/ __PVT__Distribution__DOT___GEN_156;
         IData/*31:0*/ __PVT__Distribution__DOT___GEN_157;
         IData/*31:0*/ __PVT__Distribution__DOT___GEN_158;
         IData/*31:0*/ __PVT__Distribution__DOT___GEN_159;
         IData/*31:0*/ __PVT__Distribution__DOT___GEN_160;
-        IData/*31:0*/ __PVT__Distribution__DOT___GEN_334;
-        IData/*31:0*/ __PVT__Distribution__DOT___GEN_336;
-        IData/*31:0*/ __PVT__Distribution__DOT___GEN_350;
+        IData/*31:0*/ __PVT__Distribution__DOT___GEN_367;
+        IData/*31:0*/ __PVT__Distribution__DOT___GEN_369;
+        IData/*31:0*/ __PVT__Distribution__DOT___GEN_383;
         IData/*31:0*/ __PVT__Distribution__DOT___i_T_1;
         IData/*31:0*/ __PVT__Distribution__DOT___j_T_1;
         IData/*31:0*/ __PVT__Distribution__DOT__part2__DOT__b_0_0;
@@ -1148,6 +1162,8 @@ VL_MODULE(VFlexDPU_PathFinder) {
         IData/*31:0*/ __PVT__Distribution__DOT__part2__DOT__b_4_0;
         IData/*31:0*/ __PVT__Distribution__DOT__part2__DOT__b_4_1;
         IData/*31:0*/ __PVT__Distribution__DOT__part2__DOT__b_4_2;
+    };
+    struct {
         IData/*31:0*/ __PVT__Distribution__DOT__part2__DOT__b_4_3;
         IData/*31:0*/ __PVT__Distribution__DOT__part2__DOT__b_4_4;
         IData/*31:0*/ __PVT__Distribution__DOT__part2__DOT__b_4_5;
@@ -1166,8 +1182,6 @@ VL_MODULE(VFlexDPU_PathFinder) {
         IData/*31:0*/ __PVT__Distribution__DOT__part2__DOT__b_6_2;
         IData/*31:0*/ __PVT__Distribution__DOT__part2__DOT__b_6_3;
         IData/*31:0*/ __PVT__Distribution__DOT__part2__DOT__b_6_4;
-    };
-    struct {
         IData/*31:0*/ __PVT__Distribution__DOT__part2__DOT__b_6_5;
         IData/*31:0*/ __PVT__Distribution__DOT__part2__DOT__b_6_6;
         IData/*31:0*/ __PVT__Distribution__DOT__part2__DOT__b_6_7;
@@ -1214,6 +1228,8 @@ VL_MODULE(VFlexDPU_PathFinder) {
         IData/*31:0*/ __PVT__Distribution__DOT__part3__DOT__b_2_2;
         IData/*31:0*/ __PVT__Distribution__DOT__part3__DOT__b_2_3;
         IData/*31:0*/ __PVT__Distribution__DOT__part3__DOT__b_2_4;
+    };
+    struct {
         IData/*31:0*/ __PVT__Distribution__DOT__part3__DOT__b_2_5;
         IData/*31:0*/ __PVT__Distribution__DOT__part3__DOT__b_2_6;
         IData/*31:0*/ __PVT__Distribution__DOT__part3__DOT__b_2_7;
@@ -1232,8 +1248,6 @@ VL_MODULE(VFlexDPU_PathFinder) {
         IData/*31:0*/ __PVT__Distribution__DOT__part3__DOT__b_4_4;
         IData/*31:0*/ __PVT__Distribution__DOT__part3__DOT__b_4_5;
         IData/*31:0*/ __PVT__Distribution__DOT__part3__DOT__b_4_6;
-    };
-    struct {
         IData/*31:0*/ __PVT__Distribution__DOT__part3__DOT__b_4_7;
         IData/*31:0*/ __PVT__Distribution__DOT__part3__DOT__b_5_0;
         IData/*31:0*/ __PVT__Distribution__DOT__part3__DOT__b_5_1;
@@ -1279,6 +1293,7 @@ VL_MODULE(VFlexDPU_PathFinder) {
     
     // LOCAL VARIABLES
     CData/*0:0*/ __Vdly__myMuxes__DOT__jValid;
+    IData/*31:0*/ __Vdly__delay;
     IData/*31:0*/ __Vdly__myMuxes__DOT__j;
     IData/*31:0*/ __Vdly__myCounter__DOT__j;
     IData/*31:0*/ __Vdly__Distribution__DOT__i;

@@ -2407,6 +2407,63 @@ void VFlexDPU::_settle__TOP__9(VFlexDPU__Syms* __restrict vlSymsp) {
         vlTOPp->FlexDPU__DOT__ivntop__DOT__my_stationary__DOT___GEN_447 
             = vlTOPp->FlexDPU__DOT__ivntop__DOT__my_stationary__DOT__Station8_7_7;
     }
+    vlTOPp->FlexDPU__DOT___GEN_7 = (((0U == (7U & vlTOPp->FlexDPU__DOT__iloop)) 
+                                     & (7U == (7U & vlTOPp->FlexDPU__DOT__jloop)))
+                                     ? (IData)(vlTOPp->io_Stationary_matrix_0_7)
+                                     : (((0U == (7U 
+                                                 & vlTOPp->FlexDPU__DOT__iloop)) 
+                                         & (6U == (7U 
+                                                   & vlTOPp->FlexDPU__DOT__jloop)))
+                                         ? (IData)(vlTOPp->io_Stationary_matrix_0_6)
+                                         : (((0U == 
+                                              (7U & vlTOPp->FlexDPU__DOT__iloop)) 
+                                             & (5U 
+                                                == 
+                                                (7U 
+                                                 & vlTOPp->FlexDPU__DOT__jloop)))
+                                             ? (IData)(vlTOPp->io_Stationary_matrix_0_5)
+                                             : (((0U 
+                                                  == 
+                                                  (7U 
+                                                   & vlTOPp->FlexDPU__DOT__iloop)) 
+                                                 & (4U 
+                                                    == 
+                                                    (7U 
+                                                     & vlTOPp->FlexDPU__DOT__jloop)))
+                                                 ? (IData)(vlTOPp->io_Stationary_matrix_0_4)
+                                                 : 
+                                                (((0U 
+                                                   == 
+                                                   (7U 
+                                                    & vlTOPp->FlexDPU__DOT__iloop)) 
+                                                  & (3U 
+                                                     == 
+                                                     (7U 
+                                                      & vlTOPp->FlexDPU__DOT__jloop)))
+                                                  ? (IData)(vlTOPp->io_Stationary_matrix_0_3)
+                                                  : 
+                                                 (((0U 
+                                                    == 
+                                                    (7U 
+                                                     & vlTOPp->FlexDPU__DOT__iloop)) 
+                                                   & (2U 
+                                                      == 
+                                                      (7U 
+                                                       & vlTOPp->FlexDPU__DOT__jloop)))
+                                                   ? (IData)(vlTOPp->io_Stationary_matrix_0_2)
+                                                   : 
+                                                  (((0U 
+                                                     == 
+                                                     (7U 
+                                                      & vlTOPp->FlexDPU__DOT__iloop)) 
+                                                    & (1U 
+                                                       == 
+                                                       (7U 
+                                                        & vlTOPp->FlexDPU__DOT__jloop)))
+                                                    ? (IData)(vlTOPp->io_Stationary_matrix_0_1)
+                                                    : (IData)(vlTOPp->io_Stationary_matrix_0_0))))))));
+    vlTOPp->FlexDPU__DOT___index_T_1 = ((IData)(1U) 
+                                        + vlTOPp->FlexDPU__DOT__index);
     vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT___GEN_3063 
         = ((0xbU == (0xfU & ((IData)(6U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__pin)))
             ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__rowcount_11
@@ -5278,6 +5335,63 @@ void VFlexDPU::_settle__TOP__9(VFlexDPU__Syms* __restrict vlSymsp) {
                                     ? (IData)(vlTOPp->io_Stationary_matrix_1_0)
                                     : (IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_stationary__DOT___GEN_455)))))));
     }
+    vlTOPp->FlexDPU__DOT___GEN_14 = (((1U == (7U & vlTOPp->FlexDPU__DOT__iloop)) 
+                                      & (6U == (7U 
+                                                & vlTOPp->FlexDPU__DOT__jloop)))
+                                      ? (IData)(vlTOPp->io_Stationary_matrix_1_6)
+                                      : (((1U == (7U 
+                                                  & vlTOPp->FlexDPU__DOT__iloop)) 
+                                          & (5U == 
+                                             (7U & vlTOPp->FlexDPU__DOT__jloop)))
+                                          ? (IData)(vlTOPp->io_Stationary_matrix_1_5)
+                                          : (((1U == 
+                                               (7U 
+                                                & vlTOPp->FlexDPU__DOT__iloop)) 
+                                              & (4U 
+                                                 == 
+                                                 (7U 
+                                                  & vlTOPp->FlexDPU__DOT__jloop)))
+                                              ? (IData)(vlTOPp->io_Stationary_matrix_1_4)
+                                              : (((1U 
+                                                   == 
+                                                   (7U 
+                                                    & vlTOPp->FlexDPU__DOT__iloop)) 
+                                                  & (3U 
+                                                     == 
+                                                     (7U 
+                                                      & vlTOPp->FlexDPU__DOT__jloop)))
+                                                  ? (IData)(vlTOPp->io_Stationary_matrix_1_3)
+                                                  : 
+                                                 (((1U 
+                                                    == 
+                                                    (7U 
+                                                     & vlTOPp->FlexDPU__DOT__iloop)) 
+                                                   & (2U 
+                                                      == 
+                                                      (7U 
+                                                       & vlTOPp->FlexDPU__DOT__jloop)))
+                                                   ? (IData)(vlTOPp->io_Stationary_matrix_1_2)
+                                                   : 
+                                                  (((1U 
+                                                     == 
+                                                     (7U 
+                                                      & vlTOPp->FlexDPU__DOT__iloop)) 
+                                                    & (1U 
+                                                       == 
+                                                       (7U 
+                                                        & vlTOPp->FlexDPU__DOT__jloop)))
+                                                    ? (IData)(vlTOPp->io_Stationary_matrix_1_1)
+                                                    : 
+                                                   (((1U 
+                                                      == 
+                                                      (7U 
+                                                       & vlTOPp->FlexDPU__DOT__iloop)) 
+                                                     & (0U 
+                                                        == 
+                                                        (7U 
+                                                         & vlTOPp->FlexDPU__DOT__jloop)))
+                                                     ? (IData)(vlTOPp->io_Stationary_matrix_1_0)
+                                                     : (IData)(vlTOPp->FlexDPU__DOT___GEN_7))))))));
     vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT___GEN_287 
         = ((0xfU == (0xfU & (IData)((QData)((IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__pin)))))
             ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__rowcount_15
@@ -5839,6 +5953,63 @@ void VFlexDPU::_settle__TOP__9(VFlexDPU__Syms* __restrict vlSymsp) {
                                     ? (IData)(vlTOPp->io_Stationary_matrix_1_7)
                                     : (IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_stationary__DOT___GEN_462)))))));
     }
+    vlTOPp->FlexDPU__DOT___GEN_21 = (((2U == (7U & vlTOPp->FlexDPU__DOT__iloop)) 
+                                      & (5U == (7U 
+                                                & vlTOPp->FlexDPU__DOT__jloop)))
+                                      ? (IData)(vlTOPp->io_Stationary_matrix_2_5)
+                                      : (((2U == (7U 
+                                                  & vlTOPp->FlexDPU__DOT__iloop)) 
+                                          & (4U == 
+                                             (7U & vlTOPp->FlexDPU__DOT__jloop)))
+                                          ? (IData)(vlTOPp->io_Stationary_matrix_2_4)
+                                          : (((2U == 
+                                               (7U 
+                                                & vlTOPp->FlexDPU__DOT__iloop)) 
+                                              & (3U 
+                                                 == 
+                                                 (7U 
+                                                  & vlTOPp->FlexDPU__DOT__jloop)))
+                                              ? (IData)(vlTOPp->io_Stationary_matrix_2_3)
+                                              : (((2U 
+                                                   == 
+                                                   (7U 
+                                                    & vlTOPp->FlexDPU__DOT__iloop)) 
+                                                  & (2U 
+                                                     == 
+                                                     (7U 
+                                                      & vlTOPp->FlexDPU__DOT__jloop)))
+                                                  ? (IData)(vlTOPp->io_Stationary_matrix_2_2)
+                                                  : 
+                                                 (((2U 
+                                                    == 
+                                                    (7U 
+                                                     & vlTOPp->FlexDPU__DOT__iloop)) 
+                                                   & (1U 
+                                                      == 
+                                                      (7U 
+                                                       & vlTOPp->FlexDPU__DOT__jloop)))
+                                                   ? (IData)(vlTOPp->io_Stationary_matrix_2_1)
+                                                   : 
+                                                  (((2U 
+                                                     == 
+                                                     (7U 
+                                                      & vlTOPp->FlexDPU__DOT__iloop)) 
+                                                    & (0U 
+                                                       == 
+                                                       (7U 
+                                                        & vlTOPp->FlexDPU__DOT__jloop)))
+                                                    ? (IData)(vlTOPp->io_Stationary_matrix_2_0)
+                                                    : 
+                                                   (((1U 
+                                                      == 
+                                                      (7U 
+                                                       & vlTOPp->FlexDPU__DOT__iloop)) 
+                                                     & (7U 
+                                                        == 
+                                                        (7U 
+                                                         & vlTOPp->FlexDPU__DOT__jloop)))
+                                                     ? (IData)(vlTOPp->io_Stationary_matrix_1_7)
+                                                     : (IData)(vlTOPp->FlexDPU__DOT___GEN_14))))))));
     vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT___T_173 
         = (vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT___GEN_287 
            + ((0xfU == (0xfU & ((IData)(1U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__pin)))
@@ -6740,90 +6911,6 @@ void VFlexDPU::_settle__TOP__9(VFlexDPU__Syms* __restrict vlSymsp) {
             = vlTOPp->io_Stationary_matrix_5_3;
         vlTOPp->FlexDPU__DOT__PathFinder_8_io_Stationary_matrix_5_4 
             = vlTOPp->io_Stationary_matrix_5_4;
-        vlTOPp->FlexDPU__DOT__PathFinder_8_io_Stationary_matrix_5_5 
-            = vlTOPp->io_Stationary_matrix_5_5;
-        vlTOPp->FlexDPU__DOT__PathFinder_8_io_Stationary_matrix_5_6 
-            = vlTOPp->io_Stationary_matrix_5_6;
-        vlTOPp->FlexDPU__DOT__PathFinder_9_io_Stationary_matrix_5_3 
-            = vlTOPp->io_Stationary_matrix_5_3;
-        vlTOPp->FlexDPU__DOT__PathFinder_9_io_Stationary_matrix_5_4 
-            = vlTOPp->io_Stationary_matrix_5_4;
-        vlTOPp->FlexDPU__DOT__PathFinder_9_io_Stationary_matrix_5_5 
-            = vlTOPp->io_Stationary_matrix_5_5;
-        vlTOPp->FlexDPU__DOT__PathFinder_9_io_Stationary_matrix_5_6 
-            = vlTOPp->io_Stationary_matrix_5_6;
-        vlTOPp->FlexDPU__DOT__PathFinder_10_io_Stationary_matrix_5_3 
-            = vlTOPp->io_Stationary_matrix_5_3;
-        vlTOPp->FlexDPU__DOT__PathFinder_10_io_Stationary_matrix_5_4 
-            = vlTOPp->io_Stationary_matrix_5_4;
-        vlTOPp->FlexDPU__DOT__PathFinder_10_io_Stationary_matrix_5_5 
-            = vlTOPp->io_Stationary_matrix_5_5;
-        vlTOPp->FlexDPU__DOT__PathFinder_10_io_Stationary_matrix_5_6 
-            = vlTOPp->io_Stationary_matrix_5_6;
-        vlTOPp->FlexDPU__DOT__PathFinder_11_io_Stationary_matrix_5_3 
-            = vlTOPp->io_Stationary_matrix_5_3;
-        vlTOPp->FlexDPU__DOT__PathFinder_11_io_Stationary_matrix_5_4 
-            = vlTOPp->io_Stationary_matrix_5_4;
-        vlTOPp->FlexDPU__DOT__PathFinder_11_io_Stationary_matrix_5_5 
-            = vlTOPp->io_Stationary_matrix_5_5;
-        vlTOPp->FlexDPU__DOT__PathFinder_11_io_Stationary_matrix_5_6 
-            = vlTOPp->io_Stationary_matrix_5_6;
-        vlTOPp->FlexDPU__DOT__PathFinder_12_io_Stationary_matrix_5_3 
-            = vlTOPp->io_Stationary_matrix_5_3;
-        vlTOPp->FlexDPU__DOT__PathFinder_12_io_Stationary_matrix_5_4 
-            = vlTOPp->io_Stationary_matrix_5_4;
-        vlTOPp->FlexDPU__DOT__PathFinder_12_io_Stationary_matrix_5_5 
-            = vlTOPp->io_Stationary_matrix_5_5;
-        vlTOPp->FlexDPU__DOT__PathFinder_12_io_Stationary_matrix_5_6 
-            = vlTOPp->io_Stationary_matrix_5_6;
-        vlTOPp->FlexDPU__DOT__PathFinder_13_io_Stationary_matrix_5_3 
-            = vlTOPp->io_Stationary_matrix_5_3;
-        vlTOPp->FlexDPU__DOT__PathFinder_13_io_Stationary_matrix_5_4 
-            = vlTOPp->io_Stationary_matrix_5_4;
-        vlTOPp->FlexDPU__DOT__PathFinder_13_io_Stationary_matrix_5_5 
-            = vlTOPp->io_Stationary_matrix_5_5;
-        vlTOPp->FlexDPU__DOT__PathFinder_13_io_Stationary_matrix_5_6 
-            = vlTOPp->io_Stationary_matrix_5_6;
-        vlTOPp->FlexDPU__DOT__PathFinder_14_io_Stationary_matrix_5_3 
-            = vlTOPp->io_Stationary_matrix_5_3;
-        vlTOPp->FlexDPU__DOT__PathFinder_14_io_Stationary_matrix_5_4 
-            = vlTOPp->io_Stationary_matrix_5_4;
-        vlTOPp->FlexDPU__DOT__PathFinder_14_io_Stationary_matrix_5_5 
-            = vlTOPp->io_Stationary_matrix_5_5;
-        vlTOPp->FlexDPU__DOT__PathFinder_14_io_Stationary_matrix_5_6 
-            = vlTOPp->io_Stationary_matrix_5_6;
-        vlTOPp->FlexDPU__DOT__PathFinder_15_io_Stationary_matrix_5_3 
-            = vlTOPp->io_Stationary_matrix_5_3;
-        vlTOPp->FlexDPU__DOT__PathFinder_15_io_Stationary_matrix_5_4 
-            = vlTOPp->io_Stationary_matrix_5_4;
-        vlTOPp->FlexDPU__DOT__PathFinder_15_io_Stationary_matrix_5_5 
-            = vlTOPp->io_Stationary_matrix_5_5;
-        vlTOPp->FlexDPU__DOT__PathFinder_15_io_Stationary_matrix_5_6 
-            = vlTOPp->io_Stationary_matrix_5_6;
-        vlTOPp->FlexDPU__DOT__PathFinder_io_Stationary_matrix_4_4 
-            = vlTOPp->io_Stationary_matrix_4_4;
-        vlTOPp->FlexDPU__DOT__PathFinder_io_Stationary_matrix_4_5 
-            = vlTOPp->io_Stationary_matrix_4_5;
-        vlTOPp->FlexDPU__DOT__PathFinder_io_Stationary_matrix_4_6 
-            = vlTOPp->io_Stationary_matrix_4_6;
-        vlTOPp->FlexDPU__DOT__PathFinder_io_Stationary_matrix_4_7 
-            = vlTOPp->io_Stationary_matrix_4_7;
-        vlTOPp->FlexDPU__DOT__PathFinder_io_Stationary_matrix_5_0 
-            = vlTOPp->io_Stationary_matrix_5_0;
-        vlTOPp->FlexDPU__DOT__PathFinder_io_Stationary_matrix_5_1 
-            = vlTOPp->io_Stationary_matrix_5_1;
-        vlTOPp->FlexDPU__DOT__PathFinder_io_Stationary_matrix_5_2 
-            = vlTOPp->io_Stationary_matrix_5_2;
-        vlTOPp->FlexDPU__DOT__PathFinder_1_io_Stationary_matrix_4_4 
-            = vlTOPp->io_Stationary_matrix_4_4;
-        vlTOPp->FlexDPU__DOT__PathFinder_1_io_Stationary_matrix_4_5 
-            = vlTOPp->io_Stationary_matrix_4_5;
-        vlTOPp->FlexDPU__DOT__PathFinder_1_io_Stationary_matrix_4_6 
-            = vlTOPp->io_Stationary_matrix_4_6;
-        vlTOPp->FlexDPU__DOT__PathFinder_1_io_Stationary_matrix_4_7 
-            = vlTOPp->io_Stationary_matrix_4_7;
-        vlTOPp->FlexDPU__DOT__PathFinder_1_io_Stationary_matrix_5_0 
-            = vlTOPp->io_Stationary_matrix_5_0;
     } else {
         vlTOPp->FlexDPU__DOT__PathFinder_io_Stationary_matrix_7_1 = 0U;
         vlTOPp->FlexDPU__DOT__PathFinder_io_Stationary_matrix_7_2 = 0U;
@@ -7131,48 +7218,6 @@ void VFlexDPU::_settle__TOP__9(VFlexDPU__Syms* __restrict vlSymsp) {
         vlTOPp->FlexDPU__DOT__PathFinder_7_io_Stationary_matrix_5_6 = 0U;
         vlTOPp->FlexDPU__DOT__PathFinder_8_io_Stationary_matrix_5_3 = 0U;
         vlTOPp->FlexDPU__DOT__PathFinder_8_io_Stationary_matrix_5_4 = 0U;
-        vlTOPp->FlexDPU__DOT__PathFinder_8_io_Stationary_matrix_5_5 = 0U;
-        vlTOPp->FlexDPU__DOT__PathFinder_8_io_Stationary_matrix_5_6 = 0U;
-        vlTOPp->FlexDPU__DOT__PathFinder_9_io_Stationary_matrix_5_3 = 0U;
-        vlTOPp->FlexDPU__DOT__PathFinder_9_io_Stationary_matrix_5_4 = 0U;
-        vlTOPp->FlexDPU__DOT__PathFinder_9_io_Stationary_matrix_5_5 = 0U;
-        vlTOPp->FlexDPU__DOT__PathFinder_9_io_Stationary_matrix_5_6 = 0U;
-        vlTOPp->FlexDPU__DOT__PathFinder_10_io_Stationary_matrix_5_3 = 0U;
-        vlTOPp->FlexDPU__DOT__PathFinder_10_io_Stationary_matrix_5_4 = 0U;
-        vlTOPp->FlexDPU__DOT__PathFinder_10_io_Stationary_matrix_5_5 = 0U;
-        vlTOPp->FlexDPU__DOT__PathFinder_10_io_Stationary_matrix_5_6 = 0U;
-        vlTOPp->FlexDPU__DOT__PathFinder_11_io_Stationary_matrix_5_3 = 0U;
-        vlTOPp->FlexDPU__DOT__PathFinder_11_io_Stationary_matrix_5_4 = 0U;
-        vlTOPp->FlexDPU__DOT__PathFinder_11_io_Stationary_matrix_5_5 = 0U;
-        vlTOPp->FlexDPU__DOT__PathFinder_11_io_Stationary_matrix_5_6 = 0U;
-        vlTOPp->FlexDPU__DOT__PathFinder_12_io_Stationary_matrix_5_3 = 0U;
-        vlTOPp->FlexDPU__DOT__PathFinder_12_io_Stationary_matrix_5_4 = 0U;
-        vlTOPp->FlexDPU__DOT__PathFinder_12_io_Stationary_matrix_5_5 = 0U;
-        vlTOPp->FlexDPU__DOT__PathFinder_12_io_Stationary_matrix_5_6 = 0U;
-        vlTOPp->FlexDPU__DOT__PathFinder_13_io_Stationary_matrix_5_3 = 0U;
-        vlTOPp->FlexDPU__DOT__PathFinder_13_io_Stationary_matrix_5_4 = 0U;
-        vlTOPp->FlexDPU__DOT__PathFinder_13_io_Stationary_matrix_5_5 = 0U;
-        vlTOPp->FlexDPU__DOT__PathFinder_13_io_Stationary_matrix_5_6 = 0U;
-        vlTOPp->FlexDPU__DOT__PathFinder_14_io_Stationary_matrix_5_3 = 0U;
-        vlTOPp->FlexDPU__DOT__PathFinder_14_io_Stationary_matrix_5_4 = 0U;
-        vlTOPp->FlexDPU__DOT__PathFinder_14_io_Stationary_matrix_5_5 = 0U;
-        vlTOPp->FlexDPU__DOT__PathFinder_14_io_Stationary_matrix_5_6 = 0U;
-        vlTOPp->FlexDPU__DOT__PathFinder_15_io_Stationary_matrix_5_3 = 0U;
-        vlTOPp->FlexDPU__DOT__PathFinder_15_io_Stationary_matrix_5_4 = 0U;
-        vlTOPp->FlexDPU__DOT__PathFinder_15_io_Stationary_matrix_5_5 = 0U;
-        vlTOPp->FlexDPU__DOT__PathFinder_15_io_Stationary_matrix_5_6 = 0U;
-        vlTOPp->FlexDPU__DOT__PathFinder_io_Stationary_matrix_4_4 = 0U;
-        vlTOPp->FlexDPU__DOT__PathFinder_io_Stationary_matrix_4_5 = 0U;
-        vlTOPp->FlexDPU__DOT__PathFinder_io_Stationary_matrix_4_6 = 0U;
-        vlTOPp->FlexDPU__DOT__PathFinder_io_Stationary_matrix_4_7 = 0U;
-        vlTOPp->FlexDPU__DOT__PathFinder_io_Stationary_matrix_5_0 = 0U;
-        vlTOPp->FlexDPU__DOT__PathFinder_io_Stationary_matrix_5_1 = 0U;
-        vlTOPp->FlexDPU__DOT__PathFinder_io_Stationary_matrix_5_2 = 0U;
-        vlTOPp->FlexDPU__DOT__PathFinder_1_io_Stationary_matrix_4_4 = 0U;
-        vlTOPp->FlexDPU__DOT__PathFinder_1_io_Stationary_matrix_4_5 = 0U;
-        vlTOPp->FlexDPU__DOT__PathFinder_1_io_Stationary_matrix_4_6 = 0U;
-        vlTOPp->FlexDPU__DOT__PathFinder_1_io_Stationary_matrix_4_7 = 0U;
-        vlTOPp->FlexDPU__DOT__PathFinder_1_io_Stationary_matrix_5_0 = 0U;
     }
 }
 
@@ -7181,6 +7226,90 @@ void VFlexDPU::_settle__TOP__10(VFlexDPU__Syms* __restrict vlSymsp) {
     VFlexDPU* const __restrict vlTOPp VL_ATTR_UNUSED = vlSymsp->TOPp;
     // Body
     if (((IData)(vlTOPp->FlexDPU__DOT__Statvalid) & (IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT___GEN_0))) {
+        vlTOPp->FlexDPU__DOT__PathFinder_8_io_Stationary_matrix_5_5 
+            = vlTOPp->io_Stationary_matrix_5_5;
+        vlTOPp->FlexDPU__DOT__PathFinder_8_io_Stationary_matrix_5_6 
+            = vlTOPp->io_Stationary_matrix_5_6;
+        vlTOPp->FlexDPU__DOT__PathFinder_9_io_Stationary_matrix_5_3 
+            = vlTOPp->io_Stationary_matrix_5_3;
+        vlTOPp->FlexDPU__DOT__PathFinder_9_io_Stationary_matrix_5_4 
+            = vlTOPp->io_Stationary_matrix_5_4;
+        vlTOPp->FlexDPU__DOT__PathFinder_9_io_Stationary_matrix_5_5 
+            = vlTOPp->io_Stationary_matrix_5_5;
+        vlTOPp->FlexDPU__DOT__PathFinder_9_io_Stationary_matrix_5_6 
+            = vlTOPp->io_Stationary_matrix_5_6;
+        vlTOPp->FlexDPU__DOT__PathFinder_10_io_Stationary_matrix_5_3 
+            = vlTOPp->io_Stationary_matrix_5_3;
+        vlTOPp->FlexDPU__DOT__PathFinder_10_io_Stationary_matrix_5_4 
+            = vlTOPp->io_Stationary_matrix_5_4;
+        vlTOPp->FlexDPU__DOT__PathFinder_10_io_Stationary_matrix_5_5 
+            = vlTOPp->io_Stationary_matrix_5_5;
+        vlTOPp->FlexDPU__DOT__PathFinder_10_io_Stationary_matrix_5_6 
+            = vlTOPp->io_Stationary_matrix_5_6;
+        vlTOPp->FlexDPU__DOT__PathFinder_11_io_Stationary_matrix_5_3 
+            = vlTOPp->io_Stationary_matrix_5_3;
+        vlTOPp->FlexDPU__DOT__PathFinder_11_io_Stationary_matrix_5_4 
+            = vlTOPp->io_Stationary_matrix_5_4;
+        vlTOPp->FlexDPU__DOT__PathFinder_11_io_Stationary_matrix_5_5 
+            = vlTOPp->io_Stationary_matrix_5_5;
+        vlTOPp->FlexDPU__DOT__PathFinder_11_io_Stationary_matrix_5_6 
+            = vlTOPp->io_Stationary_matrix_5_6;
+        vlTOPp->FlexDPU__DOT__PathFinder_12_io_Stationary_matrix_5_3 
+            = vlTOPp->io_Stationary_matrix_5_3;
+        vlTOPp->FlexDPU__DOT__PathFinder_12_io_Stationary_matrix_5_4 
+            = vlTOPp->io_Stationary_matrix_5_4;
+        vlTOPp->FlexDPU__DOT__PathFinder_12_io_Stationary_matrix_5_5 
+            = vlTOPp->io_Stationary_matrix_5_5;
+        vlTOPp->FlexDPU__DOT__PathFinder_12_io_Stationary_matrix_5_6 
+            = vlTOPp->io_Stationary_matrix_5_6;
+        vlTOPp->FlexDPU__DOT__PathFinder_13_io_Stationary_matrix_5_3 
+            = vlTOPp->io_Stationary_matrix_5_3;
+        vlTOPp->FlexDPU__DOT__PathFinder_13_io_Stationary_matrix_5_4 
+            = vlTOPp->io_Stationary_matrix_5_4;
+        vlTOPp->FlexDPU__DOT__PathFinder_13_io_Stationary_matrix_5_5 
+            = vlTOPp->io_Stationary_matrix_5_5;
+        vlTOPp->FlexDPU__DOT__PathFinder_13_io_Stationary_matrix_5_6 
+            = vlTOPp->io_Stationary_matrix_5_6;
+        vlTOPp->FlexDPU__DOT__PathFinder_14_io_Stationary_matrix_5_3 
+            = vlTOPp->io_Stationary_matrix_5_3;
+        vlTOPp->FlexDPU__DOT__PathFinder_14_io_Stationary_matrix_5_4 
+            = vlTOPp->io_Stationary_matrix_5_4;
+        vlTOPp->FlexDPU__DOT__PathFinder_14_io_Stationary_matrix_5_5 
+            = vlTOPp->io_Stationary_matrix_5_5;
+        vlTOPp->FlexDPU__DOT__PathFinder_14_io_Stationary_matrix_5_6 
+            = vlTOPp->io_Stationary_matrix_5_6;
+        vlTOPp->FlexDPU__DOT__PathFinder_15_io_Stationary_matrix_5_3 
+            = vlTOPp->io_Stationary_matrix_5_3;
+        vlTOPp->FlexDPU__DOT__PathFinder_15_io_Stationary_matrix_5_4 
+            = vlTOPp->io_Stationary_matrix_5_4;
+        vlTOPp->FlexDPU__DOT__PathFinder_15_io_Stationary_matrix_5_5 
+            = vlTOPp->io_Stationary_matrix_5_5;
+        vlTOPp->FlexDPU__DOT__PathFinder_15_io_Stationary_matrix_5_6 
+            = vlTOPp->io_Stationary_matrix_5_6;
+        vlTOPp->FlexDPU__DOT__PathFinder_io_Stationary_matrix_4_4 
+            = vlTOPp->io_Stationary_matrix_4_4;
+        vlTOPp->FlexDPU__DOT__PathFinder_io_Stationary_matrix_4_5 
+            = vlTOPp->io_Stationary_matrix_4_5;
+        vlTOPp->FlexDPU__DOT__PathFinder_io_Stationary_matrix_4_6 
+            = vlTOPp->io_Stationary_matrix_4_6;
+        vlTOPp->FlexDPU__DOT__PathFinder_io_Stationary_matrix_4_7 
+            = vlTOPp->io_Stationary_matrix_4_7;
+        vlTOPp->FlexDPU__DOT__PathFinder_io_Stationary_matrix_5_0 
+            = vlTOPp->io_Stationary_matrix_5_0;
+        vlTOPp->FlexDPU__DOT__PathFinder_io_Stationary_matrix_5_1 
+            = vlTOPp->io_Stationary_matrix_5_1;
+        vlTOPp->FlexDPU__DOT__PathFinder_io_Stationary_matrix_5_2 
+            = vlTOPp->io_Stationary_matrix_5_2;
+        vlTOPp->FlexDPU__DOT__PathFinder_1_io_Stationary_matrix_4_4 
+            = vlTOPp->io_Stationary_matrix_4_4;
+        vlTOPp->FlexDPU__DOT__PathFinder_1_io_Stationary_matrix_4_5 
+            = vlTOPp->io_Stationary_matrix_4_5;
+        vlTOPp->FlexDPU__DOT__PathFinder_1_io_Stationary_matrix_4_6 
+            = vlTOPp->io_Stationary_matrix_4_6;
+        vlTOPp->FlexDPU__DOT__PathFinder_1_io_Stationary_matrix_4_7 
+            = vlTOPp->io_Stationary_matrix_4_7;
+        vlTOPp->FlexDPU__DOT__PathFinder_1_io_Stationary_matrix_5_0 
+            = vlTOPp->io_Stationary_matrix_5_0;
         vlTOPp->FlexDPU__DOT__PathFinder_1_io_Stationary_matrix_5_1 
             = vlTOPp->io_Stationary_matrix_5_1;
         vlTOPp->FlexDPU__DOT__PathFinder_1_io_Stationary_matrix_5_2 
@@ -8605,6 +8734,48 @@ void VFlexDPU::_settle__TOP__10(VFlexDPU__Syms* __restrict vlSymsp) {
         vlTOPp->FlexDPU__DOT___GEN_1021 = 6U;
         vlTOPp->FlexDPU__DOT___GEN_1094 = 7U;
     } else {
+        vlTOPp->FlexDPU__DOT__PathFinder_8_io_Stationary_matrix_5_5 = 0U;
+        vlTOPp->FlexDPU__DOT__PathFinder_8_io_Stationary_matrix_5_6 = 0U;
+        vlTOPp->FlexDPU__DOT__PathFinder_9_io_Stationary_matrix_5_3 = 0U;
+        vlTOPp->FlexDPU__DOT__PathFinder_9_io_Stationary_matrix_5_4 = 0U;
+        vlTOPp->FlexDPU__DOT__PathFinder_9_io_Stationary_matrix_5_5 = 0U;
+        vlTOPp->FlexDPU__DOT__PathFinder_9_io_Stationary_matrix_5_6 = 0U;
+        vlTOPp->FlexDPU__DOT__PathFinder_10_io_Stationary_matrix_5_3 = 0U;
+        vlTOPp->FlexDPU__DOT__PathFinder_10_io_Stationary_matrix_5_4 = 0U;
+        vlTOPp->FlexDPU__DOT__PathFinder_10_io_Stationary_matrix_5_5 = 0U;
+        vlTOPp->FlexDPU__DOT__PathFinder_10_io_Stationary_matrix_5_6 = 0U;
+        vlTOPp->FlexDPU__DOT__PathFinder_11_io_Stationary_matrix_5_3 = 0U;
+        vlTOPp->FlexDPU__DOT__PathFinder_11_io_Stationary_matrix_5_4 = 0U;
+        vlTOPp->FlexDPU__DOT__PathFinder_11_io_Stationary_matrix_5_5 = 0U;
+        vlTOPp->FlexDPU__DOT__PathFinder_11_io_Stationary_matrix_5_6 = 0U;
+        vlTOPp->FlexDPU__DOT__PathFinder_12_io_Stationary_matrix_5_3 = 0U;
+        vlTOPp->FlexDPU__DOT__PathFinder_12_io_Stationary_matrix_5_4 = 0U;
+        vlTOPp->FlexDPU__DOT__PathFinder_12_io_Stationary_matrix_5_5 = 0U;
+        vlTOPp->FlexDPU__DOT__PathFinder_12_io_Stationary_matrix_5_6 = 0U;
+        vlTOPp->FlexDPU__DOT__PathFinder_13_io_Stationary_matrix_5_3 = 0U;
+        vlTOPp->FlexDPU__DOT__PathFinder_13_io_Stationary_matrix_5_4 = 0U;
+        vlTOPp->FlexDPU__DOT__PathFinder_13_io_Stationary_matrix_5_5 = 0U;
+        vlTOPp->FlexDPU__DOT__PathFinder_13_io_Stationary_matrix_5_6 = 0U;
+        vlTOPp->FlexDPU__DOT__PathFinder_14_io_Stationary_matrix_5_3 = 0U;
+        vlTOPp->FlexDPU__DOT__PathFinder_14_io_Stationary_matrix_5_4 = 0U;
+        vlTOPp->FlexDPU__DOT__PathFinder_14_io_Stationary_matrix_5_5 = 0U;
+        vlTOPp->FlexDPU__DOT__PathFinder_14_io_Stationary_matrix_5_6 = 0U;
+        vlTOPp->FlexDPU__DOT__PathFinder_15_io_Stationary_matrix_5_3 = 0U;
+        vlTOPp->FlexDPU__DOT__PathFinder_15_io_Stationary_matrix_5_4 = 0U;
+        vlTOPp->FlexDPU__DOT__PathFinder_15_io_Stationary_matrix_5_5 = 0U;
+        vlTOPp->FlexDPU__DOT__PathFinder_15_io_Stationary_matrix_5_6 = 0U;
+        vlTOPp->FlexDPU__DOT__PathFinder_io_Stationary_matrix_4_4 = 0U;
+        vlTOPp->FlexDPU__DOT__PathFinder_io_Stationary_matrix_4_5 = 0U;
+        vlTOPp->FlexDPU__DOT__PathFinder_io_Stationary_matrix_4_6 = 0U;
+        vlTOPp->FlexDPU__DOT__PathFinder_io_Stationary_matrix_4_7 = 0U;
+        vlTOPp->FlexDPU__DOT__PathFinder_io_Stationary_matrix_5_0 = 0U;
+        vlTOPp->FlexDPU__DOT__PathFinder_io_Stationary_matrix_5_1 = 0U;
+        vlTOPp->FlexDPU__DOT__PathFinder_io_Stationary_matrix_5_2 = 0U;
+        vlTOPp->FlexDPU__DOT__PathFinder_1_io_Stationary_matrix_4_4 = 0U;
+        vlTOPp->FlexDPU__DOT__PathFinder_1_io_Stationary_matrix_4_5 = 0U;
+        vlTOPp->FlexDPU__DOT__PathFinder_1_io_Stationary_matrix_4_6 = 0U;
+        vlTOPp->FlexDPU__DOT__PathFinder_1_io_Stationary_matrix_4_7 = 0U;
+        vlTOPp->FlexDPU__DOT__PathFinder_1_io_Stationary_matrix_5_0 = 0U;
         vlTOPp->FlexDPU__DOT__PathFinder_1_io_Stationary_matrix_5_1 = 0U;
         vlTOPp->FlexDPU__DOT__PathFinder_1_io_Stationary_matrix_5_2 = 0U;
         vlTOPp->FlexDPU__DOT__PathFinder_2_io_Stationary_matrix_4_4 = 0U;
@@ -9503,6 +9674,63 @@ void VFlexDPU::_settle__TOP__10(VFlexDPU__Syms* __restrict vlSymsp) {
                                     ? (IData)(vlTOPp->io_Stationary_matrix_2_6)
                                     : (IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_stationary__DOT___GEN_469)))))));
     }
+    vlTOPp->FlexDPU__DOT___GEN_28 = (((3U == (7U & vlTOPp->FlexDPU__DOT__iloop)) 
+                                      & (4U == (7U 
+                                                & vlTOPp->FlexDPU__DOT__jloop)))
+                                      ? (IData)(vlTOPp->io_Stationary_matrix_3_4)
+                                      : (((3U == (7U 
+                                                  & vlTOPp->FlexDPU__DOT__iloop)) 
+                                          & (3U == 
+                                             (7U & vlTOPp->FlexDPU__DOT__jloop)))
+                                          ? (IData)(vlTOPp->io_Stationary_matrix_3_3)
+                                          : (((3U == 
+                                               (7U 
+                                                & vlTOPp->FlexDPU__DOT__iloop)) 
+                                              & (2U 
+                                                 == 
+                                                 (7U 
+                                                  & vlTOPp->FlexDPU__DOT__jloop)))
+                                              ? (IData)(vlTOPp->io_Stationary_matrix_3_2)
+                                              : (((3U 
+                                                   == 
+                                                   (7U 
+                                                    & vlTOPp->FlexDPU__DOT__iloop)) 
+                                                  & (1U 
+                                                     == 
+                                                     (7U 
+                                                      & vlTOPp->FlexDPU__DOT__jloop)))
+                                                  ? (IData)(vlTOPp->io_Stationary_matrix_3_1)
+                                                  : 
+                                                 (((3U 
+                                                    == 
+                                                    (7U 
+                                                     & vlTOPp->FlexDPU__DOT__iloop)) 
+                                                   & (0U 
+                                                      == 
+                                                      (7U 
+                                                       & vlTOPp->FlexDPU__DOT__jloop)))
+                                                   ? (IData)(vlTOPp->io_Stationary_matrix_3_0)
+                                                   : 
+                                                  (((2U 
+                                                     == 
+                                                     (7U 
+                                                      & vlTOPp->FlexDPU__DOT__iloop)) 
+                                                    & (7U 
+                                                       == 
+                                                       (7U 
+                                                        & vlTOPp->FlexDPU__DOT__jloop)))
+                                                    ? (IData)(vlTOPp->io_Stationary_matrix_2_7)
+                                                    : 
+                                                   (((2U 
+                                                      == 
+                                                      (7U 
+                                                       & vlTOPp->FlexDPU__DOT__iloop)) 
+                                                     & (6U 
+                                                        == 
+                                                        (7U 
+                                                         & vlTOPp->FlexDPU__DOT__jloop)))
+                                                     ? (IData)(vlTOPp->io_Stationary_matrix_2_6)
+                                                     : (IData)(vlTOPp->FlexDPU__DOT___GEN_21))))))));
     vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT___GEN_813 
         = ((5U == ((IData)(8U) - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT___T_173))
             ? ((IData)(2U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__pin)
@@ -9543,7 +9771,7 @@ void VFlexDPU::_settle__TOP__10(VFlexDPU__Syms* __restrict vlSymsp) {
                                                    ((7U 
                                                      == vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT___GEN_287)
                                                      ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__pin
-                                                     : 0x1cU))))))))))));
+                                                     : 0x1aU))))))))))));
     vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT___GEN_825 
         = ((7U == ((IData)(8U) - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT___T_173))
             ? ((IData)(2U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__pin)
@@ -9588,7 +9816,7 @@ void VFlexDPU::_settle__TOP__10(VFlexDPU__Syms* __restrict vlSymsp) {
                                                     ((6U 
                                                       == vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT___GEN_287)
                                                       ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__pin
-                                                      : 0x15U)))))))))))));
+                                                      : 0U)))))))))))));
     vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT___GEN_809 
         = ((4U == ((IData)(8U) - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT___T_173))
             ? ((IData)(2U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__pin)
@@ -9687,7 +9915,7 @@ void VFlexDPU::_settle__TOP__10(VFlexDPU__Syms* __restrict vlSymsp) {
                                                    ((7U 
                                                      == vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT___GEN_287)
                                                      ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__pin
-                                                     : 0x1eU))))))))))));
+                                                     : 0x1bU))))))))))));
     vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT___GEN_825 
         = ((7U == ((IData)(8U) - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT___T_173))
             ? ((IData)(2U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__pin)
@@ -9732,7 +9960,7 @@ void VFlexDPU::_settle__TOP__10(VFlexDPU__Syms* __restrict vlSymsp) {
                                                     ((6U 
                                                       == vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT___GEN_287)
                                                       ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__pin
-                                                      : 0x1cU)))))))))))));
+                                                      : 0xbU)))))))))))));
     vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT___GEN_809 
         = ((4U == ((IData)(8U) - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT___T_173))
             ? ((IData)(2U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__pin)
@@ -9777,7 +10005,7 @@ void VFlexDPU::_settle__TOP__10(VFlexDPU__Syms* __restrict vlSymsp) {
                                                    ((8U 
                                                      <= vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT___GEN_287)
                                                      ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__pin
-                                                     : 0x18U))))))))))));
+                                                     : 0x1eU))))))))))));
     vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT___T_255 
         = (vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT___T_173 
            + ((0xfU == (0xfU & ((IData)(2U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__pin)))
@@ -9831,7 +10059,7 @@ void VFlexDPU::_settle__TOP__10(VFlexDPU__Syms* __restrict vlSymsp) {
                                                    ((7U 
                                                      == vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT___GEN_287)
                                                      ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT__pin
-                                                     : 0x1fU))))))))))));
+                                                     : 9U))))))))))));
     vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT___GEN_825 
         = ((7U == ((IData)(8U) - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT___T_173))
             ? ((IData)(2U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT__pin)
@@ -9876,7 +10104,7 @@ void VFlexDPU::_settle__TOP__10(VFlexDPU__Syms* __restrict vlSymsp) {
                                                     ((6U 
                                                       == vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT___GEN_287)
                                                       ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT__pin
-                                                      : 0xfU)))))))))))));
+                                                      : 7U)))))))))))));
     vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT___GEN_809 
         = ((4U == ((IData)(8U) - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT___T_173))
             ? ((IData)(2U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT__pin)
@@ -9921,7 +10149,7 @@ void VFlexDPU::_settle__TOP__10(VFlexDPU__Syms* __restrict vlSymsp) {
                                                    ((8U 
                                                      <= vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT___GEN_287)
                                                      ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT__pin
-                                                     : 0x13U))))))))))));
+                                                     : 0x18U))))))))))));
     vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT___T_255 
         = (vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT___T_173 
            + ((0xfU == (0xfU & ((IData)(2U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT__pin)))
@@ -9975,7 +10203,7 @@ void VFlexDPU::_settle__TOP__10(VFlexDPU__Syms* __restrict vlSymsp) {
                                                    ((7U 
                                                      == vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn4__DOT___GEN_287)
                                                      ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn4__DOT__pin
-                                                     : 1U))))))))))));
+                                                     : 0x18U))))))))))));
     vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn4__DOT___GEN_825 
         = ((7U == ((IData)(8U) - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn4__DOT___T_173))
             ? ((IData)(2U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn4__DOT__pin)
@@ -10020,7 +10248,7 @@ void VFlexDPU::_settle__TOP__10(VFlexDPU__Syms* __restrict vlSymsp) {
                                                     ((6U 
                                                       == vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn4__DOT___GEN_287)
                                                       ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn4__DOT__pin
-                                                      : 0x17U)))))))))))));
+                                                      : 0xfU)))))))))))));
     vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn4__DOT___GEN_809 
         = ((4U == ((IData)(8U) - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn4__DOT___T_173))
             ? ((IData)(2U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn4__DOT__pin)
@@ -10119,7 +10347,7 @@ void VFlexDPU::_settle__TOP__10(VFlexDPU__Syms* __restrict vlSymsp) {
                                                    ((7U 
                                                      == vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___GEN_287)
                                                      ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__pin
-                                                     : 0x1cU))))))))))));
+                                                     : 0U))))))))))));
     vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___GEN_825 
         = ((7U == ((IData)(8U) - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___T_173))
             ? ((IData)(2U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__pin)
@@ -10209,7 +10437,7 @@ void VFlexDPU::_settle__TOP__10(VFlexDPU__Syms* __restrict vlSymsp) {
                                                    ((8U 
                                                      <= vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___GEN_287)
                                                      ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__pin
-                                                     : 0x1dU))))))))))));
+                                                     : 5U))))))))))));
     vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___T_255 
         = (vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___T_173 
            + ((0xfU == (0xfU & ((IData)(2U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__pin)))
@@ -10263,7 +10491,7 @@ void VFlexDPU::_settle__TOP__10(VFlexDPU__Syms* __restrict vlSymsp) {
                                                    ((7U 
                                                      == vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___GEN_287)
                                                      ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__pin
-                                                     : 6U))))))))))));
+                                                     : 0x1aU))))))))))));
     vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___GEN_825 
         = ((7U == ((IData)(8U) - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___T_173))
             ? ((IData)(2U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__pin)
@@ -10308,7 +10536,7 @@ void VFlexDPU::_settle__TOP__10(VFlexDPU__Syms* __restrict vlSymsp) {
                                                     ((6U 
                                                       == vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___GEN_287)
                                                       ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__pin
-                                                      : 2U)))))))))))));
+                                                      : 7U)))))))))))));
     vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___GEN_809 
         = ((4U == ((IData)(8U) - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___T_173))
             ? ((IData)(2U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__pin)
@@ -10353,7 +10581,7 @@ void VFlexDPU::_settle__TOP__10(VFlexDPU__Syms* __restrict vlSymsp) {
                                                    ((8U 
                                                      <= vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___GEN_287)
                                                      ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__pin
-                                                     : 0x1fU))))))))))));
+                                                     : 0x1aU))))))))))));
     vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___T_255 
         = (vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___T_173 
            + ((0xfU == (0xfU & ((IData)(2U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__pin)))
@@ -10407,7 +10635,7 @@ void VFlexDPU::_settle__TOP__10(VFlexDPU__Syms* __restrict vlSymsp) {
                                                    ((7U 
                                                      == vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn7__DOT___GEN_287)
                                                      ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn7__DOT__pin
-                                                     : 0x14U))))))))))));
+                                                     : 0x1cU))))))))))));
     vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn7__DOT___GEN_825 
         = ((7U == ((IData)(8U) - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn7__DOT___T_173))
             ? ((IData)(2U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn7__DOT__pin)
@@ -10452,7 +10680,7 @@ void VFlexDPU::_settle__TOP__10(VFlexDPU__Syms* __restrict vlSymsp) {
                                                     ((6U 
                                                       == vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn7__DOT___GEN_287)
                                                       ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn7__DOT__pin
-                                                      : 0x15U)))))))))))));
+                                                      : 7U)))))))))))));
     vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn7__DOT___GEN_809 
         = ((4U == ((IData)(8U) - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn7__DOT___T_173))
             ? ((IData)(2U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn7__DOT__pin)
@@ -10497,7 +10725,7 @@ void VFlexDPU::_settle__TOP__10(VFlexDPU__Syms* __restrict vlSymsp) {
                                                    ((8U 
                                                      <= vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn7__DOT___GEN_287)
                                                      ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn7__DOT__pin
-                                                     : 0x1bU))))))))))));
+                                                     : 0xcU))))))))))));
     vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn7__DOT___T_255 
         = (vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn7__DOT___T_173 
            + ((0xfU == (0xfU & ((IData)(2U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn7__DOT__pin)))
@@ -10551,7 +10779,7 @@ void VFlexDPU::_settle__TOP__10(VFlexDPU__Syms* __restrict vlSymsp) {
                                                    ((7U 
                                                      == vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn8__DOT___GEN_287)
                                                      ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn8__DOT__pin
-                                                     : 0x1fU))))))))))));
+                                                     : 0x19U))))))))))));
     vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn8__DOT___GEN_825 
         = ((7U == ((IData)(8U) - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn8__DOT___T_173))
             ? ((IData)(2U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn8__DOT__pin)
@@ -10596,7 +10824,7 @@ void VFlexDPU::_settle__TOP__10(VFlexDPU__Syms* __restrict vlSymsp) {
                                                     ((6U 
                                                       == vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn8__DOT___GEN_287)
                                                       ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn8__DOT__pin
-                                                      : 7U)))))))))))));
+                                                      : 0xdU)))))))))))));
     vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn8__DOT___GEN_809 
         = ((4U == ((IData)(8U) - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn8__DOT___T_173))
             ? ((IData)(2U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn8__DOT__pin)
@@ -10641,7 +10869,7 @@ void VFlexDPU::_settle__TOP__10(VFlexDPU__Syms* __restrict vlSymsp) {
                                                    ((8U 
                                                      <= vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn8__DOT___GEN_287)
                                                      ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn8__DOT__pin
-                                                     : 0xfU))))))))))));
+                                                     : 0xaU))))))))))));
     vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn8__DOT___T_255 
         = (vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn8__DOT___T_173 
            + ((0xfU == (0xfU & ((IData)(2U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn8__DOT__pin)))
@@ -10997,6 +11225,63 @@ void VFlexDPU::_settle__TOP__10(VFlexDPU__Syms* __restrict vlSymsp) {
                                     ? (IData)(vlTOPp->io_Stationary_matrix_3_5)
                                     : (IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_stationary__DOT___GEN_476)))))));
     }
+    vlTOPp->FlexDPU__DOT___GEN_35 = (((4U == (7U & vlTOPp->FlexDPU__DOT__iloop)) 
+                                      & (3U == (7U 
+                                                & vlTOPp->FlexDPU__DOT__jloop)))
+                                      ? (IData)(vlTOPp->io_Stationary_matrix_4_3)
+                                      : (((4U == (7U 
+                                                  & vlTOPp->FlexDPU__DOT__iloop)) 
+                                          & (2U == 
+                                             (7U & vlTOPp->FlexDPU__DOT__jloop)))
+                                          ? (IData)(vlTOPp->io_Stationary_matrix_4_2)
+                                          : (((4U == 
+                                               (7U 
+                                                & vlTOPp->FlexDPU__DOT__iloop)) 
+                                              & (1U 
+                                                 == 
+                                                 (7U 
+                                                  & vlTOPp->FlexDPU__DOT__jloop)))
+                                              ? (IData)(vlTOPp->io_Stationary_matrix_4_1)
+                                              : (((4U 
+                                                   == 
+                                                   (7U 
+                                                    & vlTOPp->FlexDPU__DOT__iloop)) 
+                                                  & (0U 
+                                                     == 
+                                                     (7U 
+                                                      & vlTOPp->FlexDPU__DOT__jloop)))
+                                                  ? (IData)(vlTOPp->io_Stationary_matrix_4_0)
+                                                  : 
+                                                 (((3U 
+                                                    == 
+                                                    (7U 
+                                                     & vlTOPp->FlexDPU__DOT__iloop)) 
+                                                   & (7U 
+                                                      == 
+                                                      (7U 
+                                                       & vlTOPp->FlexDPU__DOT__jloop)))
+                                                   ? (IData)(vlTOPp->io_Stationary_matrix_3_7)
+                                                   : 
+                                                  (((3U 
+                                                     == 
+                                                     (7U 
+                                                      & vlTOPp->FlexDPU__DOT__iloop)) 
+                                                    & (6U 
+                                                       == 
+                                                       (7U 
+                                                        & vlTOPp->FlexDPU__DOT__jloop)))
+                                                    ? (IData)(vlTOPp->io_Stationary_matrix_3_6)
+                                                    : 
+                                                   (((3U 
+                                                      == 
+                                                      (7U 
+                                                       & vlTOPp->FlexDPU__DOT__iloop)) 
+                                                     & (5U 
+                                                        == 
+                                                        (7U 
+                                                         & vlTOPp->FlexDPU__DOT__jloop)))
+                                                     ? (IData)(vlTOPp->io_Stationary_matrix_3_5)
+                                                     : (IData)(vlTOPp->FlexDPU__DOT___GEN_28))))))));
     vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT___GEN_1170 
         = ((4U == ((IData)(8U) - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT___T_255))
             ? ((IData)(3U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__pin)
@@ -11038,7 +11323,7 @@ void VFlexDPU::_settle__TOP__10(VFlexDPU__Syms* __restrict vlSymsp) {
                                                     ((5U 
                                                       == vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT___GEN_287)
                                                       ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__pin
-                                                      : 0x1cU)))))))))))));
+                                                      : 0xaU)))))))))))));
     vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT___GEN_1187 
         = ((7U == ((IData)(8U) - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT___T_255))
             ? ((IData)(3U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__pin)
@@ -11084,7 +11369,7 @@ void VFlexDPU::_settle__TOP__10(VFlexDPU__Syms* __restrict vlSymsp) {
                                                      ((4U 
                                                        == vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT___GEN_287)
                                                        ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__pin
-                                                       : 7U))))))))))))));
+                                                       : 0x1bU))))))))))))));
     vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT___T_372 
         = (vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT___T_255 
            + ((0xfU == (0xfU & ((IData)(3U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__pin)))
@@ -11139,7 +11424,7 @@ void VFlexDPU::_settle__TOP__10(VFlexDPU__Syms* __restrict vlSymsp) {
                                                     ((5U 
                                                       == vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT___GEN_287)
                                                       ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__pin
-                                                      : 8U)))))))))))));
+                                                      : 0U)))))))))))));
     vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT___GEN_1187 
         = ((7U == ((IData)(8U) - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT___T_255))
             ? ((IData)(3U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__pin)
@@ -11185,7 +11470,7 @@ void VFlexDPU::_settle__TOP__10(VFlexDPU__Syms* __restrict vlSymsp) {
                                                      ((4U 
                                                        == vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT___GEN_287)
                                                        ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__pin
-                                                       : 4U))))))))))))));
+                                                       : 0x16U))))))))))))));
     vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT___T_372 
         = (vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT___T_255 
            + ((0xfU == (0xfU & ((IData)(3U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__pin)))
@@ -11240,7 +11525,7 @@ void VFlexDPU::_settle__TOP__10(VFlexDPU__Syms* __restrict vlSymsp) {
                                                     ((5U 
                                                       == vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT___GEN_287)
                                                       ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT__pin
-                                                      : 0xeU)))))))))))));
+                                                      : 0x12U)))))))))))));
     vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT___GEN_1187 
         = ((7U == ((IData)(8U) - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT___T_255))
             ? ((IData)(3U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT__pin)
@@ -11286,7 +11571,7 @@ void VFlexDPU::_settle__TOP__10(VFlexDPU__Syms* __restrict vlSymsp) {
                                                      ((4U 
                                                        == vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT___GEN_287)
                                                        ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT__pin
-                                                       : 0x14U))))))))))))));
+                                                       : 0x1aU))))))))))))));
     vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT___T_372 
         = (vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT___T_255 
            + ((0xfU == (0xfU & ((IData)(3U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT__pin)))
@@ -11341,7 +11626,7 @@ void VFlexDPU::_settle__TOP__10(VFlexDPU__Syms* __restrict vlSymsp) {
                                                     ((5U 
                                                       == vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn4__DOT___GEN_287)
                                                       ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn4__DOT__pin
-                                                      : 8U)))))))))))));
+                                                      : 4U)))))))))))));
     vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn4__DOT___GEN_1187 
         = ((7U == ((IData)(8U) - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn4__DOT___T_255))
             ? ((IData)(3U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn4__DOT__pin)
@@ -11387,7 +11672,7 @@ void VFlexDPU::_settle__TOP__10(VFlexDPU__Syms* __restrict vlSymsp) {
                                                      ((4U 
                                                        == vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn4__DOT___GEN_287)
                                                        ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn4__DOT__pin
-                                                       : 6U))))))))))))));
+                                                       : 0x1aU))))))))))))));
     vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn4__DOT___T_372 
         = (vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn4__DOT___T_255 
            + ((0xfU == (0xfU & ((IData)(3U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn4__DOT__pin)))
@@ -11442,7 +11727,7 @@ void VFlexDPU::_settle__TOP__10(VFlexDPU__Syms* __restrict vlSymsp) {
                                                     ((5U 
                                                       == vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___GEN_287)
                                                       ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__pin
-                                                      : 0x1cU)))))))))))));
+                                                      : 1U)))))))))))));
     vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___GEN_1187 
         = ((7U == ((IData)(8U) - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___T_255))
             ? ((IData)(3U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__pin)
@@ -11488,7 +11773,7 @@ void VFlexDPU::_settle__TOP__10(VFlexDPU__Syms* __restrict vlSymsp) {
                                                      ((4U 
                                                        == vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___GEN_287)
                                                        ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__pin
-                                                       : 0xcU))))))))))))));
+                                                       : 0x1dU))))))))))))));
     vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___T_372 
         = (vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___T_255 
            + ((0xfU == (0xfU & ((IData)(3U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__pin)))
@@ -11543,7 +11828,7 @@ void VFlexDPU::_settle__TOP__10(VFlexDPU__Syms* __restrict vlSymsp) {
                                                     ((5U 
                                                       == vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___GEN_287)
                                                       ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__pin
-                                                      : 0xbU)))))))))))));
+                                                      : 0x12U)))))))))))));
     vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___GEN_1187 
         = ((7U == ((IData)(8U) - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___T_255))
             ? ((IData)(3U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__pin)
@@ -11589,7 +11874,7 @@ void VFlexDPU::_settle__TOP__10(VFlexDPU__Syms* __restrict vlSymsp) {
                                                      ((4U 
                                                        == vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___GEN_287)
                                                        ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__pin
-                                                       : 0xeU))))))))))))));
+                                                       : 1U))))))))))))));
     vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___T_372 
         = (vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___T_255 
            + ((0xfU == (0xfU & ((IData)(3U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__pin)))
@@ -11644,7 +11929,7 @@ void VFlexDPU::_settle__TOP__10(VFlexDPU__Syms* __restrict vlSymsp) {
                                                     ((5U 
                                                       == vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn7__DOT___GEN_287)
                                                       ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn7__DOT__pin
-                                                      : 0x1dU)))))))))))));
+                                                      : 6U)))))))))))));
     vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn7__DOT___GEN_1187 
         = ((7U == ((IData)(8U) - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn7__DOT___T_255))
             ? ((IData)(3U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn7__DOT__pin)
@@ -11690,7 +11975,7 @@ void VFlexDPU::_settle__TOP__10(VFlexDPU__Syms* __restrict vlSymsp) {
                                                      ((4U 
                                                        == vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn7__DOT___GEN_287)
                                                        ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn7__DOT__pin
-                                                       : 0xdU))))))))))))));
+                                                       : 0x16U))))))))))))));
     vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn7__DOT___T_372 
         = (vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn7__DOT___T_255 
            + ((0xfU == (0xfU & ((IData)(3U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn7__DOT__pin)))
@@ -11745,7 +12030,7 @@ void VFlexDPU::_settle__TOP__10(VFlexDPU__Syms* __restrict vlSymsp) {
                                                     ((5U 
                                                       == vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn8__DOT___GEN_287)
                                                       ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn8__DOT__pin
-                                                      : 0x13U)))))))))))));
+                                                      : 0xdU)))))))))))));
     vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn8__DOT___GEN_1187 
         = ((7U == ((IData)(8U) - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn8__DOT___T_255))
             ? ((IData)(3U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn8__DOT__pin)
@@ -11791,7 +12076,7 @@ void VFlexDPU::_settle__TOP__10(VFlexDPU__Syms* __restrict vlSymsp) {
                                                      ((4U 
                                                        == vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn8__DOT___GEN_287)
                                                        ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn8__DOT__pin
-                                                       : 0x1cU))))))))))))));
+                                                       : 0x18U))))))))))))));
     vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn8__DOT___T_372 
         = (vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn8__DOT___T_255 
            + ((0xfU == (0xfU & ((IData)(3U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn8__DOT__pin)))
@@ -12147,6 +12432,63 @@ void VFlexDPU::_settle__TOP__10(VFlexDPU__Syms* __restrict vlSymsp) {
                                     ? (IData)(vlTOPp->io_Stationary_matrix_4_4)
                                     : (IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_stationary__DOT___GEN_483)))))));
     }
+    vlTOPp->FlexDPU__DOT___GEN_42 = (((5U == (7U & vlTOPp->FlexDPU__DOT__iloop)) 
+                                      & (2U == (7U 
+                                                & vlTOPp->FlexDPU__DOT__jloop)))
+                                      ? (IData)(vlTOPp->io_Stationary_matrix_5_2)
+                                      : (((5U == (7U 
+                                                  & vlTOPp->FlexDPU__DOT__iloop)) 
+                                          & (1U == 
+                                             (7U & vlTOPp->FlexDPU__DOT__jloop)))
+                                          ? (IData)(vlTOPp->io_Stationary_matrix_5_1)
+                                          : (((5U == 
+                                               (7U 
+                                                & vlTOPp->FlexDPU__DOT__iloop)) 
+                                              & (0U 
+                                                 == 
+                                                 (7U 
+                                                  & vlTOPp->FlexDPU__DOT__jloop)))
+                                              ? (IData)(vlTOPp->io_Stationary_matrix_5_0)
+                                              : (((4U 
+                                                   == 
+                                                   (7U 
+                                                    & vlTOPp->FlexDPU__DOT__iloop)) 
+                                                  & (7U 
+                                                     == 
+                                                     (7U 
+                                                      & vlTOPp->FlexDPU__DOT__jloop)))
+                                                  ? (IData)(vlTOPp->io_Stationary_matrix_4_7)
+                                                  : 
+                                                 (((4U 
+                                                    == 
+                                                    (7U 
+                                                     & vlTOPp->FlexDPU__DOT__iloop)) 
+                                                   & (6U 
+                                                      == 
+                                                      (7U 
+                                                       & vlTOPp->FlexDPU__DOT__jloop)))
+                                                   ? (IData)(vlTOPp->io_Stationary_matrix_4_6)
+                                                   : 
+                                                  (((4U 
+                                                     == 
+                                                     (7U 
+                                                      & vlTOPp->FlexDPU__DOT__iloop)) 
+                                                    & (5U 
+                                                       == 
+                                                       (7U 
+                                                        & vlTOPp->FlexDPU__DOT__jloop)))
+                                                    ? (IData)(vlTOPp->io_Stationary_matrix_4_5)
+                                                    : 
+                                                   (((4U 
+                                                      == 
+                                                      (7U 
+                                                       & vlTOPp->FlexDPU__DOT__iloop)) 
+                                                     & (4U 
+                                                        == 
+                                                        (7U 
+                                                         & vlTOPp->FlexDPU__DOT__jloop)))
+                                                     ? (IData)(vlTOPp->io_Stationary_matrix_4_4)
+                                                     : (IData)(vlTOPp->FlexDPU__DOT___GEN_35))))))));
     vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT___GEN_1662 
         = ((7U == ((IData)(8U) - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT___T_372))
             ? ((IData)(4U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__pin)
@@ -12190,7 +12532,7 @@ void VFlexDPU::_settle__TOP__10(VFlexDPU__Syms* __restrict vlSymsp) {
                                                      ((3U 
                                                        == vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT___GEN_287)
                                                        ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__pin
-                                                       : 0x14U))))))))))))));
+                                                       : 3U))))))))))))));
     vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT___GEN_1653 
         = ((5U == ((IData)(8U) - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT___T_372))
             ? ((IData)(4U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__pin)
@@ -12345,7 +12687,7 @@ void VFlexDPU::_settle__TOP__10(VFlexDPU__Syms* __restrict vlSymsp) {
                                                      ((3U 
                                                        == vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT___GEN_287)
                                                        ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__pin
-                                                       : 0x1fU))))))))))))));
+                                                       : 7U))))))))))))));
     vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT___GEN_1653 
         = ((5U == ((IData)(8U) - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT___T_372))
             ? ((IData)(4U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__pin)
@@ -12500,7 +12842,7 @@ void VFlexDPU::_settle__TOP__10(VFlexDPU__Syms* __restrict vlSymsp) {
                                                      ((3U 
                                                        == vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT___GEN_287)
                                                        ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT__pin
-                                                       : 0x19U))))))))))))));
+                                                       : 1U))))))))))))));
     vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT___GEN_1653 
         = ((5U == ((IData)(8U) - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT___T_372))
             ? ((IData)(4U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT__pin)
@@ -12655,7 +12997,7 @@ void VFlexDPU::_settle__TOP__10(VFlexDPU__Syms* __restrict vlSymsp) {
                                                      ((3U 
                                                        == vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn4__DOT___GEN_287)
                                                        ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn4__DOT__pin
-                                                       : 0xaU))))))))))))));
+                                                       : 0U))))))))))))));
     vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn4__DOT___GEN_1653 
         = ((5U == ((IData)(8U) - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn4__DOT___T_372))
             ? ((IData)(4U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn4__DOT__pin)
@@ -12810,7 +13152,7 @@ void VFlexDPU::_settle__TOP__10(VFlexDPU__Syms* __restrict vlSymsp) {
                                                      ((3U 
                                                        == vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___GEN_287)
                                                        ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__pin
-                                                       : 0x19U))))))))))))));
+                                                       : 0x13U))))))))))))));
     vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___GEN_1653 
         = ((5U == ((IData)(8U) - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT___T_372))
             ? ((IData)(4U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn5__DOT__pin)
@@ -12965,7 +13307,7 @@ void VFlexDPU::_settle__TOP__10(VFlexDPU__Syms* __restrict vlSymsp) {
                                                      ((3U 
                                                        == vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___GEN_287)
                                                        ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__pin
-                                                       : 0x1bU))))))))))))));
+                                                       : 6U))))))))))))));
     vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___GEN_1653 
         = ((5U == ((IData)(8U) - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT___T_372))
             ? ((IData)(4U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn6__DOT__pin)
@@ -13120,7 +13462,7 @@ void VFlexDPU::_settle__TOP__10(VFlexDPU__Syms* __restrict vlSymsp) {
                                                      ((3U 
                                                        == vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn7__DOT___GEN_287)
                                                        ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn7__DOT__pin
-                                                       : 0x1bU))))))))))))));
+                                                       : 0x16U))))))))))))));
     vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn7__DOT___GEN_1653 
         = ((5U == ((IData)(8U) - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn7__DOT___T_372))
             ? ((IData)(4U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn7__DOT__pin)
@@ -13275,7 +13617,7 @@ void VFlexDPU::_settle__TOP__10(VFlexDPU__Syms* __restrict vlSymsp) {
                                                      ((3U 
                                                        == vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn8__DOT___GEN_287)
                                                        ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn8__DOT__pin
-                                                       : 6U))))))))))))));
+                                                       : 0x15U))))))))))))));
     vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn8__DOT___GEN_1653 
         = ((5U == ((IData)(8U) - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn8__DOT___T_372))
             ? ((IData)(4U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn8__DOT__pin)
@@ -13729,324 +14071,61 @@ void VFlexDPU::_settle__TOP__10(VFlexDPU__Syms* __restrict vlSymsp) {
                                     ? (IData)(vlTOPp->io_Stationary_matrix_5_3)
                                     : (IData)(vlTOPp->FlexDPU__DOT__ivntop__DOT__my_stationary__DOT___GEN_490)))))));
     }
-    vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT___GEN_2255 
-        = ((7U == ((IData)(8U) - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT___T_524))
-            ? ((IData)(5U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__pin)
-            : ((6U == ((IData)(8U) - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT___T_524))
-                ? ((IData)(5U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__pin)
-                : ((5U == ((IData)(8U) - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT___T_524))
-                    ? ((IData)(5U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__pin)
-                    : ((4U == ((IData)(8U) - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT___T_524))
-                        ? ((IData)(5U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__pin)
-                        : ((3U == ((IData)(8U) - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT___T_524))
-                            ? ((IData)(5U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__pin)
-                            : ((2U == ((IData)(8U) 
-                                       - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT___T_524))
-                                ? ((IData)(5U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__pin)
-                                : ((1U == ((IData)(8U) 
-                                           - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT___T_524))
-                                    ? ((IData)(5U) 
-                                       + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__pin)
-                                    : ((7U == ((IData)(8U) 
-                                               - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT___T_372))
-                                        ? ((IData)(4U) 
-                                           + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__pin)
-                                        : ((6U == ((IData)(8U) 
-                                                   - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT___T_372))
-                                            ? ((IData)(4U) 
-                                               + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__pin)
-                                            : ((5U 
-                                                == 
-                                                ((IData)(8U) 
-                                                 - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT___T_372))
-                                                ? ((IData)(4U) 
-                                                   + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__pin)
-                                                : (
-                                                   (4U 
-                                                    == 
-                                                    ((IData)(8U) 
-                                                     - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT___T_372))
-                                                    ? 
-                                                   ((IData)(4U) 
-                                                    + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__pin)
-                                                    : 
-                                                   ((3U 
+    vlTOPp->FlexDPU__DOT___GEN_49 = (((6U == (7U & vlTOPp->FlexDPU__DOT__iloop)) 
+                                      & (1U == (7U 
+                                                & vlTOPp->FlexDPU__DOT__jloop)))
+                                      ? (IData)(vlTOPp->io_Stationary_matrix_6_1)
+                                      : (((6U == (7U 
+                                                  & vlTOPp->FlexDPU__DOT__iloop)) 
+                                          & (0U == 
+                                             (7U & vlTOPp->FlexDPU__DOT__jloop)))
+                                          ? (IData)(vlTOPp->io_Stationary_matrix_6_0)
+                                          : (((5U == 
+                                               (7U 
+                                                & vlTOPp->FlexDPU__DOT__iloop)) 
+                                              & (7U 
+                                                 == 
+                                                 (7U 
+                                                  & vlTOPp->FlexDPU__DOT__jloop)))
+                                              ? (IData)(vlTOPp->io_Stationary_matrix_5_7)
+                                              : (((5U 
+                                                   == 
+                                                   (7U 
+                                                    & vlTOPp->FlexDPU__DOT__iloop)) 
+                                                  & (6U 
                                                      == 
-                                                     ((IData)(8U) 
-                                                      - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT___T_372))
-                                                     ? 
-                                                    ((IData)(4U) 
-                                                     + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__pin)
-                                                     : vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT___GEN_1642))))))))))));
-    vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT___GEN_2235 
-        = ((4U == ((IData)(8U) - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT___T_524))
-            ? ((IData)(5U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__pin)
-            : ((3U == ((IData)(8U) - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT___T_524))
-                ? ((IData)(5U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__pin)
-                : ((7U == ((IData)(8U) - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT___T_372))
-                    ? ((IData)(4U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__pin)
-                    : ((6U == ((IData)(8U) - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT___T_372))
-                        ? ((IData)(4U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__pin)
-                        : ((5U == ((IData)(8U) - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT___T_372))
-                            ? ((IData)(4U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__pin)
-                            : ((4U == ((IData)(8U) 
-                                       - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT___T_372))
-                                ? ((IData)(4U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__pin)
-                                : ((3U == ((IData)(8U) 
-                                           - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT___T_372))
-                                    ? ((IData)(4U) 
-                                       + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__pin)
-                                    : ((7U == ((IData)(8U) 
-                                               - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT___T_255))
-                                        ? ((IData)(3U) 
-                                           + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__pin)
-                                        : ((6U == ((IData)(8U) 
-                                                   - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT___T_255))
-                                            ? ((IData)(3U) 
-                                               + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__pin)
-                                            : ((5U 
-                                                == 
-                                                ((IData)(8U) 
-                                                 - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT___T_255))
-                                                ? ((IData)(3U) 
-                                                   + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__pin)
-                                                : (
-                                                   (4U 
+                                                     (7U 
+                                                      & vlTOPp->FlexDPU__DOT__jloop)))
+                                                  ? (IData)(vlTOPp->io_Stationary_matrix_5_6)
+                                                  : 
+                                                 (((5U 
                                                     == 
-                                                    ((IData)(8U) 
-                                                     - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT___T_255))
-                                                    ? 
-                                                   ((IData)(3U) 
-                                                    + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__pin)
-                                                    : 
-                                                   ((3U 
+                                                    (7U 
+                                                     & vlTOPp->FlexDPU__DOT__iloop)) 
+                                                   & (5U 
+                                                      == 
+                                                      (7U 
+                                                       & vlTOPp->FlexDPU__DOT__jloop)))
+                                                   ? (IData)(vlTOPp->io_Stationary_matrix_5_5)
+                                                   : 
+                                                  (((5U 
                                                      == 
-                                                     ((IData)(8U) 
-                                                      - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT___T_255))
-                                                     ? 
-                                                    ((IData)(3U) 
-                                                     + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__pin)
-                                                     : vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT___GEN_825))))))))))));
-    vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT___T_711 
-        = (vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT___T_524 
-           + ((0xfU == (0xfU & ((IData)(5U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__pin)))
-               ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__rowcount_15
-               : ((0xeU == (0xfU & ((IData)(5U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__pin)))
-                   ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__rowcount_14
-                   : ((0xdU == (0xfU & ((IData)(5U) 
-                                        + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__pin)))
-                       ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__rowcount_13
-                       : ((0xcU == (0xfU & ((IData)(5U) 
-                                            + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__pin)))
-                           ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT__rowcount_12
-                           : vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn1__DOT___GEN_2347)))));
-    vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT___GEN_2255 
-        = ((7U == ((IData)(8U) - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT___T_524))
-            ? ((IData)(5U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__pin)
-            : ((6U == ((IData)(8U) - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT___T_524))
-                ? ((IData)(5U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__pin)
-                : ((5U == ((IData)(8U) - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT___T_524))
-                    ? ((IData)(5U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__pin)
-                    : ((4U == ((IData)(8U) - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT___T_524))
-                        ? ((IData)(5U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__pin)
-                        : ((3U == ((IData)(8U) - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT___T_524))
-                            ? ((IData)(5U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__pin)
-                            : ((2U == ((IData)(8U) 
-                                       - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT___T_524))
-                                ? ((IData)(5U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__pin)
-                                : ((1U == ((IData)(8U) 
-                                           - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT___T_524))
-                                    ? ((IData)(5U) 
-                                       + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__pin)
-                                    : ((7U == ((IData)(8U) 
-                                               - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT___T_372))
-                                        ? ((IData)(4U) 
-                                           + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__pin)
-                                        : ((6U == ((IData)(8U) 
-                                                   - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT___T_372))
-                                            ? ((IData)(4U) 
-                                               + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__pin)
-                                            : ((5U 
-                                                == 
-                                                ((IData)(8U) 
-                                                 - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT___T_372))
-                                                ? ((IData)(4U) 
-                                                   + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__pin)
-                                                : (
-                                                   (4U 
-                                                    == 
-                                                    ((IData)(8U) 
-                                                     - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT___T_372))
-                                                    ? 
-                                                   ((IData)(4U) 
-                                                    + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__pin)
+                                                     (7U 
+                                                      & vlTOPp->FlexDPU__DOT__iloop)) 
+                                                    & (4U 
+                                                       == 
+                                                       (7U 
+                                                        & vlTOPp->FlexDPU__DOT__jloop)))
+                                                    ? (IData)(vlTOPp->io_Stationary_matrix_5_4)
                                                     : 
-                                                   ((3U 
-                                                     == 
-                                                     ((IData)(8U) 
-                                                      - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT___T_372))
-                                                     ? 
-                                                    ((IData)(4U) 
-                                                     + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__pin)
-                                                     : vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT___GEN_1642))))))))))));
-    vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT___GEN_2235 
-        = ((4U == ((IData)(8U) - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT___T_524))
-            ? ((IData)(5U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__pin)
-            : ((3U == ((IData)(8U) - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT___T_524))
-                ? ((IData)(5U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__pin)
-                : ((7U == ((IData)(8U) - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT___T_372))
-                    ? ((IData)(4U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__pin)
-                    : ((6U == ((IData)(8U) - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT___T_372))
-                        ? ((IData)(4U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__pin)
-                        : ((5U == ((IData)(8U) - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT___T_372))
-                            ? ((IData)(4U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__pin)
-                            : ((4U == ((IData)(8U) 
-                                       - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT___T_372))
-                                ? ((IData)(4U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__pin)
-                                : ((3U == ((IData)(8U) 
-                                           - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT___T_372))
-                                    ? ((IData)(4U) 
-                                       + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__pin)
-                                    : ((7U == ((IData)(8U) 
-                                               - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT___T_255))
-                                        ? ((IData)(3U) 
-                                           + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__pin)
-                                        : ((6U == ((IData)(8U) 
-                                                   - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT___T_255))
-                                            ? ((IData)(3U) 
-                                               + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__pin)
-                                            : ((5U 
-                                                == 
-                                                ((IData)(8U) 
-                                                 - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT___T_255))
-                                                ? ((IData)(3U) 
-                                                   + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__pin)
-                                                : (
-                                                   (4U 
-                                                    == 
-                                                    ((IData)(8U) 
-                                                     - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT___T_255))
-                                                    ? 
-                                                   ((IData)(3U) 
-                                                    + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__pin)
-                                                    : 
-                                                   ((3U 
-                                                     == 
-                                                     ((IData)(8U) 
-                                                      - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT___T_255))
-                                                     ? 
-                                                    ((IData)(3U) 
-                                                     + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__pin)
-                                                     : vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT___GEN_825))))))))))));
-    vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT___T_711 
-        = (vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT___T_524 
-           + ((0xfU == (0xfU & ((IData)(5U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__pin)))
-               ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__rowcount_15
-               : ((0xeU == (0xfU & ((IData)(5U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__pin)))
-                   ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__rowcount_14
-                   : ((0xdU == (0xfU & ((IData)(5U) 
-                                        + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__pin)))
-                       ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__rowcount_13
-                       : ((0xcU == (0xfU & ((IData)(5U) 
-                                            + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__pin)))
-                           ? vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT__rowcount_12
-                           : vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn2__DOT___GEN_2347)))));
-    vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT___GEN_2255 
-        = ((7U == ((IData)(8U) - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT___T_524))
-            ? ((IData)(5U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT__pin)
-            : ((6U == ((IData)(8U) - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT___T_524))
-                ? ((IData)(5U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT__pin)
-                : ((5U == ((IData)(8U) - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT___T_524))
-                    ? ((IData)(5U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT__pin)
-                    : ((4U == ((IData)(8U) - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT___T_524))
-                        ? ((IData)(5U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT__pin)
-                        : ((3U == ((IData)(8U) - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT___T_524))
-                            ? ((IData)(5U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT__pin)
-                            : ((2U == ((IData)(8U) 
-                                       - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT___T_524))
-                                ? ((IData)(5U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT__pin)
-                                : ((1U == ((IData)(8U) 
-                                           - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT___T_524))
-                                    ? ((IData)(5U) 
-                                       + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT__pin)
-                                    : ((7U == ((IData)(8U) 
-                                               - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT___T_372))
-                                        ? ((IData)(4U) 
-                                           + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT__pin)
-                                        : ((6U == ((IData)(8U) 
-                                                   - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT___T_372))
-                                            ? ((IData)(4U) 
-                                               + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT__pin)
-                                            : ((5U 
-                                                == 
-                                                ((IData)(8U) 
-                                                 - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT___T_372))
-                                                ? ((IData)(4U) 
-                                                   + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT__pin)
-                                                : (
-                                                   (4U 
-                                                    == 
-                                                    ((IData)(8U) 
-                                                     - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT___T_372))
-                                                    ? 
-                                                   ((IData)(4U) 
-                                                    + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT__pin)
-                                                    : 
-                                                   ((3U 
-                                                     == 
-                                                     ((IData)(8U) 
-                                                      - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT___T_372))
-                                                     ? 
-                                                    ((IData)(4U) 
-                                                     + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT__pin)
-                                                     : vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT___GEN_1642))))))))))));
-    vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT___GEN_2235 
-        = ((4U == ((IData)(8U) - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT___T_524))
-            ? ((IData)(5U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT__pin)
-            : ((3U == ((IData)(8U) - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT___T_524))
-                ? ((IData)(5U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT__pin)
-                : ((7U == ((IData)(8U) - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT___T_372))
-                    ? ((IData)(4U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT__pin)
-                    : ((6U == ((IData)(8U) - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT___T_372))
-                        ? ((IData)(4U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT__pin)
-                        : ((5U == ((IData)(8U) - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT___T_372))
-                            ? ((IData)(4U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT__pin)
-                            : ((4U == ((IData)(8U) 
-                                       - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT___T_372))
-                                ? ((IData)(4U) + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT__pin)
-                                : ((3U == ((IData)(8U) 
-                                           - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT___T_372))
-                                    ? ((IData)(4U) 
-                                       + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT__pin)
-                                    : ((7U == ((IData)(8U) 
-                                               - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT___T_255))
-                                        ? ((IData)(3U) 
-                                           + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT__pin)
-                                        : ((6U == ((IData)(8U) 
-                                                   - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT___T_255))
-                                            ? ((IData)(3U) 
-                                               + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT__pin)
-                                            : ((5U 
-                                                == 
-                                                ((IData)(8U) 
-                                                 - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT___T_255))
-                                                ? ((IData)(3U) 
-                                                   + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT__pin)
-                                                : (
-                                                   (4U 
-                                                    == 
-                                                    ((IData)(8U) 
-                                                     - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT___T_255))
-                                                    ? 
-                                                   ((IData)(3U) 
-                                                    + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT__pin)
-                                                    : 
-                                                   ((3U 
-                                                     == 
-                                                     ((IData)(8U) 
-                                                      - vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT___T_255))
-                                                     ? 
-                                                    ((IData)(3U) 
-                                                     + vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT__pin)
-                                                     : vlTOPp->FlexDPU__DOT__ivntop__DOT__my_ivn3__DOT___GEN_825))))))))))));
+                                                   (((5U 
+                                                      == 
+                                                      (7U 
+                                                       & vlTOPp->FlexDPU__DOT__iloop)) 
+                                                     & (3U 
+                                                        == 
+                                                        (7U 
+                                                         & vlTOPp->FlexDPU__DOT__jloop)))
+                                                     ? (IData)(vlTOPp->io_Stationary_matrix_5_3)
+                                                     : (IData)(vlTOPp->FlexDPU__DOT___GEN_42))))))));
 }
