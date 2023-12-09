@@ -61,11 +61,11 @@ when(io.validpin === true.B){
 
 
       mat(i)(j) := io.Stationary_matrix(i)(j)
-    //when(io.validpin){
+    when(io.validpin){
         when ( solution(i)(j) =/= 0.U){
             count(i) := count(i)+1.U
             dontTouch(count)
-    //}
+    }
     }
     
 
