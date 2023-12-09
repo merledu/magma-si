@@ -38,7 +38,7 @@ when (io.DataValid){
 
   when (myCounter.io.valid){
     high2 := 1.B
-  }.elsewhen((delay < (config.MaxRows * config.MaxCols + config.MaxRows).U ) && high2) {
+  }.elsewhen((delay < ((config.MaxRows * config.MaxCols)).U) && high2) {
     delay := delay + 1.U
     high := 1.B
   }.otherwise{
