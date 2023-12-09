@@ -18,7 +18,12 @@ class ivncontrol4(implicit val Config: MagmasiConfig) extends Module {
     val i_vn2 = RegInit(VecInit(Seq.fill(Config.NUM_PES)(0.U(Config.LOG2_PES.W))))
 
     val random_values = Seq.fill(Config.NUM_PES)(Random.nextInt(32).U(Config.LOG2_PES.W))
-
+    val solution = RegInit(VecInit(Seq.fill(Config.MaxRows)(VecInit(Seq.fill(Config.MaxCols+1)(0.U(Config.DATA_TYPE.W))))))
+    for (i <- 0 until Config.MaxRows){
+        for (j <- 0 until Config.MaxCols){
+            solution(i)(j) := io.Stationary_matrix(i)(j)
+        }
+    }
     val rowcount = RegInit(VecInit(Seq.fill(16)(0.U(32.W))))
 
     var valid = WireDefault(false.B)
@@ -56,18 +61,18 @@ when(io.validpin === true.B){
 
 
       mat(i)(j) := io.Stationary_matrix(i)(j)
-    when(valid1=== false.B){
-        when ( io.Stationary_matrix(i)(j) =/= 0.U){
+    //when(io.validpin){
+        when ( solution(i)(j) =/= 0.U){
             count(i) := count(i)+1.U
             dontTouch(count)
-    }
+    //}
     }
     
 
-   when (count(7) >= 8.U) {
-        valid1 := true.B 
+//    when (count(7) >= 8.U) {
+//         valid1 := true.B 
     
-    }
+//     }
     dontTouch(valid1)
 
     when ( i === (Config.MaxRows - 1).U && (j === (Config.MaxCols - 1).U)){
@@ -103,15 +108,22 @@ when(io.validpin === true.B){
 
     dontTouch(rowcount)
 
+
     when ((i < (Config.MaxRows - 1).U) && (j === (Config.MaxCols - 1).U)){
         i := i + 1.U
     }
-
-    when ((j < (Config.MaxCols - 1).U)&&(i <= (Config.MaxRows - 1).U)){
+        when((i === (Config.MaxRows - 1).U) && (j === (Config.MaxCols-1).U)){
+        j := (Config.MaxCols).U
+    }.elsewhen ((j < (Config.MaxCols - 1).U)&&(i <= (Config.MaxRows - 1).U)){
         j := j + 1.U
 
-    }.elsewhen((i === (Config.MaxRows - 1).U) && (j === (Config.MaxCols - 1).U)){
-        j := j
+    }.elsewhen((i === (Config.MaxRows - 1).U) && (j === (Config.MaxCols).U)){
+        j := (Config.MaxCols).U
+        i := (Config.MaxRows-1).U
+        count(i) := count(i)
+
+ 
+    
 
     }.otherwise{
         j := 0.U
