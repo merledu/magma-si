@@ -26,6 +26,8 @@ class Distribution2(implicit val config:MagmasiConfig) extends Module{
     val Jdex = RegInit(VecInit(Seq.fill(config.MaxCols * 2)(0.U(32.W))))
     val mat = RegInit(VecInit(Seq.fill(config.MaxRows)(VecInit(Seq.fill(config.MaxCols)(0.U)))))
     val iterationNo = RegInit(0.U(32.W))
+    // val k = RegInit(0.U(32.W))
+    // val l = RegInit(0.U(32.W)) 
 
     // val part2 = Module(new SingleLoop2)
     // part2.io.mat := mat
@@ -86,7 +88,7 @@ class Distribution2(implicit val config:MagmasiConfig) extends Module{
     }
 
     val part3 = Module(new MergeDistribution2)
-    part3.io.PreMat := part2.io.OutMat
+    //part3.io.PreMat := part2.io.OutMat
     part3.io.IDex := Idex(io.s)
     part3.io.JDex := Jdex(io.s)
     part3.io.mat := io.matrix
@@ -94,6 +96,7 @@ class Distribution2(implicit val config:MagmasiConfig) extends Module{
 
     val continue = part2.io.Ovalid
     dontTouch(continue)
+
 
     // val check = WireInit(0.B)
     // when (part2.io.Ovalid){
@@ -107,8 +110,84 @@ class Distribution2(implicit val config:MagmasiConfig) extends Module{
             io.ProcessValid := part2.io.ProcessValid
             io.out := part2.io.OutMat 
         }.elsewhen(part3.io.valid){
-            io.ProcessValid := part3.io.valid
-            io.out := part3.io.Omat
+
+            val Final = Module(new FinalMerge)
+            Final.io.IDex := Idex(io.s)
+            Final.io.JDex := Jdex(io.s)
+            Final.io.PreMat := part2.io.OutMat
+            Final.io.valid := part3.io.valid
+            Final.io.lastMat := part3.io.Omat
+
+
+
+
+
+
+
+            io.ProcessValid := Final.io.Ovalid
+            io.out := Final.io.omat
+
+
+
+
+
+            // for (i <- 0 until config.MaxCols){
+            //     io.out(Idex(io.s))(i) := part2.io.OutMat(Idex(io.s))(i)
+            // }
+
+            // //when(part3.io.valid) {
+
+            //     when((k === 0.U) && (l === 0.U)){
+            //         k := Idex(io.s) + 1.U
+            //         l := 0.U
+
+            //     // }.elsewhen(io.matrix(k)(l) === 4.U) {
+            //     //     k := k
+            //     //     l := l
+            //     //     io.ProcessValid := true.B
+
+            //     }.elsewhen(k < (config.MaxRows - 1).U && l === (config.MaxCols - 1).U) {
+            //         k := k + 1.U
+            //         l := 0.U
+
+            //     }.elsewhen((k === (config.MaxRows - 1).U) && (l < (config.MaxCols - 1).U)){
+  
+            //         k := k
+            //         l := l + 1.U
+  
+            //     }.elsewhen((k === (config.MaxRows - 1).U) && (l === (config.MaxCols - 1).U)) {
+            //         io.ProcessValid := true.B
+            //         k := k
+            //         l := l
+            //     }.elsewhen(i < (config.MaxRows - 1).U && j < (config.MaxCols - 1).U) {
+            //         l := l + 1.U
+            //     }
+            //     io.out(k)(l) := io.matrix(k)(l)
+            //     io.ProcessValid := 1.B
+        //} 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         }.otherwise{
             io.ProcessValid := part2.io.ProcessValid
             io.out := part2.io.OutMat         
