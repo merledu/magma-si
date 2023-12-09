@@ -13,8 +13,11 @@ class FlexDPU(implicit val config:MagmasiConfig) extends Module{
         val Stationary_matrix = Input(Vec(config.MaxRows, Vec(config.MaxCols, UInt(config.DATA_TYPE.W))))
         val Streaming_matrix = Input(Vec(config.MaxRows, Vec(config.MaxCols, UInt(config.DATA_TYPE.W))))
         val output = Output(Vec(config.MaxRows, Vec(config.MaxCols, UInt(config.DATA_TYPE.W))))
+        val out_adder = Output(Vec(config.NoOfFDPE, Vec(config.NUM_PES-1, UInt(config.DATA_TYPE.W))))
     }) 
 
+    val output_adder = Reg(Vec(config.NoOfFDPE, Vec(config.NUM_PES-1, UInt(config.DATA_TYPE.W))))
+    io.out_adder := output_adder
     io.output := WireInit(VecInit(Seq.fill(config.MaxRows)(VecInit(Seq.fill(config.MaxCols)(0.U(config.DATA_TYPE.W))))))
     val used_FlexDPE = Reg(Vec(config.NoOfFDPE, UInt(32.W)))
     dontTouch(used_FlexDPE)
@@ -118,20 +121,46 @@ class FlexDPU(implicit val config:MagmasiConfig) extends Module{
             FDPE(i).i_data_valid := 1.B
             FDPE(i).Stationary_matrix := io.Stationary_matrix
             for (j <- 0 until 4){
+                //wheWireInit(VecInit(Seq.fill(config.MaxRows)(VecInit(Seq.fill(config.MaxCols)(0.U(config.DATA_TYPE.W))))))n (PF(0).PF_Valid){
                     FDPE(i).i_vn(j) := ivn.o_vn(i)(j)
                     FDPE(i).i_mux_bus(j) := PF(i).i_mux_bus(j)
-                    FDPE(i).i_data_bus2(j) := PF(i).Source(j)
+                    FDPE(i).i_data_bus(j) := 1.U//PF(i).Source(j)
+                    FDPE(i).i_data_bus2(j) := 1.U//PF(i).destination(j)
+                // }.otherwise{
+                //     FDPE(i).i_mux_bus(j) := PF1mux(j)
+                //     FDPE(i).i_data_bus(j) := PF1src(j)
+                //     FDPE(i).i_data_bus2(j) := PF1dest(j)
+                // }
         }
         dontTouch(FDPE(i).o_adder)
-        }
+        // output_adder(i)(0) := FDPE(i).o_adder(0)
+        // output_adder(i)(1) := FDPE(i).o_adder(1)
+        // output_adder(i)(2) := FDPE(i).o_adder(2)
+        //io.out_adder(i) := output_adder(i)
 
 
-        for (i <- 0 until (config.MaxRows * config.MaxCols) by 4){
-            FDPE(i/4).i_data_bus(0) := nonZeroValues(i)
-            FDPE(i/4).i_data_bus(1) := nonZeroValues(i+1)
-            FDPE(i/4).i_data_bus(2) := nonZeroValues(i+2)
-            FDPE(i/4).i_data_bus(3) := nonZeroValues(i+3)
+
+
         }
+       output_adder(0) := FDPE(0).o_adder
+        output_adder(1) := FDPE(1).o_adder
+        output_adder(2):= FDPE(2).o_adder
+        output_adder(3):= FDPE(3).o_adder
+        output_adder(4):= FDPE(4).o_adder
+        output_adder(5):= FDPE(5).o_adder
+        output_adder(6):= FDPE(6).o_adder
+         output_adder(7):= FDPE(7).o_adder
+            output_adder(8):= FDPE(8).o_adder
+        output_adder(9):= FDPE(9).o_adder
+        output_adder(10):= FDPE(10).o_adder
+        output_adder(11):= FDPE(11).o_adder
+        output_adder(12):= FDPE(12).o_adder
+            output_adder(13):= FDPE(13).o_adder
+            output_adder(14):= FDPE(14).o_adder
+        output_adder(15):= FDPE(15).o_adder
+        //io.out_adder := output_adder
+
+
 
 
 //--------------------------------------------- ZArori chees ------------------------------
