@@ -6,10 +6,8 @@ import chisel3.stage.ChiselStage
 
 class Matrix(implicit val config:MagmasiConfig) extends Module{
     val io = IO(new Bundle{
-        val CalFDE = Input(UInt(32.W))
+      //   val CalFDE = Input(UInt(32.W))
         //val i_vn = Input(Vec(config.NUM_PES, UInt(config.LOG2_PES.W)))
-        val i_stationary = Input(Bool())
-        val i_data_valid = Input(Bool())
         // val CalFDE = Input(UInt(32.W))
         val Stationary_matrix = Input(Vec(config.MaxRows, Vec(config.MaxCols, UInt(config.DATA_TYPE.W))))
         val Streaming_matrix = Input(Vec(config.MaxRows, Vec(config.MaxCols, UInt(config.DATA_TYPE.W))))
@@ -33,9 +31,9 @@ class Matrix(implicit val config:MagmasiConfig) extends Module{
      val FDPU = Module(new FlexDPU())
     FDPU.io.Stationary_matrix := io.Stationary_matrix
     FDPU.io.Streaming_matrix := io.Streaming_matrix
-    FDPU.io.CalFDE := io.CalFDE
-    FDPU.io.i_stationary:=io.i_stationary
-    FDPU.io.i_data_valid := io.i_data_valid
+   //  FDPU.io.CalFDE := io.CalFDE
+   //  FDPU.io.i_stationary:=io.i_stationary
+   //  FDPU.io.i_data_valid := io.i_data_valid
     //io.out_adder := FDPU.io.out_adder
 
     val ivn = Module(new ivntop).io

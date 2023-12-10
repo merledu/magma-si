@@ -6,29 +6,26 @@ import chisel3.stage.ChiselStage
 
 class FlexDPU(implicit val config:MagmasiConfig) extends Module{
     val io = IO(new Bundle{
-        val CalFDE = Input(UInt(32.W))
-        //val i_vn = Input(Vec(config.NUM_PES, UInt(config.LOG2_PES.W)))
-        val i_stationary = Input(Bool())
-        val i_data_valid = Input(Bool())
+        // val CalFDE = Input(UInt(32.W))
         val Stationary_matrix = Input(Vec(config.MaxRows, Vec(config.MaxCols, UInt(config.DATA_TYPE.W))))
         val Streaming_matrix = Input(Vec(config.MaxRows, Vec(config.MaxCols, UInt(config.DATA_TYPE.W))))
-        val output = Output(Vec(config.MaxRows, Vec(config.MaxCols, UInt(config.DATA_TYPE.W))))
+        //val output = Output(Vec(config.MaxRows, Vec(config.MaxCols, UInt(config.DATA_TYPE.W))))
          val out_adder = Output(Vec(config.NoOfFDPE, Vec(config.NUM_PES-1, UInt(config.DATA_TYPE.W))))
     }) 
 
-    io.output := WireInit(VecInit(Seq.fill(config.MaxRows)(VecInit(Seq.fill(config.MaxCols)(0.U(config.DATA_TYPE.W))))))
+    //io.output := WireInit(VecInit(Seq.fill(config.MaxRows)(VecInit(Seq.fill(config.MaxCols)(0.U(config.DATA_TYPE.W))))))
      val output_adder = Reg(Vec(config.NoOfFDPE, Vec(config.NUM_PES-1, UInt(config.DATA_TYPE.W))))
     io.out_adder := output_adder
-    val used_FlexDPE = Reg(Vec(config.NoOfFDPE, UInt(32.W)))
+    // val used_FlexDPE = Reg(Vec(config.NoOfFDPE, UInt(32.W)))
     
-    dontTouch(used_FlexDPE)
-    val equalDistribution = io.CalFDE / config.NoOfFDPE.U
-    val remainingDistribution = io.CalFDE % config.NoOfFDPE.U
-    val equalArray = VecInit(Seq.fill(config.NoOfFDPE)(equalDistribution))
-    for (i <- 0 until config.NoOfFDPE) {
-      used_FlexDPE(i) := Mux(i.U < remainingDistribution, equalArray(i) + 1.U, equalArray(i))
-    }
-    val sumOfUsedFlexDPE = used_FlexDPE.reduce(_ +& _)
+    // dontTouch(used_FlexDPE)
+    // val equalDistribution = io.CalFDE / config.NoOfFDPE.U
+    // val remainingDistribution = io.CalFDE % config.NoOfFDPE.U
+    // val equalArray = VecInit(Seq.fill(config.NoOfFDPE)(equalDistribution))
+    // for (i <- 0 until config.NoOfFDPE) {
+    //   used_FlexDPE(i) := Mux(i.U < remainingDistribution, equalArray(i) + 1.U, equalArray(i))
+    // }
+    // val sumOfUsedFlexDPE = used_FlexDPE.reduce(_ +& _)
 
     // ----------------------------------table work done--------------------------------------------------------
 

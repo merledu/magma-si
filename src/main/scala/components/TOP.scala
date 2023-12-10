@@ -23,13 +23,10 @@ class Top (implicit val config:MagmasiConfig) extends Module{
     }
 
     when (delay === 1.U){
-        val FDPU = Module(new FlexDPU)
-        FDPU.io.i_stationary := 1.B
-        FDPU.io.i_data_valid := 1.B
+        val FDPU = Module(new Matrix)
         FDPU.io.Stationary_matrix := PreProcessor.io.compressedBitmap
         FDPU.io.Streaming_matrix := io.Streaming_matrix
-        FDPU.io.CalFDE := 16.U
-        io.Third_Matrix := FDPU.io.output
+        io.Third_Matrix := FDPU.io.matrix
     }.otherwise{
         io.Third_Matrix := WireInit(VecInit(Seq.fill(config.MaxRows)(VecInit(Seq.fill(config.MaxCols)(0.U(32.W))))))
     }
