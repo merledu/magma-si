@@ -13,7 +13,6 @@ class FlexDPU(implicit val config:MagmasiConfig) extends Module{
         val Stationary_matrix = Input(Vec(config.MaxRows, Vec(config.MaxCols, UInt(config.DATA_TYPE.W))))
         val Streaming_matrix = Input(Vec(config.MaxRows, Vec(config.MaxCols, UInt(config.DATA_TYPE.W))))
         val output = Output(Vec(config.MaxRows, Vec(config.MaxCols, UInt(config.DATA_TYPE.W))))
-        val out_adder = Output(Vec(config.NoOfFDPE, Vec(config.NUM_PES-1, UInt(config.DATA_TYPE.W))))
     }) 
 
     io.output := WireInit(VecInit(Seq.fill(config.MaxRows)(VecInit(Seq.fill(config.MaxCols)(0.U(config.DATA_TYPE.W))))))
@@ -133,11 +132,7 @@ class FlexDPU(implicit val config:MagmasiConfig) extends Module{
         dontTouch(FDPE(i).o_adder)
         }
 
-        for (i <- 0 until 16){
-            for (j <- 0 until 3){
-                io.out_adder(i)(j) := FDPE(i).o_adder(j)
-            }
-        }
+
 
 
 //--------------------------------------------- ZArori chees ------------------------------
@@ -258,10 +253,8 @@ class FlexDPU(implicit val config:MagmasiConfig) extends Module{
 
 
 
-    }.otherwise{
-        io.out_adder := VecInit(Seq.fill(config.NoOfFDPE)(VecInit(Seq.fill(config.NUM_PES - 1)(0.U(config.DATA_TYPE.W)))))
-
     }
+    
 
 
 }

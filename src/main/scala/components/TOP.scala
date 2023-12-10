@@ -10,7 +10,6 @@ class Top (implicit val config:MagmasiConfig) extends Module{
     val Stationary_matrix = Input(Vec(config.MaxRows, Vec(config.MaxCols, UInt(32.W))))
     val Streaming_matrix = Input(Vec(config.MaxRows, Vec(config.MaxCols, UInt(32.W))))
     val Third_Matrix = Output(Vec(config.MaxRows, Vec(config.MaxCols, UInt(32.W))))
-    val out_adder = Output(Vec(config.NoOfFDPE, Vec(config.NUM_PES-1, UInt(config.DATA_TYPE.W))))
 
 })
     val PreProcessor = Module(new Regor(8,8,16))
@@ -31,10 +30,8 @@ class Top (implicit val config:MagmasiConfig) extends Module{
         FDPU.io.Streaming_matrix := io.Streaming_matrix
         FDPU.io.CalFDE := 16.U
         io.Third_Matrix := FDPU.io.output
-        io.out_adder := FDPU.io.out_adder
     }.otherwise{
         io.Third_Matrix := WireInit(VecInit(Seq.fill(config.MaxRows)(VecInit(Seq.fill(config.MaxCols)(0.U(32.W))))))
-        io.out_adder := VecInit(Seq.fill(config.NoOfFDPE)(VecInit(Seq.fill(config.NUM_PES - 1)(0.U(config.DATA_TYPE.W)))))
     }
 
 }
