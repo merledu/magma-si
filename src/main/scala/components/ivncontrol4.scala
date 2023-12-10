@@ -1,165 +1,601 @@
 package magmasi.components
 
+import scala.util.Random // Add import for Random
+
 import chisel3._
 import chisel3.util._
-import chisel3.stage.ChiselStage
 
-
-class ivntop(implicit val Config: MagmasiConfig) extends Module {
-    //implicit val config = MagmasiConfig()
+class ivncontrol4(implicit val Config: MagmasiConfig) extends Module {
   val io = IO(new Bundle {
-    val ProcessValid = Output(Bool())
     val Stationary_matrix = Input(Vec(Config.MaxRows, Vec(Config.MaxCols, UInt(Config.DATA_TYPE.W))))
-    val o_vn = Output(Vec(Config.NoOfFDPE, Vec(Config.NUM_PES, UInt(5.W))))
-    val row_countss = Output(Vec(16, UInt(32.W)))
+    val o_vn = Output(Vec(Config.NUM_PES, UInt(Config.LOG2_PES.W)))         //row: Int = 3,col: Int = 3
+    val o_vn2 = Output(Vec(Config.NUM_PES, UInt(Config.LOG2_PES.W)))
+    val ProcessValid = Output(Bool())   
+    val validpin = Input(Bool()) 
+    val row_count = Output(Vec(16, UInt(32.W)))   
   })
-  val i_vn = Reg(Vec(Config.NoOfFDPE, Vec(Config.NUM_PES, UInt(5.W))))
-   io.o_vn := i_vn
+
+    val i_vn = RegInit(VecInit(Seq.fill(Config.NUM_PES)(0.U(Config.LOG2_PES.W))))
+    val i_vn2 = RegInit(VecInit(Seq.fill(Config.NUM_PES)(0.U(Config.LOG2_PES.W))))
+
+    val random_values = Seq.fill(Config.NUM_PES)(Random.nextInt(32).U(Config.LOG2_PES.W))
+    val solution = RegInit(VecInit(Seq.fill(Config.MaxRows)(VecInit(Seq.fill(Config.MaxCols+1)(0.U(Config.DATA_TYPE.W))))))
+    for (i <- 0 until Config.MaxRows){
+        for (j <- 0 until Config.MaxCols){
+            solution(i)(j) := io.Stationary_matrix(i)(j)
+        }
+    }
+    val rowcount = RegInit(VecInit(Seq.fill(16)(0.U(32.W))))
+    io.row_count := rowcount
+
     var valid = WireDefault(false.B)
+
     var valid1 = WireDefault(false.B)
-    var valid2 = WireDefault(false.B)
-    var valid3 = WireDefault(false.B)
-    var valid4 = WireDefault(false.B)
-    var valid5 = WireDefault(false.B)
-    var valid6 = WireDefault(false.B)
-    var valid7 = WireDefault(false.B)
+
+    val numRows = io.Stationary_matrix.length.U
+    val numCols = io.Stationary_matrix(0).length.U 
+
+    
+    val pin = RegInit(0.U(32.W))
+    // dontTouch(numRows)
+    // dontTouch(numCols)
+
+    val i = RegInit(0.U(32.W))
+    val j = RegInit(0.U(32.W))
+
+    val k = RegNext(i === 7.U && (j === 7.U))
+
+when(io.validpin === true.B){
+    when (i === 7.U && (j === 7.U)){
+        io.ProcessValid := RegNext(k)
+    }.otherwise{
+        io.ProcessValid := 0.B
+    }
+    
+    //var valid = 0.U
+    val mat = Reg(Vec(Config.MaxRows, Vec(Config.MaxCols,UInt(32.W))))
+
+    dontTouch(mat)
+
+    val count = Reg(Vec(Config.MaxRows, UInt(32.W)))
+
+    dontTouch(count) 
+
+
+      mat(i)(j) := io.Stationary_matrix(i)(j)
+    when(io.validpin){
+        when ( solution(i)(j) =/= 0.U){
+            count(i) := count(i)+1.U
+            dontTouch(count)
+    }
+    }
+    
+
+//    when (count(7) >= 8.U) {
+//         valid1 := true.B 
+    
+//     }
+    dontTouch(valid1)
+
+    when ( i === (Config.MaxRows - 1).U && (j === (Config.MaxCols - 1).U)){
+
+
+    
+    for ( i <- 0 until 15){
+
+        if(i < 8) {
+      rowcount(i) := count(i)
+    }else {
+      rowcount(i) := 0.U
+    }
+        //  when(io.Stationary_matrix(7)(7) =/= 0.U){
+
+        // when(io.Stationary_matrix(6)(6) =/= 0.U){
+
+            
+
+        // //     when((io.Stationary_matrix(1)(0) =/= 0.U && io.Stationary_matrix(1)(1) === 0.U && io.Stationary_matrix(1)(2) === 0.U) || (io.Stationary_matrix(1)(1) =/= 0.U && io.Stationary_matrix(1)(0) === 0.U && io.Stationary_matrix(1)(2) === 0.U)||(io.Stationary_matrix(1)(2) =/= 0.U && io.Stationary_matrix(1)(1) === 0.U && io.Stationary_matrix(1)(0) === 0.U)){
+        // //         rowcount(1) := count(1) - 2.U
+        // //     }.elsewhen((io.Stationary_matrix(1)(0) =/= 0.U && io.Stationary_matrix(1)(1) =/= 0.U) || (io.Stationary_matrix(1)(0) =/= 0.U &&  io.Stationary_matrix(1)(2) =/= 0.U) || (io.Stationary_matrix(1)(1) =/= 0.U && io.Stationary_matrix(1)(2) =/= 0.U)){
+        // //         rowcount(1) := count(1) - 1.U
+        // //     }.elsewhen((io.Stationary_matrix(1)(0) =/= 0.U && io.Stationary_matrix(1)(1) =/= 0.U && io.Stationary_matrix(1)(2) === 0.U)|| (io.Stationary_matrix(1)(0) =/= 0.U && io.Stationary_matrix(1)(1) === 0.U && io.Stationary_matrix(1)(2) =/= 0.U ) || ( io.Stationary_matrix(1)(0) === 0.U && io.Stationary_matrix(1)(1) =/= 0.U && io.Stationary_matrix(1)(2) =/= 0.U) ){
+        // //         rowcount(1) := count(1) - 3.U
+        // //     }
+        // // }.otherwise{
+
+        
+        // rowcount(i) := count(i)  
+        // }
+    }}
+
+    dontTouch(rowcount)
+
+
+    when ((i < (Config.MaxRows - 1).U) && (j === (Config.MaxCols - 1).U)){
+        i := i + 1.U
+    }
+        when((i === (Config.MaxRows - 1).U) && (j === (Config.MaxCols-1).U)){
+        j := (Config.MaxCols).U
+    }.elsewhen ((j < (Config.MaxCols - 1).U)&&(i <= (Config.MaxRows - 1).U)){
+        j := j + 1.U
+
+    }.elsewhen((i === (Config.MaxRows - 1).U) && (j === (Config.MaxCols).U)){
+        j := (Config.MaxCols).U
+        i := (Config.MaxRows-1).U
+        count(i) := count(i)
 
  
-    val counter = RegInit(0.U(32.W))
+    
 
-    val my_stationary = Module(new stationary())
-    my_stationary.io.Stationary_matrix := io.Stationary_matrix
-    val station1 = my_stationary.io.o_Stationary_matrix1
-    val station2 = my_stationary.io.o_Stationary_matrix2
-    val station3 = my_stationary.io.o_Stationary_matrix3
-    val station4 = my_stationary.io.o_Stationary_matrix4
-    val station5 = my_stationary.io.o_Stationary_matrix5
-    val station6 = my_stationary.io.o_Stationary_matrix6
-    val station7 = my_stationary.io.o_Stationary_matrix7
-    val station8 = my_stationary.io.o_Stationary_matrix8
+    }.otherwise{
+        j := 0.U
 
-  when(counter >=0.U){
-    valid := true.B
-  }
-  when(counter >=20.U){
-    valid1 := true.B
-  }
-  when(counter >=30.U){
-    valid2 := true.B
-  }
-  when(counter >=40.U){
-    valid3 := true.B
-  }
-  when(counter >=50.U){
-    valid4 := true.B
-  }
-  when(counter >=60.U){
-    valid5 := true.B
-  }
-  when(counter >=70.U){
-    valid6 := true.B
-  }
-  when(counter >=80.U){
-    valid7 := true.B
-  }
-
-
-  dontTouch(valid)
-
-//   when(valid === true.B){
-    val my_ivn1= Module(new ivncontrol4())
-    my_ivn1.io.Stationary_matrix := station1 
-
-    val i_vn1 = my_ivn1.io.o_vn
-    val i_vn2 = my_ivn1.io.o_vn2
-    io.ProcessValid := my_ivn1.io.ProcessValid
-    my_ivn1.io.validpin := valid
-    io.row_countss := my_ivn1.io.row_count
-
-
-    val my_ivn2= Module(new ivncontrol4())
-    my_ivn2.io.Stationary_matrix := station2 
-
-    val i_vn3 = my_ivn2.io.o_vn
-    val i_vn4 = my_ivn2.io.o_vn2
-    my_ivn2.io.validpin := valid1
-
-
-     val my_ivn3= Module(new ivncontrol4())
-    my_ivn3.io.Stationary_matrix := station3 
-
-    val i_vn5 = my_ivn3.io.o_vn
-    val i_vn6 = my_ivn3.io.o_vn2
-    my_ivn3.io.validpin := valid2
-
-     val my_ivn4= Module(new ivncontrol4())
-    my_ivn4.io.Stationary_matrix := station4 
-
-    val i_vn7 = my_ivn4.io.o_vn
-    val i_vn8 = my_ivn4.io.o_vn2
-    my_ivn4.io.validpin := valid3
-
-     val my_ivn5= Module(new ivncontrol4())
-    my_ivn5.io.Stationary_matrix := station5 
-
-    val i_vn9 = my_ivn5.io.o_vn
-    val i_vn10 = my_ivn5.io.o_vn2
-    my_ivn5.io.validpin := valid4
-
-     val my_ivn6= Module(new ivncontrol4())
-    my_ivn6.io.Stationary_matrix := station6 
-
-    val i_vn11 = my_ivn6.io.o_vn
-    val i_vn12 = my_ivn6.io.o_vn2
-    my_ivn6.io.validpin := valid5
-
-     val my_ivn7= Module(new ivncontrol4())
-    my_ivn7.io.Stationary_matrix := station7 
-
-    val i_vn13 = my_ivn7.io.o_vn
-    val i_vn14 = my_ivn7.io.o_vn2
-    my_ivn7.io.validpin := valid6
-
-     val my_ivn8= Module(new ivncontrol4())
-    my_ivn8.io.Stationary_matrix := station8 
-
-    val i_vn15 = my_ivn8.io.o_vn
-    val i_vn16 = my_ivn8.io.o_vn2
-    my_ivn8.io.validpin := valid7
-
-
-    // for(i <- 0 until 16 ){
-    //     io.o_vn(i) := i_vni
-
-    // }
-
-  
-    i_vn(0) := i_vn1
-   i_vn(1) := i_vn2
-    i_vn(2) := i_vn3
-    i_vn(3) := i_vn4
-    i_vn(4) := i_vn5
-    i_vn(5) := i_vn6
-    i_vn(6) := i_vn7
-    i_vn(7) := i_vn8
-    i_vn(8) := i_vn9
-    i_vn(9) := i_vn10
-    i_vn(10) := i_vn11
-   i_vn(11) := i_vn12
-    i_vn(12) := i_vn13
-    i_vn(13) := i_vn14
-    i_vn(14) := i_vn15
-    i_vn(15) := i_vn16
-//   }.otherwise{
-//     io.ProcessValid := 0.U
-//   }
-
-  
-  counter := counter + 1.U
-
-
+    }
+    dontTouch(j)
+    dontTouch(i)
+}.otherwise{
+    io.ProcessValid := 0.B
 }
-object IvnTopDriver extends App {
-    implicit val config:MagmasiConfig = MagmasiConfig()
-  (new ChiselStage).emitVerilog(new ivntop)
-}
+
+    io.o_vn := i_vn
+    io.o_vn2 := i_vn2
+
+    for (i <- 0 until Config.NUM_PES) {
+        i_vn(i) := Random.nextInt(32).U(Config.LOG2_PES.W)
+        i_vn2(i) := Random.nextInt(32).U(Config.LOG2_PES.W)
+    }
+    
+    
+
+   // println(rowcount(0))
+    //  printf("Value of data: %d\n", rowcount(0))
+    //  printf("Value of data: %d\n", rowcount(1))
+
+
+    when ( i === (Config.MaxRows - 1).U && (j === (Config.MaxCols - 1).U)){
+       valid := true.B
+    }.otherwise{
+       valid := false.B
+    }
+    dontTouch(valid)
+
+    var rowlength = rowcount.length.U
+
+    when(rowcount(0) =/= 0.U){
+        pin := 0.U
+    }
+     when(rowcount(0) === 0.U && rowcount(1) =/= 0.U){
+        pin := 1.U
+    }
+     when(rowcount(0) === 0.U && rowcount(1) === 0.U && rowcount(2) =/= 0.U){
+        pin := 2.U
+    }
+     when(rowcount(0) === 0.U && rowcount(1) === 0.U && rowcount(2) === 0.U && rowcount(3) =/= 0.U){
+        pin := 3.U
+    }
+     when(rowcount(0) === 0.U && rowcount(1) === 0.U && rowcount(2) === 0.U && rowcount(3) === 0.U && rowcount(4) =/= 0.U){
+        pin := 4.U
+    }
+     when(rowcount(0) === 0.U && rowcount(1) === 0.U && rowcount(2) === 0.U && rowcount(3) === 0.U && rowcount(4) === 0.U && rowcount(5) =/= 0.U){
+        pin := 5.U
+    }
+     when(rowcount(0) === 0.U && rowcount(1) === 0.U && rowcount(2) === 0.U && rowcount(3) === 0.U && rowcount(4) === 0.U && rowcount(5) === 0.U && rowcount(6) =/= 0.U){
+        pin := 6.U
+    }
+     when(rowcount(0) === 0.U && rowcount(1) === 0.U && rowcount(2) === 0.U && rowcount(3) === 0.U && rowcount(4) === 0.U && rowcount(5) === 0.U && rowcount(6) === 0.U && rowcount(7) =/= 0.U){
+        pin := 7.U
+    }
+
+    
+
+     when(valid === true.B){
+        //0
+        when(rowcount(0.U + pin ) >= 8.U){
+            i_vn(0) := 0.U + pin
+            i_vn(1) := 0.U + pin 
+            i_vn(2) := 0.U + pin  
+            i_vn(3) := 0.U+ pin  
+            i_vn2(0) := 0.U+ pin  
+            i_vn2(1) := 0.U+ pin  
+            i_vn2(2) := 0.U+ pin  
+            i_vn2(3) := 0.U+ pin  
+
+        }.elsewhen(rowcount(0.U + pin  ) === 7.U  ){
+            i_vn(0) := 0.U+ pin  
+            i_vn(1) := 0.U+ pin  
+            i_vn(2) := 0.U+ pin  
+            i_vn(3) := 0.U+ pin  
+            i_vn2(0) := 0.U+ pin  
+            i_vn2(1) := 0.U+ pin  
+            i_vn2(2) := 0.U+ pin  
+        }.elsewhen(rowcount(0.U  + pin  ) === 6.U ){
+            i_vn(0) := 0.U+ pin  
+            i_vn(1) := 0.U+ pin  
+            i_vn(2) := 0.U+ pin  
+            i_vn(3) := 0.U+ pin  
+            i_vn2(0) := 0.U+ pin  
+            i_vn2(1) := 0.U+ pin  
+    
+        }.elsewhen(rowcount(0.U+ pin ) === 5.U  ){
+            i_vn(0) := 0.U+ pin 
+            i_vn(1) := 0.U+ pin 
+            i_vn(2) := 0.U+ pin 
+            i_vn(3) := 0.U+ pin 
+            i_vn2(0) := 0.U+ pin 
+   
+        }.elsewhen(rowcount(0.U + pin ) === 4.U ){
+            i_vn(0) := 0.U+ pin 
+            i_vn(1) := 0.U+ pin 
+            i_vn(2) := 0.U+ pin 
+            i_vn(3) := 0.U+ pin 
+    
+
+     
+        }.elsewhen(rowcount(0.U + pin ) === 3.U ){
+            i_vn(0) := 0.U+ pin 
+            i_vn(1) := 0.U+ pin 
+            i_vn(2) := 0.U+ pin 
+       
+        }.elsewhen(rowcount(0.U + pin ) === 2.U  ){
+            i_vn(0) := 0.U+ pin 
+            i_vn(1) := 0.U+ pin 
+        
+        }.elsewhen(rowcount(0.U + pin ) === 1.U ){
+            i_vn(0) := 0.U + pin 
+        }
+        // 1
+        when(8.U - rowcount(0.U + pin) === 7.U ){
+             i_vn(1) := 1.U + pin 
+            i_vn(2) := 1.U + pin  
+            i_vn(3) := 1.U+ pin  
+            i_vn2(0) := 1.U+ pin  
+            i_vn2(1) := 1.U+ pin  
+            i_vn2(2) := 1.U+ pin  
+            i_vn2(3) := 1.U+ pin  
+
+        }.elsewhen(8.U - rowcount(0.U + pin) === 6.U){
+             i_vn(2) := 1.U + pin  
+            i_vn(3) := 1.U+ pin  
+            i_vn2(0) := 1.U+ pin  
+            i_vn2(1) := 1.U+ pin  
+            i_vn2(2) := 1.U+ pin  
+            i_vn2(3) := 1.U+ pin 
+        }.elsewhen(8.U - rowcount(0.U + pin) === 5.U){
+        
+            i_vn(3) := 1.U+ pin  
+            i_vn2(0) := 1.U+ pin  
+            i_vn2(1) := 1.U+ pin  
+            i_vn2(2) := 1.U+ pin  
+            i_vn2(3) := 1.U+ pin 
+        }.elsewhen(8.U - rowcount(0.U + pin) === 4.U){
+       
+            i_vn2(0) := 1.U+ pin  
+            i_vn2(1) := 1.U+ pin  
+            i_vn2(2) := 1.U+ pin  
+            i_vn2(3) := 1.U+ pin 
+        }.elsewhen(8.U - rowcount(0.U + pin) === 3.U){
+           
+            i_vn2(1) := 1.U+ pin  
+            i_vn2(2) := 1.U+ pin  
+            i_vn2(3) := 1.U+ pin 
+        
+        
+        }.elsewhen(8.U - rowcount(0.U + pin) === 2.U){
+           
+           
+            i_vn2(2) := 1.U+ pin  
+            i_vn2(3) := 1.U+ pin 
+        }.elsewhen(8.U - rowcount(0.U + pin) === 1.U){
+           
+           
+            i_vn2(3) := 1.U+ pin 
+        }
+        // 2
+        when(8.U - (rowcount(0.U + pin) + rowcount(1.U + pin)) === 7.U ){
+             i_vn(1) := 2.U + pin 
+            i_vn(2) := 2.U + pin  
+            i_vn(3) := 2.U+ pin  
+            i_vn2(0) := 2.U+ pin  
+            i_vn2(1) := 2.U+ pin  
+            i_vn2(2) := 2.U+ pin  
+            i_vn2(3) := 2.U+ pin  
+
+        }.elsewhen(8.U - (rowcount(0.U + pin) + rowcount(1.U + pin))=== 6.U){
+             i_vn(2) := 1.U + pin  
+             i_vn(2) := 2.U + pin  
+            i_vn(3) := 2.U+ pin  
+            i_vn2(0) := 2.U+ pin  
+            i_vn2(1) := 2.U+ pin  
+            i_vn2(2) := 2.U+ pin  
+            i_vn2(3) := 2.U+ pin  
+        }.elsewhen(8.U -(rowcount(0.U + pin) + rowcount(1.U + pin))=== 5.U){
+        
+              i_vn(3) := 2.U+ pin  
+            i_vn2(0) := 2.U+ pin  
+            i_vn2(1) := 2.U+ pin  
+            i_vn2(2) := 2.U+ pin  
+            i_vn2(3) := 2.U+ pin  
+        }.elsewhen(8.U - (rowcount(0.U + pin) + rowcount(1.U + pin)) === 4.U){
+       
+            i_vn2(0) := 2.U+ pin  
+            i_vn2(1) := 2.U+ pin  
+            i_vn2(2) := 2.U+ pin  
+            i_vn2(3) := 2.U+ pin 
+        }.elsewhen(8.U - (rowcount(0.U + pin) + rowcount(1.U + pin)) === 3.U){
+           
+             i_vn2(1) := 2.U+ pin  
+            i_vn2(2) := 2.U+ pin  
+            i_vn2(3) := 2.U+ pin 
+        
+        
+        }.elsewhen(8.U -(rowcount(0.U + pin) + rowcount(1.U + pin))=== 2.U){
+           
+           
+            i_vn2(2) := 2.U+ pin  
+            i_vn2(3) := 2.U+ pin 
+        
+        }.elsewhen(8.U - (rowcount(0.U + pin) + rowcount(1.U + pin)) === 1.U){
+           
+           
+            i_vn2(3) := 2.U+ pin 
+        
+        }
+
+         // 3
+       when(8.U - (rowcount(0.U + pin) + rowcount(1.U + pin) + rowcount(2.U + pin)) === 7.U ){
+             i_vn(1) := 3.U + pin 
+            i_vn(2) := 3.U + pin  
+            i_vn(3) := 3.U+ pin  
+            i_vn2(0) := 3.U+ pin  
+            i_vn2(1) := 3.U+ pin  
+            i_vn2(2) := 3.U+ pin  
+            i_vn2(3) := 3.U+ pin  
+
+        }.elsewhen(8.U - (rowcount(0.U + pin) + rowcount(1.U + pin) + rowcount(2.U + pin))=== 6.U){
+             i_vn(2) := 3.U + pin  
+             i_vn(2) := 3.U + pin  
+            i_vn(3) := 3.U+ pin  
+            i_vn2(0) := 3.U+ pin  
+            i_vn2(1) :=3.U+ pin  
+            i_vn2(2) := 3.U+ pin  
+            i_vn2(3) := 3.U+ pin  
+        }.elsewhen(8.U -(rowcount(0.U + pin) + rowcount(1.U + pin) + rowcount(2.U + pin))=== 5.U){
+        
+              i_vn(3) := 3.U+ pin  
+            i_vn2(0) := 3.U+ pin  
+            i_vn2(1) := 3.U+ pin  
+            i_vn2(2) := 3.U+ pin  
+            i_vn2(3) := 3.U+ pin  
+        }.elsewhen(8.U - (rowcount(0.U + pin) + rowcount(1.U + pin) + rowcount(2.U + pin)) === 4.U){
+       
+            i_vn2(0) := 3.U+ pin  
+            i_vn2(1) := 3.U+ pin  
+            i_vn2(2) := 3.U+ pin  
+            i_vn2(3) := 3.U+ pin 
+        }.elsewhen(8.U - (rowcount(0.U + pin) + rowcount(1.U + pin) + rowcount(2.U + pin)) === 3.U){
+           
+             i_vn2(1) := 3.U+ pin  
+            i_vn2(2) := 3.U+ pin  
+            i_vn2(3) := 3.U+ pin 
+        
+        
+        }.elsewhen(8.U -(rowcount(0.U + pin) + rowcount(1.U + pin) + rowcount(2.U + pin))=== 2.U){
+           
+           
+            i_vn2(2) := 3.U+ pin  
+            i_vn2(3) := 3.U+ pin 
+        
+        }.elsewhen(8.U - (rowcount(0.U + pin) + rowcount(1.U + pin) + rowcount(2.U + pin)) === 1.U){
+           
+           
+            i_vn2(3) := 3.U+ pin 
+        
+        }
+        // 4
+         when(8.U - (rowcount(0.U + pin) + rowcount(1.U + pin) + rowcount(2.U + pin) + rowcount(3.U + pin)) === 7.U ){
+             i_vn(1) := 4.U + pin 
+            i_vn(2) := 4.U + pin  
+            i_vn(3) := 4.U+ pin  
+            i_vn2(0) := 4.U+ pin  
+            i_vn2(1) := 4.U+ pin  
+            i_vn2(2) := 4.U+ pin  
+            i_vn2(3) := 4.U+ pin  
+
+        }.elsewhen(8.U - (rowcount(0.U + pin) + rowcount(1.U + pin) + rowcount(2.U + pin) + rowcount(3.U + pin))=== 6.U){
+             i_vn(2) := 4.U + pin  
+             i_vn(2) := 4.U + pin  
+            i_vn(3) := 4.U+ pin  
+            i_vn2(0) := 4.U+ pin  
+            i_vn2(1) :=4.U+ pin  
+            i_vn2(2) := 4.U+ pin  
+            i_vn2(3) := 4.U+ pin  
+        }.elsewhen(8.U - (rowcount(0.U + pin) + rowcount(1.U + pin) + rowcount(2.U + pin) + rowcount(3.U + pin))=== 5.U){
+        
+              i_vn(3) := 4.U+ pin  
+            i_vn2(0) := 4.U+ pin  
+            i_vn2(1) := 4.U+ pin  
+            i_vn2(2) := 4.U+ pin  
+            i_vn2(3) := 4.U+ pin  
+        }.elsewhen(8.U - (rowcount(0.U + pin) + rowcount(1.U + pin) + rowcount(2.U + pin) + rowcount(3.U + pin)) === 4.U){
+       
+            i_vn2(0) := 4.U+ pin  
+            i_vn2(1) := 4.U+ pin  
+            i_vn2(2) := 4.U+ pin  
+            i_vn2(3) := 4.U+ pin 
+        }.elsewhen(8.U -  (rowcount(0.U + pin) + rowcount(1.U + pin) + rowcount(2.U + pin) + rowcount(3.U + pin)) === 3.U){
+           
+             i_vn2(1) := 4.U+ pin  
+            i_vn2(2) := 4.U+ pin  
+            i_vn2(3) := 4.U+ pin 
+        
+        
+        }.elsewhen(8.U - (rowcount(0.U + pin) + rowcount(1.U + pin) + rowcount(2.U + pin) + rowcount(3.U + pin))=== 2.U){
+           
+           
+            i_vn2(2) := 4.U+ pin  
+            i_vn2(3) := 4.U+ pin 
+        
+        }.elsewhen(8.U - (rowcount(0.U + pin) + rowcount(1.U + pin) + rowcount(2.U + pin) + rowcount(3.U + pin)) === 1.U){
+           
+           
+            i_vn2(3) := 4.U+ pin 
+        
+        }
+     // 5
+         when(8.U - (rowcount(0.U + pin) + rowcount(1.U + pin) + rowcount(2.U + pin) + rowcount(3.U + pin) + rowcount(4.U + pin)) === 7.U ){
+             i_vn(1) := 5.U + pin 
+            i_vn(2) := 5.U + pin  
+            i_vn(3) := 5.U+ pin  
+            i_vn2(0) := 5.U+ pin  
+            i_vn2(1) := 5.U+ pin  
+            i_vn2(2) := 5.U+ pin  
+            i_vn2(3) := 5.U+ pin  
+
+        }.elsewhen(8.U - (rowcount(0.U + pin) + rowcount(1.U + pin) + rowcount(2.U + pin) + rowcount(3.U + pin) + rowcount(4.U + pin))=== 6.U){
+             i_vn(2) := 5.U + pin  
+             i_vn(2) := 5.U + pin  
+            i_vn(3) := 5.U+ pin  
+            i_vn2(0) := 5.U+ pin  
+            i_vn2(1) :=5.U+ pin  
+            i_vn2(2) := 5.U+ pin  
+            i_vn2(3) := 5.U+ pin  
+        }.elsewhen(8.U - (rowcount(0.U + pin) + rowcount(1.U + pin) + rowcount(2.U + pin) + rowcount(3.U + pin) + rowcount(4.U + pin))=== 5.U){
+        
+              i_vn(3) := 5.U+ pin  
+            i_vn2(0) := 5.U+ pin  
+            i_vn2(1) := 5.U+ pin  
+            i_vn2(2) := 5.U+ pin  
+            i_vn2(3) := 5.U+ pin  
+        }.elsewhen(8.U -(rowcount(0.U + pin) + rowcount(1.U + pin) + rowcount(2.U + pin) + rowcount(3.U + pin) + rowcount(4.U + pin)) === 4.U){
+       
+            i_vn2(0) := 5.U+ pin  
+            i_vn2(1) := 5.U+ pin  
+            i_vn2(2) := 5.U+ pin  
+            i_vn2(3) := 5.U+ pin 
+        }.elsewhen(8.U -  (rowcount(0.U + pin) + rowcount(1.U + pin) + rowcount(2.U + pin) + rowcount(3.U + pin) + rowcount(4.U + pin)) === 3.U){
+           
+             i_vn2(1) := 5.U+ pin  
+            i_vn2(2) := 5.U+ pin  
+            i_vn2(3) := 5.U+ pin 
+        
+        
+        }.elsewhen(8.U - (rowcount(0.U + pin) + rowcount(1.U + pin) + rowcount(2.U + pin) + rowcount(3.U + pin) + rowcount(4.U + pin))=== 2.U){
+           
+           
+            i_vn2(2) := 5.U+ pin  
+            i_vn2(3) := 5.U+ pin 
+        
+        }.elsewhen(8.U - (rowcount(0.U + pin) + rowcount(1.U + pin) + rowcount(2.U + pin) + rowcount(3.U + pin) + rowcount(4.U + pin)) === 1.U){
+           
+           
+            i_vn2(3) := 5.U+ pin 
+        
+        }
+
+          // 6
+         when(8.U - (rowcount(0.U + pin) + rowcount(1.U + pin) + rowcount(2.U + pin) + rowcount(3.U + pin) + rowcount(4.U + pin) + rowcount(5.U + pin)) === 7.U ){
+             i_vn(1) := 6.U + pin 
+            i_vn(2) := 6.U + pin  
+            i_vn(3) := 6.U+ pin  
+            i_vn2(0) := 6.U+ pin  
+            i_vn2(1) := 6.U+ pin  
+            i_vn2(2) := 6.U+ pin  
+            i_vn2(3) := 6.U+ pin  
+
+        }.elsewhen(8.U - (rowcount(0.U + pin) + rowcount(1.U + pin) + rowcount(2.U + pin) + rowcount(3.U + pin) + rowcount(4.U + pin) + rowcount(5.U + pin)) === 6.U){
+             i_vn(2) := 6.U + pin  
+             i_vn(2) := 6.U + pin  
+            i_vn(3) := 6.U+ pin  
+            i_vn2(0) := 6.U+ pin  
+            i_vn2(1) :=6.U+ pin  
+            i_vn2(2) := 6.U+ pin  
+            i_vn2(3) := 6.U+ pin  
+        }.elsewhen(8.U - (rowcount(0.U + pin) + rowcount(1.U + pin) + rowcount(2.U + pin) + rowcount(3.U + pin) + rowcount(4.U + pin) + rowcount(5.U + pin)) === 5.U){
+        
+              i_vn(3) := 6.U+ pin  
+            i_vn2(0) := 6.U+ pin  
+            i_vn2(1) := 6.U+ pin  
+            i_vn2(2) := 6.U+ pin  
+            i_vn2(3) := 6.U+ pin  
+        }.elsewhen(8.U -(rowcount(0.U + pin) + rowcount(1.U + pin) + rowcount(2.U + pin) + rowcount(3.U + pin) + rowcount(4.U + pin) + rowcount(5.U + pin))  === 4.U){
+       
+            i_vn2(0) := 6.U+ pin  
+            i_vn2(1) := 6.U+ pin  
+            i_vn2(2) := 6.U+ pin  
+            i_vn2(3) := 6.U+ pin 
+        }.elsewhen(8.U -  (rowcount(0.U + pin) + rowcount(1.U + pin) + rowcount(2.U + pin) + rowcount(3.U + pin) + rowcount(4.U + pin) + rowcount(5.U + pin))  === 3.U){
+           
+             i_vn2(1) := 6.U+ pin  
+            i_vn2(2) := 6.U+ pin  
+            i_vn2(3) := 6.U+ pin 
+        
+        
+        }.elsewhen(8.U - (rowcount(0.U + pin) + rowcount(1.U + pin) + rowcount(2.U + pin) + rowcount(3.U + pin) + rowcount(4.U + pin) + rowcount(5.U + pin)) === 2.U){
+           
+           
+            i_vn2(2) := 6.U+ pin  
+            i_vn2(3) := 6.U+ pin 
+        
+        }.elsewhen(8.U -(rowcount(0.U + pin) + rowcount(1.U + pin) + rowcount(2.U + pin) + rowcount(3.U + pin) + rowcount(4.U + pin) + rowcount(5.U + pin))  === 1.U){
+           
+           
+            i_vn2(3) := 6.U+ pin 
+        
+        }
+
+        // 7
+         when(8.U - (rowcount(0.U + pin) + rowcount(1.U + pin) + rowcount(2.U + pin) + rowcount(3.U + pin) + rowcount(4.U + pin) + rowcount(5.U + pin) + rowcount(6.U + pin)) === 7.U ){
+             i_vn(1) := 7.U + pin 
+            i_vn(2) := 7.U + pin  
+            i_vn(3) := 7.U+ pin  
+            i_vn2(0) := 7.U+ pin  
+            i_vn2(1) := 7.U+ pin  
+            i_vn2(2) := 7.U+ pin  
+            i_vn2(3) := 7.U+ pin  
+
+        }.elsewhen(8.U - (rowcount(0.U + pin) + rowcount(1.U + pin) + rowcount(2.U + pin) + rowcount(3.U + pin) + rowcount(4.U + pin) + rowcount(5.U + pin) + rowcount(6.U + pin)) === 6.U){
+             i_vn(2) := 7.U + pin  
+             i_vn(2) := 7.U + pin  
+            i_vn(3) := 7.U+ pin  
+            i_vn2(0) := 7.U+ pin  
+            i_vn2(1) :=7.U+ pin  
+            i_vn2(2) := 7.U+ pin  
+            i_vn2(3) := 7.U+ pin  
+        }.elsewhen(8.U - (rowcount(0.U + pin) + rowcount(1.U + pin) + rowcount(2.U + pin) + rowcount(3.U + pin) + rowcount(4.U + pin) + rowcount(5.U + pin) + rowcount(6.U + pin)) === 5.U){
+        
+              i_vn(3) := 7.U+ pin  
+            i_vn2(0) := 7.U+ pin  
+            i_vn2(1) := 7.U+ pin  
+            i_vn2(2) := 7.U+ pin  
+            i_vn2(3) := 7.U+ pin  
+        }.elsewhen(8.U -(rowcount(0.U + pin) + rowcount(1.U + pin) + rowcount(2.U + pin) + rowcount(3.U + pin) + rowcount(4.U + pin) + rowcount(5.U + pin) + rowcount(6.U + pin))  === 4.U){
+       
+            i_vn2(0) := 7.U+ pin  
+            i_vn2(1) := 7.U+ pin  
+            i_vn2(2) := 7.U+ pin  
+            i_vn2(3) := 7.U+ pin 
+        }.elsewhen(8.U -  (rowcount(0.U + pin) + rowcount(1.U + pin) + rowcount(2.U + pin) + rowcount(3.U + pin) + rowcount(4.U + pin) + rowcount(5.U + pin) + rowcount(6.U + pin))  === 3.U){
+           
+             i_vn2(1) := 7.U+ pin  
+            i_vn2(2) := 7.U+ pin  
+            i_vn2(3) := 7.U+ pin 
+        
+        
+        }.elsewhen(8.U - (rowcount(0.U + pin) + rowcount(1.U + pin) + rowcount(2.U + pin) + rowcount(3.U + pin) + rowcount(4.U + pin) + rowcount(5.U + pin) + rowcount(6.U + pin)) === 2.U){
+           
+           
+            i_vn2(2) := 7.U+ pin  
+            i_vn2(3) := 7.U+ pin 
+        
+        }.elsewhen(8.U -(rowcount(0.U + pin) + rowcount(1.U + pin) + rowcount(2.U + pin) + rowcount(3.U + pin) + rowcount(4.U + pin) + rowcount(5.U + pin) + rowcount(6.U + pin))  === 1.U){
+           
+           
+            i_vn2(3) := 7.U+ pin 
+        
+        }
+
+      
+
+
+     }
+    }
