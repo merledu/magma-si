@@ -11,6 +11,7 @@ class ivntop(implicit val Config: MagmasiConfig) extends Module {
     val ProcessValid = Output(Bool())
     val Stationary_matrix = Input(Vec(Config.MaxRows, Vec(Config.MaxCols, UInt(Config.DATA_TYPE.W))))
     val o_vn = Output(Vec(Config.NoOfFDPE, Vec(Config.NUM_PES, UInt(5.W))))
+    val row_countss = Output(Vec(16, UInt(32.W)))
   })
   val i_vn = Reg(Vec(Config.NoOfFDPE, Vec(Config.NUM_PES, UInt(5.W))))
    io.o_vn := i_vn
@@ -73,6 +74,7 @@ class ivntop(implicit val Config: MagmasiConfig) extends Module {
     val i_vn2 = my_ivn1.io.o_vn2
     io.ProcessValid := my_ivn1.io.ProcessValid
     my_ivn1.io.validpin := valid
+    io.row_countss := my_ivn1.io.row_count
 
 
     val my_ivn2= Module(new ivncontrol4())
