@@ -13,10 +13,14 @@ class FlexDPU(implicit val config:MagmasiConfig) extends Module{
         val Stationary_matrix = Input(Vec(config.MaxRows, Vec(config.MaxCols, UInt(config.DATA_TYPE.W))))
         val Streaming_matrix = Input(Vec(config.MaxRows, Vec(config.MaxCols, UInt(config.DATA_TYPE.W))))
         val output = Output(Vec(config.MaxRows, Vec(config.MaxCols, UInt(config.DATA_TYPE.W))))
+         val out_adder = Output(Vec(config.NoOfFDPE, Vec(config.NUM_PES-1, UInt(config.DATA_TYPE.W))))
     }) 
 
     io.output := WireInit(VecInit(Seq.fill(config.MaxRows)(VecInit(Seq.fill(config.MaxCols)(0.U(config.DATA_TYPE.W))))))
+     val output_adder = Reg(Vec(config.NoOfFDPE, Vec(config.NUM_PES-1, UInt(config.DATA_TYPE.W))))
+    io.out_adder := output_adder
     val used_FlexDPE = Reg(Vec(config.NoOfFDPE, UInt(32.W)))
+    
     dontTouch(used_FlexDPE)
     val equalDistribution = io.CalFDE / config.NoOfFDPE.U
     val remainingDistribution = io.CalFDE % config.NoOfFDPE.U
@@ -131,7 +135,22 @@ class FlexDPU(implicit val config:MagmasiConfig) extends Module{
         }
         dontTouch(FDPE(i).o_adder)
         }
-
+           output_adder(0) := FDPE(0).o_adder
+        output_adder(1) := FDPE(1).o_adder
+        output_adder(2):= FDPE(2).o_adder
+        output_adder(3):= FDPE(3).o_adder
+        output_adder(4):= FDPE(4).o_adder
+        output_adder(5):= FDPE(5).o_adder
+        output_adder(6):= FDPE(6).o_adder
+         output_adder(7):= FDPE(7).o_adder
+            output_adder(8):= FDPE(8).o_adder
+        output_adder(9):= FDPE(9).o_adder
+        output_adder(10):= FDPE(10).o_adder
+        output_adder(11):= FDPE(11).o_adder
+        output_adder(12):= FDPE(12).o_adder
+            output_adder(13):= FDPE(13).o_adder
+            output_adder(14):= FDPE(14).o_adder
+        output_adder(15):= FDPE(15).o_adder
 
 
 
