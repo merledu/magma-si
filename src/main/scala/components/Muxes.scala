@@ -37,18 +37,25 @@ class Muxes(implicit val config: MagmasiConfig) extends Module{
     val i = RegInit(0.U(32.W))
     val j = RegInit(0.U(32.W))
     val counter = RegInit(0.U(32.W))
-    val mux = RegInit(VecInit(Seq.fill(config.MaxRows * config.MaxCols)(0.U((config.LEVELS - 1).W))))
-    val src = RegInit(VecInit(Seq.fill(config.MaxRows * config.MaxCols)(0.U((config.LEVELS - 1).W))))
-    val dest = RegInit(VecInit(Seq.fill(config.MaxRows * config.MaxCols)(0.U((config.LEVELS - 1).W))))
+    val mux = RegInit(VecInit(Seq.fill(config.NUM_PES)(0.U((config.LEVELS - 1).W))))
+    val src = RegInit(VecInit(Seq.fill(config.NUM_PES)(0.U(config.DATA_TYPE.W))))
+    val dest = RegInit(VecInit(Seq.fill(config.NUM_PES)(0.U(config.DATA_TYPE.W))))
+
+
+    
     io.i_mux_bus := mux
     io.Source := src
     io.destination := dest
     dontTouch(mux)
     dontTouch(src)
     dontTouch(dest)
+    when (j === 2.U){
+      io.End := 0.B
+    }
 
+  
+   // when (stop){
     when ((io.mat1(j)(i) =/= 0.U) && (io.mat2(i) =/= 0.U)) {
-        
         when(io.counterMatrix1(j)(i) < io.counterMatrix2(i)){
           mux(counter) :=   (io.counterMatrix2(i) - 1.U) - (io.counterMatrix1(j)(i) - 1.U)
           src(counter) := io.mat2(i)
@@ -67,13 +74,41 @@ class Muxes(implicit val config: MagmasiConfig) extends Module{
 
         }
     }
+  
+ // }
+ val muxVAl = RegInit(VecInit(Seq.fill(config.NUM_PES)(0.U(32.W))))
 
 
+when (io.valid){
+
+  when ( i === 1.U && ( j === 1.U)){
+
+        when ((io.mat1(1)(1) =/= 0.U) && (io.mat2(1) =/= 0.U)) {
+        
+        when(io.counterMatrix1(1)(1) < io.counterMatrix2(1)){
+          mux(counter) :=   (io.counterMatrix2(1) - 1.U) - (io.counterMatrix1(1)(1) - 1.U)
+          src(counter) := io.mat2(1)
+          dest(counter) := io.mat1(1)(1)
+        }.otherwise{
+          mux(counter) :=   (io.counterMatrix1(1)(1) - 1.U) - (io.counterMatrix2(1) - 1.U)
+          src(counter) := io.mat2(1)      
+          dest(counter) := io.mat1(1)(1)
+        }
+        }
+    j := j + 1.U
+    counter := counter
+      i := i
+      src := src 
+      dest := dest 
+      mux := mux 
+  }.elsewhen(j === 2.U){
+    j := j
+  }
     when ((jValid === 0.B) ){
       
       when(j < (config.MaxCols - 1).U) {
         j := j + 1.U
-      }.elsewhen((j === (config.MaxCols - 1).U) && (i === (config.MaxRows - 1).U)){
+      }.elsewhen((j === (config.MaxCols- 1).U) && (i === (config.MaxRows - 1).U)){
         jValid := 1.B
       }.otherwise {
         j := 0.U
@@ -95,9 +130,9 @@ class Muxes(implicit val config: MagmasiConfig) extends Module{
         mux(i) := 0.U    
       }
     }
-
-    io.End := ~((i === (config.MaxRows -1).U) && (j === (config.MaxCols-1).U))
-
+  }
+    io.End := RegNext(RegNext((i === (config.MaxRows -1).U) && (j === (config.MaxCols-1).U)))
+  
     dontTouch(i)
     dontTouch(j)
     dontTouch(counter)

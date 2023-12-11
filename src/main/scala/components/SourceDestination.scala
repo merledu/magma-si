@@ -10,6 +10,7 @@ class SourceDestination(implicit val config: MagmasiConfig) extends Module {
         val counterMatrix1 = Decoupled(Vec(config.MaxRows, Vec(config.MaxCols, UInt(config.DATA_TYPE.W))))
         val counterMatrix2 = Decoupled(Vec(config.MaxRows, UInt(config.DATA_TYPE.W)))
         val valid = Output(Bool())
+        val Ivalid = Input(Bool())
     })
   
     val prevStationary_matrix = RegNext(io.Stationary_matrix)
@@ -41,11 +42,11 @@ class SourceDestination(implicit val config: MagmasiConfig) extends Module {
     val counter1 = RegInit(1.U(32.W))
     val counter2 = RegInit(1.U(32.W))
     dontTouch(counter2)
-
+when (io.Ivalid){
     when (io.Stationary_matrix(i)(j) =/= 0.U) {
       when (counter1 < (config.NUM_PES + 1).U) {
         counterRegs1(i)(j) := counter1
-        when (~((j === (config.MaxCols - 1).U) && (i === (config.MaxRows - 1).U))){
+        when (~((j === (config.MaxCols - 1).U) && (i === (config.MaxRows - 1).U)) && (io.Ivalid)){
           counter1 := counter1 + 1.U
         }
       }.otherwise {
@@ -58,31 +59,38 @@ class SourceDestination(implicit val config: MagmasiConfig) extends Module {
 
     when (io.Streaming_matrix(k) =/= 0.U) {
       when (counter2 < (config.NUM_PES + 1).U) {
-        counterRegs2(k) := counter1
+        counterRegs2(k -1.U ) := counter2 - 1.U
         when (~((j === (config.MaxCols - 1).U) && (i === (config.MaxRows - 1).U))){
           counter2 := counter2 + 1.U
+          k := k + 1.U
         }
     }
   }
+}
     val reg_i = RegNext(((j === (config.MaxCols - 1).U) && (i === (config.MaxRows - 1).U)), 1.B)
-    valid1 := Mux(((j === (config.MaxCols - 1).U) && (i === (config.MaxRows - 1).U)) === reg_i,1.B,0.B)
-    
+    valid1 := Mux(((j === (config.MaxCols).U) && (i === (config.MaxRows).U)) === reg_i,1.B,0.B)
+    io.valid := ((j === (config.MaxCols-1).U) && (i === (config.MaxRows-1).U))
 
     // when ((k >= 0.U) && (kvalid === 0.B)){
     //     k := k + 1.U
     // }
-
-    when(k === (config.MaxRows - 1).U){
-        kvalid := 1.B
-    }.elsewhen((k >= 0.U) && (kvalid === 0.B)){
-      kvalid := 0.B
-      k := k + 1.U
+    //io.Ovalid := ((j === (config.MaxCols - 1).U) && (i === (config.MaxRows - 1).U))
+when(io.Ivalid){
+    when(k === (config.MaxRows).U ){
+      k := k
+      counter2 := counter2
     }
+
+    when ((j === (config.MaxCols-1).U) && (i === (config.MaxRows-1).U)){
+      i := i
+      j := j
+    }
+    
     
     when (jValid === 0.B){
       when(j < (config.MaxCols - 1).U) {    
         j := j + 1.U
-      }.elsewhen((j === (config.MaxCols - 1).U) && (i === (config.MaxRows - 1).U)){
+      }.elsewhen((j === (config.MaxCols-1).U) && (i === (config.MaxRows-1).U)){
         jValid := 1.B
       }.otherwise {
         j := 0.U
@@ -103,8 +111,8 @@ class SourceDestination(implicit val config: MagmasiConfig) extends Module {
         counterRegs2(i) := 0.U
       }
     }
-
-    io.valid :=valid1
+  }
+   // io.valid :=valid1
 
     when ((j === (config.MaxCols - 1).U) && (i === (config.MaxRows - 1).U)){
       io.counterMatrix1.valid := 1.B

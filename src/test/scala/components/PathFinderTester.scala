@@ -11,12 +11,12 @@ class PathFinderTester extends AnyFreeSpec with ChiselScalatestTester {
         test(new PathFinder()).withAnnotations(Seq(VerilatorBackendAnnotation)) { dut =>
 
         val inputData = Seq(
-           Seq(1, 2, 0, 0),
-            Seq(3, 4, 0, 0),
+           Seq(41, 37, 0, 0),
+            Seq(43, 34, 0, 0),
            Seq(0, 0, 0, 0),
            Seq(0, 0, 0, 0)
         ) 
-        val inputData2 = Seq(5, 7, 0, 0)
+        val inputData2 = Seq(11, 17, 0, 0)
 
         for (i <- 0 until 2) {
           for (j <- 0 until 2) {
@@ -32,12 +32,12 @@ class PathFinderTester extends AnyFreeSpec with ChiselScalatestTester {
         dut.clock.step(200)
         
         val inputData3 = Seq(
-           Seq(1, 2, 0, 0),
-            Seq(3, 4, 0, 0),
+           Seq(41, 47, 0, 0),
+            Seq(43, 34, 0, 0),
            Seq(0, 0, 0, 0),
            Seq(0, 0, 0, 0)
         ) 
-        val inputData4 = Seq(6, 7, 0, 0)
+        val inputData4 = Seq(4, 13, 0, 0)
 
         for (i <- 0 until 2) {
           for (j <- 0 until 2) {

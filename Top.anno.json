@@ -91,6 +91,38 @@
   },
   {
     "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~Top|Benes>io_o_dist_bus2_0"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~Top|Benes>io_o_dist_bus2_1"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~Top|Benes>io_o_dist_bus2_2"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~Top|Benes>io_o_dist_bus2_3"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~Top|Benes>io_o_dist_bus1_0"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~Top|Benes>io_o_dist_bus1_1"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~Top|Benes>io_o_dist_bus1_2"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~Top|Benes>io_o_dist_bus1_3"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
     "target":"~Top|ivncontrol4>rowlength"
   },
   {
@@ -152,6 +184,14 @@
   {
     "class":"firrtl.transforms.DontTouchAnnotation",
     "target":"~Top|FlexDPU>check2"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~Top|Muxes>io_End"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~Top|SourceDestination>io_valid"
   },
   {
     "class":"firrtl.transforms.DontTouchAnnotation",

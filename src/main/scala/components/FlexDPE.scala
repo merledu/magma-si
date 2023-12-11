@@ -14,19 +14,19 @@ class flexdpecom4(implicit val Config: MagmasiConfig) extends Module {
 
     val Stationary_matrix = Input(Vec(Config.MaxRows, Vec(Config.MaxCols, UInt(Config.DATA_TYPE.W))))
      
-    val i_vn = Input(Vec(Config.NUM_PES, UInt(Config.LOG2_PES.W)))
+    val i_vn = Output(Vec(Config.NUM_PES, UInt(Config.LOG2_PES.W)))
 
     val o_valid = Output(Vec(Config.NUM_PES, UInt(1.W)))
     val o_data_bus = Output(Vec(Config.NUM_PES, UInt(Config.DATA_TYPE.W)))
      val o_adder = Output(Vec(Config.NUM_PES-1, UInt(Config.DATA_TYPE.W)))
     val LEVELS   : Int = (2 * (math.log(Config.NUM_PES) / math.log(2))).toInt + 1
-     val i_mux_bus   = Input(Vec(Config.NUM_PES,Vec(Config.NUM_PES, UInt((LEVELS-1).W))))
+     val i_mux_bus   = Input(Vec(Config.NUM_PES, UInt((LEVELS-1).W)))
      val matrix =Output(Vec(2, Vec(2, UInt(Config.DATA_TYPE.W))))
 
   })
   dontTouch(io.i_data_valid)
 
-
+val o_vn = Reg(Vec(Config.NUM_PES, UInt(Config.LOG2_PES.W)))
   //when(io.valid){
     val LEVELS   : Int = (2 * (math.log(Config.NUM_PES) / math.log(2))).toInt + 1
 
@@ -58,19 +58,21 @@ class flexdpecom4(implicit val Config: MagmasiConfig) extends Module {
    val my_ivn= Module(new ivncontrol4())
     my_ivn.io.Stationary_matrix := io.Stationary_matrix
     val i_vn = my_ivn.io.o_vn
+    io.i_vn := i_vn
+
    // io.out_vn := i_vn
  
 
     val my_controller = Module(new fancontrol4(32,4,5))
 
-    my_controller.io.i_vn := io.i_vn
+    my_controller.io.i_vn := o_vn
     my_controller.io.i_stationary := 0.B
     my_controller.io.i_data_valid := io.i_data_valid
     val w_reduction_add = my_controller.io.o_reduction_add
     val w_reduction_cmd = my_controller.io.o_reduction_cmd
     val w_reduction_valid = my_controller.io.o_reduction_valid
 
-    val my_Benes = Module(new Benes3())
+    val my_Benes = Module(new Benes())
 
     my_Benes.io.i_data_bus1 := io.i_data_bus
     my_Benes.io.i_data_bus2 := io.i_data_bus2
@@ -79,7 +81,8 @@ class flexdpecom4(implicit val Config: MagmasiConfig) extends Module {
     val w_dist_bus1 = my_Benes.io.o_dist_bus1
     val w_dist_bus2 = my_Benes.io.o_dist_bus2
 
-
+dontTouch(w_dist_bus1)
+dontTouch(w_dist_bus2)
 
      val buffer_mult = Module(new buffer_multiplication())
 
@@ -107,6 +110,17 @@ class flexdpecom4(implicit val Config: MagmasiConfig) extends Module {
      when (counter < 60.U){
       matrix(0)(0) := io.o_adder(0)
       matrix(1)(0) := io.o_adder(2)
+      when(w_dist_bus1(3) === 0.U ){
+        matrix(1)(0) := r_mult(2)
+
+      }.elsewhen(w_dist_bus1(2) === 0.U){
+         matrix(1)(0) := r_mult(3)
+      }.elsewhen(w_dist_bus1(1) === 0.U){
+         matrix(0)(0) := r_mult(0)
+      }.elsewhen(w_dist_bus1(0) === 0.U){
+         matrix(0)(0) := r_mult(1)
+      }
+
 
     }
 
@@ -120,6 +134,16 @@ class flexdpecom4(implicit val Config: MagmasiConfig) extends Module {
     when (counter > 100.U){
       matrix(0)(1) := io.o_adder(0)
       matrix(1)(1) := io.o_adder(2)
+         when(w_dist_bus1(3) === 0.U ){
+        matrix(1)(1) := r_mult(2)
+
+      }.elsewhen(w_dist_bus1(2) === 0.U){
+         matrix(1)(1) := r_mult(3)
+      }.elsewhen(w_dist_bus1(1) === 0.U){
+         matrix(0)(1) := r_mult(0)
+      }.elsewhen(w_dist_bus1(0) === 0.U){
+         matrix(0)(1) := r_mult(1)
+      }
 
     }
 

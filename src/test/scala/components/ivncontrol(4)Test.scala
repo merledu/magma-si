@@ -34,7 +34,7 @@ class ivncontrol4Tester extends AnyFreeSpec with ChiselScalatestTester {
             c.io.Stationary_matrix(i)(j).poke(inputData(i)(j).U)
             
           }
-          c.io.validpin.poke(1.B)
+        
     
     }
       c.clock.step(200)

@@ -14,17 +14,22 @@ class Top (implicit val config:MagmasiConfig) extends Module{
     val PreProcessor = Module(new Regor(2,2,16))
     PreProcessor.io.mat1 := io.Stationary_matrix
     PreProcessor.io.mat2 := io.Streaming_matrix
-
+    val high = RegInit(0.B)
     val delay = RegInit(0.U(1.W))
-    
-    when ( delay <= 0.U){
+    when(PreProcessor.io.End){
+        high := 1.B
         delay := delay + 1.U
+    }
+    when ( delay >= 1.U){
+        delay := delay + 1.U
+        high := 1.B
     }
 
     when (delay === 1.U){
         val FDPU = Module(new FlexDPU)
         FDPU.io.Stationary_matrix := PreProcessor.io.compressedBitmap
         FDPU.io.Streaming_matrix := io.Streaming_matrix
+        FDPU.io.valid := high
         io.Third_Matrix := FDPU.io.output
     }.otherwise{
         io.Third_Matrix := WireInit(VecInit(Seq.fill(config.MaxRows)(VecInit(Seq.fill(config.MaxCols)(0.U(32.W))))))
