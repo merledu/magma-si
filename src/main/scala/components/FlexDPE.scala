@@ -21,6 +21,7 @@ class flexdpecom4(implicit val Config: MagmasiConfig) extends Module {
      val o_adder = Output(Vec(Config.NUM_PES-1, UInt(Config.DATA_TYPE.W)))
     val LEVELS   : Int = (2 * (math.log(Config.NUM_PES) / math.log(2))).toInt + 1
      val i_mux_bus   = Input(Vec(Config.NUM_PES,Vec(Config.NUM_PES, UInt((LEVELS-1).W))))
+     val matrix =Output(Vec(2, Vec(2, UInt(Config.DATA_TYPE.W))))
 
   })
   dontTouch(io.i_data_valid)
@@ -30,13 +31,13 @@ class flexdpecom4(implicit val Config: MagmasiConfig) extends Module {
     val LEVELS   : Int = (2 * (math.log(Config.NUM_PES) / math.log(2))).toInt + 1
 
      val r_mult = RegInit(VecInit(Seq.fill(Config.NUM_PES)(0.U((Config.DATA_TYPE-1).W))))
-    val matrix = Reg(Vec(Config.MaxRows, Vec(Config.MaxCols, UInt(Config.DATA_TYPE.W))))
+    //val matrix = Reg(Vec(Config.MaxRows, Vec(Config.MaxCols, UInt(Config.DATA_TYPE.W))))
 
 
     var counter = RegInit(0.U(32.W))
 
     // matrix(0)(0) := 1.U
-    dontTouch(matrix)
+    
     val r_stationary_ff = Reg(Bool())
     val r_stationary_ff2 = Reg(Bool())
 
@@ -48,8 +49,16 @@ class flexdpecom4(implicit val Config: MagmasiConfig) extends Module {
 
     r_data_valid_ff := io.i_data_valid
     r_data_valid_ff2 := r_data_valid_ff
-    
+     val matrix = Reg(Vec(Config.MaxRows, Vec(Config.MaxCols, UInt(Config.DATA_TYPE.W))))
+     dontTouch(matrix)
 
+
+  io.matrix := matrix
+    
+   val my_ivn= Module(new ivncontrol4())
+    my_ivn.io.Stationary_matrix := io.Stationary_matrix
+    val i_vn = my_ivn.io.o_vn
+   // io.out_vn := i_vn
  
 
     val my_controller = Module(new fancontrol4(32,4,5))
@@ -94,6 +103,25 @@ class flexdpecom4(implicit val Config: MagmasiConfig) extends Module {
     io.o_valid := my_fan_network.io.o_valid
     io.o_data_bus := my_fan_network.io.o_data_bus
     io.o_adder :=  my_fan_network.io.o_adder
+
+     when (counter < 60.U){
+      matrix(0)(0) := io.o_adder(0)
+      matrix(1)(0) := io.o_adder(2)
+
+    }
+
+    // matrix(0)(0) := io.o_adder(0)
+    // matrix(1)(0) := io.o_adder(2)
+    dontTouch(matrix)
+
+    counter := counter + 1.U
+    dontTouch(counter)
+
+    when (counter > 100.U){
+      matrix(0)(1) := io.o_adder(0)
+      matrix(1)(1) := io.o_adder(2)
+
+    }
 
     
 }
