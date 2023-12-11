@@ -24,9 +24,9 @@ module Bitmap(
   reg [15:0] matReg1_1_1; // @[Bitmap.scala 14:26]
   reg  i; // @[Bitmap.scala 19:20]
   reg  j; // @[Bitmap.scala 20:20]
-  wire  _GEN_42 = ~i; // @[Bitmap.scala 23:{41,41}]
+  wire  _GEN_16 = ~i; // @[Bitmap.scala 23:{41,41}]
   wire [15:0] _GEN_1 = ~i & j ? io_mat1_0_1 : io_mat1_0_0; // @[Bitmap.scala 23:{41,41}]
-  wire  _GEN_43 = ~j; // @[Bitmap.scala 23:{41,41}]
+  wire  _GEN_17 = ~j; // @[Bitmap.scala 23:{41,41}]
   wire [15:0] _GEN_2 = i & ~j ? io_mat1_1_0 : _GEN_1; // @[Bitmap.scala 23:{41,41}]
   wire [15:0] _GEN_3 = i & j ? io_mat1_1_1 : _GEN_2; // @[Bitmap.scala 23:{41,41}]
   wire  _j_T_1 = j + 1'h1; // @[Bitmap.scala 33:17]
@@ -38,28 +38,28 @@ module Bitmap(
     if (reset) begin // @[Bitmap.scala 14:26]
       matReg1_0_0 <= 16'h0; // @[Bitmap.scala 14:26]
     end else if (_GEN_3 != 16'h0) begin // @[Bitmap.scala 23:49]
-      if (_GEN_42 & _GEN_43) begin // @[Bitmap.scala 24:31]
+      if (_GEN_16 & _GEN_17) begin // @[Bitmap.scala 24:31]
         matReg1_0_0 <= 16'h1; // @[Bitmap.scala 24:31]
       end
-    end else if (_GEN_42 & _GEN_43) begin // @[Bitmap.scala 26:31]
+    end else if (_GEN_16 & _GEN_17) begin // @[Bitmap.scala 26:31]
       matReg1_0_0 <= 16'h0; // @[Bitmap.scala 26:31]
     end
     if (reset) begin // @[Bitmap.scala 14:26]
       matReg1_0_1 <= 16'h0; // @[Bitmap.scala 14:26]
     end else if (_GEN_3 != 16'h0) begin // @[Bitmap.scala 23:49]
-      if (_GEN_42 & j) begin // @[Bitmap.scala 24:31]
+      if (_GEN_16 & j) begin // @[Bitmap.scala 24:31]
         matReg1_0_1 <= 16'h1; // @[Bitmap.scala 24:31]
       end
-    end else if (_GEN_42 & j) begin // @[Bitmap.scala 26:31]
+    end else if (_GEN_16 & j) begin // @[Bitmap.scala 26:31]
       matReg1_0_1 <= 16'h0; // @[Bitmap.scala 26:31]
     end
     if (reset) begin // @[Bitmap.scala 14:26]
       matReg1_1_0 <= 16'h0; // @[Bitmap.scala 14:26]
     end else if (_GEN_3 != 16'h0) begin // @[Bitmap.scala 23:49]
-      if (i & _GEN_43) begin // @[Bitmap.scala 24:31]
+      if (i & _GEN_17) begin // @[Bitmap.scala 24:31]
         matReg1_1_0 <= 16'h1; // @[Bitmap.scala 24:31]
       end
-    end else if (i & _GEN_43) begin // @[Bitmap.scala 26:31]
+    end else if (i & _GEN_17) begin // @[Bitmap.scala 26:31]
       matReg1_1_0 <= 16'h0; // @[Bitmap.scala 26:31]
     end
     if (reset) begin // @[Bitmap.scala 14:26]
@@ -1916,28 +1916,28 @@ module Benes3(
 );
   wire  _T_1 = |io_i_mux_bus_0_0; // @[Benes3.scala 64:35]
   wire  _T_2 = ~(|io_i_mux_bus_0_0); // @[Benes3.scala 64:39]
-  wire [1:0] _GEN_4 = 2'h0 % 2'h2; // @[Benes3.scala 25:52]
-  wire  parsedindexvalue_first_stage = io_i_mux_bus_0_0[0] & (~_GEN_4[0] | 1'h0 - 1'h1); // @[Benes3.scala 25:26]
+  wire [1:0] _GEN_584 = 2'h0 % 2'h2; // @[Benes3.scala 25:52]
+  wire  parsedindexvalue_first_stage = io_i_mux_bus_0_0[0] & (~_GEN_584[0] | 1'h0 - 1'h1); // @[Benes3.scala 25:26]
   wire  parsedindexvalue_boolArray__0 = io_i_mux_bus_0_0[1]; // @[Benes3.scala 29:92]
   wire  parsedindexvalue_boolArray__1 = io_i_mux_bus_0_0[2]; // @[Benes3.scala 29:92]
-  wire [2:0] _GEN_9 = {{2'd0}, parsedindexvalue_first_stage}; // @[Benes3.scala 34:40]
-  wire [2:0] _GEN_14 = _GEN_9 % 3'h4; // @[Benes3.scala 34:40]
-  wire  parsedindexvalue_calculation = _GEN_14[0]; // @[Benes3.scala 34:40]
+  wire [2:0] _GEN_585 = {{2'd0}, parsedindexvalue_first_stage}; // @[Benes3.scala 34:40]
+  wire [2:0] _GEN_586 = _GEN_585 % 3'h4; // @[Benes3.scala 34:40]
+  wire  parsedindexvalue_calculation = _GEN_586[0]; // @[Benes3.scala 34:40]
   wire  _parsedindexvalue_nextIndex_T = ~parsedindexvalue_calculation; // @[Benes3.scala 36:27]
   wire  _parsedindexvalue_nextIndex_T_1 = ~parsedindexvalue_boolArray__0; // @[Benes3.scala 36:53]
   wire  _parsedindexvalue_nextIndex_T_2 = ~parsedindexvalue_calculation & ~parsedindexvalue_boolArray__0; // @[Benes3.scala 36:36]
   wire  _parsedindexvalue_nextIndex_T_5 = parsedindexvalue_calculation & _parsedindexvalue_nextIndex_T_1; // @[Benes3.scala 37:36]
-  wire [1:0] _GEN_440 = {{1'd0}, parsedindexvalue_calculation}; // @[Benes3.scala 38:27]
-  wire  _parsedindexvalue_nextIndex_T_6 = _GEN_440 == 2'h2; // @[Benes3.scala 38:27]
-  wire  _parsedindexvalue_nextIndex_T_8 = _GEN_440 == 2'h2 & _parsedindexvalue_nextIndex_T_1; // @[Benes3.scala 38:36]
-  wire  _parsedindexvalue_nextIndex_T_9 = _GEN_440 == 2'h3; // @[Benes3.scala 39:27]
-  wire  _parsedindexvalue_nextIndex_T_11 = _GEN_440 == 2'h3 & _parsedindexvalue_nextIndex_T_1; // @[Benes3.scala 39:36]
+  wire [1:0] _GEN_4 = {{1'd0}, parsedindexvalue_calculation}; // @[Benes3.scala 38:27]
+  wire  _parsedindexvalue_nextIndex_T_6 = _GEN_4 == 2'h2; // @[Benes3.scala 38:27]
+  wire  _parsedindexvalue_nextIndex_T_8 = _GEN_4 == 2'h2 & _parsedindexvalue_nextIndex_T_1; // @[Benes3.scala 38:36]
+  wire  _parsedindexvalue_nextIndex_T_9 = _GEN_4 == 2'h3; // @[Benes3.scala 39:27]
+  wire  _parsedindexvalue_nextIndex_T_11 = _GEN_4 == 2'h3 & _parsedindexvalue_nextIndex_T_1; // @[Benes3.scala 39:36]
   wire  _parsedindexvalue_nextIndex_T_14 = _parsedindexvalue_nextIndex_T & parsedindexvalue_boolArray__0; // @[Benes3.scala 40:36]
-  wire [1:0] _GEN_442 = {{1'd0}, parsedindexvalue_first_stage}; // @[Benes3.scala 40:76]
-  wire [1:0] _parsedindexvalue_nextIndex_T_16 = _GEN_442 + 2'h2; // @[Benes3.scala 40:76]
+  wire [1:0] _GEN_14 = {{1'd0}, parsedindexvalue_first_stage}; // @[Benes3.scala 40:76]
+  wire [1:0] _parsedindexvalue_nextIndex_T_16 = _GEN_14 + 2'h2; // @[Benes3.scala 40:76]
   wire  _parsedindexvalue_nextIndex_T_19 = parsedindexvalue_calculation & parsedindexvalue_boolArray__0; // @[Benes3.scala 41:36]
   wire  _parsedindexvalue_nextIndex_T_24 = _parsedindexvalue_nextIndex_T_6 & parsedindexvalue_boolArray__0; // @[Benes3.scala 42:36]
-  wire [1:0] _parsedindexvalue_nextIndex_T_26 = _GEN_442 - 2'h2; // @[Benes3.scala 42:76]
+  wire [1:0] _parsedindexvalue_nextIndex_T_26 = _GEN_14 - 2'h2; // @[Benes3.scala 42:76]
   wire  _parsedindexvalue_nextIndex_T_29 = _parsedindexvalue_nextIndex_T_9 & parsedindexvalue_boolArray__0; // @[Benes3.scala 43:36]
   wire [1:0] _parsedindexvalue_nextIndex_T_32 = _parsedindexvalue_nextIndex_T_29 ? _parsedindexvalue_nextIndex_T_26 : {{
     1'd0}, parsedindexvalue_first_stage}; // @[Mux.scala 101:16]
@@ -1955,9 +1955,9 @@ module Benes3(
      : _parsedindexvalue_nextIndex_T_37; // @[Mux.scala 101:16]
   wire [1:0] parsedindexvalue_nextIndex = _parsedindexvalue_nextIndex_T_2 ? {{1'd0}, parsedindexvalue_first_stage} :
     _parsedindexvalue_nextIndex_T_38; // @[Mux.scala 101:16]
-  wire [2:0] _GEN_19 = {{1'd0}, parsedindexvalue_nextIndex}; // @[Benes3.scala 34:40]
-  wire [2:0] _GEN_24 = _GEN_19 % 3'h4; // @[Benes3.scala 34:40]
-  wire [1:0] parsedindexvalue_calculation_1 = _GEN_24[1:0]; // @[Benes3.scala 34:40]
+  wire [2:0] _GEN_587 = {{1'd0}, parsedindexvalue_nextIndex}; // @[Benes3.scala 34:40]
+  wire [2:0] _GEN_588 = _GEN_587 % 3'h4; // @[Benes3.scala 34:40]
+  wire [1:0] parsedindexvalue_calculation_1 = _GEN_588[1:0]; // @[Benes3.scala 34:40]
   wire  _parsedindexvalue_nextIndex_T_39 = parsedindexvalue_calculation_1 == 2'h0; // @[Benes3.scala 36:27]
   wire  _parsedindexvalue_nextIndex_T_40 = ~parsedindexvalue_boolArray__1; // @[Benes3.scala 36:53]
   wire  _parsedindexvalue_nextIndex_T_41 = parsedindexvalue_calculation_1 == 2'h0 & ~parsedindexvalue_boolArray__1; // @[Benes3.scala 36:36]
@@ -2018,27 +2018,27 @@ module Benes3(
   wire [15:0] _GEN_21 = 3'h1 == _T_3 ? io_i_data_bus2_0 : _GEN_16; // @[Benes3.scala 95:{48,48}]
   wire [15:0] _GEN_22 = 3'h2 == _T_3 ? io_i_data_bus2_0 : _GEN_17; // @[Benes3.scala 95:{48,48}]
   wire [15:0] _GEN_23 = 3'h3 == _T_3 ? io_i_data_bus2_0 : _GEN_18; // @[Benes3.scala 95:{48,48}]
-  wire  parsedindexvalue2_first_stage = io_i_mux_bus_0_1[0] & (~_GEN_4[0] | 1'h0 - 1'h1); // @[Benes3.scala 25:26]
+  wire  parsedindexvalue2_first_stage = io_i_mux_bus_0_1[0] & (~_GEN_584[0] | 1'h0 - 1'h1); // @[Benes3.scala 25:26]
   wire  parsedindexvalue2_boolArray__0 = io_i_mux_bus_0_1[1]; // @[Benes3.scala 29:92]
   wire  parsedindexvalue2_boolArray__1 = io_i_mux_bus_0_1[2]; // @[Benes3.scala 29:92]
-  wire [2:0] _GEN_29 = {{2'd0}, parsedindexvalue2_first_stage}; // @[Benes3.scala 34:40]
-  wire [2:0] _GEN_34 = _GEN_29 % 3'h4; // @[Benes3.scala 34:40]
-  wire  parsedindexvalue2_calculation = _GEN_34[0]; // @[Benes3.scala 34:40]
+  wire [2:0] _GEN_600 = {{2'd0}, parsedindexvalue2_first_stage}; // @[Benes3.scala 34:40]
+  wire [2:0] _GEN_601 = _GEN_600 % 3'h4; // @[Benes3.scala 34:40]
+  wire  parsedindexvalue2_calculation = _GEN_601[0]; // @[Benes3.scala 34:40]
   wire  _parsedindexvalue2_nextIndex_T = ~parsedindexvalue2_calculation; // @[Benes3.scala 36:27]
   wire  _parsedindexvalue2_nextIndex_T_1 = ~parsedindexvalue2_boolArray__0; // @[Benes3.scala 36:53]
   wire  _parsedindexvalue2_nextIndex_T_2 = ~parsedindexvalue2_calculation & ~parsedindexvalue2_boolArray__0; // @[Benes3.scala 36:36]
   wire  _parsedindexvalue2_nextIndex_T_5 = parsedindexvalue2_calculation & _parsedindexvalue2_nextIndex_T_1; // @[Benes3.scala 37:36]
-  wire [1:0] _GEN_464 = {{1'd0}, parsedindexvalue2_calculation}; // @[Benes3.scala 38:27]
-  wire  _parsedindexvalue2_nextIndex_T_6 = _GEN_464 == 2'h2; // @[Benes3.scala 38:27]
-  wire  _parsedindexvalue2_nextIndex_T_8 = _GEN_464 == 2'h2 & _parsedindexvalue2_nextIndex_T_1; // @[Benes3.scala 38:36]
-  wire  _parsedindexvalue2_nextIndex_T_9 = _GEN_464 == 2'h3; // @[Benes3.scala 39:27]
-  wire  _parsedindexvalue2_nextIndex_T_11 = _GEN_464 == 2'h3 & _parsedindexvalue2_nextIndex_T_1; // @[Benes3.scala 39:36]
+  wire [1:0] _GEN_124 = {{1'd0}, parsedindexvalue2_calculation}; // @[Benes3.scala 38:27]
+  wire  _parsedindexvalue2_nextIndex_T_6 = _GEN_124 == 2'h2; // @[Benes3.scala 38:27]
+  wire  _parsedindexvalue2_nextIndex_T_8 = _GEN_124 == 2'h2 & _parsedindexvalue2_nextIndex_T_1; // @[Benes3.scala 38:36]
+  wire  _parsedindexvalue2_nextIndex_T_9 = _GEN_124 == 2'h3; // @[Benes3.scala 39:27]
+  wire  _parsedindexvalue2_nextIndex_T_11 = _GEN_124 == 2'h3 & _parsedindexvalue2_nextIndex_T_1; // @[Benes3.scala 39:36]
   wire  _parsedindexvalue2_nextIndex_T_14 = _parsedindexvalue2_nextIndex_T & parsedindexvalue2_boolArray__0; // @[Benes3.scala 40:36]
-  wire [1:0] _GEN_466 = {{1'd0}, parsedindexvalue2_first_stage}; // @[Benes3.scala 40:76]
-  wire [1:0] _parsedindexvalue2_nextIndex_T_16 = _GEN_466 + 2'h2; // @[Benes3.scala 40:76]
+  wire [1:0] _GEN_134 = {{1'd0}, parsedindexvalue2_first_stage}; // @[Benes3.scala 40:76]
+  wire [1:0] _parsedindexvalue2_nextIndex_T_16 = _GEN_134 + 2'h2; // @[Benes3.scala 40:76]
   wire  _parsedindexvalue2_nextIndex_T_19 = parsedindexvalue2_calculation & parsedindexvalue2_boolArray__0; // @[Benes3.scala 41:36]
   wire  _parsedindexvalue2_nextIndex_T_24 = _parsedindexvalue2_nextIndex_T_6 & parsedindexvalue2_boolArray__0; // @[Benes3.scala 42:36]
-  wire [1:0] _parsedindexvalue2_nextIndex_T_26 = _GEN_466 - 2'h2; // @[Benes3.scala 42:76]
+  wire [1:0] _parsedindexvalue2_nextIndex_T_26 = _GEN_134 - 2'h2; // @[Benes3.scala 42:76]
   wire  _parsedindexvalue2_nextIndex_T_29 = _parsedindexvalue2_nextIndex_T_9 & parsedindexvalue2_boolArray__0; // @[Benes3.scala 43:36]
   wire [1:0] _parsedindexvalue2_nextIndex_T_32 = _parsedindexvalue2_nextIndex_T_29 ? _parsedindexvalue2_nextIndex_T_26
      : {{1'd0}, parsedindexvalue2_first_stage}; // @[Mux.scala 101:16]
@@ -2056,9 +2056,9 @@ module Benes3(
     parsedindexvalue2_first_stage} : _parsedindexvalue2_nextIndex_T_37; // @[Mux.scala 101:16]
   wire [1:0] parsedindexvalue2_nextIndex = _parsedindexvalue2_nextIndex_T_2 ? {{1'd0}, parsedindexvalue2_first_stage} :
     _parsedindexvalue2_nextIndex_T_38; // @[Mux.scala 101:16]
-  wire [2:0] _GEN_39 = {{1'd0}, parsedindexvalue2_nextIndex}; // @[Benes3.scala 34:40]
-  wire [2:0] _GEN_44 = _GEN_39 % 3'h4; // @[Benes3.scala 34:40]
-  wire [1:0] parsedindexvalue2_calculation_1 = _GEN_44[1:0]; // @[Benes3.scala 34:40]
+  wire [2:0] _GEN_602 = {{1'd0}, parsedindexvalue2_nextIndex}; // @[Benes3.scala 34:40]
+  wire [2:0] _GEN_603 = _GEN_602 % 3'h4; // @[Benes3.scala 34:40]
+  wire [1:0] parsedindexvalue2_calculation_1 = _GEN_603[1:0]; // @[Benes3.scala 34:40]
   wire  _parsedindexvalue2_nextIndex_T_39 = parsedindexvalue2_calculation_1 == 2'h0; // @[Benes3.scala 36:27]
   wire  _parsedindexvalue2_nextIndex_T_40 = ~parsedindexvalue2_boolArray__1; // @[Benes3.scala 36:53]
   wire  _parsedindexvalue2_nextIndex_T_41 = parsedindexvalue2_calculation_1 == 2'h0 & ~parsedindexvalue2_boolArray__1; // @[Benes3.scala 36:36]
@@ -2116,27 +2116,27 @@ module Benes3(
   wire [15:0] _GEN_41 = 3'h1 == _T_16 ? io_i_data_bus2_0 : _GEN_36; // @[Benes3.scala 122:{44,44}]
   wire [15:0] _GEN_42 = 3'h2 == _T_16 ? io_i_data_bus2_0 : _GEN_37; // @[Benes3.scala 122:{44,44}]
   wire [15:0] _GEN_43 = 3'h3 == _T_16 ? io_i_data_bus2_0 : _GEN_38; // @[Benes3.scala 122:{44,44}]
-  wire  parsedindexvalue3_first_stage = io_i_mux_bus_0_2[0] & (~_GEN_4[0] | 1'h0 - 1'h1); // @[Benes3.scala 25:26]
+  wire  parsedindexvalue3_first_stage = io_i_mux_bus_0_2[0] & (~_GEN_584[0] | 1'h0 - 1'h1); // @[Benes3.scala 25:26]
   wire  parsedindexvalue3_boolArray__0 = io_i_mux_bus_0_2[1]; // @[Benes3.scala 29:92]
   wire  parsedindexvalue3_boolArray__1 = io_i_mux_bus_0_2[2]; // @[Benes3.scala 29:92]
-  wire [2:0] _GEN_49 = {{2'd0}, parsedindexvalue3_first_stage}; // @[Benes3.scala 34:40]
-  wire [2:0] _GEN_54 = _GEN_49 % 3'h4; // @[Benes3.scala 34:40]
-  wire  parsedindexvalue3_calculation = _GEN_54[0]; // @[Benes3.scala 34:40]
+  wire [2:0] _GEN_615 = {{2'd0}, parsedindexvalue3_first_stage}; // @[Benes3.scala 34:40]
+  wire [2:0] _GEN_616 = _GEN_615 % 3'h4; // @[Benes3.scala 34:40]
+  wire  parsedindexvalue3_calculation = _GEN_616[0]; // @[Benes3.scala 34:40]
   wire  _parsedindexvalue3_nextIndex_T = ~parsedindexvalue3_calculation; // @[Benes3.scala 36:27]
   wire  _parsedindexvalue3_nextIndex_T_1 = ~parsedindexvalue3_boolArray__0; // @[Benes3.scala 36:53]
   wire  _parsedindexvalue3_nextIndex_T_2 = ~parsedindexvalue3_calculation & ~parsedindexvalue3_boolArray__0; // @[Benes3.scala 36:36]
   wire  _parsedindexvalue3_nextIndex_T_5 = parsedindexvalue3_calculation & _parsedindexvalue3_nextIndex_T_1; // @[Benes3.scala 37:36]
-  wire [1:0] _GEN_488 = {{1'd0}, parsedindexvalue3_calculation}; // @[Benes3.scala 38:27]
-  wire  _parsedindexvalue3_nextIndex_T_6 = _GEN_488 == 2'h2; // @[Benes3.scala 38:27]
-  wire  _parsedindexvalue3_nextIndex_T_8 = _GEN_488 == 2'h2 & _parsedindexvalue3_nextIndex_T_1; // @[Benes3.scala 38:36]
-  wire  _parsedindexvalue3_nextIndex_T_9 = _GEN_488 == 2'h3; // @[Benes3.scala 39:27]
-  wire  _parsedindexvalue3_nextIndex_T_11 = _GEN_488 == 2'h3 & _parsedindexvalue3_nextIndex_T_1; // @[Benes3.scala 39:36]
+  wire [1:0] _GEN_244 = {{1'd0}, parsedindexvalue3_calculation}; // @[Benes3.scala 38:27]
+  wire  _parsedindexvalue3_nextIndex_T_6 = _GEN_244 == 2'h2; // @[Benes3.scala 38:27]
+  wire  _parsedindexvalue3_nextIndex_T_8 = _GEN_244 == 2'h2 & _parsedindexvalue3_nextIndex_T_1; // @[Benes3.scala 38:36]
+  wire  _parsedindexvalue3_nextIndex_T_9 = _GEN_244 == 2'h3; // @[Benes3.scala 39:27]
+  wire  _parsedindexvalue3_nextIndex_T_11 = _GEN_244 == 2'h3 & _parsedindexvalue3_nextIndex_T_1; // @[Benes3.scala 39:36]
   wire  _parsedindexvalue3_nextIndex_T_14 = _parsedindexvalue3_nextIndex_T & parsedindexvalue3_boolArray__0; // @[Benes3.scala 40:36]
-  wire [1:0] _GEN_490 = {{1'd0}, parsedindexvalue3_first_stage}; // @[Benes3.scala 40:76]
-  wire [1:0] _parsedindexvalue3_nextIndex_T_16 = _GEN_490 + 2'h2; // @[Benes3.scala 40:76]
+  wire [1:0] _GEN_254 = {{1'd0}, parsedindexvalue3_first_stage}; // @[Benes3.scala 40:76]
+  wire [1:0] _parsedindexvalue3_nextIndex_T_16 = _GEN_254 + 2'h2; // @[Benes3.scala 40:76]
   wire  _parsedindexvalue3_nextIndex_T_19 = parsedindexvalue3_calculation & parsedindexvalue3_boolArray__0; // @[Benes3.scala 41:36]
   wire  _parsedindexvalue3_nextIndex_T_24 = _parsedindexvalue3_nextIndex_T_6 & parsedindexvalue3_boolArray__0; // @[Benes3.scala 42:36]
-  wire [1:0] _parsedindexvalue3_nextIndex_T_26 = _GEN_490 - 2'h2; // @[Benes3.scala 42:76]
+  wire [1:0] _parsedindexvalue3_nextIndex_T_26 = _GEN_254 - 2'h2; // @[Benes3.scala 42:76]
   wire  _parsedindexvalue3_nextIndex_T_29 = _parsedindexvalue3_nextIndex_T_9 & parsedindexvalue3_boolArray__0; // @[Benes3.scala 43:36]
   wire [1:0] _parsedindexvalue3_nextIndex_T_32 = _parsedindexvalue3_nextIndex_T_29 ? _parsedindexvalue3_nextIndex_T_26
      : {{1'd0}, parsedindexvalue3_first_stage}; // @[Mux.scala 101:16]
@@ -2154,9 +2154,9 @@ module Benes3(
     parsedindexvalue3_first_stage} : _parsedindexvalue3_nextIndex_T_37; // @[Mux.scala 101:16]
   wire [1:0] parsedindexvalue3_nextIndex = _parsedindexvalue3_nextIndex_T_2 ? {{1'd0}, parsedindexvalue3_first_stage} :
     _parsedindexvalue3_nextIndex_T_38; // @[Mux.scala 101:16]
-  wire [2:0] _GEN_59 = {{1'd0}, parsedindexvalue3_nextIndex}; // @[Benes3.scala 34:40]
-  wire [2:0] _GEN_64 = _GEN_59 % 3'h4; // @[Benes3.scala 34:40]
-  wire [1:0] parsedindexvalue3_calculation_1 = _GEN_64[1:0]; // @[Benes3.scala 34:40]
+  wire [2:0] _GEN_617 = {{1'd0}, parsedindexvalue3_nextIndex}; // @[Benes3.scala 34:40]
+  wire [2:0] _GEN_618 = _GEN_617 % 3'h4; // @[Benes3.scala 34:40]
+  wire [1:0] parsedindexvalue3_calculation_1 = _GEN_618[1:0]; // @[Benes3.scala 34:40]
   wire  _parsedindexvalue3_nextIndex_T_39 = parsedindexvalue3_calculation_1 == 2'h0; // @[Benes3.scala 36:27]
   wire  _parsedindexvalue3_nextIndex_T_40 = ~parsedindexvalue3_boolArray__1; // @[Benes3.scala 36:53]
   wire  _parsedindexvalue3_nextIndex_T_41 = parsedindexvalue3_calculation_1 == 2'h0 & ~parsedindexvalue3_boolArray__1; // @[Benes3.scala 36:36]
@@ -2217,27 +2217,27 @@ module Benes3(
   wire [15:0] _GEN_66 = 3'h1 == _T_30 ? io_i_data_bus2_0 : _GEN_61; // @[Benes3.scala 151:{44,44}]
   wire [15:0] _GEN_67 = 3'h2 == _T_30 ? io_i_data_bus2_0 : _GEN_62; // @[Benes3.scala 151:{44,44}]
   wire [15:0] _GEN_68 = 3'h3 == _T_30 ? io_i_data_bus2_0 : _GEN_63; // @[Benes3.scala 151:{44,44}]
-  wire  parsedindexvalue4_first_stage = io_i_mux_bus_0_3[0] & (~_GEN_4[0] | 1'h0 - 1'h1); // @[Benes3.scala 25:26]
+  wire  parsedindexvalue4_first_stage = io_i_mux_bus_0_3[0] & (~_GEN_584[0] | 1'h0 - 1'h1); // @[Benes3.scala 25:26]
   wire  parsedindexvalue4_boolArray__0 = io_i_mux_bus_0_3[1]; // @[Benes3.scala 29:92]
   wire  parsedindexvalue4_boolArray__1 = io_i_mux_bus_0_3[2]; // @[Benes3.scala 29:92]
-  wire [2:0] _GEN_69 = {{2'd0}, parsedindexvalue4_first_stage}; // @[Benes3.scala 34:40]
-  wire [2:0] _GEN_74 = _GEN_69 % 3'h4; // @[Benes3.scala 34:40]
-  wire  parsedindexvalue4_calculation = _GEN_74[0]; // @[Benes3.scala 34:40]
+  wire [2:0] _GEN_635 = {{2'd0}, parsedindexvalue4_first_stage}; // @[Benes3.scala 34:40]
+  wire [2:0] _GEN_636 = _GEN_635 % 3'h4; // @[Benes3.scala 34:40]
+  wire  parsedindexvalue4_calculation = _GEN_636[0]; // @[Benes3.scala 34:40]
   wire  _parsedindexvalue4_nextIndex_T = ~parsedindexvalue4_calculation; // @[Benes3.scala 36:27]
   wire  _parsedindexvalue4_nextIndex_T_1 = ~parsedindexvalue4_boolArray__0; // @[Benes3.scala 36:53]
   wire  _parsedindexvalue4_nextIndex_T_2 = ~parsedindexvalue4_calculation & ~parsedindexvalue4_boolArray__0; // @[Benes3.scala 36:36]
   wire  _parsedindexvalue4_nextIndex_T_5 = parsedindexvalue4_calculation & _parsedindexvalue4_nextIndex_T_1; // @[Benes3.scala 37:36]
-  wire [1:0] _GEN_520 = {{1'd0}, parsedindexvalue4_calculation}; // @[Benes3.scala 38:27]
-  wire  _parsedindexvalue4_nextIndex_T_6 = _GEN_520 == 2'h2; // @[Benes3.scala 38:27]
-  wire  _parsedindexvalue4_nextIndex_T_8 = _GEN_520 == 2'h2 & _parsedindexvalue4_nextIndex_T_1; // @[Benes3.scala 38:36]
-  wire  _parsedindexvalue4_nextIndex_T_9 = _GEN_520 == 2'h3; // @[Benes3.scala 39:27]
-  wire  _parsedindexvalue4_nextIndex_T_11 = _GEN_520 == 2'h3 & _parsedindexvalue4_nextIndex_T_1; // @[Benes3.scala 39:36]
+  wire [1:0] _GEN_404 = {{1'd0}, parsedindexvalue4_calculation}; // @[Benes3.scala 38:27]
+  wire  _parsedindexvalue4_nextIndex_T_6 = _GEN_404 == 2'h2; // @[Benes3.scala 38:27]
+  wire  _parsedindexvalue4_nextIndex_T_8 = _GEN_404 == 2'h2 & _parsedindexvalue4_nextIndex_T_1; // @[Benes3.scala 38:36]
+  wire  _parsedindexvalue4_nextIndex_T_9 = _GEN_404 == 2'h3; // @[Benes3.scala 39:27]
+  wire  _parsedindexvalue4_nextIndex_T_11 = _GEN_404 == 2'h3 & _parsedindexvalue4_nextIndex_T_1; // @[Benes3.scala 39:36]
   wire  _parsedindexvalue4_nextIndex_T_14 = _parsedindexvalue4_nextIndex_T & parsedindexvalue4_boolArray__0; // @[Benes3.scala 40:36]
-  wire [1:0] _GEN_522 = {{1'd0}, parsedindexvalue4_first_stage}; // @[Benes3.scala 40:76]
-  wire [1:0] _parsedindexvalue4_nextIndex_T_16 = _GEN_522 + 2'h2; // @[Benes3.scala 40:76]
+  wire [1:0] _GEN_414 = {{1'd0}, parsedindexvalue4_first_stage}; // @[Benes3.scala 40:76]
+  wire [1:0] _parsedindexvalue4_nextIndex_T_16 = _GEN_414 + 2'h2; // @[Benes3.scala 40:76]
   wire  _parsedindexvalue4_nextIndex_T_19 = parsedindexvalue4_calculation & parsedindexvalue4_boolArray__0; // @[Benes3.scala 41:36]
   wire  _parsedindexvalue4_nextIndex_T_24 = _parsedindexvalue4_nextIndex_T_6 & parsedindexvalue4_boolArray__0; // @[Benes3.scala 42:36]
-  wire [1:0] _parsedindexvalue4_nextIndex_T_26 = _GEN_522 - 2'h2; // @[Benes3.scala 42:76]
+  wire [1:0] _parsedindexvalue4_nextIndex_T_26 = _GEN_414 - 2'h2; // @[Benes3.scala 42:76]
   wire  _parsedindexvalue4_nextIndex_T_29 = _parsedindexvalue4_nextIndex_T_9 & parsedindexvalue4_boolArray__0; // @[Benes3.scala 43:36]
   wire [1:0] _parsedindexvalue4_nextIndex_T_32 = _parsedindexvalue4_nextIndex_T_29 ? _parsedindexvalue4_nextIndex_T_26
      : {{1'd0}, parsedindexvalue4_first_stage}; // @[Mux.scala 101:16]
@@ -2255,9 +2255,9 @@ module Benes3(
     parsedindexvalue4_first_stage} : _parsedindexvalue4_nextIndex_T_37; // @[Mux.scala 101:16]
   wire [1:0] parsedindexvalue4_nextIndex = _parsedindexvalue4_nextIndex_T_2 ? {{1'd0}, parsedindexvalue4_first_stage} :
     _parsedindexvalue4_nextIndex_T_38; // @[Mux.scala 101:16]
-  wire [2:0] _GEN_79 = {{1'd0}, parsedindexvalue4_nextIndex}; // @[Benes3.scala 34:40]
-  wire [2:0] _GEN_84 = _GEN_79 % 3'h4; // @[Benes3.scala 34:40]
-  wire [1:0] parsedindexvalue4_calculation_1 = _GEN_84[1:0]; // @[Benes3.scala 34:40]
+  wire [2:0] _GEN_637 = {{1'd0}, parsedindexvalue4_nextIndex}; // @[Benes3.scala 34:40]
+  wire [2:0] _GEN_638 = _GEN_637 % 3'h4; // @[Benes3.scala 34:40]
+  wire [1:0] parsedindexvalue4_calculation_1 = _GEN_638[1:0]; // @[Benes3.scala 34:40]
   wire  _parsedindexvalue4_nextIndex_T_39 = parsedindexvalue4_calculation_1 == 2'h0; // @[Benes3.scala 36:27]
   wire  _parsedindexvalue4_nextIndex_T_40 = ~parsedindexvalue4_boolArray__1; // @[Benes3.scala 36:53]
   wire  _parsedindexvalue4_nextIndex_T_41 = parsedindexvalue4_calculation_1 == 2'h0 & ~parsedindexvalue4_boolArray__1; // @[Benes3.scala 36:36]
@@ -2333,24 +2333,24 @@ module Benes3(
   wire  parsedindexvalue_first_stage_2 = io_i_mux_bus_1_0[0] ? 1'h0 : 1'h1; // @[Benes3.scala 25:26]
   wire  parsedindexvalue_boolArray_2_0 = io_i_mux_bus_1_0[1]; // @[Benes3.scala 29:92]
   wire  parsedindexvalue_boolArray_2_1 = io_i_mux_bus_1_0[2]; // @[Benes3.scala 29:92]
-  wire [2:0] _GEN_89 = {{2'd0}, parsedindexvalue_first_stage_2}; // @[Benes3.scala 34:40]
-  wire [2:0] _GEN_94 = _GEN_89 % 3'h4; // @[Benes3.scala 34:40]
-  wire  parsedindexvalue_calculation_4 = _GEN_94[0]; // @[Benes3.scala 34:40]
+  wire [2:0] _GEN_660 = {{2'd0}, parsedindexvalue_first_stage_2}; // @[Benes3.scala 34:40]
+  wire [2:0] _GEN_661 = _GEN_660 % 3'h4; // @[Benes3.scala 34:40]
+  wire  parsedindexvalue_calculation_4 = _GEN_661[0]; // @[Benes3.scala 34:40]
   wire  _parsedindexvalue_nextIndex_T_156 = ~parsedindexvalue_calculation_4; // @[Benes3.scala 36:27]
   wire  _parsedindexvalue_nextIndex_T_157 = ~parsedindexvalue_boolArray_2_0; // @[Benes3.scala 36:53]
   wire  _parsedindexvalue_nextIndex_T_158 = ~parsedindexvalue_calculation_4 & ~parsedindexvalue_boolArray_2_0; // @[Benes3.scala 36:36]
   wire  _parsedindexvalue_nextIndex_T_161 = parsedindexvalue_calculation_4 & _parsedindexvalue_nextIndex_T_157; // @[Benes3.scala 37:36]
-  wire [1:0] _GEN_560 = {{1'd0}, parsedindexvalue_calculation_4}; // @[Benes3.scala 38:27]
-  wire  _parsedindexvalue_nextIndex_T_162 = _GEN_560 == 2'h2; // @[Benes3.scala 38:27]
-  wire  _parsedindexvalue_nextIndex_T_164 = _GEN_560 == 2'h2 & _parsedindexvalue_nextIndex_T_157; // @[Benes3.scala 38:36]
-  wire  _parsedindexvalue_nextIndex_T_165 = _GEN_560 == 2'h3; // @[Benes3.scala 39:27]
-  wire  _parsedindexvalue_nextIndex_T_167 = _GEN_560 == 2'h3 & _parsedindexvalue_nextIndex_T_157; // @[Benes3.scala 39:36]
+  wire [1:0] _GEN_472 = {{1'd0}, parsedindexvalue_calculation_4}; // @[Benes3.scala 38:27]
+  wire  _parsedindexvalue_nextIndex_T_162 = _GEN_472 == 2'h2; // @[Benes3.scala 38:27]
+  wire  _parsedindexvalue_nextIndex_T_164 = _GEN_472 == 2'h2 & _parsedindexvalue_nextIndex_T_157; // @[Benes3.scala 38:36]
+  wire  _parsedindexvalue_nextIndex_T_165 = _GEN_472 == 2'h3; // @[Benes3.scala 39:27]
+  wire  _parsedindexvalue_nextIndex_T_167 = _GEN_472 == 2'h3 & _parsedindexvalue_nextIndex_T_157; // @[Benes3.scala 39:36]
   wire  _parsedindexvalue_nextIndex_T_170 = _parsedindexvalue_nextIndex_T_156 & parsedindexvalue_boolArray_2_0; // @[Benes3.scala 40:36]
-  wire [1:0] _GEN_562 = {{1'd0}, parsedindexvalue_first_stage_2}; // @[Benes3.scala 40:76]
-  wire [1:0] _parsedindexvalue_nextIndex_T_172 = _GEN_562 + 2'h2; // @[Benes3.scala 40:76]
+  wire [1:0] _GEN_474 = {{1'd0}, parsedindexvalue_first_stage_2}; // @[Benes3.scala 40:76]
+  wire [1:0] _parsedindexvalue_nextIndex_T_172 = _GEN_474 + 2'h2; // @[Benes3.scala 40:76]
   wire  _parsedindexvalue_nextIndex_T_175 = parsedindexvalue_calculation_4 & parsedindexvalue_boolArray_2_0; // @[Benes3.scala 41:36]
   wire  _parsedindexvalue_nextIndex_T_180 = _parsedindexvalue_nextIndex_T_162 & parsedindexvalue_boolArray_2_0; // @[Benes3.scala 42:36]
-  wire [1:0] _parsedindexvalue_nextIndex_T_182 = _GEN_562 - 2'h2; // @[Benes3.scala 42:76]
+  wire [1:0] _parsedindexvalue_nextIndex_T_182 = _GEN_474 - 2'h2; // @[Benes3.scala 42:76]
   wire  _parsedindexvalue_nextIndex_T_185 = _parsedindexvalue_nextIndex_T_165 & parsedindexvalue_boolArray_2_0; // @[Benes3.scala 43:36]
   wire [1:0] _parsedindexvalue_nextIndex_T_188 = _parsedindexvalue_nextIndex_T_185 ? _parsedindexvalue_nextIndex_T_182
      : {{1'd0}, parsedindexvalue_first_stage_2}; // @[Mux.scala 101:16]
@@ -2368,9 +2368,9 @@ module Benes3(
     parsedindexvalue_first_stage_2} : _parsedindexvalue_nextIndex_T_193; // @[Mux.scala 101:16]
   wire [1:0] parsedindexvalue_nextIndex_4 = _parsedindexvalue_nextIndex_T_158 ? {{1'd0}, parsedindexvalue_first_stage_2}
      : _parsedindexvalue_nextIndex_T_194; // @[Mux.scala 101:16]
-  wire [2:0] _GEN_99 = {{1'd0}, parsedindexvalue_nextIndex_4}; // @[Benes3.scala 34:40]
-  wire [2:0] _GEN_104 = _GEN_99 % 3'h4; // @[Benes3.scala 34:40]
-  wire [1:0] parsedindexvalue_calculation_5 = _GEN_104[1:0]; // @[Benes3.scala 34:40]
+  wire [2:0] _GEN_662 = {{1'd0}, parsedindexvalue_nextIndex_4}; // @[Benes3.scala 34:40]
+  wire [2:0] _GEN_663 = _GEN_662 % 3'h4; // @[Benes3.scala 34:40]
+  wire [1:0] parsedindexvalue_calculation_5 = _GEN_663[1:0]; // @[Benes3.scala 34:40]
   wire  _parsedindexvalue_nextIndex_T_195 = parsedindexvalue_calculation_5 == 2'h0; // @[Benes3.scala 36:27]
   wire  _parsedindexvalue_nextIndex_T_196 = ~parsedindexvalue_boolArray_2_1; // @[Benes3.scala 36:53]
   wire  _parsedindexvalue_nextIndex_T_197 = parsedindexvalue_calculation_5 == 2'h0 & ~parsedindexvalue_boolArray_2_1; // @[Benes3.scala 36:36]
@@ -2434,24 +2434,24 @@ module Benes3(
   wire  parsedindexvalue2_first_stage_4 = io_i_mux_bus_1_1[0] ? 1'h0 : 1'h1; // @[Benes3.scala 25:26]
   wire  parsedindexvalue2_boolArray_4_0 = io_i_mux_bus_1_1[1]; // @[Benes3.scala 29:92]
   wire  parsedindexvalue2_boolArray_4_1 = io_i_mux_bus_1_1[2]; // @[Benes3.scala 29:92]
-  wire [2:0] _GEN_109 = {{2'd0}, parsedindexvalue2_first_stage_4}; // @[Benes3.scala 34:40]
-  wire [2:0] _GEN_114 = _GEN_109 % 3'h4; // @[Benes3.scala 34:40]
-  wire  parsedindexvalue2_calculation_8 = _GEN_114[0]; // @[Benes3.scala 34:40]
+  wire [2:0] _GEN_675 = {{2'd0}, parsedindexvalue2_first_stage_4}; // @[Benes3.scala 34:40]
+  wire [2:0] _GEN_676 = _GEN_675 % 3'h4; // @[Benes3.scala 34:40]
+  wire  parsedindexvalue2_calculation_8 = _GEN_676[0]; // @[Benes3.scala 34:40]
   wire  _parsedindexvalue2_nextIndex_T_312 = ~parsedindexvalue2_calculation_8; // @[Benes3.scala 36:27]
   wire  _parsedindexvalue2_nextIndex_T_313 = ~parsedindexvalue2_boolArray_4_0; // @[Benes3.scala 36:53]
   wire  _parsedindexvalue2_nextIndex_T_314 = ~parsedindexvalue2_calculation_8 & ~parsedindexvalue2_boolArray_4_0; // @[Benes3.scala 36:36]
   wire  _parsedindexvalue2_nextIndex_T_317 = parsedindexvalue2_calculation_8 & _parsedindexvalue2_nextIndex_T_313; // @[Benes3.scala 37:36]
-  wire [1:0] _GEN_584 = {{1'd0}, parsedindexvalue2_calculation_8}; // @[Benes3.scala 38:27]
-  wire  _parsedindexvalue2_nextIndex_T_318 = _GEN_584 == 2'h2; // @[Benes3.scala 38:27]
-  wire  _parsedindexvalue2_nextIndex_T_320 = _GEN_584 == 2'h2 & _parsedindexvalue2_nextIndex_T_313; // @[Benes3.scala 38:36]
-  wire  _parsedindexvalue2_nextIndex_T_321 = _GEN_584 == 2'h3; // @[Benes3.scala 39:27]
-  wire  _parsedindexvalue2_nextIndex_T_323 = _GEN_584 == 2'h3 & _parsedindexvalue2_nextIndex_T_313; // @[Benes3.scala 39:36]
+  wire [1:0] _GEN_496 = {{1'd0}, parsedindexvalue2_calculation_8}; // @[Benes3.scala 38:27]
+  wire  _parsedindexvalue2_nextIndex_T_318 = _GEN_496 == 2'h2; // @[Benes3.scala 38:27]
+  wire  _parsedindexvalue2_nextIndex_T_320 = _GEN_496 == 2'h2 & _parsedindexvalue2_nextIndex_T_313; // @[Benes3.scala 38:36]
+  wire  _parsedindexvalue2_nextIndex_T_321 = _GEN_496 == 2'h3; // @[Benes3.scala 39:27]
+  wire  _parsedindexvalue2_nextIndex_T_323 = _GEN_496 == 2'h3 & _parsedindexvalue2_nextIndex_T_313; // @[Benes3.scala 39:36]
   wire  _parsedindexvalue2_nextIndex_T_326 = _parsedindexvalue2_nextIndex_T_312 & parsedindexvalue2_boolArray_4_0; // @[Benes3.scala 40:36]
-  wire [1:0] _GEN_586 = {{1'd0}, parsedindexvalue2_first_stage_4}; // @[Benes3.scala 40:76]
-  wire [1:0] _parsedindexvalue2_nextIndex_T_328 = _GEN_586 + 2'h2; // @[Benes3.scala 40:76]
+  wire [1:0] _GEN_498 = {{1'd0}, parsedindexvalue2_first_stage_4}; // @[Benes3.scala 40:76]
+  wire [1:0] _parsedindexvalue2_nextIndex_T_328 = _GEN_498 + 2'h2; // @[Benes3.scala 40:76]
   wire  _parsedindexvalue2_nextIndex_T_331 = parsedindexvalue2_calculation_8 & parsedindexvalue2_boolArray_4_0; // @[Benes3.scala 41:36]
   wire  _parsedindexvalue2_nextIndex_T_336 = _parsedindexvalue2_nextIndex_T_318 & parsedindexvalue2_boolArray_4_0; // @[Benes3.scala 42:36]
-  wire [1:0] _parsedindexvalue2_nextIndex_T_338 = _GEN_586 - 2'h2; // @[Benes3.scala 42:76]
+  wire [1:0] _parsedindexvalue2_nextIndex_T_338 = _GEN_498 - 2'h2; // @[Benes3.scala 42:76]
   wire  _parsedindexvalue2_nextIndex_T_341 = _parsedindexvalue2_nextIndex_T_321 & parsedindexvalue2_boolArray_4_0; // @[Benes3.scala 43:36]
   wire [1:0] _parsedindexvalue2_nextIndex_T_344 = _parsedindexvalue2_nextIndex_T_341 ?
     _parsedindexvalue2_nextIndex_T_338 : {{1'd0}, parsedindexvalue2_first_stage_4}; // @[Mux.scala 101:16]
@@ -2469,9 +2469,9 @@ module Benes3(
     parsedindexvalue2_first_stage_4} : _parsedindexvalue2_nextIndex_T_349; // @[Mux.scala 101:16]
   wire [1:0] parsedindexvalue2_nextIndex_8 = _parsedindexvalue2_nextIndex_T_314 ? {{1'd0},
     parsedindexvalue2_first_stage_4} : _parsedindexvalue2_nextIndex_T_350; // @[Mux.scala 101:16]
-  wire [2:0] _GEN_119 = {{1'd0}, parsedindexvalue2_nextIndex_8}; // @[Benes3.scala 34:40]
-  wire [2:0] _GEN_124 = _GEN_119 % 3'h4; // @[Benes3.scala 34:40]
-  wire [1:0] parsedindexvalue2_calculation_9 = _GEN_124[1:0]; // @[Benes3.scala 34:40]
+  wire [2:0] _GEN_677 = {{1'd0}, parsedindexvalue2_nextIndex_8}; // @[Benes3.scala 34:40]
+  wire [2:0] _GEN_678 = _GEN_677 % 3'h4; // @[Benes3.scala 34:40]
+  wire [1:0] parsedindexvalue2_calculation_9 = _GEN_678[1:0]; // @[Benes3.scala 34:40]
   wire  _parsedindexvalue2_nextIndex_T_351 = parsedindexvalue2_calculation_9 == 2'h0; // @[Benes3.scala 36:27]
   wire  _parsedindexvalue2_nextIndex_T_352 = ~parsedindexvalue2_boolArray_4_1; // @[Benes3.scala 36:53]
   wire  _parsedindexvalue2_nextIndex_T_353 = parsedindexvalue2_calculation_9 == 2'h0 & ~parsedindexvalue2_boolArray_4_1; // @[Benes3.scala 36:36]
@@ -2533,24 +2533,24 @@ module Benes3(
   wire  parsedindexvalue3_first_stage_3 = io_i_mux_bus_1_2[0] ? 1'h0 : 1'h1; // @[Benes3.scala 25:26]
   wire  parsedindexvalue3_boolArray_3_0 = io_i_mux_bus_1_2[1]; // @[Benes3.scala 29:92]
   wire  parsedindexvalue3_boolArray_3_1 = io_i_mux_bus_1_2[2]; // @[Benes3.scala 29:92]
-  wire [2:0] _GEN_129 = {{2'd0}, parsedindexvalue3_first_stage_3}; // @[Benes3.scala 34:40]
-  wire [2:0] _GEN_134 = _GEN_129 % 3'h4; // @[Benes3.scala 34:40]
-  wire  parsedindexvalue3_calculation_6 = _GEN_134[0]; // @[Benes3.scala 34:40]
+  wire [2:0] _GEN_690 = {{2'd0}, parsedindexvalue3_first_stage_3}; // @[Benes3.scala 34:40]
+  wire [2:0] _GEN_691 = _GEN_690 % 3'h4; // @[Benes3.scala 34:40]
+  wire  parsedindexvalue3_calculation_6 = _GEN_691[0]; // @[Benes3.scala 34:40]
   wire  _parsedindexvalue3_nextIndex_T_234 = ~parsedindexvalue3_calculation_6; // @[Benes3.scala 36:27]
   wire  _parsedindexvalue3_nextIndex_T_235 = ~parsedindexvalue3_boolArray_3_0; // @[Benes3.scala 36:53]
   wire  _parsedindexvalue3_nextIndex_T_236 = ~parsedindexvalue3_calculation_6 & ~parsedindexvalue3_boolArray_3_0; // @[Benes3.scala 36:36]
   wire  _parsedindexvalue3_nextIndex_T_239 = parsedindexvalue3_calculation_6 & _parsedindexvalue3_nextIndex_T_235; // @[Benes3.scala 37:36]
-  wire [1:0] _GEN_608 = {{1'd0}, parsedindexvalue3_calculation_6}; // @[Benes3.scala 38:27]
-  wire  _parsedindexvalue3_nextIndex_T_240 = _GEN_608 == 2'h2; // @[Benes3.scala 38:27]
-  wire  _parsedindexvalue3_nextIndex_T_242 = _GEN_608 == 2'h2 & _parsedindexvalue3_nextIndex_T_235; // @[Benes3.scala 38:36]
-  wire  _parsedindexvalue3_nextIndex_T_243 = _GEN_608 == 2'h3; // @[Benes3.scala 39:27]
-  wire  _parsedindexvalue3_nextIndex_T_245 = _GEN_608 == 2'h3 & _parsedindexvalue3_nextIndex_T_235; // @[Benes3.scala 39:36]
+  wire [1:0] _GEN_520 = {{1'd0}, parsedindexvalue3_calculation_6}; // @[Benes3.scala 38:27]
+  wire  _parsedindexvalue3_nextIndex_T_240 = _GEN_520 == 2'h2; // @[Benes3.scala 38:27]
+  wire  _parsedindexvalue3_nextIndex_T_242 = _GEN_520 == 2'h2 & _parsedindexvalue3_nextIndex_T_235; // @[Benes3.scala 38:36]
+  wire  _parsedindexvalue3_nextIndex_T_243 = _GEN_520 == 2'h3; // @[Benes3.scala 39:27]
+  wire  _parsedindexvalue3_nextIndex_T_245 = _GEN_520 == 2'h3 & _parsedindexvalue3_nextIndex_T_235; // @[Benes3.scala 39:36]
   wire  _parsedindexvalue3_nextIndex_T_248 = _parsedindexvalue3_nextIndex_T_234 & parsedindexvalue3_boolArray_3_0; // @[Benes3.scala 40:36]
-  wire [1:0] _GEN_610 = {{1'd0}, parsedindexvalue3_first_stage_3}; // @[Benes3.scala 40:76]
-  wire [1:0] _parsedindexvalue3_nextIndex_T_250 = _GEN_610 + 2'h2; // @[Benes3.scala 40:76]
+  wire [1:0] _GEN_522 = {{1'd0}, parsedindexvalue3_first_stage_3}; // @[Benes3.scala 40:76]
+  wire [1:0] _parsedindexvalue3_nextIndex_T_250 = _GEN_522 + 2'h2; // @[Benes3.scala 40:76]
   wire  _parsedindexvalue3_nextIndex_T_253 = parsedindexvalue3_calculation_6 & parsedindexvalue3_boolArray_3_0; // @[Benes3.scala 41:36]
   wire  _parsedindexvalue3_nextIndex_T_258 = _parsedindexvalue3_nextIndex_T_240 & parsedindexvalue3_boolArray_3_0; // @[Benes3.scala 42:36]
-  wire [1:0] _parsedindexvalue3_nextIndex_T_260 = _GEN_610 - 2'h2; // @[Benes3.scala 42:76]
+  wire [1:0] _parsedindexvalue3_nextIndex_T_260 = _GEN_522 - 2'h2; // @[Benes3.scala 42:76]
   wire  _parsedindexvalue3_nextIndex_T_263 = _parsedindexvalue3_nextIndex_T_243 & parsedindexvalue3_boolArray_3_0; // @[Benes3.scala 43:36]
   wire [1:0] _parsedindexvalue3_nextIndex_T_266 = _parsedindexvalue3_nextIndex_T_263 ?
     _parsedindexvalue3_nextIndex_T_260 : {{1'd0}, parsedindexvalue3_first_stage_3}; // @[Mux.scala 101:16]
@@ -2568,9 +2568,9 @@ module Benes3(
     parsedindexvalue3_first_stage_3} : _parsedindexvalue3_nextIndex_T_271; // @[Mux.scala 101:16]
   wire [1:0] parsedindexvalue3_nextIndex_6 = _parsedindexvalue3_nextIndex_T_236 ? {{1'd0},
     parsedindexvalue3_first_stage_3} : _parsedindexvalue3_nextIndex_T_272; // @[Mux.scala 101:16]
-  wire [2:0] _GEN_139 = {{1'd0}, parsedindexvalue3_nextIndex_6}; // @[Benes3.scala 34:40]
-  wire [2:0] _GEN_144 = _GEN_139 % 3'h4; // @[Benes3.scala 34:40]
-  wire [1:0] parsedindexvalue3_calculation_7 = _GEN_144[1:0]; // @[Benes3.scala 34:40]
+  wire [2:0] _GEN_692 = {{1'd0}, parsedindexvalue3_nextIndex_6}; // @[Benes3.scala 34:40]
+  wire [2:0] _GEN_693 = _GEN_692 % 3'h4; // @[Benes3.scala 34:40]
+  wire [1:0] parsedindexvalue3_calculation_7 = _GEN_693[1:0]; // @[Benes3.scala 34:40]
   wire  _parsedindexvalue3_nextIndex_T_273 = parsedindexvalue3_calculation_7 == 2'h0; // @[Benes3.scala 36:27]
   wire  _parsedindexvalue3_nextIndex_T_274 = ~parsedindexvalue3_boolArray_3_1; // @[Benes3.scala 36:53]
   wire  _parsedindexvalue3_nextIndex_T_275 = parsedindexvalue3_calculation_7 == 2'h0 & ~parsedindexvalue3_boolArray_3_1; // @[Benes3.scala 36:36]
@@ -2629,9 +2629,9 @@ module Benes3(
   wire [1:0] parsedindexvalue_first_stage_4 = io_i_mux_bus_2_0[0] ? 2'h3 : 2'h2; // @[Benes3.scala 25:26]
   wire  parsedindexvalue_boolArray_4_0 = io_i_mux_bus_2_0[1]; // @[Benes3.scala 29:92]
   wire  parsedindexvalue_boolArray_4_1 = io_i_mux_bus_2_0[2]; // @[Benes3.scala 29:92]
-  wire [2:0] _GEN_149 = {{1'd0}, parsedindexvalue_first_stage_4}; // @[Benes3.scala 34:40]
-  wire [2:0] _GEN_154 = _GEN_149 % 3'h4; // @[Benes3.scala 34:40]
-  wire [1:0] parsedindexvalue_calculation_8 = _GEN_154[1:0]; // @[Benes3.scala 34:40]
+  wire [2:0] _GEN_730 = {{1'd0}, parsedindexvalue_first_stage_4}; // @[Benes3.scala 34:40]
+  wire [2:0] _GEN_731 = _GEN_730 % 3'h4; // @[Benes3.scala 34:40]
+  wire [1:0] parsedindexvalue_calculation_8 = _GEN_731[1:0]; // @[Benes3.scala 34:40]
   wire  _parsedindexvalue_nextIndex_T_312 = parsedindexvalue_calculation_8 == 2'h0; // @[Benes3.scala 36:27]
   wire  _parsedindexvalue_nextIndex_T_313 = ~parsedindexvalue_boolArray_4_0; // @[Benes3.scala 36:53]
   wire  _parsedindexvalue_nextIndex_T_314 = parsedindexvalue_calculation_8 == 2'h0 & ~parsedindexvalue_boolArray_4_0; // @[Benes3.scala 36:36]
@@ -2663,9 +2663,9 @@ module Benes3(
     _parsedindexvalue_nextIndex_T_349; // @[Mux.scala 101:16]
   wire [1:0] parsedindexvalue_nextIndex_8 = _parsedindexvalue_nextIndex_T_314 ? parsedindexvalue_first_stage_4 :
     _parsedindexvalue_nextIndex_T_350; // @[Mux.scala 101:16]
-  wire [2:0] _GEN_159 = {{1'd0}, parsedindexvalue_nextIndex_8}; // @[Benes3.scala 34:40]
-  wire [2:0] _GEN_164 = _GEN_159 % 3'h4; // @[Benes3.scala 34:40]
-  wire [1:0] parsedindexvalue_calculation_9 = _GEN_164[1:0]; // @[Benes3.scala 34:40]
+  wire [2:0] _GEN_732 = {{1'd0}, parsedindexvalue_nextIndex_8}; // @[Benes3.scala 34:40]
+  wire [2:0] _GEN_733 = _GEN_732 % 3'h4; // @[Benes3.scala 34:40]
+  wire [1:0] parsedindexvalue_calculation_9 = _GEN_733[1:0]; // @[Benes3.scala 34:40]
   wire  _parsedindexvalue_nextIndex_T_351 = parsedindexvalue_calculation_9 == 2'h0; // @[Benes3.scala 36:27]
   wire  _parsedindexvalue_nextIndex_T_352 = ~parsedindexvalue_boolArray_4_1; // @[Benes3.scala 36:53]
   wire  _parsedindexvalue_nextIndex_T_353 = parsedindexvalue_calculation_9 == 2'h0 & ~parsedindexvalue_boolArray_4_1; // @[Benes3.scala 36:36]
@@ -2728,9 +2728,9 @@ module Benes3(
   wire [1:0] parsedindexvalue2_first_stage_8 = io_i_mux_bus_2_1[0] ? 2'h3 : 2'h2; // @[Benes3.scala 25:26]
   wire  parsedindexvalue2_boolArray_8_0 = io_i_mux_bus_2_1[1]; // @[Benes3.scala 29:92]
   wire  parsedindexvalue2_boolArray_8_1 = io_i_mux_bus_2_1[2]; // @[Benes3.scala 29:92]
-  wire [2:0] _GEN_165 = {{1'd0}, parsedindexvalue2_first_stage_8}; // @[Benes3.scala 34:40]
-  wire [2:0] _GEN_166 = _GEN_165 % 3'h4; // @[Benes3.scala 34:40]
-  wire [1:0] parsedindexvalue2_calculation_16 = _GEN_166[1:0]; // @[Benes3.scala 34:40]
+  wire [2:0] _GEN_742 = {{1'd0}, parsedindexvalue2_first_stage_8}; // @[Benes3.scala 34:40]
+  wire [2:0] _GEN_743 = _GEN_742 % 3'h4; // @[Benes3.scala 34:40]
+  wire [1:0] parsedindexvalue2_calculation_16 = _GEN_743[1:0]; // @[Benes3.scala 34:40]
   wire  _parsedindexvalue2_nextIndex_T_624 = parsedindexvalue2_calculation_16 == 2'h0; // @[Benes3.scala 36:27]
   wire  _parsedindexvalue2_nextIndex_T_625 = ~parsedindexvalue2_boolArray_8_0; // @[Benes3.scala 36:53]
   wire  _parsedindexvalue2_nextIndex_T_626 = parsedindexvalue2_calculation_16 == 2'h0 & ~parsedindexvalue2_boolArray_8_0
@@ -2766,9 +2766,9 @@ module Benes3(
      : _parsedindexvalue2_nextIndex_T_661; // @[Mux.scala 101:16]
   wire [1:0] parsedindexvalue2_nextIndex_16 = _parsedindexvalue2_nextIndex_T_626 ? parsedindexvalue2_first_stage_8 :
     _parsedindexvalue2_nextIndex_T_662; // @[Mux.scala 101:16]
-  wire [2:0] _GEN_167 = {{1'd0}, parsedindexvalue2_nextIndex_16}; // @[Benes3.scala 34:40]
-  wire [2:0] _GEN_168 = _GEN_167 % 3'h4; // @[Benes3.scala 34:40]
-  wire [1:0] parsedindexvalue2_calculation_17 = _GEN_168[1:0]; // @[Benes3.scala 34:40]
+  wire [2:0] _GEN_744 = {{1'd0}, parsedindexvalue2_nextIndex_16}; // @[Benes3.scala 34:40]
+  wire [2:0] _GEN_745 = _GEN_744 % 3'h4; // @[Benes3.scala 34:40]
+  wire [1:0] parsedindexvalue2_calculation_17 = _GEN_745[1:0]; // @[Benes3.scala 34:40]
   wire  _parsedindexvalue2_nextIndex_T_663 = parsedindexvalue2_calculation_17 == 2'h0; // @[Benes3.scala 36:27]
   wire  _parsedindexvalue2_nextIndex_T_664 = ~parsedindexvalue2_boolArray_8_1; // @[Benes3.scala 36:53]
   wire  _parsedindexvalue2_nextIndex_T_665 = parsedindexvalue2_calculation_17 == 2'h0 & ~parsedindexvalue2_boolArray_8_1
@@ -2832,9 +2832,9 @@ module Benes3(
   wire [1:0] parsedindexvalue_first_stage_6 = io_i_mux_bus_3_0[0] ? _parsedindexvalue_first_stage_T_55 : 2'h3; // @[Benes3.scala 25:26]
   wire  parsedindexvalue_boolArray_6_0 = io_i_mux_bus_3_0[1]; // @[Benes3.scala 29:92]
   wire  parsedindexvalue_boolArray_6_1 = io_i_mux_bus_3_0[2]; // @[Benes3.scala 29:92]
-  wire [2:0] _GEN_169 = {{1'd0}, parsedindexvalue_first_stage_6}; // @[Benes3.scala 34:40]
-  wire [2:0] _GEN_170 = _GEN_169 % 3'h4; // @[Benes3.scala 34:40]
-  wire [1:0] parsedindexvalue_calculation_12 = _GEN_170[1:0]; // @[Benes3.scala 34:40]
+  wire [2:0] _GEN_780 = {{1'd0}, parsedindexvalue_first_stage_6}; // @[Benes3.scala 34:40]
+  wire [2:0] _GEN_781 = _GEN_780 % 3'h4; // @[Benes3.scala 34:40]
+  wire [1:0] parsedindexvalue_calculation_12 = _GEN_781[1:0]; // @[Benes3.scala 34:40]
   wire  _parsedindexvalue_nextIndex_T_468 = parsedindexvalue_calculation_12 == 2'h0; // @[Benes3.scala 36:27]
   wire  _parsedindexvalue_nextIndex_T_469 = ~parsedindexvalue_boolArray_6_0; // @[Benes3.scala 36:53]
   wire  _parsedindexvalue_nextIndex_T_470 = parsedindexvalue_calculation_12 == 2'h0 & ~parsedindexvalue_boolArray_6_0; // @[Benes3.scala 36:36]
@@ -2866,9 +2866,9 @@ module Benes3(
     _parsedindexvalue_nextIndex_T_505; // @[Mux.scala 101:16]
   wire [1:0] parsedindexvalue_nextIndex_12 = _parsedindexvalue_nextIndex_T_470 ? parsedindexvalue_first_stage_6 :
     _parsedindexvalue_nextIndex_T_506; // @[Mux.scala 101:16]
-  wire [2:0] _GEN_171 = {{1'd0}, parsedindexvalue_nextIndex_12}; // @[Benes3.scala 34:40]
-  wire [2:0] _GEN_172 = _GEN_171 % 3'h4; // @[Benes3.scala 34:40]
-  wire [1:0] parsedindexvalue_calculation_13 = _GEN_172[1:0]; // @[Benes3.scala 34:40]
+  wire [2:0] _GEN_782 = {{1'd0}, parsedindexvalue_nextIndex_12}; // @[Benes3.scala 34:40]
+  wire [2:0] _GEN_783 = _GEN_782 % 3'h4; // @[Benes3.scala 34:40]
+  wire [1:0] parsedindexvalue_calculation_13 = _GEN_783[1:0]; // @[Benes3.scala 34:40]
   wire  _parsedindexvalue_nextIndex_T_507 = parsedindexvalue_calculation_13 == 2'h0; // @[Benes3.scala 36:27]
   wire  _parsedindexvalue_nextIndex_T_508 = ~parsedindexvalue_boolArray_6_1; // @[Benes3.scala 36:53]
   wire  _parsedindexvalue_nextIndex_T_509 = parsedindexvalue_calculation_13 == 2'h0 & ~parsedindexvalue_boolArray_6_1; // @[Benes3.scala 36:36]
@@ -3729,133 +3729,133 @@ module FlexDPU(
   wire [31:0] MuxWrapper_0_Omuxes_0_0 = MuxesWrapper_io_Omuxes_0_0; // @[FlexDPU.scala 114:{33,33}]
   wire [3:0] _FDPE_0_i_mux_bus_0_0_rev_T_2 = {MuxWrapper_0_Omuxes_0_0[0], 3'h0}; // @[FlexDPU.scala 64:35]
   wire [31:0] _FDPE_0_i_mux_bus_0_0_rev_T_4 = {{1'd0}, MuxWrapper_0_Omuxes_0_0[31:1]}; // @[FlexDPU.scala 64:24]
-  wire [2:0] _GEN_60 = {_FDPE_0_i_mux_bus_0_0_rev_T_4[0], 2'h0}; // @[FlexDPU.scala 64:35]
-  wire [3:0] _FDPE_0_i_mux_bus_0_0_rev_T_6 = {{1'd0}, _GEN_60}; // @[FlexDPU.scala 64:35]
+  wire [2:0] _GEN_41 = {_FDPE_0_i_mux_bus_0_0_rev_T_4[0], 2'h0}; // @[FlexDPU.scala 64:35]
+  wire [3:0] _FDPE_0_i_mux_bus_0_0_rev_T_6 = {{1'd0}, _GEN_41}; // @[FlexDPU.scala 64:35]
   wire [3:0] _FDPE_0_i_mux_bus_0_0_rev_T_7 = _FDPE_0_i_mux_bus_0_0_rev_T_2 | _FDPE_0_i_mux_bus_0_0_rev_T_6; // @[FlexDPU.scala 64:17]
   wire [31:0] _FDPE_0_i_mux_bus_0_0_rev_T_8 = {{2'd0}, MuxWrapper_0_Omuxes_0_0[31:2]}; // @[FlexDPU.scala 64:24]
   wire [1:0] _FDPE_0_i_mux_bus_0_0_rev_T_10 = {_FDPE_0_i_mux_bus_0_0_rev_T_8[0], 1'h0}; // @[FlexDPU.scala 64:35]
-  wire [3:0] _GEN_62 = {{2'd0}, _FDPE_0_i_mux_bus_0_0_rev_T_10}; // @[FlexDPU.scala 64:17]
-  wire [3:0] _FDPE_0_i_mux_bus_0_0_rev_T_11 = _FDPE_0_i_mux_bus_0_0_rev_T_7 | _GEN_62; // @[FlexDPU.scala 64:17]
+  wire [3:0] _GEN_43 = {{2'd0}, _FDPE_0_i_mux_bus_0_0_rev_T_10}; // @[FlexDPU.scala 64:17]
+  wire [3:0] _FDPE_0_i_mux_bus_0_0_rev_T_11 = _FDPE_0_i_mux_bus_0_0_rev_T_7 | _GEN_43; // @[FlexDPU.scala 64:17]
   wire [31:0] _FDPE_0_i_mux_bus_0_0_rev_T_12 = {{3'd0}, MuxWrapper_0_Omuxes_0_0[31:3]}; // @[FlexDPU.scala 64:24]
   wire [1:0] _FDPE_0_i_mux_bus_0_0_rev_T_14 = {{1'd0}, _FDPE_0_i_mux_bus_0_0_rev_T_12[0]}; // @[FlexDPU.scala 64:35]
-  wire [3:0] _GEN_64 = {{2'd0}, _FDPE_0_i_mux_bus_0_0_rev_T_14}; // @[FlexDPU.scala 64:17]
+  wire [3:0] _GEN_45 = {{2'd0}, _FDPE_0_i_mux_bus_0_0_rev_T_14}; // @[FlexDPU.scala 64:17]
   wire [31:0] MuxWrapper_0_Omuxes_0_1 = MuxesWrapper_io_Omuxes_0_1; // @[FlexDPU.scala 114:{33,33}]
   wire [3:0] _FDPE_0_i_mux_bus_0_1_rev_T_2 = {MuxWrapper_0_Omuxes_0_1[0], 3'h0}; // @[FlexDPU.scala 64:35]
   wire [31:0] _FDPE_0_i_mux_bus_0_1_rev_T_4 = {{1'd0}, MuxWrapper_0_Omuxes_0_1[31:1]}; // @[FlexDPU.scala 64:24]
-  wire [2:0] _GEN_66 = {_FDPE_0_i_mux_bus_0_1_rev_T_4[0], 2'h0}; // @[FlexDPU.scala 64:35]
-  wire [3:0] _FDPE_0_i_mux_bus_0_1_rev_T_6 = {{1'd0}, _GEN_66}; // @[FlexDPU.scala 64:35]
+  wire [2:0] _GEN_47 = {_FDPE_0_i_mux_bus_0_1_rev_T_4[0], 2'h0}; // @[FlexDPU.scala 64:35]
+  wire [3:0] _FDPE_0_i_mux_bus_0_1_rev_T_6 = {{1'd0}, _GEN_47}; // @[FlexDPU.scala 64:35]
   wire [3:0] _FDPE_0_i_mux_bus_0_1_rev_T_7 = _FDPE_0_i_mux_bus_0_1_rev_T_2 | _FDPE_0_i_mux_bus_0_1_rev_T_6; // @[FlexDPU.scala 64:17]
   wire [31:0] _FDPE_0_i_mux_bus_0_1_rev_T_8 = {{2'd0}, MuxWrapper_0_Omuxes_0_1[31:2]}; // @[FlexDPU.scala 64:24]
   wire [1:0] _FDPE_0_i_mux_bus_0_1_rev_T_10 = {_FDPE_0_i_mux_bus_0_1_rev_T_8[0], 1'h0}; // @[FlexDPU.scala 64:35]
-  wire [3:0] _GEN_68 = {{2'd0}, _FDPE_0_i_mux_bus_0_1_rev_T_10}; // @[FlexDPU.scala 64:17]
-  wire [3:0] _FDPE_0_i_mux_bus_0_1_rev_T_11 = _FDPE_0_i_mux_bus_0_1_rev_T_7 | _GEN_68; // @[FlexDPU.scala 64:17]
+  wire [3:0] _GEN_56 = {{2'd0}, _FDPE_0_i_mux_bus_0_1_rev_T_10}; // @[FlexDPU.scala 64:17]
+  wire [3:0] _FDPE_0_i_mux_bus_0_1_rev_T_11 = _FDPE_0_i_mux_bus_0_1_rev_T_7 | _GEN_56; // @[FlexDPU.scala 64:17]
   wire [31:0] _FDPE_0_i_mux_bus_0_1_rev_T_12 = {{3'd0}, MuxWrapper_0_Omuxes_0_1[31:3]}; // @[FlexDPU.scala 64:24]
   wire [1:0] _FDPE_0_i_mux_bus_0_1_rev_T_14 = {{1'd0}, _FDPE_0_i_mux_bus_0_1_rev_T_12[0]}; // @[FlexDPU.scala 64:35]
-  wire [3:0] _GEN_70 = {{2'd0}, _FDPE_0_i_mux_bus_0_1_rev_T_14}; // @[FlexDPU.scala 64:17]
+  wire [3:0] _GEN_58 = {{2'd0}, _FDPE_0_i_mux_bus_0_1_rev_T_14}; // @[FlexDPU.scala 64:17]
   wire [31:0] MuxWrapper_0_Omuxes_0_2 = MuxesWrapper_io_Omuxes_0_2; // @[FlexDPU.scala 114:{33,33}]
   wire [3:0] _FDPE_0_i_mux_bus_0_2_rev_T_2 = {MuxWrapper_0_Omuxes_0_2[0], 3'h0}; // @[FlexDPU.scala 64:35]
   wire [31:0] _FDPE_0_i_mux_bus_0_2_rev_T_4 = {{1'd0}, MuxWrapper_0_Omuxes_0_2[31:1]}; // @[FlexDPU.scala 64:24]
-  wire [2:0] _GEN_72 = {_FDPE_0_i_mux_bus_0_2_rev_T_4[0], 2'h0}; // @[FlexDPU.scala 64:35]
-  wire [3:0] _FDPE_0_i_mux_bus_0_2_rev_T_6 = {{1'd0}, _GEN_72}; // @[FlexDPU.scala 64:35]
+  wire [2:0] _GEN_60 = {_FDPE_0_i_mux_bus_0_2_rev_T_4[0], 2'h0}; // @[FlexDPU.scala 64:35]
+  wire [3:0] _FDPE_0_i_mux_bus_0_2_rev_T_6 = {{1'd0}, _GEN_60}; // @[FlexDPU.scala 64:35]
   wire [3:0] _FDPE_0_i_mux_bus_0_2_rev_T_7 = _FDPE_0_i_mux_bus_0_2_rev_T_2 | _FDPE_0_i_mux_bus_0_2_rev_T_6; // @[FlexDPU.scala 64:17]
   wire [31:0] _FDPE_0_i_mux_bus_0_2_rev_T_8 = {{2'd0}, MuxWrapper_0_Omuxes_0_2[31:2]}; // @[FlexDPU.scala 64:24]
   wire [1:0] _FDPE_0_i_mux_bus_0_2_rev_T_10 = {_FDPE_0_i_mux_bus_0_2_rev_T_8[0], 1'h0}; // @[FlexDPU.scala 64:35]
-  wire [3:0] _GEN_74 = {{2'd0}, _FDPE_0_i_mux_bus_0_2_rev_T_10}; // @[FlexDPU.scala 64:17]
-  wire [3:0] _FDPE_0_i_mux_bus_0_2_rev_T_11 = _FDPE_0_i_mux_bus_0_2_rev_T_7 | _GEN_74; // @[FlexDPU.scala 64:17]
+  wire [3:0] _GEN_62 = {{2'd0}, _FDPE_0_i_mux_bus_0_2_rev_T_10}; // @[FlexDPU.scala 64:17]
+  wire [3:0] _FDPE_0_i_mux_bus_0_2_rev_T_11 = _FDPE_0_i_mux_bus_0_2_rev_T_7 | _GEN_62; // @[FlexDPU.scala 64:17]
   wire [31:0] _FDPE_0_i_mux_bus_0_2_rev_T_12 = {{3'd0}, MuxWrapper_0_Omuxes_0_2[31:3]}; // @[FlexDPU.scala 64:24]
   wire [1:0] _FDPE_0_i_mux_bus_0_2_rev_T_14 = {{1'd0}, _FDPE_0_i_mux_bus_0_2_rev_T_12[0]}; // @[FlexDPU.scala 64:35]
-  wire [3:0] _GEN_76 = {{2'd0}, _FDPE_0_i_mux_bus_0_2_rev_T_14}; // @[FlexDPU.scala 64:17]
+  wire [3:0] _GEN_64 = {{2'd0}, _FDPE_0_i_mux_bus_0_2_rev_T_14}; // @[FlexDPU.scala 64:17]
   wire [31:0] MuxWrapper_0_Omuxes_0_3 = MuxesWrapper_io_Omuxes_0_3; // @[FlexDPU.scala 114:{33,33}]
   wire [3:0] _FDPE_0_i_mux_bus_0_3_rev_T_2 = {MuxWrapper_0_Omuxes_0_3[0], 3'h0}; // @[FlexDPU.scala 64:35]
   wire [31:0] _FDPE_0_i_mux_bus_0_3_rev_T_4 = {{1'd0}, MuxWrapper_0_Omuxes_0_3[31:1]}; // @[FlexDPU.scala 64:24]
-  wire [2:0] _GEN_78 = {_FDPE_0_i_mux_bus_0_3_rev_T_4[0], 2'h0}; // @[FlexDPU.scala 64:35]
-  wire [3:0] _FDPE_0_i_mux_bus_0_3_rev_T_6 = {{1'd0}, _GEN_78}; // @[FlexDPU.scala 64:35]
+  wire [2:0] _GEN_66 = {_FDPE_0_i_mux_bus_0_3_rev_T_4[0], 2'h0}; // @[FlexDPU.scala 64:35]
+  wire [3:0] _FDPE_0_i_mux_bus_0_3_rev_T_6 = {{1'd0}, _GEN_66}; // @[FlexDPU.scala 64:35]
   wire [3:0] _FDPE_0_i_mux_bus_0_3_rev_T_7 = _FDPE_0_i_mux_bus_0_3_rev_T_2 | _FDPE_0_i_mux_bus_0_3_rev_T_6; // @[FlexDPU.scala 64:17]
   wire [31:0] _FDPE_0_i_mux_bus_0_3_rev_T_8 = {{2'd0}, MuxWrapper_0_Omuxes_0_3[31:2]}; // @[FlexDPU.scala 64:24]
   wire [1:0] _FDPE_0_i_mux_bus_0_3_rev_T_10 = {_FDPE_0_i_mux_bus_0_3_rev_T_8[0], 1'h0}; // @[FlexDPU.scala 64:35]
-  wire [3:0] _GEN_80 = {{2'd0}, _FDPE_0_i_mux_bus_0_3_rev_T_10}; // @[FlexDPU.scala 64:17]
-  wire [3:0] _FDPE_0_i_mux_bus_0_3_rev_T_11 = _FDPE_0_i_mux_bus_0_3_rev_T_7 | _GEN_80; // @[FlexDPU.scala 64:17]
+  wire [3:0] _GEN_68 = {{2'd0}, _FDPE_0_i_mux_bus_0_3_rev_T_10}; // @[FlexDPU.scala 64:17]
+  wire [3:0] _FDPE_0_i_mux_bus_0_3_rev_T_11 = _FDPE_0_i_mux_bus_0_3_rev_T_7 | _GEN_68; // @[FlexDPU.scala 64:17]
   wire [31:0] _FDPE_0_i_mux_bus_0_3_rev_T_12 = {{3'd0}, MuxWrapper_0_Omuxes_0_3[31:3]}; // @[FlexDPU.scala 64:24]
   wire [1:0] _FDPE_0_i_mux_bus_0_3_rev_T_14 = {{1'd0}, _FDPE_0_i_mux_bus_0_3_rev_T_12[0]}; // @[FlexDPU.scala 64:35]
-  wire [3:0] _GEN_82 = {{2'd0}, _FDPE_0_i_mux_bus_0_3_rev_T_14}; // @[FlexDPU.scala 64:17]
+  wire [3:0] _GEN_70 = {{2'd0}, _FDPE_0_i_mux_bus_0_3_rev_T_14}; // @[FlexDPU.scala 64:17]
   wire [31:0] MuxWrapper_0_Omuxes_1_0 = MuxesWrapper_io_Omuxes_1_0; // @[FlexDPU.scala 114:{33,33}]
   wire [3:0] _FDPE_0_i_mux_bus_1_0_rev_T_2 = {MuxWrapper_0_Omuxes_1_0[0], 3'h0}; // @[FlexDPU.scala 64:35]
   wire [31:0] _FDPE_0_i_mux_bus_1_0_rev_T_4 = {{1'd0}, MuxWrapper_0_Omuxes_1_0[31:1]}; // @[FlexDPU.scala 64:24]
-  wire [2:0] _GEN_84 = {_FDPE_0_i_mux_bus_1_0_rev_T_4[0], 2'h0}; // @[FlexDPU.scala 64:35]
-  wire [3:0] _FDPE_0_i_mux_bus_1_0_rev_T_6 = {{1'd0}, _GEN_84}; // @[FlexDPU.scala 64:35]
+  wire [2:0] _GEN_72 = {_FDPE_0_i_mux_bus_1_0_rev_T_4[0], 2'h0}; // @[FlexDPU.scala 64:35]
+  wire [3:0] _FDPE_0_i_mux_bus_1_0_rev_T_6 = {{1'd0}, _GEN_72}; // @[FlexDPU.scala 64:35]
   wire [3:0] _FDPE_0_i_mux_bus_1_0_rev_T_7 = _FDPE_0_i_mux_bus_1_0_rev_T_2 | _FDPE_0_i_mux_bus_1_0_rev_T_6; // @[FlexDPU.scala 64:17]
   wire [31:0] _FDPE_0_i_mux_bus_1_0_rev_T_8 = {{2'd0}, MuxWrapper_0_Omuxes_1_0[31:2]}; // @[FlexDPU.scala 64:24]
   wire [1:0] _FDPE_0_i_mux_bus_1_0_rev_T_10 = {_FDPE_0_i_mux_bus_1_0_rev_T_8[0], 1'h0}; // @[FlexDPU.scala 64:35]
-  wire [3:0] _GEN_86 = {{2'd0}, _FDPE_0_i_mux_bus_1_0_rev_T_10}; // @[FlexDPU.scala 64:17]
-  wire [3:0] _FDPE_0_i_mux_bus_1_0_rev_T_11 = _FDPE_0_i_mux_bus_1_0_rev_T_7 | _GEN_86; // @[FlexDPU.scala 64:17]
+  wire [3:0] _GEN_74 = {{2'd0}, _FDPE_0_i_mux_bus_1_0_rev_T_10}; // @[FlexDPU.scala 64:17]
+  wire [3:0] _FDPE_0_i_mux_bus_1_0_rev_T_11 = _FDPE_0_i_mux_bus_1_0_rev_T_7 | _GEN_74; // @[FlexDPU.scala 64:17]
   wire [31:0] _FDPE_0_i_mux_bus_1_0_rev_T_12 = {{3'd0}, MuxWrapper_0_Omuxes_1_0[31:3]}; // @[FlexDPU.scala 64:24]
   wire [1:0] _FDPE_0_i_mux_bus_1_0_rev_T_14 = {{1'd0}, _FDPE_0_i_mux_bus_1_0_rev_T_12[0]}; // @[FlexDPU.scala 64:35]
-  wire [3:0] _GEN_88 = {{2'd0}, _FDPE_0_i_mux_bus_1_0_rev_T_14}; // @[FlexDPU.scala 64:17]
+  wire [3:0] _GEN_76 = {{2'd0}, _FDPE_0_i_mux_bus_1_0_rev_T_14}; // @[FlexDPU.scala 64:17]
   wire [31:0] MuxWrapper_0_Omuxes_1_1 = MuxesWrapper_io_Omuxes_1_1; // @[FlexDPU.scala 114:{33,33}]
   wire [3:0] _FDPE_0_i_mux_bus_1_1_rev_T_2 = {MuxWrapper_0_Omuxes_1_1[0], 3'h0}; // @[FlexDPU.scala 64:35]
   wire [31:0] _FDPE_0_i_mux_bus_1_1_rev_T_4 = {{1'd0}, MuxWrapper_0_Omuxes_1_1[31:1]}; // @[FlexDPU.scala 64:24]
-  wire [2:0] _GEN_90 = {_FDPE_0_i_mux_bus_1_1_rev_T_4[0], 2'h0}; // @[FlexDPU.scala 64:35]
-  wire [3:0] _FDPE_0_i_mux_bus_1_1_rev_T_6 = {{1'd0}, _GEN_90}; // @[FlexDPU.scala 64:35]
+  wire [2:0] _GEN_78 = {_FDPE_0_i_mux_bus_1_1_rev_T_4[0], 2'h0}; // @[FlexDPU.scala 64:35]
+  wire [3:0] _FDPE_0_i_mux_bus_1_1_rev_T_6 = {{1'd0}, _GEN_78}; // @[FlexDPU.scala 64:35]
   wire [3:0] _FDPE_0_i_mux_bus_1_1_rev_T_7 = _FDPE_0_i_mux_bus_1_1_rev_T_2 | _FDPE_0_i_mux_bus_1_1_rev_T_6; // @[FlexDPU.scala 64:17]
   wire [31:0] _FDPE_0_i_mux_bus_1_1_rev_T_8 = {{2'd0}, MuxWrapper_0_Omuxes_1_1[31:2]}; // @[FlexDPU.scala 64:24]
   wire [1:0] _FDPE_0_i_mux_bus_1_1_rev_T_10 = {_FDPE_0_i_mux_bus_1_1_rev_T_8[0], 1'h0}; // @[FlexDPU.scala 64:35]
-  wire [3:0] _GEN_92 = {{2'd0}, _FDPE_0_i_mux_bus_1_1_rev_T_10}; // @[FlexDPU.scala 64:17]
-  wire [3:0] _FDPE_0_i_mux_bus_1_1_rev_T_11 = _FDPE_0_i_mux_bus_1_1_rev_T_7 | _GEN_92; // @[FlexDPU.scala 64:17]
+  wire [3:0] _GEN_80 = {{2'd0}, _FDPE_0_i_mux_bus_1_1_rev_T_10}; // @[FlexDPU.scala 64:17]
+  wire [3:0] _FDPE_0_i_mux_bus_1_1_rev_T_11 = _FDPE_0_i_mux_bus_1_1_rev_T_7 | _GEN_80; // @[FlexDPU.scala 64:17]
   wire [31:0] _FDPE_0_i_mux_bus_1_1_rev_T_12 = {{3'd0}, MuxWrapper_0_Omuxes_1_1[31:3]}; // @[FlexDPU.scala 64:24]
   wire [1:0] _FDPE_0_i_mux_bus_1_1_rev_T_14 = {{1'd0}, _FDPE_0_i_mux_bus_1_1_rev_T_12[0]}; // @[FlexDPU.scala 64:35]
-  wire [3:0] _GEN_94 = {{2'd0}, _FDPE_0_i_mux_bus_1_1_rev_T_14}; // @[FlexDPU.scala 64:17]
+  wire [3:0] _GEN_82 = {{2'd0}, _FDPE_0_i_mux_bus_1_1_rev_T_14}; // @[FlexDPU.scala 64:17]
   wire [31:0] MuxWrapper_0_Omuxes_1_2 = MuxesWrapper_io_Omuxes_1_2; // @[FlexDPU.scala 114:{33,33}]
   wire [3:0] _FDPE_0_i_mux_bus_1_2_rev_T_2 = {MuxWrapper_0_Omuxes_1_2[0], 3'h0}; // @[FlexDPU.scala 64:35]
   wire [31:0] _FDPE_0_i_mux_bus_1_2_rev_T_4 = {{1'd0}, MuxWrapper_0_Omuxes_1_2[31:1]}; // @[FlexDPU.scala 64:24]
-  wire [2:0] _GEN_96 = {_FDPE_0_i_mux_bus_1_2_rev_T_4[0], 2'h0}; // @[FlexDPU.scala 64:35]
-  wire [3:0] _FDPE_0_i_mux_bus_1_2_rev_T_6 = {{1'd0}, _GEN_96}; // @[FlexDPU.scala 64:35]
+  wire [2:0] _GEN_84 = {_FDPE_0_i_mux_bus_1_2_rev_T_4[0], 2'h0}; // @[FlexDPU.scala 64:35]
+  wire [3:0] _FDPE_0_i_mux_bus_1_2_rev_T_6 = {{1'd0}, _GEN_84}; // @[FlexDPU.scala 64:35]
   wire [3:0] _FDPE_0_i_mux_bus_1_2_rev_T_7 = _FDPE_0_i_mux_bus_1_2_rev_T_2 | _FDPE_0_i_mux_bus_1_2_rev_T_6; // @[FlexDPU.scala 64:17]
   wire [31:0] _FDPE_0_i_mux_bus_1_2_rev_T_8 = {{2'd0}, MuxWrapper_0_Omuxes_1_2[31:2]}; // @[FlexDPU.scala 64:24]
   wire [1:0] _FDPE_0_i_mux_bus_1_2_rev_T_10 = {_FDPE_0_i_mux_bus_1_2_rev_T_8[0], 1'h0}; // @[FlexDPU.scala 64:35]
-  wire [3:0] _GEN_98 = {{2'd0}, _FDPE_0_i_mux_bus_1_2_rev_T_10}; // @[FlexDPU.scala 64:17]
-  wire [3:0] _FDPE_0_i_mux_bus_1_2_rev_T_11 = _FDPE_0_i_mux_bus_1_2_rev_T_7 | _GEN_98; // @[FlexDPU.scala 64:17]
+  wire [3:0] _GEN_86 = {{2'd0}, _FDPE_0_i_mux_bus_1_2_rev_T_10}; // @[FlexDPU.scala 64:17]
+  wire [3:0] _FDPE_0_i_mux_bus_1_2_rev_T_11 = _FDPE_0_i_mux_bus_1_2_rev_T_7 | _GEN_86; // @[FlexDPU.scala 64:17]
   wire [31:0] _FDPE_0_i_mux_bus_1_2_rev_T_12 = {{3'd0}, MuxWrapper_0_Omuxes_1_2[31:3]}; // @[FlexDPU.scala 64:24]
   wire [1:0] _FDPE_0_i_mux_bus_1_2_rev_T_14 = {{1'd0}, _FDPE_0_i_mux_bus_1_2_rev_T_12[0]}; // @[FlexDPU.scala 64:35]
-  wire [3:0] _GEN_100 = {{2'd0}, _FDPE_0_i_mux_bus_1_2_rev_T_14}; // @[FlexDPU.scala 64:17]
+  wire [3:0] _GEN_88 = {{2'd0}, _FDPE_0_i_mux_bus_1_2_rev_T_14}; // @[FlexDPU.scala 64:17]
   wire [31:0] MuxWrapper_0_Omuxes_2_0 = MuxesWrapper_io_Omuxes_2_0; // @[FlexDPU.scala 114:{33,33}]
   wire [3:0] _FDPE_0_i_mux_bus_2_0_rev_T_2 = {MuxWrapper_0_Omuxes_2_0[0], 3'h0}; // @[FlexDPU.scala 64:35]
   wire [31:0] _FDPE_0_i_mux_bus_2_0_rev_T_4 = {{1'd0}, MuxWrapper_0_Omuxes_2_0[31:1]}; // @[FlexDPU.scala 64:24]
-  wire [2:0] _GEN_102 = {_FDPE_0_i_mux_bus_2_0_rev_T_4[0], 2'h0}; // @[FlexDPU.scala 64:35]
-  wire [3:0] _FDPE_0_i_mux_bus_2_0_rev_T_6 = {{1'd0}, _GEN_102}; // @[FlexDPU.scala 64:35]
+  wire [2:0] _GEN_90 = {_FDPE_0_i_mux_bus_2_0_rev_T_4[0], 2'h0}; // @[FlexDPU.scala 64:35]
+  wire [3:0] _FDPE_0_i_mux_bus_2_0_rev_T_6 = {{1'd0}, _GEN_90}; // @[FlexDPU.scala 64:35]
   wire [3:0] _FDPE_0_i_mux_bus_2_0_rev_T_7 = _FDPE_0_i_mux_bus_2_0_rev_T_2 | _FDPE_0_i_mux_bus_2_0_rev_T_6; // @[FlexDPU.scala 64:17]
   wire [31:0] _FDPE_0_i_mux_bus_2_0_rev_T_8 = {{2'd0}, MuxWrapper_0_Omuxes_2_0[31:2]}; // @[FlexDPU.scala 64:24]
   wire [1:0] _FDPE_0_i_mux_bus_2_0_rev_T_10 = {_FDPE_0_i_mux_bus_2_0_rev_T_8[0], 1'h0}; // @[FlexDPU.scala 64:35]
-  wire [3:0] _GEN_104 = {{2'd0}, _FDPE_0_i_mux_bus_2_0_rev_T_10}; // @[FlexDPU.scala 64:17]
-  wire [3:0] _FDPE_0_i_mux_bus_2_0_rev_T_11 = _FDPE_0_i_mux_bus_2_0_rev_T_7 | _GEN_104; // @[FlexDPU.scala 64:17]
+  wire [3:0] _GEN_92 = {{2'd0}, _FDPE_0_i_mux_bus_2_0_rev_T_10}; // @[FlexDPU.scala 64:17]
+  wire [3:0] _FDPE_0_i_mux_bus_2_0_rev_T_11 = _FDPE_0_i_mux_bus_2_0_rev_T_7 | _GEN_92; // @[FlexDPU.scala 64:17]
   wire [31:0] _FDPE_0_i_mux_bus_2_0_rev_T_12 = {{3'd0}, MuxWrapper_0_Omuxes_2_0[31:3]}; // @[FlexDPU.scala 64:24]
   wire [1:0] _FDPE_0_i_mux_bus_2_0_rev_T_14 = {{1'd0}, _FDPE_0_i_mux_bus_2_0_rev_T_12[0]}; // @[FlexDPU.scala 64:35]
-  wire [3:0] _GEN_106 = {{2'd0}, _FDPE_0_i_mux_bus_2_0_rev_T_14}; // @[FlexDPU.scala 64:17]
+  wire [3:0] _GEN_94 = {{2'd0}, _FDPE_0_i_mux_bus_2_0_rev_T_14}; // @[FlexDPU.scala 64:17]
   wire [31:0] MuxWrapper_0_Omuxes_2_1 = MuxesWrapper_io_Omuxes_2_1; // @[FlexDPU.scala 114:{33,33}]
   wire [3:0] _FDPE_0_i_mux_bus_2_1_rev_T_2 = {MuxWrapper_0_Omuxes_2_1[0], 3'h0}; // @[FlexDPU.scala 64:35]
   wire [31:0] _FDPE_0_i_mux_bus_2_1_rev_T_4 = {{1'd0}, MuxWrapper_0_Omuxes_2_1[31:1]}; // @[FlexDPU.scala 64:24]
-  wire [2:0] _GEN_108 = {_FDPE_0_i_mux_bus_2_1_rev_T_4[0], 2'h0}; // @[FlexDPU.scala 64:35]
-  wire [3:0] _FDPE_0_i_mux_bus_2_1_rev_T_6 = {{1'd0}, _GEN_108}; // @[FlexDPU.scala 64:35]
+  wire [2:0] _GEN_96 = {_FDPE_0_i_mux_bus_2_1_rev_T_4[0], 2'h0}; // @[FlexDPU.scala 64:35]
+  wire [3:0] _FDPE_0_i_mux_bus_2_1_rev_T_6 = {{1'd0}, _GEN_96}; // @[FlexDPU.scala 64:35]
   wire [3:0] _FDPE_0_i_mux_bus_2_1_rev_T_7 = _FDPE_0_i_mux_bus_2_1_rev_T_2 | _FDPE_0_i_mux_bus_2_1_rev_T_6; // @[FlexDPU.scala 64:17]
   wire [31:0] _FDPE_0_i_mux_bus_2_1_rev_T_8 = {{2'd0}, MuxWrapper_0_Omuxes_2_1[31:2]}; // @[FlexDPU.scala 64:24]
   wire [1:0] _FDPE_0_i_mux_bus_2_1_rev_T_10 = {_FDPE_0_i_mux_bus_2_1_rev_T_8[0], 1'h0}; // @[FlexDPU.scala 64:35]
-  wire [3:0] _GEN_110 = {{2'd0}, _FDPE_0_i_mux_bus_2_1_rev_T_10}; // @[FlexDPU.scala 64:17]
-  wire [3:0] _FDPE_0_i_mux_bus_2_1_rev_T_11 = _FDPE_0_i_mux_bus_2_1_rev_T_7 | _GEN_110; // @[FlexDPU.scala 64:17]
+  wire [3:0] _GEN_98 = {{2'd0}, _FDPE_0_i_mux_bus_2_1_rev_T_10}; // @[FlexDPU.scala 64:17]
+  wire [3:0] _FDPE_0_i_mux_bus_2_1_rev_T_11 = _FDPE_0_i_mux_bus_2_1_rev_T_7 | _GEN_98; // @[FlexDPU.scala 64:17]
   wire [31:0] _FDPE_0_i_mux_bus_2_1_rev_T_12 = {{3'd0}, MuxWrapper_0_Omuxes_2_1[31:3]}; // @[FlexDPU.scala 64:24]
   wire [1:0] _FDPE_0_i_mux_bus_2_1_rev_T_14 = {{1'd0}, _FDPE_0_i_mux_bus_2_1_rev_T_12[0]}; // @[FlexDPU.scala 64:35]
-  wire [3:0] _GEN_112 = {{2'd0}, _FDPE_0_i_mux_bus_2_1_rev_T_14}; // @[FlexDPU.scala 64:17]
+  wire [3:0] _GEN_100 = {{2'd0}, _FDPE_0_i_mux_bus_2_1_rev_T_14}; // @[FlexDPU.scala 64:17]
   wire [31:0] MuxWrapper_0_Omuxes_3_0 = MuxesWrapper_io_Omuxes_3_0; // @[FlexDPU.scala 114:{33,33}]
   wire [3:0] _FDPE_0_i_mux_bus_3_0_rev_T_2 = {MuxWrapper_0_Omuxes_3_0[0], 3'h0}; // @[FlexDPU.scala 64:35]
   wire [31:0] _FDPE_0_i_mux_bus_3_0_rev_T_4 = {{1'd0}, MuxWrapper_0_Omuxes_3_0[31:1]}; // @[FlexDPU.scala 64:24]
-  wire [2:0] _GEN_114 = {_FDPE_0_i_mux_bus_3_0_rev_T_4[0], 2'h0}; // @[FlexDPU.scala 64:35]
-  wire [3:0] _FDPE_0_i_mux_bus_3_0_rev_T_6 = {{1'd0}, _GEN_114}; // @[FlexDPU.scala 64:35]
+  wire [2:0] _GEN_102 = {_FDPE_0_i_mux_bus_3_0_rev_T_4[0], 2'h0}; // @[FlexDPU.scala 64:35]
+  wire [3:0] _FDPE_0_i_mux_bus_3_0_rev_T_6 = {{1'd0}, _GEN_102}; // @[FlexDPU.scala 64:35]
   wire [3:0] _FDPE_0_i_mux_bus_3_0_rev_T_7 = _FDPE_0_i_mux_bus_3_0_rev_T_2 | _FDPE_0_i_mux_bus_3_0_rev_T_6; // @[FlexDPU.scala 64:17]
   wire [31:0] _FDPE_0_i_mux_bus_3_0_rev_T_8 = {{2'd0}, MuxWrapper_0_Omuxes_3_0[31:2]}; // @[FlexDPU.scala 64:24]
   wire [1:0] _FDPE_0_i_mux_bus_3_0_rev_T_10 = {_FDPE_0_i_mux_bus_3_0_rev_T_8[0], 1'h0}; // @[FlexDPU.scala 64:35]
-  wire [3:0] _GEN_116 = {{2'd0}, _FDPE_0_i_mux_bus_3_0_rev_T_10}; // @[FlexDPU.scala 64:17]
-  wire [3:0] _FDPE_0_i_mux_bus_3_0_rev_T_11 = _FDPE_0_i_mux_bus_3_0_rev_T_7 | _GEN_116; // @[FlexDPU.scala 64:17]
+  wire [3:0] _GEN_104 = {{2'd0}, _FDPE_0_i_mux_bus_3_0_rev_T_10}; // @[FlexDPU.scala 64:17]
+  wire [3:0] _FDPE_0_i_mux_bus_3_0_rev_T_11 = _FDPE_0_i_mux_bus_3_0_rev_T_7 | _GEN_104; // @[FlexDPU.scala 64:17]
   wire [31:0] _FDPE_0_i_mux_bus_3_0_rev_T_12 = {{3'd0}, MuxWrapper_0_Omuxes_3_0[31:3]}; // @[FlexDPU.scala 64:24]
   wire [1:0] _FDPE_0_i_mux_bus_3_0_rev_T_14 = {{1'd0}, _FDPE_0_i_mux_bus_3_0_rev_T_12[0]}; // @[FlexDPU.scala 64:35]
-  wire [3:0] _GEN_118 = {{2'd0}, _FDPE_0_i_mux_bus_3_0_rev_T_14}; // @[FlexDPU.scala 64:17]
+  wire [3:0] _GEN_106 = {{2'd0}, _FDPE_0_i_mux_bus_3_0_rev_T_14}; // @[FlexDPU.scala 64:17]
   wire [31:0] _ModuleIndex_T_1 = ModuleIndex + 32'h1; // @[FlexDPU.scala 171:40]
   wire [15:0] _GEN_27 = ModuleIndex[0] ? io_Streaming_matrix_0_1 : io_Streaming_matrix_0_0; // @[FlexDPU.scala 181:{31,31}]
   wire [15:0] _GEN_29 = ModuleIndex[0] ? io_Streaming_matrix_1_1 : io_Streaming_matrix_1_0; // @[FlexDPU.scala 181:{31,31}]
@@ -3993,16 +3993,16 @@ module FlexDPU(
   assign flexdpecom4_io_Stationary_matrix_0_1 = io_Stationary_matrix_0_1; // @[FlexDPU.scala 122:27 127:39]
   assign flexdpecom4_io_Stationary_matrix_1_0 = io_Stationary_matrix_1_0; // @[FlexDPU.scala 122:27 127:39]
   assign flexdpecom4_io_Stationary_matrix_1_1 = io_Stationary_matrix_1_1; // @[FlexDPU.scala 122:27 127:39]
-  assign flexdpecom4_io_i_mux_bus_0_0 = _FDPE_0_i_mux_bus_0_0_rev_T_11 | _GEN_64; // @[FlexDPU.scala 64:17]
-  assign flexdpecom4_io_i_mux_bus_0_1 = _FDPE_0_i_mux_bus_0_1_rev_T_11 | _GEN_70; // @[FlexDPU.scala 64:17]
-  assign flexdpecom4_io_i_mux_bus_0_2 = _FDPE_0_i_mux_bus_0_2_rev_T_11 | _GEN_76; // @[FlexDPU.scala 64:17]
-  assign flexdpecom4_io_i_mux_bus_0_3 = _FDPE_0_i_mux_bus_0_3_rev_T_11 | _GEN_82; // @[FlexDPU.scala 64:17]
-  assign flexdpecom4_io_i_mux_bus_1_0 = _FDPE_0_i_mux_bus_1_0_rev_T_11 | _GEN_88; // @[FlexDPU.scala 64:17]
-  assign flexdpecom4_io_i_mux_bus_1_1 = _FDPE_0_i_mux_bus_1_1_rev_T_11 | _GEN_94; // @[FlexDPU.scala 64:17]
-  assign flexdpecom4_io_i_mux_bus_1_2 = _FDPE_0_i_mux_bus_1_2_rev_T_11 | _GEN_100; // @[FlexDPU.scala 64:17]
-  assign flexdpecom4_io_i_mux_bus_2_0 = _FDPE_0_i_mux_bus_2_0_rev_T_11 | _GEN_106; // @[FlexDPU.scala 64:17]
-  assign flexdpecom4_io_i_mux_bus_2_1 = _FDPE_0_i_mux_bus_2_1_rev_T_11 | _GEN_112; // @[FlexDPU.scala 64:17]
-  assign flexdpecom4_io_i_mux_bus_3_0 = _FDPE_0_i_mux_bus_3_0_rev_T_11 | _GEN_118; // @[FlexDPU.scala 64:17]
+  assign flexdpecom4_io_i_mux_bus_0_0 = _FDPE_0_i_mux_bus_0_0_rev_T_11 | _GEN_45; // @[FlexDPU.scala 64:17]
+  assign flexdpecom4_io_i_mux_bus_0_1 = _FDPE_0_i_mux_bus_0_1_rev_T_11 | _GEN_58; // @[FlexDPU.scala 64:17]
+  assign flexdpecom4_io_i_mux_bus_0_2 = _FDPE_0_i_mux_bus_0_2_rev_T_11 | _GEN_64; // @[FlexDPU.scala 64:17]
+  assign flexdpecom4_io_i_mux_bus_0_3 = _FDPE_0_i_mux_bus_0_3_rev_T_11 | _GEN_70; // @[FlexDPU.scala 64:17]
+  assign flexdpecom4_io_i_mux_bus_1_0 = _FDPE_0_i_mux_bus_1_0_rev_T_11 | _GEN_76; // @[FlexDPU.scala 64:17]
+  assign flexdpecom4_io_i_mux_bus_1_1 = _FDPE_0_i_mux_bus_1_1_rev_T_11 | _GEN_82; // @[FlexDPU.scala 64:17]
+  assign flexdpecom4_io_i_mux_bus_1_2 = _FDPE_0_i_mux_bus_1_2_rev_T_11 | _GEN_88; // @[FlexDPU.scala 64:17]
+  assign flexdpecom4_io_i_mux_bus_2_0 = _FDPE_0_i_mux_bus_2_0_rev_T_11 | _GEN_94; // @[FlexDPU.scala 64:17]
+  assign flexdpecom4_io_i_mux_bus_2_1 = _FDPE_0_i_mux_bus_2_1_rev_T_11 | _GEN_100; // @[FlexDPU.scala 64:17]
+  assign flexdpecom4_io_i_mux_bus_3_0 = _FDPE_0_i_mux_bus_3_0_rev_T_11 | _GEN_106; // @[FlexDPU.scala 64:17]
   always @(posedge clock) begin
     if (reset) begin // @[FlexDPU.scala 27:32]
       nonZeroValues_0 <= 32'h0; // @[FlexDPU.scala 27:32]
@@ -4306,6 +4306,122 @@ end // initial
 `endif
 `endif // SYNTHESIS
 endmodule
+module SRAM(
+  input         clock,
+  input  [31:0] io_dataIn,
+  input         io_we,
+  input  [9:0]  io_address,
+  input         io_valid,
+  output [31:0] io_dataOut
+);
+  wire  sram0_CLK; // @[SRAM.scala 20:23]
+  wire  sram0_CEN; // @[SRAM.scala 20:23]
+  wire  sram0_GWEN; // @[SRAM.scala 20:23]
+  wire [7:0] sram0_WEN; // @[SRAM.scala 20:23]
+  wire [8:0] sram0_A; // @[SRAM.scala 20:23]
+  wire [7:0] sram0_D; // @[SRAM.scala 20:23]
+  wire [7:0] sram0_Q; // @[SRAM.scala 20:23]
+  wire  sram0_VDD; // @[SRAM.scala 20:23]
+  wire  sram0_VSS; // @[SRAM.scala 20:23]
+  wire  sram1_CLK; // @[SRAM.scala 21:23]
+  wire  sram1_CEN; // @[SRAM.scala 21:23]
+  wire  sram1_GWEN; // @[SRAM.scala 21:23]
+  wire [7:0] sram1_WEN; // @[SRAM.scala 21:23]
+  wire [8:0] sram1_A; // @[SRAM.scala 21:23]
+  wire [7:0] sram1_D; // @[SRAM.scala 21:23]
+  wire [7:0] sram1_Q; // @[SRAM.scala 21:23]
+  wire  sram1_VDD; // @[SRAM.scala 21:23]
+  wire  sram1_VSS; // @[SRAM.scala 21:23]
+  wire  sram2_CLK; // @[SRAM.scala 22:23]
+  wire  sram2_CEN; // @[SRAM.scala 22:23]
+  wire  sram2_GWEN; // @[SRAM.scala 22:23]
+  wire [7:0] sram2_WEN; // @[SRAM.scala 22:23]
+  wire [8:0] sram2_A; // @[SRAM.scala 22:23]
+  wire [7:0] sram2_D; // @[SRAM.scala 22:23]
+  wire [7:0] sram2_Q; // @[SRAM.scala 22:23]
+  wire  sram2_VDD; // @[SRAM.scala 22:23]
+  wire  sram2_VSS; // @[SRAM.scala 22:23]
+  wire  sram3_CLK; // @[SRAM.scala 23:23]
+  wire  sram3_CEN; // @[SRAM.scala 23:23]
+  wire  sram3_GWEN; // @[SRAM.scala 23:23]
+  wire [7:0] sram3_WEN; // @[SRAM.scala 23:23]
+  wire [8:0] sram3_A; // @[SRAM.scala 23:23]
+  wire [7:0] sram3_D; // @[SRAM.scala 23:23]
+  wire [7:0] sram3_Q; // @[SRAM.scala 23:23]
+  wire  sram3_VDD; // @[SRAM.scala 23:23]
+  wire  sram3_VSS; // @[SRAM.scala 23:23]
+  wire [15:0] io_dataOut_lo = {sram1_Q,sram0_Q}; // @[Cat.scala 33:92]
+  wire [15:0] io_dataOut_hi = {sram3_Q,sram2_Q}; // @[Cat.scala 33:92]
+  gf180mcu_fd_ip_sram__sram512x8m8wm1 sram0 ( // @[SRAM.scala 20:23]
+    .CLK(sram0_CLK),
+    .CEN(sram0_CEN),
+    .GWEN(sram0_GWEN),
+    .WEN(sram0_WEN),
+    .A(sram0_A),
+    .D(sram0_D),
+    .Q(sram0_Q),
+    .VDD(sram0_VDD),
+    .VSS(sram0_VSS)
+  );
+  gf180mcu_fd_ip_sram__sram512x8m8wm1 sram1 ( // @[SRAM.scala 21:23]
+    .CLK(sram1_CLK),
+    .CEN(sram1_CEN),
+    .GWEN(sram1_GWEN),
+    .WEN(sram1_WEN),
+    .A(sram1_A),
+    .D(sram1_D),
+    .Q(sram1_Q),
+    .VDD(sram1_VDD),
+    .VSS(sram1_VSS)
+  );
+  gf180mcu_fd_ip_sram__sram512x8m8wm1 sram2 ( // @[SRAM.scala 22:23]
+    .CLK(sram2_CLK),
+    .CEN(sram2_CEN),
+    .GWEN(sram2_GWEN),
+    .WEN(sram2_WEN),
+    .A(sram2_A),
+    .D(sram2_D),
+    .Q(sram2_Q),
+    .VDD(sram2_VDD),
+    .VSS(sram2_VSS)
+  );
+  gf180mcu_fd_ip_sram__sram512x8m8wm1 sram3 ( // @[SRAM.scala 23:23]
+    .CLK(sram3_CLK),
+    .CEN(sram3_CEN),
+    .GWEN(sram3_GWEN),
+    .WEN(sram3_WEN),
+    .A(sram3_A),
+    .D(sram3_D),
+    .Q(sram3_Q),
+    .VDD(sram3_VDD),
+    .VSS(sram3_VSS)
+  );
+  assign io_dataOut = {io_dataOut_hi,io_dataOut_lo}; // @[Cat.scala 33:92]
+  assign sram0_CLK = clock; // @[SRAM.scala 47:36]
+  assign sram0_CEN = io_valid ? 1'h0 : 1'h1; // @[SRAM.scala 55:24]
+  assign sram0_GWEN = ~io_we; // @[SRAM.scala 60:22]
+  assign sram0_WEN = 8'h0; // @[Bitwise.scala 77:12]
+  assign sram0_A = io_address[8:0]; // @[SRAM.scala 26:16]
+  assign sram0_D = io_dataIn[7:0]; // @[SRAM.scala 32:28]
+  assign sram1_CLK = clock; // @[SRAM.scala 47:36]
+  assign sram1_CEN = io_valid ? 1'h0 : 1'h1; // @[SRAM.scala 56:24]
+  assign sram1_GWEN = ~io_we; // @[SRAM.scala 61:22]
+  assign sram1_WEN = 8'h0; // @[Bitwise.scala 77:12]
+  assign sram1_A = io_address[8:0]; // @[SRAM.scala 27:16]
+  assign sram1_D = io_dataIn[15:8]; // @[SRAM.scala 33:28]
+  assign sram2_CLK = clock; // @[SRAM.scala 47:36]
+  assign sram2_CEN = io_valid ? 1'h0 : 1'h1; // @[SRAM.scala 57:24]
+  assign sram2_GWEN = ~io_we; // @[SRAM.scala 62:22]
+  assign sram2_WEN = 8'h0; // @[Bitwise.scala 77:12]
+  assign sram2_A = io_address[8:0]; // @[SRAM.scala 28:16]
+  assign sram2_D = io_dataIn[23:16]; // @[SRAM.scala 34:28]
+  assign sram3_CLK = clock; // @[SRAM.scala 47:36]
+  assign sram3_CEN = io_valid ? 1'h0 : 1'h1; // @[SRAM.scala 58:24]
+  assign sram3_GWEN = ~io_we; // @[SRAM.scala 63:22]
+  assign sram3_WEN = 8'h0; // @[Bitwise.scala 77:12]
+  assign sram3_A = io_address[8:0]; // @[SRAM.scala 29:16]
+  assign sram3_D = io_dataIn[31:24]; // @[SRAM.scala 35:28]
+endmodule
 module MMU(
   input         clock,
   input  [9:0]  io_top_adr,
@@ -4320,134 +4436,41 @@ module MMU(
   input         io_acc_val,
   output [31:0] io_acc_out_bits
 );
-`ifdef RANDOMIZE_MEM_INIT
-  reg [31:0] _RAND_0;
-`endif // RANDOMIZE_MEM_INIT
-`ifdef RANDOMIZE_REG_INIT
-  reg [31:0] _RAND_1;
-  reg [31:0] _RAND_2;
-  reg [31:0] _RAND_3;
-  reg [31:0] _RAND_4;
-`endif // RANDOMIZE_REG_INIT
-  reg [31:0] DMEM [0:1023]; // @[AcceleratoTop.scala 224:27]
-  wire  DMEM_io_top_out_bits_MPORT_en; // @[AcceleratoTop.scala 224:27]
-  wire [9:0] DMEM_io_top_out_bits_MPORT_addr; // @[AcceleratoTop.scala 224:27]
-  wire [31:0] DMEM_io_top_out_bits_MPORT_data; // @[AcceleratoTop.scala 224:27]
-  wire  DMEM_io_acc_out_bits_MPORT_en; // @[AcceleratoTop.scala 224:27]
-  wire [9:0] DMEM_io_acc_out_bits_MPORT_addr; // @[AcceleratoTop.scala 224:27]
-  wire [31:0] DMEM_io_acc_out_bits_MPORT_data; // @[AcceleratoTop.scala 224:27]
-  wire [31:0] DMEM_MPORT_data; // @[AcceleratoTop.scala 224:27]
-  wire [9:0] DMEM_MPORT_addr; // @[AcceleratoTop.scala 224:27]
-  wire  DMEM_MPORT_mask; // @[AcceleratoTop.scala 224:27]
-  wire  DMEM_MPORT_en; // @[AcceleratoTop.scala 224:27]
-  wire [31:0] DMEM_MPORT_1_data; // @[AcceleratoTop.scala 224:27]
-  wire [9:0] DMEM_MPORT_1_addr; // @[AcceleratoTop.scala 224:27]
-  wire  DMEM_MPORT_1_mask; // @[AcceleratoTop.scala 224:27]
-  wire  DMEM_MPORT_1_en; // @[AcceleratoTop.scala 224:27]
-  reg  DMEM_io_top_out_bits_MPORT_en_pipe_0;
-  reg [9:0] DMEM_io_top_out_bits_MPORT_addr_pipe_0;
-  reg  DMEM_io_acc_out_bits_MPORT_en_pipe_0;
-  reg [9:0] DMEM_io_acc_out_bits_MPORT_addr_pipe_0;
-  wire  _GEN_5 = io_top_we ? 1'h0 : 1'h1; // @[AcceleratoTop.scala 233:24 224:27 236:47]
-  wire [31:0] _GEN_8 = io_top_we ? 32'h0 : DMEM_io_top_out_bits_MPORT_data; // @[AcceleratoTop.scala 226:21 233:24 236:29]
-  wire  _GEN_14 = io_acc_we ? 1'h0 : 1'h1; // @[AcceleratoTop.scala 240:24 224:27 243:47]
-  wire [31:0] _GEN_17 = io_acc_we ? 32'h0 : DMEM_io_acc_out_bits_MPORT_data; // @[AcceleratoTop.scala 227:21 240:24 243:29]
-  wire  _GEN_20 = io_acc_val & io_acc_we; // @[AcceleratoTop.scala 224:27 239:27]
-  wire  _GEN_23 = io_acc_val & _GEN_14; // @[AcceleratoTop.scala 224:27 239:27]
-  wire [31:0] _GEN_26 = io_acc_val ? _GEN_17 : 32'h0; // @[AcceleratoTop.scala 227:21 239:27]
-  assign DMEM_io_top_out_bits_MPORT_en = DMEM_io_top_out_bits_MPORT_en_pipe_0;
-  assign DMEM_io_top_out_bits_MPORT_addr = DMEM_io_top_out_bits_MPORT_addr_pipe_0;
-  assign DMEM_io_top_out_bits_MPORT_data = DMEM[DMEM_io_top_out_bits_MPORT_addr]; // @[AcceleratoTop.scala 224:27]
-  assign DMEM_io_acc_out_bits_MPORT_en = DMEM_io_acc_out_bits_MPORT_en_pipe_0;
-  assign DMEM_io_acc_out_bits_MPORT_addr = DMEM_io_acc_out_bits_MPORT_addr_pipe_0;
-  assign DMEM_io_acc_out_bits_MPORT_data = DMEM[DMEM_io_acc_out_bits_MPORT_addr]; // @[AcceleratoTop.scala 224:27]
-  assign DMEM_MPORT_data = io_top_dat;
-  assign DMEM_MPORT_addr = io_top_adr - 10'hc;
-  assign DMEM_MPORT_mask = 1'h1;
-  assign DMEM_MPORT_en = io_top_val & io_top_we;
-  assign DMEM_MPORT_1_data = io_acc_dat;
-  assign DMEM_MPORT_1_addr = io_acc_adr - 10'hc;
-  assign DMEM_MPORT_1_mask = 1'h1;
-  assign DMEM_MPORT_1_en = io_top_val ? 1'h0 : _GEN_20;
-  assign io_top_out_valid = io_top_val & _GEN_5; // @[AcceleratoTop.scala 232:21 224:27]
-  assign io_top_out_bits = io_top_val ? _GEN_8 : 32'h0; // @[AcceleratoTop.scala 226:21 232:21]
-  assign io_acc_out_bits = io_top_val ? 32'h0 : _GEN_26; // @[AcceleratoTop.scala 227:21 232:21]
-  always @(posedge clock) begin
-    if (DMEM_MPORT_en & DMEM_MPORT_mask) begin
-      DMEM[DMEM_MPORT_addr] <= DMEM_MPORT_data; // @[AcceleratoTop.scala 224:27]
-    end
-    if (DMEM_MPORT_1_en & DMEM_MPORT_1_mask) begin
-      DMEM[DMEM_MPORT_1_addr] <= DMEM_MPORT_1_data; // @[AcceleratoTop.scala 224:27]
-    end
-    DMEM_io_top_out_bits_MPORT_en_pipe_0 <= io_top_val & _GEN_5;
-    if (io_top_val & _GEN_5) begin
-      DMEM_io_top_out_bits_MPORT_addr_pipe_0 <= io_top_adr - 10'hc;
-    end
-    if (io_top_val) begin
-      DMEM_io_acc_out_bits_MPORT_en_pipe_0 <= 1'h0;
-    end else begin
-      DMEM_io_acc_out_bits_MPORT_en_pipe_0 <= _GEN_23;
-    end
-    if (io_top_val ? 1'h0 : _GEN_23) begin
-      DMEM_io_acc_out_bits_MPORT_addr_pipe_0 <= io_acc_adr - 10'hc;
-    end
-  end
-// Register and memory initialization
-`ifdef RANDOMIZE_GARBAGE_ASSIGN
-`define RANDOMIZE
-`endif
-`ifdef RANDOMIZE_INVALID_ASSIGN
-`define RANDOMIZE
-`endif
-`ifdef RANDOMIZE_REG_INIT
-`define RANDOMIZE
-`endif
-`ifdef RANDOMIZE_MEM_INIT
-`define RANDOMIZE
-`endif
-`ifndef RANDOM
-`define RANDOM $random
-`endif
-`ifdef RANDOMIZE_MEM_INIT
-  integer initvar;
-`endif
-`ifndef SYNTHESIS
-`ifdef FIRRTL_BEFORE_INITIAL
-`FIRRTL_BEFORE_INITIAL
-`endif
-initial begin
-  `ifdef RANDOMIZE
-    `ifdef INIT_RANDOM
-      `INIT_RANDOM
-    `endif
-    `ifndef VERILATOR
-      `ifdef RANDOMIZE_DELAY
-        #`RANDOMIZE_DELAY begin end
-      `else
-        #0.002 begin end
-      `endif
-    `endif
-`ifdef RANDOMIZE_MEM_INIT
-  _RAND_0 = {1{`RANDOM}};
-  for (initvar = 0; initvar < 1024; initvar = initvar+1)
-    DMEM[initvar] = _RAND_0[31:0];
-`endif // RANDOMIZE_MEM_INIT
-`ifdef RANDOMIZE_REG_INIT
-  _RAND_1 = {1{`RANDOM}};
-  DMEM_io_top_out_bits_MPORT_en_pipe_0 = _RAND_1[0:0];
-  _RAND_2 = {1{`RANDOM}};
-  DMEM_io_top_out_bits_MPORT_addr_pipe_0 = _RAND_2[9:0];
-  _RAND_3 = {1{`RANDOM}};
-  DMEM_io_acc_out_bits_MPORT_en_pipe_0 = _RAND_3[0:0];
-  _RAND_4 = {1{`RANDOM}};
-  DMEM_io_acc_out_bits_MPORT_addr_pipe_0 = _RAND_4[9:0];
-`endif // RANDOMIZE_REG_INIT
-  `endif // RANDOMIZE
-end // initial
-`ifdef FIRRTL_AFTER_INITIAL
-`FIRRTL_AFTER_INITIAL
-`endif
-`endif // SYNTHESIS
+  wire  SRAM_clock; // @[AcceleratoTop.scala 225:22]
+  wire [31:0] SRAM_io_dataIn; // @[AcceleratoTop.scala 225:22]
+  wire  SRAM_io_we; // @[AcceleratoTop.scala 225:22]
+  wire [9:0] SRAM_io_address; // @[AcceleratoTop.scala 225:22]
+  wire  SRAM_io_valid; // @[AcceleratoTop.scala 225:22]
+  wire [31:0] SRAM_io_dataOut; // @[AcceleratoTop.scala 225:22]
+  wire [9:0] _SRAM_io_address_T_1 = io_top_adr - 10'hc; // @[AcceleratoTop.scala 240:42]
+  wire [9:0] _GEN_0 = io_top_we ? _SRAM_io_address_T_1 : _SRAM_io_address_T_1; // @[AcceleratoTop.scala 238:24 240:29 245:29]
+  wire [31:0] _GEN_1 = io_top_we ? io_top_dat : 32'h0; // @[AcceleratoTop.scala 226:20 238:24 241:28]
+  wire [31:0] _GEN_4 = io_top_we ? 32'h0 : SRAM_io_dataOut; // @[AcceleratoTop.scala 231:21 238:24 248:29]
+  wire  _GEN_5 = io_top_we ? 1'h0 : 1'h1; // @[AcceleratoTop.scala 234:22 238:24 249:30]
+  wire [9:0] _SRAM_io_address_T_5 = io_acc_adr - 10'hc; // @[AcceleratoTop.scala 254:42]
+  wire [9:0] _GEN_6 = io_acc_we ? _SRAM_io_address_T_5 : _SRAM_io_address_T_5; // @[AcceleratoTop.scala 252:24 254:29 259:29]
+  wire [31:0] _GEN_7 = io_acc_we ? io_acc_dat : 32'h0; // @[AcceleratoTop.scala 226:20 252:24 255:28]
+  wire [31:0] _GEN_10 = io_acc_we ? 32'h0 : SRAM_io_dataOut; // @[AcceleratoTop.scala 232:21 252:24 262:29]
+  wire [9:0] _GEN_12 = io_acc_val ? _GEN_6 : 10'h0; // @[AcceleratoTop.scala 227:21 251:27]
+  wire [31:0] _GEN_13 = io_acc_val ? _GEN_7 : 32'h0; // @[AcceleratoTop.scala 226:20 251:27]
+  wire  _GEN_14 = io_acc_val & io_acc_we; // @[AcceleratoTop.scala 228:16 251:27]
+  wire [31:0] _GEN_16 = io_acc_val ? _GEN_10 : 32'h0; // @[AcceleratoTop.scala 232:21 251:27]
+  SRAM SRAM ( // @[AcceleratoTop.scala 225:22]
+    .clock(SRAM_clock),
+    .io_dataIn(SRAM_io_dataIn),
+    .io_we(SRAM_io_we),
+    .io_address(SRAM_io_address),
+    .io_valid(SRAM_io_valid),
+    .io_dataOut(SRAM_io_dataOut)
+  );
+  assign io_top_out_valid = io_top_val & _GEN_5; // @[AcceleratoTop.scala 237:21 234:22]
+  assign io_top_out_bits = io_top_val ? _GEN_4 : 32'h0; // @[AcceleratoTop.scala 231:21 237:21]
+  assign io_acc_out_bits = io_top_val ? 32'h0 : _GEN_16; // @[AcceleratoTop.scala 232:21 237:21]
+  assign SRAM_clock = clock;
+  assign SRAM_io_dataIn = io_top_val ? _GEN_1 : _GEN_13; // @[AcceleratoTop.scala 237:21]
+  assign SRAM_io_we = io_top_val ? io_top_we : _GEN_14; // @[AcceleratoTop.scala 237:21]
+  assign SRAM_io_address = io_top_val ? _GEN_0 : _GEN_12; // @[AcceleratoTop.scala 237:21]
+  assign SRAM_io_valid = io_top_val | io_acc_val; // @[AcceleratoTop.scala 237:21]
 endmodule
 module AcceleratoTop(
   input         clock,

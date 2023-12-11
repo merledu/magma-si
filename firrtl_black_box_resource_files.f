@@ -1,0 +1,1 @@
+/home/skashif/freshMagmaSi/gf180mcu_fd_ip_sram__sram512x8m8wm1.v
