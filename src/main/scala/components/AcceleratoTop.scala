@@ -221,7 +221,12 @@ class MMU extends Module{
         val acc_out = Valid(UInt(32.W))
     })
 
-    val DMEM = SyncReadMem(1024, UInt(32.W))
+    // val DMEM = SyncReadMem(1024, UInt(32.W))
+    val SRAM = Module(new SRAM())
+    SRAM.io.dataIn := 0.U
+    SRAM.io.address := 0.U
+    SRAM.io.we := 0.B 
+    SRAM.io.valid := 0.B
 
     io.top_out.bits := 0.U
     io.acc_out.bits := 0.U
@@ -231,16 +236,30 @@ class MMU extends Module{
 
     when(io.top_val){
         when(io.top_we){
-            DMEM(io.top_adr-12.U) := io.top_dat
+            // DMEM(io.top_adr-12.U) := io.top_dat
+            SRAM.io.address := io.top_adr-12.U
+            SRAM.io.dataIn := io.top_dat
+            SRAM.io.we := 1.B
+            SRAM.io.valid := 1.B
         }.otherwise{
-            io.top_out.bits := DMEM(io.top_adr-12.U)
+            SRAM.io.address := io.top_adr-12.U
+            SRAM.io.we := 0.B 
+            SRAM.io.valid := 1.B
+            io.top_out.bits := SRAM.io.dataOut //DMEM(io.top_adr-12.U)
             io.top_out.valid := true.B
         }
     }.elsewhen(io.acc_val){
         when(io.acc_we){
-            DMEM(io.acc_adr-12.U) := io.acc_dat
+            // DMEM(io.acc_adr-12.U) := io.acc_dat
+            SRAM.io.address := io.acc_adr-12.U
+            SRAM.io.dataIn := io.acc_dat
+            SRAM.io.we := 1.B 
+            SRAM.io.valid := 1.B
         }.otherwise{
-            io.acc_out.bits := DMEM(io.acc_adr-12.U)
+            SRAM.io.address := io.acc_adr-12.U
+            SRAM.io.we := 0.B 
+            SRAM.io.valid := 1.B
+            io.acc_out.bits := SRAM.io.dataOut //DMEM(io.acc_adr-12.U)
             io.acc_out.valid := true.B
         }
     }

@@ -822,10 +822,10 @@ circuit AcceleratoTop :
         else :
           j <= UInt<1>("h0") @[ivncontrol4.scala 83:11]
     io.o_vn <= i_vn @[ivncontrol4.scala 90:13]
-    i_vn[0] <= UInt<5>("hf") @[ivncontrol4.scala 93:17]
-    i_vn[1] <= UInt<5>("h15") @[ivncontrol4.scala 93:17]
-    i_vn[2] <= UInt<5>("h15") @[ivncontrol4.scala 93:17]
-    i_vn[3] <= UInt<5>("hb") @[ivncontrol4.scala 93:17]
+    i_vn[0] <= UInt<5>("h5") @[ivncontrol4.scala 93:17]
+    i_vn[1] <= UInt<5>("h16") @[ivncontrol4.scala 93:17]
+    i_vn[2] <= UInt<5>("h5") @[ivncontrol4.scala 93:17]
+    i_vn[3] <= UInt<5>("h13") @[ivncontrol4.scala 93:17]
     node _T_23 = eq(i, UInt<1>("h1")) @[ivncontrol4.scala 103:14]
     node _T_24 = eq(j, UInt<1>("h1")) @[ivncontrol4.scala 103:45]
     node _T_25 = and(_T_23, _T_24) @[ivncontrol4.scala 103:39]
@@ -9702,41 +9702,197 @@ circuit AcceleratoTop :
       _WIRE_3 <= _WIRE_2
       io.Third_Matrix <= _WIRE_3 @[TOP.scala 30:25]
 
+  extmodule gf180mcu_fd_ip_sram__sram512x8m8wm1 :
+    input CLK : UInt<1>
+    input CEN : UInt<1>
+    input GWEN : UInt<1>
+    input WEN : UInt<8>
+    input A : UInt<9>
+    input D : UInt<8>
+    output Q : UInt<8>
+    output VDD : Analog<1>
+    output VSS : Analog<1>
+    defname = gf180mcu_fd_ip_sram__sram512x8m8wm1
+
+  extmodule gf180mcu_fd_ip_sram__sram512x8m8wm1_1 :
+    input CLK : UInt<1>
+    input CEN : UInt<1>
+    input GWEN : UInt<1>
+    input WEN : UInt<8>
+    input A : UInt<9>
+    input D : UInt<8>
+    output Q : UInt<8>
+    output VDD : Analog<1>
+    output VSS : Analog<1>
+    defname = gf180mcu_fd_ip_sram__sram512x8m8wm1
+
+  extmodule gf180mcu_fd_ip_sram__sram512x8m8wm1_2 :
+    input CLK : UInt<1>
+    input CEN : UInt<1>
+    input GWEN : UInt<1>
+    input WEN : UInt<8>
+    input A : UInt<9>
+    input D : UInt<8>
+    output Q : UInt<8>
+    output VDD : Analog<1>
+    output VSS : Analog<1>
+    defname = gf180mcu_fd_ip_sram__sram512x8m8wm1
+
+  extmodule gf180mcu_fd_ip_sram__sram512x8m8wm1_3 :
+    input CLK : UInt<1>
+    input CEN : UInt<1>
+    input GWEN : UInt<1>
+    input WEN : UInt<8>
+    input A : UInt<9>
+    input D : UInt<8>
+    output Q : UInt<8>
+    output VDD : Analog<1>
+    output VSS : Analog<1>
+    defname = gf180mcu_fd_ip_sram__sram512x8m8wm1
+
+  module SRAM :
+    input clock : Clock
+    input reset : Reset
+    output io : { flip dataIn : UInt<32>, flip we : UInt<1>, flip address : UInt<10>, flip valid : UInt<1>, dataOut : UInt<32>}
+
+    inst sram0 of gf180mcu_fd_ip_sram__sram512x8m8wm1 @[SRAM.scala 20:23]
+    sram0.VSS is invalid
+    sram0.VDD is invalid
+    sram0.Q is invalid
+    sram0.D is invalid
+    sram0.A is invalid
+    sram0.WEN is invalid
+    sram0.GWEN is invalid
+    sram0.CEN is invalid
+    sram0.CLK is invalid
+    inst sram1 of gf180mcu_fd_ip_sram__sram512x8m8wm1_1 @[SRAM.scala 21:23]
+    sram1.VSS is invalid
+    sram1.VDD is invalid
+    sram1.Q is invalid
+    sram1.D is invalid
+    sram1.A is invalid
+    sram1.WEN is invalid
+    sram1.GWEN is invalid
+    sram1.CEN is invalid
+    sram1.CLK is invalid
+    inst sram2 of gf180mcu_fd_ip_sram__sram512x8m8wm1_2 @[SRAM.scala 22:23]
+    sram2.VSS is invalid
+    sram2.VDD is invalid
+    sram2.Q is invalid
+    sram2.D is invalid
+    sram2.A is invalid
+    sram2.WEN is invalid
+    sram2.GWEN is invalid
+    sram2.CEN is invalid
+    sram2.CLK is invalid
+    inst sram3 of gf180mcu_fd_ip_sram__sram512x8m8wm1_3 @[SRAM.scala 23:23]
+    sram3.VSS is invalid
+    sram3.VDD is invalid
+    sram3.Q is invalid
+    sram3.D is invalid
+    sram3.A is invalid
+    sram3.WEN is invalid
+    sram3.GWEN is invalid
+    sram3.CEN is invalid
+    sram3.CLK is invalid
+    sram0.A <= io.address @[SRAM.scala 26:16]
+    sram1.A <= io.address @[SRAM.scala 27:16]
+    sram2.A <= io.address @[SRAM.scala 28:16]
+    sram3.A <= io.address @[SRAM.scala 29:16]
+    node _sram0_io_D_T = bits(io.dataIn, 7, 0) @[SRAM.scala 32:28]
+    sram0.D <= _sram0_io_D_T @[SRAM.scala 32:16]
+    node _sram1_io_D_T = bits(io.dataIn, 15, 8) @[SRAM.scala 33:28]
+    sram1.D <= _sram1_io_D_T @[SRAM.scala 33:16]
+    node _sram2_io_D_T = bits(io.dataIn, 23, 16) @[SRAM.scala 34:28]
+    sram2.D <= _sram2_io_D_T @[SRAM.scala 34:16]
+    node _sram3_io_D_T = bits(io.dataIn, 31, 24) @[SRAM.scala 35:28]
+    sram3.D <= _sram3_io_D_T @[SRAM.scala 35:16]
+    node _sram0_io_WEN_T = mux(UInt<1>("h0"), UInt<8>("hff"), UInt<8>("h0")) @[Bitwise.scala 77:12]
+    sram0.WEN <= _sram0_io_WEN_T @[SRAM.scala 38:18]
+    node _sram1_io_WEN_T = mux(UInt<1>("h0"), UInt<8>("hff"), UInt<8>("h0")) @[Bitwise.scala 77:12]
+    sram1.WEN <= _sram1_io_WEN_T @[SRAM.scala 39:18]
+    node _sram2_io_WEN_T = mux(UInt<1>("h0"), UInt<8>("hff"), UInt<8>("h0")) @[Bitwise.scala 77:12]
+    sram2.WEN <= _sram2_io_WEN_T @[SRAM.scala 40:18]
+    node _sram3_io_WEN_T = mux(UInt<1>("h0"), UInt<8>("hff"), UInt<8>("h0")) @[Bitwise.scala 77:12]
+    sram3.WEN <= _sram3_io_WEN_T @[SRAM.scala 41:18]
+    node io_dataOut_lo = cat(sram1.Q, sram0.Q) @[Cat.scala 33:92]
+    node io_dataOut_hi = cat(sram3.Q, sram2.Q) @[Cat.scala 33:92]
+    node _io_dataOut_T = cat(io_dataOut_hi, io_dataOut_lo) @[Cat.scala 33:92]
+    io.dataOut <= _io_dataOut_T @[SRAM.scala 44:16]
+    node _clk_T = asUInt(clock) @[SRAM.scala 47:36]
+    node _clk_T_1 = bits(_clk_T, 0, 0) @[SRAM.scala 47:38]
+    wire clk : UInt<1>
+    clk <= _clk_T_1
+    sram0.CLK <= clk @[SRAM.scala 49:18]
+    sram1.CLK <= clk @[SRAM.scala 50:18]
+    sram2.CLK <= clk @[SRAM.scala 51:18]
+    sram3.CLK <= clk @[SRAM.scala 52:18]
+    node _sram0_io_CEN_T = mux(io.valid, UInt<1>("h0"), UInt<1>("h1")) @[SRAM.scala 55:24]
+    sram0.CEN <= _sram0_io_CEN_T @[SRAM.scala 55:18]
+    node _sram1_io_CEN_T = mux(io.valid, UInt<1>("h0"), UInt<1>("h1")) @[SRAM.scala 56:24]
+    sram1.CEN <= _sram1_io_CEN_T @[SRAM.scala 56:18]
+    node _sram2_io_CEN_T = mux(io.valid, UInt<1>("h0"), UInt<1>("h1")) @[SRAM.scala 57:24]
+    sram2.CEN <= _sram2_io_CEN_T @[SRAM.scala 57:18]
+    node _sram3_io_CEN_T = mux(io.valid, UInt<1>("h0"), UInt<1>("h1")) @[SRAM.scala 58:24]
+    sram3.CEN <= _sram3_io_CEN_T @[SRAM.scala 58:18]
+    node _sram0_io_GWEN_T = not(io.we) @[SRAM.scala 60:22]
+    sram0.GWEN <= _sram0_io_GWEN_T @[SRAM.scala 60:19]
+    node _sram1_io_GWEN_T = not(io.we) @[SRAM.scala 61:22]
+    sram1.GWEN <= _sram1_io_GWEN_T @[SRAM.scala 61:19]
+    node _sram2_io_GWEN_T = not(io.we) @[SRAM.scala 62:22]
+    sram2.GWEN <= _sram2_io_GWEN_T @[SRAM.scala 62:19]
+    node _sram3_io_GWEN_T = not(io.we) @[SRAM.scala 63:22]
+    sram3.GWEN <= _sram3_io_GWEN_T @[SRAM.scala 63:19]
+
   module MMU :
     input clock : Clock
     input reset : Reset
     output io : { flip top_adr : UInt<10>, flip top_we : UInt<1>, flip top_dat : UInt<32>, flip top_val : UInt<1>, top_out : { valid : UInt<1>, bits : UInt<32>}, flip acc_adr : UInt<10>, flip acc_we : UInt<1>, flip acc_dat : UInt<32>, flip acc_val : UInt<1>, acc_out : { valid : UInt<1>, bits : UInt<32>}}
 
-    smem DMEM : UInt<32> [1024] @[AcceleratoTop.scala 224:27]
-    io.top_out.bits <= UInt<1>("h0") @[AcceleratoTop.scala 226:21]
-    io.acc_out.bits <= UInt<1>("h0") @[AcceleratoTop.scala 227:21]
-    io.top_out.valid <= UInt<1>("h0") @[AcceleratoTop.scala 229:22]
-    io.acc_out.valid <= UInt<1>("h0") @[AcceleratoTop.scala 230:22]
-    when io.top_val : @[AcceleratoTop.scala 232:21]
-      when io.top_we : @[AcceleratoTop.scala 233:24]
-        node _T = sub(io.top_adr, UInt<4>("hc")) @[AcceleratoTop.scala 234:28]
-        node _T_1 = tail(_T, 1) @[AcceleratoTop.scala 234:28]
-        infer mport MPORT = DMEM[_T_1], clock @[AcceleratoTop.scala 234:17]
-        MPORT <= io.top_dat @[AcceleratoTop.scala 234:35]
+    inst SRAM of SRAM @[AcceleratoTop.scala 225:22]
+    SRAM.clock <= clock
+    SRAM.reset <= reset
+    SRAM.io.dataIn <= UInt<1>("h0") @[AcceleratoTop.scala 226:20]
+    SRAM.io.address <= UInt<1>("h0") @[AcceleratoTop.scala 227:21]
+    SRAM.io.we <= UInt<1>("h0") @[AcceleratoTop.scala 228:16]
+    SRAM.io.valid <= UInt<1>("h0") @[AcceleratoTop.scala 229:19]
+    io.top_out.bits <= UInt<1>("h0") @[AcceleratoTop.scala 231:21]
+    io.acc_out.bits <= UInt<1>("h0") @[AcceleratoTop.scala 232:21]
+    io.top_out.valid <= UInt<1>("h0") @[AcceleratoTop.scala 234:22]
+    io.acc_out.valid <= UInt<1>("h0") @[AcceleratoTop.scala 235:22]
+    when io.top_val : @[AcceleratoTop.scala 237:21]
+      when io.top_we : @[AcceleratoTop.scala 238:24]
+        node _SRAM_io_address_T = sub(io.top_adr, UInt<4>("hc")) @[AcceleratoTop.scala 240:42]
+        node _SRAM_io_address_T_1 = tail(_SRAM_io_address_T, 1) @[AcceleratoTop.scala 240:42]
+        SRAM.io.address <= _SRAM_io_address_T_1 @[AcceleratoTop.scala 240:29]
+        SRAM.io.dataIn <= io.top_dat @[AcceleratoTop.scala 241:28]
+        SRAM.io.we <= UInt<1>("h1") @[AcceleratoTop.scala 242:24]
+        SRAM.io.valid <= UInt<1>("h1") @[AcceleratoTop.scala 243:27]
       else :
-        node _io_top_out_bits_T = sub(io.top_adr, UInt<4>("hc")) @[AcceleratoTop.scala 236:47]
-        node _io_top_out_bits_T_1 = tail(_io_top_out_bits_T, 1) @[AcceleratoTop.scala 236:47]
-        infer mport io_top_out_bits_MPORT = DMEM[_io_top_out_bits_T_1], clock @[AcceleratoTop.scala 236:36]
-        io.top_out.bits <= io_top_out_bits_MPORT @[AcceleratoTop.scala 236:29]
-        io.top_out.valid <= UInt<1>("h1") @[AcceleratoTop.scala 237:30]
+        node _SRAM_io_address_T_2 = sub(io.top_adr, UInt<4>("hc")) @[AcceleratoTop.scala 245:42]
+        node _SRAM_io_address_T_3 = tail(_SRAM_io_address_T_2, 1) @[AcceleratoTop.scala 245:42]
+        SRAM.io.address <= _SRAM_io_address_T_3 @[AcceleratoTop.scala 245:29]
+        SRAM.io.we <= UInt<1>("h0") @[AcceleratoTop.scala 246:24]
+        SRAM.io.valid <= UInt<1>("h1") @[AcceleratoTop.scala 247:27]
+        io.top_out.bits <= SRAM.io.dataOut @[AcceleratoTop.scala 248:29]
+        io.top_out.valid <= UInt<1>("h1") @[AcceleratoTop.scala 249:30]
     else :
-      when io.acc_val : @[AcceleratoTop.scala 239:27]
-        when io.acc_we : @[AcceleratoTop.scala 240:24]
-          node _T_2 = sub(io.acc_adr, UInt<4>("hc")) @[AcceleratoTop.scala 241:28]
-          node _T_3 = tail(_T_2, 1) @[AcceleratoTop.scala 241:28]
-          infer mport MPORT_1 = DMEM[_T_3], clock @[AcceleratoTop.scala 241:17]
-          MPORT_1 <= io.acc_dat @[AcceleratoTop.scala 241:35]
+      when io.acc_val : @[AcceleratoTop.scala 251:27]
+        when io.acc_we : @[AcceleratoTop.scala 252:24]
+          node _SRAM_io_address_T_4 = sub(io.acc_adr, UInt<4>("hc")) @[AcceleratoTop.scala 254:42]
+          node _SRAM_io_address_T_5 = tail(_SRAM_io_address_T_4, 1) @[AcceleratoTop.scala 254:42]
+          SRAM.io.address <= _SRAM_io_address_T_5 @[AcceleratoTop.scala 254:29]
+          SRAM.io.dataIn <= io.acc_dat @[AcceleratoTop.scala 255:28]
+          SRAM.io.we <= UInt<1>("h1") @[AcceleratoTop.scala 256:24]
+          SRAM.io.valid <= UInt<1>("h1") @[AcceleratoTop.scala 257:27]
         else :
-          node _io_acc_out_bits_T = sub(io.acc_adr, UInt<4>("hc")) @[AcceleratoTop.scala 243:47]
-          node _io_acc_out_bits_T_1 = tail(_io_acc_out_bits_T, 1) @[AcceleratoTop.scala 243:47]
-          infer mport io_acc_out_bits_MPORT = DMEM[_io_acc_out_bits_T_1], clock @[AcceleratoTop.scala 243:36]
-          io.acc_out.bits <= io_acc_out_bits_MPORT @[AcceleratoTop.scala 243:29]
-          io.acc_out.valid <= UInt<1>("h1") @[AcceleratoTop.scala 244:30]
+          node _SRAM_io_address_T_6 = sub(io.acc_adr, UInt<4>("hc")) @[AcceleratoTop.scala 259:42]
+          node _SRAM_io_address_T_7 = tail(_SRAM_io_address_T_6, 1) @[AcceleratoTop.scala 259:42]
+          SRAM.io.address <= _SRAM_io_address_T_7 @[AcceleratoTop.scala 259:29]
+          SRAM.io.we <= UInt<1>("h0") @[AcceleratoTop.scala 260:24]
+          SRAM.io.valid <= UInt<1>("h1") @[AcceleratoTop.scala 261:27]
+          io.acc_out.bits <= SRAM.io.dataOut @[AcceleratoTop.scala 262:29]
+          io.acc_out.valid <= UInt<1>("h1") @[AcceleratoTop.scala 263:30]
 
   module AcceleratoTop :
     input clock : Clock
