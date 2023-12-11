@@ -20,7 +20,7 @@ class flexdpecom4(implicit val Config: MagmasiConfig) extends Module {
     val o_data_bus = Output(Vec(Config.NUM_PES, UInt(Config.DATA_TYPE.W)))
      val o_adder = Output(Vec(Config.NUM_PES-1, UInt(Config.DATA_TYPE.W)))
     val LEVELS   : Int = (2 * (math.log(Config.NUM_PES) / math.log(2))).toInt + 1
-     val i_mux_bus   = Input(Vec(Config.NUM_PES, UInt(4.W)))
+     val i_mux_bus   = Input(Vec(Config.NUM_PES,Vec(Config.NUM_PES, UInt((LEVELS-1).W))))
 
   })
   dontTouch(io.i_data_valid)
@@ -61,7 +61,7 @@ class flexdpecom4(implicit val Config: MagmasiConfig) extends Module {
     val w_reduction_cmd = my_controller.io.o_reduction_cmd
     val w_reduction_valid = my_controller.io.o_reduction_valid
 
-    val my_Benes = Module(new Benes())
+    val my_Benes = Module(new Benes3())
 
     my_Benes.io.i_data_bus1 := io.i_data_bus
     my_Benes.io.i_data_bus2 := io.i_data_bus2

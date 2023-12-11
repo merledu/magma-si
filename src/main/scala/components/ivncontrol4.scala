@@ -41,14 +41,14 @@ class ivncontrol4(implicit val Config: MagmasiConfig) extends Module {
     val i = RegInit(0.U(32.W))
     val j = RegInit(0.U(32.W))
 
-    val k = RegNext(i === 7.U && (j === 7.U))
+    io.ProcessValid := (i === 7.U) && (j === 7.U)
 
 when(io.validpin === true.B){
-    when (i === 7.U && (j === 7.U)){
-        io.ProcessValid := RegNext(k)
-    }.otherwise{
-        io.ProcessValid := 0.B
-    }
+//     when (i === 7.U && (j === 7.U)){
+//         io.ProcessValid := (k)
+//     }.otherwise{
+//         io.ProcessValid := 0.B
+//     }
     
     //var valid = 0.U
     val mat = Reg(Vec(Config.MaxRows, Vec(Config.MaxCols,UInt(32.W))))
@@ -150,7 +150,7 @@ when(io.validpin === true.B){
     //  printf("Value of data: %d\n", rowcount(1))
 
 
-    when ( i === (Config.MaxRows - 1).U && (j === (Config.MaxCols - 1).U)){
+    when ( i === (Config.MaxRows - 1).U && (j === (Config.MaxCols ).U)){
        valid := true.B
     }.otherwise{
        valid := false.B

@@ -15,14 +15,14 @@ class ivncontrol4Tester extends AnyFreeSpec with ChiselScalatestTester {
         val inputData = Seq(
 
           
-         Seq(711, 51,11,3,6,7,7,7),
+         Seq(711, 0,11,3,6,7,7,7),
           Seq(7, 7,6,7,3,7,6,7),
           Seq(7, 7,5,7,7,7,7,7),
           Seq(7, 7,4,7,7,7,7,7),
           Seq(7, 7,7,7,7,7,7,7),
           Seq(4, 7,4,4,4,5,6,7),
           Seq(6, 7,4,4,3,2,2,4),
-          Seq(2, 7,2,2,2,3,3,4)
+          Seq(0, 0,0,0,0,0,0,1)
 
         ) 
 
@@ -34,6 +34,7 @@ class ivncontrol4Tester extends AnyFreeSpec with ChiselScalatestTester {
             c.io.Stationary_matrix(i)(j).poke(inputData(i)(j).U)
             
           }
+          c.io.validpin.poke(1.B)
     
     }
       c.clock.step(200)

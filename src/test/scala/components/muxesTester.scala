@@ -12,21 +12,21 @@ class MuxesTester extends AnyFreeSpec with ChiselScalatestTester {
         test(new Muxes()).withAnnotations  (Seq(VerilatorBackendAnnotation)) { dut =>
 
         val inputData = Seq(
-          Seq(0, 2, 3, 0),
-          Seq(5, 6, 7, 0),
-          Seq(9, 10, 11, 0),
-          Seq(13, 14, 15, 0)
+          Seq(0, 0, 0, 0),
+          Seq(1, 2, 0, 0),
+          Seq(4, 5, 0, 0),
+          Seq(0, 0, 0, 0)
         ) 
             
         val input = Seq(
-          Seq(0, 1, 2, 0),
-          Seq(3, 4, 1, 0),
-          Seq(2, 3, 4, 0),
-          Seq(1, 2, 3, 0)
+          Seq(0, 0, 0, 0),
+          Seq(1, 2, 0, 0),
+          Seq(3, 4, 0, 0),
+          Seq(0, 0, 0, 0)
         ) 
         
-        val inputData2 = Seq(0, 2, 3, 0,1)
-        val input2 = Seq(0, 1, 2, 0,1)
+        val inputData2 = Seq(6, 9, 0, 0,0)
+        val input2 = Seq(1, 2, 0, 0,0)
 
         for (i <- 0 until 4) {
           for (j <- 0 until 4) {
@@ -50,45 +50,45 @@ class MuxesTester extends AnyFreeSpec with ChiselScalatestTester {
 
         dut.clock.step(50)
 
-        val inputData5 = Seq(
-          Seq(0, 2, 3, 0),
-          Seq(5, 6, 7, 0),
-          Seq(9, 10, 11, 0),
-          Seq(13, 14, 15, 0)
-        ) 
+        // val inputData5 = Seq(
+        //   Seq(0, 2, 3, 0),
+        //   Seq(5, 6, 7, 0),
+        //   Seq(9, 10, 11, 0),
+        //   Seq(13, 14, 15, 0)
+        // ) 
             
-        val input6 = Seq(
-          Seq(0, 1, 2, 0),
-          Seq(3, 4, 1, 0),
-          Seq(2, 3, 4, 0),
-          Seq(1, 2, 3, 0)
-        ) 
+        // val input6 = Seq(
+        //   Seq(0, 1, 2, 0),
+        //   Seq(3, 4, 1, 0),
+        //   Seq(2, 3, 4, 0),
+        //   Seq(1, 2, 3, 0)
+        // ) 
         
         
-        val inputData7 = Seq(1, 2, 3, 4,1)
-        val input8 = Seq(1, 2, 3, 4,1)
+        // val inputData7 = Seq(1, 2, 3, 4,1)
+        // val input8 = Seq(1, 2, 3, 4,1)
 
-        for (i <- 0 until 4) {
-          for (j <- 0 until 4) {
-            dut.io.mat1(i)(j).poke(inputData5(i)(j).U)
-          }
-        }
+        // for (i <- 0 until 4) {
+        //   for (j <- 0 until 4) {
+        //     dut.io.mat1(i)(j).poke(inputData5(i)(j).U)
+        //   }
+        // }
         
-        for (i <- 0 until 4){
-          dut.io.mat2(i).poke(inputData7(i).U)
-        }
+        // for (i <- 0 until 4){
+        //   dut.io.mat2(i).poke(inputData7(i).U)
+        // }
       
-        for (i <- 0 until 4) {
-          for (j <- 0 until 4) {
-            dut.io.counterMatrix1(i)(j).poke(input6(i)(j).U)
-          }
-        }
+        // for (i <- 0 until 4) {
+        //   for (j <- 0 until 4) {
+        //     dut.io.counterMatrix1(i)(j).poke(input6(i)(j).U)
+        //   }
+        // }
 
-        for (i <- 0 until 4){
-          dut.io.counterMatrix2(i).poke(input8(i).U)
-        }
+        // for (i <- 0 until 4){
+        //   dut.io.counterMatrix2(i).poke(input8(i).U)
+        // }
 
-        dut.clock.step(100)
+        // dut.clock.step(100)
       }
     }
   } 

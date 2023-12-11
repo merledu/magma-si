@@ -51,33 +51,33 @@ class Benes(implicit val config: MagmasiConfig) extends Module {
 
   }
 
-  for (i <- 1 until config.NUM_PES ) {
+  for (i <- 0 until config.NUM_PES ) {
 
     when ( io.i_data_bus2(i) =/= 0.U) {
 
         when (io.i_mux_bus(i).orR){
 
-            when(io.i_data_bus2(i) === io.i_data_bus2(i-1)) {
+            // when(io.i_data_bus2(i) === io.i_data_bus2(i-1)) {
 
-                val parsedindexvalue = BenesLogic(io.i_data_bus2(i),(inputArrayIndexes(i)._2).U - 1.U,io.i_mux_bus(i))//function call for same input numbers with same indexes  
-                parse_array(parsedindexvalue) := io.i_data_bus2(i)
-            }.otherwise {
+            //     val parsedindexvalue = BenesLogic(io.i_data_bus2(i),(inputArrayIndexes(i)._2).U - 1.U,io.i_mux_bus(i))//function call for same input numbers with same indexes  
+            //     parse_array(parsedindexvalue) := io.i_data_bus2(i)
+            // }.otherwise {
 
                 val parsedindexvalue = BenesLogic(io.i_data_bus2(i),(inputArrayIndexes(i)._2).U,io.i_mux_bus(i))// normal function call
                 parse_array(parsedindexvalue) := io.i_data_bus2(i)
-            }    
+            //}    
 
         }.otherwise{
 
-          when (io.i_data_bus2(i) === io.i_data_bus2(i-1)) {
+          // when (io.i_data_bus2(i) === io.i_data_bus2(i-1)) {
 
-            parse_array(i) := 0.U
+          //   parse_array(i) := 0.U
           
-          }.otherwise{
+          // }.otherwise{
           
             parse_array(i) := io.i_data_bus2(i)
           
-          }
+          //}
         }
 
     }.otherwise{
@@ -88,16 +88,16 @@ class Benes(implicit val config: MagmasiConfig) extends Module {
 
   }
 
-  when (io.i_data_bus2(0) =/= 0.U){
+  // when (io.i_data_bus2(0) =/= 0.U){
 
-    val parsedindexvalue = BenesLogic(io.i_data_bus2(0),(inputArrayIndexes(0)._2).U,io.i_mux_bus(0))
-    parse_array(parsedindexvalue) := io.i_data_bus2(0)
+  //   val parsedindexvalue = BenesLogic(io.i_data_bus2(0),(inputArrayIndexes(0)._2).U,io.i_mux_bus(0))
+  //   parse_array(parsedindexvalue) := io.i_data_bus2(0)
 
-  }.otherwise{
+  // }.otherwise{
 
-    parse_array(config.NUM_PES) := 0.U
+  //   parse_array(config.NUM_PES) := 0.U
   
-  }
+  // }
 
 for ( index <- 0 until config.NUM_PES){
     io.o_dist_bus2(index) := parse_array(index)

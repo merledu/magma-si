@@ -21,42 +21,21 @@ int main(int argc, char** argv) {
 
     // for (int i = 0; i < 32; i++) {
     //     switch(i) {
-               top->io_Stationary_matrix_0_0 = 11;
-              top->io_Stationary_matrix_0_1 = 12; 
-             top->io_Stationary_matrix_0_2 = 13; 
-               top->io_Stationary_matrix_0_3 = 14; 
-               top->io_Stationary_matrix_1_0 = 3; 
+               top->io_Stationary_matrix_0_0 = 1; 
+               top->io_Stationary_matrix_0_1 = 2; 
+               top->io_Stationary_matrix_1_0 = 3;  
+               //top->io_Stationary_matrix_2_0 = 4; 
                top->io_Stationary_matrix_1_1 = 4; 
-               top->io_Stationary_matrix_1_2 = 5; 
-               top->io_Stationary_matrix_1_3 = 6; 
-               top->io_Stationary_matrix_2_0 = 7; 
-               top->io_Stationary_matrix_2_1 = 8; 
-               top->io_Stationary_matrix_2_2 = 9; 
-               top->io_Stationary_matrix_2_3 = 10; 
-               top->io_Stationary_matrix_3_0 = 21; 
-               top->io_Stationary_matrix_3_1 = 23; 
-               top->io_Stationary_matrix_3_2 = 24;
-              top->io_Stationary_matrix_3_3 = 25;
         
     
     // for (int i = 0; i < 32; i++) {
     //     switch(i) {
-            top->io_Streaming_matrix_0_0 = 2;
+            top->io_Streaming_matrix_0_0 = 5;
             top->io_Streaming_matrix_0_1 = 6;
-            top->io_Streaming_matrix_0_2 = 0;
-            top->io_Streaming_matrix_0_3 = 0;
-            top->io_Streaming_matrix_1_0 = 1;
-            top->io_Streaming_matrix_1_1 = 9;
-            top->io_Streaming_matrix_1_2 = 0;
-             top->io_Streaming_matrix_1_3 = 0;
-            top->io_Streaming_matrix_2_0 = 6;
-             top->io_Streaming_matrix_2_1 = 3;
-            top->io_Streaming_matrix_2_2 = 0;
-            top->io_Streaming_matrix_2_3 = 0;
-             top->io_Streaming_matrix_3_0 = 7;
-             top->io_Streaming_matrix_3_1 = 1;
-             top->io_Streaming_matrix_3_2 = 0;
-             top->io_Streaming_matrix_3_3 = 0;
+            // top->io_Streaming_matrix_0_3 = 0;
+            top->io_Streaming_matrix_1_0 = 7;
+            top->io_Streaming_matrix_1_1 = 8;
+            top->io_Streaming_matrix_1_2 = 10;
         
     //}
     top->io_CalFDE = 2;

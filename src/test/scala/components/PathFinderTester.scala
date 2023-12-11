@@ -11,45 +11,42 @@ class PathFinderTester extends AnyFreeSpec with ChiselScalatestTester {
         test(new PathFinder()).withAnnotations(Seq(VerilatorBackendAnnotation)) { dut =>
 
         val inputData = Seq(
-           Seq(0, 0, 21, 22),
-            Seq(0, 0, 23, 24),
-           Seq(5, 6, 7, 8),
+           Seq(1, 2, 0, 0),
+            Seq(3, 4, 0, 0),
+           Seq(0, 0, 0, 0),
            Seq(0, 0, 0, 0)
         ) 
-        val inputData2 = Seq(1, 2, 3, 4)
+        val inputData2 = Seq(5, 7, 0, 0)
 
-        for (i <- 0 until 4) {
-          for (j <- 0 until 4) {
+        for (i <- 0 until 2) {
+          for (j <- 0 until 2) {
             dut.io.Stationary_matrix(i)(j).poke(inputData(i)(j).U)
           }
         }
-        dut.io.DataValid.poke(1.B)
-        for (i <- 0 until 4){
+
+        for (i <- 0 until 2){
           dut.io.Streaming_matrix(i).poke(inputData2(i).U)
         }
-        dut.io.NoDPE.poke(0.U)
         // dut.clock.step(50)
         // dut.io.DataValid.poke(1.B)  
         dut.clock.step(200)
         
-        // val inputData3 = Seq(
-        //    Seq(0, 0, 1, 2),
-        //     Seq(0, 0, 3, 4),
-        //    Seq(8, 9, 10, 11),
-        //    Seq(0, 0, 0, 0)
-        // ) 
-        // val inputData4 = Seq(2, 1, 6, 7)
+        val inputData3 = Seq(
+           Seq(1, 2, 0, 0),
+            Seq(3, 4, 0, 0),
+           Seq(0, 0, 0, 0),
+           Seq(0, 0, 0, 0)
+        ) 
+        val inputData4 = Seq(6, 7, 0, 0)
 
-        // for (i <- 0 until 4) {
-        //   for (j <- 0 until 4) {
-        //     dut.io.Stationary_matrix(i)(j).poke(inputData3(i)(j).U)
-        //   }
-        // }
-        // dut.io.DataValid.poke(1.B)
-        // dut.io.NoDPE.poke(0.U)
-        // for (i <- 0 until 4){
-        //   dut.io.Streaming_matrix(i).poke(inputData4(i).U)
-        // }
+        for (i <- 0 until 2) {
+          for (j <- 0 until 2) {
+            dut.io.Stationary_matrix(i)(j).poke(inputData3(i)(j).U)
+          }
+        }
+        for (i <- 0 until 2){
+          dut.io.Streaming_matrix(i).poke(inputData4(i).U)
+        }
         dut.clock.step(200)
     
 
