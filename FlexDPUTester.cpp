@@ -35,10 +35,9 @@ int main(int argc, char** argv) {
             // top->io_Streaming_matrix_0_3 = 0;
             top->io_Streaming_matrix_1_0 = 7;
             top->io_Streaming_matrix_1_1 = 8;
-            top->io_Streaming_matrix_1_2 = 10;
+    
         
     //}
-    top->io_CalFDE = 2;
     // Simulation steps
     for (int cycle = 0; cycle < 2000; cycle++) {
         // Toggle clock

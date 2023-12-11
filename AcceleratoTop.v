@@ -4306,3 +4306,900 @@ end // initial
 `endif
 `endif // SYNTHESIS
 endmodule
+module MMU(
+  input         clock,
+  input  [9:0]  io_top_adr,
+  input         io_top_we,
+  input  [31:0] io_top_dat,
+  input         io_top_val,
+  output        io_top_out_valid,
+  output [31:0] io_top_out_bits,
+  input  [9:0]  io_acc_adr,
+  input         io_acc_we,
+  input  [31:0] io_acc_dat,
+  input         io_acc_val,
+  output [31:0] io_acc_out_bits
+);
+`ifdef RANDOMIZE_MEM_INIT
+  reg [31:0] _RAND_0;
+`endif // RANDOMIZE_MEM_INIT
+`ifdef RANDOMIZE_REG_INIT
+  reg [31:0] _RAND_1;
+  reg [31:0] _RAND_2;
+  reg [31:0] _RAND_3;
+  reg [31:0] _RAND_4;
+`endif // RANDOMIZE_REG_INIT
+  reg [31:0] DMEM [0:1023]; // @[AcceleratoTop.scala 224:27]
+  wire  DMEM_io_top_out_bits_MPORT_en; // @[AcceleratoTop.scala 224:27]
+  wire [9:0] DMEM_io_top_out_bits_MPORT_addr; // @[AcceleratoTop.scala 224:27]
+  wire [31:0] DMEM_io_top_out_bits_MPORT_data; // @[AcceleratoTop.scala 224:27]
+  wire  DMEM_io_acc_out_bits_MPORT_en; // @[AcceleratoTop.scala 224:27]
+  wire [9:0] DMEM_io_acc_out_bits_MPORT_addr; // @[AcceleratoTop.scala 224:27]
+  wire [31:0] DMEM_io_acc_out_bits_MPORT_data; // @[AcceleratoTop.scala 224:27]
+  wire [31:0] DMEM_MPORT_data; // @[AcceleratoTop.scala 224:27]
+  wire [9:0] DMEM_MPORT_addr; // @[AcceleratoTop.scala 224:27]
+  wire  DMEM_MPORT_mask; // @[AcceleratoTop.scala 224:27]
+  wire  DMEM_MPORT_en; // @[AcceleratoTop.scala 224:27]
+  wire [31:0] DMEM_MPORT_1_data; // @[AcceleratoTop.scala 224:27]
+  wire [9:0] DMEM_MPORT_1_addr; // @[AcceleratoTop.scala 224:27]
+  wire  DMEM_MPORT_1_mask; // @[AcceleratoTop.scala 224:27]
+  wire  DMEM_MPORT_1_en; // @[AcceleratoTop.scala 224:27]
+  reg  DMEM_io_top_out_bits_MPORT_en_pipe_0;
+  reg [9:0] DMEM_io_top_out_bits_MPORT_addr_pipe_0;
+  reg  DMEM_io_acc_out_bits_MPORT_en_pipe_0;
+  reg [9:0] DMEM_io_acc_out_bits_MPORT_addr_pipe_0;
+  wire  _GEN_5 = io_top_we ? 1'h0 : 1'h1; // @[AcceleratoTop.scala 233:24 224:27 236:47]
+  wire [31:0] _GEN_8 = io_top_we ? 32'h0 : DMEM_io_top_out_bits_MPORT_data; // @[AcceleratoTop.scala 226:21 233:24 236:29]
+  wire  _GEN_14 = io_acc_we ? 1'h0 : 1'h1; // @[AcceleratoTop.scala 240:24 224:27 243:47]
+  wire [31:0] _GEN_17 = io_acc_we ? 32'h0 : DMEM_io_acc_out_bits_MPORT_data; // @[AcceleratoTop.scala 227:21 240:24 243:29]
+  wire  _GEN_20 = io_acc_val & io_acc_we; // @[AcceleratoTop.scala 224:27 239:27]
+  wire  _GEN_23 = io_acc_val & _GEN_14; // @[AcceleratoTop.scala 224:27 239:27]
+  wire [31:0] _GEN_26 = io_acc_val ? _GEN_17 : 32'h0; // @[AcceleratoTop.scala 227:21 239:27]
+  assign DMEM_io_top_out_bits_MPORT_en = DMEM_io_top_out_bits_MPORT_en_pipe_0;
+  assign DMEM_io_top_out_bits_MPORT_addr = DMEM_io_top_out_bits_MPORT_addr_pipe_0;
+  assign DMEM_io_top_out_bits_MPORT_data = DMEM[DMEM_io_top_out_bits_MPORT_addr]; // @[AcceleratoTop.scala 224:27]
+  assign DMEM_io_acc_out_bits_MPORT_en = DMEM_io_acc_out_bits_MPORT_en_pipe_0;
+  assign DMEM_io_acc_out_bits_MPORT_addr = DMEM_io_acc_out_bits_MPORT_addr_pipe_0;
+  assign DMEM_io_acc_out_bits_MPORT_data = DMEM[DMEM_io_acc_out_bits_MPORT_addr]; // @[AcceleratoTop.scala 224:27]
+  assign DMEM_MPORT_data = io_top_dat;
+  assign DMEM_MPORT_addr = io_top_adr - 10'hc;
+  assign DMEM_MPORT_mask = 1'h1;
+  assign DMEM_MPORT_en = io_top_val & io_top_we;
+  assign DMEM_MPORT_1_data = io_acc_dat;
+  assign DMEM_MPORT_1_addr = io_acc_adr - 10'hc;
+  assign DMEM_MPORT_1_mask = 1'h1;
+  assign DMEM_MPORT_1_en = io_top_val ? 1'h0 : _GEN_20;
+  assign io_top_out_valid = io_top_val & _GEN_5; // @[AcceleratoTop.scala 232:21 224:27]
+  assign io_top_out_bits = io_top_val ? _GEN_8 : 32'h0; // @[AcceleratoTop.scala 226:21 232:21]
+  assign io_acc_out_bits = io_top_val ? 32'h0 : _GEN_26; // @[AcceleratoTop.scala 227:21 232:21]
+  always @(posedge clock) begin
+    if (DMEM_MPORT_en & DMEM_MPORT_mask) begin
+      DMEM[DMEM_MPORT_addr] <= DMEM_MPORT_data; // @[AcceleratoTop.scala 224:27]
+    end
+    if (DMEM_MPORT_1_en & DMEM_MPORT_1_mask) begin
+      DMEM[DMEM_MPORT_1_addr] <= DMEM_MPORT_1_data; // @[AcceleratoTop.scala 224:27]
+    end
+    DMEM_io_top_out_bits_MPORT_en_pipe_0 <= io_top_val & _GEN_5;
+    if (io_top_val & _GEN_5) begin
+      DMEM_io_top_out_bits_MPORT_addr_pipe_0 <= io_top_adr - 10'hc;
+    end
+    if (io_top_val) begin
+      DMEM_io_acc_out_bits_MPORT_en_pipe_0 <= 1'h0;
+    end else begin
+      DMEM_io_acc_out_bits_MPORT_en_pipe_0 <= _GEN_23;
+    end
+    if (io_top_val ? 1'h0 : _GEN_23) begin
+      DMEM_io_acc_out_bits_MPORT_addr_pipe_0 <= io_acc_adr - 10'hc;
+    end
+  end
+// Register and memory initialization
+`ifdef RANDOMIZE_GARBAGE_ASSIGN
+`define RANDOMIZE
+`endif
+`ifdef RANDOMIZE_INVALID_ASSIGN
+`define RANDOMIZE
+`endif
+`ifdef RANDOMIZE_REG_INIT
+`define RANDOMIZE
+`endif
+`ifdef RANDOMIZE_MEM_INIT
+`define RANDOMIZE
+`endif
+`ifndef RANDOM
+`define RANDOM $random
+`endif
+`ifdef RANDOMIZE_MEM_INIT
+  integer initvar;
+`endif
+`ifndef SYNTHESIS
+`ifdef FIRRTL_BEFORE_INITIAL
+`FIRRTL_BEFORE_INITIAL
+`endif
+initial begin
+  `ifdef RANDOMIZE
+    `ifdef INIT_RANDOM
+      `INIT_RANDOM
+    `endif
+    `ifndef VERILATOR
+      `ifdef RANDOMIZE_DELAY
+        #`RANDOMIZE_DELAY begin end
+      `else
+        #0.002 begin end
+      `endif
+    `endif
+`ifdef RANDOMIZE_MEM_INIT
+  _RAND_0 = {1{`RANDOM}};
+  for (initvar = 0; initvar < 1024; initvar = initvar+1)
+    DMEM[initvar] = _RAND_0[31:0];
+`endif // RANDOMIZE_MEM_INIT
+`ifdef RANDOMIZE_REG_INIT
+  _RAND_1 = {1{`RANDOM}};
+  DMEM_io_top_out_bits_MPORT_en_pipe_0 = _RAND_1[0:0];
+  _RAND_2 = {1{`RANDOM}};
+  DMEM_io_top_out_bits_MPORT_addr_pipe_0 = _RAND_2[9:0];
+  _RAND_3 = {1{`RANDOM}};
+  DMEM_io_acc_out_bits_MPORT_en_pipe_0 = _RAND_3[0:0];
+  _RAND_4 = {1{`RANDOM}};
+  DMEM_io_acc_out_bits_MPORT_addr_pipe_0 = _RAND_4[9:0];
+`endif // RANDOMIZE_REG_INIT
+  `endif // RANDOMIZE
+end // initial
+`ifdef FIRRTL_AFTER_INITIAL
+`FIRRTL_AFTER_INITIAL
+`endif
+`endif // SYNTHESIS
+endmodule
+module AcceleratoTop(
+  input         clock,
+  input         reset,
+  input         io_wbs_stb_i,
+  input         io_wbs_cyc_i,
+  input         io_wbs_we_i,
+  input  [2:0]  io_wbs_sel_i,
+  input  [31:0] io_wbs_dat_i,
+  input  [31:0] io_wbs_adr_i,
+  output        io_wbs_ack_o,
+  output [31:0] io_wbs_dat_o
+);
+`ifdef RANDOMIZE_REG_INIT
+  reg [31:0] _RAND_0;
+  reg [31:0] _RAND_1;
+  reg [31:0] _RAND_2;
+  reg [31:0] _RAND_3;
+  reg [31:0] _RAND_4;
+  reg [31:0] _RAND_5;
+  reg [31:0] _RAND_6;
+  reg [31:0] _RAND_7;
+  reg [31:0] _RAND_8;
+  reg [31:0] _RAND_9;
+  reg [31:0] _RAND_10;
+  reg [31:0] _RAND_11;
+  reg [31:0] _RAND_12;
+  reg [31:0] _RAND_13;
+  reg [31:0] _RAND_14;
+  reg [31:0] _RAND_15;
+  reg [31:0] _RAND_16;
+  reg [31:0] _RAND_17;
+  reg [31:0] _RAND_18;
+  reg [31:0] _RAND_19;
+  reg [31:0] _RAND_20;
+  reg [31:0] _RAND_21;
+  reg [31:0] _RAND_22;
+  reg [31:0] _RAND_23;
+  reg [31:0] _RAND_24;
+  reg [31:0] _RAND_25;
+  reg [31:0] _RAND_26;
+  reg [31:0] _RAND_27;
+  reg [31:0] _RAND_28;
+  reg [31:0] _RAND_29;
+  reg [31:0] _RAND_30;
+  reg [31:0] _RAND_31;
+  reg [31:0] _RAND_32;
+  reg [31:0] _RAND_33;
+  reg [31:0] _RAND_34;
+  reg [31:0] _RAND_35;
+  reg [31:0] _RAND_36;
+`endif // RANDOMIZE_REG_INIT
+  wire  ACCL_clock; // @[AcceleratoTop.scala 25:22]
+  wire  ACCL_reset; // @[AcceleratoTop.scala 25:22]
+  wire [31:0] ACCL_io_Stationary_matrix_0_0; // @[AcceleratoTop.scala 25:22]
+  wire [31:0] ACCL_io_Stationary_matrix_0_1; // @[AcceleratoTop.scala 25:22]
+  wire [31:0] ACCL_io_Stationary_matrix_1_0; // @[AcceleratoTop.scala 25:22]
+  wire [31:0] ACCL_io_Stationary_matrix_1_1; // @[AcceleratoTop.scala 25:22]
+  wire [31:0] ACCL_io_Streaming_matrix_0_0; // @[AcceleratoTop.scala 25:22]
+  wire [31:0] ACCL_io_Streaming_matrix_0_1; // @[AcceleratoTop.scala 25:22]
+  wire [31:0] ACCL_io_Streaming_matrix_1_0; // @[AcceleratoTop.scala 25:22]
+  wire [31:0] ACCL_io_Streaming_matrix_1_1; // @[AcceleratoTop.scala 25:22]
+  wire [31:0] ACCL_io_Third_Matrix_0_0; // @[AcceleratoTop.scala 25:22]
+  wire [31:0] ACCL_io_Third_Matrix_0_1; // @[AcceleratoTop.scala 25:22]
+  wire [31:0] ACCL_io_Third_Matrix_1_0; // @[AcceleratoTop.scala 25:22]
+  wire [31:0] ACCL_io_Third_Matrix_1_1; // @[AcceleratoTop.scala 25:22]
+  wire  MMU_clock; // @[AcceleratoTop.scala 28:22]
+  wire [9:0] MMU_io_top_adr; // @[AcceleratoTop.scala 28:22]
+  wire  MMU_io_top_we; // @[AcceleratoTop.scala 28:22]
+  wire [31:0] MMU_io_top_dat; // @[AcceleratoTop.scala 28:22]
+  wire  MMU_io_top_val; // @[AcceleratoTop.scala 28:22]
+  wire  MMU_io_top_out_valid; // @[AcceleratoTop.scala 28:22]
+  wire [31:0] MMU_io_top_out_bits; // @[AcceleratoTop.scala 28:22]
+  wire [9:0] MMU_io_acc_adr; // @[AcceleratoTop.scala 28:22]
+  wire  MMU_io_acc_we; // @[AcceleratoTop.scala 28:22]
+  wire [31:0] MMU_io_acc_dat; // @[AcceleratoTop.scala 28:22]
+  wire  MMU_io_acc_val; // @[AcceleratoTop.scala 28:22]
+  wire [31:0] MMU_io_acc_out_bits; // @[AcceleratoTop.scala 28:22]
+  reg [1:0] stateReg; // @[AcceleratoTop.scala 23:27]
+  reg [31:0] MatABaseAdr; // @[AcceleratoTop.scala 58:30]
+  reg [31:0] MatARows; // @[AcceleratoTop.scala 59:30]
+  reg [31:0] MatACols; // @[AcceleratoTop.scala 60:30]
+  reg [31:0] MatBBaseAdr; // @[AcceleratoTop.scala 61:30]
+  reg [31:0] MatBRows; // @[AcceleratoTop.scala 62:30]
+  reg [31:0] MatBCols; // @[AcceleratoTop.scala 63:30]
+  reg [31:0] MatCBaseAdr; // @[AcceleratoTop.scala 64:30]
+  reg [31:0] MatCRows; // @[AcceleratoTop.scala 65:30]
+  reg [31:0] MatCCols; // @[AcceleratoTop.scala 66:30]
+  reg [31:0] StartTrans; // @[AcceleratoTop.scala 67:30]
+  reg  MatReadDone; // @[AcceleratoTop.scala 68:30]
+  reg  MatCompDone; // @[AcceleratoTop.scala 69:30]
+  reg  MatStrDone; // @[AcceleratoTop.scala 70:30]
+  reg  MatSel; // @[AcceleratoTop.scala 73:30]
+  reg [31:0] MatA_0_0; // @[AcceleratoTop.scala 74:30]
+  reg [31:0] MatA_0_1; // @[AcceleratoTop.scala 74:30]
+  reg [31:0] MatA_1_0; // @[AcceleratoTop.scala 74:30]
+  reg [31:0] MatA_1_1; // @[AcceleratoTop.scala 74:30]
+  reg [31:0] MatB_0_0; // @[AcceleratoTop.scala 75:30]
+  reg [31:0] MatB_0_1; // @[AcceleratoTop.scala 75:30]
+  reg [31:0] MatB_1_0; // @[AcceleratoTop.scala 75:30]
+  reg [31:0] MatB_1_1; // @[AcceleratoTop.scala 75:30]
+  reg [31:0] MatC_0_0; // @[AcceleratoTop.scala 76:30]
+  reg [31:0] MatC_0_1; // @[AcceleratoTop.scala 76:30]
+  reg [31:0] MatC_1_0; // @[AcceleratoTop.scala 76:30]
+  reg [31:0] MatC_1_1; // @[AcceleratoTop.scala 76:30]
+  reg  MatARowCount; // @[AcceleratoTop.scala 77:33]
+  reg  MatAColCount; // @[AcceleratoTop.scala 78:33]
+  reg  MatACount; // @[AcceleratoTop.scala 79:33]
+  reg  MatBRowCount; // @[AcceleratoTop.scala 80:33]
+  reg  MatBColCount; // @[AcceleratoTop.scala 81:33]
+  reg  MatBCount; // @[AcceleratoTop.scala 82:33]
+  reg  MatCRowCount; // @[AcceleratoTop.scala 83:33]
+  reg  MatCColCount; // @[AcceleratoTop.scala 84:33]
+  reg  MatCCount; // @[AcceleratoTop.scala 85:33]
+  reg  CompCount; // @[AcceleratoTop.scala 86:33]
+  wire [31:0] _GEN_0 = 32'h9 == io_wbs_adr_i ? io_wbs_dat_i : StartTrans; // @[AcceleratoTop.scala 119:25 90:25 67:30]
+  wire [31:0] _GEN_1 = 32'h8 == io_wbs_adr_i ? io_wbs_dat_i : MatCCols; // @[AcceleratoTop.scala 116:25 90:25 66:30]
+  wire [31:0] _GEN_2 = 32'h8 == io_wbs_adr_i ? StartTrans : _GEN_0; // @[AcceleratoTop.scala 90:25 67:30]
+  wire [31:0] _GEN_3 = 32'h7 == io_wbs_adr_i ? io_wbs_dat_i : MatCRows; // @[AcceleratoTop.scala 113:25 90:25 65:30]
+  wire [31:0] _GEN_4 = 32'h7 == io_wbs_adr_i ? MatCCols : _GEN_1; // @[AcceleratoTop.scala 90:25 66:30]
+  wire [31:0] _GEN_5 = 32'h7 == io_wbs_adr_i ? StartTrans : _GEN_2; // @[AcceleratoTop.scala 90:25 67:30]
+  wire [31:0] _GEN_6 = 32'h6 == io_wbs_adr_i ? io_wbs_dat_i : MatCBaseAdr; // @[AcceleratoTop.scala 110:25 90:25 64:30]
+  wire [31:0] _GEN_7 = 32'h6 == io_wbs_adr_i ? MatCRows : _GEN_3; // @[AcceleratoTop.scala 90:25 65:30]
+  wire [31:0] _GEN_8 = 32'h6 == io_wbs_adr_i ? MatCCols : _GEN_4; // @[AcceleratoTop.scala 90:25 66:30]
+  wire [31:0] _GEN_9 = 32'h6 == io_wbs_adr_i ? StartTrans : _GEN_5; // @[AcceleratoTop.scala 90:25 67:30]
+  wire [31:0] _GEN_10 = 32'h5 == io_wbs_adr_i ? io_wbs_dat_i : MatBCols; // @[AcceleratoTop.scala 107:25 90:25 63:30]
+  wire [31:0] _GEN_11 = 32'h5 == io_wbs_adr_i ? MatCBaseAdr : _GEN_6; // @[AcceleratoTop.scala 90:25 64:30]
+  wire [31:0] _GEN_12 = 32'h5 == io_wbs_adr_i ? MatCRows : _GEN_7; // @[AcceleratoTop.scala 90:25 65:30]
+  wire [31:0] _GEN_13 = 32'h5 == io_wbs_adr_i ? MatCCols : _GEN_8; // @[AcceleratoTop.scala 90:25 66:30]
+  wire [31:0] _GEN_14 = 32'h5 == io_wbs_adr_i ? StartTrans : _GEN_9; // @[AcceleratoTop.scala 90:25 67:30]
+  wire [31:0] _GEN_15 = 32'h4 == io_wbs_adr_i ? io_wbs_dat_i : MatBRows; // @[AcceleratoTop.scala 104:25 90:25 62:30]
+  wire [31:0] _GEN_16 = 32'h4 == io_wbs_adr_i ? MatBCols : _GEN_10; // @[AcceleratoTop.scala 90:25 63:30]
+  wire [31:0] _GEN_17 = 32'h4 == io_wbs_adr_i ? MatCBaseAdr : _GEN_11; // @[AcceleratoTop.scala 90:25 64:30]
+  wire [31:0] _GEN_18 = 32'h4 == io_wbs_adr_i ? MatCRows : _GEN_12; // @[AcceleratoTop.scala 90:25 65:30]
+  wire [31:0] _GEN_19 = 32'h4 == io_wbs_adr_i ? MatCCols : _GEN_13; // @[AcceleratoTop.scala 90:25 66:30]
+  wire [31:0] _GEN_20 = 32'h4 == io_wbs_adr_i ? StartTrans : _GEN_14; // @[AcceleratoTop.scala 90:25 67:30]
+  wire [31:0] _GEN_21 = 32'h3 == io_wbs_adr_i ? io_wbs_dat_i : MatBBaseAdr; // @[AcceleratoTop.scala 101:25 90:25 61:30]
+  wire [31:0] _GEN_22 = 32'h3 == io_wbs_adr_i ? MatBRows : _GEN_15; // @[AcceleratoTop.scala 90:25 62:30]
+  wire [31:0] _GEN_23 = 32'h3 == io_wbs_adr_i ? MatBCols : _GEN_16; // @[AcceleratoTop.scala 90:25 63:30]
+  wire [31:0] _GEN_24 = 32'h3 == io_wbs_adr_i ? MatCBaseAdr : _GEN_17; // @[AcceleratoTop.scala 90:25 64:30]
+  wire [31:0] _GEN_25 = 32'h3 == io_wbs_adr_i ? MatCRows : _GEN_18; // @[AcceleratoTop.scala 90:25 65:30]
+  wire [31:0] _GEN_26 = 32'h3 == io_wbs_adr_i ? MatCCols : _GEN_19; // @[AcceleratoTop.scala 90:25 66:30]
+  wire [31:0] _GEN_27 = 32'h3 == io_wbs_adr_i ? StartTrans : _GEN_20; // @[AcceleratoTop.scala 90:25 67:30]
+  wire [31:0] _GEN_35 = 32'h2 == io_wbs_adr_i ? StartTrans : _GEN_27; // @[AcceleratoTop.scala 90:25 67:30]
+  wire  _T_10 = stateReg == 2'h1; // @[AcceleratoTop.scala 123:19]
+  wire [31:0] _GEN_238 = {{31'd0}, MatARowCount}; // @[AcceleratoTop.scala 129:31]
+  wire [31:0] _GEN_239 = {{31'd0}, MatAColCount}; // @[AcceleratoTop.scala 129:60]
+  wire  _T_13 = _GEN_239 == MatACols; // @[AcceleratoTop.scala 129:60]
+  wire [31:0] _MatA_T_17_T_19 = MMU_io_acc_out_bits; // @[AcceleratoTop.scala 136:{54,54}]
+  wire [31:0] _GEN_55 = ~MatARowCount & ~MatAColCount ? _MatA_T_17_T_19 : MatA_0_0; // @[AcceleratoTop.scala 136:{54,54} 74:30]
+  wire [31:0] _GEN_56 = ~MatARowCount & MatAColCount ? _MatA_T_17_T_19 : MatA_0_1; // @[AcceleratoTop.scala 136:{54,54} 74:30]
+  wire [31:0] _GEN_57 = MatARowCount & ~MatAColCount ? _MatA_T_17_T_19 : MatA_1_0; // @[AcceleratoTop.scala 136:{54,54} 74:30]
+  wire [31:0] _GEN_58 = MatARowCount & MatAColCount ? _MatA_T_17_T_19 : MatA_1_1; // @[AcceleratoTop.scala 136:{54,54} 74:30]
+  wire [31:0] _GEN_245 = {{31'd0}, MatACount}; // @[AcceleratoTop.scala 137:51]
+  wire [31:0] _MMU_io_acc_adr_T_1 = MatABaseAdr + _GEN_245; // @[AcceleratoTop.scala 137:51]
+  wire  _GEN_59 = _T_13 ? MatARowCount + 1'h1 : MatARowCount; // @[AcceleratoTop.scala 132:48 133:34 77:33]
+  wire  _GEN_60 = _T_13 ? 1'h0 : MatAColCount + 1'h1; // @[AcceleratoTop.scala 132:48 134:34 139:34]
+  wire [31:0] _GEN_61 = _T_13 ? MatA_0_0 : _GEN_55; // @[AcceleratoTop.scala 132:48 74:30]
+  wire [31:0] _GEN_62 = _T_13 ? MatA_0_1 : _GEN_56; // @[AcceleratoTop.scala 132:48 74:30]
+  wire [31:0] _GEN_63 = _T_13 ? MatA_1_0 : _GEN_57; // @[AcceleratoTop.scala 132:48 74:30]
+  wire [31:0] _GEN_64 = _T_13 ? MatA_1_1 : _GEN_58; // @[AcceleratoTop.scala 132:48 74:30]
+  wire [31:0] _GEN_65 = _T_13 ? 32'h0 : _MMU_io_acc_adr_T_1; // @[AcceleratoTop.scala 132:48 38:20 137:36]
+  wire  _GEN_66 = _T_13 ? MatACount : MatACount + 1'h1; // @[AcceleratoTop.scala 132:48 138:31 79:33]
+  wire  _GEN_67 = _GEN_238 == MatARows & _GEN_239 == MatACols | MatSel; // @[AcceleratoTop.scala 129:73 130:24 73:30]
+  wire [31:0] _GEN_74 = _GEN_238 == MatARows & _GEN_239 == MatACols ? 32'h0 : _GEN_65; // @[AcceleratoTop.scala 129:73 38:20]
+  wire [31:0] _GEN_246 = {{31'd0}, MatBRowCount}; // @[AcceleratoTop.scala 144:31]
+  wire [31:0] _GEN_248 = {{31'd0}, MatBColCount}; // @[AcceleratoTop.scala 147:35]
+  wire [31:0] _GEN_76 = ~MatBRowCount & ~MatBColCount ? _MatA_T_17_T_19 : MatB_0_0; // @[AcceleratoTop.scala 151:{54,54} 75:30]
+  wire [31:0] _GEN_77 = ~MatBRowCount & MatBColCount ? _MatA_T_17_T_19 : MatB_0_1; // @[AcceleratoTop.scala 151:{54,54} 75:30]
+  wire [31:0] _GEN_78 = MatBRowCount & ~MatBColCount ? _MatA_T_17_T_19 : MatB_1_0; // @[AcceleratoTop.scala 151:{54,54} 75:30]
+  wire [31:0] _GEN_79 = MatBRowCount & MatBColCount ? _MatA_T_17_T_19 : MatB_1_1; // @[AcceleratoTop.scala 151:{54,54} 75:30]
+  wire [31:0] _GEN_253 = {{31'd0}, MatBCount}; // @[AcceleratoTop.scala 152:51]
+  wire [31:0] _MMU_io_acc_adr_T_3 = MatBBaseAdr + _GEN_253; // @[AcceleratoTop.scala 152:51]
+  wire  _GEN_80 = _GEN_248 == MatBCols ? MatBRowCount + 1'h1 : MatBRowCount; // @[AcceleratoTop.scala 147:48 148:34 80:33]
+  wire  _GEN_81 = _GEN_248 == MatBCols ? 1'h0 : MatBColCount + 1'h1; // @[AcceleratoTop.scala 147:48 149:34 154:34]
+  wire [31:0] _GEN_82 = _GEN_248 == MatBCols ? MatB_0_0 : _GEN_76; // @[AcceleratoTop.scala 147:48 75:30]
+  wire [31:0] _GEN_83 = _GEN_248 == MatBCols ? MatB_0_1 : _GEN_77; // @[AcceleratoTop.scala 147:48 75:30]
+  wire [31:0] _GEN_84 = _GEN_248 == MatBCols ? MatB_1_0 : _GEN_78; // @[AcceleratoTop.scala 147:48 75:30]
+  wire [31:0] _GEN_85 = _GEN_248 == MatBCols ? MatB_1_1 : _GEN_79; // @[AcceleratoTop.scala 147:48 75:30]
+  wire [31:0] _GEN_86 = _GEN_248 == MatBCols ? 32'h0 : _MMU_io_acc_adr_T_3; // @[AcceleratoTop.scala 147:48 38:20 152:36]
+  wire  _GEN_87 = _GEN_248 == MatBCols ? MatBCount : MatBCount + 1'h1; // @[AcceleratoTop.scala 147:48 153:31 82:33]
+  wire  _GEN_88 = _GEN_246 == MatBRows & _T_13 | MatReadDone; // @[AcceleratoTop.scala 144:73 145:29 68:30]
+  wire  _GEN_89 = _GEN_246 == MatBRows & _T_13 ? MatBRowCount : _GEN_80; // @[AcceleratoTop.scala 144:73 80:33]
+  wire  _GEN_90 = _GEN_246 == MatBRows & _T_13 ? MatBColCount : _GEN_81; // @[AcceleratoTop.scala 144:73 81:33]
+  wire [31:0] _GEN_91 = _GEN_246 == MatBRows & _T_13 ? MatB_0_0 : _GEN_82; // @[AcceleratoTop.scala 144:73 75:30]
+  wire [31:0] _GEN_92 = _GEN_246 == MatBRows & _T_13 ? MatB_0_1 : _GEN_83; // @[AcceleratoTop.scala 144:73 75:30]
+  wire [31:0] _GEN_93 = _GEN_246 == MatBRows & _T_13 ? MatB_1_0 : _GEN_84; // @[AcceleratoTop.scala 144:73 75:30]
+  wire [31:0] _GEN_94 = _GEN_246 == MatBRows & _T_13 ? MatB_1_1 : _GEN_85; // @[AcceleratoTop.scala 144:73 75:30]
+  wire [31:0] _GEN_95 = _GEN_246 == MatBRows & _T_13 ? 32'h0 : _GEN_86; // @[AcceleratoTop.scala 144:73 38:20]
+  wire  _GEN_96 = _GEN_246 == MatBRows & _T_13 ? MatBCount : _GEN_87; // @[AcceleratoTop.scala 144:73 82:33]
+  wire  _GEN_97 = MatSel ? _GEN_88 : MatReadDone; // @[AcceleratoTop.scala 142:35 68:30]
+  wire [31:0] _GEN_104 = MatSel ? _GEN_95 : 32'h0; // @[AcceleratoTop.scala 142:35 38:20]
+  wire [31:0] _GEN_113 = ~MatSel ? _GEN_74 : _GEN_104; // @[AcceleratoTop.scala 127:29]
+  wire  _GEN_115 = ~MatSel ? MatReadDone : _GEN_97; // @[AcceleratoTop.scala 127:29 68:30]
+  wire  _T_29 = stateReg == 2'h2; // @[AcceleratoTop.scala 158:25]
+  wire [3:0] _GEN_254 = {{3'd0}, CompCount}; // @[AcceleratoTop.scala 162:30]
+  wire [31:0] _GEN_123 = _GEN_254 == 4'hd ? ACCL_io_Third_Matrix_0_0 : MatC_0_0; // @[AcceleratoTop.scala 162:39 163:25 76:30]
+  wire [31:0] _GEN_124 = _GEN_254 == 4'hd ? ACCL_io_Third_Matrix_0_1 : MatC_0_1; // @[AcceleratoTop.scala 162:39 163:25 76:30]
+  wire [31:0] _GEN_125 = _GEN_254 == 4'hd ? ACCL_io_Third_Matrix_1_0 : MatC_1_0; // @[AcceleratoTop.scala 162:39 163:25 76:30]
+  wire [31:0] _GEN_126 = _GEN_254 == 4'hd ? ACCL_io_Third_Matrix_1_1 : MatC_1_1; // @[AcceleratoTop.scala 162:39 163:25 76:30]
+  wire  _GEN_127 = _GEN_254 == 4'hd | MatCompDone; // @[AcceleratoTop.scala 162:39 164:25 69:30]
+  wire  _GEN_128 = _GEN_254 == 4'hd ? CompCount : CompCount + 1'h1; // @[AcceleratoTop.scala 162:39 166:25 86:33]
+  wire [31:0] _GEN_129 = ~CompCount ? MatA_0_0 : 32'h0; // @[AcceleratoTop.scala 159:32 160:39 26:31]
+  wire [31:0] _GEN_130 = ~CompCount ? MatA_0_1 : 32'h0; // @[AcceleratoTop.scala 159:32 160:39 26:31]
+  wire [31:0] _GEN_131 = ~CompCount ? MatA_1_0 : 32'h0; // @[AcceleratoTop.scala 159:32 160:39 26:31]
+  wire [31:0] _GEN_132 = ~CompCount ? MatA_1_1 : 32'h0; // @[AcceleratoTop.scala 159:32 160:39 26:31]
+  wire [31:0] _GEN_133 = ~CompCount ? MatB_0_0 : 32'h0; // @[AcceleratoTop.scala 159:32 161:38 27:30]
+  wire [31:0] _GEN_134 = ~CompCount ? MatB_0_1 : 32'h0; // @[AcceleratoTop.scala 159:32 161:38 27:30]
+  wire [31:0] _GEN_135 = ~CompCount ? MatB_1_0 : 32'h0; // @[AcceleratoTop.scala 159:32 161:38 27:30]
+  wire [31:0] _GEN_136 = ~CompCount ? MatB_1_1 : 32'h0; // @[AcceleratoTop.scala 159:32 161:38 27:30]
+  wire  _GEN_141 = ~CompCount ? MatCompDone : _GEN_127; // @[AcceleratoTop.scala 159:32 69:30]
+  wire  _T_32 = stateReg == 2'h3; // @[AcceleratoTop.scala 168:25]
+  wire [31:0] _GEN_255 = {{31'd0}, MatCRowCount}; // @[AcceleratoTop.scala 172:27]
+  wire [31:0] _GEN_256 = {{31'd0}, MatCColCount}; // @[AcceleratoTop.scala 172:56]
+  wire  _T_34 = _GEN_256 == MatCCols; // @[AcceleratoTop.scala 172:56]
+  wire [31:0] _GEN_144 = ~MatCRowCount & MatCColCount ? MatC_0_1 : MatC_0_0; // @[AcceleratoTop.scala 179:{33,33}]
+  wire [31:0] _GEN_145 = MatCRowCount & ~MatCColCount ? MatC_1_0 : _GEN_144; // @[AcceleratoTop.scala 179:{33,33}]
+  wire [31:0] _GEN_146 = MatCRowCount & MatCColCount ? MatC_1_1 : _GEN_145; // @[AcceleratoTop.scala 179:{33,33}]
+  wire [31:0] _GEN_260 = {{31'd0}, MatCCount}; // @[AcceleratoTop.scala 180:48]
+  wire [31:0] _MMU_io_acc_adr_T_5 = MatCBaseAdr + _GEN_260; // @[AcceleratoTop.scala 180:48]
+  wire  _GEN_147 = _T_34 ? MatCRowCount + 1'h1 : MatCRowCount; // @[AcceleratoTop.scala 175:44 176:30 83:33]
+  wire  _GEN_148 = _T_34 ? 1'h0 : MatCColCount + 1'h1; // @[AcceleratoTop.scala 175:44 177:30 182:33]
+  wire [31:0] _GEN_149 = _T_34 ? 32'h0 : _GEN_146; // @[AcceleratoTop.scala 175:44 40:20 179:33]
+  wire [31:0] _GEN_150 = _T_34 ? 32'h0 : _MMU_io_acc_adr_T_5; // @[AcceleratoTop.scala 175:44 38:20 180:33]
+  wire  _GEN_151 = _T_34 ? MatCCount : MatCCount + 1'h1; // @[AcceleratoTop.scala 175:44 181:33 85:33]
+  wire  _GEN_152 = _GEN_255 == MatCRows & _GEN_256 == MatCCols | MatStrDone; // @[AcceleratoTop.scala 172:69 173:25 70:30]
+  wire  _GEN_153 = _GEN_255 == MatCRows & _GEN_256 == MatCCols ? MatCRowCount : _GEN_147; // @[AcceleratoTop.scala 172:69 83:33]
+  wire  _GEN_154 = _GEN_255 == MatCRows & _GEN_256 == MatCCols ? MatCColCount : _GEN_148; // @[AcceleratoTop.scala 172:69 84:33]
+  wire [31:0] _GEN_155 = _GEN_255 == MatCRows & _GEN_256 == MatCCols ? 32'h0 : _GEN_149; // @[AcceleratoTop.scala 172:69 40:20]
+  wire [31:0] _GEN_156 = _GEN_255 == MatCRows & _GEN_256 == MatCCols ? 32'h0 : _GEN_150; // @[AcceleratoTop.scala 172:69 38:20]
+  wire  _GEN_157 = _GEN_255 == MatCRows & _GEN_256 == MatCCols ? MatCCount : _GEN_151; // @[AcceleratoTop.scala 172:69 85:33]
+  wire  _GEN_159 = stateReg == 2'h3 ? _GEN_152 : MatStrDone; // @[AcceleratoTop.scala 168:37 70:30]
+  wire [31:0] _GEN_162 = stateReg == 2'h3 ? _GEN_155 : 32'h0; // @[AcceleratoTop.scala 168:37 40:20]
+  wire [31:0] _GEN_163 = stateReg == 2'h3 ? _GEN_156 : 32'h0; // @[AcceleratoTop.scala 168:37 38:20]
+  wire [31:0] _GEN_165 = stateReg == 2'h2 ? _GEN_129 : 32'h0; // @[AcceleratoTop.scala 158:38 26:31]
+  wire [31:0] _GEN_166 = stateReg == 2'h2 ? _GEN_130 : 32'h0; // @[AcceleratoTop.scala 158:38 26:31]
+  wire [31:0] _GEN_167 = stateReg == 2'h2 ? _GEN_131 : 32'h0; // @[AcceleratoTop.scala 158:38 26:31]
+  wire [31:0] _GEN_168 = stateReg == 2'h2 ? _GEN_132 : 32'h0; // @[AcceleratoTop.scala 158:38 26:31]
+  wire [31:0] _GEN_169 = stateReg == 2'h2 ? _GEN_133 : 32'h0; // @[AcceleratoTop.scala 158:38 27:30]
+  wire [31:0] _GEN_170 = stateReg == 2'h2 ? _GEN_134 : 32'h0; // @[AcceleratoTop.scala 158:38 27:30]
+  wire [31:0] _GEN_171 = stateReg == 2'h2 ? _GEN_135 : 32'h0; // @[AcceleratoTop.scala 158:38 27:30]
+  wire [31:0] _GEN_172 = stateReg == 2'h2 ? _GEN_136 : 32'h0; // @[AcceleratoTop.scala 158:38 27:30]
+  wire  _GEN_177 = stateReg == 2'h2 ? _GEN_141 : MatCompDone; // @[AcceleratoTop.scala 158:38 69:30]
+  wire  _GEN_179 = stateReg == 2'h2 ? 1'h0 : _T_32; // @[AcceleratoTop.scala 158:38 39:20]
+  wire  _GEN_180 = stateReg == 2'h2 ? MatStrDone : _GEN_159; // @[AcceleratoTop.scala 158:38 70:30]
+  wire [31:0] _GEN_183 = stateReg == 2'h2 ? 32'h0 : _GEN_162; // @[AcceleratoTop.scala 158:38 40:20]
+  wire [31:0] _GEN_184 = stateReg == 2'h2 ? 32'h0 : _GEN_163; // @[AcceleratoTop.scala 158:38 38:20]
+  wire [31:0] _GEN_196 = stateReg == 2'h1 ? _GEN_113 : _GEN_184; // @[AcceleratoTop.scala 123:32]
+  wire  _GEN_198 = stateReg == 2'h1 ? _GEN_115 : MatReadDone; // @[AcceleratoTop.scala 123:32 68:30]
+  wire  _GEN_218 = stateReg == 2'h1 ? MatCompDone : _GEN_177; // @[AcceleratoTop.scala 123:32 69:30]
+  wire  _GEN_220 = stateReg == 2'h1 ? MatStrDone : _GEN_180; // @[AcceleratoTop.scala 123:32 70:30]
+  wire [1:0] _GEN_224 = _T_32 & MatStrDone ? 2'h0 : stateReg; // @[AcceleratoTop.scala 199:51 200:18 23:27]
+  wire  _GEN_225 = _T_32 & MatStrDone ? 1'h0 : _GEN_220; // @[AcceleratoTop.scala 199:51 201:20]
+  Top ACCL ( // @[AcceleratoTop.scala 25:22]
+    .clock(ACCL_clock),
+    .reset(ACCL_reset),
+    .io_Stationary_matrix_0_0(ACCL_io_Stationary_matrix_0_0),
+    .io_Stationary_matrix_0_1(ACCL_io_Stationary_matrix_0_1),
+    .io_Stationary_matrix_1_0(ACCL_io_Stationary_matrix_1_0),
+    .io_Stationary_matrix_1_1(ACCL_io_Stationary_matrix_1_1),
+    .io_Streaming_matrix_0_0(ACCL_io_Streaming_matrix_0_0),
+    .io_Streaming_matrix_0_1(ACCL_io_Streaming_matrix_0_1),
+    .io_Streaming_matrix_1_0(ACCL_io_Streaming_matrix_1_0),
+    .io_Streaming_matrix_1_1(ACCL_io_Streaming_matrix_1_1),
+    .io_Third_Matrix_0_0(ACCL_io_Third_Matrix_0_0),
+    .io_Third_Matrix_0_1(ACCL_io_Third_Matrix_0_1),
+    .io_Third_Matrix_1_0(ACCL_io_Third_Matrix_1_0),
+    .io_Third_Matrix_1_1(ACCL_io_Third_Matrix_1_1)
+  );
+  MMU MMU ( // @[AcceleratoTop.scala 28:22]
+    .clock(MMU_clock),
+    .io_top_adr(MMU_io_top_adr),
+    .io_top_we(MMU_io_top_we),
+    .io_top_dat(MMU_io_top_dat),
+    .io_top_val(MMU_io_top_val),
+    .io_top_out_valid(MMU_io_top_out_valid),
+    .io_top_out_bits(MMU_io_top_out_bits),
+    .io_acc_adr(MMU_io_acc_adr),
+    .io_acc_we(MMU_io_acc_we),
+    .io_acc_dat(MMU_io_acc_dat),
+    .io_acc_val(MMU_io_acc_val),
+    .io_acc_out_bits(MMU_io_acc_out_bits)
+  );
+  assign io_wbs_ack_o = 1'h0; // @[AcceleratoTop.scala 35:18]
+  assign io_wbs_dat_o = MMU_io_top_out_valid ? MMU_io_top_out_bits : 32'h0; // @[AcceleratoTop.scala 34:26]
+  assign ACCL_clock = clock;
+  assign ACCL_reset = reset;
+  assign ACCL_io_Stationary_matrix_0_0 = stateReg == 2'h1 ? 32'h0 : _GEN_165; // @[AcceleratoTop.scala 123:32 26:31]
+  assign ACCL_io_Stationary_matrix_0_1 = stateReg == 2'h1 ? 32'h0 : _GEN_166; // @[AcceleratoTop.scala 123:32 26:31]
+  assign ACCL_io_Stationary_matrix_1_0 = stateReg == 2'h1 ? 32'h0 : _GEN_167; // @[AcceleratoTop.scala 123:32 26:31]
+  assign ACCL_io_Stationary_matrix_1_1 = stateReg == 2'h1 ? 32'h0 : _GEN_168; // @[AcceleratoTop.scala 123:32 26:31]
+  assign ACCL_io_Streaming_matrix_0_0 = stateReg == 2'h1 ? 32'h0 : _GEN_169; // @[AcceleratoTop.scala 123:32 27:30]
+  assign ACCL_io_Streaming_matrix_0_1 = stateReg == 2'h1 ? 32'h0 : _GEN_170; // @[AcceleratoTop.scala 123:32 27:30]
+  assign ACCL_io_Streaming_matrix_1_0 = stateReg == 2'h1 ? 32'h0 : _GEN_171; // @[AcceleratoTop.scala 123:32 27:30]
+  assign ACCL_io_Streaming_matrix_1_1 = stateReg == 2'h1 ? 32'h0 : _GEN_172; // @[AcceleratoTop.scala 123:32 27:30]
+  assign MMU_clock = clock;
+  assign MMU_io_top_adr = io_wbs_adr_i[9:0]; // @[AcceleratoTop.scala 30:20]
+  assign MMU_io_top_we = io_wbs_we_i; // @[AcceleratoTop.scala 31:20]
+  assign MMU_io_top_dat = io_wbs_dat_i; // @[AcceleratoTop.scala 32:20]
+  assign MMU_io_top_val = io_wbs_adr_i >= 32'hc; // @[AcceleratoTop.scala 33:36]
+  assign MMU_io_acc_adr = _GEN_196[9:0];
+  assign MMU_io_acc_we = stateReg == 2'h1 ? 1'h0 : _GEN_179; // @[AcceleratoTop.scala 123:32 124:25]
+  assign MMU_io_acc_dat = stateReg == 2'h1 ? 32'h0 : _GEN_183; // @[AcceleratoTop.scala 123:32 125:25]
+  assign MMU_io_acc_val = stateReg == 2'h1 | _GEN_179; // @[AcceleratoTop.scala 123:32 126:25]
+  always @(posedge clock) begin
+    if (reset) begin // @[AcceleratoTop.scala 23:27]
+      stateReg <= 2'h0; // @[AcceleratoTop.scala 23:27]
+    end else if (stateReg == 2'h0 & StartTrans == 32'h1) begin // @[AcceleratoTop.scala 190:49]
+      stateReg <= 2'h1; // @[AcceleratoTop.scala 191:18]
+    end else if (_T_10 & MatReadDone) begin // @[AcceleratoTop.scala 193:53]
+      stateReg <= 2'h2; // @[AcceleratoTop.scala 194:18]
+    end else if (_T_29 & MatCompDone) begin // @[AcceleratoTop.scala 196:53]
+      stateReg <= 2'h3; // @[AcceleratoTop.scala 197:18]
+    end else begin
+      stateReg <= _GEN_224;
+    end
+    if (reset) begin // @[AcceleratoTop.scala 58:30]
+      MatABaseAdr <= 32'h0; // @[AcceleratoTop.scala 58:30]
+    end else if (32'h0 == io_wbs_adr_i) begin // @[AcceleratoTop.scala 90:25]
+      MatABaseAdr <= io_wbs_dat_i; // @[AcceleratoTop.scala 92:25]
+    end
+    if (reset) begin // @[AcceleratoTop.scala 59:30]
+      MatARows <= 32'h0; // @[AcceleratoTop.scala 59:30]
+    end else if (!(32'h0 == io_wbs_adr_i)) begin // @[AcceleratoTop.scala 90:25]
+      if (32'h1 == io_wbs_adr_i) begin // @[AcceleratoTop.scala 90:25]
+        MatARows <= io_wbs_dat_i; // @[AcceleratoTop.scala 95:25]
+      end
+    end
+    if (reset) begin // @[AcceleratoTop.scala 60:30]
+      MatACols <= 32'h0; // @[AcceleratoTop.scala 60:30]
+    end else if (!(32'h0 == io_wbs_adr_i)) begin // @[AcceleratoTop.scala 90:25]
+      if (!(32'h1 == io_wbs_adr_i)) begin // @[AcceleratoTop.scala 90:25]
+        if (32'h2 == io_wbs_adr_i) begin // @[AcceleratoTop.scala 90:25]
+          MatACols <= io_wbs_dat_i; // @[AcceleratoTop.scala 98:25]
+        end
+      end
+    end
+    if (reset) begin // @[AcceleratoTop.scala 61:30]
+      MatBBaseAdr <= 32'h0; // @[AcceleratoTop.scala 61:30]
+    end else if (!(32'h0 == io_wbs_adr_i)) begin // @[AcceleratoTop.scala 90:25]
+      if (!(32'h1 == io_wbs_adr_i)) begin // @[AcceleratoTop.scala 90:25]
+        if (!(32'h2 == io_wbs_adr_i)) begin // @[AcceleratoTop.scala 90:25]
+          MatBBaseAdr <= _GEN_21;
+        end
+      end
+    end
+    if (reset) begin // @[AcceleratoTop.scala 62:30]
+      MatBRows <= 32'h0; // @[AcceleratoTop.scala 62:30]
+    end else if (!(32'h0 == io_wbs_adr_i)) begin // @[AcceleratoTop.scala 90:25]
+      if (!(32'h1 == io_wbs_adr_i)) begin // @[AcceleratoTop.scala 90:25]
+        if (!(32'h2 == io_wbs_adr_i)) begin // @[AcceleratoTop.scala 90:25]
+          MatBRows <= _GEN_22;
+        end
+      end
+    end
+    if (reset) begin // @[AcceleratoTop.scala 63:30]
+      MatBCols <= 32'h0; // @[AcceleratoTop.scala 63:30]
+    end else if (!(32'h0 == io_wbs_adr_i)) begin // @[AcceleratoTop.scala 90:25]
+      if (!(32'h1 == io_wbs_adr_i)) begin // @[AcceleratoTop.scala 90:25]
+        if (!(32'h2 == io_wbs_adr_i)) begin // @[AcceleratoTop.scala 90:25]
+          MatBCols <= _GEN_23;
+        end
+      end
+    end
+    if (reset) begin // @[AcceleratoTop.scala 64:30]
+      MatCBaseAdr <= 32'h0; // @[AcceleratoTop.scala 64:30]
+    end else if (!(32'h0 == io_wbs_adr_i)) begin // @[AcceleratoTop.scala 90:25]
+      if (!(32'h1 == io_wbs_adr_i)) begin // @[AcceleratoTop.scala 90:25]
+        if (!(32'h2 == io_wbs_adr_i)) begin // @[AcceleratoTop.scala 90:25]
+          MatCBaseAdr <= _GEN_24;
+        end
+      end
+    end
+    if (reset) begin // @[AcceleratoTop.scala 65:30]
+      MatCRows <= 32'h0; // @[AcceleratoTop.scala 65:30]
+    end else if (!(32'h0 == io_wbs_adr_i)) begin // @[AcceleratoTop.scala 90:25]
+      if (!(32'h1 == io_wbs_adr_i)) begin // @[AcceleratoTop.scala 90:25]
+        if (!(32'h2 == io_wbs_adr_i)) begin // @[AcceleratoTop.scala 90:25]
+          MatCRows <= _GEN_25;
+        end
+      end
+    end
+    if (reset) begin // @[AcceleratoTop.scala 66:30]
+      MatCCols <= 32'h0; // @[AcceleratoTop.scala 66:30]
+    end else if (!(32'h0 == io_wbs_adr_i)) begin // @[AcceleratoTop.scala 90:25]
+      if (!(32'h1 == io_wbs_adr_i)) begin // @[AcceleratoTop.scala 90:25]
+        if (!(32'h2 == io_wbs_adr_i)) begin // @[AcceleratoTop.scala 90:25]
+          MatCCols <= _GEN_26;
+        end
+      end
+    end
+    if (reset) begin // @[AcceleratoTop.scala 67:30]
+      StartTrans <= 32'h0; // @[AcceleratoTop.scala 67:30]
+    end else if (stateReg == 2'h0 & StartTrans == 32'h1) begin // @[AcceleratoTop.scala 190:49]
+      StartTrans <= 32'h0; // @[AcceleratoTop.scala 192:20]
+    end else if (!(32'h0 == io_wbs_adr_i)) begin // @[AcceleratoTop.scala 90:25]
+      if (!(32'h1 == io_wbs_adr_i)) begin // @[AcceleratoTop.scala 90:25]
+        StartTrans <= _GEN_35;
+      end
+    end
+    if (reset) begin // @[AcceleratoTop.scala 68:30]
+      MatReadDone <= 1'h0; // @[AcceleratoTop.scala 68:30]
+    end else if (stateReg == 2'h0 & StartTrans == 32'h1) begin // @[AcceleratoTop.scala 190:49]
+      MatReadDone <= _GEN_198;
+    end else if (_T_10 & MatReadDone) begin // @[AcceleratoTop.scala 193:53]
+      MatReadDone <= 1'h0; // @[AcceleratoTop.scala 195:21]
+    end else begin
+      MatReadDone <= _GEN_198;
+    end
+    if (reset) begin // @[AcceleratoTop.scala 69:30]
+      MatCompDone <= 1'h0; // @[AcceleratoTop.scala 69:30]
+    end else if (stateReg == 2'h0 & StartTrans == 32'h1) begin // @[AcceleratoTop.scala 190:49]
+      MatCompDone <= _GEN_218;
+    end else if (_T_10 & MatReadDone) begin // @[AcceleratoTop.scala 193:53]
+      MatCompDone <= _GEN_218;
+    end else if (_T_29 & MatCompDone) begin // @[AcceleratoTop.scala 196:53]
+      MatCompDone <= 1'h0; // @[AcceleratoTop.scala 198:21]
+    end else begin
+      MatCompDone <= _GEN_218;
+    end
+    if (reset) begin // @[AcceleratoTop.scala 70:30]
+      MatStrDone <= 1'h0; // @[AcceleratoTop.scala 70:30]
+    end else if (stateReg == 2'h0 & StartTrans == 32'h1) begin // @[AcceleratoTop.scala 190:49]
+      MatStrDone <= _GEN_220;
+    end else if (_T_10 & MatReadDone) begin // @[AcceleratoTop.scala 193:53]
+      MatStrDone <= _GEN_220;
+    end else if (_T_29 & MatCompDone) begin // @[AcceleratoTop.scala 196:53]
+      MatStrDone <= _GEN_220;
+    end else begin
+      MatStrDone <= _GEN_225;
+    end
+    if (reset) begin // @[AcceleratoTop.scala 73:30]
+      MatSel <= 1'h0; // @[AcceleratoTop.scala 73:30]
+    end else if (stateReg == 2'h1) begin // @[AcceleratoTop.scala 123:32]
+      if (~MatSel) begin // @[AcceleratoTop.scala 127:29]
+        MatSel <= _GEN_67;
+      end
+    end
+    if (reset) begin // @[AcceleratoTop.scala 74:30]
+      MatA_0_0 <= 32'h0; // @[AcceleratoTop.scala 74:30]
+    end else if (stateReg == 2'h1) begin // @[AcceleratoTop.scala 123:32]
+      if (~MatSel) begin // @[AcceleratoTop.scala 127:29]
+        if (!(_GEN_238 == MatARows & _GEN_239 == MatACols)) begin // @[AcceleratoTop.scala 129:73]
+          MatA_0_0 <= _GEN_61;
+        end
+      end
+    end
+    if (reset) begin // @[AcceleratoTop.scala 74:30]
+      MatA_0_1 <= 32'h0; // @[AcceleratoTop.scala 74:30]
+    end else if (stateReg == 2'h1) begin // @[AcceleratoTop.scala 123:32]
+      if (~MatSel) begin // @[AcceleratoTop.scala 127:29]
+        if (!(_GEN_238 == MatARows & _GEN_239 == MatACols)) begin // @[AcceleratoTop.scala 129:73]
+          MatA_0_1 <= _GEN_62;
+        end
+      end
+    end
+    if (reset) begin // @[AcceleratoTop.scala 74:30]
+      MatA_1_0 <= 32'h0; // @[AcceleratoTop.scala 74:30]
+    end else if (stateReg == 2'h1) begin // @[AcceleratoTop.scala 123:32]
+      if (~MatSel) begin // @[AcceleratoTop.scala 127:29]
+        if (!(_GEN_238 == MatARows & _GEN_239 == MatACols)) begin // @[AcceleratoTop.scala 129:73]
+          MatA_1_0 <= _GEN_63;
+        end
+      end
+    end
+    if (reset) begin // @[AcceleratoTop.scala 74:30]
+      MatA_1_1 <= 32'h0; // @[AcceleratoTop.scala 74:30]
+    end else if (stateReg == 2'h1) begin // @[AcceleratoTop.scala 123:32]
+      if (~MatSel) begin // @[AcceleratoTop.scala 127:29]
+        if (!(_GEN_238 == MatARows & _GEN_239 == MatACols)) begin // @[AcceleratoTop.scala 129:73]
+          MatA_1_1 <= _GEN_64;
+        end
+      end
+    end
+    if (reset) begin // @[AcceleratoTop.scala 75:30]
+      MatB_0_0 <= 32'h0; // @[AcceleratoTop.scala 75:30]
+    end else if (stateReg == 2'h1) begin // @[AcceleratoTop.scala 123:32]
+      if (!(~MatSel)) begin // @[AcceleratoTop.scala 127:29]
+        if (MatSel) begin // @[AcceleratoTop.scala 142:35]
+          MatB_0_0 <= _GEN_91;
+        end
+      end
+    end
+    if (reset) begin // @[AcceleratoTop.scala 75:30]
+      MatB_0_1 <= 32'h0; // @[AcceleratoTop.scala 75:30]
+    end else if (stateReg == 2'h1) begin // @[AcceleratoTop.scala 123:32]
+      if (!(~MatSel)) begin // @[AcceleratoTop.scala 127:29]
+        if (MatSel) begin // @[AcceleratoTop.scala 142:35]
+          MatB_0_1 <= _GEN_92;
+        end
+      end
+    end
+    if (reset) begin // @[AcceleratoTop.scala 75:30]
+      MatB_1_0 <= 32'h0; // @[AcceleratoTop.scala 75:30]
+    end else if (stateReg == 2'h1) begin // @[AcceleratoTop.scala 123:32]
+      if (!(~MatSel)) begin // @[AcceleratoTop.scala 127:29]
+        if (MatSel) begin // @[AcceleratoTop.scala 142:35]
+          MatB_1_0 <= _GEN_93;
+        end
+      end
+    end
+    if (reset) begin // @[AcceleratoTop.scala 75:30]
+      MatB_1_1 <= 32'h0; // @[AcceleratoTop.scala 75:30]
+    end else if (stateReg == 2'h1) begin // @[AcceleratoTop.scala 123:32]
+      if (!(~MatSel)) begin // @[AcceleratoTop.scala 127:29]
+        if (MatSel) begin // @[AcceleratoTop.scala 142:35]
+          MatB_1_1 <= _GEN_94;
+        end
+      end
+    end
+    if (reset) begin // @[AcceleratoTop.scala 76:30]
+      MatC_0_0 <= 32'h0; // @[AcceleratoTop.scala 76:30]
+    end else if (!(stateReg == 2'h1)) begin // @[AcceleratoTop.scala 123:32]
+      if (stateReg == 2'h2) begin // @[AcceleratoTop.scala 158:38]
+        if (!(~CompCount)) begin // @[AcceleratoTop.scala 159:32]
+          MatC_0_0 <= _GEN_123;
+        end
+      end
+    end
+    if (reset) begin // @[AcceleratoTop.scala 76:30]
+      MatC_0_1 <= 32'h0; // @[AcceleratoTop.scala 76:30]
+    end else if (!(stateReg == 2'h1)) begin // @[AcceleratoTop.scala 123:32]
+      if (stateReg == 2'h2) begin // @[AcceleratoTop.scala 158:38]
+        if (!(~CompCount)) begin // @[AcceleratoTop.scala 159:32]
+          MatC_0_1 <= _GEN_124;
+        end
+      end
+    end
+    if (reset) begin // @[AcceleratoTop.scala 76:30]
+      MatC_1_0 <= 32'h0; // @[AcceleratoTop.scala 76:30]
+    end else if (!(stateReg == 2'h1)) begin // @[AcceleratoTop.scala 123:32]
+      if (stateReg == 2'h2) begin // @[AcceleratoTop.scala 158:38]
+        if (!(~CompCount)) begin // @[AcceleratoTop.scala 159:32]
+          MatC_1_0 <= _GEN_125;
+        end
+      end
+    end
+    if (reset) begin // @[AcceleratoTop.scala 76:30]
+      MatC_1_1 <= 32'h0; // @[AcceleratoTop.scala 76:30]
+    end else if (!(stateReg == 2'h1)) begin // @[AcceleratoTop.scala 123:32]
+      if (stateReg == 2'h2) begin // @[AcceleratoTop.scala 158:38]
+        if (!(~CompCount)) begin // @[AcceleratoTop.scala 159:32]
+          MatC_1_1 <= _GEN_126;
+        end
+      end
+    end
+    if (reset) begin // @[AcceleratoTop.scala 77:33]
+      MatARowCount <= 1'h0; // @[AcceleratoTop.scala 77:33]
+    end else if (stateReg == 2'h1) begin // @[AcceleratoTop.scala 123:32]
+      if (~MatSel) begin // @[AcceleratoTop.scala 127:29]
+        if (!(_GEN_238 == MatARows & _GEN_239 == MatACols)) begin // @[AcceleratoTop.scala 129:73]
+          MatARowCount <= _GEN_59;
+        end
+      end
+    end
+    if (reset) begin // @[AcceleratoTop.scala 78:33]
+      MatAColCount <= 1'h0; // @[AcceleratoTop.scala 78:33]
+    end else if (stateReg == 2'h1) begin // @[AcceleratoTop.scala 123:32]
+      if (~MatSel) begin // @[AcceleratoTop.scala 127:29]
+        if (!(_GEN_238 == MatARows & _GEN_239 == MatACols)) begin // @[AcceleratoTop.scala 129:73]
+          MatAColCount <= _GEN_60;
+        end
+      end
+    end
+    if (reset) begin // @[AcceleratoTop.scala 79:33]
+      MatACount <= 1'h0; // @[AcceleratoTop.scala 79:33]
+    end else if (stateReg == 2'h1) begin // @[AcceleratoTop.scala 123:32]
+      if (~MatSel) begin // @[AcceleratoTop.scala 127:29]
+        if (!(_GEN_238 == MatARows & _GEN_239 == MatACols)) begin // @[AcceleratoTop.scala 129:73]
+          MatACount <= _GEN_66;
+        end
+      end
+    end
+    if (reset) begin // @[AcceleratoTop.scala 80:33]
+      MatBRowCount <= 1'h0; // @[AcceleratoTop.scala 80:33]
+    end else if (stateReg == 2'h1) begin // @[AcceleratoTop.scala 123:32]
+      if (!(~MatSel)) begin // @[AcceleratoTop.scala 127:29]
+        if (MatSel) begin // @[AcceleratoTop.scala 142:35]
+          MatBRowCount <= _GEN_89;
+        end
+      end
+    end
+    if (reset) begin // @[AcceleratoTop.scala 81:33]
+      MatBColCount <= 1'h0; // @[AcceleratoTop.scala 81:33]
+    end else if (stateReg == 2'h1) begin // @[AcceleratoTop.scala 123:32]
+      if (!(~MatSel)) begin // @[AcceleratoTop.scala 127:29]
+        if (MatSel) begin // @[AcceleratoTop.scala 142:35]
+          MatBColCount <= _GEN_90;
+        end
+      end
+    end
+    if (reset) begin // @[AcceleratoTop.scala 82:33]
+      MatBCount <= 1'h0; // @[AcceleratoTop.scala 82:33]
+    end else if (stateReg == 2'h1) begin // @[AcceleratoTop.scala 123:32]
+      if (!(~MatSel)) begin // @[AcceleratoTop.scala 127:29]
+        if (MatSel) begin // @[AcceleratoTop.scala 142:35]
+          MatBCount <= _GEN_96;
+        end
+      end
+    end
+    if (reset) begin // @[AcceleratoTop.scala 83:33]
+      MatCRowCount <= 1'h0; // @[AcceleratoTop.scala 83:33]
+    end else if (!(stateReg == 2'h1)) begin // @[AcceleratoTop.scala 123:32]
+      if (!(stateReg == 2'h2)) begin // @[AcceleratoTop.scala 158:38]
+        if (stateReg == 2'h3) begin // @[AcceleratoTop.scala 168:37]
+          MatCRowCount <= _GEN_153;
+        end
+      end
+    end
+    if (reset) begin // @[AcceleratoTop.scala 84:33]
+      MatCColCount <= 1'h0; // @[AcceleratoTop.scala 84:33]
+    end else if (!(stateReg == 2'h1)) begin // @[AcceleratoTop.scala 123:32]
+      if (!(stateReg == 2'h2)) begin // @[AcceleratoTop.scala 158:38]
+        if (stateReg == 2'h3) begin // @[AcceleratoTop.scala 168:37]
+          MatCColCount <= _GEN_154;
+        end
+      end
+    end
+    if (reset) begin // @[AcceleratoTop.scala 85:33]
+      MatCCount <= 1'h0; // @[AcceleratoTop.scala 85:33]
+    end else if (!(stateReg == 2'h1)) begin // @[AcceleratoTop.scala 123:32]
+      if (!(stateReg == 2'h2)) begin // @[AcceleratoTop.scala 158:38]
+        if (stateReg == 2'h3) begin // @[AcceleratoTop.scala 168:37]
+          MatCCount <= _GEN_157;
+        end
+      end
+    end
+    if (reset) begin // @[AcceleratoTop.scala 86:33]
+      CompCount <= 1'h0; // @[AcceleratoTop.scala 86:33]
+    end else if (!(stateReg == 2'h1)) begin // @[AcceleratoTop.scala 123:32]
+      if (stateReg == 2'h2) begin // @[AcceleratoTop.scala 158:38]
+        if (!(~CompCount)) begin // @[AcceleratoTop.scala 159:32]
+          CompCount <= _GEN_128;
+        end
+      end
+    end
+  end
+// Register and memory initialization
+`ifdef RANDOMIZE_GARBAGE_ASSIGN
+`define RANDOMIZE
+`endif
+`ifdef RANDOMIZE_INVALID_ASSIGN
+`define RANDOMIZE
+`endif
+`ifdef RANDOMIZE_REG_INIT
+`define RANDOMIZE
+`endif
+`ifdef RANDOMIZE_MEM_INIT
+`define RANDOMIZE
+`endif
+`ifndef RANDOM
+`define RANDOM $random
+`endif
+`ifdef RANDOMIZE_MEM_INIT
+  integer initvar;
+`endif
+`ifndef SYNTHESIS
+`ifdef FIRRTL_BEFORE_INITIAL
+`FIRRTL_BEFORE_INITIAL
+`endif
+initial begin
+  `ifdef RANDOMIZE
+    `ifdef INIT_RANDOM
+      `INIT_RANDOM
+    `endif
+    `ifndef VERILATOR
+      `ifdef RANDOMIZE_DELAY
+        #`RANDOMIZE_DELAY begin end
+      `else
+        #0.002 begin end
+      `endif
+    `endif
+`ifdef RANDOMIZE_REG_INIT
+  _RAND_0 = {1{`RANDOM}};
+  stateReg = _RAND_0[1:0];
+  _RAND_1 = {1{`RANDOM}};
+  MatABaseAdr = _RAND_1[31:0];
+  _RAND_2 = {1{`RANDOM}};
+  MatARows = _RAND_2[31:0];
+  _RAND_3 = {1{`RANDOM}};
+  MatACols = _RAND_3[31:0];
+  _RAND_4 = {1{`RANDOM}};
+  MatBBaseAdr = _RAND_4[31:0];
+  _RAND_5 = {1{`RANDOM}};
+  MatBRows = _RAND_5[31:0];
+  _RAND_6 = {1{`RANDOM}};
+  MatBCols = _RAND_6[31:0];
+  _RAND_7 = {1{`RANDOM}};
+  MatCBaseAdr = _RAND_7[31:0];
+  _RAND_8 = {1{`RANDOM}};
+  MatCRows = _RAND_8[31:0];
+  _RAND_9 = {1{`RANDOM}};
+  MatCCols = _RAND_9[31:0];
+  _RAND_10 = {1{`RANDOM}};
+  StartTrans = _RAND_10[31:0];
+  _RAND_11 = {1{`RANDOM}};
+  MatReadDone = _RAND_11[0:0];
+  _RAND_12 = {1{`RANDOM}};
+  MatCompDone = _RAND_12[0:0];
+  _RAND_13 = {1{`RANDOM}};
+  MatStrDone = _RAND_13[0:0];
+  _RAND_14 = {1{`RANDOM}};
+  MatSel = _RAND_14[0:0];
+  _RAND_15 = {1{`RANDOM}};
+  MatA_0_0 = _RAND_15[31:0];
+  _RAND_16 = {1{`RANDOM}};
+  MatA_0_1 = _RAND_16[31:0];
+  _RAND_17 = {1{`RANDOM}};
+  MatA_1_0 = _RAND_17[31:0];
+  _RAND_18 = {1{`RANDOM}};
+  MatA_1_1 = _RAND_18[31:0];
+  _RAND_19 = {1{`RANDOM}};
+  MatB_0_0 = _RAND_19[31:0];
+  _RAND_20 = {1{`RANDOM}};
+  MatB_0_1 = _RAND_20[31:0];
+  _RAND_21 = {1{`RANDOM}};
+  MatB_1_0 = _RAND_21[31:0];
+  _RAND_22 = {1{`RANDOM}};
+  MatB_1_1 = _RAND_22[31:0];
+  _RAND_23 = {1{`RANDOM}};
+  MatC_0_0 = _RAND_23[31:0];
+  _RAND_24 = {1{`RANDOM}};
+  MatC_0_1 = _RAND_24[31:0];
+  _RAND_25 = {1{`RANDOM}};
+  MatC_1_0 = _RAND_25[31:0];
+  _RAND_26 = {1{`RANDOM}};
+  MatC_1_1 = _RAND_26[31:0];
+  _RAND_27 = {1{`RANDOM}};
+  MatARowCount = _RAND_27[0:0];
+  _RAND_28 = {1{`RANDOM}};
+  MatAColCount = _RAND_28[0:0];
+  _RAND_29 = {1{`RANDOM}};
+  MatACount = _RAND_29[0:0];
+  _RAND_30 = {1{`RANDOM}};
+  MatBRowCount = _RAND_30[0:0];
+  _RAND_31 = {1{`RANDOM}};
+  MatBColCount = _RAND_31[0:0];
+  _RAND_32 = {1{`RANDOM}};
+  MatBCount = _RAND_32[0:0];
+  _RAND_33 = {1{`RANDOM}};
+  MatCRowCount = _RAND_33[0:0];
+  _RAND_34 = {1{`RANDOM}};
+  MatCColCount = _RAND_34[0:0];
+  _RAND_35 = {1{`RANDOM}};
+  MatCCount = _RAND_35[0:0];
+  _RAND_36 = {1{`RANDOM}};
+  CompCount = _RAND_36[0:0];
+`endif // RANDOMIZE_REG_INIT
+  `endif // RANDOMIZE
+end // initial
+`ifdef FIRRTL_AFTER_INITIAL
+`FIRRTL_AFTER_INITIAL
+`endif
+`endif // SYNTHESIS
+endmodule

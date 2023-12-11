@@ -42,25 +42,25 @@ import chisel3.util._
 
         //}.else
             when ((io.src(0) === io.src(1)) &&  (io.src(1) =/= io.src(2)) && (io.src(2) === io.src(3))){
-            src(2) := io.src(2)
+            src(2) := 0.U
             src(0) := io.src(0)
-            src(1) := 0.U
+            src(1) := io.src(2)
             src(3) := 0.U
             mat(0)(0) := io.muxes(0)
             mat(0)(1) := io.muxes(1)
-            mat(2)(0) := io.muxes(2)
-            mat(2)(1) := io.muxes(3)
+            mat(1)(0) := io.muxes(2)
+            mat(1)(1) := io.muxes(3)
             }
 
         when ((io.src(0) === io.src(1)) &&  (io.src(1) =/= io.src(2)) && (io.src(2) =/= io.src(3))){
-            src(3) := io.src(3)
-            src(2) := io.src(2)
-            src(1) := 0.U
+            src(3) := 0.U
+            src(2) := io.src(3)
+            src(1) := io.src(2)
             src(0) := io.src(0)
             mat(0)(0) := io.muxes(0)
             mat(0)(1) := io.muxes(1)
-            mat(1)(0) := 0.U
-            mat(2)(0) := io.muxes(2)
+            mat(1)(0) := io.muxes(2)
+            mat(2)(0) := io.muxes(3)
             mat(3)(0) := 0.U
 
         }

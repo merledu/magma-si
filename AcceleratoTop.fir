@@ -1,4 +1,4 @@
-circuit Top :
+circuit AcceleratoTop :
   module Bitmap :
     input clock : Clock
     input reset : Reset
@@ -822,10 +822,10 @@ circuit Top :
         else :
           j <= UInt<1>("h0") @[ivncontrol4.scala 83:11]
     io.o_vn <= i_vn @[ivncontrol4.scala 90:13]
-    i_vn[0] <= UInt<5>("h0") @[ivncontrol4.scala 93:17]
+    i_vn[0] <= UInt<5>("hf") @[ivncontrol4.scala 93:17]
     i_vn[1] <= UInt<5>("h15") @[ivncontrol4.scala 93:17]
-    i_vn[2] <= UInt<5>("hc") @[ivncontrol4.scala 93:17]
-    i_vn[3] <= UInt<5>("h15") @[ivncontrol4.scala 93:17]
+    i_vn[2] <= UInt<5>("h15") @[ivncontrol4.scala 93:17]
+    i_vn[3] <= UInt<5>("hb") @[ivncontrol4.scala 93:17]
     node _T_23 = eq(i, UInt<1>("h1")) @[ivncontrol4.scala 103:14]
     node _T_24 = eq(j, UInt<1>("h1")) @[ivncontrol4.scala 103:45]
     node _T_25 = and(_T_23, _T_24) @[ivncontrol4.scala 103:39]
@@ -9653,7 +9653,7 @@ circuit Top :
 
   module Top :
     input clock : Clock
-    input reset : UInt<1>
+    input reset : Reset
     output io : { flip Stationary_matrix : UInt<32>[2][2], flip Streaming_matrix : UInt<32>[2][2], Third_Matrix : UInt<32>[2][2]}
 
     inst PreProcessor of Regor @[TOP.scala 14:30]
@@ -9701,4 +9701,362 @@ circuit Top :
       wire _WIRE_3 : UInt<32>[2][2]
       _WIRE_3 <= _WIRE_2
       io.Third_Matrix <= _WIRE_3 @[TOP.scala 30:25]
+
+  module MMU :
+    input clock : Clock
+    input reset : Reset
+    output io : { flip top_adr : UInt<10>, flip top_we : UInt<1>, flip top_dat : UInt<32>, flip top_val : UInt<1>, top_out : { valid : UInt<1>, bits : UInt<32>}, flip acc_adr : UInt<10>, flip acc_we : UInt<1>, flip acc_dat : UInt<32>, flip acc_val : UInt<1>, acc_out : { valid : UInt<1>, bits : UInt<32>}}
+
+    smem DMEM : UInt<32> [1024] @[AcceleratoTop.scala 224:27]
+    io.top_out.bits <= UInt<1>("h0") @[AcceleratoTop.scala 226:21]
+    io.acc_out.bits <= UInt<1>("h0") @[AcceleratoTop.scala 227:21]
+    io.top_out.valid <= UInt<1>("h0") @[AcceleratoTop.scala 229:22]
+    io.acc_out.valid <= UInt<1>("h0") @[AcceleratoTop.scala 230:22]
+    when io.top_val : @[AcceleratoTop.scala 232:21]
+      when io.top_we : @[AcceleratoTop.scala 233:24]
+        node _T = sub(io.top_adr, UInt<4>("hc")) @[AcceleratoTop.scala 234:28]
+        node _T_1 = tail(_T, 1) @[AcceleratoTop.scala 234:28]
+        infer mport MPORT = DMEM[_T_1], clock @[AcceleratoTop.scala 234:17]
+        MPORT <= io.top_dat @[AcceleratoTop.scala 234:35]
+      else :
+        node _io_top_out_bits_T = sub(io.top_adr, UInt<4>("hc")) @[AcceleratoTop.scala 236:47]
+        node _io_top_out_bits_T_1 = tail(_io_top_out_bits_T, 1) @[AcceleratoTop.scala 236:47]
+        infer mport io_top_out_bits_MPORT = DMEM[_io_top_out_bits_T_1], clock @[AcceleratoTop.scala 236:36]
+        io.top_out.bits <= io_top_out_bits_MPORT @[AcceleratoTop.scala 236:29]
+        io.top_out.valid <= UInt<1>("h1") @[AcceleratoTop.scala 237:30]
+    else :
+      when io.acc_val : @[AcceleratoTop.scala 239:27]
+        when io.acc_we : @[AcceleratoTop.scala 240:24]
+          node _T_2 = sub(io.acc_adr, UInt<4>("hc")) @[AcceleratoTop.scala 241:28]
+          node _T_3 = tail(_T_2, 1) @[AcceleratoTop.scala 241:28]
+          infer mport MPORT_1 = DMEM[_T_3], clock @[AcceleratoTop.scala 241:17]
+          MPORT_1 <= io.acc_dat @[AcceleratoTop.scala 241:35]
+        else :
+          node _io_acc_out_bits_T = sub(io.acc_adr, UInt<4>("hc")) @[AcceleratoTop.scala 243:47]
+          node _io_acc_out_bits_T_1 = tail(_io_acc_out_bits_T, 1) @[AcceleratoTop.scala 243:47]
+          infer mport io_acc_out_bits_MPORT = DMEM[_io_acc_out_bits_T_1], clock @[AcceleratoTop.scala 243:36]
+          io.acc_out.bits <= io_acc_out_bits_MPORT @[AcceleratoTop.scala 243:29]
+          io.acc_out.valid <= UInt<1>("h1") @[AcceleratoTop.scala 244:30]
+
+  module AcceleratoTop :
+    input clock : Clock
+    input reset : UInt<1>
+    output io : { flip wbs_stb_i : UInt<1>, flip wbs_cyc_i : UInt<1>, flip wbs_we_i : UInt<1>, flip wbs_sel_i : UInt<3>, flip wbs_dat_i : UInt<32>, flip wbs_adr_i : UInt<32>, wbs_ack_o : UInt<1>, wbs_dat_o : UInt<32>}
+
+    reg stateReg : UInt<2>, clock with :
+      reset => (reset, UInt<2>("h0")) @[AcceleratoTop.scala 23:27]
+    inst ACCL of Top @[AcceleratoTop.scala 25:22]
+    ACCL.clock <= clock
+    ACCL.reset <= reset
+    wire _WIRE : UInt<1>[2] @[AcceleratoTop.scala 26:83]
+    _WIRE[0] <= UInt<1>("h0") @[AcceleratoTop.scala 26:83]
+    _WIRE[1] <= UInt<1>("h0") @[AcceleratoTop.scala 26:83]
+    wire _WIRE_1 : UInt<1>[2] @[AcceleratoTop.scala 26:83]
+    _WIRE_1[0] <= UInt<1>("h0") @[AcceleratoTop.scala 26:83]
+    _WIRE_1[1] <= UInt<1>("h0") @[AcceleratoTop.scala 26:83]
+    wire _WIRE_2 : UInt<1>[2][2] @[AcceleratoTop.scala 26:50]
+    _WIRE_2[0] <= _WIRE @[AcceleratoTop.scala 26:50]
+    _WIRE_2[1] <= _WIRE_1 @[AcceleratoTop.scala 26:50]
+    wire _WIRE_3 : UInt<1>[2][2]
+    _WIRE_3 <= _WIRE_2
+    ACCL.io.Stationary_matrix[0][0] <= _WIRE_3[0][0] @[AcceleratoTop.scala 26:31]
+    ACCL.io.Stationary_matrix[0][1] <= _WIRE_3[0][1] @[AcceleratoTop.scala 26:31]
+    ACCL.io.Stationary_matrix[1][0] <= _WIRE_3[1][0] @[AcceleratoTop.scala 26:31]
+    ACCL.io.Stationary_matrix[1][1] <= _WIRE_3[1][1] @[AcceleratoTop.scala 26:31]
+    wire _WIRE_4 : UInt<1>[2] @[AcceleratoTop.scala 27:82]
+    _WIRE_4[0] <= UInt<1>("h0") @[AcceleratoTop.scala 27:82]
+    _WIRE_4[1] <= UInt<1>("h0") @[AcceleratoTop.scala 27:82]
+    wire _WIRE_5 : UInt<1>[2] @[AcceleratoTop.scala 27:82]
+    _WIRE_5[0] <= UInt<1>("h0") @[AcceleratoTop.scala 27:82]
+    _WIRE_5[1] <= UInt<1>("h0") @[AcceleratoTop.scala 27:82]
+    wire _WIRE_6 : UInt<1>[2][2] @[AcceleratoTop.scala 27:49]
+    _WIRE_6[0] <= _WIRE_4 @[AcceleratoTop.scala 27:49]
+    _WIRE_6[1] <= _WIRE_5 @[AcceleratoTop.scala 27:49]
+    wire _WIRE_7 : UInt<1>[2][2]
+    _WIRE_7 <= _WIRE_6
+    ACCL.io.Streaming_matrix[0][0] <= _WIRE_7[0][0] @[AcceleratoTop.scala 27:30]
+    ACCL.io.Streaming_matrix[0][1] <= _WIRE_7[0][1] @[AcceleratoTop.scala 27:30]
+    ACCL.io.Streaming_matrix[1][0] <= _WIRE_7[1][0] @[AcceleratoTop.scala 27:30]
+    ACCL.io.Streaming_matrix[1][1] <= _WIRE_7[1][1] @[AcceleratoTop.scala 27:30]
+    inst MMU of MMU @[AcceleratoTop.scala 28:22]
+    MMU.clock <= clock
+    MMU.reset <= reset
+    MMU.io.top_adr <= io.wbs_adr_i @[AcceleratoTop.scala 30:20]
+    MMU.io.top_we <= io.wbs_we_i @[AcceleratoTop.scala 31:20]
+    MMU.io.top_dat <= io.wbs_dat_i @[AcceleratoTop.scala 32:20]
+    node _MMU_io_top_val_T = geq(io.wbs_adr_i, UInt<4>("hc")) @[AcceleratoTop.scala 33:36]
+    MMU.io.top_val <= _MMU_io_top_val_T @[AcceleratoTop.scala 33:20]
+    node _io_wbs_dat_o_T = mux(MMU.io.top_out.valid, MMU.io.top_out.bits, UInt<1>("h0")) @[AcceleratoTop.scala 34:26]
+    io.wbs_dat_o <= _io_wbs_dat_o_T @[AcceleratoTop.scala 34:20]
+    io.wbs_ack_o <= UInt<1>("h0") @[AcceleratoTop.scala 35:18]
+    MMU.io.acc_adr <= UInt<1>("h0") @[AcceleratoTop.scala 38:20]
+    MMU.io.acc_we <= UInt<1>("h0") @[AcceleratoTop.scala 39:20]
+    MMU.io.acc_dat <= UInt<1>("h0") @[AcceleratoTop.scala 40:20]
+    MMU.io.acc_val <= UInt<1>("h0") @[AcceleratoTop.scala 41:20]
+    reg MatABaseAdr : UInt, clock with :
+      reset => (reset, UInt<1>("h0")) @[AcceleratoTop.scala 58:30]
+    reg MatARows : UInt, clock with :
+      reset => (reset, UInt<1>("h0")) @[AcceleratoTop.scala 59:30]
+    reg MatACols : UInt, clock with :
+      reset => (reset, UInt<1>("h0")) @[AcceleratoTop.scala 60:30]
+    reg MatBBaseAdr : UInt, clock with :
+      reset => (reset, UInt<1>("h0")) @[AcceleratoTop.scala 61:30]
+    reg MatBRows : UInt, clock with :
+      reset => (reset, UInt<1>("h0")) @[AcceleratoTop.scala 62:30]
+    reg MatBCols : UInt, clock with :
+      reset => (reset, UInt<1>("h0")) @[AcceleratoTop.scala 63:30]
+    reg MatCBaseAdr : UInt, clock with :
+      reset => (reset, UInt<1>("h0")) @[AcceleratoTop.scala 64:30]
+    reg MatCRows : UInt, clock with :
+      reset => (reset, UInt<1>("h0")) @[AcceleratoTop.scala 65:30]
+    reg MatCCols : UInt, clock with :
+      reset => (reset, UInt<1>("h0")) @[AcceleratoTop.scala 66:30]
+    reg StartTrans : UInt, clock with :
+      reset => (reset, UInt<1>("h0")) @[AcceleratoTop.scala 67:30]
+    reg MatReadDone : UInt<1>, clock with :
+      reset => (reset, UInt<1>("h0")) @[AcceleratoTop.scala 68:30]
+    reg MatCompDone : UInt<1>, clock with :
+      reset => (reset, UInt<1>("h0")) @[AcceleratoTop.scala 69:30]
+    reg MatStrDone : UInt<1>, clock with :
+      reset => (reset, UInt<1>("h0")) @[AcceleratoTop.scala 70:30]
+    reg RowCountReg : UInt, clock with :
+      reset => (reset, UInt<1>("h0")) @[AcceleratoTop.scala 71:30]
+    reg ColCountReg : UInt, clock with :
+      reset => (reset, UInt<1>("h0")) @[AcceleratoTop.scala 72:30]
+    reg MatSel : UInt, clock with :
+      reset => (reset, UInt<1>("h0")) @[AcceleratoTop.scala 73:30]
+    wire _MatA_WIRE : UInt<32>[2] @[AcceleratoTop.scala 74:71]
+    _MatA_WIRE[0] <= UInt<32>("h0") @[AcceleratoTop.scala 74:71]
+    _MatA_WIRE[1] <= UInt<32>("h0") @[AcceleratoTop.scala 74:71]
+    wire _MatA_WIRE_1 : UInt<32>[2] @[AcceleratoTop.scala 74:71]
+    _MatA_WIRE_1[0] <= UInt<32>("h0") @[AcceleratoTop.scala 74:71]
+    _MatA_WIRE_1[1] <= UInt<32>("h0") @[AcceleratoTop.scala 74:71]
+    wire _MatA_WIRE_2 : UInt<32>[2][2] @[AcceleratoTop.scala 74:38]
+    _MatA_WIRE_2[0] <= _MatA_WIRE @[AcceleratoTop.scala 74:38]
+    _MatA_WIRE_2[1] <= _MatA_WIRE_1 @[AcceleratoTop.scala 74:38]
+    reg MatA : UInt<32>[2][2], clock with :
+      reset => (reset, _MatA_WIRE_2) @[AcceleratoTop.scala 74:30]
+    wire _MatB_WIRE : UInt<32>[2] @[AcceleratoTop.scala 75:71]
+    _MatB_WIRE[0] <= UInt<32>("h0") @[AcceleratoTop.scala 75:71]
+    _MatB_WIRE[1] <= UInt<32>("h0") @[AcceleratoTop.scala 75:71]
+    wire _MatB_WIRE_1 : UInt<32>[2] @[AcceleratoTop.scala 75:71]
+    _MatB_WIRE_1[0] <= UInt<32>("h0") @[AcceleratoTop.scala 75:71]
+    _MatB_WIRE_1[1] <= UInt<32>("h0") @[AcceleratoTop.scala 75:71]
+    wire _MatB_WIRE_2 : UInt<32>[2][2] @[AcceleratoTop.scala 75:38]
+    _MatB_WIRE_2[0] <= _MatB_WIRE @[AcceleratoTop.scala 75:38]
+    _MatB_WIRE_2[1] <= _MatB_WIRE_1 @[AcceleratoTop.scala 75:38]
+    reg MatB : UInt<32>[2][2], clock with :
+      reset => (reset, _MatB_WIRE_2) @[AcceleratoTop.scala 75:30]
+    wire _MatC_WIRE : UInt<32>[2] @[AcceleratoTop.scala 76:71]
+    _MatC_WIRE[0] <= UInt<32>("h0") @[AcceleratoTop.scala 76:71]
+    _MatC_WIRE[1] <= UInt<32>("h0") @[AcceleratoTop.scala 76:71]
+    wire _MatC_WIRE_1 : UInt<32>[2] @[AcceleratoTop.scala 76:71]
+    _MatC_WIRE_1[0] <= UInt<32>("h0") @[AcceleratoTop.scala 76:71]
+    _MatC_WIRE_1[1] <= UInt<32>("h0") @[AcceleratoTop.scala 76:71]
+    wire _MatC_WIRE_2 : UInt<32>[2][2] @[AcceleratoTop.scala 76:38]
+    _MatC_WIRE_2[0] <= _MatC_WIRE @[AcceleratoTop.scala 76:38]
+    _MatC_WIRE_2[1] <= _MatC_WIRE_1 @[AcceleratoTop.scala 76:38]
+    reg MatC : UInt<32>[2][2], clock with :
+      reset => (reset, _MatC_WIRE_2) @[AcceleratoTop.scala 76:30]
+    reg MatARowCount : UInt, clock with :
+      reset => (reset, UInt<1>("h0")) @[AcceleratoTop.scala 77:33]
+    reg MatAColCount : UInt, clock with :
+      reset => (reset, UInt<1>("h0")) @[AcceleratoTop.scala 78:33]
+    reg MatACount : UInt, clock with :
+      reset => (reset, UInt<1>("h0")) @[AcceleratoTop.scala 79:33]
+    reg MatBRowCount : UInt, clock with :
+      reset => (reset, UInt<1>("h0")) @[AcceleratoTop.scala 80:33]
+    reg MatBColCount : UInt, clock with :
+      reset => (reset, UInt<1>("h0")) @[AcceleratoTop.scala 81:33]
+    reg MatBCount : UInt, clock with :
+      reset => (reset, UInt<1>("h0")) @[AcceleratoTop.scala 82:33]
+    reg MatCRowCount : UInt, clock with :
+      reset => (reset, UInt<1>("h0")) @[AcceleratoTop.scala 83:33]
+    reg MatCColCount : UInt, clock with :
+      reset => (reset, UInt<1>("h0")) @[AcceleratoTop.scala 84:33]
+    reg MatCCount : UInt, clock with :
+      reset => (reset, UInt<1>("h0")) @[AcceleratoTop.scala 85:33]
+    reg CompCount : UInt, clock with :
+      reset => (reset, UInt<1>("h0")) @[AcceleratoTop.scala 86:33]
+    node _T = eq(UInt<1>("h0"), io.wbs_adr_i) @[AcceleratoTop.scala 90:25]
+    when _T : @[AcceleratoTop.scala 90:25]
+      MatABaseAdr <= io.wbs_dat_i @[AcceleratoTop.scala 92:25]
+    else :
+      node _T_1 = eq(UInt<1>("h1"), io.wbs_adr_i) @[AcceleratoTop.scala 90:25]
+      when _T_1 : @[AcceleratoTop.scala 90:25]
+        MatARows <= io.wbs_dat_i @[AcceleratoTop.scala 95:25]
+      else :
+        node _T_2 = eq(UInt<2>("h2"), io.wbs_adr_i) @[AcceleratoTop.scala 90:25]
+        when _T_2 : @[AcceleratoTop.scala 90:25]
+          MatACols <= io.wbs_dat_i @[AcceleratoTop.scala 98:25]
+        else :
+          node _T_3 = eq(UInt<2>("h3"), io.wbs_adr_i) @[AcceleratoTop.scala 90:25]
+          when _T_3 : @[AcceleratoTop.scala 90:25]
+            MatBBaseAdr <= io.wbs_dat_i @[AcceleratoTop.scala 101:25]
+          else :
+            node _T_4 = eq(UInt<3>("h4"), io.wbs_adr_i) @[AcceleratoTop.scala 90:25]
+            when _T_4 : @[AcceleratoTop.scala 90:25]
+              MatBRows <= io.wbs_dat_i @[AcceleratoTop.scala 104:25]
+            else :
+              node _T_5 = eq(UInt<3>("h5"), io.wbs_adr_i) @[AcceleratoTop.scala 90:25]
+              when _T_5 : @[AcceleratoTop.scala 90:25]
+                MatBCols <= io.wbs_dat_i @[AcceleratoTop.scala 107:25]
+              else :
+                node _T_6 = eq(UInt<3>("h6"), io.wbs_adr_i) @[AcceleratoTop.scala 90:25]
+                when _T_6 : @[AcceleratoTop.scala 90:25]
+                  MatCBaseAdr <= io.wbs_dat_i @[AcceleratoTop.scala 110:25]
+                else :
+                  node _T_7 = eq(UInt<3>("h7"), io.wbs_adr_i) @[AcceleratoTop.scala 90:25]
+                  when _T_7 : @[AcceleratoTop.scala 90:25]
+                    MatCRows <= io.wbs_dat_i @[AcceleratoTop.scala 113:25]
+                  else :
+                    node _T_8 = eq(UInt<4>("h8"), io.wbs_adr_i) @[AcceleratoTop.scala 90:25]
+                    when _T_8 : @[AcceleratoTop.scala 90:25]
+                      MatCCols <= io.wbs_dat_i @[AcceleratoTop.scala 116:25]
+                    else :
+                      node _T_9 = eq(UInt<4>("h9"), io.wbs_adr_i) @[AcceleratoTop.scala 90:25]
+                      when _T_9 : @[AcceleratoTop.scala 90:25]
+                        StartTrans <= io.wbs_dat_i @[AcceleratoTop.scala 119:25]
+    node _T_10 = eq(stateReg, UInt<2>("h1")) @[AcceleratoTop.scala 123:19]
+    when _T_10 : @[AcceleratoTop.scala 123:32]
+      MMU.io.acc_we <= UInt<1>("h0") @[AcceleratoTop.scala 124:25]
+      MMU.io.acc_dat <= UInt<1>("h0") @[AcceleratoTop.scala 125:25]
+      MMU.io.acc_val <= UInt<1>("h1") @[AcceleratoTop.scala 126:25]
+      node _T_11 = eq(MatSel, UInt<1>("h0")) @[AcceleratoTop.scala 127:21]
+      when _T_11 : @[AcceleratoTop.scala 127:29]
+        node _T_12 = eq(MatARowCount, MatARows) @[AcceleratoTop.scala 129:31]
+        node _T_13 = eq(MatAColCount, MatACols) @[AcceleratoTop.scala 129:60]
+        node _T_14 = and(_T_12, _T_13) @[AcceleratoTop.scala 129:44]
+        when _T_14 : @[AcceleratoTop.scala 129:73]
+          MatSel <= UInt<1>("h1") @[AcceleratoTop.scala 130:24]
+        else :
+          node _T_15 = eq(MatAColCount, MatACols) @[AcceleratoTop.scala 132:35]
+          when _T_15 : @[AcceleratoTop.scala 132:48]
+            node _MatARowCount_T = add(MatARowCount, UInt<1>("h1")) @[AcceleratoTop.scala 133:50]
+            node _MatARowCount_T_1 = tail(_MatARowCount_T, 1) @[AcceleratoTop.scala 133:50]
+            MatARowCount <= _MatARowCount_T_1 @[AcceleratoTop.scala 133:34]
+            MatAColCount <= UInt<1>("h0") @[AcceleratoTop.scala 134:34]
+          else :
+            node _T_16 = or(MatARowCount, UInt<1>("h0"))
+            node _T_17 = bits(_T_16, 0, 0)
+            node _T_18 = or(MatAColCount, UInt<1>("h0"))
+            node _T_19 = bits(_T_18, 0, 0)
+            MatA[_T_17][_T_19] <= MMU.io.acc_out.bits @[AcceleratoTop.scala 136:54]
+            node _MMU_io_acc_adr_T = add(MatABaseAdr, MatACount) @[AcceleratoTop.scala 137:51]
+            node _MMU_io_acc_adr_T_1 = tail(_MMU_io_acc_adr_T, 1) @[AcceleratoTop.scala 137:51]
+            MMU.io.acc_adr <= _MMU_io_acc_adr_T_1 @[AcceleratoTop.scala 137:36]
+            node _MatACount_T = add(MatACount, UInt<1>("h1")) @[AcceleratoTop.scala 138:44]
+            node _MatACount_T_1 = tail(_MatACount_T, 1) @[AcceleratoTop.scala 138:44]
+            MatACount <= _MatACount_T_1 @[AcceleratoTop.scala 138:31]
+            node _MatAColCount_T = add(MatAColCount, UInt<1>("h1")) @[AcceleratoTop.scala 139:50]
+            node _MatAColCount_T_1 = tail(_MatAColCount_T, 1) @[AcceleratoTop.scala 139:50]
+            MatAColCount <= _MatAColCount_T_1 @[AcceleratoTop.scala 139:34]
+      else :
+        node _T_20 = eq(MatSel, UInt<1>("h1")) @[AcceleratoTop.scala 142:27]
+        when _T_20 : @[AcceleratoTop.scala 142:35]
+          node _T_21 = eq(MatBRowCount, MatBRows) @[AcceleratoTop.scala 144:31]
+          node _T_22 = eq(MatAColCount, MatACols) @[AcceleratoTop.scala 144:60]
+          node _T_23 = and(_T_21, _T_22) @[AcceleratoTop.scala 144:44]
+          when _T_23 : @[AcceleratoTop.scala 144:73]
+            MatReadDone <= UInt<1>("h1") @[AcceleratoTop.scala 145:29]
+          else :
+            node _T_24 = eq(MatBColCount, MatBCols) @[AcceleratoTop.scala 147:35]
+            when _T_24 : @[AcceleratoTop.scala 147:48]
+              node _MatBRowCount_T = add(MatBRowCount, UInt<1>("h1")) @[AcceleratoTop.scala 148:50]
+              node _MatBRowCount_T_1 = tail(_MatBRowCount_T, 1) @[AcceleratoTop.scala 148:50]
+              MatBRowCount <= _MatBRowCount_T_1 @[AcceleratoTop.scala 148:34]
+              MatBColCount <= UInt<1>("h0") @[AcceleratoTop.scala 149:34]
+            else :
+              node _T_25 = or(MatBRowCount, UInt<1>("h0"))
+              node _T_26 = bits(_T_25, 0, 0)
+              node _T_27 = or(MatBColCount, UInt<1>("h0"))
+              node _T_28 = bits(_T_27, 0, 0)
+              MatB[_T_26][_T_28] <= MMU.io.acc_out.bits @[AcceleratoTop.scala 151:54]
+              node _MMU_io_acc_adr_T_2 = add(MatBBaseAdr, MatBCount) @[AcceleratoTop.scala 152:51]
+              node _MMU_io_acc_adr_T_3 = tail(_MMU_io_acc_adr_T_2, 1) @[AcceleratoTop.scala 152:51]
+              MMU.io.acc_adr <= _MMU_io_acc_adr_T_3 @[AcceleratoTop.scala 152:36]
+              node _MatBCount_T = add(MatBCount, UInt<1>("h1")) @[AcceleratoTop.scala 153:44]
+              node _MatBCount_T_1 = tail(_MatBCount_T, 1) @[AcceleratoTop.scala 153:44]
+              MatBCount <= _MatBCount_T_1 @[AcceleratoTop.scala 153:31]
+              node _MatBColCount_T = add(MatBColCount, UInt<1>("h1")) @[AcceleratoTop.scala 154:50]
+              node _MatBColCount_T_1 = tail(_MatBColCount_T, 1) @[AcceleratoTop.scala 154:50]
+              MatBColCount <= _MatBColCount_T_1 @[AcceleratoTop.scala 154:34]
+    else :
+      node _T_29 = eq(stateReg, UInt<2>("h2")) @[AcceleratoTop.scala 158:25]
+      when _T_29 : @[AcceleratoTop.scala 158:38]
+        node _T_30 = eq(CompCount, UInt<1>("h0")) @[AcceleratoTop.scala 159:24]
+        when _T_30 : @[AcceleratoTop.scala 159:32]
+          ACCL.io.Stationary_matrix[0][0] <= MatA[0][0] @[AcceleratoTop.scala 160:39]
+          ACCL.io.Stationary_matrix[0][1] <= MatA[0][1] @[AcceleratoTop.scala 160:39]
+          ACCL.io.Stationary_matrix[1][0] <= MatA[1][0] @[AcceleratoTop.scala 160:39]
+          ACCL.io.Stationary_matrix[1][1] <= MatA[1][1] @[AcceleratoTop.scala 160:39]
+          ACCL.io.Streaming_matrix[0][0] <= MatB[0][0] @[AcceleratoTop.scala 161:38]
+          ACCL.io.Streaming_matrix[0][1] <= MatB[0][1] @[AcceleratoTop.scala 161:38]
+          ACCL.io.Streaming_matrix[1][0] <= MatB[1][0] @[AcceleratoTop.scala 161:38]
+          ACCL.io.Streaming_matrix[1][1] <= MatB[1][1] @[AcceleratoTop.scala 161:38]
+        else :
+          node _T_31 = eq(CompCount, UInt<4>("hd")) @[AcceleratoTop.scala 162:30]
+          when _T_31 : @[AcceleratoTop.scala 162:39]
+            MatC <= ACCL.io.Third_Matrix @[AcceleratoTop.scala 163:25]
+            MatCompDone <= UInt<1>("h1") @[AcceleratoTop.scala 164:25]
+          else :
+            node _CompCount_T = add(CompCount, UInt<1>("h1")) @[AcceleratoTop.scala 166:38]
+            node _CompCount_T_1 = tail(_CompCount_T, 1) @[AcceleratoTop.scala 166:38]
+            CompCount <= _CompCount_T_1 @[AcceleratoTop.scala 166:25]
+      else :
+        node _T_32 = eq(stateReg, UInt<2>("h3")) @[AcceleratoTop.scala 168:25]
+        when _T_32 : @[AcceleratoTop.scala 168:37]
+          MMU.io.acc_we <= UInt<1>("h1") @[AcceleratoTop.scala 170:25]
+          MMU.io.acc_val <= UInt<1>("h1") @[AcceleratoTop.scala 171:25]
+          node _T_33 = eq(MatCRowCount, MatCRows) @[AcceleratoTop.scala 172:27]
+          node _T_34 = eq(MatCColCount, MatCCols) @[AcceleratoTop.scala 172:56]
+          node _T_35 = and(_T_33, _T_34) @[AcceleratoTop.scala 172:40]
+          when _T_35 : @[AcceleratoTop.scala 172:69]
+            MatStrDone <= UInt<1>("h1") @[AcceleratoTop.scala 173:25]
+          else :
+            node _T_36 = eq(MatCColCount, MatCCols) @[AcceleratoTop.scala 175:31]
+            when _T_36 : @[AcceleratoTop.scala 175:44]
+              node _MatCRowCount_T = add(MatCRowCount, UInt<1>("h1")) @[AcceleratoTop.scala 176:46]
+              node _MatCRowCount_T_1 = tail(_MatCRowCount_T, 1) @[AcceleratoTop.scala 176:46]
+              MatCRowCount <= _MatCRowCount_T_1 @[AcceleratoTop.scala 176:30]
+              MatCColCount <= UInt<1>("h0") @[AcceleratoTop.scala 177:30]
+            else :
+              node _MMU_io_acc_dat_T = or(MatCRowCount, UInt<1>("h0"))
+              node _MMU_io_acc_dat_T_1 = bits(_MMU_io_acc_dat_T, 0, 0)
+              node _MMU_io_acc_dat_T_2 = or(MatCColCount, UInt<1>("h0"))
+              node _MMU_io_acc_dat_T_3 = bits(_MMU_io_acc_dat_T_2, 0, 0)
+              MMU.io.acc_dat <= MatC[_MMU_io_acc_dat_T_1][_MMU_io_acc_dat_T_3] @[AcceleratoTop.scala 179:33]
+              node _MMU_io_acc_adr_T_4 = add(MatCBaseAdr, MatCCount) @[AcceleratoTop.scala 180:48]
+              node _MMU_io_acc_adr_T_5 = tail(_MMU_io_acc_adr_T_4, 1) @[AcceleratoTop.scala 180:48]
+              MMU.io.acc_adr <= _MMU_io_acc_adr_T_5 @[AcceleratoTop.scala 180:33]
+              node _MatCCount_T = add(MatCCount, UInt<1>("h1")) @[AcceleratoTop.scala 181:46]
+              node _MatCCount_T_1 = tail(_MatCCount_T, 1) @[AcceleratoTop.scala 181:46]
+              MatCCount <= _MatCCount_T_1 @[AcceleratoTop.scala 181:33]
+              node _MatCColCount_T = add(MatCColCount, UInt<1>("h1")) @[AcceleratoTop.scala 182:49]
+              node _MatCColCount_T_1 = tail(_MatCColCount_T, 1) @[AcceleratoTop.scala 182:49]
+              MatCColCount <= _MatCColCount_T_1 @[AcceleratoTop.scala 182:33]
+    node _T_37 = eq(stateReg, UInt<2>("h0")) @[AcceleratoTop.scala 190:19]
+    node _T_38 = eq(StartTrans, UInt<1>("h1")) @[AcceleratoTop.scala 190:41]
+    node _T_39 = and(_T_37, _T_38) @[AcceleratoTop.scala 190:27]
+    when _T_39 : @[AcceleratoTop.scala 190:49]
+      stateReg <= UInt<2>("h1") @[AcceleratoTop.scala 191:18]
+      StartTrans <= UInt<1>("h0") @[AcceleratoTop.scala 192:20]
+    else :
+      node _T_40 = eq(stateReg, UInt<2>("h1")) @[AcceleratoTop.scala 193:25]
+      node _T_41 = and(_T_40, MatReadDone) @[AcceleratoTop.scala 193:38]
+      when _T_41 : @[AcceleratoTop.scala 193:53]
+        stateReg <= UInt<2>("h2") @[AcceleratoTop.scala 194:18]
+        MatReadDone <= UInt<1>("h0") @[AcceleratoTop.scala 195:21]
+      else :
+        node _T_42 = eq(stateReg, UInt<2>("h2")) @[AcceleratoTop.scala 196:25]
+        node _T_43 = and(_T_42, MatCompDone) @[AcceleratoTop.scala 196:38]
+        when _T_43 : @[AcceleratoTop.scala 196:53]
+          stateReg <= UInt<2>("h3") @[AcceleratoTop.scala 197:18]
+          MatCompDone <= UInt<1>("h0") @[AcceleratoTop.scala 198:21]
+        else :
+          node _T_44 = eq(stateReg, UInt<2>("h3")) @[AcceleratoTop.scala 199:25]
+          node _T_45 = and(_T_44, MatStrDone) @[AcceleratoTop.scala 199:37]
+          when _T_45 : @[AcceleratoTop.scala 199:51]
+            stateReg <= UInt<2>("h0") @[AcceleratoTop.scala 200:18]
+            MatStrDone <= UInt<1>("h0") @[AcceleratoTop.scala 201:20]
 

@@ -143,6 +143,8 @@ class FlexDPU(implicit val config:MagmasiConfig) extends Module{
             FDPE(i/4).i_data_bus(3) := nonZeroValues(i+3)
         }
 
+        io.output := FDPE(0).matrix
+
 
 //--------------------------------------------- ZArori chees ------------------------------
 
@@ -262,6 +264,8 @@ class FlexDPU(implicit val config:MagmasiConfig) extends Module{
 
 
 
+    }.otherwise{
+        io.output := WireInit(VecInit(Seq.fill(config.MaxRows)(VecInit(Seq.fill(config.MaxCols)(0.U(config.DATA_TYPE.W))))))
     }
 
 
