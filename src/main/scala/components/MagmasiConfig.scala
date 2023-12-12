@@ -1,0 +1,18 @@
+package magmasi.components
+import scala.math
+
+case class MagmasiConfig (
+    val DATA_TYPE: Int = 16,
+    val NUM_PES  : Int = 4,
+    val NUM_IN  : Int = 4,
+    val SEL_IN: Int = 2,
+    val NUM_OUT: Int =2,
+    val MaxRows :Int = 2,
+    val MaxCols :Int = 2,
+    val LOG2_PES :Int = 5,
+    val NoOfFDPE :Int = 16
+
+) {
+    val LEVELS   : Int = (2 * (math.log(NUM_IN) / math.log(2))).toInt + 1
+    
+}
