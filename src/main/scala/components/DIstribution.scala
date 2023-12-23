@@ -12,8 +12,6 @@ class Distribution(implicit val config:MagmasiConfig) extends Module{
     val valid = Input(Bool())
     val iteration = Output(UInt(32.W))
     val validIteration = Output(Bool())
-
-
     })
 
     val i = RegInit(0.U(32.W))

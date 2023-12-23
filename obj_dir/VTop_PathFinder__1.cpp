@@ -105,8 +105,8 @@ VL_INLINE_OPT void VTop_PathFinder::_sequent__TOP__Top__DOT__FDPU__DOT__PathFind
                                                   - (IData)(1U))));
 }
 
-VL_INLINE_OPT void VTop_PathFinder::_sequent__TOP__Top__DOT__FDPU__DOT__PathFinder__13(VTop__Syms* __restrict vlSymsp) {
-    VL_DEBUG_IF(VL_DBG_MSGF("+          VTop_PathFinder::_sequent__TOP__Top__DOT__FDPU__DOT__PathFinder__13\n"); );
+VL_INLINE_OPT void VTop_PathFinder::_sequent__TOP__Top__DOT__FDPU__DOT__PathFinder__34(VTop__Syms* __restrict vlSymsp) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+          VTop_PathFinder::_sequent__TOP__Top__DOT__FDPU__DOT__PathFinder__34\n"); );
     VTop* const __restrict vlTOPp VL_ATTR_UNUSED = vlSymsp->TOPp;
     // Body
     if (this->__PVT__Distribution_io_ProcessValid) {
@@ -124,20 +124,6 @@ VL_INLINE_OPT void VTop_PathFinder::_sequent__TOP__Top__DOT__FDPU__DOT__PathFind
         this->__PVT__myMuxes_io_mat1_7_0 = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_7_0;
         this->__PVT__myMuxes_io_mat1_6_2 = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_6_2;
         this->__PVT__myMuxes_io_mat1_6_3 = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_6_3;
-        this->__PVT__myMuxes_io_mat1_5_7 = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_5_7;
-        this->__PVT__myMuxes_io_mat1_6_0 = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_6_0;
-        this->__PVT__myMuxes_io_mat1_6_1 = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_6_1;
-        this->__PVT__myMuxes_io_mat1_5_3 = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_5_3;
-        this->__PVT__myMuxes_io_mat1_5_4 = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_5_4;
-        this->__PVT__myMuxes_io_mat1_5_5 = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_5_5;
-        this->__PVT__myMuxes_io_mat1_5_6 = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_5_6;
-        this->__PVT__myMuxes_io_mat1_4_4 = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_4_4;
-        this->__PVT__myMuxes_io_mat1_4_5 = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_4_5;
-        this->__PVT__myMuxes_io_mat1_4_6 = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_4_6;
-        this->__PVT__myMuxes_io_mat1_4_7 = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_4_7;
-        this->__PVT__myMuxes_io_mat1_5_0 = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_5_0;
-        this->__PVT__myMuxes_io_mat1_5_1 = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_5_1;
-        this->__PVT__myMuxes_io_mat1_5_2 = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_5_2;
         this->__PVT__myMuxes_io_mat2_5 = (0xffffU & vlTOPp->Top__DOT__FDPU__DOT___GEN_397);
         this->__PVT__myMuxes_io_mat2_6 = (0xffffU & vlTOPp->Top__DOT__FDPU__DOT___GEN_398);
         this->__PVT__myMuxes_io_mat2_7 = (0xffffU & vlTOPp->Top__DOT__FDPU__DOT___GEN_399);
@@ -160,20 +146,6 @@ VL_INLINE_OPT void VTop_PathFinder::_sequent__TOP__Top__DOT__FDPU__DOT__PathFind
         this->__PVT__myMuxes_io_mat1_7_0 = 0U;
         this->__PVT__myMuxes_io_mat1_6_2 = 0U;
         this->__PVT__myMuxes_io_mat1_6_3 = 0U;
-        this->__PVT__myMuxes_io_mat1_5_7 = 0U;
-        this->__PVT__myMuxes_io_mat1_6_0 = 0U;
-        this->__PVT__myMuxes_io_mat1_6_1 = 0U;
-        this->__PVT__myMuxes_io_mat1_5_3 = 0U;
-        this->__PVT__myMuxes_io_mat1_5_4 = 0U;
-        this->__PVT__myMuxes_io_mat1_5_5 = 0U;
-        this->__PVT__myMuxes_io_mat1_5_6 = 0U;
-        this->__PVT__myMuxes_io_mat1_4_4 = 0U;
-        this->__PVT__myMuxes_io_mat1_4_5 = 0U;
-        this->__PVT__myMuxes_io_mat1_4_6 = 0U;
-        this->__PVT__myMuxes_io_mat1_4_7 = 0U;
-        this->__PVT__myMuxes_io_mat1_5_0 = 0U;
-        this->__PVT__myMuxes_io_mat1_5_1 = 0U;
-        this->__PVT__myMuxes_io_mat1_5_2 = 0U;
         this->__PVT__myMuxes_io_mat2_5 = 0U;
         this->__PVT__myMuxes_io_mat2_6 = 0U;
         this->__PVT__myMuxes_io_mat2_7 = 0U;
@@ -227,6 +199,57 @@ VL_INLINE_OPT void VTop_PathFinder::_sequent__TOP__Top__DOT__FDPU__DOT__PathFind
                                                        : vlTOPp->Top__DOT__FDPU__DOT___GEN_392))))))));
     if (this->__PVT__Distribution_io_ProcessValid) {
         this->__PVT__myMuxes_io_mat2_1 = (0xffffU & vlTOPp->Top__DOT__FDPU__DOT___GEN_393);
+        this->__PVT__myMuxes_io_mat1_5_7 = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_5_7;
+        this->__PVT__myMuxes_io_mat1_6_0 = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_6_0;
+        this->__PVT__myMuxes_io_mat1_6_1 = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_6_1;
+        this->__PVT__myMuxes_io_mat1_5_3 = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_5_3;
+        this->__PVT__myMuxes_io_mat1_5_4 = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_5_4;
+        this->__PVT__myMuxes_io_mat1_5_5 = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_5_5;
+        this->__PVT__myMuxes_io_mat1_5_6 = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_5_6;
+        this->__PVT__myMuxes_io_mat1_4_4 = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_4_4;
+        this->__PVT__myMuxes_io_mat1_4_5 = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_4_5;
+        this->__PVT__myMuxes_io_mat1_4_6 = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_4_6;
+        this->__PVT__myMuxes_io_mat1_4_7 = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_4_7;
+        this->__PVT__myMuxes_io_mat1_5_0 = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_5_0;
+        this->__PVT__myMuxes_io_mat1_5_1 = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_5_1;
+        this->__PVT__myMuxes_io_mat1_5_2 = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_5_2;
+    } else {
+        this->__PVT__myMuxes_io_mat2_1 = 0U;
+        this->__PVT__myMuxes_io_mat1_5_7 = 0U;
+        this->__PVT__myMuxes_io_mat1_6_0 = 0U;
+        this->__PVT__myMuxes_io_mat1_6_1 = 0U;
+        this->__PVT__myMuxes_io_mat1_5_3 = 0U;
+        this->__PVT__myMuxes_io_mat1_5_4 = 0U;
+        this->__PVT__myMuxes_io_mat1_5_5 = 0U;
+        this->__PVT__myMuxes_io_mat1_5_6 = 0U;
+        this->__PVT__myMuxes_io_mat1_4_4 = 0U;
+        this->__PVT__myMuxes_io_mat1_4_5 = 0U;
+        this->__PVT__myMuxes_io_mat1_4_6 = 0U;
+        this->__PVT__myMuxes_io_mat1_4_7 = 0U;
+        this->__PVT__myMuxes_io_mat1_5_0 = 0U;
+        this->__PVT__myMuxes_io_mat1_5_1 = 0U;
+        this->__PVT__myMuxes_io_mat1_5_2 = 0U;
+    }
+    if (vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_DataValid) {
+        this->__PVT___GEN_279 = this->__PVT__myMuxes__DOT__dest_3;
+        this->__PVT___GEN_148 = this->__PVT__myMuxes__DOT__mux_0;
+        this->__PVT___GEN_278 = this->__PVT__myMuxes__DOT__dest_2;
+        this->__PVT___GEN_276 = this->__PVT__myMuxes__DOT__dest_0;
+        this->__PVT___GEN_277 = this->__PVT__myMuxes__DOT__dest_1;
+        this->__PVT___GEN_151 = this->__PVT__myMuxes__DOT__mux_3;
+        this->__PVT___GEN_150 = this->__PVT__myMuxes__DOT__mux_2;
+        this->__PVT___GEN_149 = this->__PVT__myMuxes__DOT__mux_1;
+    } else {
+        this->__PVT___GEN_279 = 0U;
+        this->__PVT___GEN_148 = 0U;
+        this->__PVT___GEN_278 = 0U;
+        this->__PVT___GEN_276 = 0U;
+        this->__PVT___GEN_277 = 0U;
+        this->__PVT___GEN_151 = 0U;
+        this->__PVT___GEN_150 = 0U;
+        this->__PVT___GEN_149 = 0U;
+    }
+    if (this->__PVT__Distribution_io_ProcessValid) {
         this->__PVT__myMuxes_io_mat1_3_5 = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_3_5;
         this->__PVT__myMuxes_io_mat1_3_6 = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_3_6;
         this->__PVT__myMuxes_io_mat1_3_7 = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_3_7;
@@ -263,7 +286,6 @@ VL_INLINE_OPT void VTop_PathFinder::_sequent__TOP__Top__DOT__FDPU__DOT__PathFind
         this->__PVT__myMuxes_io_mat1_0_5 = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_0_5;
         this->__PVT__myMuxes_io_mat1_0_6 = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_0_6;
     } else {
-        this->__PVT__myMuxes_io_mat2_1 = 0U;
         this->__PVT__myMuxes_io_mat1_3_5 = 0U;
         this->__PVT__myMuxes_io_mat1_3_6 = 0U;
         this->__PVT__myMuxes_io_mat1_3_7 = 0U;
@@ -6325,10 +6347,6 @@ VL_INLINE_OPT void VTop_PathFinder::_sequent__TOP__Top__DOT__FDPU__DOT__PathFind
         = this->__PVT__myMuxes_io_mat1_5_5;
     this->__PVT__myMuxes__DOT__prevStationary_matrix_5_6 
         = this->__PVT__myMuxes_io_mat1_5_6;
-    this->__PVT__myCounter__DOT__prevStationary_matrix_6_3 
-        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_1_io_Stationary_matrix_6_3;
-    this->__PVT__myCounter__DOT__prevStationary_matrix_6_2 
-        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_1_io_Stationary_matrix_6_2;
     this->__PVT__myMuxes__DOT__prevStationary_matrix_4_4 
         = this->__PVT__myMuxes_io_mat1_4_4;
     this->__PVT__myMuxes__DOT__prevStationary_matrix_4_5 
@@ -6343,20 +6361,6 @@ VL_INLINE_OPT void VTop_PathFinder::_sequent__TOP__Top__DOT__FDPU__DOT__PathFind
         = this->__PVT__myMuxes_io_mat1_5_1;
     this->__PVT__myMuxes__DOT__prevStationary_matrix_5_2 
         = this->__PVT__myMuxes_io_mat1_5_2;
-    this->__PVT__myCounter__DOT__prevStationary_matrix_6_0 
-        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_1_io_Stationary_matrix_6_0;
-    this->__PVT__myCounter__DOT__prevStationary_matrix_5_7 
-        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_1_io_Stationary_matrix_5_7;
-    this->__PVT__myCounter__DOT__prevStationary_matrix_6_1 
-        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_1_io_Stationary_matrix_6_1;
-    this->__PVT__myCounter__DOT__prevStationary_matrix_5_6 
-        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_1_io_Stationary_matrix_5_6;
-    this->__PVT__myCounter__DOT__prevStationary_matrix_5_5 
-        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_1_io_Stationary_matrix_5_5;
-    this->__PVT__myCounter__DOT__prevStationary_matrix_5_4 
-        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_1_io_Stationary_matrix_5_4;
-    this->__PVT__myCounter__DOT__prevStationary_matrix_5_3 
-        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_1_io_Stationary_matrix_5_3;
     this->__PVT__myMuxes__DOT__prevStationary_matrix_3_5 
         = this->__PVT__myMuxes_io_mat1_3_5;
     this->__PVT__myMuxes__DOT__prevStationary_matrix_3_6 
@@ -6371,20 +6375,6 @@ VL_INLINE_OPT void VTop_PathFinder::_sequent__TOP__Top__DOT__FDPU__DOT__PathFind
         = this->__PVT__myMuxes_io_mat1_4_2;
     this->__PVT__myMuxes__DOT__prevStationary_matrix_4_3 
         = this->__PVT__myMuxes_io_mat1_4_3;
-    this->__PVT__myCounter__DOT__prevStationary_matrix_5_1 
-        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_1_io_Stationary_matrix_5_1;
-    this->__PVT__myCounter__DOT__prevStationary_matrix_5_0 
-        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_1_io_Stationary_matrix_5_0;
-    this->__PVT__myCounter__DOT__prevStationary_matrix_4_7 
-        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_1_io_Stationary_matrix_4_7;
-    this->__PVT__myCounter__DOT__prevStationary_matrix_4_6 
-        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_1_io_Stationary_matrix_4_6;
-    this->__PVT__myCounter__DOT__prevStationary_matrix_4_5 
-        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_1_io_Stationary_matrix_4_5;
-    this->__PVT__myCounter__DOT__prevStationary_matrix_5_2 
-        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_1_io_Stationary_matrix_5_2;
-    this->__PVT__myCounter__DOT__prevStationary_matrix_4_4 
-        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_1_io_Stationary_matrix_4_4;
     this->__PVT__myMuxes__DOT__prevStationary_matrix_3_4 
         = this->__PVT__myMuxes_io_mat1_3_4;
     this->__PVT__myMuxes__DOT__prevStationary_matrix_3_3 
@@ -6399,20 +6389,6 @@ VL_INLINE_OPT void VTop_PathFinder::_sequent__TOP__Top__DOT__FDPU__DOT__PathFind
         = this->__PVT__myMuxes_io_mat1_2_7;
     this->__PVT__myMuxes__DOT__prevStationary_matrix_2_6 
         = this->__PVT__myMuxes_io_mat1_2_6;
-    this->__PVT__myCounter__DOT__prevStationary_matrix_4_2 
-        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_1_io_Stationary_matrix_4_2;
-    this->__PVT__myCounter__DOT__prevStationary_matrix_4_1 
-        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_1_io_Stationary_matrix_4_1;
-    this->__PVT__myCounter__DOT__prevStationary_matrix_4_0 
-        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_1_io_Stationary_matrix_4_0;
-    this->__PVT__myCounter__DOT__prevStationary_matrix_3_7 
-        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_1_io_Stationary_matrix_3_7;
-    this->__PVT__myCounter__DOT__prevStationary_matrix_3_6 
-        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_1_io_Stationary_matrix_3_6;
-    this->__PVT__myCounter__DOT__prevStationary_matrix_4_3 
-        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_1_io_Stationary_matrix_4_3;
-    this->__PVT__myCounter__DOT__prevStationary_matrix_3_5 
-        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_1_io_Stationary_matrix_3_5;
     this->__PVT__myMuxes__DOT__prevStationary_matrix_2_5 
         = this->__PVT__myMuxes_io_mat1_2_5;
     this->__PVT__myMuxes__DOT__prevStationary_matrix_2_4 
@@ -6427,20 +6403,10 @@ VL_INLINE_OPT void VTop_PathFinder::_sequent__TOP__Top__DOT__FDPU__DOT__PathFind
         = this->__PVT__myMuxes_io_mat1_2_0;
     this->__PVT__myMuxes__DOT__prevStationary_matrix_1_7 
         = this->__PVT__myMuxes_io_mat1_1_7;
-    this->__PVT__myCounter__DOT__prevStationary_matrix_3_2 
-        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_1_io_Stationary_matrix_3_2;
-    this->__PVT__myCounter__DOT__prevStationary_matrix_3_3 
-        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_1_io_Stationary_matrix_3_3;
-    this->__PVT__myCounter__DOT__prevStationary_matrix_3_4 
-        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_1_io_Stationary_matrix_3_4;
-    this->__PVT__myCounter__DOT__prevStationary_matrix_3_0 
-        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_1_io_Stationary_matrix_3_0;
-    this->__PVT__myCounter__DOT__prevStationary_matrix_3_1 
-        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_1_io_Stationary_matrix_3_1;
-    this->__PVT__myCounter__DOT__prevStationary_matrix_2_7 
-        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_1_io_Stationary_matrix_2_7;
-    this->__PVT__myCounter__DOT__prevStationary_matrix_2_6 
-        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_1_io_Stationary_matrix_2_6;
+    this->__PVT__myCounter__DOT__prevStationary_matrix_6_3 
+        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_6_3;
+    this->__PVT__myCounter__DOT__prevStationary_matrix_6_2 
+        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_6_2;
     this->__PVT__myMuxes__DOT__prevStationary_matrix_1_6 
         = this->__PVT__myMuxes_io_mat1_1_6;
     this->__PVT__myMuxes__DOT__prevStationary_matrix_1_5 
@@ -6455,20 +6421,20 @@ VL_INLINE_OPT void VTop_PathFinder::_sequent__TOP__Top__DOT__FDPU__DOT__PathFind
         = this->__PVT__myMuxes_io_mat1_1_3;
     this->__PVT__myMuxes__DOT__prevStationary_matrix_1_4 
         = this->__PVT__myMuxes_io_mat1_1_4;
-    this->__PVT__myCounter__DOT__prevStationary_matrix_2_0 
-        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_1_io_Stationary_matrix_2_0;
-    this->__PVT__myCounter__DOT__prevStationary_matrix_2_1 
-        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_1_io_Stationary_matrix_2_1;
-    this->__PVT__myCounter__DOT__prevStationary_matrix_2_2 
-        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_1_io_Stationary_matrix_2_2;
-    this->__PVT__myCounter__DOT__prevStationary_matrix_2_3 
-        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_1_io_Stationary_matrix_2_3;
-    this->__PVT__myCounter__DOT__prevStationary_matrix_2_4 
-        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_1_io_Stationary_matrix_2_4;
-    this->__PVT__myCounter__DOT__prevStationary_matrix_1_7 
-        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_1_io_Stationary_matrix_1_7;
-    this->__PVT__myCounter__DOT__prevStationary_matrix_2_5 
-        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_1_io_Stationary_matrix_2_5;
+    this->__PVT__myCounter__DOT__prevStationary_matrix_6_0 
+        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_6_0;
+    this->__PVT__myCounter__DOT__prevStationary_matrix_5_7 
+        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_5_7;
+    this->__PVT__myCounter__DOT__prevStationary_matrix_6_1 
+        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_6_1;
+    this->__PVT__myCounter__DOT__prevStationary_matrix_5_6 
+        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_5_6;
+    this->__PVT__myCounter__DOT__prevStationary_matrix_5_5 
+        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_5_5;
+    this->__PVT__myCounter__DOT__prevStationary_matrix_5_4 
+        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_5_4;
+    this->__PVT__myCounter__DOT__prevStationary_matrix_5_3 
+        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_5_3;
     this->__PVT__myMuxes__DOT__prevStationary_matrix_0_0 
         = this->__PVT__myMuxes_io_mat1_0_0;
     this->__PVT__myMuxes__DOT__prevStationary_matrix_0_1 
@@ -6485,36 +6451,92 @@ VL_INLINE_OPT void VTop_PathFinder::_sequent__TOP__Top__DOT__FDPU__DOT__PathFind
         = this->__PVT__myMuxes_io_mat1_0_6;
     this->__PVT__myMuxes__DOT__prevStationary_matrix_0_7 
         = this->__PVT__myMuxes_io_mat1_0_7;
+    this->__PVT__myCounter__DOT__prevStationary_matrix_5_1 
+        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_5_1;
+    this->__PVT__myCounter__DOT__prevStationary_matrix_5_0 
+        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_5_0;
+    this->__PVT__myCounter__DOT__prevStationary_matrix_4_7 
+        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_4_7;
+    this->__PVT__myCounter__DOT__prevStationary_matrix_4_6 
+        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_4_6;
+    this->__PVT__myCounter__DOT__prevStationary_matrix_4_5 
+        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_4_5;
+    this->__PVT__myCounter__DOT__prevStationary_matrix_5_2 
+        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_5_2;
+    this->__PVT__myCounter__DOT__prevStationary_matrix_4_4 
+        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_4_4;
+    this->__PVT__myCounter__DOT__prevStationary_matrix_4_2 
+        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_4_2;
+    this->__PVT__myCounter__DOT__prevStationary_matrix_4_1 
+        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_4_1;
+    this->__PVT__myCounter__DOT__prevStationary_matrix_4_0 
+        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_4_0;
+    this->__PVT__myCounter__DOT__prevStationary_matrix_3_7 
+        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_3_7;
+    this->__PVT__myCounter__DOT__prevStationary_matrix_3_6 
+        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_3_6;
+    this->__PVT__myCounter__DOT__prevStationary_matrix_4_3 
+        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_4_3;
+    this->__PVT__myCounter__DOT__prevStationary_matrix_3_5 
+        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_3_5;
+    this->__PVT__myCounter__DOT__prevStationary_matrix_3_2 
+        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_3_2;
+    this->__PVT__myCounter__DOT__prevStationary_matrix_3_3 
+        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_3_3;
+    this->__PVT__myCounter__DOT__prevStationary_matrix_3_4 
+        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_3_4;
+    this->__PVT__myCounter__DOT__prevStationary_matrix_3_0 
+        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_3_0;
+    this->__PVT__myCounter__DOT__prevStationary_matrix_3_1 
+        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_3_1;
+    this->__PVT__myCounter__DOT__prevStationary_matrix_2_7 
+        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_2_7;
+    this->__PVT__myCounter__DOT__prevStationary_matrix_2_6 
+        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_2_6;
+    this->__PVT__myCounter__DOT__prevStationary_matrix_2_0 
+        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_2_0;
+    this->__PVT__myCounter__DOT__prevStationary_matrix_2_1 
+        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_2_1;
+    this->__PVT__myCounter__DOT__prevStationary_matrix_2_2 
+        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_2_2;
+    this->__PVT__myCounter__DOT__prevStationary_matrix_2_3 
+        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_2_3;
+    this->__PVT__myCounter__DOT__prevStationary_matrix_2_4 
+        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_2_4;
+    this->__PVT__myCounter__DOT__prevStationary_matrix_1_7 
+        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_1_7;
+    this->__PVT__myCounter__DOT__prevStationary_matrix_2_5 
+        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_2_5;
     this->__PVT__myCounter__DOT__prevStationary_matrix_1_4 
-        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_1_io_Stationary_matrix_1_4;
+        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_1_4;
     this->__PVT__myCounter__DOT__prevStationary_matrix_1_3 
-        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_1_io_Stationary_matrix_1_3;
+        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_1_3;
     this->__PVT__myCounter__DOT__prevStationary_matrix_1_2 
-        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_1_io_Stationary_matrix_1_2;
+        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_1_2;
     this->__PVT__myCounter__DOT__prevStationary_matrix_1_1 
-        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_1_io_Stationary_matrix_1_1;
+        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_1_1;
     this->__PVT__myCounter__DOT__prevStationary_matrix_1_5 
-        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_1_io_Stationary_matrix_1_5;
+        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_1_5;
     this->__PVT__myCounter__DOT__prevStationary_matrix_1_0 
-        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_1_io_Stationary_matrix_1_0;
+        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_1_0;
     this->__PVT__myCounter__DOT__prevStationary_matrix_1_6 
-        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_1_io_Stationary_matrix_1_6;
+        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_1_6;
     this->__PVT__myCounter__DOT__prevStationary_matrix_0_6 
-        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_1_io_Stationary_matrix_0_6;
+        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_0_6;
     this->__PVT__myCounter__DOT__prevStationary_matrix_0_5 
-        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_1_io_Stationary_matrix_0_5;
+        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_0_5;
     this->__PVT__myCounter__DOT__prevStationary_matrix_0_4 
-        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_1_io_Stationary_matrix_0_4;
+        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_0_4;
     this->__PVT__myCounter__DOT__prevStationary_matrix_0_3 
-        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_1_io_Stationary_matrix_0_3;
+        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_0_3;
     this->__PVT__myCounter__DOT__prevStationary_matrix_0_2 
-        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_1_io_Stationary_matrix_0_2;
+        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_0_2;
     this->__PVT__myCounter__DOT__prevStationary_matrix_0_1 
-        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_1_io_Stationary_matrix_0_1;
+        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_0_1;
     this->__PVT__myCounter__DOT__prevStationary_matrix_0_0 
-        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_1_io_Stationary_matrix_0_0;
+        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_0_0;
     this->__PVT__myCounter__DOT__prevStationary_matrix_0_7 
-        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_1_io_Stationary_matrix_0_7;
+        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_0_7;
     if (vlTOPp->reset) {
         this->__Vdly__Distribution__DOT__part3__DOT__k = 0U;
     } else {
@@ -8483,23 +8505,23 @@ VL_INLINE_OPT void VTop_PathFinder::_sequent__TOP__Top__DOT__FDPU__DOT__PathFind
         if ((1U & (~ (IData)(this->__PVT__Distribution__DOT__part2__DOT___io_ProcessValid_T)))) {
             this->__PVT__Distribution__DOT__part2__DOT__j 
                 = ((IData)(this->__PVT__Distribution__DOT__c)
-                    ? ((7U == (7U & (IData)(vlTOPp->Top__DOT__FDPU__DOT__Statvalid)))
+                    ? ((7U == (7U & (IData)(vlTOPp->Top__DOT__FDPU__DOT___T_13)))
                         ? this->__PVT__Distribution__DOT__Jdex_7
-                        : ((6U == (7U & (IData)(vlTOPp->Top__DOT__FDPU__DOT__Statvalid)))
+                        : ((6U == (7U & (IData)(vlTOPp->Top__DOT__FDPU__DOT___T_13)))
                             ? this->__PVT__Distribution__DOT__Jdex_6
-                            : ((5U == (7U & (IData)(vlTOPp->Top__DOT__FDPU__DOT__Statvalid)))
+                            : ((5U == (7U & (IData)(vlTOPp->Top__DOT__FDPU__DOT___T_13)))
                                 ? this->__PVT__Distribution__DOT__Jdex_5
-                                : ((4U == (7U & (IData)(vlTOPp->Top__DOT__FDPU__DOT__Statvalid)))
+                                : ((4U == (7U & (IData)(vlTOPp->Top__DOT__FDPU__DOT___T_13)))
                                     ? this->__PVT__Distribution__DOT__Jdex_4
-                                    : ((3U == (7U & (IData)(vlTOPp->Top__DOT__FDPU__DOT__Statvalid)))
+                                    : ((3U == (7U & (IData)(vlTOPp->Top__DOT__FDPU__DOT___T_13)))
                                         ? this->__PVT__Distribution__DOT__Jdex_3
                                         : ((2U == (7U 
-                                                   & (IData)(vlTOPp->Top__DOT__FDPU__DOT__Statvalid)))
+                                                   & (IData)(vlTOPp->Top__DOT__FDPU__DOT___T_13)))
                                             ? this->__PVT__Distribution__DOT__Jdex_2
                                             : ((1U 
                                                 == 
                                                 (7U 
-                                                 & (IData)(vlTOPp->Top__DOT__FDPU__DOT__Statvalid)))
+                                                 & (IData)(vlTOPp->Top__DOT__FDPU__DOT___T_13)))
                                                 ? this->__PVT__Distribution__DOT__Jdex_1
                                                 : this->__PVT__Distribution__DOT__Jdex_0)))))))
                     : 0U);
@@ -11038,29 +11060,29 @@ VL_INLINE_OPT void VTop_PathFinder::_sequent__TOP__Top__DOT__FDPU__DOT__PathFind
     }
     if (this->__PVT__myCounter_io_start_REG) {
         this->__PVT__myCounter__DOT__matricesAreEqual 
-            = (((IData)(vlTOPp->Top__DOT__FDPU__DOT__PathFinder_1_io_Stationary_matrix_7_7) 
+            = (((IData)(vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_7_7) 
                 == (IData)(this->__PVT__myCounter__DOT__prevStationary_matrix_7_7)) 
-               & (((IData)(vlTOPp->Top__DOT__FDPU__DOT__PathFinder_1_io_Stationary_matrix_7_6) 
+               & (((IData)(vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_7_6) 
                    == (IData)(this->__PVT__myCounter__DOT__prevStationary_matrix_7_6)) 
-                  & (((IData)(vlTOPp->Top__DOT__FDPU__DOT__PathFinder_1_io_Stationary_matrix_7_5) 
+                  & (((IData)(vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_7_5) 
                       == (IData)(this->__PVT__myCounter__DOT__prevStationary_matrix_7_5)) 
-                     & (((IData)(vlTOPp->Top__DOT__FDPU__DOT__PathFinder_1_io_Stationary_matrix_7_4) 
+                     & (((IData)(vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_7_4) 
                          == (IData)(this->__PVT__myCounter__DOT__prevStationary_matrix_7_4)) 
-                        & (((IData)(vlTOPp->Top__DOT__FDPU__DOT__PathFinder_1_io_Stationary_matrix_7_3) 
+                        & (((IData)(vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_7_3) 
                             == (IData)(this->__PVT__myCounter__DOT__prevStationary_matrix_7_3)) 
-                           & (((IData)(vlTOPp->Top__DOT__FDPU__DOT__PathFinder_1_io_Stationary_matrix_7_2) 
+                           & (((IData)(vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_7_2) 
                                == (IData)(this->__PVT__myCounter__DOT__prevStationary_matrix_7_2)) 
-                              & (((IData)(vlTOPp->Top__DOT__FDPU__DOT__PathFinder_1_io_Stationary_matrix_7_1) 
+                              & (((IData)(vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_7_1) 
                                   == (IData)(this->__PVT__myCounter__DOT__prevStationary_matrix_7_1)) 
-                                 & (((IData)(vlTOPp->Top__DOT__FDPU__DOT__PathFinder_1_io_Stationary_matrix_7_0) 
+                                 & (((IData)(vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_7_0) 
                                      == (IData)(this->__PVT__myCounter__DOT__prevStationary_matrix_7_0)) 
-                                    & (((IData)(vlTOPp->Top__DOT__FDPU__DOT__PathFinder_1_io_Stationary_matrix_6_7) 
+                                    & (((IData)(vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_6_7) 
                                         == (IData)(this->__PVT__myCounter__DOT__prevStationary_matrix_6_7)) 
-                                       & (((IData)(vlTOPp->Top__DOT__FDPU__DOT__PathFinder_1_io_Stationary_matrix_6_6) 
+                                       & (((IData)(vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_6_6) 
                                            == (IData)(this->__PVT__myCounter__DOT__prevStationary_matrix_6_6)) 
-                                          & (((IData)(vlTOPp->Top__DOT__FDPU__DOT__PathFinder_1_io_Stationary_matrix_6_5) 
+                                          & (((IData)(vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_6_5) 
                                               == (IData)(this->__PVT__myCounter__DOT__prevStationary_matrix_6_5)) 
-                                             & (((IData)(vlTOPp->Top__DOT__FDPU__DOT__PathFinder_1_io_Stationary_matrix_6_4) 
+                                             & (((IData)(vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_6_4) 
                                                  == (IData)(this->__PVT__myCounter__DOT__prevStationary_matrix_6_4)) 
                                                 & (IData)(this->__PVT__myCounter__DOT___GEN_51)))))))))))));
     }
@@ -11224,30 +11246,30 @@ VL_INLINE_OPT void VTop_PathFinder::_sequent__TOP__Top__DOT__FDPU__DOT__PathFind
                                                  <= this->__PVT__myCounter__DOT__j) 
                                                 & (IData)(this->__PVT__myCounter__DOT___reg_i_T_2)));
     this->__PVT__myCounter__DOT__prevStationary_matrix_7_7 
-        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_1_io_Stationary_matrix_7_7;
+        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_7_7;
     this->__PVT__myCounter__DOT__prevStationary_matrix_7_6 
-        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_1_io_Stationary_matrix_7_6;
+        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_7_6;
     this->__PVT__myCounter__DOT__prevStationary_matrix_7_5 
-        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_1_io_Stationary_matrix_7_5;
+        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_7_5;
     this->__PVT__myCounter__DOT__prevStationary_matrix_7_4 
-        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_1_io_Stationary_matrix_7_4;
+        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_7_4;
     this->__PVT__myCounter__DOT__prevStationary_matrix_7_3 
-        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_1_io_Stationary_matrix_7_3;
+        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_7_3;
     this->__PVT__myCounter__DOT__prevStationary_matrix_7_2 
-        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_1_io_Stationary_matrix_7_2;
+        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_7_2;
     this->__PVT__myCounter__DOT__prevStationary_matrix_7_1 
-        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_1_io_Stationary_matrix_7_1;
+        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_7_1;
     this->__PVT__myCounter__DOT__prevStationary_matrix_7_0 
-        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_1_io_Stationary_matrix_7_0;
+        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_7_0;
     this->__PVT__myCounter__DOT__prevStationary_matrix_6_7 
-        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_1_io_Stationary_matrix_6_7;
+        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_6_7;
     this->__PVT__myCounter__DOT__prevStationary_matrix_6_6 
-        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_1_io_Stationary_matrix_6_6;
+        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_6_6;
     this->__PVT__myCounter__DOT__prevStationary_matrix_6_5 
-        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_1_io_Stationary_matrix_6_5;
+        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_6_5;
     this->__PVT__myCounter__DOT__prevStationary_matrix_6_4 
-        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_1_io_Stationary_matrix_6_4;
-    this->__PVT__myCounter_io_start_REG = vlTOPp->Top__DOT__FDPU__DOT__Statvalid;
+        = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_Stationary_matrix_6_4;
+    this->__PVT__myCounter_io_start_REG = vlTOPp->Top__DOT__FDPU__DOT__PathFinder_io_DataValid;
     this->__PVT__myMuxes__DOT___GEN_1276 = ((IData)(this->__PVT__myMuxes__DOT___T_91) 
                                             | (IData)(this->__PVT__myMuxes__DOT__jValid));
     this->__PVT__Distribution__DOT__i = this->__Vdly__Distribution__DOT__i;

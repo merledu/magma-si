@@ -14,15 +14,14 @@ class DistributionTester extends FreeSpec with ChiselScalatestTester {
 
 
         val inputData = Seq(
-           Seq(0, 0, 0, 1),
-            Seq(2, 0, 3,4),
+           Seq(1, 2, 0, 1),
+            Seq(3, 4, 3,4),
            Seq(0, 0, 0, 0),
            Seq(1, 2, 3, 4)
         ) 
             a.io.s.poke(0.U)
-            a.io.valid.poke(1.B)
-        for (i <- 0 until 4) {
-          for (j <- 0 until 4) {
+        for (i <- 0 until 2) {
+          for (j <- 0 until 2) {
             a.io.matrix(i)(j).poke(inputData(i)(j).U)
           }
         }
@@ -30,7 +29,9 @@ class DistributionTester extends FreeSpec with ChiselScalatestTester {
 
             // a.io.in1.poke(1.U)
             // a.io.in2.poke(1.U)
-             a.clock.step(200)
+             a.clock.step(10)
+             a.io.valid.poke(1.B)
+             a.clock.step(50)
              //a.io.out.expect(1.U)
         }
     }

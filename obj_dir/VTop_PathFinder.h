@@ -21,6 +21,10 @@ VL_MODULE(VTop_PathFinder) {
     // PORTS
     VL_IN8(clock,0,0);
     VL_IN8(reset,0,0);
+    VL_OUT8(io_i_mux_bus_0,3,0);
+    VL_OUT8(io_i_mux_bus_1,3,0);
+    VL_OUT8(io_i_mux_bus_2,3,0);
+    VL_OUT8(io_i_mux_bus_3,3,0);
     VL_OUT8(io_PF_Valid,0,0);
     VL_IN8(io_DataValid,0,0);
     VL_IN16(io_Stationary_matrix_0_0,15,0);
@@ -95,6 +99,14 @@ VL_MODULE(VTop_PathFinder) {
     VL_IN16(io_Streaming_matrix_5,15,0);
     VL_IN16(io_Streaming_matrix_6,15,0);
     VL_IN16(io_Streaming_matrix_7,15,0);
+    VL_OUT16(io_Source_0,15,0);
+    VL_OUT16(io_Source_1,15,0);
+    VL_OUT16(io_Source_2,15,0);
+    VL_OUT16(io_Source_3,15,0);
+    VL_OUT16(io_destination_0,15,0);
+    VL_OUT16(io_destination_1,15,0);
+    VL_OUT16(io_destination_2,15,0);
+    VL_OUT16(io_destination_3,15,0);
     VL_IN(io_NoDPE,31,0);
     
     // LOCAL SIGNALS
@@ -923,6 +935,14 @@ VL_MODULE(VTop_PathFinder) {
         SData/*15:0*/ __PVT__myCounter__DOT___GEN_472;
         SData/*15:0*/ __PVT__myCounter__DOT___GEN_473;
         SData/*15:0*/ __PVT__myCounter__DOT___GEN_474;
+        IData/*31:0*/ __PVT___GEN_148;
+        IData/*31:0*/ __PVT___GEN_149;
+        IData/*31:0*/ __PVT___GEN_150;
+        IData/*31:0*/ __PVT___GEN_151;
+        IData/*31:0*/ __PVT___GEN_276;
+        IData/*31:0*/ __PVT___GEN_277;
+        IData/*31:0*/ __PVT___GEN_278;
+        IData/*31:0*/ __PVT___GEN_279;
         IData/*31:0*/ __PVT__myMuxes__DOT__i;
         IData/*31:0*/ __PVT__myMuxes__DOT__j;
         IData/*31:0*/ __PVT__myMuxes__DOT__k;
@@ -948,6 +968,8 @@ VL_MODULE(VTop_PathFinder) {
         IData/*31:0*/ __PVT__myCounter__DOT___GEN_726;
         IData/*31:0*/ __PVT__myCounter__DOT___GEN_727;
         IData/*31:0*/ __PVT__myCounter__DOT___GEN_728;
+    };
+    struct {
         IData/*31:0*/ __PVT__myCounter__DOT___GEN_729;
         IData/*31:0*/ __PVT__myCounter__DOT___GEN_730;
         IData/*31:0*/ __PVT__myCounter__DOT___GEN_731;
@@ -956,8 +978,6 @@ VL_MODULE(VTop_PathFinder) {
         IData/*31:0*/ __PVT__myCounter__DOT___GEN_734;
         IData/*31:0*/ __PVT__myCounter__DOT___GEN_735;
         IData/*31:0*/ __PVT__myCounter__DOT___GEN_736;
-    };
-    struct {
         IData/*31:0*/ __PVT__myCounter__DOT___GEN_737;
         IData/*31:0*/ __PVT__myCounter__DOT___GEN_738;
         IData/*31:0*/ __PVT__myCounter__DOT___GEN_739;
@@ -1014,6 +1034,8 @@ VL_MODULE(VTop_PathFinder) {
         IData/*31:0*/ __PVT__Distribution__DOT__part3_io_mat_7_7;
         IData/*31:0*/ __PVT__Distribution__DOT__i;
         IData/*31:0*/ __PVT__Distribution__DOT__j;
+    };
+    struct {
         IData/*31:0*/ __PVT__Distribution__DOT__count;
         IData/*31:0*/ __PVT__Distribution__DOT__Idex_0;
         IData/*31:0*/ __PVT__Distribution__DOT__Idex_1;
@@ -1022,8 +1044,6 @@ VL_MODULE(VTop_PathFinder) {
         IData/*31:0*/ __PVT__Distribution__DOT__Idex_4;
         IData/*31:0*/ __PVT__Distribution__DOT__Idex_5;
         IData/*31:0*/ __PVT__Distribution__DOT__Idex_6;
-    };
-    struct {
         IData/*31:0*/ __PVT__Distribution__DOT__Idex_7;
         IData/*31:0*/ __PVT__Distribution__DOT__Jdex_0;
         IData/*31:0*/ __PVT__Distribution__DOT__Jdex_1;
@@ -1080,6 +1100,8 @@ VL_MODULE(VTop_PathFinder) {
         IData/*31:0*/ __PVT__Distribution__DOT__part2__DOT__b_1_3;
         IData/*31:0*/ __PVT__Distribution__DOT__part2__DOT__b_1_4;
         IData/*31:0*/ __PVT__Distribution__DOT__part2__DOT__b_1_5;
+    };
+    struct {
         IData/*31:0*/ __PVT__Distribution__DOT__part2__DOT__b_1_6;
         IData/*31:0*/ __PVT__Distribution__DOT__part2__DOT__b_1_7;
         IData/*31:0*/ __PVT__Distribution__DOT__part2__DOT__b_2_0;
@@ -1088,8 +1110,6 @@ VL_MODULE(VTop_PathFinder) {
         IData/*31:0*/ __PVT__Distribution__DOT__part2__DOT__b_2_3;
         IData/*31:0*/ __PVT__Distribution__DOT__part2__DOT__b_2_4;
         IData/*31:0*/ __PVT__Distribution__DOT__part2__DOT__b_2_5;
-    };
-    struct {
         IData/*31:0*/ __PVT__Distribution__DOT__part2__DOT__b_2_6;
         IData/*31:0*/ __PVT__Distribution__DOT__part2__DOT__b_2_7;
         IData/*31:0*/ __PVT__Distribution__DOT__part2__DOT__b_3_0;
@@ -1146,6 +1166,8 @@ VL_MODULE(VTop_PathFinder) {
         IData/*31:0*/ __PVT__Distribution__DOT__part2__DOT___GEN_124;
         IData/*31:0*/ __PVT__Distribution__DOT__part2__DOT___GEN_126;
         IData/*31:0*/ __PVT__Distribution__DOT__part2__DOT___a_T_1;
+    };
+    struct {
         IData/*31:0*/ __PVT__Distribution__DOT__part2__DOT___j_T_1;
         IData/*31:0*/ __PVT__Distribution__DOT__part3__DOT__b_0_0;
         IData/*31:0*/ __PVT__Distribution__DOT__part3__DOT__b_0_1;
@@ -1154,8 +1176,6 @@ VL_MODULE(VTop_PathFinder) {
         IData/*31:0*/ __PVT__Distribution__DOT__part3__DOT__b_0_4;
         IData/*31:0*/ __PVT__Distribution__DOT__part3__DOT__b_0_5;
         IData/*31:0*/ __PVT__Distribution__DOT__part3__DOT__b_0_6;
-    };
-    struct {
         IData/*31:0*/ __PVT__Distribution__DOT__part3__DOT__b_0_7;
         IData/*31:0*/ __PVT__Distribution__DOT__part3__DOT__b_1_0;
         IData/*31:0*/ __PVT__Distribution__DOT__part3__DOT__b_1_1;
@@ -1212,6 +1232,8 @@ VL_MODULE(VTop_PathFinder) {
         IData/*31:0*/ __PVT__Distribution__DOT__part3__DOT__b_7_4;
         IData/*31:0*/ __PVT__Distribution__DOT__part3__DOT__b_7_5;
         IData/*31:0*/ __PVT__Distribution__DOT__part3__DOT__b_7_6;
+    };
+    struct {
         IData/*31:0*/ __PVT__Distribution__DOT__part3__DOT__b_7_7;
         IData/*31:0*/ __PVT__Distribution__DOT__part3__DOT__check;
         IData/*31:0*/ __PVT__Distribution__DOT__part3__DOT__i;
@@ -1220,8 +1242,6 @@ VL_MODULE(VTop_PathFinder) {
         IData/*31:0*/ __PVT__Distribution__DOT__part3__DOT__l;
         IData/*31:0*/ __PVT__Distribution__DOT__part3__DOT__delay;
         IData/*31:0*/ __PVT__Distribution__DOT__part3__DOT___delay_T_1;
-    };
-    struct {
         IData/*31:0*/ __PVT__Distribution__DOT__part3__DOT___k_T_1;
         IData/*31:0*/ __PVT__Distribution__DOT__part3__DOT___l_T_1;
         IData/*31:0*/ __PVT__Distribution__DOT__part3__DOT___GEN_73;
@@ -1278,6 +1298,8 @@ VL_MODULE(VTop_PathFinder) {
         IData/*31:0*/ __PVT__Distribution__DOT__part3__DOT___GEN_173;
         IData/*31:0*/ __PVT__Distribution__DOT__part3__DOT___GEN_174;
         IData/*31:0*/ __PVT__Distribution__DOT__part3__DOT___GEN_175;
+    };
+    struct {
         IData/*31:0*/ __PVT__Distribution__DOT__part3__DOT___GEN_176;
         IData/*31:0*/ __PVT__Distribution__DOT__part3__DOT___GEN_177;
         IData/*31:0*/ __PVT__Distribution__DOT__part3__DOT___GEN_178;
@@ -1286,8 +1308,6 @@ VL_MODULE(VTop_PathFinder) {
         IData/*31:0*/ __PVT__Distribution__DOT__part3__DOT___GEN_181;
         IData/*31:0*/ __PVT__Distribution__DOT__part3__DOT___GEN_182;
         IData/*31:0*/ __PVT__Distribution__DOT__part3__DOT___GEN_183;
-    };
-    struct {
         IData/*31:0*/ __PVT__Distribution__DOT__part3__DOT___GEN_184;
         IData/*31:0*/ __PVT__Distribution__DOT__part3__DOT___GEN_185;
         IData/*31:0*/ __PVT__Distribution__DOT__part3__DOT___GEN_186;
@@ -1355,26 +1375,60 @@ VL_MODULE(VTop_PathFinder) {
   private:
     void _ctor_var_reset() VL_ATTR_COLD;
   public:
-    void _sequent__TOP__Top__DOT__FDPU__DOT__PathFinder_1__10(VTop__Syms* __restrict vlSymsp);
+    void _sequent__TOP__Top__DOT__FDPU__DOT__PathFinder_10__23(VTop__Syms* __restrict vlSymsp);
+    void _sequent__TOP__Top__DOT__FDPU__DOT__PathFinder_10__44(VTop__Syms* __restrict vlSymsp);
+    void _sequent__TOP__Top__DOT__FDPU__DOT__PathFinder_11__25(VTop__Syms* __restrict vlSymsp);
+    void _sequent__TOP__Top__DOT__FDPU__DOT__PathFinder_11__45(VTop__Syms* __restrict vlSymsp);
+    void _sequent__TOP__Top__DOT__FDPU__DOT__PathFinder_12__27(VTop__Syms* __restrict vlSymsp);
+    void _sequent__TOP__Top__DOT__FDPU__DOT__PathFinder_12__46(VTop__Syms* __restrict vlSymsp);
+    void _sequent__TOP__Top__DOT__FDPU__DOT__PathFinder_13__29(VTop__Syms* __restrict vlSymsp);
+    void _sequent__TOP__Top__DOT__FDPU__DOT__PathFinder_13__47(VTop__Syms* __restrict vlSymsp);
+    void _sequent__TOP__Top__DOT__FDPU__DOT__PathFinder_14__31(VTop__Syms* __restrict vlSymsp);
+    void _sequent__TOP__Top__DOT__FDPU__DOT__PathFinder_14__48(VTop__Syms* __restrict vlSymsp);
+    void _sequent__TOP__Top__DOT__FDPU__DOT__PathFinder_15__33(VTop__Syms* __restrict vlSymsp);
+    void _sequent__TOP__Top__DOT__FDPU__DOT__PathFinder_15__49(VTop__Syms* __restrict vlSymsp);
+    void _sequent__TOP__Top__DOT__FDPU__DOT__PathFinder_1__35(VTop__Syms* __restrict vlSymsp);
     void _sequent__TOP__Top__DOT__FDPU__DOT__PathFinder_1__4(VTop__Syms* __restrict vlSymsp);
     void _sequent__TOP__Top__DOT__FDPU__DOT__PathFinder_1__5(VTop__Syms* __restrict vlSymsp);
-    void _sequent__TOP__Top__DOT__FDPU__DOT__PathFinder_2__11(VTop__Syms* __restrict vlSymsp);
-    void _sequent__TOP__Top__DOT__FDPU__DOT__PathFinder_2__6(VTop__Syms* __restrict vlSymsp);
+    void _sequent__TOP__Top__DOT__FDPU__DOT__PathFinder_2__36(VTop__Syms* __restrict vlSymsp);
     void _sequent__TOP__Top__DOT__FDPU__DOT__PathFinder_2__7(VTop__Syms* __restrict vlSymsp);
-    void _sequent__TOP__Top__DOT__FDPU__DOT__PathFinder_3__12(VTop__Syms* __restrict vlSymsp);
-    void _sequent__TOP__Top__DOT__FDPU__DOT__PathFinder_3__8(VTop__Syms* __restrict vlSymsp);
+    void _sequent__TOP__Top__DOT__FDPU__DOT__PathFinder_3__37(VTop__Syms* __restrict vlSymsp);
     void _sequent__TOP__Top__DOT__FDPU__DOT__PathFinder_3__9(VTop__Syms* __restrict vlSymsp);
+    void _sequent__TOP__Top__DOT__FDPU__DOT__PathFinder_4__11(VTop__Syms* __restrict vlSymsp);
+    void _sequent__TOP__Top__DOT__FDPU__DOT__PathFinder_4__38(VTop__Syms* __restrict vlSymsp);
+    void _sequent__TOP__Top__DOT__FDPU__DOT__PathFinder_5__13(VTop__Syms* __restrict vlSymsp);
+    void _sequent__TOP__Top__DOT__FDPU__DOT__PathFinder_5__39(VTop__Syms* __restrict vlSymsp);
+    void _sequent__TOP__Top__DOT__FDPU__DOT__PathFinder_6__15(VTop__Syms* __restrict vlSymsp);
+    void _sequent__TOP__Top__DOT__FDPU__DOT__PathFinder_6__40(VTop__Syms* __restrict vlSymsp);
+    void _sequent__TOP__Top__DOT__FDPU__DOT__PathFinder_7__17(VTop__Syms* __restrict vlSymsp);
+    void _sequent__TOP__Top__DOT__FDPU__DOT__PathFinder_7__41(VTop__Syms* __restrict vlSymsp);
+    void _sequent__TOP__Top__DOT__FDPU__DOT__PathFinder_8__19(VTop__Syms* __restrict vlSymsp);
+    void _sequent__TOP__Top__DOT__FDPU__DOT__PathFinder_8__42(VTop__Syms* __restrict vlSymsp);
+    void _sequent__TOP__Top__DOT__FDPU__DOT__PathFinder_9__21(VTop__Syms* __restrict vlSymsp);
+    void _sequent__TOP__Top__DOT__FDPU__DOT__PathFinder_9__43(VTop__Syms* __restrict vlSymsp);
     void _sequent__TOP__Top__DOT__FDPU__DOT__PathFinder__1(VTop__Syms* __restrict vlSymsp);
-    void _sequent__TOP__Top__DOT__FDPU__DOT__PathFinder__13(VTop__Syms* __restrict vlSymsp);
     void _sequent__TOP__Top__DOT__FDPU__DOT__PathFinder__2(VTop__Syms* __restrict vlSymsp);
     void _sequent__TOP__Top__DOT__FDPU__DOT__PathFinder__3(VTop__Syms* __restrict vlSymsp);
-    void _settle__TOP__Top__DOT__FDPU__DOT__PathFinder_1__16(VTop__Syms* __restrict vlSymsp) VL_ATTR_COLD;
-    void _settle__TOP__Top__DOT__FDPU__DOT__PathFinder_1__17(VTop__Syms* __restrict vlSymsp) VL_ATTR_COLD;
-    void _settle__TOP__Top__DOT__FDPU__DOT__PathFinder_2__18(VTop__Syms* __restrict vlSymsp) VL_ATTR_COLD;
-    void _settle__TOP__Top__DOT__FDPU__DOT__PathFinder_2__19(VTop__Syms* __restrict vlSymsp) VL_ATTR_COLD;
-    void _settle__TOP__Top__DOT__FDPU__DOT__PathFinder_3__20(VTop__Syms* __restrict vlSymsp) VL_ATTR_COLD;
-    void _settle__TOP__Top__DOT__FDPU__DOT__PathFinder__14(VTop__Syms* __restrict vlSymsp) VL_ATTR_COLD;
-    void _settle__TOP__Top__DOT__FDPU__DOT__PathFinder__15(VTop__Syms* __restrict vlSymsp) VL_ATTR_COLD;
+    void _sequent__TOP__Top__DOT__FDPU__DOT__PathFinder__34(VTop__Syms* __restrict vlSymsp);
+    void _settle__TOP__Top__DOT__FDPU__DOT__PathFinder_10__70(VTop__Syms* __restrict vlSymsp) VL_ATTR_COLD;
+    void _settle__TOP__Top__DOT__FDPU__DOT__PathFinder_11__72(VTop__Syms* __restrict vlSymsp) VL_ATTR_COLD;
+    void _settle__TOP__Top__DOT__FDPU__DOT__PathFinder_12__74(VTop__Syms* __restrict vlSymsp) VL_ATTR_COLD;
+    void _settle__TOP__Top__DOT__FDPU__DOT__PathFinder_13__76(VTop__Syms* __restrict vlSymsp) VL_ATTR_COLD;
+    void _settle__TOP__Top__DOT__FDPU__DOT__PathFinder_14__78(VTop__Syms* __restrict vlSymsp) VL_ATTR_COLD;
+    void _settle__TOP__Top__DOT__FDPU__DOT__PathFinder_15__80(VTop__Syms* __restrict vlSymsp) VL_ATTR_COLD;
+    void _settle__TOP__Top__DOT__FDPU__DOT__PathFinder_1__52(VTop__Syms* __restrict vlSymsp) VL_ATTR_COLD;
+    void _settle__TOP__Top__DOT__FDPU__DOT__PathFinder_1__53(VTop__Syms* __restrict vlSymsp) VL_ATTR_COLD;
+    void _settle__TOP__Top__DOT__FDPU__DOT__PathFinder_2__54(VTop__Syms* __restrict vlSymsp) VL_ATTR_COLD;
+    void _settle__TOP__Top__DOT__FDPU__DOT__PathFinder_3__56(VTop__Syms* __restrict vlSymsp) VL_ATTR_COLD;
+    void _settle__TOP__Top__DOT__FDPU__DOT__PathFinder_4__58(VTop__Syms* __restrict vlSymsp) VL_ATTR_COLD;
+    void _settle__TOP__Top__DOT__FDPU__DOT__PathFinder_4__59(VTop__Syms* __restrict vlSymsp) VL_ATTR_COLD;
+    void _settle__TOP__Top__DOT__FDPU__DOT__PathFinder_5__60(VTop__Syms* __restrict vlSymsp) VL_ATTR_COLD;
+    void _settle__TOP__Top__DOT__FDPU__DOT__PathFinder_6__62(VTop__Syms* __restrict vlSymsp) VL_ATTR_COLD;
+    void _settle__TOP__Top__DOT__FDPU__DOT__PathFinder_7__64(VTop__Syms* __restrict vlSymsp) VL_ATTR_COLD;
+    void _settle__TOP__Top__DOT__FDPU__DOT__PathFinder_8__66(VTop__Syms* __restrict vlSymsp) VL_ATTR_COLD;
+    void _settle__TOP__Top__DOT__FDPU__DOT__PathFinder_9__68(VTop__Syms* __restrict vlSymsp) VL_ATTR_COLD;
+    void _settle__TOP__Top__DOT__FDPU__DOT__PathFinder__50(VTop__Syms* __restrict vlSymsp) VL_ATTR_COLD;
+    void _settle__TOP__Top__DOT__FDPU__DOT__PathFinder__51(VTop__Syms* __restrict vlSymsp) VL_ATTR_COLD;
   private:
     static void traceInit(void* userp, VerilatedVcd* tracep, uint32_t code) VL_ATTR_COLD;
 } VL_ATTR_ALIGNED(VL_CACHE_LINE_BYTES);

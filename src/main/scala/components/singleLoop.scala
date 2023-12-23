@@ -23,8 +23,8 @@ class abc2(implicit val config : MagmasiConfig) extends Module{
     val a = RegInit(0.U(32.W))
     when(io.valid && (a =/= 0.U)){
     b(io.IDex)(j) := io.mat(io.IDex)(j)}
-    when (j === 3.U){
-    io.Ovalid := RegNext(io.mat(io.IDex)(3) === config.NUM_PES.U)
+    when (j === 1.U){
+    io.Ovalid := RegNext(io.mat(io.IDex)(1) === config.NUM_PES.U)
     }.otherwise{
         io.Ovalid := 0.B
     }

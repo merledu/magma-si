@@ -12,8 +12,8 @@ class SourceDestination(implicit val config: MagmasiConfig) extends Module {
         val valid = Output(Bool())
         val start = Input(Bool())
     })
-    val prevStationary_matrix = RegNext(io.Stationary_matrix)
-    val matricesAreEqual = Reg(Bool())
+    val prevStationary_matrix = RegNext(io.Streaming_matrix)
+    val matricesAreEqual = RegInit(1.B)
     val counterRegs1 = RegInit(VecInit(Seq.fill(config.MaxRows)(VecInit(Seq.fill(config.MaxCols)(0.U(config.DATA_TYPE.W))))))
     val counterRegs2 = RegInit(VecInit(Seq.fill(config.MaxRows)(0.U(config.DATA_TYPE.W))))
 
@@ -29,20 +29,24 @@ class SourceDestination(implicit val config: MagmasiConfig) extends Module {
     val counter2 = RegInit(1.U(32.W))
 
     val reg_i = RegNext(((j === (config.MaxCols - 1).U) && (i === (config.MaxRows - 1).U)), 1.B)
-
-
-  when(io.start){
-
-    matricesAreEqual := true.B
+    //matricesAreEqual := true.B
 
     for (i <- 0 until config.MaxRows) {
       for (j <- 0 until config.MaxCols) {
-        when(io.Stationary_matrix(i)(j) =/= prevStationary_matrix(i)(j)) {
+        when(io.Streaming_matrix(i)(j) =/= prevStationary_matrix(i)(j)) {
           matricesAreEqual := false.B
         }
       }
     }
-    dontTouch(matricesAreEqual)
+
+    val high = (i === 1.U) && (j === 1.U)
+    when (~high){
+      matricesAreEqual := 1.B
+    }
+
+  when(io.start){
+
+
 
 
 
@@ -87,12 +91,13 @@ class SourceDestination(implicit val config: MagmasiConfig) extends Module {
           i := i + 1.U
         }
       }
-    }.elsewhen ((jValid === 1.B) && (matricesAreEqual === 0.B)){
+    }.elsewhen ((jValid === 1.B) && (matricesAreEqual === 0.B) && (high)){
       i := 0.U
       j := 0.U
       k := 0.U
       counter1 := 1.U
       counter2 := 1.U
+      matricesAreEqual := 1.B
       for ( i <- 0 until config.MaxRows){
         for (j <- 0 until config.MaxCols){
           counterRegs1(i)(j) := 0.U
@@ -101,7 +106,7 @@ class SourceDestination(implicit val config: MagmasiConfig) extends Module {
       }
     }
 
-    io.valid :=(i === 3.U) && (j === 3.U)//valid1
+    io.valid := RegNext((i === (config.MaxRows-1).U) && (j === (config.MaxCols-1).U))//valid1
 
     when ((j === (config.MaxCols - 1).U) && (i === (config.MaxRows - 1).U)){
       io.counterMatrix1.valid := 1.B

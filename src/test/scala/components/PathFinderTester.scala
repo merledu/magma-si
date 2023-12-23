@@ -11,44 +11,38 @@ class PathFinderTester extends AnyFreeSpec with ChiselScalatestTester {
         test(new PathFinder()).withAnnotations(Seq(VerilatorBackendAnnotation)) { dut =>
 
         val inputData = Seq(
-           Seq(0, 0, 0, 0),
-            Seq(22, 22, 23, 24),
+           Seq(11, 12, 0, 0),
+            Seq(3, 4, 0, 0),
            Seq(5, 6, 7, 8),
            Seq(0, 0, 0, 0)
         ) 
-        val inputData2 = Seq(1, 2, 3, 4)
+        val inputData2 = Seq(2, 1, 3, 4)
 
-        for (i <- 0 until 4) {
-          for (j <- 0 until 4) {
+        for (i <- 0 until 2) {
+          for (j <- 0 until 2) {
             dut.io.Stationary_matrix(i)(j).poke(inputData(i)(j).U)
           }
         }
-        dut.io.DataValid.poke(1.B)
-        for (i <- 0 until 4){
+
+        for (i <- 0 until 2){
           dut.io.Streaming_matrix(i).poke(inputData2(i).U)
         }
-        dut.io.NoDPE.poke(0.U)
-        // dut.clock.step(50)
-        // dut.io.DataValid.poke(1.B)  
-        dut.clock.step(200)
-        //         val inputData = Seq(
-        //    Seq(0, 0, 0, 0),
-        //     Seq(1, 2, 3, 4),
-        //    Seq(1, 2, 3, 4),
-        //    Seq(0, 0, 0, 0)
-        // ) 
-        // val inputData2 = Seq(1, 2, 3, 4)
+        dut.clock.step(10)
+        dut.io.NoDPE.poke(1.U)
+        dut.io.DataValid.poke(1.B)
+        dut.clock.step(100)
+        // val inputData3 = Seq(5, 7, 0, 0)
 
-        // for (i <- 0 until 4) {
-        //   for (j <- 0 until 4) {
-        //     dut.io.Stationary_matrix(i)(j).poke(inputData(i)(j).U)
-        //   }
+        // //  for (i <- 0 until 2) {
+        // //    for (j <- 0 until 4) {
+        // //      dut.io.Stationary_matrix(i)(j).poke(inputData(i)(j).U)
+        // //    }
+        // //  }
+        // // dut.io.DataValid.poke(1.B)
+        // for (i <- 0 until 2){
+        //   dut.io.Streaming_matrix(i).poke(inputData3(i).U)
         // }
-        // dut.io.DataValid.poke(1.B)
-        // for (i <- 0 until 4){
-        //   dut.io.Streaming_matrix(i).poke(inputData2(i).U)
-        // }
-        dut.clock.step(200)
+        // dut.clock.step(200)
     
 
     

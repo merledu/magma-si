@@ -8,7 +8,7 @@ import org.scalatest.freespec.AnyFreeSpec
 class FlexDPUTester extends AnyFreeSpec with ChiselScalatestTester {
     "FlexDPU tester" in {
         implicit val config = MagmasiConfig()
-        test(new FlexDPU()){ c =>
+        test(new FlexDPUby2()){ c =>
 val inputData = Seq(
           Seq(11,12,13,14),
           Seq(3, 4, 5, 6),
@@ -21,8 +21,8 @@ val inputData = Seq(
            Seq(6,3,0,0,0),
            Seq(7,1,0,0,0)
         ) 
-        for ( i <- 0 until 4){
-          for ( j <- 0 until 4){
+        for ( i <- 0 until config.MaxRows){
+          for ( j <- 0 until config.MaxCols){
               c.io.Streaming_matrix(i)(j).poke(inputData2(i)(j).U)
           }
         }
@@ -31,7 +31,7 @@ val inputData = Seq(
               c.io.Stationary_matrix(i)(j).poke(inputData(i)(j).U)
           }
         }
-        c.io.CalFDE.poke(2.U)
+        //c.io.CalFDE.poke(2.U)
         c.clock.step(400)
     }
   }

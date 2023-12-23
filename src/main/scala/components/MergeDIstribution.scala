@@ -21,7 +21,7 @@ class abc3(implicit val config:MagmasiConfig) extends Module{
     val counter = WireInit(0.B)
     val i = RegInit(0.U(32.W))
     val j = RegInit(0.U(32.W))
-    io.valid := (i === 3.U) && (j === 3.U)
+    io.valid := (i === (config.MaxRows-1).U) && (j === (config.MaxCols-1).U)
     val a = RegInit(0.U(32.W))
     val k = RegInit(0.U(32.W))
     val l = RegInit(0.U(32.W))
