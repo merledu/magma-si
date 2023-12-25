@@ -85,11 +85,13 @@ class FlexDPUby2(implicit val config:MagmasiConfig) extends Module{
 
 
 
-        when (iterationChange === (config.MaxCols -1 ).U){
-            iterationChange := iterationChange
-        }.elsewhen (PF.io.PF_Valid){
-            iterationChange := iterationChange + 1.U
-        }
+        // when (iterationChange === (config.MaxCols -1 ).U){
+        //     iterationChange := iterationChange
+        // }.elsewhen (PF.io.PF_Valid){
+        //     iterationChange := iterationChange + 1.U
+        // }
+
+        
 
 
         when (PF.io.PF_Valid){
@@ -105,8 +107,10 @@ class FlexDPUby2(implicit val config:MagmasiConfig) extends Module{
             }
             FDPE.io.Stationary_matrix := io.Stationary_matrix
             for (i <- 0 until 4){
-                FDPE.io.i_mux_bus(i) := Reverse(PF.io.i_mux_bus(i))
-            }
+                for (j <- 0 until 4){
+                    FDPE.io.i_mux_bus(i)(j) := Reverse(PF.io.i_mux_bus(i)(j))
+                }
+            }       
         }
     
     

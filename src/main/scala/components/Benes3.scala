@@ -61,11 +61,39 @@ class Benes3(implicit val config: MagmasiConfig) extends Module {
 
     when ( io.i_data_bus2(i) =/= 0.U) {
 
-        when ((io.i_mux_bus(i)(0).orR === 0.B) ){
+        when ((io.i_mux_bus(i)(0).orR === 0.B) && (io.i_mux_bus(i)(1).orR === 0.B) && (io.i_mux_bus(i)(2).orR === 0.B) && (io.i_mux_bus(i)(3).orR === 0.B)){
 
             val parsedindexvalue = BenesLogic(io.i_data_bus2(i),(inputArrayIndexes(i)._2).U,io.i_mux_bus(i)(0))// normal function call
                 parse_array(parsedindexvalue) := io.i_data_bus2(i)
         }
+
+        when ((io.i_mux_bus(i)(0).orR === 0.B) && (io.i_mux_bus(i)(1).orR =/= 0.B) && (io.i_mux_bus(i)(2).orR =/= 0.B) && (io.i_mux_bus(i)(3).orR =/= 0.B)){
+            val parsedindexvalue = BenesLogic(io.i_data_bus2(i),(inputArrayIndexes(i)._2).U,io.i_mux_bus(i)(0))// normal function call
+            parse_array(parsedindexvalue) := io.i_data_bus2(i)
+            val parsedindexvalue1 = BenesLogic(io.i_data_bus2(i),(inputArrayIndexes(i)._2).U,io.i_mux_bus(i)(1))// normal function call
+            parse_array(parsedindexvalue1) := io.i_data_bus2(i)
+            val parsedindexvalue2 = BenesLogic(io.i_data_bus2(i),(inputArrayIndexes(i)._2).U,io.i_mux_bus(i)(2))// normal function call
+            parse_array(parsedindexvalue2) := io.i_data_bus2(i)
+            val parsedindexvalue3 = BenesLogic(io.i_data_bus2(i),(inputArrayIndexes(i)._2).U,io.i_mux_bus(i)(3))// normal function call
+            parse_array(parsedindexvalue3) := io.i_data_bus2(i)
+        }
+
+        when ((io.i_mux_bus(i)(0).orR === 0.B) && (io.i_mux_bus(i)(1).orR =/= 0.B) && (io.i_mux_bus(i)(2).orR =/= 0.B) && (io.i_mux_bus(i)(3).orR === 0.B)){
+            val parsedindexvalue = BenesLogic(io.i_data_bus2(i),(inputArrayIndexes(i)._2).U,io.i_mux_bus(i)(0))// normal function call
+            parse_array(parsedindexvalue) := io.i_data_bus2(i)
+            val parsedindexvalue1 = BenesLogic(io.i_data_bus2(i),(inputArrayIndexes(i)._2).U,io.i_mux_bus(i)(1))// normal function call
+            parse_array(parsedindexvalue1) := io.i_data_bus2(i)
+            val parsedindexvalue2 = BenesLogic(io.i_data_bus2(i),(inputArrayIndexes(i)._2).U,io.i_mux_bus(i)(2))// normal function call
+            parse_array(parsedindexvalue2) := io.i_data_bus2(i)
+        }
+
+        when ((io.i_mux_bus(i)(0).orR === 0.B) && (io.i_mux_bus(i)(1).orR =/= 0.B) && (io.i_mux_bus(i)(2).orR === 0.B) && (io.i_mux_bus(i)(3).orR === 0.B)){
+            val parsedindexvalue = BenesLogic(io.i_data_bus2(i),(inputArrayIndexes(i)._2).U,io.i_mux_bus(i)(0))// normal function call
+            parse_array(parsedindexvalue) := io.i_data_bus2(i)
+            val parsedindexvalue1 = BenesLogic(io.i_data_bus2(i),(inputArrayIndexes(i)._2).U,io.i_mux_bus(i)(1))// normal function call
+            parse_array(parsedindexvalue1) := io.i_data_bus2(i)
+        }
+
         
         // }.otherwise{
         //     parse_array(config.NUM_PES.U ) := 0.U
@@ -192,7 +220,9 @@ class Benes3(implicit val config: MagmasiConfig) extends Module {
         parse_array(config.NUM_PES.U ) := 0.U   
     }
 
-  } 
+  }
+
+
 
 
 

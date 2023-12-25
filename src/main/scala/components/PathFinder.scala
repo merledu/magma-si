@@ -7,7 +7,7 @@ class PathFinder(implicit val config: MagmasiConfig) extends Module {
   val io = IO(new Bundle {
     val Stationary_matrix = Input(Vec(config.MaxRows, Vec(config.MaxCols, UInt(config.DATA_TYPE.W))))
     val Streaming_matrix = Input(Vec(config.MaxRows, UInt(config.DATA_TYPE.W)))
-    val i_mux_bus = Output(Vec(config.MaxRows * config.MaxCols, UInt(4.W)))
+    val i_mux_bus = Output(Vec(config.NUM_PES, Vec(config.NUM_PES, UInt(4.W))))
     val Source = Output(Vec(config.MaxRows * config.MaxCols, UInt(config.DATA_TYPE.W)))
     val destination = Output(Vec(config.MaxRows * config.MaxCols, UInt(config.DATA_TYPE.W)))
     val PF_Valid = Output(Bool())
@@ -79,7 +79,7 @@ when (io.DataValid){
   io.validIteration := 0.B
   io.iteration := 0.U
   io.PF_Valid := 0.B
-  io.i_mux_bus := WireInit(VecInit(Seq.fill(config.MaxRows*config.MaxCols)(0.U(32.W))))
+  io.i_mux_bus := WireInit(VecInit(Seq.fill(config.NUM_PES)(VecInit(Seq.fill(config.NUM_PES)(0.U(4.W))))))
   io.Source := WireInit(VecInit(Seq.fill(config.MaxRows*config.MaxCols)(0.U(32.W))))
   io.destination := WireInit(VecInit(Seq.fill(config.MaxRows*config.MaxCols)(0.U(32.W))))
 }

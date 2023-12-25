@@ -16,8 +16,8 @@ val inputData = Seq(
             Seq(21,22,23,25)
         )
         val inputData2 = Seq(
-           Seq(2,6,0,0),
-            Seq(1,9,0,0,0),
+           Seq(2,0,0,0),
+            Seq(1,0,0,0,0),
            Seq(6,3,0,0,0),
            Seq(7,1,0,0,0)
         ) 

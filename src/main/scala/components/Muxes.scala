@@ -9,7 +9,7 @@ class Muxes(implicit val config: MagmasiConfig) extends Module{
         val mat2 = Input(Vec(config.MaxRows, UInt(config.DATA_TYPE.W)))
         val counterMatrix1 = Input(Vec(config.MaxRows, Vec(config.MaxCols, UInt(config.DATA_TYPE.W))))
         val counterMatrix2 = Input(Vec(config.MaxRows, UInt(config.DATA_TYPE.W)))
-        val i_mux_bus = Output(Vec(config.MaxRows * config.MaxCols, UInt(4.W)))        
+        val i_mux_bus = Output(Vec(config.NUM_PES, Vec(config.NUM_PES, UInt(4.W))))
         val Source  = Output(Vec(config.MaxRows * config.MaxCols, UInt(config.DATA_TYPE.W)))
         val destination  = Output(Vec(config.MaxRows * config.MaxCols, UInt(config.DATA_TYPE.W)))
         val valid = Output(Bool())  
@@ -29,13 +29,15 @@ class Muxes(implicit val config: MagmasiConfig) extends Module{
     val j = RegInit(0.U(32.W))
     val k = RegInit(0.U(32.W))
     val counter = RegInit(0.U(32.W))
-    val mux = RegInit(VecInit(Seq.fill(config.MaxRows * config.MaxCols)(0.U(4.W))))
+    val indexcounter = RegInit(0.U(32.W))
+    dontTouch(indexcounter)
+    val muxes = RegInit(VecInit(Seq.fill(config.NUM_PES)(VecInit(Seq.fill(config.NUM_PES)(0.U(4.W))))))
     val src = RegInit(VecInit(Seq.fill(config.MaxRows * config.MaxCols)(0.U((config.DATA_TYPE).W))))
     val dest = RegInit(VecInit(Seq.fill(config.MaxRows * config.MaxCols)(0.U((config.DATA_TYPE).W))))
-    io.i_mux_bus := mux
+    dontTouch(muxes)
+    io.i_mux_bus := muxes
     io.Source := src
     io.destination := dest
-    dontTouch(mux)
     dontTouch(src)
     dontTouch(dest)
     dontTouch(k)
@@ -51,25 +53,39 @@ class Muxes(implicit val config: MagmasiConfig) extends Module{
       }
     }
 
-    when ((io.counterMatrix1(j)(i) =/= 0.U) && (io.mat2(i) =/= 0.U)) {
+    when (~jValid && (io.counterMatrix1(j)(i) =/= 0.U) && (io.mat2(i) =/= 0.U)) {
         
         when(io.counterMatrix1(j)(i) <= io.counterMatrix2(i)){
-          mux(counter) :=   (io.counterMatrix2(i) - 1.U) - (io.counterMatrix1(j)(i) - 1.U)
+          muxes(counter)(indexcounter) := (io.counterMatrix2(i) - 1.U) - (io.counterMatrix1(j)(i) - 1.U)
           src(counter) := io.mat2(i)
           dest(counter) := io.mat1(j)(i)
         }.otherwise{
-          mux(counter) :=   (io.counterMatrix1(j)(i) - 1.U) - (io.counterMatrix2(i) - 1.U)
+          muxes(counter)(indexcounter) := (io.counterMatrix1(j)(i) - 1.U) - (io.counterMatrix2(i) - 1.U)
           src(counter) := io.mat2(i)      
           dest(counter) := io.mat1(j)(i)
         }
         
-        when (~jValid) {
+        // when (j === (config.MaxCols-1).U) {
 
-          when (~((j === (config.MaxCols - 1).U) && (i === (config.MaxRows - 1).U))){
-          counter := counter + 1.U
-          }
+        //   when (~((j === (config.MaxCols - 1).U) && (i === (config.MaxRows - 1).U))){
+        //   counter := counter + 1.U
+        //   indexcounter := 0.U
+        //   }
 
-        }
+        // }.elsewhen (~jValid && (j < (config.MaxCols-1).U)){
+        //   indexcounter := indexcounter + 1.U
+        // }
+    }
+
+    // when ( ~jValid && (counter === (config.MaxCols - 1).U)){
+    //   counter := counter
+   
+    // }.else
+      when ( ~jValid && (io.counterMatrix1(0.U)(i+1.U) =/= 0.U) && (io.mat2(i+1.U) =/= 0.U) && (j === (config.MaxCols -1 ).U)){
+      counter := counter + 1.U
+      indexcounter := 0.U
+    }.elsewhen ( ~jValid && (io.counterMatrix1(j + 1.U)(i) =/= 0.U) && (io.mat2(i) =/= 0.U) && (j < (config.MaxCols -1 ).U)) {
+      indexcounter := indexcounter + 1.U
     }
 
 
@@ -83,7 +99,6 @@ class Muxes(implicit val config: MagmasiConfig) extends Module{
         j := 0.U
         when(i < (config.MaxRows - 1).U) {
           i := i + 1.U
-    
         }
       }
     }.elsewhen ((jValid === 1.B) && (matricesAreEqual === 0.B)){
@@ -93,10 +108,12 @@ class Muxes(implicit val config: MagmasiConfig) extends Module{
       jValid := 0.B
       counter := 0.U
         
-      for ( i <- 0 until (config.MaxRows*config.MaxCols)){  
+      for ( i <- 0 until (config.NUM_PES)){  
         src(i) := 0.U
         dest(i) := 0.U
-        mux(i) := 0.U    
+        for (j <- 0 until 4){
+          muxes(i)(j) := 0.U
+        }    
       }
     }
     //val valid = RegInit(0.U(1.W))
