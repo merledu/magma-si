@@ -71,7 +71,7 @@ when (io.DataValid){
 
 
 
-  io.PF_Valid := myMuxes.io.valid
+  io.PF_Valid := RegNext(myMuxes.io.valid && myCounter.io.valid)
   io.i_mux_bus := myMuxes.io.i_mux_bus
   io.Source := myMuxes.io.Source
   io.destination := myMuxes.io.destination

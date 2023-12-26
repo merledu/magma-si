@@ -107,6 +107,7 @@ class Muxes(implicit val config: MagmasiConfig) extends Module{
       j := 0.U
       jValid := 0.B
       counter := 0.U
+      indexcounter := 0.U
         
       for ( i <- 0 until (config.NUM_PES)){  
         src(i) := 0.U

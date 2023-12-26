@@ -2,6 +2,8 @@ package magmasi.components
 
 import chisel3._
 import chisel3.util._
+import chisel3.stage.ChiselStage
+
 
 class FlexDPUby2(implicit val config:MagmasiConfig) extends Module{
 
@@ -74,6 +76,13 @@ class FlexDPUby2(implicit val config:MagmasiConfig) extends Module{
         rev
     }
 
+    val src = RegInit(VecInit(Seq.fill(4)(0.U(32.W))))
+    val muxes = RegInit(VecInit(Seq.fill(config.NUM_PES)(VecInit(Seq.fill(config.NUM_PES)(0.U(4.W))))))
+    val dest = RegInit(VecInit(Seq.fill(4)(0.U(32.W))))
+    dontTouch(dest)
+    dontTouch(muxes)
+    dontTouch(src)
+
     val iterationChange = RegInit(0.U)
     when (SrcDestValid){
         val PF = Module(new PathFinder)
@@ -84,13 +93,25 @@ class FlexDPUby2(implicit val config:MagmasiConfig) extends Module{
         dontTouch(PF.io.i_mux_bus)
 
 
+        for (i <- 0 until 4){
+            dest(i) := DPEDest(0)(i)
+        }
 
-        // when (iterationChange === (config.MaxCols -1 ).U){
-        //     iterationChange := iterationChange
-        // }.elsewhen (PF.io.PF_Valid){
-        //     iterationChange := iterationChange + 1.U
-        // }
 
+        when (PF.io.PF_Valid){
+        when (iterationChange === (config.MaxCols -1 ).U){
+            iterationChange := iterationChange
+        }.elsewhen (PF.io.PF_Valid){
+            iterationChange := iterationChange + 1.U
+        }
+
+            for (i <- 0 until 4){
+                src(i) := PF.io.Source(i)
+                for (j <- 0 until 4){
+                    muxes(i)(j) := PF.io.i_mux_bus(i)(j)
+                }
+            }
+        }
         
 
 
@@ -98,17 +119,17 @@ class FlexDPUby2(implicit val config:MagmasiConfig) extends Module{
             val FDPE = Module(new flexdpecom4)
             FDPE.io.i_stationary := 1.B
             FDPE.io.i_data_valid := 1.B
-            FDPE.io.i_data_bus := DPEDest(iterationChange)
-            for (i <- 0 until 2){
-                FDPE.io.i_data_bus2(i) := DPESrc(iterationChange)(i)
-            }
-            for (i <- 2 until 4){
-                FDPE.io.i_data_bus2(i) := 0.U
-            }
+            FDPE.io.i_data_bus := dest
+            //for (i <- 0 until 2){
+            FDPE.io.i_data_bus2 := src
+            // }
+            // for (i <- 2 until 4){
+            //     FDPE.io.i_data_bus2(i) := 0.U
+            // }
             FDPE.io.Stationary_matrix := io.Stationary_matrix
             for (i <- 0 until 4){
                 for (j <- 0 until 4){
-                    FDPE.io.i_mux_bus(i)(j) := Reverse(PF.io.i_mux_bus(i)(j))
+                    FDPE.io.i_mux_bus(i)(j) := Reverse(muxes(i)(j))
                 }
             }       
         }
@@ -119,4 +140,8 @@ class FlexDPUby2(implicit val config:MagmasiConfig) extends Module{
     
     }
 
+}
+object FlexDPUby2Driver extends App {
+    implicit val config:MagmasiConfig = MagmasiConfig()
+  (new ChiselStage).emitVerilog(new FlexDPUby2)
 }
