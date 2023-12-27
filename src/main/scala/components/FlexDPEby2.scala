@@ -110,19 +110,22 @@ dontTouch(w_dist_bus2)
     io.o_adder :=  my_fan_network.io.o_adder
 
      when (counter < 26.U){
-      // matrix(0)(0) := io.o_adder(0)
-      // matrix(1)(0) := io.o_adder(2)
-      // when(w_dist_bus1(3) === 0.U ){
-      //   matrix(1)(0) := r_mult(2)
-      // }.elsewhen(w_dist_bus1(2) === 0.U){
-      //    matrix(1)(0) := r_mult(3)
-      // }.elsewhen(w_dist_bus1(1) === 0.U){
-      //    matrix(0)(0) := r_mult(0)
-      // }.elsewhen(w_dist_bus1(0) === 0.U){
-      //    matrix(0)(0) := r_mult(1)
-      // }
       matrix(0)(0) := io.o_adder(0)
       matrix(1)(0) := io.o_adder(2)
+      when(w_dist_bus1(1) === 0.U){
+         matrix(0)(0) := r_mult(0)
+      }.elsewhen(w_dist_bus1(0) === 0.U){
+         matrix(0)(0) := r_mult(1)
+      }
+      when(w_dist_bus1(3) === 0.U ){
+        matrix(1)(0) := r_mult(2)
+      }.elsewhen(w_dist_bus1(2) === 0.U){
+         matrix(1)(0) := r_mult(3)
+      }
+
+      
+      // matrix(0)(0) := io.o_adder(0)
+      // matrix(1)(0) := io.o_adder(2)
 
     }
 
@@ -134,20 +137,22 @@ dontTouch(w_dist_bus2)
     dontTouch(counter)
 
     when (counter > 40.U){
-      // matrix(0)(1) := io.o_adder(0)
-      // matrix(1)(1) := io.o_adder(2)
-      //    when(w_dist_bus1(3) === 0.U ){
-      //   matrix(1)(1) := r_mult(2)
-
-      // }.elsewhen(w_dist_bus1(2) === 0.U){
-      //    matrix(1)(1) := r_mult(3)
-      // }.elsewhen(w_dist_bus1(1) === 0.U){
-      //    matrix(0)(1) := r_mult(0)
-      // }.elsewhen(w_dist_bus1(0) === 0.U){
-      //    matrix(0)(1) := r_mult(1)
-      // }
       matrix(0)(1) := io.o_adder(0)
       matrix(1)(1) := io.o_adder(2)
+       when(w_dist_bus1(1) === 0.U){
+         matrix(0)(1) := r_mult(0)
+      }.elsewhen(w_dist_bus1(0) === 0.U){
+         matrix(0)(1) := r_mult(1)
+      }
+         when(w_dist_bus1(3) === 0.U ){
+        matrix(1)(1) := r_mult(2)
+
+      }.elsewhen(w_dist_bus1(2) === 0.U){
+         matrix(1)(1) := r_mult(3)
+      }
+     
+      // matrix(0)(1) := io.o_adder(0)
+      // matrix(1)(1) := io.o_adder(2)
 
     }
 
