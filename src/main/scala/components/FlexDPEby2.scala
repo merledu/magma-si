@@ -66,7 +66,8 @@ val o_vn = Reg(Vec(Config.NUM_PES, UInt(Config.LOG2_PES.W)))
 
     val my_controller = Module(new fancontrol4(32,4,5))
 
-    my_controller.io.i_vn := o_vn
+    //my_controller.io.i_vn := o_vn
+    my_controller.io.i_vn := i_vn
     my_controller.io.i_stationary := 0.B
     my_controller.io.i_data_valid := io.i_data_valid
     val w_reduction_add = my_controller.io.o_reduction_add
@@ -108,20 +109,20 @@ dontTouch(w_dist_bus2)
     io.o_data_bus := my_fan_network.io.o_data_bus
     io.o_adder :=  my_fan_network.io.o_adder
 
-     when (counter < 60.U){
+     when (counter < 26.U){
+      // matrix(0)(0) := io.o_adder(0)
+      // matrix(1)(0) := io.o_adder(2)
+      // when(w_dist_bus1(3) === 0.U ){
+      //   matrix(1)(0) := r_mult(2)
+      // }.elsewhen(w_dist_bus1(2) === 0.U){
+      //    matrix(1)(0) := r_mult(3)
+      // }.elsewhen(w_dist_bus1(1) === 0.U){
+      //    matrix(0)(0) := r_mult(0)
+      // }.elsewhen(w_dist_bus1(0) === 0.U){
+      //    matrix(0)(0) := r_mult(1)
+      // }
       matrix(0)(0) := io.o_adder(0)
       matrix(1)(0) := io.o_adder(2)
-      when(w_dist_bus1(3) === 0.U ){
-        matrix(1)(0) := r_mult(2)
-
-      }.elsewhen(w_dist_bus1(2) === 0.U){
-         matrix(1)(0) := r_mult(3)
-      }.elsewhen(w_dist_bus1(1) === 0.U){
-         matrix(0)(0) := r_mult(0)
-      }.elsewhen(w_dist_bus1(0) === 0.U){
-         matrix(0)(0) := r_mult(1)
-      }
-
 
     }
 
@@ -132,19 +133,21 @@ dontTouch(w_dist_bus2)
     counter := counter + 1.U
     dontTouch(counter)
 
-    when (counter > 100.U){
+    when (counter > 40.U){
+      // matrix(0)(1) := io.o_adder(0)
+      // matrix(1)(1) := io.o_adder(2)
+      //    when(w_dist_bus1(3) === 0.U ){
+      //   matrix(1)(1) := r_mult(2)
+
+      // }.elsewhen(w_dist_bus1(2) === 0.U){
+      //    matrix(1)(1) := r_mult(3)
+      // }.elsewhen(w_dist_bus1(1) === 0.U){
+      //    matrix(0)(1) := r_mult(0)
+      // }.elsewhen(w_dist_bus1(0) === 0.U){
+      //    matrix(0)(1) := r_mult(1)
+      // }
       matrix(0)(1) := io.o_adder(0)
       matrix(1)(1) := io.o_adder(2)
-         when(w_dist_bus1(3) === 0.U ){
-        matrix(1)(1) := r_mult(2)
-
-      }.elsewhen(w_dist_bus1(2) === 0.U){
-         matrix(1)(1) := r_mult(3)
-      }.elsewhen(w_dist_bus1(1) === 0.U){
-         matrix(0)(1) := r_mult(0)
-      }.elsewhen(w_dist_bus1(0) === 0.U){
-         matrix(0)(1) := r_mult(1)
-      }
 
     }
 
