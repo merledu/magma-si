@@ -28,12 +28,13 @@ class FlexDPUby2(implicit val config:MagmasiConfig) extends Module{
     dontTouch(SindexCol)
     dontTouch(SindexRow)
 
-    Statvalid := (iloop === (config.MaxRows-1).U) && (jloop === (config.MaxCols-1).U)
-    when (io.Stationary_matrix(iloop)(jloop) =/= 0.U){
+    Statvalid := (((iloop === (config.MaxRows-1).U) || (iloop === 2.U) ) && (jloop === (config.MaxCols-1).U))
+    dontTouch(Statvalid)
+    when (io.Stationary_matrix(iloop)(jloop) =/= 0.U && (iloop <= (config.MaxRows-1).U)){
         DPEDest(indexRow)(indexCol) := io.Stationary_matrix(iloop)(jloop)
         indexCol := indexCol + 1.U
     }
-    when (io.Streaming_matrix(jloop)(iloop) =/= 0.U){
+    when (io.Streaming_matrix(jloop)(iloop) =/= 0.U && (iloop <= (config.MaxRows-1).U)){
         DPESrc(SindexRow)(SindexCol) := io.Streaming_matrix(jloop)(iloop)
         SindexCol := SindexCol + 1.U
     }
@@ -63,9 +64,14 @@ class FlexDPUby2(implicit val config:MagmasiConfig) extends Module{
         jloop := jloop + 1.U
     }.elsewhen(iloop === (config.MaxRows-1).U && (jloop === (config.MaxCols-1).U)){
         jloop := jloop
+        iloop := 2.U
+    }.elsewhen(iloop === 2.U && (jloop === 1.U)){
+        iloop := 2.U
+        jloop := 1.U
     }.otherwise{
         jloop := 0.U
     }
+
 
     // ------------------------- source destination calculation is complete -----------------------
     
@@ -83,13 +89,23 @@ class FlexDPUby2(implicit val config:MagmasiConfig) extends Module{
     dontTouch(muxes)
     dontTouch(src)
 
+    def checker(vale:UInt , counter:UInt):Any={
+        when (vale =/= 0.U){
+            val inc = counter + 1.U
+            counter := inc
+            counter
+        }.otherwise{
+            counter
+        }
+    }
+
     val iterationChange = RegInit(0.U)
-    when (SrcDestValid){
+    when (Statvalid){
         val PF = Module(new PathFinder)
         PF.io.Stationary_matrix := io.Stationary_matrix
         PF.io.Streaming_matrix := DPESrc(iterationChange)
         PF.io.NoDPE := 0.U
-        PF.io.DataValid := SrcDestValid
+        PF.io.DataValid := Statvalid
         dontTouch(PF.io.i_mux_bus)
 
 
@@ -102,7 +118,9 @@ class FlexDPUby2(implicit val config:MagmasiConfig) extends Module{
         when (iterationChange === (config.MaxCols -1 ).U){
             iterationChange := iterationChange
         }.elsewhen (PF.io.PF_Valid){
-            iterationChange := iterationChange + 1.U
+            for (i <- 0 until 2){
+                checker(DPESrc(iterationChange + 1.U)(i),iterationChange)
+            }
         }
 
             for (i <- 0 until 4){

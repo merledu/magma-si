@@ -519,6 +519,10 @@
   },
   {
     "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~FlexDPUby2|FlexDPUby2>Statvalid"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
     "target":"~FlexDPUby2|FlexDPUby2>SindexRow"
   },
   {

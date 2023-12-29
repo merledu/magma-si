@@ -2014,7 +2014,11 @@ module ivncontrol4(
   input  [15:0] io_Stationary_matrix_0_0,
   input  [15:0] io_Stationary_matrix_0_1,
   input  [15:0] io_Stationary_matrix_1_0,
-  input  [15:0] io_Stationary_matrix_1_1
+  input  [15:0] io_Stationary_matrix_1_1,
+  output [4:0]  io_o_vn_0,
+  output [4:0]  io_o_vn_1,
+  output [4:0]  io_o_vn_2,
+  output [4:0]  io_o_vn_3
 );
 `ifdef RANDOMIZE_REG_INIT
   reg [31:0] _RAND_0;
@@ -2027,7 +2031,15 @@ module ivncontrol4(
   reg [31:0] _RAND_7;
   reg [31:0] _RAND_8;
   reg [31:0] _RAND_9;
+  reg [31:0] _RAND_10;
+  reg [31:0] _RAND_11;
+  reg [31:0] _RAND_12;
+  reg [31:0] _RAND_13;
 `endif // RANDOMIZE_REG_INIT
+  reg [4:0] i_vn_0; // @[ivncontrol4.scala 15:23]
+  reg [4:0] i_vn_1; // @[ivncontrol4.scala 15:23]
+  reg [4:0] i_vn_2; // @[ivncontrol4.scala 15:23]
+  reg [4:0] i_vn_3; // @[ivncontrol4.scala 15:23]
   reg [31:0] rowcount_0; // @[ivncontrol4.scala 19:27]
   reg [31:0] rowcount_1; // @[ivncontrol4.scala 19:27]
   reg [31:0] i; // @[ivncontrol4.scala 24:20]
@@ -2050,11 +2062,71 @@ module ivncontrol4(
   wire [31:0] _i_T_1 = i + 32'h1; // @[ivncontrol4.scala 71:16]
   wire [31:0] _j_T_1 = j + 32'h1; // @[ivncontrol4.scala 75:16]
   wire  _T_19 = _T_8 & _T_12; // @[ivncontrol4.scala 77:43]
+  wire  _T_27 = rowcount_1 == 32'h2; // @[ivncontrol4.scala 120:34]
+  wire [4:0] _GEN_25 = rowcount_1 == 32'h2 ? 5'h1 : 5'h19; // @[ivncontrol4.scala 120:42 121:29 93:17]
+  wire  _T_29 = rowcount_1 == 32'h1; // @[ivncontrol4.scala 128:33]
+  wire [4:0] _GEN_27 = _T_27 ? 5'h1 : 5'h3; // @[ivncontrol4.scala 131:46 132:29 93:17]
+  wire [4:0] _GEN_31 = _T_29 ? 5'h1 : 5'h16; // @[ivncontrol4.scala 149:46 150:29 93:17]
+  wire [4:0] _GEN_32 = _T_27 ? 5'h1 : _GEN_31; // @[ivncontrol4.scala 145:41 146:29]
   wire  valid = _T_19; // @[ivncontrol4.scala 103:71 104:14 106:14]
   wire  valid1 = 1'h0;
   wire [1:0] rowlength = 2'h2;
   wire [1:0] matlength = 2'h2;
+  assign io_o_vn_0 = i_vn_0; // @[ivncontrol4.scala 90:13]
+  assign io_o_vn_1 = i_vn_1; // @[ivncontrol4.scala 90:13]
+  assign io_o_vn_2 = i_vn_2; // @[ivncontrol4.scala 90:13]
+  assign io_o_vn_3 = i_vn_3; // @[ivncontrol4.scala 90:13]
   always @(posedge clock) begin
+    if (reset) begin // @[ivncontrol4.scala 15:23]
+      i_vn_0 <= 5'h0; // @[ivncontrol4.scala 15:23]
+    end else if (rowcount_0 == 32'h2) begin // @[ivncontrol4.scala 117:38]
+      i_vn_0 <= 5'h0; // @[ivncontrol4.scala 118:25]
+    end else if (rowcount_0 == 32'h1) begin // @[ivncontrol4.scala 126:43]
+      i_vn_0 <= 5'h0; // @[ivncontrol4.scala 127:25]
+    end else if (rowcount_0 == 32'h0) begin // @[ivncontrol4.scala 144:43]
+      i_vn_0 <= _GEN_32;
+    end else begin
+      i_vn_0 <= 5'h16; // @[ivncontrol4.scala 93:17]
+    end
+    if (reset) begin // @[ivncontrol4.scala 15:23]
+      i_vn_1 <= 5'h0; // @[ivncontrol4.scala 15:23]
+    end else if (rowcount_0 == 32'h2) begin // @[ivncontrol4.scala 117:38]
+      i_vn_1 <= 5'h0; // @[ivncontrol4.scala 119:25]
+    end else if (rowcount_0 == 32'h1) begin // @[ivncontrol4.scala 126:43]
+      if (rowcount_1 == 32'h1) begin // @[ivncontrol4.scala 128:40]
+        i_vn_1 <= 5'h1; // @[ivncontrol4.scala 129:29]
+      end else begin
+        i_vn_1 <= _GEN_27;
+      end
+    end else if (rowcount_0 == 32'h0) begin // @[ivncontrol4.scala 144:43]
+      i_vn_1 <= _GEN_27;
+    end else begin
+      i_vn_1 <= 5'h3; // @[ivncontrol4.scala 93:17]
+    end
+    if (reset) begin // @[ivncontrol4.scala 15:23]
+      i_vn_2 <= 5'h0; // @[ivncontrol4.scala 15:23]
+    end else if (rowcount_0 == 32'h2) begin // @[ivncontrol4.scala 117:38]
+      i_vn_2 <= _GEN_25;
+    end else if (rowcount_0 == 32'h1) begin // @[ivncontrol4.scala 126:43]
+      if (rowcount_1 == 32'h1) begin // @[ivncontrol4.scala 128:40]
+        i_vn_2 <= 5'h19; // @[ivncontrol4.scala 93:17]
+      end else begin
+        i_vn_2 <= _GEN_25;
+      end
+    end else begin
+      i_vn_2 <= 5'h19; // @[ivncontrol4.scala 93:17]
+    end
+    if (reset) begin // @[ivncontrol4.scala 15:23]
+      i_vn_3 <= 5'h0; // @[ivncontrol4.scala 15:23]
+    end else if (rowcount_0 == 32'h2) begin // @[ivncontrol4.scala 117:38]
+      if (rowcount_1 == 32'h2) begin // @[ivncontrol4.scala 120:42]
+        i_vn_3 <= 5'h1; // @[ivncontrol4.scala 122:29]
+      end else begin
+        i_vn_3 <= 5'h13; // @[ivncontrol4.scala 93:17]
+      end
+    end else begin
+      i_vn_3 <= 5'h13; // @[ivncontrol4.scala 93:17]
+    end
     if (reset) begin // @[ivncontrol4.scala 19:27]
       rowcount_0 <= 32'h0; // @[ivncontrol4.scala 19:27]
     end else if (i == 32'h1 & j == 32'h2) begin // @[ivncontrol4.scala 61:69]
@@ -2139,25 +2211,33 @@ initial begin
     `endif
 `ifdef RANDOMIZE_REG_INIT
   _RAND_0 = {1{`RANDOM}};
-  rowcount_0 = _RAND_0[31:0];
+  i_vn_0 = _RAND_0[4:0];
   _RAND_1 = {1{`RANDOM}};
-  rowcount_1 = _RAND_1[31:0];
+  i_vn_1 = _RAND_1[4:0];
   _RAND_2 = {1{`RANDOM}};
-  i = _RAND_2[31:0];
+  i_vn_2 = _RAND_2[4:0];
   _RAND_3 = {1{`RANDOM}};
-  j = _RAND_3[31:0];
+  i_vn_3 = _RAND_3[4:0];
   _RAND_4 = {1{`RANDOM}};
-  mat_0_0 = _RAND_4[31:0];
+  rowcount_0 = _RAND_4[31:0];
   _RAND_5 = {1{`RANDOM}};
-  mat_0_1 = _RAND_5[31:0];
+  rowcount_1 = _RAND_5[31:0];
   _RAND_6 = {1{`RANDOM}};
-  mat_1_0 = _RAND_6[31:0];
+  i = _RAND_6[31:0];
   _RAND_7 = {1{`RANDOM}};
-  mat_1_1 = _RAND_7[31:0];
+  j = _RAND_7[31:0];
   _RAND_8 = {1{`RANDOM}};
-  count_0 = _RAND_8[31:0];
+  mat_0_0 = _RAND_8[31:0];
   _RAND_9 = {1{`RANDOM}};
-  count_1 = _RAND_9[31:0];
+  mat_0_1 = _RAND_9[31:0];
+  _RAND_10 = {1{`RANDOM}};
+  mat_1_0 = _RAND_10[31:0];
+  _RAND_11 = {1{`RANDOM}};
+  mat_1_1 = _RAND_11[31:0];
+  _RAND_12 = {1{`RANDOM}};
+  count_0 = _RAND_12[31:0];
+  _RAND_13 = {1{`RANDOM}};
+  count_1 = _RAND_13[31:0];
 `endif // RANDOMIZE_REG_INIT
   `endif // RANDOMIZE
 end // initial
@@ -2167,12 +2247,20 @@ end // initial
 `endif // SYNTHESIS
 endmodule
 module fancontrol4(
-  input   clock,
-  input   reset,
-  input   io_i_data_valid,
-  output  io_o_reduction_add_0,
-  output  io_o_reduction_add_1,
-  output  io_o_reduction_add_2
+  input        clock,
+  input        reset,
+  input  [4:0] io_i_vn_0,
+  input  [4:0] io_i_vn_1,
+  input  [4:0] io_i_vn_2,
+  input  [4:0] io_i_vn_3,
+  input        io_i_data_valid,
+  output       io_o_reduction_add_0,
+  output       io_o_reduction_add_1,
+  output       io_o_reduction_add_2,
+  output [2:0] io_o_reduction_cmd_0,
+  output [2:0] io_o_reduction_cmd_1,
+  output [2:0] io_o_reduction_cmd_2,
+  output       io_o_reduction_valid
 );
 `ifdef RANDOMIZE_REG_INIT
   reg [31:0] _RAND_0;
@@ -2183,33 +2271,171 @@ module fancontrol4(
   reg [31:0] _RAND_5;
   reg [31:0] _RAND_6;
   reg [31:0] _RAND_7;
+  reg [31:0] _RAND_8;
+  reg [31:0] _RAND_9;
+  reg [31:0] _RAND_10;
+  reg [31:0] _RAND_11;
+  reg [31:0] _RAND_12;
+  reg [31:0] _RAND_13;
+  reg [31:0] _RAND_14;
+  reg [31:0] _RAND_15;
+  reg [31:0] _RAND_16;
+  reg [31:0] _RAND_17;
+  reg [31:0] _RAND_18;
+  reg [31:0] _RAND_19;
 `endif // RANDOMIZE_REG_INIT
   reg  r_reduction_add_0; // @[FanCtrl.scala 19:34]
   reg  r_reduction_add_1; // @[FanCtrl.scala 19:34]
   reg  r_reduction_add_2; // @[FanCtrl.scala 19:34]
+  reg [2:0] r_reduction_cmd_0; // @[FanCtrl.scala 20:34]
+  reg [2:0] r_reduction_cmd_1; // @[FanCtrl.scala 20:34]
+  reg [2:0] r_reduction_cmd_2; // @[FanCtrl.scala 20:34]
   reg  r_add_lvl_0Reg_6; // @[FanCtrl.scala 23:33]
   reg  r_add_lvl_0Reg_7; // @[FanCtrl.scala 23:33]
   reg  r_add_lvl_1Reg_4; // @[FanCtrl.scala 24:33]
+  reg [2:0] r_cmd_lvl_0Reg_6; // @[FanCtrl.scala 27:33]
+  reg [2:0] r_cmd_lvl_0Reg_7; // @[FanCtrl.scala 27:33]
+  reg [2:0] r_cmd_lvl_1Reg_4; // @[FanCtrl.scala 28:33]
+  reg [4:0] w_vn_0; // @[FanCtrl.scala 34:23]
+  reg [4:0] w_vn_1; // @[FanCtrl.scala 34:23]
+  reg [4:0] w_vn_2; // @[FanCtrl.scala 34:23]
+  reg [4:0] w_vn_3; // @[FanCtrl.scala 34:23]
   reg  r_valid_0; // @[FanCtrl.scala 35:26]
   reg  r_valid_1; // @[FanCtrl.scala 35:26]
+  reg  r_valid_2; // @[FanCtrl.scala 35:26]
+  reg  r_valid_3; // @[FanCtrl.scala 35:26]
+  wire [2:0] _T_2 = 2'h2 * 1'h0; // @[FanCtrl.scala 42:25]
+  wire [3:0] _T_3 = {{1'd0}, _T_2}; // @[FanCtrl.scala 42:31]
+  wire [2:0] _T_8 = _T_2 + 3'h1; // @[FanCtrl.scala 42:58]
+  wire [4:0] _GEN_1 = 2'h1 == _T_3[1:0] ? w_vn_1 : w_vn_0; // @[FanCtrl.scala 42:{39,39}]
+  wire [4:0] _GEN_2 = 2'h2 == _T_3[1:0] ? w_vn_2 : _GEN_1; // @[FanCtrl.scala 42:{39,39}]
+  wire [4:0] _GEN_3 = 2'h3 == _T_3[1:0] ? w_vn_3 : _GEN_2; // @[FanCtrl.scala 42:{39,39}]
+  wire [4:0] _GEN_5 = 2'h1 == _T_8[1:0] ? w_vn_1 : w_vn_0; // @[FanCtrl.scala 42:{39,39}]
+  wire [4:0] _GEN_6 = 2'h2 == _T_8[1:0] ? w_vn_2 : _GEN_5; // @[FanCtrl.scala 42:{39,39}]
+  wire [4:0] _GEN_7 = 2'h3 == _T_8[1:0] ? w_vn_3 : _GEN_6; // @[FanCtrl.scala 42:{39,39}]
+  wire  _T_10 = _GEN_3 == _GEN_7; // @[FanCtrl.scala 42:39]
+  wire [2:0] _T_21 = _T_2 + 3'h2; // @[FanCtrl.scala 49:32]
+  wire [4:0] _GEN_22 = 2'h1 == _T_21[1:0] ? w_vn_1 : w_vn_0; // @[FanCtrl.scala 48:{41,41}]
+  wire [4:0] _GEN_23 = 2'h2 == _T_21[1:0] ? w_vn_2 : _GEN_22; // @[FanCtrl.scala 48:{41,41}]
+  wire [4:0] _GEN_24 = 2'h3 == _T_21[1:0] ? w_vn_3 : _GEN_23; // @[FanCtrl.scala 48:{41,41}]
+  wire  _T_23 = _GEN_7 != _GEN_24; // @[FanCtrl.scala 48:41]
+  wire  _T_32 = _GEN_3 != _GEN_7; // @[FanCtrl.scala 50:41]
+  wire  _T_33 = _T_23 & _T_32; // @[FanCtrl.scala 49:41]
+  wire  _T_42 = _GEN_7 == _GEN_24; // @[FanCtrl.scala 55:48]
+  wire  _T_52 = _T_42 & _T_32; // @[FanCtrl.scala 56:46]
+  wire [1:0] _GEN_49 = _T_52 ? 2'h3 : 2'h0; // @[FanCtrl.scala 58:48 60:40 63:38]
+  wire  _GEN_54 = r_valid_1 & _T_10; // @[FanCtrl.scala 41:34]
+  wire [2:0] _T_113 = 2'h2 * 1'h1; // @[FanCtrl.scala 42:25]
+  wire [3:0] _T_114 = {{1'd0}, _T_113}; // @[FanCtrl.scala 42:31]
+  wire [2:0] _T_119 = _T_113 + 3'h1; // @[FanCtrl.scala 42:58]
+  wire [4:0] _GEN_124 = 2'h1 == _T_114[1:0] ? w_vn_1 : w_vn_0; // @[FanCtrl.scala 42:{39,39}]
+  wire [4:0] _GEN_125 = 2'h2 == _T_114[1:0] ? w_vn_2 : _GEN_124; // @[FanCtrl.scala 42:{39,39}]
+  wire [4:0] _GEN_126 = 2'h3 == _T_114[1:0] ? w_vn_3 : _GEN_125; // @[FanCtrl.scala 42:{39,39}]
+  wire [4:0] _GEN_128 = 2'h1 == _T_119[1:0] ? w_vn_1 : w_vn_0; // @[FanCtrl.scala 42:{39,39}]
+  wire [4:0] _GEN_129 = 2'h2 == _T_119[1:0] ? w_vn_2 : _GEN_128; // @[FanCtrl.scala 42:{39,39}]
+  wire [4:0] _GEN_130 = 2'h3 == _T_119[1:0] ? w_vn_3 : _GEN_129; // @[FanCtrl.scala 42:{39,39}]
+  wire  _T_121 = _GEN_126 == _GEN_130; // @[FanCtrl.scala 42:39]
+  wire  _T_143 = _GEN_126 != _GEN_130; // @[FanCtrl.scala 50:41]
+  wire  _GEN_178 = r_valid_1 & _T_121; // @[FanCtrl.scala 41:34]
+  wire [2:0] _T_188 = _T_113 - 3'h1; // @[FanCtrl.scala 88:58]
+  wire [4:0] _GEN_206 = 2'h1 == _T_188[1:0] ? w_vn_1 : w_vn_0; // @[FanCtrl.scala 88:{39,39}]
+  wire [4:0] _GEN_207 = 2'h2 == _T_188[1:0] ? w_vn_2 : _GEN_206; // @[FanCtrl.scala 88:{39,39}]
+  wire [4:0] _GEN_208 = 2'h3 == _T_188[1:0] ? w_vn_3 : _GEN_207; // @[FanCtrl.scala 88:{39,39}]
+  wire  _T_200 = _GEN_126 != _GEN_208 & _T_143; // @[FanCtrl.scala 88:67]
+  wire  _T_219 = _GEN_126 == _GEN_208 & _T_143; // @[FanCtrl.scala 93:73]
+  wire [3:0] _T_228 = 3'h4 * 1'h0; // @[FanCtrl.scala 117:23]
+  wire [3:0] _T_230 = _T_228 + 4'h1; // @[FanCtrl.scala 117:29]
+  wire [3:0] _T_234 = _T_228 + 4'h2; // @[FanCtrl.scala 117:56]
+  wire [4:0] _GEN_254 = 2'h1 == _T_230[1:0] ? w_vn_1 : w_vn_0; // @[FanCtrl.scala 117:{37,37}]
+  wire [4:0] _GEN_255 = 2'h2 == _T_230[1:0] ? w_vn_2 : _GEN_254; // @[FanCtrl.scala 117:{37,37}]
+  wire [4:0] _GEN_256 = 2'h3 == _T_230[1:0] ? w_vn_3 : _GEN_255; // @[FanCtrl.scala 117:{37,37}]
+  wire [4:0] _GEN_258 = 2'h1 == _T_234[1:0] ? w_vn_1 : w_vn_0; // @[FanCtrl.scala 117:{37,37}]
+  wire [4:0] _GEN_259 = 2'h2 == _T_234[1:0] ? w_vn_2 : _GEN_258; // @[FanCtrl.scala 117:{37,37}]
+  wire [4:0] _GEN_260 = 2'h3 == _T_234[1:0] ? w_vn_3 : _GEN_259; // @[FanCtrl.scala 117:{37,37}]
+  wire  _T_236 = _GEN_256 == _GEN_260; // @[FanCtrl.scala 117:37]
+  wire [4:0] _T_242 = {{1'd0}, _T_228}; // @[FanCtrl.scala 123:30]
+  wire [4:0] _GEN_271 = 2'h1 == _T_242[1:0] ? w_vn_1 : w_vn_0; // @[FanCtrl.scala 123:{38,38}]
+  wire [4:0] _GEN_272 = 2'h2 == _T_242[1:0] ? w_vn_2 : _GEN_271; // @[FanCtrl.scala 123:{38,38}]
+  wire [4:0] _GEN_273 = 2'h3 == _T_242[1:0] ? w_vn_3 : _GEN_272; // @[FanCtrl.scala 123:{38,38}]
+  wire  _T_249 = _GEN_273 == _GEN_256; // @[FanCtrl.scala 123:38]
+  wire [3:0] _T_256 = _T_228 + 4'h3; // @[FanCtrl.scala 124:55]
+  wire [4:0] _GEN_283 = 2'h1 == _T_256[1:0] ? w_vn_1 : w_vn_0; // @[FanCtrl.scala 124:{36,36}]
+  wire [4:0] _GEN_284 = 2'h2 == _T_256[1:0] ? w_vn_2 : _GEN_283; // @[FanCtrl.scala 124:{36,36}]
+  wire [4:0] _GEN_285 = 2'h3 == _T_256[1:0] ? w_vn_3 : _GEN_284; // @[FanCtrl.scala 124:{36,36}]
+  wire  _T_258 = _GEN_260 == _GEN_285; // @[FanCtrl.scala 124:36]
+  wire  _T_259 = _GEN_273 == _GEN_256 & _T_258; // @[FanCtrl.scala 123:65]
+  wire [3:0] _T_262 = _T_228 + 4'h4; // @[FanCtrl.scala 125:29]
+  wire [4:0] _GEN_287 = 2'h1 == _T_262[1:0] ? w_vn_1 : w_vn_0; // @[FanCtrl.scala 125:{37,37}]
+  wire [4:0] _GEN_288 = 2'h2 == _T_262[1:0] ? w_vn_2 : _GEN_287; // @[FanCtrl.scala 125:{37,37}]
+  wire [4:0] _GEN_289 = 2'h3 == _T_262[1:0] ? w_vn_3 : _GEN_288; // @[FanCtrl.scala 125:{37,37}]
+  wire  _T_268 = _GEN_289 != _GEN_285; // @[FanCtrl.scala 125:37]
+  wire  _T_269 = _T_259 & _T_268; // @[FanCtrl.scala 124:64]
+  wire  _T_278 = _GEN_256 != _GEN_260; // @[FanCtrl.scala 126:37]
+  wire  _T_279 = _T_269 & _T_278; // @[FanCtrl.scala 125:64]
+  wire  _T_300 = _T_258 & _T_268; // @[FanCtrl.scala 130:71]
+  wire  _T_310 = _T_300 & _T_278; // @[FanCtrl.scala 131:71]
+  wire  _T_331 = _T_249 & _T_278; // @[FanCtrl.scala 136:71]
+  wire [2:0] _GEN_356 = _T_331 ? 3'h3 : 3'h0; // @[FanCtrl.scala 137:72]
+  wire  _GEN_371 = r_valid_1 & _T_236; // @[FanCtrl.scala 116:32]
   assign io_o_reduction_add_0 = r_add_lvl_0Reg_6; // @[FanCtrl.scala 227:{35,35}]
   assign io_o_reduction_add_1 = r_add_lvl_0Reg_7; // @[FanCtrl.scala 227:{35,35}]
   assign io_o_reduction_add_2 = r_add_lvl_1Reg_4; // @[FanCtrl.scala 227:{35,35}]
+  assign io_o_reduction_cmd_0 = r_cmd_lvl_0Reg_6; // @[FanCtrl.scala 236:{34,34}]
+  assign io_o_reduction_cmd_1 = r_cmd_lvl_0Reg_7; // @[FanCtrl.scala 236:{34,34}]
+  assign io_o_reduction_cmd_2 = r_cmd_lvl_1Reg_4; // @[FanCtrl.scala 236:{34,34}]
+  assign io_o_reduction_valid = r_valid_3; // @[FanCtrl.scala 226:26]
   always @(posedge clock) begin
     if (reset) begin // @[FanCtrl.scala 19:34]
       r_reduction_add_0 <= 1'h0; // @[FanCtrl.scala 19:34]
     end else begin
-      r_reduction_add_0 <= r_valid_1;
+      r_reduction_add_0 <= _GEN_54;
     end
     if (reset) begin // @[FanCtrl.scala 19:34]
       r_reduction_add_1 <= 1'h0; // @[FanCtrl.scala 19:34]
     end else begin
-      r_reduction_add_1 <= r_valid_1;
+      r_reduction_add_1 <= _GEN_178;
     end
     if (reset) begin // @[FanCtrl.scala 19:34]
       r_reduction_add_2 <= 1'h0; // @[FanCtrl.scala 19:34]
     end else begin
-      r_reduction_add_2 <= r_valid_1;
+      r_reduction_add_2 <= _GEN_371;
+    end
+    if (reset) begin // @[FanCtrl.scala 20:34]
+      r_reduction_cmd_0 <= 3'h0; // @[FanCtrl.scala 20:34]
+    end else if (r_valid_1) begin // @[FanCtrl.scala 41:34]
+      if (_T_33) begin // @[FanCtrl.scala 51:42]
+        r_reduction_cmd_0 <= 3'h5; // @[FanCtrl.scala 53:37]
+      end else begin
+        r_reduction_cmd_0 <= {{1'd0}, _GEN_49};
+      end
+    end else begin
+      r_reduction_cmd_0 <= 3'h0; // @[FanCtrl.scala 68:33]
+    end
+    if (reset) begin // @[FanCtrl.scala 20:34]
+      r_reduction_cmd_1 <= 3'h0; // @[FanCtrl.scala 20:34]
+    end else if (r_valid_1) begin // @[FanCtrl.scala 81:34]
+      if (_T_200) begin // @[FanCtrl.scala 89:66]
+        r_reduction_cmd_1 <= 3'h5; // @[FanCtrl.scala 91:36]
+      end else if (_T_219) begin // @[FanCtrl.scala 94:66]
+        r_reduction_cmd_1 <= 3'h4; // @[FanCtrl.scala 96:35]
+      end else begin
+        r_reduction_cmd_1 <= 3'h0; // @[FanCtrl.scala 99:35]
+      end
+    end else begin
+      r_reduction_cmd_1 <= 3'h0; // @[FanCtrl.scala 103:33]
+    end
+    if (reset) begin // @[FanCtrl.scala 20:34]
+      r_reduction_cmd_2 <= 3'h0; // @[FanCtrl.scala 20:34]
+    end else if (r_valid_1) begin // @[FanCtrl.scala 116:32]
+      if (_T_279) begin // @[FanCtrl.scala 126:66]
+        r_reduction_cmd_2 <= 3'h5;
+      end else if (_T_310) begin // @[FanCtrl.scala 132:72]
+        r_reduction_cmd_2 <= 3'h4;
+      end else begin
+        r_reduction_cmd_2 <= _GEN_356;
+      end
+    end else begin
+      r_reduction_cmd_2 <= 3'h0;
     end
     if (reset) begin // @[FanCtrl.scala 23:33]
       r_add_lvl_0Reg_6 <= 1'h0; // @[FanCtrl.scala 23:33]
@@ -2226,6 +2452,41 @@ module fancontrol4(
     end else begin
       r_add_lvl_1Reg_4 <= r_reduction_add_2; // @[FanCtrl.scala 168:20]
     end
+    if (reset) begin // @[FanCtrl.scala 27:33]
+      r_cmd_lvl_0Reg_6 <= 3'h0; // @[FanCtrl.scala 27:33]
+    end else begin
+      r_cmd_lvl_0Reg_6 <= r_reduction_cmd_0; // @[FanCtrl.scala 185:20]
+    end
+    if (reset) begin // @[FanCtrl.scala 27:33]
+      r_cmd_lvl_0Reg_7 <= 3'h0; // @[FanCtrl.scala 27:33]
+    end else begin
+      r_cmd_lvl_0Reg_7 <= r_reduction_cmd_1; // @[FanCtrl.scala 185:20]
+    end
+    if (reset) begin // @[FanCtrl.scala 28:33]
+      r_cmd_lvl_1Reg_4 <= 3'h0; // @[FanCtrl.scala 28:33]
+    end else begin
+      r_cmd_lvl_1Reg_4 <= r_reduction_cmd_2; // @[FanCtrl.scala 199:20]
+    end
+    if (reset) begin // @[FanCtrl.scala 34:23]
+      w_vn_0 <= 5'h0; // @[FanCtrl.scala 34:23]
+    end else begin
+      w_vn_0 <= io_i_vn_0; // @[FanCtrl.scala 37:10]
+    end
+    if (reset) begin // @[FanCtrl.scala 34:23]
+      w_vn_1 <= 5'h0; // @[FanCtrl.scala 34:23]
+    end else begin
+      w_vn_1 <= io_i_vn_1; // @[FanCtrl.scala 37:10]
+    end
+    if (reset) begin // @[FanCtrl.scala 34:23]
+      w_vn_2 <= 5'h0; // @[FanCtrl.scala 34:23]
+    end else begin
+      w_vn_2 <= io_i_vn_2; // @[FanCtrl.scala 37:10]
+    end
+    if (reset) begin // @[FanCtrl.scala 34:23]
+      w_vn_3 <= 5'h0; // @[FanCtrl.scala 34:23]
+    end else begin
+      w_vn_3 <= io_i_vn_3; // @[FanCtrl.scala 37:10]
+    end
     if (reset) begin // @[FanCtrl.scala 35:26]
       r_valid_0 <= 1'h0; // @[FanCtrl.scala 35:26]
     end else begin
@@ -2235,6 +2496,16 @@ module fancontrol4(
       r_valid_1 <= 1'h0; // @[FanCtrl.scala 35:26]
     end else begin
       r_valid_1 <= r_valid_0; // @[FanCtrl.scala 222:24]
+    end
+    if (reset) begin // @[FanCtrl.scala 35:26]
+      r_valid_2 <= 1'h0; // @[FanCtrl.scala 35:26]
+    end else begin
+      r_valid_2 <= r_valid_1; // @[FanCtrl.scala 222:24]
+    end
+    if (reset) begin // @[FanCtrl.scala 35:26]
+      r_valid_3 <= 1'h0; // @[FanCtrl.scala 35:26]
+    end else begin
+      r_valid_3 <= r_valid_2; // @[FanCtrl.scala 222:24]
     end
   end
 // Register and memory initialization
@@ -2280,15 +2551,39 @@ initial begin
   _RAND_2 = {1{`RANDOM}};
   r_reduction_add_2 = _RAND_2[0:0];
   _RAND_3 = {1{`RANDOM}};
-  r_add_lvl_0Reg_6 = _RAND_3[0:0];
+  r_reduction_cmd_0 = _RAND_3[2:0];
   _RAND_4 = {1{`RANDOM}};
-  r_add_lvl_0Reg_7 = _RAND_4[0:0];
+  r_reduction_cmd_1 = _RAND_4[2:0];
   _RAND_5 = {1{`RANDOM}};
-  r_add_lvl_1Reg_4 = _RAND_5[0:0];
+  r_reduction_cmd_2 = _RAND_5[2:0];
   _RAND_6 = {1{`RANDOM}};
-  r_valid_0 = _RAND_6[0:0];
+  r_add_lvl_0Reg_6 = _RAND_6[0:0];
   _RAND_7 = {1{`RANDOM}};
-  r_valid_1 = _RAND_7[0:0];
+  r_add_lvl_0Reg_7 = _RAND_7[0:0];
+  _RAND_8 = {1{`RANDOM}};
+  r_add_lvl_1Reg_4 = _RAND_8[0:0];
+  _RAND_9 = {1{`RANDOM}};
+  r_cmd_lvl_0Reg_6 = _RAND_9[2:0];
+  _RAND_10 = {1{`RANDOM}};
+  r_cmd_lvl_0Reg_7 = _RAND_10[2:0];
+  _RAND_11 = {1{`RANDOM}};
+  r_cmd_lvl_1Reg_4 = _RAND_11[2:0];
+  _RAND_12 = {1{`RANDOM}};
+  w_vn_0 = _RAND_12[4:0];
+  _RAND_13 = {1{`RANDOM}};
+  w_vn_1 = _RAND_13[4:0];
+  _RAND_14 = {1{`RANDOM}};
+  w_vn_2 = _RAND_14[4:0];
+  _RAND_15 = {1{`RANDOM}};
+  w_vn_3 = _RAND_15[4:0];
+  _RAND_16 = {1{`RANDOM}};
+  r_valid_0 = _RAND_16[0:0];
+  _RAND_17 = {1{`RANDOM}};
+  r_valid_1 = _RAND_17[0:0];
+  _RAND_18 = {1{`RANDOM}};
+  r_valid_2 = _RAND_18[0:0];
+  _RAND_19 = {1{`RANDOM}};
+  r_valid_3 = _RAND_19[0:0];
 `endif // RANDOMIZE_REG_INIT
   `endif // RANDOMIZE
 end // initial
@@ -4327,13 +4622,17 @@ endmodule
 module EdgeAdderSwitch(
   input         clock,
   input         reset,
+  input         io_i_valid,
   input  [63:0] io_i_data_bus_0,
   input  [63:0] io_i_data_bus_1,
   input  [2:0]  io_i_add_en,
+  input  [4:0]  io_i_cmd,
   output [31:0] io_o_adder
 );
 `ifdef RANDOMIZE_REG_INIT
   reg [31:0] _RAND_0;
+  reg [31:0] _RAND_1;
+  reg [31:0] _RAND_2;
 `endif // RANDOMIZE_REG_INIT
   wire [31:0] reductionMux_io_i_data_0; // @[EdgeAdderSwitch.scala 19:28]
   wire [31:0] reductionMux_io_i_data_1; // @[EdgeAdderSwitch.scala 19:28]
@@ -4342,8 +4641,11 @@ module EdgeAdderSwitch(
   wire [31:0] adder32_io_A; // @[EdgeAdderSwitch.scala 23:23]
   wire [31:0] adder32_io_B; // @[EdgeAdderSwitch.scala 23:23]
   wire [31:0] adder32_io_O; // @[EdgeAdderSwitch.scala 23:23]
+  reg  r_valid; // @[EdgeAdderSwitch.scala 27:24]
+  reg [31:0] r_adder; // @[EdgeAdderSwitch.scala 28:24]
   reg [2:0] r_add_en; // @[EdgeAdderSwitch.scala 31:25]
-  wire [31:0] _GEN_15 = r_add_en == 3'h0 ? 32'h0 : adder32_io_O; // @[EdgeAdderSwitch.scala 64:22 65:18 67:18]
+  wire [31:0] _GEN_3 = 5'h4 == io_i_cmd ? reductionMux_io_o_data_0 : r_adder; // @[EdgeAdderSwitch.scala 38:23 45:17 28:24]
+  wire [31:0] _GEN_15 = r_add_en == 3'h0 ? r_adder : adder32_io_O; // @[EdgeAdderSwitch.scala 64:22 65:18 67:18]
   ReductionMux reductionMux ( // @[EdgeAdderSwitch.scala 19:28]
     .io_i_data_0(reductionMux_io_i_data_0),
     .io_i_data_1(reductionMux_io_i_data_1),
@@ -4361,6 +4663,22 @@ module EdgeAdderSwitch(
   assign adder32_io_A = reductionMux_io_o_data_1; // @[EdgeAdderSwitch.scala 24:16]
   assign adder32_io_B = reductionMux_io_o_data_0; // @[EdgeAdderSwitch.scala 25:16]
   always @(posedge clock) begin
+    if (reset) begin // @[EdgeAdderSwitch.scala 27:24]
+      r_valid <= 1'h0; // @[EdgeAdderSwitch.scala 27:24]
+    end else begin
+      r_valid <= io_i_valid; // @[EdgeAdderSwitch.scala 27:24]
+    end
+    if (reset) begin // @[EdgeAdderSwitch.scala 28:24]
+      r_adder <= 32'h0; // @[EdgeAdderSwitch.scala 28:24]
+    end else if (reset) begin // @[EdgeAdderSwitch.scala 33:14]
+      r_adder <= 32'h0; // @[EdgeAdderSwitch.scala 34:13]
+    end else if (r_valid) begin // @[EdgeAdderSwitch.scala 37:25]
+      if (5'h3 == io_i_cmd) begin // @[EdgeAdderSwitch.scala 38:23]
+        r_adder <= reductionMux_io_o_data_1; // @[EdgeAdderSwitch.scala 40:17]
+      end else begin
+        r_adder <= _GEN_3;
+      end
+    end
     if (reset) begin // @[EdgeAdderSwitch.scala 31:25]
       r_add_en <= 3'h0; // @[EdgeAdderSwitch.scala 31:25]
     end else begin
@@ -4404,7 +4722,11 @@ initial begin
     `endif
 `ifdef RANDOMIZE_REG_INIT
   _RAND_0 = {1{`RANDOM}};
-  r_add_en = _RAND_0[2:0];
+  r_valid = _RAND_0[0:0];
+  _RAND_1 = {1{`RANDOM}};
+  r_adder = _RAND_1[31:0];
+  _RAND_2 = {1{`RANDOM}};
+  r_add_en = _RAND_2[2:0];
 `endif // RANDOMIZE_REG_INIT
   `endif // RANDOMIZE
 end // initial
@@ -4416,6 +4738,7 @@ endmodule
 module Fan4(
   input         clock,
   input         reset,
+  input         io_i_valid,
   input  [31:0] io_i_data_bus_0,
   input  [31:0] io_i_data_bus_1,
   input  [31:0] io_i_data_bus_2,
@@ -4423,70 +4746,156 @@ module Fan4(
   input         io_i_add_en_bus_0,
   input         io_i_add_en_bus_1,
   input         io_i_add_en_bus_2,
+  input  [2:0]  io_i_cmd_bus_0,
+  input  [2:0]  io_i_cmd_bus_1,
+  input  [2:0]  io_i_cmd_bus_2,
   output [31:0] io_o_adder_0,
   output [31:0] io_o_adder_2
 );
+`ifdef RANDOMIZE_REG_INIT
+  reg [31:0] _RAND_0;
+  reg [31:0] _RAND_1;
+`endif // RANDOMIZE_REG_INIT
   wire  my_adder_0_clock; // @[FanNetwork.scala 119:28]
   wire  my_adder_0_reset; // @[FanNetwork.scala 119:28]
+  wire  my_adder_0_io_i_valid; // @[FanNetwork.scala 119:28]
   wire [63:0] my_adder_0_io_i_data_bus_0; // @[FanNetwork.scala 119:28]
   wire [63:0] my_adder_0_io_i_data_bus_1; // @[FanNetwork.scala 119:28]
   wire [2:0] my_adder_0_io_i_add_en; // @[FanNetwork.scala 119:28]
+  wire [4:0] my_adder_0_io_i_cmd; // @[FanNetwork.scala 119:28]
   wire [31:0] my_adder_0_io_o_adder; // @[FanNetwork.scala 119:28]
   wire  my_adder_1_clock; // @[FanNetwork.scala 132:28]
   wire  my_adder_1_reset; // @[FanNetwork.scala 132:28]
+  wire  my_adder_1_io_i_valid; // @[FanNetwork.scala 132:28]
   wire [63:0] my_adder_1_io_i_data_bus_0; // @[FanNetwork.scala 132:28]
   wire [63:0] my_adder_1_io_i_data_bus_1; // @[FanNetwork.scala 132:28]
   wire [2:0] my_adder_1_io_i_add_en; // @[FanNetwork.scala 132:28]
+  wire [4:0] my_adder_1_io_i_cmd; // @[FanNetwork.scala 132:28]
   wire [31:0] my_adder_1_io_o_adder; // @[FanNetwork.scala 132:28]
   wire  my_adder_2_clock; // @[FanNetwork.scala 145:28]
   wire  my_adder_2_reset; // @[FanNetwork.scala 145:28]
+  wire  my_adder_2_io_i_valid; // @[FanNetwork.scala 145:28]
   wire [63:0] my_adder_2_io_i_data_bus_0; // @[FanNetwork.scala 145:28]
   wire [63:0] my_adder_2_io_i_data_bus_1; // @[FanNetwork.scala 145:28]
   wire [2:0] my_adder_2_io_i_add_en; // @[FanNetwork.scala 145:28]
+  wire [4:0] my_adder_2_io_i_cmd; // @[FanNetwork.scala 145:28]
   wire [31:0] my_adder_2_io_o_adder; // @[FanNetwork.scala 145:28]
+  reg  r_valid_0; // @[FanNetwork.scala 30:26]
+  reg  r_valid_1; // @[FanNetwork.scala 30:26]
   wire [63:0] w_fan_lvl_0_0 = {{32'd0}, my_adder_0_io_o_adder};
   wire [63:0] w_fan_lvl_0_1 = {{32'd0}, my_adder_2_io_o_adder};
   EdgeAdderSwitch my_adder_0 ( // @[FanNetwork.scala 119:28]
     .clock(my_adder_0_clock),
     .reset(my_adder_0_reset),
+    .io_i_valid(my_adder_0_io_i_valid),
     .io_i_data_bus_0(my_adder_0_io_i_data_bus_0),
     .io_i_data_bus_1(my_adder_0_io_i_data_bus_1),
     .io_i_add_en(my_adder_0_io_i_add_en),
+    .io_i_cmd(my_adder_0_io_i_cmd),
     .io_o_adder(my_adder_0_io_o_adder)
   );
   EdgeAdderSwitch my_adder_1 ( // @[FanNetwork.scala 132:28]
     .clock(my_adder_1_clock),
     .reset(my_adder_1_reset),
+    .io_i_valid(my_adder_1_io_i_valid),
     .io_i_data_bus_0(my_adder_1_io_i_data_bus_0),
     .io_i_data_bus_1(my_adder_1_io_i_data_bus_1),
     .io_i_add_en(my_adder_1_io_i_add_en),
+    .io_i_cmd(my_adder_1_io_i_cmd),
     .io_o_adder(my_adder_1_io_o_adder)
   );
   EdgeAdderSwitch my_adder_2 ( // @[FanNetwork.scala 145:28]
     .clock(my_adder_2_clock),
     .reset(my_adder_2_reset),
+    .io_i_valid(my_adder_2_io_i_valid),
     .io_i_data_bus_0(my_adder_2_io_i_data_bus_0),
     .io_i_data_bus_1(my_adder_2_io_i_data_bus_1),
     .io_i_add_en(my_adder_2_io_i_add_en),
+    .io_i_cmd(my_adder_2_io_i_cmd),
     .io_o_adder(my_adder_2_io_o_adder)
   );
   assign io_o_adder_0 = w_fan_lvl_0_0[31:0]; // @[FanNetwork.scala 207:19]
   assign io_o_adder_2 = w_fan_lvl_0_1[31:0]; // @[FanNetwork.scala 209:19]
   assign my_adder_0_clock = clock;
   assign my_adder_0_reset = reset;
+  assign my_adder_0_io_i_valid = r_valid_0; // @[FanNetwork.scala 121:27]
   assign my_adder_0_io_i_data_bus_0 = {{32'd0}, io_i_data_bus_1}; // @[FanNetwork.scala 122:30]
   assign my_adder_0_io_i_data_bus_1 = {{32'd0}, io_i_data_bus_0}; // @[FanNetwork.scala 122:30]
   assign my_adder_0_io_i_add_en = {{2'd0}, io_i_add_en_bus_0}; // @[FanNetwork.scala 123:28]
+  assign my_adder_0_io_i_cmd = {{2'd0}, io_i_cmd_bus_0}; // @[FanNetwork.scala 124:25]
   assign my_adder_1_clock = clock;
   assign my_adder_1_reset = reset;
+  assign my_adder_1_io_i_valid = r_valid_1; // @[FanNetwork.scala 134:27]
   assign my_adder_1_io_i_data_bus_0 = {{32'd0}, my_adder_2_io_o_adder}; // @[FanNetwork.scala 135:{40,40}]
   assign my_adder_1_io_i_data_bus_1 = {{32'd0}, my_adder_0_io_o_adder}; // @[FanNetwork.scala 135:{40,40}]
   assign my_adder_1_io_i_add_en = {{2'd0}, io_i_add_en_bus_2}; // @[FanNetwork.scala 136:28]
+  assign my_adder_1_io_i_cmd = {{2'd0}, io_i_cmd_bus_2}; // @[FanNetwork.scala 137:26]
   assign my_adder_2_clock = clock;
   assign my_adder_2_reset = reset;
+  assign my_adder_2_io_i_valid = r_valid_0; // @[FanNetwork.scala 147:27]
   assign my_adder_2_io_i_data_bus_0 = {{32'd0}, io_i_data_bus_3}; // @[FanNetwork.scala 148:30]
   assign my_adder_2_io_i_data_bus_1 = {{32'd0}, io_i_data_bus_2}; // @[FanNetwork.scala 148:30]
   assign my_adder_2_io_i_add_en = {{2'd0}, io_i_add_en_bus_1}; // @[FanNetwork.scala 149:28]
+  assign my_adder_2_io_i_cmd = {{2'd0}, io_i_cmd_bus_1}; // @[FanNetwork.scala 150:25]
+  always @(posedge clock) begin
+    if (reset) begin // @[FanNetwork.scala 30:26]
+      r_valid_0 <= 1'h0; // @[FanNetwork.scala 30:26]
+    end else begin
+      r_valid_0 <= io_i_valid;
+    end
+    if (reset) begin // @[FanNetwork.scala 30:26]
+      r_valid_1 <= 1'h0; // @[FanNetwork.scala 30:26]
+    end else begin
+      r_valid_1 <= r_valid_0; // @[FanNetwork.scala 114:24]
+    end
+  end
+// Register and memory initialization
+`ifdef RANDOMIZE_GARBAGE_ASSIGN
+`define RANDOMIZE
+`endif
+`ifdef RANDOMIZE_INVALID_ASSIGN
+`define RANDOMIZE
+`endif
+`ifdef RANDOMIZE_REG_INIT
+`define RANDOMIZE
+`endif
+`ifdef RANDOMIZE_MEM_INIT
+`define RANDOMIZE
+`endif
+`ifndef RANDOM
+`define RANDOM $random
+`endif
+`ifdef RANDOMIZE_MEM_INIT
+  integer initvar;
+`endif
+`ifndef SYNTHESIS
+`ifdef FIRRTL_BEFORE_INITIAL
+`FIRRTL_BEFORE_INITIAL
+`endif
+initial begin
+  `ifdef RANDOMIZE
+    `ifdef INIT_RANDOM
+      `INIT_RANDOM
+    `endif
+    `ifndef VERILATOR
+      `ifdef RANDOMIZE_DELAY
+        #`RANDOMIZE_DELAY begin end
+      `else
+        #0.002 begin end
+      `endif
+    `endif
+`ifdef RANDOMIZE_REG_INIT
+  _RAND_0 = {1{`RANDOM}};
+  r_valid_0 = _RAND_0[0:0];
+  _RAND_1 = {1{`RANDOM}};
+  r_valid_1 = _RAND_1[0:0];
+`endif // RANDOMIZE_REG_INIT
+  `endif // RANDOMIZE
+end // initial
+`ifdef FIRRTL_AFTER_INITIAL
+`FIRRTL_AFTER_INITIAL
+`endif
+`endif // SYNTHESIS
 endmodule
 module flexdpecom4(
   input         clock,
@@ -4540,67 +4949,83 @@ module flexdpecom4(
   wire [15:0] my_ivn_io_Stationary_matrix_0_1; // @[FlexDPEby2.scala 59:22]
   wire [15:0] my_ivn_io_Stationary_matrix_1_0; // @[FlexDPEby2.scala 59:22]
   wire [15:0] my_ivn_io_Stationary_matrix_1_1; // @[FlexDPEby2.scala 59:22]
+  wire [4:0] my_ivn_io_o_vn_0; // @[FlexDPEby2.scala 59:22]
+  wire [4:0] my_ivn_io_o_vn_1; // @[FlexDPEby2.scala 59:22]
+  wire [4:0] my_ivn_io_o_vn_2; // @[FlexDPEby2.scala 59:22]
+  wire [4:0] my_ivn_io_o_vn_3; // @[FlexDPEby2.scala 59:22]
   wire  my_controller_clock; // @[FlexDPEby2.scala 67:31]
   wire  my_controller_reset; // @[FlexDPEby2.scala 67:31]
+  wire [4:0] my_controller_io_i_vn_0; // @[FlexDPEby2.scala 67:31]
+  wire [4:0] my_controller_io_i_vn_1; // @[FlexDPEby2.scala 67:31]
+  wire [4:0] my_controller_io_i_vn_2; // @[FlexDPEby2.scala 67:31]
+  wire [4:0] my_controller_io_i_vn_3; // @[FlexDPEby2.scala 67:31]
   wire  my_controller_io_i_data_valid; // @[FlexDPEby2.scala 67:31]
   wire  my_controller_io_o_reduction_add_0; // @[FlexDPEby2.scala 67:31]
   wire  my_controller_io_o_reduction_add_1; // @[FlexDPEby2.scala 67:31]
   wire  my_controller_io_o_reduction_add_2; // @[FlexDPEby2.scala 67:31]
-  wire [15:0] my_Benes_io_i_data_bus2_0; // @[FlexDPEby2.scala 76:26]
-  wire [15:0] my_Benes_io_i_data_bus2_1; // @[FlexDPEby2.scala 76:26]
-  wire [15:0] my_Benes_io_i_data_bus2_2; // @[FlexDPEby2.scala 76:26]
-  wire [15:0] my_Benes_io_i_data_bus2_3; // @[FlexDPEby2.scala 76:26]
-  wire [15:0] my_Benes_io_i_data_bus1_0; // @[FlexDPEby2.scala 76:26]
-  wire [15:0] my_Benes_io_i_data_bus1_1; // @[FlexDPEby2.scala 76:26]
-  wire [15:0] my_Benes_io_i_data_bus1_2; // @[FlexDPEby2.scala 76:26]
-  wire [15:0] my_Benes_io_i_data_bus1_3; // @[FlexDPEby2.scala 76:26]
-  wire [3:0] my_Benes_io_i_mux_bus_0_0; // @[FlexDPEby2.scala 76:26]
-  wire [3:0] my_Benes_io_i_mux_bus_0_1; // @[FlexDPEby2.scala 76:26]
-  wire [3:0] my_Benes_io_i_mux_bus_0_2; // @[FlexDPEby2.scala 76:26]
-  wire [3:0] my_Benes_io_i_mux_bus_0_3; // @[FlexDPEby2.scala 76:26]
-  wire [3:0] my_Benes_io_i_mux_bus_1_0; // @[FlexDPEby2.scala 76:26]
-  wire [3:0] my_Benes_io_i_mux_bus_1_1; // @[FlexDPEby2.scala 76:26]
-  wire [3:0] my_Benes_io_i_mux_bus_1_2; // @[FlexDPEby2.scala 76:26]
-  wire [3:0] my_Benes_io_i_mux_bus_1_3; // @[FlexDPEby2.scala 76:26]
-  wire [3:0] my_Benes_io_i_mux_bus_2_0; // @[FlexDPEby2.scala 76:26]
-  wire [3:0] my_Benes_io_i_mux_bus_2_1; // @[FlexDPEby2.scala 76:26]
-  wire [3:0] my_Benes_io_i_mux_bus_2_2; // @[FlexDPEby2.scala 76:26]
-  wire [3:0] my_Benes_io_i_mux_bus_2_3; // @[FlexDPEby2.scala 76:26]
-  wire [3:0] my_Benes_io_i_mux_bus_3_0; // @[FlexDPEby2.scala 76:26]
-  wire [3:0] my_Benes_io_i_mux_bus_3_1; // @[FlexDPEby2.scala 76:26]
-  wire [3:0] my_Benes_io_i_mux_bus_3_2; // @[FlexDPEby2.scala 76:26]
-  wire [3:0] my_Benes_io_i_mux_bus_3_3; // @[FlexDPEby2.scala 76:26]
-  wire [15:0] my_Benes_io_o_dist_bus1_0; // @[FlexDPEby2.scala 76:26]
-  wire [15:0] my_Benes_io_o_dist_bus1_1; // @[FlexDPEby2.scala 76:26]
-  wire [15:0] my_Benes_io_o_dist_bus1_2; // @[FlexDPEby2.scala 76:26]
-  wire [15:0] my_Benes_io_o_dist_bus1_3; // @[FlexDPEby2.scala 76:26]
-  wire [15:0] my_Benes_io_o_dist_bus2_0; // @[FlexDPEby2.scala 76:26]
-  wire [15:0] my_Benes_io_o_dist_bus2_1; // @[FlexDPEby2.scala 76:26]
-  wire [15:0] my_Benes_io_o_dist_bus2_2; // @[FlexDPEby2.scala 76:26]
-  wire [15:0] my_Benes_io_o_dist_bus2_3; // @[FlexDPEby2.scala 76:26]
-  wire [15:0] buffer_mult_io_buffer1_0; // @[FlexDPEby2.scala 88:30]
-  wire [15:0] buffer_mult_io_buffer1_1; // @[FlexDPEby2.scala 88:30]
-  wire [15:0] buffer_mult_io_buffer1_2; // @[FlexDPEby2.scala 88:30]
-  wire [15:0] buffer_mult_io_buffer1_3; // @[FlexDPEby2.scala 88:30]
-  wire [15:0] buffer_mult_io_buffer2_0; // @[FlexDPEby2.scala 88:30]
-  wire [15:0] buffer_mult_io_buffer2_1; // @[FlexDPEby2.scala 88:30]
-  wire [15:0] buffer_mult_io_buffer2_2; // @[FlexDPEby2.scala 88:30]
-  wire [15:0] buffer_mult_io_buffer2_3; // @[FlexDPEby2.scala 88:30]
-  wire [15:0] buffer_mult_io_out_0; // @[FlexDPEby2.scala 88:30]
-  wire [15:0] buffer_mult_io_out_1; // @[FlexDPEby2.scala 88:30]
-  wire [15:0] buffer_mult_io_out_2; // @[FlexDPEby2.scala 88:30]
-  wire [15:0] buffer_mult_io_out_3; // @[FlexDPEby2.scala 88:30]
-  wire  my_fan_network_clock; // @[FlexDPEby2.scala 100:32]
-  wire  my_fan_network_reset; // @[FlexDPEby2.scala 100:32]
-  wire [31:0] my_fan_network_io_i_data_bus_0; // @[FlexDPEby2.scala 100:32]
-  wire [31:0] my_fan_network_io_i_data_bus_1; // @[FlexDPEby2.scala 100:32]
-  wire [31:0] my_fan_network_io_i_data_bus_2; // @[FlexDPEby2.scala 100:32]
-  wire [31:0] my_fan_network_io_i_data_bus_3; // @[FlexDPEby2.scala 100:32]
-  wire  my_fan_network_io_i_add_en_bus_0; // @[FlexDPEby2.scala 100:32]
-  wire  my_fan_network_io_i_add_en_bus_1; // @[FlexDPEby2.scala 100:32]
-  wire  my_fan_network_io_i_add_en_bus_2; // @[FlexDPEby2.scala 100:32]
-  wire [31:0] my_fan_network_io_o_adder_0; // @[FlexDPEby2.scala 100:32]
-  wire [31:0] my_fan_network_io_o_adder_2; // @[FlexDPEby2.scala 100:32]
+  wire [2:0] my_controller_io_o_reduction_cmd_0; // @[FlexDPEby2.scala 67:31]
+  wire [2:0] my_controller_io_o_reduction_cmd_1; // @[FlexDPEby2.scala 67:31]
+  wire [2:0] my_controller_io_o_reduction_cmd_2; // @[FlexDPEby2.scala 67:31]
+  wire  my_controller_io_o_reduction_valid; // @[FlexDPEby2.scala 67:31]
+  wire [15:0] my_Benes_io_i_data_bus2_0; // @[FlexDPEby2.scala 77:26]
+  wire [15:0] my_Benes_io_i_data_bus2_1; // @[FlexDPEby2.scala 77:26]
+  wire [15:0] my_Benes_io_i_data_bus2_2; // @[FlexDPEby2.scala 77:26]
+  wire [15:0] my_Benes_io_i_data_bus2_3; // @[FlexDPEby2.scala 77:26]
+  wire [15:0] my_Benes_io_i_data_bus1_0; // @[FlexDPEby2.scala 77:26]
+  wire [15:0] my_Benes_io_i_data_bus1_1; // @[FlexDPEby2.scala 77:26]
+  wire [15:0] my_Benes_io_i_data_bus1_2; // @[FlexDPEby2.scala 77:26]
+  wire [15:0] my_Benes_io_i_data_bus1_3; // @[FlexDPEby2.scala 77:26]
+  wire [3:0] my_Benes_io_i_mux_bus_0_0; // @[FlexDPEby2.scala 77:26]
+  wire [3:0] my_Benes_io_i_mux_bus_0_1; // @[FlexDPEby2.scala 77:26]
+  wire [3:0] my_Benes_io_i_mux_bus_0_2; // @[FlexDPEby2.scala 77:26]
+  wire [3:0] my_Benes_io_i_mux_bus_0_3; // @[FlexDPEby2.scala 77:26]
+  wire [3:0] my_Benes_io_i_mux_bus_1_0; // @[FlexDPEby2.scala 77:26]
+  wire [3:0] my_Benes_io_i_mux_bus_1_1; // @[FlexDPEby2.scala 77:26]
+  wire [3:0] my_Benes_io_i_mux_bus_1_2; // @[FlexDPEby2.scala 77:26]
+  wire [3:0] my_Benes_io_i_mux_bus_1_3; // @[FlexDPEby2.scala 77:26]
+  wire [3:0] my_Benes_io_i_mux_bus_2_0; // @[FlexDPEby2.scala 77:26]
+  wire [3:0] my_Benes_io_i_mux_bus_2_1; // @[FlexDPEby2.scala 77:26]
+  wire [3:0] my_Benes_io_i_mux_bus_2_2; // @[FlexDPEby2.scala 77:26]
+  wire [3:0] my_Benes_io_i_mux_bus_2_3; // @[FlexDPEby2.scala 77:26]
+  wire [3:0] my_Benes_io_i_mux_bus_3_0; // @[FlexDPEby2.scala 77:26]
+  wire [3:0] my_Benes_io_i_mux_bus_3_1; // @[FlexDPEby2.scala 77:26]
+  wire [3:0] my_Benes_io_i_mux_bus_3_2; // @[FlexDPEby2.scala 77:26]
+  wire [3:0] my_Benes_io_i_mux_bus_3_3; // @[FlexDPEby2.scala 77:26]
+  wire [15:0] my_Benes_io_o_dist_bus1_0; // @[FlexDPEby2.scala 77:26]
+  wire [15:0] my_Benes_io_o_dist_bus1_1; // @[FlexDPEby2.scala 77:26]
+  wire [15:0] my_Benes_io_o_dist_bus1_2; // @[FlexDPEby2.scala 77:26]
+  wire [15:0] my_Benes_io_o_dist_bus1_3; // @[FlexDPEby2.scala 77:26]
+  wire [15:0] my_Benes_io_o_dist_bus2_0; // @[FlexDPEby2.scala 77:26]
+  wire [15:0] my_Benes_io_o_dist_bus2_1; // @[FlexDPEby2.scala 77:26]
+  wire [15:0] my_Benes_io_o_dist_bus2_2; // @[FlexDPEby2.scala 77:26]
+  wire [15:0] my_Benes_io_o_dist_bus2_3; // @[FlexDPEby2.scala 77:26]
+  wire [15:0] buffer_mult_io_buffer1_0; // @[FlexDPEby2.scala 89:30]
+  wire [15:0] buffer_mult_io_buffer1_1; // @[FlexDPEby2.scala 89:30]
+  wire [15:0] buffer_mult_io_buffer1_2; // @[FlexDPEby2.scala 89:30]
+  wire [15:0] buffer_mult_io_buffer1_3; // @[FlexDPEby2.scala 89:30]
+  wire [15:0] buffer_mult_io_buffer2_0; // @[FlexDPEby2.scala 89:30]
+  wire [15:0] buffer_mult_io_buffer2_1; // @[FlexDPEby2.scala 89:30]
+  wire [15:0] buffer_mult_io_buffer2_2; // @[FlexDPEby2.scala 89:30]
+  wire [15:0] buffer_mult_io_buffer2_3; // @[FlexDPEby2.scala 89:30]
+  wire [15:0] buffer_mult_io_out_0; // @[FlexDPEby2.scala 89:30]
+  wire [15:0] buffer_mult_io_out_1; // @[FlexDPEby2.scala 89:30]
+  wire [15:0] buffer_mult_io_out_2; // @[FlexDPEby2.scala 89:30]
+  wire [15:0] buffer_mult_io_out_3; // @[FlexDPEby2.scala 89:30]
+  wire  my_fan_network_clock; // @[FlexDPEby2.scala 101:32]
+  wire  my_fan_network_reset; // @[FlexDPEby2.scala 101:32]
+  wire  my_fan_network_io_i_valid; // @[FlexDPEby2.scala 101:32]
+  wire [31:0] my_fan_network_io_i_data_bus_0; // @[FlexDPEby2.scala 101:32]
+  wire [31:0] my_fan_network_io_i_data_bus_1; // @[FlexDPEby2.scala 101:32]
+  wire [31:0] my_fan_network_io_i_data_bus_2; // @[FlexDPEby2.scala 101:32]
+  wire [31:0] my_fan_network_io_i_data_bus_3; // @[FlexDPEby2.scala 101:32]
+  wire  my_fan_network_io_i_add_en_bus_0; // @[FlexDPEby2.scala 101:32]
+  wire  my_fan_network_io_i_add_en_bus_1; // @[FlexDPEby2.scala 101:32]
+  wire  my_fan_network_io_i_add_en_bus_2; // @[FlexDPEby2.scala 101:32]
+  wire [2:0] my_fan_network_io_i_cmd_bus_0; // @[FlexDPEby2.scala 101:32]
+  wire [2:0] my_fan_network_io_i_cmd_bus_1; // @[FlexDPEby2.scala 101:32]
+  wire [2:0] my_fan_network_io_i_cmd_bus_2; // @[FlexDPEby2.scala 101:32]
+  wire [31:0] my_fan_network_io_o_adder_0; // @[FlexDPEby2.scala 101:32]
+  wire [31:0] my_fan_network_io_o_adder_2; // @[FlexDPEby2.scala 101:32]
   reg [14:0] r_mult_0; // @[FlexDPEby2.scala 34:26]
   reg [14:0] r_mult_1; // @[FlexDPEby2.scala 34:26]
   reg [14:0] r_mult_2; // @[FlexDPEby2.scala 34:26]
@@ -4610,29 +5035,40 @@ module flexdpecom4(
   reg [15:0] matrix_0_1; // @[FlexDPEby2.scala 53:22]
   reg [15:0] matrix_1_0; // @[FlexDPEby2.scala 53:22]
   reg [15:0] matrix_1_1; // @[FlexDPEby2.scala 53:22]
-  wire [15:0] _GEN_0 = my_Benes_io_o_dist_bus1_0 == 16'h0 ? {{1'd0}, r_mult_1} : io_o_adder_0; // @[FlexDPEby2.scala 112:20 121:41 122:23]
-  wire [31:0] _counter_T_1 = counter + 32'h1; // @[FlexDPEby2.scala 132:24]
-  wire [15:0] _GEN_16 = reset ? 16'h0 : buffer_mult_io_out_0; // @[FlexDPEby2.scala 34:{26,26} 94:14]
-  wire [15:0] _GEN_17 = reset ? 16'h0 : buffer_mult_io_out_1; // @[FlexDPEby2.scala 34:{26,26} 94:14]
-  wire [15:0] _GEN_18 = reset ? 16'h0 : buffer_mult_io_out_2; // @[FlexDPEby2.scala 34:{26,26} 94:14]
-  wire [15:0] _GEN_19 = reset ? 16'h0 : buffer_mult_io_out_3; // @[FlexDPEby2.scala 34:{26,26} 94:14]
+  wire [31:0] _counter_T_1 = counter + 32'h1; // @[FlexDPEby2.scala 136:24]
+  wire [15:0] _GEN_12 = reset ? 16'h0 : buffer_mult_io_out_0; // @[FlexDPEby2.scala 34:{26,26} 95:14]
+  wire [15:0] _GEN_13 = reset ? 16'h0 : buffer_mult_io_out_1; // @[FlexDPEby2.scala 34:{26,26} 95:14]
+  wire [15:0] _GEN_14 = reset ? 16'h0 : buffer_mult_io_out_2; // @[FlexDPEby2.scala 34:{26,26} 95:14]
+  wire [15:0] _GEN_15 = reset ? 16'h0 : buffer_mult_io_out_3; // @[FlexDPEby2.scala 34:{26,26} 95:14]
   ivncontrol4 my_ivn ( // @[FlexDPEby2.scala 59:22]
     .clock(my_ivn_clock),
     .reset(my_ivn_reset),
     .io_Stationary_matrix_0_0(my_ivn_io_Stationary_matrix_0_0),
     .io_Stationary_matrix_0_1(my_ivn_io_Stationary_matrix_0_1),
     .io_Stationary_matrix_1_0(my_ivn_io_Stationary_matrix_1_0),
-    .io_Stationary_matrix_1_1(my_ivn_io_Stationary_matrix_1_1)
+    .io_Stationary_matrix_1_1(my_ivn_io_Stationary_matrix_1_1),
+    .io_o_vn_0(my_ivn_io_o_vn_0),
+    .io_o_vn_1(my_ivn_io_o_vn_1),
+    .io_o_vn_2(my_ivn_io_o_vn_2),
+    .io_o_vn_3(my_ivn_io_o_vn_3)
   );
   fancontrol4 my_controller ( // @[FlexDPEby2.scala 67:31]
     .clock(my_controller_clock),
     .reset(my_controller_reset),
+    .io_i_vn_0(my_controller_io_i_vn_0),
+    .io_i_vn_1(my_controller_io_i_vn_1),
+    .io_i_vn_2(my_controller_io_i_vn_2),
+    .io_i_vn_3(my_controller_io_i_vn_3),
     .io_i_data_valid(my_controller_io_i_data_valid),
     .io_o_reduction_add_0(my_controller_io_o_reduction_add_0),
     .io_o_reduction_add_1(my_controller_io_o_reduction_add_1),
-    .io_o_reduction_add_2(my_controller_io_o_reduction_add_2)
+    .io_o_reduction_add_2(my_controller_io_o_reduction_add_2),
+    .io_o_reduction_cmd_0(my_controller_io_o_reduction_cmd_0),
+    .io_o_reduction_cmd_1(my_controller_io_o_reduction_cmd_1),
+    .io_o_reduction_cmd_2(my_controller_io_o_reduction_cmd_2),
+    .io_o_reduction_valid(my_controller_io_o_reduction_valid)
   );
-  Benes3 my_Benes ( // @[FlexDPEby2.scala 76:26]
+  Benes3 my_Benes ( // @[FlexDPEby2.scala 77:26]
     .io_i_data_bus2_0(my_Benes_io_i_data_bus2_0),
     .io_i_data_bus2_1(my_Benes_io_i_data_bus2_1),
     .io_i_data_bus2_2(my_Benes_io_i_data_bus2_2),
@@ -4666,7 +5102,7 @@ module flexdpecom4(
     .io_o_dist_bus2_2(my_Benes_io_o_dist_bus2_2),
     .io_o_dist_bus2_3(my_Benes_io_o_dist_bus2_3)
   );
-  buffer_multiplication buffer_mult ( // @[FlexDPEby2.scala 88:30]
+  buffer_multiplication buffer_mult ( // @[FlexDPEby2.scala 89:30]
     .io_buffer1_0(buffer_mult_io_buffer1_0),
     .io_buffer1_1(buffer_mult_io_buffer1_1),
     .io_buffer1_2(buffer_mult_io_buffer1_2),
@@ -4680,9 +5116,10 @@ module flexdpecom4(
     .io_out_2(buffer_mult_io_out_2),
     .io_out_3(buffer_mult_io_out_3)
   );
-  Fan4 my_fan_network ( // @[FlexDPEby2.scala 100:32]
+  Fan4 my_fan_network ( // @[FlexDPEby2.scala 101:32]
     .clock(my_fan_network_clock),
     .reset(my_fan_network_reset),
+    .io_i_valid(my_fan_network_io_i_valid),
     .io_i_data_bus_0(my_fan_network_io_i_data_bus_0),
     .io_i_data_bus_1(my_fan_network_io_i_data_bus_1),
     .io_i_data_bus_2(my_fan_network_io_i_data_bus_2),
@@ -4690,11 +5127,14 @@ module flexdpecom4(
     .io_i_add_en_bus_0(my_fan_network_io_i_add_en_bus_0),
     .io_i_add_en_bus_1(my_fan_network_io_i_add_en_bus_1),
     .io_i_add_en_bus_2(my_fan_network_io_i_add_en_bus_2),
+    .io_i_cmd_bus_0(my_fan_network_io_i_cmd_bus_0),
+    .io_i_cmd_bus_1(my_fan_network_io_i_cmd_bus_1),
+    .io_i_cmd_bus_2(my_fan_network_io_i_cmd_bus_2),
     .io_o_adder_0(my_fan_network_io_o_adder_0),
     .io_o_adder_2(my_fan_network_io_o_adder_2)
   );
-  assign io_o_adder_0 = my_fan_network_io_o_adder_0[15:0]; // @[FlexDPEby2.scala 109:16]
-  assign io_o_adder_2 = my_fan_network_io_o_adder_2[15:0]; // @[FlexDPEby2.scala 109:16]
+  assign io_o_adder_0 = my_fan_network_io_o_adder_0[15:0]; // @[FlexDPEby2.scala 110:16]
+  assign io_o_adder_2 = my_fan_network_io_o_adder_2[15:0]; // @[FlexDPEby2.scala 110:16]
   assign my_ivn_clock = clock;
   assign my_ivn_reset = reset;
   assign my_ivn_io_Stationary_matrix_0_0 = io_Stationary_matrix_0_0; // @[FlexDPEby2.scala 60:33]
@@ -4703,96 +5143,100 @@ module flexdpecom4(
   assign my_ivn_io_Stationary_matrix_1_1 = io_Stationary_matrix_1_1; // @[FlexDPEby2.scala 60:33]
   assign my_controller_clock = clock;
   assign my_controller_reset = reset;
-  assign my_controller_io_i_data_valid = io_i_data_valid; // @[FlexDPEby2.scala 71:35]
-  assign my_Benes_io_i_data_bus2_0 = io_i_data_bus2_0; // @[FlexDPEby2.scala 79:29]
-  assign my_Benes_io_i_data_bus2_1 = io_i_data_bus2_1; // @[FlexDPEby2.scala 79:29]
-  assign my_Benes_io_i_data_bus2_2 = io_i_data_bus2_2; // @[FlexDPEby2.scala 79:29]
-  assign my_Benes_io_i_data_bus2_3 = io_i_data_bus2_3; // @[FlexDPEby2.scala 79:29]
-  assign my_Benes_io_i_data_bus1_0 = io_i_data_bus_0; // @[FlexDPEby2.scala 78:29]
-  assign my_Benes_io_i_data_bus1_1 = io_i_data_bus_1; // @[FlexDPEby2.scala 78:29]
-  assign my_Benes_io_i_data_bus1_2 = io_i_data_bus_2; // @[FlexDPEby2.scala 78:29]
-  assign my_Benes_io_i_data_bus1_3 = io_i_data_bus_3; // @[FlexDPEby2.scala 78:29]
-  assign my_Benes_io_i_mux_bus_0_0 = io_i_mux_bus_0_0; // @[FlexDPEby2.scala 80:27]
-  assign my_Benes_io_i_mux_bus_0_1 = io_i_mux_bus_0_1; // @[FlexDPEby2.scala 80:27]
-  assign my_Benes_io_i_mux_bus_0_2 = io_i_mux_bus_0_2; // @[FlexDPEby2.scala 80:27]
-  assign my_Benes_io_i_mux_bus_0_3 = io_i_mux_bus_0_3; // @[FlexDPEby2.scala 80:27]
-  assign my_Benes_io_i_mux_bus_1_0 = io_i_mux_bus_1_0; // @[FlexDPEby2.scala 80:27]
-  assign my_Benes_io_i_mux_bus_1_1 = io_i_mux_bus_1_1; // @[FlexDPEby2.scala 80:27]
-  assign my_Benes_io_i_mux_bus_1_2 = io_i_mux_bus_1_2; // @[FlexDPEby2.scala 80:27]
-  assign my_Benes_io_i_mux_bus_1_3 = io_i_mux_bus_1_3; // @[FlexDPEby2.scala 80:27]
-  assign my_Benes_io_i_mux_bus_2_0 = io_i_mux_bus_2_0; // @[FlexDPEby2.scala 80:27]
-  assign my_Benes_io_i_mux_bus_2_1 = io_i_mux_bus_2_1; // @[FlexDPEby2.scala 80:27]
-  assign my_Benes_io_i_mux_bus_2_2 = io_i_mux_bus_2_2; // @[FlexDPEby2.scala 80:27]
-  assign my_Benes_io_i_mux_bus_2_3 = io_i_mux_bus_2_3; // @[FlexDPEby2.scala 80:27]
-  assign my_Benes_io_i_mux_bus_3_0 = io_i_mux_bus_3_0; // @[FlexDPEby2.scala 80:27]
-  assign my_Benes_io_i_mux_bus_3_1 = io_i_mux_bus_3_1; // @[FlexDPEby2.scala 80:27]
-  assign my_Benes_io_i_mux_bus_3_2 = io_i_mux_bus_3_2; // @[FlexDPEby2.scala 80:27]
-  assign my_Benes_io_i_mux_bus_3_3 = io_i_mux_bus_3_3; // @[FlexDPEby2.scala 80:27]
-  assign buffer_mult_io_buffer1_0 = my_Benes_io_o_dist_bus1_0; // @[FlexDPEby2.scala 91:30]
-  assign buffer_mult_io_buffer1_1 = my_Benes_io_o_dist_bus1_1; // @[FlexDPEby2.scala 91:30]
-  assign buffer_mult_io_buffer1_2 = my_Benes_io_o_dist_bus1_2; // @[FlexDPEby2.scala 91:30]
-  assign buffer_mult_io_buffer1_3 = my_Benes_io_o_dist_bus1_3; // @[FlexDPEby2.scala 91:30]
-  assign buffer_mult_io_buffer2_0 = my_Benes_io_o_dist_bus2_0; // @[FlexDPEby2.scala 92:30]
-  assign buffer_mult_io_buffer2_1 = my_Benes_io_o_dist_bus2_1; // @[FlexDPEby2.scala 92:30]
-  assign buffer_mult_io_buffer2_2 = my_Benes_io_o_dist_bus2_2; // @[FlexDPEby2.scala 92:30]
-  assign buffer_mult_io_buffer2_3 = my_Benes_io_o_dist_bus2_3; // @[FlexDPEby2.scala 92:30]
+  assign my_controller_io_i_vn_0 = my_ivn_io_o_vn_0; // @[FlexDPEby2.scala 70:27]
+  assign my_controller_io_i_vn_1 = my_ivn_io_o_vn_1; // @[FlexDPEby2.scala 70:27]
+  assign my_controller_io_i_vn_2 = my_ivn_io_o_vn_2; // @[FlexDPEby2.scala 70:27]
+  assign my_controller_io_i_vn_3 = my_ivn_io_o_vn_3; // @[FlexDPEby2.scala 70:27]
+  assign my_controller_io_i_data_valid = io_i_data_valid; // @[FlexDPEby2.scala 72:35]
+  assign my_Benes_io_i_data_bus2_0 = io_i_data_bus2_0; // @[FlexDPEby2.scala 80:29]
+  assign my_Benes_io_i_data_bus2_1 = io_i_data_bus2_1; // @[FlexDPEby2.scala 80:29]
+  assign my_Benes_io_i_data_bus2_2 = io_i_data_bus2_2; // @[FlexDPEby2.scala 80:29]
+  assign my_Benes_io_i_data_bus2_3 = io_i_data_bus2_3; // @[FlexDPEby2.scala 80:29]
+  assign my_Benes_io_i_data_bus1_0 = io_i_data_bus_0; // @[FlexDPEby2.scala 79:29]
+  assign my_Benes_io_i_data_bus1_1 = io_i_data_bus_1; // @[FlexDPEby2.scala 79:29]
+  assign my_Benes_io_i_data_bus1_2 = io_i_data_bus_2; // @[FlexDPEby2.scala 79:29]
+  assign my_Benes_io_i_data_bus1_3 = io_i_data_bus_3; // @[FlexDPEby2.scala 79:29]
+  assign my_Benes_io_i_mux_bus_0_0 = io_i_mux_bus_0_0; // @[FlexDPEby2.scala 81:27]
+  assign my_Benes_io_i_mux_bus_0_1 = io_i_mux_bus_0_1; // @[FlexDPEby2.scala 81:27]
+  assign my_Benes_io_i_mux_bus_0_2 = io_i_mux_bus_0_2; // @[FlexDPEby2.scala 81:27]
+  assign my_Benes_io_i_mux_bus_0_3 = io_i_mux_bus_0_3; // @[FlexDPEby2.scala 81:27]
+  assign my_Benes_io_i_mux_bus_1_0 = io_i_mux_bus_1_0; // @[FlexDPEby2.scala 81:27]
+  assign my_Benes_io_i_mux_bus_1_1 = io_i_mux_bus_1_1; // @[FlexDPEby2.scala 81:27]
+  assign my_Benes_io_i_mux_bus_1_2 = io_i_mux_bus_1_2; // @[FlexDPEby2.scala 81:27]
+  assign my_Benes_io_i_mux_bus_1_3 = io_i_mux_bus_1_3; // @[FlexDPEby2.scala 81:27]
+  assign my_Benes_io_i_mux_bus_2_0 = io_i_mux_bus_2_0; // @[FlexDPEby2.scala 81:27]
+  assign my_Benes_io_i_mux_bus_2_1 = io_i_mux_bus_2_1; // @[FlexDPEby2.scala 81:27]
+  assign my_Benes_io_i_mux_bus_2_2 = io_i_mux_bus_2_2; // @[FlexDPEby2.scala 81:27]
+  assign my_Benes_io_i_mux_bus_2_3 = io_i_mux_bus_2_3; // @[FlexDPEby2.scala 81:27]
+  assign my_Benes_io_i_mux_bus_3_0 = io_i_mux_bus_3_0; // @[FlexDPEby2.scala 81:27]
+  assign my_Benes_io_i_mux_bus_3_1 = io_i_mux_bus_3_1; // @[FlexDPEby2.scala 81:27]
+  assign my_Benes_io_i_mux_bus_3_2 = io_i_mux_bus_3_2; // @[FlexDPEby2.scala 81:27]
+  assign my_Benes_io_i_mux_bus_3_3 = io_i_mux_bus_3_3; // @[FlexDPEby2.scala 81:27]
+  assign buffer_mult_io_buffer1_0 = my_Benes_io_o_dist_bus1_0; // @[FlexDPEby2.scala 92:30]
+  assign buffer_mult_io_buffer1_1 = my_Benes_io_o_dist_bus1_1; // @[FlexDPEby2.scala 92:30]
+  assign buffer_mult_io_buffer1_2 = my_Benes_io_o_dist_bus1_2; // @[FlexDPEby2.scala 92:30]
+  assign buffer_mult_io_buffer1_3 = my_Benes_io_o_dist_bus1_3; // @[FlexDPEby2.scala 92:30]
+  assign buffer_mult_io_buffer2_0 = my_Benes_io_o_dist_bus2_0; // @[FlexDPEby2.scala 93:30]
+  assign buffer_mult_io_buffer2_1 = my_Benes_io_o_dist_bus2_1; // @[FlexDPEby2.scala 93:30]
+  assign buffer_mult_io_buffer2_2 = my_Benes_io_o_dist_bus2_2; // @[FlexDPEby2.scala 93:30]
+  assign buffer_mult_io_buffer2_3 = my_Benes_io_o_dist_bus2_3; // @[FlexDPEby2.scala 93:30]
   assign my_fan_network_clock = clock;
   assign my_fan_network_reset = reset;
-  assign my_fan_network_io_i_data_bus_0 = {{17'd0}, r_mult_0}; // @[FlexDPEby2.scala 103:34]
-  assign my_fan_network_io_i_data_bus_1 = {{17'd0}, r_mult_1}; // @[FlexDPEby2.scala 103:34]
-  assign my_fan_network_io_i_data_bus_2 = {{17'd0}, r_mult_2}; // @[FlexDPEby2.scala 103:34]
-  assign my_fan_network_io_i_data_bus_3 = {{17'd0}, r_mult_3}; // @[FlexDPEby2.scala 103:34]
-  assign my_fan_network_io_i_add_en_bus_0 = my_controller_io_o_reduction_add_0; // @[FlexDPEby2.scala 104:36]
-  assign my_fan_network_io_i_add_en_bus_1 = my_controller_io_o_reduction_add_1; // @[FlexDPEby2.scala 104:36]
-  assign my_fan_network_io_i_add_en_bus_2 = my_controller_io_o_reduction_add_2; // @[FlexDPEby2.scala 104:36]
+  assign my_fan_network_io_i_valid = my_controller_io_o_reduction_valid; // @[FlexDPEby2.scala 103:31]
+  assign my_fan_network_io_i_data_bus_0 = {{17'd0}, r_mult_0}; // @[FlexDPEby2.scala 104:34]
+  assign my_fan_network_io_i_data_bus_1 = {{17'd0}, r_mult_1}; // @[FlexDPEby2.scala 104:34]
+  assign my_fan_network_io_i_data_bus_2 = {{17'd0}, r_mult_2}; // @[FlexDPEby2.scala 104:34]
+  assign my_fan_network_io_i_data_bus_3 = {{17'd0}, r_mult_3}; // @[FlexDPEby2.scala 104:34]
+  assign my_fan_network_io_i_add_en_bus_0 = my_controller_io_o_reduction_add_0; // @[FlexDPEby2.scala 105:36]
+  assign my_fan_network_io_i_add_en_bus_1 = my_controller_io_o_reduction_add_1; // @[FlexDPEby2.scala 105:36]
+  assign my_fan_network_io_i_add_en_bus_2 = my_controller_io_o_reduction_add_2; // @[FlexDPEby2.scala 105:36]
+  assign my_fan_network_io_i_cmd_bus_0 = my_controller_io_o_reduction_cmd_0; // @[FlexDPEby2.scala 106:33]
+  assign my_fan_network_io_i_cmd_bus_1 = my_controller_io_o_reduction_cmd_1; // @[FlexDPEby2.scala 106:33]
+  assign my_fan_network_io_i_cmd_bus_2 = my_controller_io_o_reduction_cmd_2; // @[FlexDPEby2.scala 106:33]
   always @(posedge clock) begin
-    r_mult_0 <= _GEN_16[14:0]; // @[FlexDPEby2.scala 34:{26,26} 94:14]
-    r_mult_1 <= _GEN_17[14:0]; // @[FlexDPEby2.scala 34:{26,26} 94:14]
-    r_mult_2 <= _GEN_18[14:0]; // @[FlexDPEby2.scala 34:{26,26} 94:14]
-    r_mult_3 <= _GEN_19[14:0]; // @[FlexDPEby2.scala 34:{26,26} 94:14]
+    r_mult_0 <= _GEN_12[14:0]; // @[FlexDPEby2.scala 34:{26,26} 95:14]
+    r_mult_1 <= _GEN_13[14:0]; // @[FlexDPEby2.scala 34:{26,26} 95:14]
+    r_mult_2 <= _GEN_14[14:0]; // @[FlexDPEby2.scala 34:{26,26} 95:14]
+    r_mult_3 <= _GEN_15[14:0]; // @[FlexDPEby2.scala 34:{26,26} 95:14]
     if (reset) begin // @[FlexDPEby2.scala 38:26]
       counter <= 32'h0; // @[FlexDPEby2.scala 38:26]
     end else begin
-      counter <= _counter_T_1; // @[FlexDPEby2.scala 132:13]
+      counter <= _counter_T_1; // @[FlexDPEby2.scala 136:13]
     end
-    if (counter < 32'h3c) begin // @[FlexDPEby2.scala 111:27]
-      if (my_Benes_io_o_dist_bus1_3 == 16'h0) begin // @[FlexDPEby2.scala 114:36]
-        matrix_0_0 <= io_o_adder_0; // @[FlexDPEby2.scala 112:20]
-      end else if (my_Benes_io_o_dist_bus1_2 == 16'h0) begin // @[FlexDPEby2.scala 117:41]
-        matrix_0_0 <= io_o_adder_0; // @[FlexDPEby2.scala 112:20]
-      end else if (my_Benes_io_o_dist_bus1_1 == 16'h0) begin // @[FlexDPEby2.scala 119:41]
-        matrix_0_0 <= {{1'd0}, r_mult_0}; // @[FlexDPEby2.scala 120:23]
+    if (counter < 32'h1a) begin // @[FlexDPEby2.scala 112:27]
+      if (my_Benes_io_o_dist_bus1_1 == 16'h0) begin // @[FlexDPEby2.scala 115:35]
+        matrix_0_0 <= {{1'd0}, r_mult_0}; // @[FlexDPEby2.scala 116:23]
+      end else if (my_Benes_io_o_dist_bus1_0 == 16'h0) begin // @[FlexDPEby2.scala 117:41]
+        matrix_0_0 <= {{1'd0}, r_mult_1}; // @[FlexDPEby2.scala 118:23]
       end else begin
-        matrix_0_0 <= _GEN_0;
+        matrix_0_0 <= io_o_adder_0; // @[FlexDPEby2.scala 113:20]
       end
     end
-    if (counter > 32'h64) begin // @[FlexDPEby2.scala 135:27]
-      if (my_Benes_io_o_dist_bus1_3 == 16'h0) begin // @[FlexDPEby2.scala 114:36]
-        matrix_0_1 <= io_o_adder_0; // @[FlexDPEby2.scala 112:20]
-      end else if (my_Benes_io_o_dist_bus1_2 == 16'h0) begin // @[FlexDPEby2.scala 117:41]
-        matrix_0_1 <= io_o_adder_0; // @[FlexDPEby2.scala 112:20]
-      end else if (my_Benes_io_o_dist_bus1_1 == 16'h0) begin // @[FlexDPEby2.scala 119:41]
-        matrix_0_1 <= {{1'd0}, r_mult_0}; // @[FlexDPEby2.scala 120:23]
+    if (counter > 32'h28) begin // @[FlexDPEby2.scala 139:26]
+      if (my_Benes_io_o_dist_bus1_1 == 16'h0) begin // @[FlexDPEby2.scala 115:35]
+        matrix_0_1 <= {{1'd0}, r_mult_0}; // @[FlexDPEby2.scala 116:23]
+      end else if (my_Benes_io_o_dist_bus1_0 == 16'h0) begin // @[FlexDPEby2.scala 117:41]
+        matrix_0_1 <= {{1'd0}, r_mult_1}; // @[FlexDPEby2.scala 118:23]
       end else begin
-        matrix_0_1 <= _GEN_0;
+        matrix_0_1 <= io_o_adder_0; // @[FlexDPEby2.scala 113:20]
       end
     end
-    if (counter < 32'h3c) begin // @[FlexDPEby2.scala 111:27]
-      if (my_Benes_io_o_dist_bus1_3 == 16'h0) begin // @[FlexDPEby2.scala 114:36]
-        matrix_1_0 <= {{1'd0}, r_mult_2}; // @[FlexDPEby2.scala 115:22]
-      end else if (my_Benes_io_o_dist_bus1_2 == 16'h0) begin // @[FlexDPEby2.scala 117:41]
-        matrix_1_0 <= {{1'd0}, r_mult_3}; // @[FlexDPEby2.scala 118:23]
+    if (counter < 32'h1a) begin // @[FlexDPEby2.scala 112:27]
+      if (my_Benes_io_o_dist_bus1_3 == 16'h0) begin // @[FlexDPEby2.scala 120:36]
+        matrix_1_0 <= {{1'd0}, r_mult_2}; // @[FlexDPEby2.scala 121:22]
+      end else if (my_Benes_io_o_dist_bus1_2 == 16'h0) begin // @[FlexDPEby2.scala 122:41]
+        matrix_1_0 <= {{1'd0}, r_mult_3}; // @[FlexDPEby2.scala 123:23]
       end else begin
-        matrix_1_0 <= io_o_adder_2; // @[FlexDPEby2.scala 113:20]
+        matrix_1_0 <= io_o_adder_2; // @[FlexDPEby2.scala 114:20]
       end
     end
-    if (counter > 32'h64) begin // @[FlexDPEby2.scala 135:27]
-      if (my_Benes_io_o_dist_bus1_3 == 16'h0) begin // @[FlexDPEby2.scala 114:36]
-        matrix_1_1 <= {{1'd0}, r_mult_2}; // @[FlexDPEby2.scala 115:22]
-      end else if (my_Benes_io_o_dist_bus1_2 == 16'h0) begin // @[FlexDPEby2.scala 117:41]
-        matrix_1_1 <= {{1'd0}, r_mult_3}; // @[FlexDPEby2.scala 118:23]
+    if (counter > 32'h28) begin // @[FlexDPEby2.scala 139:26]
+      if (my_Benes_io_o_dist_bus1_3 == 16'h0) begin // @[FlexDPEby2.scala 120:36]
+        matrix_1_1 <= {{1'd0}, r_mult_2}; // @[FlexDPEby2.scala 121:22]
+      end else if (my_Benes_io_o_dist_bus1_2 == 16'h0) begin // @[FlexDPEby2.scala 122:41]
+        matrix_1_1 <= {{1'd0}, r_mult_3}; // @[FlexDPEby2.scala 123:23]
       end else begin
-        matrix_1_1 <= io_o_adder_2; // @[FlexDPEby2.scala 113:20]
+        matrix_1_1 <= io_o_adder_2; // @[FlexDPEby2.scala 114:20]
       end
     end
   end
@@ -4911,70 +5355,71 @@ module FlexDPUby2(
   reg [31:0] _RAND_37;
   reg [31:0] _RAND_38;
   reg [31:0] _RAND_39;
+  reg [31:0] _RAND_40;
 `endif // RANDOMIZE_REG_INIT
-  wire  PF_clock; // @[FlexDPUby2.scala 88:24]
-  wire  PF_reset; // @[FlexDPUby2.scala 88:24]
-  wire [15:0] PF_io_Stationary_matrix_0_0; // @[FlexDPUby2.scala 88:24]
-  wire [15:0] PF_io_Stationary_matrix_0_1; // @[FlexDPUby2.scala 88:24]
-  wire [15:0] PF_io_Stationary_matrix_1_0; // @[FlexDPUby2.scala 88:24]
-  wire [15:0] PF_io_Stationary_matrix_1_1; // @[FlexDPUby2.scala 88:24]
-  wire [15:0] PF_io_Streaming_matrix_0; // @[FlexDPUby2.scala 88:24]
-  wire [15:0] PF_io_Streaming_matrix_1; // @[FlexDPUby2.scala 88:24]
-  wire [3:0] PF_io_i_mux_bus_0_0; // @[FlexDPUby2.scala 88:24]
-  wire [3:0] PF_io_i_mux_bus_0_1; // @[FlexDPUby2.scala 88:24]
-  wire [3:0] PF_io_i_mux_bus_0_2; // @[FlexDPUby2.scala 88:24]
-  wire [3:0] PF_io_i_mux_bus_0_3; // @[FlexDPUby2.scala 88:24]
-  wire [3:0] PF_io_i_mux_bus_1_0; // @[FlexDPUby2.scala 88:24]
-  wire [3:0] PF_io_i_mux_bus_1_1; // @[FlexDPUby2.scala 88:24]
-  wire [3:0] PF_io_i_mux_bus_1_2; // @[FlexDPUby2.scala 88:24]
-  wire [3:0] PF_io_i_mux_bus_1_3; // @[FlexDPUby2.scala 88:24]
-  wire [3:0] PF_io_i_mux_bus_2_0; // @[FlexDPUby2.scala 88:24]
-  wire [3:0] PF_io_i_mux_bus_2_1; // @[FlexDPUby2.scala 88:24]
-  wire [3:0] PF_io_i_mux_bus_2_2; // @[FlexDPUby2.scala 88:24]
-  wire [3:0] PF_io_i_mux_bus_2_3; // @[FlexDPUby2.scala 88:24]
-  wire [3:0] PF_io_i_mux_bus_3_0; // @[FlexDPUby2.scala 88:24]
-  wire [3:0] PF_io_i_mux_bus_3_1; // @[FlexDPUby2.scala 88:24]
-  wire [3:0] PF_io_i_mux_bus_3_2; // @[FlexDPUby2.scala 88:24]
-  wire [3:0] PF_io_i_mux_bus_3_3; // @[FlexDPUby2.scala 88:24]
-  wire [15:0] PF_io_Source_0; // @[FlexDPUby2.scala 88:24]
-  wire [15:0] PF_io_Source_1; // @[FlexDPUby2.scala 88:24]
-  wire [15:0] PF_io_Source_2; // @[FlexDPUby2.scala 88:24]
-  wire [15:0] PF_io_Source_3; // @[FlexDPUby2.scala 88:24]
-  wire  PF_io_PF_Valid; // @[FlexDPUby2.scala 88:24]
-  wire  PF_io_DataValid; // @[FlexDPUby2.scala 88:24]
-  wire  FDPE_clock; // @[FlexDPUby2.scala 119:30]
-  wire  FDPE_reset; // @[FlexDPUby2.scala 119:30]
-  wire  FDPE_io_i_data_valid; // @[FlexDPUby2.scala 119:30]
-  wire [15:0] FDPE_io_i_data_bus_0; // @[FlexDPUby2.scala 119:30]
-  wire [15:0] FDPE_io_i_data_bus_1; // @[FlexDPUby2.scala 119:30]
-  wire [15:0] FDPE_io_i_data_bus_2; // @[FlexDPUby2.scala 119:30]
-  wire [15:0] FDPE_io_i_data_bus_3; // @[FlexDPUby2.scala 119:30]
-  wire [15:0] FDPE_io_i_data_bus2_0; // @[FlexDPUby2.scala 119:30]
-  wire [15:0] FDPE_io_i_data_bus2_1; // @[FlexDPUby2.scala 119:30]
-  wire [15:0] FDPE_io_i_data_bus2_2; // @[FlexDPUby2.scala 119:30]
-  wire [15:0] FDPE_io_i_data_bus2_3; // @[FlexDPUby2.scala 119:30]
-  wire [15:0] FDPE_io_Stationary_matrix_0_0; // @[FlexDPUby2.scala 119:30]
-  wire [15:0] FDPE_io_Stationary_matrix_0_1; // @[FlexDPUby2.scala 119:30]
-  wire [15:0] FDPE_io_Stationary_matrix_1_0; // @[FlexDPUby2.scala 119:30]
-  wire [15:0] FDPE_io_Stationary_matrix_1_1; // @[FlexDPUby2.scala 119:30]
-  wire [15:0] FDPE_io_o_adder_0; // @[FlexDPUby2.scala 119:30]
-  wire [15:0] FDPE_io_o_adder_2; // @[FlexDPUby2.scala 119:30]
-  wire [3:0] FDPE_io_i_mux_bus_0_0; // @[FlexDPUby2.scala 119:30]
-  wire [3:0] FDPE_io_i_mux_bus_0_1; // @[FlexDPUby2.scala 119:30]
-  wire [3:0] FDPE_io_i_mux_bus_0_2; // @[FlexDPUby2.scala 119:30]
-  wire [3:0] FDPE_io_i_mux_bus_0_3; // @[FlexDPUby2.scala 119:30]
-  wire [3:0] FDPE_io_i_mux_bus_1_0; // @[FlexDPUby2.scala 119:30]
-  wire [3:0] FDPE_io_i_mux_bus_1_1; // @[FlexDPUby2.scala 119:30]
-  wire [3:0] FDPE_io_i_mux_bus_1_2; // @[FlexDPUby2.scala 119:30]
-  wire [3:0] FDPE_io_i_mux_bus_1_3; // @[FlexDPUby2.scala 119:30]
-  wire [3:0] FDPE_io_i_mux_bus_2_0; // @[FlexDPUby2.scala 119:30]
-  wire [3:0] FDPE_io_i_mux_bus_2_1; // @[FlexDPUby2.scala 119:30]
-  wire [3:0] FDPE_io_i_mux_bus_2_2; // @[FlexDPUby2.scala 119:30]
-  wire [3:0] FDPE_io_i_mux_bus_2_3; // @[FlexDPUby2.scala 119:30]
-  wire [3:0] FDPE_io_i_mux_bus_3_0; // @[FlexDPUby2.scala 119:30]
-  wire [3:0] FDPE_io_i_mux_bus_3_1; // @[FlexDPUby2.scala 119:30]
-  wire [3:0] FDPE_io_i_mux_bus_3_2; // @[FlexDPUby2.scala 119:30]
-  wire [3:0] FDPE_io_i_mux_bus_3_3; // @[FlexDPUby2.scala 119:30]
+  wire  PF_clock; // @[FlexDPUby2.scala 104:24]
+  wire  PF_reset; // @[FlexDPUby2.scala 104:24]
+  wire [15:0] PF_io_Stationary_matrix_0_0; // @[FlexDPUby2.scala 104:24]
+  wire [15:0] PF_io_Stationary_matrix_0_1; // @[FlexDPUby2.scala 104:24]
+  wire [15:0] PF_io_Stationary_matrix_1_0; // @[FlexDPUby2.scala 104:24]
+  wire [15:0] PF_io_Stationary_matrix_1_1; // @[FlexDPUby2.scala 104:24]
+  wire [15:0] PF_io_Streaming_matrix_0; // @[FlexDPUby2.scala 104:24]
+  wire [15:0] PF_io_Streaming_matrix_1; // @[FlexDPUby2.scala 104:24]
+  wire [3:0] PF_io_i_mux_bus_0_0; // @[FlexDPUby2.scala 104:24]
+  wire [3:0] PF_io_i_mux_bus_0_1; // @[FlexDPUby2.scala 104:24]
+  wire [3:0] PF_io_i_mux_bus_0_2; // @[FlexDPUby2.scala 104:24]
+  wire [3:0] PF_io_i_mux_bus_0_3; // @[FlexDPUby2.scala 104:24]
+  wire [3:0] PF_io_i_mux_bus_1_0; // @[FlexDPUby2.scala 104:24]
+  wire [3:0] PF_io_i_mux_bus_1_1; // @[FlexDPUby2.scala 104:24]
+  wire [3:0] PF_io_i_mux_bus_1_2; // @[FlexDPUby2.scala 104:24]
+  wire [3:0] PF_io_i_mux_bus_1_3; // @[FlexDPUby2.scala 104:24]
+  wire [3:0] PF_io_i_mux_bus_2_0; // @[FlexDPUby2.scala 104:24]
+  wire [3:0] PF_io_i_mux_bus_2_1; // @[FlexDPUby2.scala 104:24]
+  wire [3:0] PF_io_i_mux_bus_2_2; // @[FlexDPUby2.scala 104:24]
+  wire [3:0] PF_io_i_mux_bus_2_3; // @[FlexDPUby2.scala 104:24]
+  wire [3:0] PF_io_i_mux_bus_3_0; // @[FlexDPUby2.scala 104:24]
+  wire [3:0] PF_io_i_mux_bus_3_1; // @[FlexDPUby2.scala 104:24]
+  wire [3:0] PF_io_i_mux_bus_3_2; // @[FlexDPUby2.scala 104:24]
+  wire [3:0] PF_io_i_mux_bus_3_3; // @[FlexDPUby2.scala 104:24]
+  wire [15:0] PF_io_Source_0; // @[FlexDPUby2.scala 104:24]
+  wire [15:0] PF_io_Source_1; // @[FlexDPUby2.scala 104:24]
+  wire [15:0] PF_io_Source_2; // @[FlexDPUby2.scala 104:24]
+  wire [15:0] PF_io_Source_3; // @[FlexDPUby2.scala 104:24]
+  wire  PF_io_PF_Valid; // @[FlexDPUby2.scala 104:24]
+  wire  PF_io_DataValid; // @[FlexDPUby2.scala 104:24]
+  wire  FDPE_clock; // @[FlexDPUby2.scala 137:30]
+  wire  FDPE_reset; // @[FlexDPUby2.scala 137:30]
+  wire  FDPE_io_i_data_valid; // @[FlexDPUby2.scala 137:30]
+  wire [15:0] FDPE_io_i_data_bus_0; // @[FlexDPUby2.scala 137:30]
+  wire [15:0] FDPE_io_i_data_bus_1; // @[FlexDPUby2.scala 137:30]
+  wire [15:0] FDPE_io_i_data_bus_2; // @[FlexDPUby2.scala 137:30]
+  wire [15:0] FDPE_io_i_data_bus_3; // @[FlexDPUby2.scala 137:30]
+  wire [15:0] FDPE_io_i_data_bus2_0; // @[FlexDPUby2.scala 137:30]
+  wire [15:0] FDPE_io_i_data_bus2_1; // @[FlexDPUby2.scala 137:30]
+  wire [15:0] FDPE_io_i_data_bus2_2; // @[FlexDPUby2.scala 137:30]
+  wire [15:0] FDPE_io_i_data_bus2_3; // @[FlexDPUby2.scala 137:30]
+  wire [15:0] FDPE_io_Stationary_matrix_0_0; // @[FlexDPUby2.scala 137:30]
+  wire [15:0] FDPE_io_Stationary_matrix_0_1; // @[FlexDPUby2.scala 137:30]
+  wire [15:0] FDPE_io_Stationary_matrix_1_0; // @[FlexDPUby2.scala 137:30]
+  wire [15:0] FDPE_io_Stationary_matrix_1_1; // @[FlexDPUby2.scala 137:30]
+  wire [15:0] FDPE_io_o_adder_0; // @[FlexDPUby2.scala 137:30]
+  wire [15:0] FDPE_io_o_adder_2; // @[FlexDPUby2.scala 137:30]
+  wire [3:0] FDPE_io_i_mux_bus_0_0; // @[FlexDPUby2.scala 137:30]
+  wire [3:0] FDPE_io_i_mux_bus_0_1; // @[FlexDPUby2.scala 137:30]
+  wire [3:0] FDPE_io_i_mux_bus_0_2; // @[FlexDPUby2.scala 137:30]
+  wire [3:0] FDPE_io_i_mux_bus_0_3; // @[FlexDPUby2.scala 137:30]
+  wire [3:0] FDPE_io_i_mux_bus_1_0; // @[FlexDPUby2.scala 137:30]
+  wire [3:0] FDPE_io_i_mux_bus_1_1; // @[FlexDPUby2.scala 137:30]
+  wire [3:0] FDPE_io_i_mux_bus_1_2; // @[FlexDPUby2.scala 137:30]
+  wire [3:0] FDPE_io_i_mux_bus_1_3; // @[FlexDPUby2.scala 137:30]
+  wire [3:0] FDPE_io_i_mux_bus_2_0; // @[FlexDPUby2.scala 137:30]
+  wire [3:0] FDPE_io_i_mux_bus_2_1; // @[FlexDPUby2.scala 137:30]
+  wire [3:0] FDPE_io_i_mux_bus_2_2; // @[FlexDPUby2.scala 137:30]
+  wire [3:0] FDPE_io_i_mux_bus_2_3; // @[FlexDPUby2.scala 137:30]
+  wire [3:0] FDPE_io_i_mux_bus_3_0; // @[FlexDPUby2.scala 137:30]
+  wire [3:0] FDPE_io_i_mux_bus_3_1; // @[FlexDPUby2.scala 137:30]
+  wire [3:0] FDPE_io_i_mux_bus_3_2; // @[FlexDPUby2.scala 137:30]
+  wire [3:0] FDPE_io_i_mux_bus_3_3; // @[FlexDPUby2.scala 137:30]
   reg [31:0] DPEDest_0_0; // @[FlexDPUby2.scala 15:26]
   reg [31:0] DPEDest_0_1; // @[FlexDPUby2.scala 15:26]
   reg [31:0] DPEDest_0_2; // @[FlexDPUby2.scala 15:26]
@@ -4989,248 +5434,259 @@ module FlexDPUby2(
   reg [31:0] SindexCol; // @[FlexDPUby2.scala 21:28]
   reg [31:0] iloop; // @[FlexDPUby2.scala 22:24]
   reg [31:0] jloop; // @[FlexDPUby2.scala 23:24]
+  reg  Statvalid; // @[FlexDPUby2.scala 24:28]
   reg  SrcDestValid; // @[FlexDPUby2.scala 25:31]
+  wire  _SrcDestValid_T = iloop == 32'h1; // @[FlexDPUby2.scala 26:28]
   wire  _SrcDestValid_T_1 = jloop == 32'h1; // @[FlexDPUby2.scala 26:65]
   wire  _SrcDestValid_T_2 = iloop == 32'h1 & jloop == 32'h1; // @[FlexDPUby2.scala 26:55]
-  wire  _GEN_105 = ~iloop[0]; // @[FlexDPUby2.scala 32:{46,46}]
-  wire [15:0] _GEN_1 = ~iloop[0] & jloop[0] ? io_Stationary_matrix_0_1 : io_Stationary_matrix_0_0; // @[FlexDPUby2.scala 32:{46,46}]
-  wire  _GEN_106 = ~jloop[0]; // @[FlexDPUby2.scala 32:{46,46}]
-  wire [15:0] _GEN_2 = iloop[0] & ~jloop[0] ? io_Stationary_matrix_1_0 : _GEN_1; // @[FlexDPUby2.scala 32:{46,46}]
-  wire [15:0] _GEN_3 = iloop[0] & jloop[0] ? io_Stationary_matrix_1_1 : _GEN_2; // @[FlexDPUby2.scala 32:{46,46}]
-  wire [31:0] _DPEDest_T_3_T_4 = {{16'd0}, _GEN_3}; // @[FlexDPUby2.scala 33:{37,37}]
-  wire [31:0] _indexCol_T_1 = indexCol + 32'h1; // @[FlexDPUby2.scala 34:30]
-  wire [15:0] _GEN_26 = _GEN_106 & iloop[0] ? io_Streaming_matrix_0_1 : io_Streaming_matrix_0_0; // @[FlexDPUby2.scala 36:{45,45}]
-  wire [15:0] _GEN_27 = jloop[0] & _GEN_105 ? io_Streaming_matrix_1_0 : _GEN_26; // @[FlexDPUby2.scala 36:{45,45}]
-  wire [15:0] _GEN_28 = jloop[0] & iloop[0] ? io_Streaming_matrix_1_1 : _GEN_27; // @[FlexDPUby2.scala 36:{45,45}]
-  wire [31:0] _DPESrc_T_8_T_9 = {{16'd0}, _GEN_28}; // @[FlexDPUby2.scala 37:{38,38}]
-  wire [31:0] _SindexCol_T_1 = SindexCol + 32'h1; // @[FlexDPUby2.scala 38:32]
-  wire  _T_10 = SindexCol == 32'h1; // @[FlexDPUby2.scala 41:21]
-  wire [31:0] _SindexRow_T_1 = SindexRow + 32'h1; // @[FlexDPUby2.scala 45:32]
-  wire  _T_14 = indexCol == 32'h3; // @[FlexDPUby2.scala 49:20]
-  wire [31:0] _indexRow_T_1 = indexRow + 32'h1; // @[FlexDPUby2.scala 53:30]
-  wire [31:0] _iloop_T_1 = iloop + 32'h1; // @[FlexDPUby2.scala 59:24]
-  wire [31:0] _jloop_T_1 = jloop + 32'h1; // @[FlexDPUby2.scala 63:24]
-  reg [31:0] src_0; // @[FlexDPUby2.scala 79:22]
-  reg [31:0] src_1; // @[FlexDPUby2.scala 79:22]
-  reg [31:0] src_2; // @[FlexDPUby2.scala 79:22]
-  reg [31:0] src_3; // @[FlexDPUby2.scala 79:22]
-  reg [3:0] muxes_0_0; // @[FlexDPUby2.scala 80:24]
-  reg [3:0] muxes_0_1; // @[FlexDPUby2.scala 80:24]
-  reg [3:0] muxes_0_2; // @[FlexDPUby2.scala 80:24]
-  reg [3:0] muxes_0_3; // @[FlexDPUby2.scala 80:24]
-  reg [3:0] muxes_1_0; // @[FlexDPUby2.scala 80:24]
-  reg [3:0] muxes_1_1; // @[FlexDPUby2.scala 80:24]
-  reg [3:0] muxes_1_2; // @[FlexDPUby2.scala 80:24]
-  reg [3:0] muxes_1_3; // @[FlexDPUby2.scala 80:24]
-  reg [3:0] muxes_2_0; // @[FlexDPUby2.scala 80:24]
-  reg [3:0] muxes_2_1; // @[FlexDPUby2.scala 80:24]
-  reg [3:0] muxes_2_2; // @[FlexDPUby2.scala 80:24]
-  reg [3:0] muxes_2_3; // @[FlexDPUby2.scala 80:24]
-  reg [3:0] muxes_3_0; // @[FlexDPUby2.scala 80:24]
-  reg [3:0] muxes_3_1; // @[FlexDPUby2.scala 80:24]
-  reg [3:0] muxes_3_2; // @[FlexDPUby2.scala 80:24]
-  reg [3:0] muxes_3_3; // @[FlexDPUby2.scala 80:24]
-  reg [31:0] dest_0; // @[FlexDPUby2.scala 81:23]
-  reg [31:0] dest_1; // @[FlexDPUby2.scala 81:23]
-  reg [31:0] dest_2; // @[FlexDPUby2.scala 81:23]
-  reg [31:0] dest_3; // @[FlexDPUby2.scala 81:23]
-  reg  iterationChange; // @[FlexDPUby2.scala 86:34]
-  wire [31:0] _GEN_54 = iterationChange ? DPESrc_1_0 : DPESrc_0_0; // @[FlexDPUby2.scala 90:{32,32}]
-  wire [31:0] _GEN_56 = iterationChange ? DPESrc_1_1 : DPESrc_0_1; // @[FlexDPUby2.scala 90:{32,32}]
-  wire  _GEN_57 = PF_io_PF_Valid ? iterationChange + 1'h1 : iterationChange; // @[FlexDPUby2.scala 104:36 105:29 86:34]
-  wire [3:0] _FDPE_io_i_mux_bus_0_0_rev_T_2 = {muxes_0_0[0], 3'h0}; // @[FlexDPUby2.scala 74:35]
-  wire [3:0] _FDPE_io_i_mux_bus_0_0_rev_T_4 = {{1'd0}, muxes_0_0[3:1]}; // @[FlexDPUby2.scala 74:24]
-  wire [2:0] _GEN_130 = {_FDPE_io_i_mux_bus_0_0_rev_T_4[0], 2'h0}; // @[FlexDPUby2.scala 74:35]
-  wire [3:0] _FDPE_io_i_mux_bus_0_0_rev_T_6 = {{1'd0}, _GEN_130}; // @[FlexDPUby2.scala 74:35]
-  wire [3:0] _FDPE_io_i_mux_bus_0_0_rev_T_7 = _FDPE_io_i_mux_bus_0_0_rev_T_2 | _FDPE_io_i_mux_bus_0_0_rev_T_6; // @[FlexDPUby2.scala 74:17]
-  wire [3:0] _FDPE_io_i_mux_bus_0_0_rev_T_8 = {{2'd0}, muxes_0_0[3:2]}; // @[FlexDPUby2.scala 74:24]
-  wire [1:0] _FDPE_io_i_mux_bus_0_0_rev_T_10 = {_FDPE_io_i_mux_bus_0_0_rev_T_8[0], 1'h0}; // @[FlexDPUby2.scala 74:35]
-  wire [3:0] _GEN_132 = {{2'd0}, _FDPE_io_i_mux_bus_0_0_rev_T_10}; // @[FlexDPUby2.scala 74:17]
-  wire [3:0] _FDPE_io_i_mux_bus_0_0_rev_T_11 = _FDPE_io_i_mux_bus_0_0_rev_T_7 | _GEN_132; // @[FlexDPUby2.scala 74:17]
-  wire [3:0] _FDPE_io_i_mux_bus_0_0_rev_T_12 = {{3'd0}, muxes_0_0[3]}; // @[FlexDPUby2.scala 74:24]
-  wire [1:0] _FDPE_io_i_mux_bus_0_0_rev_T_14 = {{1'd0}, _FDPE_io_i_mux_bus_0_0_rev_T_12[0]}; // @[FlexDPUby2.scala 74:35]
-  wire [3:0] _GEN_134 = {{2'd0}, _FDPE_io_i_mux_bus_0_0_rev_T_14}; // @[FlexDPUby2.scala 74:17]
-  wire [3:0] _FDPE_io_i_mux_bus_0_1_rev_T_2 = {muxes_0_1[0], 3'h0}; // @[FlexDPUby2.scala 74:35]
-  wire [3:0] _FDPE_io_i_mux_bus_0_1_rev_T_4 = {{1'd0}, muxes_0_1[3:1]}; // @[FlexDPUby2.scala 74:24]
-  wire [2:0] _GEN_136 = {_FDPE_io_i_mux_bus_0_1_rev_T_4[0], 2'h0}; // @[FlexDPUby2.scala 74:35]
-  wire [3:0] _FDPE_io_i_mux_bus_0_1_rev_T_6 = {{1'd0}, _GEN_136}; // @[FlexDPUby2.scala 74:35]
-  wire [3:0] _FDPE_io_i_mux_bus_0_1_rev_T_7 = _FDPE_io_i_mux_bus_0_1_rev_T_2 | _FDPE_io_i_mux_bus_0_1_rev_T_6; // @[FlexDPUby2.scala 74:17]
-  wire [3:0] _FDPE_io_i_mux_bus_0_1_rev_T_8 = {{2'd0}, muxes_0_1[3:2]}; // @[FlexDPUby2.scala 74:24]
-  wire [1:0] _FDPE_io_i_mux_bus_0_1_rev_T_10 = {_FDPE_io_i_mux_bus_0_1_rev_T_8[0], 1'h0}; // @[FlexDPUby2.scala 74:35]
-  wire [3:0] _GEN_138 = {{2'd0}, _FDPE_io_i_mux_bus_0_1_rev_T_10}; // @[FlexDPUby2.scala 74:17]
-  wire [3:0] _FDPE_io_i_mux_bus_0_1_rev_T_11 = _FDPE_io_i_mux_bus_0_1_rev_T_7 | _GEN_138; // @[FlexDPUby2.scala 74:17]
-  wire [3:0] _FDPE_io_i_mux_bus_0_1_rev_T_12 = {{3'd0}, muxes_0_1[3]}; // @[FlexDPUby2.scala 74:24]
-  wire [1:0] _FDPE_io_i_mux_bus_0_1_rev_T_14 = {{1'd0}, _FDPE_io_i_mux_bus_0_1_rev_T_12[0]}; // @[FlexDPUby2.scala 74:35]
-  wire [3:0] _GEN_140 = {{2'd0}, _FDPE_io_i_mux_bus_0_1_rev_T_14}; // @[FlexDPUby2.scala 74:17]
-  wire [3:0] _FDPE_io_i_mux_bus_0_2_rev_T_2 = {muxes_0_2[0], 3'h0}; // @[FlexDPUby2.scala 74:35]
-  wire [3:0] _FDPE_io_i_mux_bus_0_2_rev_T_4 = {{1'd0}, muxes_0_2[3:1]}; // @[FlexDPUby2.scala 74:24]
-  wire [2:0] _GEN_142 = {_FDPE_io_i_mux_bus_0_2_rev_T_4[0], 2'h0}; // @[FlexDPUby2.scala 74:35]
-  wire [3:0] _FDPE_io_i_mux_bus_0_2_rev_T_6 = {{1'd0}, _GEN_142}; // @[FlexDPUby2.scala 74:35]
-  wire [3:0] _FDPE_io_i_mux_bus_0_2_rev_T_7 = _FDPE_io_i_mux_bus_0_2_rev_T_2 | _FDPE_io_i_mux_bus_0_2_rev_T_6; // @[FlexDPUby2.scala 74:17]
-  wire [3:0] _FDPE_io_i_mux_bus_0_2_rev_T_8 = {{2'd0}, muxes_0_2[3:2]}; // @[FlexDPUby2.scala 74:24]
-  wire [1:0] _FDPE_io_i_mux_bus_0_2_rev_T_10 = {_FDPE_io_i_mux_bus_0_2_rev_T_8[0], 1'h0}; // @[FlexDPUby2.scala 74:35]
-  wire [3:0] _GEN_144 = {{2'd0}, _FDPE_io_i_mux_bus_0_2_rev_T_10}; // @[FlexDPUby2.scala 74:17]
-  wire [3:0] _FDPE_io_i_mux_bus_0_2_rev_T_11 = _FDPE_io_i_mux_bus_0_2_rev_T_7 | _GEN_144; // @[FlexDPUby2.scala 74:17]
-  wire [3:0] _FDPE_io_i_mux_bus_0_2_rev_T_12 = {{3'd0}, muxes_0_2[3]}; // @[FlexDPUby2.scala 74:24]
-  wire [1:0] _FDPE_io_i_mux_bus_0_2_rev_T_14 = {{1'd0}, _FDPE_io_i_mux_bus_0_2_rev_T_12[0]}; // @[FlexDPUby2.scala 74:35]
-  wire [3:0] _GEN_146 = {{2'd0}, _FDPE_io_i_mux_bus_0_2_rev_T_14}; // @[FlexDPUby2.scala 74:17]
-  wire [3:0] _FDPE_io_i_mux_bus_0_3_rev_T_2 = {muxes_0_3[0], 3'h0}; // @[FlexDPUby2.scala 74:35]
-  wire [3:0] _FDPE_io_i_mux_bus_0_3_rev_T_4 = {{1'd0}, muxes_0_3[3:1]}; // @[FlexDPUby2.scala 74:24]
-  wire [2:0] _GEN_148 = {_FDPE_io_i_mux_bus_0_3_rev_T_4[0], 2'h0}; // @[FlexDPUby2.scala 74:35]
-  wire [3:0] _FDPE_io_i_mux_bus_0_3_rev_T_6 = {{1'd0}, _GEN_148}; // @[FlexDPUby2.scala 74:35]
-  wire [3:0] _FDPE_io_i_mux_bus_0_3_rev_T_7 = _FDPE_io_i_mux_bus_0_3_rev_T_2 | _FDPE_io_i_mux_bus_0_3_rev_T_6; // @[FlexDPUby2.scala 74:17]
-  wire [3:0] _FDPE_io_i_mux_bus_0_3_rev_T_8 = {{2'd0}, muxes_0_3[3:2]}; // @[FlexDPUby2.scala 74:24]
-  wire [1:0] _FDPE_io_i_mux_bus_0_3_rev_T_10 = {_FDPE_io_i_mux_bus_0_3_rev_T_8[0], 1'h0}; // @[FlexDPUby2.scala 74:35]
-  wire [3:0] _GEN_150 = {{2'd0}, _FDPE_io_i_mux_bus_0_3_rev_T_10}; // @[FlexDPUby2.scala 74:17]
-  wire [3:0] _FDPE_io_i_mux_bus_0_3_rev_T_11 = _FDPE_io_i_mux_bus_0_3_rev_T_7 | _GEN_150; // @[FlexDPUby2.scala 74:17]
-  wire [3:0] _FDPE_io_i_mux_bus_0_3_rev_T_12 = {{3'd0}, muxes_0_3[3]}; // @[FlexDPUby2.scala 74:24]
-  wire [1:0] _FDPE_io_i_mux_bus_0_3_rev_T_14 = {{1'd0}, _FDPE_io_i_mux_bus_0_3_rev_T_12[0]}; // @[FlexDPUby2.scala 74:35]
-  wire [3:0] _GEN_152 = {{2'd0}, _FDPE_io_i_mux_bus_0_3_rev_T_14}; // @[FlexDPUby2.scala 74:17]
-  wire [3:0] _FDPE_io_i_mux_bus_1_0_rev_T_2 = {muxes_1_0[0], 3'h0}; // @[FlexDPUby2.scala 74:35]
-  wire [3:0] _FDPE_io_i_mux_bus_1_0_rev_T_4 = {{1'd0}, muxes_1_0[3:1]}; // @[FlexDPUby2.scala 74:24]
-  wire [2:0] _GEN_154 = {_FDPE_io_i_mux_bus_1_0_rev_T_4[0], 2'h0}; // @[FlexDPUby2.scala 74:35]
-  wire [3:0] _FDPE_io_i_mux_bus_1_0_rev_T_6 = {{1'd0}, _GEN_154}; // @[FlexDPUby2.scala 74:35]
-  wire [3:0] _FDPE_io_i_mux_bus_1_0_rev_T_7 = _FDPE_io_i_mux_bus_1_0_rev_T_2 | _FDPE_io_i_mux_bus_1_0_rev_T_6; // @[FlexDPUby2.scala 74:17]
-  wire [3:0] _FDPE_io_i_mux_bus_1_0_rev_T_8 = {{2'd0}, muxes_1_0[3:2]}; // @[FlexDPUby2.scala 74:24]
-  wire [1:0] _FDPE_io_i_mux_bus_1_0_rev_T_10 = {_FDPE_io_i_mux_bus_1_0_rev_T_8[0], 1'h0}; // @[FlexDPUby2.scala 74:35]
-  wire [3:0] _GEN_156 = {{2'd0}, _FDPE_io_i_mux_bus_1_0_rev_T_10}; // @[FlexDPUby2.scala 74:17]
-  wire [3:0] _FDPE_io_i_mux_bus_1_0_rev_T_11 = _FDPE_io_i_mux_bus_1_0_rev_T_7 | _GEN_156; // @[FlexDPUby2.scala 74:17]
-  wire [3:0] _FDPE_io_i_mux_bus_1_0_rev_T_12 = {{3'd0}, muxes_1_0[3]}; // @[FlexDPUby2.scala 74:24]
-  wire [1:0] _FDPE_io_i_mux_bus_1_0_rev_T_14 = {{1'd0}, _FDPE_io_i_mux_bus_1_0_rev_T_12[0]}; // @[FlexDPUby2.scala 74:35]
-  wire [3:0] _GEN_158 = {{2'd0}, _FDPE_io_i_mux_bus_1_0_rev_T_14}; // @[FlexDPUby2.scala 74:17]
-  wire [3:0] _FDPE_io_i_mux_bus_1_1_rev_T_2 = {muxes_1_1[0], 3'h0}; // @[FlexDPUby2.scala 74:35]
-  wire [3:0] _FDPE_io_i_mux_bus_1_1_rev_T_4 = {{1'd0}, muxes_1_1[3:1]}; // @[FlexDPUby2.scala 74:24]
-  wire [2:0] _GEN_160 = {_FDPE_io_i_mux_bus_1_1_rev_T_4[0], 2'h0}; // @[FlexDPUby2.scala 74:35]
-  wire [3:0] _FDPE_io_i_mux_bus_1_1_rev_T_6 = {{1'd0}, _GEN_160}; // @[FlexDPUby2.scala 74:35]
-  wire [3:0] _FDPE_io_i_mux_bus_1_1_rev_T_7 = _FDPE_io_i_mux_bus_1_1_rev_T_2 | _FDPE_io_i_mux_bus_1_1_rev_T_6; // @[FlexDPUby2.scala 74:17]
-  wire [3:0] _FDPE_io_i_mux_bus_1_1_rev_T_8 = {{2'd0}, muxes_1_1[3:2]}; // @[FlexDPUby2.scala 74:24]
-  wire [1:0] _FDPE_io_i_mux_bus_1_1_rev_T_10 = {_FDPE_io_i_mux_bus_1_1_rev_T_8[0], 1'h0}; // @[FlexDPUby2.scala 74:35]
-  wire [3:0] _GEN_162 = {{2'd0}, _FDPE_io_i_mux_bus_1_1_rev_T_10}; // @[FlexDPUby2.scala 74:17]
-  wire [3:0] _FDPE_io_i_mux_bus_1_1_rev_T_11 = _FDPE_io_i_mux_bus_1_1_rev_T_7 | _GEN_162; // @[FlexDPUby2.scala 74:17]
-  wire [3:0] _FDPE_io_i_mux_bus_1_1_rev_T_12 = {{3'd0}, muxes_1_1[3]}; // @[FlexDPUby2.scala 74:24]
-  wire [1:0] _FDPE_io_i_mux_bus_1_1_rev_T_14 = {{1'd0}, _FDPE_io_i_mux_bus_1_1_rev_T_12[0]}; // @[FlexDPUby2.scala 74:35]
-  wire [3:0] _GEN_164 = {{2'd0}, _FDPE_io_i_mux_bus_1_1_rev_T_14}; // @[FlexDPUby2.scala 74:17]
-  wire [3:0] _FDPE_io_i_mux_bus_1_2_rev_T_2 = {muxes_1_2[0], 3'h0}; // @[FlexDPUby2.scala 74:35]
-  wire [3:0] _FDPE_io_i_mux_bus_1_2_rev_T_4 = {{1'd0}, muxes_1_2[3:1]}; // @[FlexDPUby2.scala 74:24]
-  wire [2:0] _GEN_166 = {_FDPE_io_i_mux_bus_1_2_rev_T_4[0], 2'h0}; // @[FlexDPUby2.scala 74:35]
-  wire [3:0] _FDPE_io_i_mux_bus_1_2_rev_T_6 = {{1'd0}, _GEN_166}; // @[FlexDPUby2.scala 74:35]
-  wire [3:0] _FDPE_io_i_mux_bus_1_2_rev_T_7 = _FDPE_io_i_mux_bus_1_2_rev_T_2 | _FDPE_io_i_mux_bus_1_2_rev_T_6; // @[FlexDPUby2.scala 74:17]
-  wire [3:0] _FDPE_io_i_mux_bus_1_2_rev_T_8 = {{2'd0}, muxes_1_2[3:2]}; // @[FlexDPUby2.scala 74:24]
-  wire [1:0] _FDPE_io_i_mux_bus_1_2_rev_T_10 = {_FDPE_io_i_mux_bus_1_2_rev_T_8[0], 1'h0}; // @[FlexDPUby2.scala 74:35]
-  wire [3:0] _GEN_168 = {{2'd0}, _FDPE_io_i_mux_bus_1_2_rev_T_10}; // @[FlexDPUby2.scala 74:17]
-  wire [3:0] _FDPE_io_i_mux_bus_1_2_rev_T_11 = _FDPE_io_i_mux_bus_1_2_rev_T_7 | _GEN_168; // @[FlexDPUby2.scala 74:17]
-  wire [3:0] _FDPE_io_i_mux_bus_1_2_rev_T_12 = {{3'd0}, muxes_1_2[3]}; // @[FlexDPUby2.scala 74:24]
-  wire [1:0] _FDPE_io_i_mux_bus_1_2_rev_T_14 = {{1'd0}, _FDPE_io_i_mux_bus_1_2_rev_T_12[0]}; // @[FlexDPUby2.scala 74:35]
-  wire [3:0] _GEN_170 = {{2'd0}, _FDPE_io_i_mux_bus_1_2_rev_T_14}; // @[FlexDPUby2.scala 74:17]
-  wire [3:0] _FDPE_io_i_mux_bus_1_3_rev_T_2 = {muxes_1_3[0], 3'h0}; // @[FlexDPUby2.scala 74:35]
-  wire [3:0] _FDPE_io_i_mux_bus_1_3_rev_T_4 = {{1'd0}, muxes_1_3[3:1]}; // @[FlexDPUby2.scala 74:24]
-  wire [2:0] _GEN_172 = {_FDPE_io_i_mux_bus_1_3_rev_T_4[0], 2'h0}; // @[FlexDPUby2.scala 74:35]
-  wire [3:0] _FDPE_io_i_mux_bus_1_3_rev_T_6 = {{1'd0}, _GEN_172}; // @[FlexDPUby2.scala 74:35]
-  wire [3:0] _FDPE_io_i_mux_bus_1_3_rev_T_7 = _FDPE_io_i_mux_bus_1_3_rev_T_2 | _FDPE_io_i_mux_bus_1_3_rev_T_6; // @[FlexDPUby2.scala 74:17]
-  wire [3:0] _FDPE_io_i_mux_bus_1_3_rev_T_8 = {{2'd0}, muxes_1_3[3:2]}; // @[FlexDPUby2.scala 74:24]
-  wire [1:0] _FDPE_io_i_mux_bus_1_3_rev_T_10 = {_FDPE_io_i_mux_bus_1_3_rev_T_8[0], 1'h0}; // @[FlexDPUby2.scala 74:35]
-  wire [3:0] _GEN_174 = {{2'd0}, _FDPE_io_i_mux_bus_1_3_rev_T_10}; // @[FlexDPUby2.scala 74:17]
-  wire [3:0] _FDPE_io_i_mux_bus_1_3_rev_T_11 = _FDPE_io_i_mux_bus_1_3_rev_T_7 | _GEN_174; // @[FlexDPUby2.scala 74:17]
-  wire [3:0] _FDPE_io_i_mux_bus_1_3_rev_T_12 = {{3'd0}, muxes_1_3[3]}; // @[FlexDPUby2.scala 74:24]
-  wire [1:0] _FDPE_io_i_mux_bus_1_3_rev_T_14 = {{1'd0}, _FDPE_io_i_mux_bus_1_3_rev_T_12[0]}; // @[FlexDPUby2.scala 74:35]
-  wire [3:0] _GEN_176 = {{2'd0}, _FDPE_io_i_mux_bus_1_3_rev_T_14}; // @[FlexDPUby2.scala 74:17]
-  wire [3:0] _FDPE_io_i_mux_bus_2_0_rev_T_2 = {muxes_2_0[0], 3'h0}; // @[FlexDPUby2.scala 74:35]
-  wire [3:0] _FDPE_io_i_mux_bus_2_0_rev_T_4 = {{1'd0}, muxes_2_0[3:1]}; // @[FlexDPUby2.scala 74:24]
-  wire [2:0] _GEN_178 = {_FDPE_io_i_mux_bus_2_0_rev_T_4[0], 2'h0}; // @[FlexDPUby2.scala 74:35]
-  wire [3:0] _FDPE_io_i_mux_bus_2_0_rev_T_6 = {{1'd0}, _GEN_178}; // @[FlexDPUby2.scala 74:35]
-  wire [3:0] _FDPE_io_i_mux_bus_2_0_rev_T_7 = _FDPE_io_i_mux_bus_2_0_rev_T_2 | _FDPE_io_i_mux_bus_2_0_rev_T_6; // @[FlexDPUby2.scala 74:17]
-  wire [3:0] _FDPE_io_i_mux_bus_2_0_rev_T_8 = {{2'd0}, muxes_2_0[3:2]}; // @[FlexDPUby2.scala 74:24]
-  wire [1:0] _FDPE_io_i_mux_bus_2_0_rev_T_10 = {_FDPE_io_i_mux_bus_2_0_rev_T_8[0], 1'h0}; // @[FlexDPUby2.scala 74:35]
-  wire [3:0] _GEN_180 = {{2'd0}, _FDPE_io_i_mux_bus_2_0_rev_T_10}; // @[FlexDPUby2.scala 74:17]
-  wire [3:0] _FDPE_io_i_mux_bus_2_0_rev_T_11 = _FDPE_io_i_mux_bus_2_0_rev_T_7 | _GEN_180; // @[FlexDPUby2.scala 74:17]
-  wire [3:0] _FDPE_io_i_mux_bus_2_0_rev_T_12 = {{3'd0}, muxes_2_0[3]}; // @[FlexDPUby2.scala 74:24]
-  wire [1:0] _FDPE_io_i_mux_bus_2_0_rev_T_14 = {{1'd0}, _FDPE_io_i_mux_bus_2_0_rev_T_12[0]}; // @[FlexDPUby2.scala 74:35]
-  wire [3:0] _GEN_182 = {{2'd0}, _FDPE_io_i_mux_bus_2_0_rev_T_14}; // @[FlexDPUby2.scala 74:17]
-  wire [3:0] _FDPE_io_i_mux_bus_2_1_rev_T_2 = {muxes_2_1[0], 3'h0}; // @[FlexDPUby2.scala 74:35]
-  wire [3:0] _FDPE_io_i_mux_bus_2_1_rev_T_4 = {{1'd0}, muxes_2_1[3:1]}; // @[FlexDPUby2.scala 74:24]
-  wire [2:0] _GEN_184 = {_FDPE_io_i_mux_bus_2_1_rev_T_4[0], 2'h0}; // @[FlexDPUby2.scala 74:35]
-  wire [3:0] _FDPE_io_i_mux_bus_2_1_rev_T_6 = {{1'd0}, _GEN_184}; // @[FlexDPUby2.scala 74:35]
-  wire [3:0] _FDPE_io_i_mux_bus_2_1_rev_T_7 = _FDPE_io_i_mux_bus_2_1_rev_T_2 | _FDPE_io_i_mux_bus_2_1_rev_T_6; // @[FlexDPUby2.scala 74:17]
-  wire [3:0] _FDPE_io_i_mux_bus_2_1_rev_T_8 = {{2'd0}, muxes_2_1[3:2]}; // @[FlexDPUby2.scala 74:24]
-  wire [1:0] _FDPE_io_i_mux_bus_2_1_rev_T_10 = {_FDPE_io_i_mux_bus_2_1_rev_T_8[0], 1'h0}; // @[FlexDPUby2.scala 74:35]
-  wire [3:0] _GEN_186 = {{2'd0}, _FDPE_io_i_mux_bus_2_1_rev_T_10}; // @[FlexDPUby2.scala 74:17]
-  wire [3:0] _FDPE_io_i_mux_bus_2_1_rev_T_11 = _FDPE_io_i_mux_bus_2_1_rev_T_7 | _GEN_186; // @[FlexDPUby2.scala 74:17]
-  wire [3:0] _FDPE_io_i_mux_bus_2_1_rev_T_12 = {{3'd0}, muxes_2_1[3]}; // @[FlexDPUby2.scala 74:24]
-  wire [1:0] _FDPE_io_i_mux_bus_2_1_rev_T_14 = {{1'd0}, _FDPE_io_i_mux_bus_2_1_rev_T_12[0]}; // @[FlexDPUby2.scala 74:35]
-  wire [3:0] _GEN_188 = {{2'd0}, _FDPE_io_i_mux_bus_2_1_rev_T_14}; // @[FlexDPUby2.scala 74:17]
-  wire [3:0] _FDPE_io_i_mux_bus_2_2_rev_T_2 = {muxes_2_2[0], 3'h0}; // @[FlexDPUby2.scala 74:35]
-  wire [3:0] _FDPE_io_i_mux_bus_2_2_rev_T_4 = {{1'd0}, muxes_2_2[3:1]}; // @[FlexDPUby2.scala 74:24]
-  wire [2:0] _GEN_190 = {_FDPE_io_i_mux_bus_2_2_rev_T_4[0], 2'h0}; // @[FlexDPUby2.scala 74:35]
-  wire [3:0] _FDPE_io_i_mux_bus_2_2_rev_T_6 = {{1'd0}, _GEN_190}; // @[FlexDPUby2.scala 74:35]
-  wire [3:0] _FDPE_io_i_mux_bus_2_2_rev_T_7 = _FDPE_io_i_mux_bus_2_2_rev_T_2 | _FDPE_io_i_mux_bus_2_2_rev_T_6; // @[FlexDPUby2.scala 74:17]
-  wire [3:0] _FDPE_io_i_mux_bus_2_2_rev_T_8 = {{2'd0}, muxes_2_2[3:2]}; // @[FlexDPUby2.scala 74:24]
-  wire [1:0] _FDPE_io_i_mux_bus_2_2_rev_T_10 = {_FDPE_io_i_mux_bus_2_2_rev_T_8[0], 1'h0}; // @[FlexDPUby2.scala 74:35]
-  wire [3:0] _GEN_192 = {{2'd0}, _FDPE_io_i_mux_bus_2_2_rev_T_10}; // @[FlexDPUby2.scala 74:17]
-  wire [3:0] _FDPE_io_i_mux_bus_2_2_rev_T_11 = _FDPE_io_i_mux_bus_2_2_rev_T_7 | _GEN_192; // @[FlexDPUby2.scala 74:17]
-  wire [3:0] _FDPE_io_i_mux_bus_2_2_rev_T_12 = {{3'd0}, muxes_2_2[3]}; // @[FlexDPUby2.scala 74:24]
-  wire [1:0] _FDPE_io_i_mux_bus_2_2_rev_T_14 = {{1'd0}, _FDPE_io_i_mux_bus_2_2_rev_T_12[0]}; // @[FlexDPUby2.scala 74:35]
-  wire [3:0] _GEN_194 = {{2'd0}, _FDPE_io_i_mux_bus_2_2_rev_T_14}; // @[FlexDPUby2.scala 74:17]
-  wire [3:0] _FDPE_io_i_mux_bus_2_3_rev_T_2 = {muxes_2_3[0], 3'h0}; // @[FlexDPUby2.scala 74:35]
-  wire [3:0] _FDPE_io_i_mux_bus_2_3_rev_T_4 = {{1'd0}, muxes_2_3[3:1]}; // @[FlexDPUby2.scala 74:24]
-  wire [2:0] _GEN_196 = {_FDPE_io_i_mux_bus_2_3_rev_T_4[0], 2'h0}; // @[FlexDPUby2.scala 74:35]
-  wire [3:0] _FDPE_io_i_mux_bus_2_3_rev_T_6 = {{1'd0}, _GEN_196}; // @[FlexDPUby2.scala 74:35]
-  wire [3:0] _FDPE_io_i_mux_bus_2_3_rev_T_7 = _FDPE_io_i_mux_bus_2_3_rev_T_2 | _FDPE_io_i_mux_bus_2_3_rev_T_6; // @[FlexDPUby2.scala 74:17]
-  wire [3:0] _FDPE_io_i_mux_bus_2_3_rev_T_8 = {{2'd0}, muxes_2_3[3:2]}; // @[FlexDPUby2.scala 74:24]
-  wire [1:0] _FDPE_io_i_mux_bus_2_3_rev_T_10 = {_FDPE_io_i_mux_bus_2_3_rev_T_8[0], 1'h0}; // @[FlexDPUby2.scala 74:35]
-  wire [3:0] _GEN_198 = {{2'd0}, _FDPE_io_i_mux_bus_2_3_rev_T_10}; // @[FlexDPUby2.scala 74:17]
-  wire [3:0] _FDPE_io_i_mux_bus_2_3_rev_T_11 = _FDPE_io_i_mux_bus_2_3_rev_T_7 | _GEN_198; // @[FlexDPUby2.scala 74:17]
-  wire [3:0] _FDPE_io_i_mux_bus_2_3_rev_T_12 = {{3'd0}, muxes_2_3[3]}; // @[FlexDPUby2.scala 74:24]
-  wire [1:0] _FDPE_io_i_mux_bus_2_3_rev_T_14 = {{1'd0}, _FDPE_io_i_mux_bus_2_3_rev_T_12[0]}; // @[FlexDPUby2.scala 74:35]
-  wire [3:0] _GEN_200 = {{2'd0}, _FDPE_io_i_mux_bus_2_3_rev_T_14}; // @[FlexDPUby2.scala 74:17]
-  wire [3:0] _FDPE_io_i_mux_bus_3_0_rev_T_2 = {muxes_3_0[0], 3'h0}; // @[FlexDPUby2.scala 74:35]
-  wire [3:0] _FDPE_io_i_mux_bus_3_0_rev_T_4 = {{1'd0}, muxes_3_0[3:1]}; // @[FlexDPUby2.scala 74:24]
-  wire [2:0] _GEN_202 = {_FDPE_io_i_mux_bus_3_0_rev_T_4[0], 2'h0}; // @[FlexDPUby2.scala 74:35]
-  wire [3:0] _FDPE_io_i_mux_bus_3_0_rev_T_6 = {{1'd0}, _GEN_202}; // @[FlexDPUby2.scala 74:35]
-  wire [3:0] _FDPE_io_i_mux_bus_3_0_rev_T_7 = _FDPE_io_i_mux_bus_3_0_rev_T_2 | _FDPE_io_i_mux_bus_3_0_rev_T_6; // @[FlexDPUby2.scala 74:17]
-  wire [3:0] _FDPE_io_i_mux_bus_3_0_rev_T_8 = {{2'd0}, muxes_3_0[3:2]}; // @[FlexDPUby2.scala 74:24]
-  wire [1:0] _FDPE_io_i_mux_bus_3_0_rev_T_10 = {_FDPE_io_i_mux_bus_3_0_rev_T_8[0], 1'h0}; // @[FlexDPUby2.scala 74:35]
-  wire [3:0] _GEN_204 = {{2'd0}, _FDPE_io_i_mux_bus_3_0_rev_T_10}; // @[FlexDPUby2.scala 74:17]
-  wire [3:0] _FDPE_io_i_mux_bus_3_0_rev_T_11 = _FDPE_io_i_mux_bus_3_0_rev_T_7 | _GEN_204; // @[FlexDPUby2.scala 74:17]
-  wire [3:0] _FDPE_io_i_mux_bus_3_0_rev_T_12 = {{3'd0}, muxes_3_0[3]}; // @[FlexDPUby2.scala 74:24]
-  wire [1:0] _FDPE_io_i_mux_bus_3_0_rev_T_14 = {{1'd0}, _FDPE_io_i_mux_bus_3_0_rev_T_12[0]}; // @[FlexDPUby2.scala 74:35]
-  wire [3:0] _GEN_206 = {{2'd0}, _FDPE_io_i_mux_bus_3_0_rev_T_14}; // @[FlexDPUby2.scala 74:17]
-  wire [3:0] _FDPE_io_i_mux_bus_3_1_rev_T_2 = {muxes_3_1[0], 3'h0}; // @[FlexDPUby2.scala 74:35]
-  wire [3:0] _FDPE_io_i_mux_bus_3_1_rev_T_4 = {{1'd0}, muxes_3_1[3:1]}; // @[FlexDPUby2.scala 74:24]
-  wire [2:0] _GEN_208 = {_FDPE_io_i_mux_bus_3_1_rev_T_4[0], 2'h0}; // @[FlexDPUby2.scala 74:35]
-  wire [3:0] _FDPE_io_i_mux_bus_3_1_rev_T_6 = {{1'd0}, _GEN_208}; // @[FlexDPUby2.scala 74:35]
-  wire [3:0] _FDPE_io_i_mux_bus_3_1_rev_T_7 = _FDPE_io_i_mux_bus_3_1_rev_T_2 | _FDPE_io_i_mux_bus_3_1_rev_T_6; // @[FlexDPUby2.scala 74:17]
-  wire [3:0] _FDPE_io_i_mux_bus_3_1_rev_T_8 = {{2'd0}, muxes_3_1[3:2]}; // @[FlexDPUby2.scala 74:24]
-  wire [1:0] _FDPE_io_i_mux_bus_3_1_rev_T_10 = {_FDPE_io_i_mux_bus_3_1_rev_T_8[0], 1'h0}; // @[FlexDPUby2.scala 74:35]
-  wire [3:0] _GEN_210 = {{2'd0}, _FDPE_io_i_mux_bus_3_1_rev_T_10}; // @[FlexDPUby2.scala 74:17]
-  wire [3:0] _FDPE_io_i_mux_bus_3_1_rev_T_11 = _FDPE_io_i_mux_bus_3_1_rev_T_7 | _GEN_210; // @[FlexDPUby2.scala 74:17]
-  wire [3:0] _FDPE_io_i_mux_bus_3_1_rev_T_12 = {{3'd0}, muxes_3_1[3]}; // @[FlexDPUby2.scala 74:24]
-  wire [1:0] _FDPE_io_i_mux_bus_3_1_rev_T_14 = {{1'd0}, _FDPE_io_i_mux_bus_3_1_rev_T_12[0]}; // @[FlexDPUby2.scala 74:35]
-  wire [3:0] _GEN_212 = {{2'd0}, _FDPE_io_i_mux_bus_3_1_rev_T_14}; // @[FlexDPUby2.scala 74:17]
-  wire [3:0] _FDPE_io_i_mux_bus_3_2_rev_T_2 = {muxes_3_2[0], 3'h0}; // @[FlexDPUby2.scala 74:35]
-  wire [3:0] _FDPE_io_i_mux_bus_3_2_rev_T_4 = {{1'd0}, muxes_3_2[3:1]}; // @[FlexDPUby2.scala 74:24]
-  wire [2:0] _GEN_214 = {_FDPE_io_i_mux_bus_3_2_rev_T_4[0], 2'h0}; // @[FlexDPUby2.scala 74:35]
-  wire [3:0] _FDPE_io_i_mux_bus_3_2_rev_T_6 = {{1'd0}, _GEN_214}; // @[FlexDPUby2.scala 74:35]
-  wire [3:0] _FDPE_io_i_mux_bus_3_2_rev_T_7 = _FDPE_io_i_mux_bus_3_2_rev_T_2 | _FDPE_io_i_mux_bus_3_2_rev_T_6; // @[FlexDPUby2.scala 74:17]
-  wire [3:0] _FDPE_io_i_mux_bus_3_2_rev_T_8 = {{2'd0}, muxes_3_2[3:2]}; // @[FlexDPUby2.scala 74:24]
-  wire [1:0] _FDPE_io_i_mux_bus_3_2_rev_T_10 = {_FDPE_io_i_mux_bus_3_2_rev_T_8[0], 1'h0}; // @[FlexDPUby2.scala 74:35]
-  wire [3:0] _GEN_216 = {{2'd0}, _FDPE_io_i_mux_bus_3_2_rev_T_10}; // @[FlexDPUby2.scala 74:17]
-  wire [3:0] _FDPE_io_i_mux_bus_3_2_rev_T_11 = _FDPE_io_i_mux_bus_3_2_rev_T_7 | _GEN_216; // @[FlexDPUby2.scala 74:17]
-  wire [3:0] _FDPE_io_i_mux_bus_3_2_rev_T_12 = {{3'd0}, muxes_3_2[3]}; // @[FlexDPUby2.scala 74:24]
-  wire [1:0] _FDPE_io_i_mux_bus_3_2_rev_T_14 = {{1'd0}, _FDPE_io_i_mux_bus_3_2_rev_T_12[0]}; // @[FlexDPUby2.scala 74:35]
-  wire [3:0] _GEN_218 = {{2'd0}, _FDPE_io_i_mux_bus_3_2_rev_T_14}; // @[FlexDPUby2.scala 74:17]
-  wire [3:0] _FDPE_io_i_mux_bus_3_3_rev_T_2 = {muxes_3_3[0], 3'h0}; // @[FlexDPUby2.scala 74:35]
-  wire [3:0] _FDPE_io_i_mux_bus_3_3_rev_T_4 = {{1'd0}, muxes_3_3[3:1]}; // @[FlexDPUby2.scala 74:24]
-  wire [2:0] _GEN_220 = {_FDPE_io_i_mux_bus_3_3_rev_T_4[0], 2'h0}; // @[FlexDPUby2.scala 74:35]
-  wire [3:0] _FDPE_io_i_mux_bus_3_3_rev_T_6 = {{1'd0}, _GEN_220}; // @[FlexDPUby2.scala 74:35]
-  wire [3:0] _FDPE_io_i_mux_bus_3_3_rev_T_7 = _FDPE_io_i_mux_bus_3_3_rev_T_2 | _FDPE_io_i_mux_bus_3_3_rev_T_6; // @[FlexDPUby2.scala 74:17]
-  wire [3:0] _FDPE_io_i_mux_bus_3_3_rev_T_8 = {{2'd0}, muxes_3_3[3:2]}; // @[FlexDPUby2.scala 74:24]
-  wire [1:0] _FDPE_io_i_mux_bus_3_3_rev_T_10 = {_FDPE_io_i_mux_bus_3_3_rev_T_8[0], 1'h0}; // @[FlexDPUby2.scala 74:35]
-  wire [3:0] _GEN_222 = {{2'd0}, _FDPE_io_i_mux_bus_3_3_rev_T_10}; // @[FlexDPUby2.scala 74:17]
-  wire [3:0] _FDPE_io_i_mux_bus_3_3_rev_T_11 = _FDPE_io_i_mux_bus_3_3_rev_T_7 | _GEN_222; // @[FlexDPUby2.scala 74:17]
-  wire [3:0] _FDPE_io_i_mux_bus_3_3_rev_T_12 = {{3'd0}, muxes_3_3[3]}; // @[FlexDPUby2.scala 74:24]
-  wire [1:0] _FDPE_io_i_mux_bus_3_3_rev_T_14 = {{1'd0}, _FDPE_io_i_mux_bus_3_3_rev_T_12[0]}; // @[FlexDPUby2.scala 74:35]
-  wire [3:0] _GEN_224 = {{2'd0}, _FDPE_io_i_mux_bus_3_3_rev_T_14}; // @[FlexDPUby2.scala 74:17]
-  PathFinder PF ( // @[FlexDPUby2.scala 88:24]
+  wire  _Statvalid_T_1 = iloop == 32'h2; // @[FlexDPUby2.scala 31:63]
+  wire  _GEN_115 = ~iloop[0]; // @[FlexDPUby2.scala 33:{46,46}]
+  wire [15:0] _GEN_1 = ~iloop[0] & jloop[0] ? io_Stationary_matrix_0_1 : io_Stationary_matrix_0_0; // @[FlexDPUby2.scala 33:{46,46}]
+  wire  _GEN_116 = ~jloop[0]; // @[FlexDPUby2.scala 33:{46,46}]
+  wire [15:0] _GEN_2 = iloop[0] & ~jloop[0] ? io_Stationary_matrix_1_0 : _GEN_1; // @[FlexDPUby2.scala 33:{46,46}]
+  wire [15:0] _GEN_3 = iloop[0] & jloop[0] ? io_Stationary_matrix_1_1 : _GEN_2; // @[FlexDPUby2.scala 33:{46,46}]
+  wire  _T_3 = iloop <= 32'h1; // @[FlexDPUby2.scala 33:64]
+  wire [31:0] _DPEDest_T_5_T_6 = {{16'd0}, _GEN_3}; // @[FlexDPUby2.scala 34:{37,37}]
+  wire [31:0] _indexCol_T_1 = indexCol + 32'h1; // @[FlexDPUby2.scala 35:30]
+  wire [15:0] _GEN_26 = _GEN_116 & iloop[0] ? io_Streaming_matrix_0_1 : io_Streaming_matrix_0_0; // @[FlexDPUby2.scala 37:{45,45}]
+  wire [15:0] _GEN_27 = jloop[0] & _GEN_115 ? io_Streaming_matrix_1_0 : _GEN_26; // @[FlexDPUby2.scala 37:{45,45}]
+  wire [15:0] _GEN_28 = jloop[0] & iloop[0] ? io_Streaming_matrix_1_1 : _GEN_27; // @[FlexDPUby2.scala 37:{45,45}]
+  wire [31:0] _DPESrc_T_12_T_13 = {{16'd0}, _GEN_28}; // @[FlexDPUby2.scala 38:{38,38}]
+  wire [31:0] _SindexCol_T_1 = SindexCol + 32'h1; // @[FlexDPUby2.scala 39:32]
+  wire  _T_14 = SindexCol == 32'h1; // @[FlexDPUby2.scala 42:21]
+  wire [31:0] _SindexRow_T_1 = SindexRow + 32'h1; // @[FlexDPUby2.scala 46:32]
+  wire  _T_18 = indexCol == 32'h3; // @[FlexDPUby2.scala 50:20]
+  wire [31:0] _indexRow_T_1 = indexRow + 32'h1; // @[FlexDPUby2.scala 54:30]
+  wire [31:0] _iloop_T_1 = iloop + 32'h1; // @[FlexDPUby2.scala 60:24]
+  wire [31:0] _GEN_50 = iloop < 32'h1 & _SrcDestValid_T_1 ? _iloop_T_1 : iloop; // @[FlexDPUby2.scala 59:77 60:15 22:24]
+  wire [31:0] _jloop_T_1 = jloop + 32'h1; // @[FlexDPUby2.scala 64:24]
+  wire  _T_33 = _Statvalid_T_1 & _SrcDestValid_T_1; // @[FlexDPUby2.scala 68:30]
+  reg [31:0] src_0; // @[FlexDPUby2.scala 85:22]
+  reg [31:0] src_1; // @[FlexDPUby2.scala 85:22]
+  reg [31:0] src_2; // @[FlexDPUby2.scala 85:22]
+  reg [31:0] src_3; // @[FlexDPUby2.scala 85:22]
+  reg [3:0] muxes_0_0; // @[FlexDPUby2.scala 86:24]
+  reg [3:0] muxes_0_1; // @[FlexDPUby2.scala 86:24]
+  reg [3:0] muxes_0_2; // @[FlexDPUby2.scala 86:24]
+  reg [3:0] muxes_0_3; // @[FlexDPUby2.scala 86:24]
+  reg [3:0] muxes_1_0; // @[FlexDPUby2.scala 86:24]
+  reg [3:0] muxes_1_1; // @[FlexDPUby2.scala 86:24]
+  reg [3:0] muxes_1_2; // @[FlexDPUby2.scala 86:24]
+  reg [3:0] muxes_1_3; // @[FlexDPUby2.scala 86:24]
+  reg [3:0] muxes_2_0; // @[FlexDPUby2.scala 86:24]
+  reg [3:0] muxes_2_1; // @[FlexDPUby2.scala 86:24]
+  reg [3:0] muxes_2_2; // @[FlexDPUby2.scala 86:24]
+  reg [3:0] muxes_2_3; // @[FlexDPUby2.scala 86:24]
+  reg [3:0] muxes_3_0; // @[FlexDPUby2.scala 86:24]
+  reg [3:0] muxes_3_1; // @[FlexDPUby2.scala 86:24]
+  reg [3:0] muxes_3_2; // @[FlexDPUby2.scala 86:24]
+  reg [3:0] muxes_3_3; // @[FlexDPUby2.scala 86:24]
+  reg [31:0] dest_0; // @[FlexDPUby2.scala 87:23]
+  reg [31:0] dest_1; // @[FlexDPUby2.scala 87:23]
+  reg [31:0] dest_2; // @[FlexDPUby2.scala 87:23]
+  reg [31:0] dest_3; // @[FlexDPUby2.scala 87:23]
+  reg  iterationChange; // @[FlexDPUby2.scala 102:34]
+  wire [31:0] _GEN_58 = iterationChange ? DPESrc_1_0 : DPESrc_0_0; // @[FlexDPUby2.scala 106:{32,32}]
+  wire [31:0] _GEN_60 = iterationChange ? DPESrc_1_1 : DPESrc_0_1; // @[FlexDPUby2.scala 106:{32,32}]
+  wire  _T_38 = iterationChange + 1'h1; // @[FlexDPUby2.scala 122:48]
+  wire [31:0] _GEN_62 = _T_38 ? DPESrc_1_0 : DPESrc_0_0; // @[FlexDPUby2.scala 93:{20,20}]
+  wire  _GEN_63 = _GEN_62 != 32'h0 ? _T_38 : iterationChange; // @[FlexDPUby2.scala 93:28 95:21 102:34]
+  wire [31:0] _GEN_65 = _T_38 ? DPESrc_1_1 : DPESrc_0_1; // @[FlexDPUby2.scala 93:{20,20}]
+  wire  _GEN_66 = _GEN_65 != 32'h0 ? _T_38 : _GEN_63; // @[FlexDPUby2.scala 93:28 95:21]
+  wire  _GEN_67 = PF_io_PF_Valid ? _GEN_66 : iterationChange; // @[FlexDPUby2.scala 102:34 120:36]
+  wire [3:0] _FDPE_io_i_mux_bus_0_0_rev_T_2 = {muxes_0_0[0], 3'h0}; // @[FlexDPUby2.scala 80:35]
+  wire [3:0] _FDPE_io_i_mux_bus_0_0_rev_T_4 = {{1'd0}, muxes_0_0[3:1]}; // @[FlexDPUby2.scala 80:24]
+  wire [2:0] _GEN_140 = {_FDPE_io_i_mux_bus_0_0_rev_T_4[0], 2'h0}; // @[FlexDPUby2.scala 80:35]
+  wire [3:0] _FDPE_io_i_mux_bus_0_0_rev_T_6 = {{1'd0}, _GEN_140}; // @[FlexDPUby2.scala 80:35]
+  wire [3:0] _FDPE_io_i_mux_bus_0_0_rev_T_7 = _FDPE_io_i_mux_bus_0_0_rev_T_2 | _FDPE_io_i_mux_bus_0_0_rev_T_6; // @[FlexDPUby2.scala 80:17]
+  wire [3:0] _FDPE_io_i_mux_bus_0_0_rev_T_8 = {{2'd0}, muxes_0_0[3:2]}; // @[FlexDPUby2.scala 80:24]
+  wire [1:0] _FDPE_io_i_mux_bus_0_0_rev_T_10 = {_FDPE_io_i_mux_bus_0_0_rev_T_8[0], 1'h0}; // @[FlexDPUby2.scala 80:35]
+  wire [3:0] _GEN_142 = {{2'd0}, _FDPE_io_i_mux_bus_0_0_rev_T_10}; // @[FlexDPUby2.scala 80:17]
+  wire [3:0] _FDPE_io_i_mux_bus_0_0_rev_T_11 = _FDPE_io_i_mux_bus_0_0_rev_T_7 | _GEN_142; // @[FlexDPUby2.scala 80:17]
+  wire [3:0] _FDPE_io_i_mux_bus_0_0_rev_T_12 = {{3'd0}, muxes_0_0[3]}; // @[FlexDPUby2.scala 80:24]
+  wire [1:0] _FDPE_io_i_mux_bus_0_0_rev_T_14 = {{1'd0}, _FDPE_io_i_mux_bus_0_0_rev_T_12[0]}; // @[FlexDPUby2.scala 80:35]
+  wire [3:0] _GEN_144 = {{2'd0}, _FDPE_io_i_mux_bus_0_0_rev_T_14}; // @[FlexDPUby2.scala 80:17]
+  wire [3:0] _FDPE_io_i_mux_bus_0_1_rev_T_2 = {muxes_0_1[0], 3'h0}; // @[FlexDPUby2.scala 80:35]
+  wire [3:0] _FDPE_io_i_mux_bus_0_1_rev_T_4 = {{1'd0}, muxes_0_1[3:1]}; // @[FlexDPUby2.scala 80:24]
+  wire [2:0] _GEN_146 = {_FDPE_io_i_mux_bus_0_1_rev_T_4[0], 2'h0}; // @[FlexDPUby2.scala 80:35]
+  wire [3:0] _FDPE_io_i_mux_bus_0_1_rev_T_6 = {{1'd0}, _GEN_146}; // @[FlexDPUby2.scala 80:35]
+  wire [3:0] _FDPE_io_i_mux_bus_0_1_rev_T_7 = _FDPE_io_i_mux_bus_0_1_rev_T_2 | _FDPE_io_i_mux_bus_0_1_rev_T_6; // @[FlexDPUby2.scala 80:17]
+  wire [3:0] _FDPE_io_i_mux_bus_0_1_rev_T_8 = {{2'd0}, muxes_0_1[3:2]}; // @[FlexDPUby2.scala 80:24]
+  wire [1:0] _FDPE_io_i_mux_bus_0_1_rev_T_10 = {_FDPE_io_i_mux_bus_0_1_rev_T_8[0], 1'h0}; // @[FlexDPUby2.scala 80:35]
+  wire [3:0] _GEN_148 = {{2'd0}, _FDPE_io_i_mux_bus_0_1_rev_T_10}; // @[FlexDPUby2.scala 80:17]
+  wire [3:0] _FDPE_io_i_mux_bus_0_1_rev_T_11 = _FDPE_io_i_mux_bus_0_1_rev_T_7 | _GEN_148; // @[FlexDPUby2.scala 80:17]
+  wire [3:0] _FDPE_io_i_mux_bus_0_1_rev_T_12 = {{3'd0}, muxes_0_1[3]}; // @[FlexDPUby2.scala 80:24]
+  wire [1:0] _FDPE_io_i_mux_bus_0_1_rev_T_14 = {{1'd0}, _FDPE_io_i_mux_bus_0_1_rev_T_12[0]}; // @[FlexDPUby2.scala 80:35]
+  wire [3:0] _GEN_150 = {{2'd0}, _FDPE_io_i_mux_bus_0_1_rev_T_14}; // @[FlexDPUby2.scala 80:17]
+  wire [3:0] _FDPE_io_i_mux_bus_0_2_rev_T_2 = {muxes_0_2[0], 3'h0}; // @[FlexDPUby2.scala 80:35]
+  wire [3:0] _FDPE_io_i_mux_bus_0_2_rev_T_4 = {{1'd0}, muxes_0_2[3:1]}; // @[FlexDPUby2.scala 80:24]
+  wire [2:0] _GEN_152 = {_FDPE_io_i_mux_bus_0_2_rev_T_4[0], 2'h0}; // @[FlexDPUby2.scala 80:35]
+  wire [3:0] _FDPE_io_i_mux_bus_0_2_rev_T_6 = {{1'd0}, _GEN_152}; // @[FlexDPUby2.scala 80:35]
+  wire [3:0] _FDPE_io_i_mux_bus_0_2_rev_T_7 = _FDPE_io_i_mux_bus_0_2_rev_T_2 | _FDPE_io_i_mux_bus_0_2_rev_T_6; // @[FlexDPUby2.scala 80:17]
+  wire [3:0] _FDPE_io_i_mux_bus_0_2_rev_T_8 = {{2'd0}, muxes_0_2[3:2]}; // @[FlexDPUby2.scala 80:24]
+  wire [1:0] _FDPE_io_i_mux_bus_0_2_rev_T_10 = {_FDPE_io_i_mux_bus_0_2_rev_T_8[0], 1'h0}; // @[FlexDPUby2.scala 80:35]
+  wire [3:0] _GEN_154 = {{2'd0}, _FDPE_io_i_mux_bus_0_2_rev_T_10}; // @[FlexDPUby2.scala 80:17]
+  wire [3:0] _FDPE_io_i_mux_bus_0_2_rev_T_11 = _FDPE_io_i_mux_bus_0_2_rev_T_7 | _GEN_154; // @[FlexDPUby2.scala 80:17]
+  wire [3:0] _FDPE_io_i_mux_bus_0_2_rev_T_12 = {{3'd0}, muxes_0_2[3]}; // @[FlexDPUby2.scala 80:24]
+  wire [1:0] _FDPE_io_i_mux_bus_0_2_rev_T_14 = {{1'd0}, _FDPE_io_i_mux_bus_0_2_rev_T_12[0]}; // @[FlexDPUby2.scala 80:35]
+  wire [3:0] _GEN_156 = {{2'd0}, _FDPE_io_i_mux_bus_0_2_rev_T_14}; // @[FlexDPUby2.scala 80:17]
+  wire [3:0] _FDPE_io_i_mux_bus_0_3_rev_T_2 = {muxes_0_3[0], 3'h0}; // @[FlexDPUby2.scala 80:35]
+  wire [3:0] _FDPE_io_i_mux_bus_0_3_rev_T_4 = {{1'd0}, muxes_0_3[3:1]}; // @[FlexDPUby2.scala 80:24]
+  wire [2:0] _GEN_158 = {_FDPE_io_i_mux_bus_0_3_rev_T_4[0], 2'h0}; // @[FlexDPUby2.scala 80:35]
+  wire [3:0] _FDPE_io_i_mux_bus_0_3_rev_T_6 = {{1'd0}, _GEN_158}; // @[FlexDPUby2.scala 80:35]
+  wire [3:0] _FDPE_io_i_mux_bus_0_3_rev_T_7 = _FDPE_io_i_mux_bus_0_3_rev_T_2 | _FDPE_io_i_mux_bus_0_3_rev_T_6; // @[FlexDPUby2.scala 80:17]
+  wire [3:0] _FDPE_io_i_mux_bus_0_3_rev_T_8 = {{2'd0}, muxes_0_3[3:2]}; // @[FlexDPUby2.scala 80:24]
+  wire [1:0] _FDPE_io_i_mux_bus_0_3_rev_T_10 = {_FDPE_io_i_mux_bus_0_3_rev_T_8[0], 1'h0}; // @[FlexDPUby2.scala 80:35]
+  wire [3:0] _GEN_160 = {{2'd0}, _FDPE_io_i_mux_bus_0_3_rev_T_10}; // @[FlexDPUby2.scala 80:17]
+  wire [3:0] _FDPE_io_i_mux_bus_0_3_rev_T_11 = _FDPE_io_i_mux_bus_0_3_rev_T_7 | _GEN_160; // @[FlexDPUby2.scala 80:17]
+  wire [3:0] _FDPE_io_i_mux_bus_0_3_rev_T_12 = {{3'd0}, muxes_0_3[3]}; // @[FlexDPUby2.scala 80:24]
+  wire [1:0] _FDPE_io_i_mux_bus_0_3_rev_T_14 = {{1'd0}, _FDPE_io_i_mux_bus_0_3_rev_T_12[0]}; // @[FlexDPUby2.scala 80:35]
+  wire [3:0] _GEN_162 = {{2'd0}, _FDPE_io_i_mux_bus_0_3_rev_T_14}; // @[FlexDPUby2.scala 80:17]
+  wire [3:0] _FDPE_io_i_mux_bus_1_0_rev_T_2 = {muxes_1_0[0], 3'h0}; // @[FlexDPUby2.scala 80:35]
+  wire [3:0] _FDPE_io_i_mux_bus_1_0_rev_T_4 = {{1'd0}, muxes_1_0[3:1]}; // @[FlexDPUby2.scala 80:24]
+  wire [2:0] _GEN_164 = {_FDPE_io_i_mux_bus_1_0_rev_T_4[0], 2'h0}; // @[FlexDPUby2.scala 80:35]
+  wire [3:0] _FDPE_io_i_mux_bus_1_0_rev_T_6 = {{1'd0}, _GEN_164}; // @[FlexDPUby2.scala 80:35]
+  wire [3:0] _FDPE_io_i_mux_bus_1_0_rev_T_7 = _FDPE_io_i_mux_bus_1_0_rev_T_2 | _FDPE_io_i_mux_bus_1_0_rev_T_6; // @[FlexDPUby2.scala 80:17]
+  wire [3:0] _FDPE_io_i_mux_bus_1_0_rev_T_8 = {{2'd0}, muxes_1_0[3:2]}; // @[FlexDPUby2.scala 80:24]
+  wire [1:0] _FDPE_io_i_mux_bus_1_0_rev_T_10 = {_FDPE_io_i_mux_bus_1_0_rev_T_8[0], 1'h0}; // @[FlexDPUby2.scala 80:35]
+  wire [3:0] _GEN_166 = {{2'd0}, _FDPE_io_i_mux_bus_1_0_rev_T_10}; // @[FlexDPUby2.scala 80:17]
+  wire [3:0] _FDPE_io_i_mux_bus_1_0_rev_T_11 = _FDPE_io_i_mux_bus_1_0_rev_T_7 | _GEN_166; // @[FlexDPUby2.scala 80:17]
+  wire [3:0] _FDPE_io_i_mux_bus_1_0_rev_T_12 = {{3'd0}, muxes_1_0[3]}; // @[FlexDPUby2.scala 80:24]
+  wire [1:0] _FDPE_io_i_mux_bus_1_0_rev_T_14 = {{1'd0}, _FDPE_io_i_mux_bus_1_0_rev_T_12[0]}; // @[FlexDPUby2.scala 80:35]
+  wire [3:0] _GEN_168 = {{2'd0}, _FDPE_io_i_mux_bus_1_0_rev_T_14}; // @[FlexDPUby2.scala 80:17]
+  wire [3:0] _FDPE_io_i_mux_bus_1_1_rev_T_2 = {muxes_1_1[0], 3'h0}; // @[FlexDPUby2.scala 80:35]
+  wire [3:0] _FDPE_io_i_mux_bus_1_1_rev_T_4 = {{1'd0}, muxes_1_1[3:1]}; // @[FlexDPUby2.scala 80:24]
+  wire [2:0] _GEN_170 = {_FDPE_io_i_mux_bus_1_1_rev_T_4[0], 2'h0}; // @[FlexDPUby2.scala 80:35]
+  wire [3:0] _FDPE_io_i_mux_bus_1_1_rev_T_6 = {{1'd0}, _GEN_170}; // @[FlexDPUby2.scala 80:35]
+  wire [3:0] _FDPE_io_i_mux_bus_1_1_rev_T_7 = _FDPE_io_i_mux_bus_1_1_rev_T_2 | _FDPE_io_i_mux_bus_1_1_rev_T_6; // @[FlexDPUby2.scala 80:17]
+  wire [3:0] _FDPE_io_i_mux_bus_1_1_rev_T_8 = {{2'd0}, muxes_1_1[3:2]}; // @[FlexDPUby2.scala 80:24]
+  wire [1:0] _FDPE_io_i_mux_bus_1_1_rev_T_10 = {_FDPE_io_i_mux_bus_1_1_rev_T_8[0], 1'h0}; // @[FlexDPUby2.scala 80:35]
+  wire [3:0] _GEN_172 = {{2'd0}, _FDPE_io_i_mux_bus_1_1_rev_T_10}; // @[FlexDPUby2.scala 80:17]
+  wire [3:0] _FDPE_io_i_mux_bus_1_1_rev_T_11 = _FDPE_io_i_mux_bus_1_1_rev_T_7 | _GEN_172; // @[FlexDPUby2.scala 80:17]
+  wire [3:0] _FDPE_io_i_mux_bus_1_1_rev_T_12 = {{3'd0}, muxes_1_1[3]}; // @[FlexDPUby2.scala 80:24]
+  wire [1:0] _FDPE_io_i_mux_bus_1_1_rev_T_14 = {{1'd0}, _FDPE_io_i_mux_bus_1_1_rev_T_12[0]}; // @[FlexDPUby2.scala 80:35]
+  wire [3:0] _GEN_174 = {{2'd0}, _FDPE_io_i_mux_bus_1_1_rev_T_14}; // @[FlexDPUby2.scala 80:17]
+  wire [3:0] _FDPE_io_i_mux_bus_1_2_rev_T_2 = {muxes_1_2[0], 3'h0}; // @[FlexDPUby2.scala 80:35]
+  wire [3:0] _FDPE_io_i_mux_bus_1_2_rev_T_4 = {{1'd0}, muxes_1_2[3:1]}; // @[FlexDPUby2.scala 80:24]
+  wire [2:0] _GEN_176 = {_FDPE_io_i_mux_bus_1_2_rev_T_4[0], 2'h0}; // @[FlexDPUby2.scala 80:35]
+  wire [3:0] _FDPE_io_i_mux_bus_1_2_rev_T_6 = {{1'd0}, _GEN_176}; // @[FlexDPUby2.scala 80:35]
+  wire [3:0] _FDPE_io_i_mux_bus_1_2_rev_T_7 = _FDPE_io_i_mux_bus_1_2_rev_T_2 | _FDPE_io_i_mux_bus_1_2_rev_T_6; // @[FlexDPUby2.scala 80:17]
+  wire [3:0] _FDPE_io_i_mux_bus_1_2_rev_T_8 = {{2'd0}, muxes_1_2[3:2]}; // @[FlexDPUby2.scala 80:24]
+  wire [1:0] _FDPE_io_i_mux_bus_1_2_rev_T_10 = {_FDPE_io_i_mux_bus_1_2_rev_T_8[0], 1'h0}; // @[FlexDPUby2.scala 80:35]
+  wire [3:0] _GEN_178 = {{2'd0}, _FDPE_io_i_mux_bus_1_2_rev_T_10}; // @[FlexDPUby2.scala 80:17]
+  wire [3:0] _FDPE_io_i_mux_bus_1_2_rev_T_11 = _FDPE_io_i_mux_bus_1_2_rev_T_7 | _GEN_178; // @[FlexDPUby2.scala 80:17]
+  wire [3:0] _FDPE_io_i_mux_bus_1_2_rev_T_12 = {{3'd0}, muxes_1_2[3]}; // @[FlexDPUby2.scala 80:24]
+  wire [1:0] _FDPE_io_i_mux_bus_1_2_rev_T_14 = {{1'd0}, _FDPE_io_i_mux_bus_1_2_rev_T_12[0]}; // @[FlexDPUby2.scala 80:35]
+  wire [3:0] _GEN_180 = {{2'd0}, _FDPE_io_i_mux_bus_1_2_rev_T_14}; // @[FlexDPUby2.scala 80:17]
+  wire [3:0] _FDPE_io_i_mux_bus_1_3_rev_T_2 = {muxes_1_3[0], 3'h0}; // @[FlexDPUby2.scala 80:35]
+  wire [3:0] _FDPE_io_i_mux_bus_1_3_rev_T_4 = {{1'd0}, muxes_1_3[3:1]}; // @[FlexDPUby2.scala 80:24]
+  wire [2:0] _GEN_182 = {_FDPE_io_i_mux_bus_1_3_rev_T_4[0], 2'h0}; // @[FlexDPUby2.scala 80:35]
+  wire [3:0] _FDPE_io_i_mux_bus_1_3_rev_T_6 = {{1'd0}, _GEN_182}; // @[FlexDPUby2.scala 80:35]
+  wire [3:0] _FDPE_io_i_mux_bus_1_3_rev_T_7 = _FDPE_io_i_mux_bus_1_3_rev_T_2 | _FDPE_io_i_mux_bus_1_3_rev_T_6; // @[FlexDPUby2.scala 80:17]
+  wire [3:0] _FDPE_io_i_mux_bus_1_3_rev_T_8 = {{2'd0}, muxes_1_3[3:2]}; // @[FlexDPUby2.scala 80:24]
+  wire [1:0] _FDPE_io_i_mux_bus_1_3_rev_T_10 = {_FDPE_io_i_mux_bus_1_3_rev_T_8[0], 1'h0}; // @[FlexDPUby2.scala 80:35]
+  wire [3:0] _GEN_184 = {{2'd0}, _FDPE_io_i_mux_bus_1_3_rev_T_10}; // @[FlexDPUby2.scala 80:17]
+  wire [3:0] _FDPE_io_i_mux_bus_1_3_rev_T_11 = _FDPE_io_i_mux_bus_1_3_rev_T_7 | _GEN_184; // @[FlexDPUby2.scala 80:17]
+  wire [3:0] _FDPE_io_i_mux_bus_1_3_rev_T_12 = {{3'd0}, muxes_1_3[3]}; // @[FlexDPUby2.scala 80:24]
+  wire [1:0] _FDPE_io_i_mux_bus_1_3_rev_T_14 = {{1'd0}, _FDPE_io_i_mux_bus_1_3_rev_T_12[0]}; // @[FlexDPUby2.scala 80:35]
+  wire [3:0] _GEN_186 = {{2'd0}, _FDPE_io_i_mux_bus_1_3_rev_T_14}; // @[FlexDPUby2.scala 80:17]
+  wire [3:0] _FDPE_io_i_mux_bus_2_0_rev_T_2 = {muxes_2_0[0], 3'h0}; // @[FlexDPUby2.scala 80:35]
+  wire [3:0] _FDPE_io_i_mux_bus_2_0_rev_T_4 = {{1'd0}, muxes_2_0[3:1]}; // @[FlexDPUby2.scala 80:24]
+  wire [2:0] _GEN_188 = {_FDPE_io_i_mux_bus_2_0_rev_T_4[0], 2'h0}; // @[FlexDPUby2.scala 80:35]
+  wire [3:0] _FDPE_io_i_mux_bus_2_0_rev_T_6 = {{1'd0}, _GEN_188}; // @[FlexDPUby2.scala 80:35]
+  wire [3:0] _FDPE_io_i_mux_bus_2_0_rev_T_7 = _FDPE_io_i_mux_bus_2_0_rev_T_2 | _FDPE_io_i_mux_bus_2_0_rev_T_6; // @[FlexDPUby2.scala 80:17]
+  wire [3:0] _FDPE_io_i_mux_bus_2_0_rev_T_8 = {{2'd0}, muxes_2_0[3:2]}; // @[FlexDPUby2.scala 80:24]
+  wire [1:0] _FDPE_io_i_mux_bus_2_0_rev_T_10 = {_FDPE_io_i_mux_bus_2_0_rev_T_8[0], 1'h0}; // @[FlexDPUby2.scala 80:35]
+  wire [3:0] _GEN_190 = {{2'd0}, _FDPE_io_i_mux_bus_2_0_rev_T_10}; // @[FlexDPUby2.scala 80:17]
+  wire [3:0] _FDPE_io_i_mux_bus_2_0_rev_T_11 = _FDPE_io_i_mux_bus_2_0_rev_T_7 | _GEN_190; // @[FlexDPUby2.scala 80:17]
+  wire [3:0] _FDPE_io_i_mux_bus_2_0_rev_T_12 = {{3'd0}, muxes_2_0[3]}; // @[FlexDPUby2.scala 80:24]
+  wire [1:0] _FDPE_io_i_mux_bus_2_0_rev_T_14 = {{1'd0}, _FDPE_io_i_mux_bus_2_0_rev_T_12[0]}; // @[FlexDPUby2.scala 80:35]
+  wire [3:0] _GEN_192 = {{2'd0}, _FDPE_io_i_mux_bus_2_0_rev_T_14}; // @[FlexDPUby2.scala 80:17]
+  wire [3:0] _FDPE_io_i_mux_bus_2_1_rev_T_2 = {muxes_2_1[0], 3'h0}; // @[FlexDPUby2.scala 80:35]
+  wire [3:0] _FDPE_io_i_mux_bus_2_1_rev_T_4 = {{1'd0}, muxes_2_1[3:1]}; // @[FlexDPUby2.scala 80:24]
+  wire [2:0] _GEN_194 = {_FDPE_io_i_mux_bus_2_1_rev_T_4[0], 2'h0}; // @[FlexDPUby2.scala 80:35]
+  wire [3:0] _FDPE_io_i_mux_bus_2_1_rev_T_6 = {{1'd0}, _GEN_194}; // @[FlexDPUby2.scala 80:35]
+  wire [3:0] _FDPE_io_i_mux_bus_2_1_rev_T_7 = _FDPE_io_i_mux_bus_2_1_rev_T_2 | _FDPE_io_i_mux_bus_2_1_rev_T_6; // @[FlexDPUby2.scala 80:17]
+  wire [3:0] _FDPE_io_i_mux_bus_2_1_rev_T_8 = {{2'd0}, muxes_2_1[3:2]}; // @[FlexDPUby2.scala 80:24]
+  wire [1:0] _FDPE_io_i_mux_bus_2_1_rev_T_10 = {_FDPE_io_i_mux_bus_2_1_rev_T_8[0], 1'h0}; // @[FlexDPUby2.scala 80:35]
+  wire [3:0] _GEN_196 = {{2'd0}, _FDPE_io_i_mux_bus_2_1_rev_T_10}; // @[FlexDPUby2.scala 80:17]
+  wire [3:0] _FDPE_io_i_mux_bus_2_1_rev_T_11 = _FDPE_io_i_mux_bus_2_1_rev_T_7 | _GEN_196; // @[FlexDPUby2.scala 80:17]
+  wire [3:0] _FDPE_io_i_mux_bus_2_1_rev_T_12 = {{3'd0}, muxes_2_1[3]}; // @[FlexDPUby2.scala 80:24]
+  wire [1:0] _FDPE_io_i_mux_bus_2_1_rev_T_14 = {{1'd0}, _FDPE_io_i_mux_bus_2_1_rev_T_12[0]}; // @[FlexDPUby2.scala 80:35]
+  wire [3:0] _GEN_198 = {{2'd0}, _FDPE_io_i_mux_bus_2_1_rev_T_14}; // @[FlexDPUby2.scala 80:17]
+  wire [3:0] _FDPE_io_i_mux_bus_2_2_rev_T_2 = {muxes_2_2[0], 3'h0}; // @[FlexDPUby2.scala 80:35]
+  wire [3:0] _FDPE_io_i_mux_bus_2_2_rev_T_4 = {{1'd0}, muxes_2_2[3:1]}; // @[FlexDPUby2.scala 80:24]
+  wire [2:0] _GEN_200 = {_FDPE_io_i_mux_bus_2_2_rev_T_4[0], 2'h0}; // @[FlexDPUby2.scala 80:35]
+  wire [3:0] _FDPE_io_i_mux_bus_2_2_rev_T_6 = {{1'd0}, _GEN_200}; // @[FlexDPUby2.scala 80:35]
+  wire [3:0] _FDPE_io_i_mux_bus_2_2_rev_T_7 = _FDPE_io_i_mux_bus_2_2_rev_T_2 | _FDPE_io_i_mux_bus_2_2_rev_T_6; // @[FlexDPUby2.scala 80:17]
+  wire [3:0] _FDPE_io_i_mux_bus_2_2_rev_T_8 = {{2'd0}, muxes_2_2[3:2]}; // @[FlexDPUby2.scala 80:24]
+  wire [1:0] _FDPE_io_i_mux_bus_2_2_rev_T_10 = {_FDPE_io_i_mux_bus_2_2_rev_T_8[0], 1'h0}; // @[FlexDPUby2.scala 80:35]
+  wire [3:0] _GEN_202 = {{2'd0}, _FDPE_io_i_mux_bus_2_2_rev_T_10}; // @[FlexDPUby2.scala 80:17]
+  wire [3:0] _FDPE_io_i_mux_bus_2_2_rev_T_11 = _FDPE_io_i_mux_bus_2_2_rev_T_7 | _GEN_202; // @[FlexDPUby2.scala 80:17]
+  wire [3:0] _FDPE_io_i_mux_bus_2_2_rev_T_12 = {{3'd0}, muxes_2_2[3]}; // @[FlexDPUby2.scala 80:24]
+  wire [1:0] _FDPE_io_i_mux_bus_2_2_rev_T_14 = {{1'd0}, _FDPE_io_i_mux_bus_2_2_rev_T_12[0]}; // @[FlexDPUby2.scala 80:35]
+  wire [3:0] _GEN_204 = {{2'd0}, _FDPE_io_i_mux_bus_2_2_rev_T_14}; // @[FlexDPUby2.scala 80:17]
+  wire [3:0] _FDPE_io_i_mux_bus_2_3_rev_T_2 = {muxes_2_3[0], 3'h0}; // @[FlexDPUby2.scala 80:35]
+  wire [3:0] _FDPE_io_i_mux_bus_2_3_rev_T_4 = {{1'd0}, muxes_2_3[3:1]}; // @[FlexDPUby2.scala 80:24]
+  wire [2:0] _GEN_206 = {_FDPE_io_i_mux_bus_2_3_rev_T_4[0], 2'h0}; // @[FlexDPUby2.scala 80:35]
+  wire [3:0] _FDPE_io_i_mux_bus_2_3_rev_T_6 = {{1'd0}, _GEN_206}; // @[FlexDPUby2.scala 80:35]
+  wire [3:0] _FDPE_io_i_mux_bus_2_3_rev_T_7 = _FDPE_io_i_mux_bus_2_3_rev_T_2 | _FDPE_io_i_mux_bus_2_3_rev_T_6; // @[FlexDPUby2.scala 80:17]
+  wire [3:0] _FDPE_io_i_mux_bus_2_3_rev_T_8 = {{2'd0}, muxes_2_3[3:2]}; // @[FlexDPUby2.scala 80:24]
+  wire [1:0] _FDPE_io_i_mux_bus_2_3_rev_T_10 = {_FDPE_io_i_mux_bus_2_3_rev_T_8[0], 1'h0}; // @[FlexDPUby2.scala 80:35]
+  wire [3:0] _GEN_208 = {{2'd0}, _FDPE_io_i_mux_bus_2_3_rev_T_10}; // @[FlexDPUby2.scala 80:17]
+  wire [3:0] _FDPE_io_i_mux_bus_2_3_rev_T_11 = _FDPE_io_i_mux_bus_2_3_rev_T_7 | _GEN_208; // @[FlexDPUby2.scala 80:17]
+  wire [3:0] _FDPE_io_i_mux_bus_2_3_rev_T_12 = {{3'd0}, muxes_2_3[3]}; // @[FlexDPUby2.scala 80:24]
+  wire [1:0] _FDPE_io_i_mux_bus_2_3_rev_T_14 = {{1'd0}, _FDPE_io_i_mux_bus_2_3_rev_T_12[0]}; // @[FlexDPUby2.scala 80:35]
+  wire [3:0] _GEN_210 = {{2'd0}, _FDPE_io_i_mux_bus_2_3_rev_T_14}; // @[FlexDPUby2.scala 80:17]
+  wire [3:0] _FDPE_io_i_mux_bus_3_0_rev_T_2 = {muxes_3_0[0], 3'h0}; // @[FlexDPUby2.scala 80:35]
+  wire [3:0] _FDPE_io_i_mux_bus_3_0_rev_T_4 = {{1'd0}, muxes_3_0[3:1]}; // @[FlexDPUby2.scala 80:24]
+  wire [2:0] _GEN_212 = {_FDPE_io_i_mux_bus_3_0_rev_T_4[0], 2'h0}; // @[FlexDPUby2.scala 80:35]
+  wire [3:0] _FDPE_io_i_mux_bus_3_0_rev_T_6 = {{1'd0}, _GEN_212}; // @[FlexDPUby2.scala 80:35]
+  wire [3:0] _FDPE_io_i_mux_bus_3_0_rev_T_7 = _FDPE_io_i_mux_bus_3_0_rev_T_2 | _FDPE_io_i_mux_bus_3_0_rev_T_6; // @[FlexDPUby2.scala 80:17]
+  wire [3:0] _FDPE_io_i_mux_bus_3_0_rev_T_8 = {{2'd0}, muxes_3_0[3:2]}; // @[FlexDPUby2.scala 80:24]
+  wire [1:0] _FDPE_io_i_mux_bus_3_0_rev_T_10 = {_FDPE_io_i_mux_bus_3_0_rev_T_8[0], 1'h0}; // @[FlexDPUby2.scala 80:35]
+  wire [3:0] _GEN_214 = {{2'd0}, _FDPE_io_i_mux_bus_3_0_rev_T_10}; // @[FlexDPUby2.scala 80:17]
+  wire [3:0] _FDPE_io_i_mux_bus_3_0_rev_T_11 = _FDPE_io_i_mux_bus_3_0_rev_T_7 | _GEN_214; // @[FlexDPUby2.scala 80:17]
+  wire [3:0] _FDPE_io_i_mux_bus_3_0_rev_T_12 = {{3'd0}, muxes_3_0[3]}; // @[FlexDPUby2.scala 80:24]
+  wire [1:0] _FDPE_io_i_mux_bus_3_0_rev_T_14 = {{1'd0}, _FDPE_io_i_mux_bus_3_0_rev_T_12[0]}; // @[FlexDPUby2.scala 80:35]
+  wire [3:0] _GEN_216 = {{2'd0}, _FDPE_io_i_mux_bus_3_0_rev_T_14}; // @[FlexDPUby2.scala 80:17]
+  wire [3:0] _FDPE_io_i_mux_bus_3_1_rev_T_2 = {muxes_3_1[0], 3'h0}; // @[FlexDPUby2.scala 80:35]
+  wire [3:0] _FDPE_io_i_mux_bus_3_1_rev_T_4 = {{1'd0}, muxes_3_1[3:1]}; // @[FlexDPUby2.scala 80:24]
+  wire [2:0] _GEN_218 = {_FDPE_io_i_mux_bus_3_1_rev_T_4[0], 2'h0}; // @[FlexDPUby2.scala 80:35]
+  wire [3:0] _FDPE_io_i_mux_bus_3_1_rev_T_6 = {{1'd0}, _GEN_218}; // @[FlexDPUby2.scala 80:35]
+  wire [3:0] _FDPE_io_i_mux_bus_3_1_rev_T_7 = _FDPE_io_i_mux_bus_3_1_rev_T_2 | _FDPE_io_i_mux_bus_3_1_rev_T_6; // @[FlexDPUby2.scala 80:17]
+  wire [3:0] _FDPE_io_i_mux_bus_3_1_rev_T_8 = {{2'd0}, muxes_3_1[3:2]}; // @[FlexDPUby2.scala 80:24]
+  wire [1:0] _FDPE_io_i_mux_bus_3_1_rev_T_10 = {_FDPE_io_i_mux_bus_3_1_rev_T_8[0], 1'h0}; // @[FlexDPUby2.scala 80:35]
+  wire [3:0] _GEN_220 = {{2'd0}, _FDPE_io_i_mux_bus_3_1_rev_T_10}; // @[FlexDPUby2.scala 80:17]
+  wire [3:0] _FDPE_io_i_mux_bus_3_1_rev_T_11 = _FDPE_io_i_mux_bus_3_1_rev_T_7 | _GEN_220; // @[FlexDPUby2.scala 80:17]
+  wire [3:0] _FDPE_io_i_mux_bus_3_1_rev_T_12 = {{3'd0}, muxes_3_1[3]}; // @[FlexDPUby2.scala 80:24]
+  wire [1:0] _FDPE_io_i_mux_bus_3_1_rev_T_14 = {{1'd0}, _FDPE_io_i_mux_bus_3_1_rev_T_12[0]}; // @[FlexDPUby2.scala 80:35]
+  wire [3:0] _GEN_222 = {{2'd0}, _FDPE_io_i_mux_bus_3_1_rev_T_14}; // @[FlexDPUby2.scala 80:17]
+  wire [3:0] _FDPE_io_i_mux_bus_3_2_rev_T_2 = {muxes_3_2[0], 3'h0}; // @[FlexDPUby2.scala 80:35]
+  wire [3:0] _FDPE_io_i_mux_bus_3_2_rev_T_4 = {{1'd0}, muxes_3_2[3:1]}; // @[FlexDPUby2.scala 80:24]
+  wire [2:0] _GEN_224 = {_FDPE_io_i_mux_bus_3_2_rev_T_4[0], 2'h0}; // @[FlexDPUby2.scala 80:35]
+  wire [3:0] _FDPE_io_i_mux_bus_3_2_rev_T_6 = {{1'd0}, _GEN_224}; // @[FlexDPUby2.scala 80:35]
+  wire [3:0] _FDPE_io_i_mux_bus_3_2_rev_T_7 = _FDPE_io_i_mux_bus_3_2_rev_T_2 | _FDPE_io_i_mux_bus_3_2_rev_T_6; // @[FlexDPUby2.scala 80:17]
+  wire [3:0] _FDPE_io_i_mux_bus_3_2_rev_T_8 = {{2'd0}, muxes_3_2[3:2]}; // @[FlexDPUby2.scala 80:24]
+  wire [1:0] _FDPE_io_i_mux_bus_3_2_rev_T_10 = {_FDPE_io_i_mux_bus_3_2_rev_T_8[0], 1'h0}; // @[FlexDPUby2.scala 80:35]
+  wire [3:0] _GEN_226 = {{2'd0}, _FDPE_io_i_mux_bus_3_2_rev_T_10}; // @[FlexDPUby2.scala 80:17]
+  wire [3:0] _FDPE_io_i_mux_bus_3_2_rev_T_11 = _FDPE_io_i_mux_bus_3_2_rev_T_7 | _GEN_226; // @[FlexDPUby2.scala 80:17]
+  wire [3:0] _FDPE_io_i_mux_bus_3_2_rev_T_12 = {{3'd0}, muxes_3_2[3]}; // @[FlexDPUby2.scala 80:24]
+  wire [1:0] _FDPE_io_i_mux_bus_3_2_rev_T_14 = {{1'd0}, _FDPE_io_i_mux_bus_3_2_rev_T_12[0]}; // @[FlexDPUby2.scala 80:35]
+  wire [3:0] _GEN_228 = {{2'd0}, _FDPE_io_i_mux_bus_3_2_rev_T_14}; // @[FlexDPUby2.scala 80:17]
+  wire [3:0] _FDPE_io_i_mux_bus_3_3_rev_T_2 = {muxes_3_3[0], 3'h0}; // @[FlexDPUby2.scala 80:35]
+  wire [3:0] _FDPE_io_i_mux_bus_3_3_rev_T_4 = {{1'd0}, muxes_3_3[3:1]}; // @[FlexDPUby2.scala 80:24]
+  wire [2:0] _GEN_230 = {_FDPE_io_i_mux_bus_3_3_rev_T_4[0], 2'h0}; // @[FlexDPUby2.scala 80:35]
+  wire [3:0] _FDPE_io_i_mux_bus_3_3_rev_T_6 = {{1'd0}, _GEN_230}; // @[FlexDPUby2.scala 80:35]
+  wire [3:0] _FDPE_io_i_mux_bus_3_3_rev_T_7 = _FDPE_io_i_mux_bus_3_3_rev_T_2 | _FDPE_io_i_mux_bus_3_3_rev_T_6; // @[FlexDPUby2.scala 80:17]
+  wire [3:0] _FDPE_io_i_mux_bus_3_3_rev_T_8 = {{2'd0}, muxes_3_3[3:2]}; // @[FlexDPUby2.scala 80:24]
+  wire [1:0] _FDPE_io_i_mux_bus_3_3_rev_T_10 = {_FDPE_io_i_mux_bus_3_3_rev_T_8[0], 1'h0}; // @[FlexDPUby2.scala 80:35]
+  wire [3:0] _GEN_232 = {{2'd0}, _FDPE_io_i_mux_bus_3_3_rev_T_10}; // @[FlexDPUby2.scala 80:17]
+  wire [3:0] _FDPE_io_i_mux_bus_3_3_rev_T_11 = _FDPE_io_i_mux_bus_3_3_rev_T_7 | _GEN_232; // @[FlexDPUby2.scala 80:17]
+  wire [3:0] _FDPE_io_i_mux_bus_3_3_rev_T_12 = {{3'd0}, muxes_3_3[3]}; // @[FlexDPUby2.scala 80:24]
+  wire [1:0] _FDPE_io_i_mux_bus_3_3_rev_T_14 = {{1'd0}, _FDPE_io_i_mux_bus_3_3_rev_T_12[0]}; // @[FlexDPUby2.scala 80:35]
+  wire [3:0] _GEN_234 = {{2'd0}, _FDPE_io_i_mux_bus_3_3_rev_T_14}; // @[FlexDPUby2.scala 80:17]
+  PathFinder PF ( // @[FlexDPUby2.scala 104:24]
     .clock(PF_clock),
     .reset(PF_reset),
     .io_Stationary_matrix_0_0(PF_io_Stationary_matrix_0_0),
@@ -5262,7 +5718,7 @@ module FlexDPUby2(
     .io_PF_Valid(PF_io_PF_Valid),
     .io_DataValid(PF_io_DataValid)
   );
-  flexdpecom4 FDPE ( // @[FlexDPUby2.scala 119:30]
+  flexdpecom4 FDPE ( // @[FlexDPUby2.scala 137:30]
     .clock(FDPE_clock),
     .reset(FDPE_reset),
     .io_i_data_valid(FDPE_io_i_data_valid),
@@ -5299,316 +5755,327 @@ module FlexDPUby2(
   );
   assign PF_clock = clock;
   assign PF_reset = reset;
-  assign PF_io_Stationary_matrix_0_0 = io_Stationary_matrix_0_0; // @[FlexDPUby2.scala 89:33]
-  assign PF_io_Stationary_matrix_0_1 = io_Stationary_matrix_0_1; // @[FlexDPUby2.scala 89:33]
-  assign PF_io_Stationary_matrix_1_0 = io_Stationary_matrix_1_0; // @[FlexDPUby2.scala 89:33]
-  assign PF_io_Stationary_matrix_1_1 = io_Stationary_matrix_1_1; // @[FlexDPUby2.scala 89:33]
-  assign PF_io_Streaming_matrix_0 = _GEN_54[15:0]; // @[FlexDPUby2.scala 90:32]
-  assign PF_io_Streaming_matrix_1 = _GEN_56[15:0]; // @[FlexDPUby2.scala 90:32]
-  assign PF_io_DataValid = SrcDestValid; // @[FlexDPUby2.scala 92:25]
+  assign PF_io_Stationary_matrix_0_0 = io_Stationary_matrix_0_0; // @[FlexDPUby2.scala 105:33]
+  assign PF_io_Stationary_matrix_0_1 = io_Stationary_matrix_0_1; // @[FlexDPUby2.scala 105:33]
+  assign PF_io_Stationary_matrix_1_0 = io_Stationary_matrix_1_0; // @[FlexDPUby2.scala 105:33]
+  assign PF_io_Stationary_matrix_1_1 = io_Stationary_matrix_1_1; // @[FlexDPUby2.scala 105:33]
+  assign PF_io_Streaming_matrix_0 = _GEN_58[15:0]; // @[FlexDPUby2.scala 106:32]
+  assign PF_io_Streaming_matrix_1 = _GEN_60[15:0]; // @[FlexDPUby2.scala 106:32]
+  assign PF_io_DataValid = Statvalid; // @[FlexDPUby2.scala 108:25]
   assign FDPE_clock = clock;
   assign FDPE_reset = reset;
-  assign FDPE_io_i_data_valid = 1'h1; // @[FlexDPUby2.scala 121:34]
-  assign FDPE_io_i_data_bus_0 = dest_0[15:0]; // @[FlexDPUby2.scala 122:32]
-  assign FDPE_io_i_data_bus_1 = dest_1[15:0]; // @[FlexDPUby2.scala 122:32]
-  assign FDPE_io_i_data_bus_2 = dest_2[15:0]; // @[FlexDPUby2.scala 122:32]
-  assign FDPE_io_i_data_bus_3 = dest_3[15:0]; // @[FlexDPUby2.scala 122:32]
-  assign FDPE_io_i_data_bus2_0 = src_0[15:0]; // @[FlexDPUby2.scala 124:33]
-  assign FDPE_io_i_data_bus2_1 = src_1[15:0]; // @[FlexDPUby2.scala 124:33]
-  assign FDPE_io_i_data_bus2_2 = src_2[15:0]; // @[FlexDPUby2.scala 124:33]
-  assign FDPE_io_i_data_bus2_3 = src_3[15:0]; // @[FlexDPUby2.scala 124:33]
-  assign FDPE_io_Stationary_matrix_0_0 = io_Stationary_matrix_0_0; // @[FlexDPUby2.scala 129:39]
-  assign FDPE_io_Stationary_matrix_0_1 = io_Stationary_matrix_0_1; // @[FlexDPUby2.scala 129:39]
-  assign FDPE_io_Stationary_matrix_1_0 = io_Stationary_matrix_1_0; // @[FlexDPUby2.scala 129:39]
-  assign FDPE_io_Stationary_matrix_1_1 = io_Stationary_matrix_1_1; // @[FlexDPUby2.scala 129:39]
-  assign FDPE_io_i_mux_bus_0_0 = _FDPE_io_i_mux_bus_0_0_rev_T_11 | _GEN_134; // @[FlexDPUby2.scala 74:17]
-  assign FDPE_io_i_mux_bus_0_1 = _FDPE_io_i_mux_bus_0_1_rev_T_11 | _GEN_140; // @[FlexDPUby2.scala 74:17]
-  assign FDPE_io_i_mux_bus_0_2 = _FDPE_io_i_mux_bus_0_2_rev_T_11 | _GEN_146; // @[FlexDPUby2.scala 74:17]
-  assign FDPE_io_i_mux_bus_0_3 = _FDPE_io_i_mux_bus_0_3_rev_T_11 | _GEN_152; // @[FlexDPUby2.scala 74:17]
-  assign FDPE_io_i_mux_bus_1_0 = _FDPE_io_i_mux_bus_1_0_rev_T_11 | _GEN_158; // @[FlexDPUby2.scala 74:17]
-  assign FDPE_io_i_mux_bus_1_1 = _FDPE_io_i_mux_bus_1_1_rev_T_11 | _GEN_164; // @[FlexDPUby2.scala 74:17]
-  assign FDPE_io_i_mux_bus_1_2 = _FDPE_io_i_mux_bus_1_2_rev_T_11 | _GEN_170; // @[FlexDPUby2.scala 74:17]
-  assign FDPE_io_i_mux_bus_1_3 = _FDPE_io_i_mux_bus_1_3_rev_T_11 | _GEN_176; // @[FlexDPUby2.scala 74:17]
-  assign FDPE_io_i_mux_bus_2_0 = _FDPE_io_i_mux_bus_2_0_rev_T_11 | _GEN_182; // @[FlexDPUby2.scala 74:17]
-  assign FDPE_io_i_mux_bus_2_1 = _FDPE_io_i_mux_bus_2_1_rev_T_11 | _GEN_188; // @[FlexDPUby2.scala 74:17]
-  assign FDPE_io_i_mux_bus_2_2 = _FDPE_io_i_mux_bus_2_2_rev_T_11 | _GEN_194; // @[FlexDPUby2.scala 74:17]
-  assign FDPE_io_i_mux_bus_2_3 = _FDPE_io_i_mux_bus_2_3_rev_T_11 | _GEN_200; // @[FlexDPUby2.scala 74:17]
-  assign FDPE_io_i_mux_bus_3_0 = _FDPE_io_i_mux_bus_3_0_rev_T_11 | _GEN_206; // @[FlexDPUby2.scala 74:17]
-  assign FDPE_io_i_mux_bus_3_1 = _FDPE_io_i_mux_bus_3_1_rev_T_11 | _GEN_212; // @[FlexDPUby2.scala 74:17]
-  assign FDPE_io_i_mux_bus_3_2 = _FDPE_io_i_mux_bus_3_2_rev_T_11 | _GEN_218; // @[FlexDPUby2.scala 74:17]
-  assign FDPE_io_i_mux_bus_3_3 = _FDPE_io_i_mux_bus_3_3_rev_T_11 | _GEN_224; // @[FlexDPUby2.scala 74:17]
+  assign FDPE_io_i_data_valid = 1'h1; // @[FlexDPUby2.scala 139:34]
+  assign FDPE_io_i_data_bus_0 = dest_0[15:0]; // @[FlexDPUby2.scala 140:32]
+  assign FDPE_io_i_data_bus_1 = dest_1[15:0]; // @[FlexDPUby2.scala 140:32]
+  assign FDPE_io_i_data_bus_2 = dest_2[15:0]; // @[FlexDPUby2.scala 140:32]
+  assign FDPE_io_i_data_bus_3 = dest_3[15:0]; // @[FlexDPUby2.scala 140:32]
+  assign FDPE_io_i_data_bus2_0 = src_0[15:0]; // @[FlexDPUby2.scala 142:33]
+  assign FDPE_io_i_data_bus2_1 = src_1[15:0]; // @[FlexDPUby2.scala 142:33]
+  assign FDPE_io_i_data_bus2_2 = src_2[15:0]; // @[FlexDPUby2.scala 142:33]
+  assign FDPE_io_i_data_bus2_3 = src_3[15:0]; // @[FlexDPUby2.scala 142:33]
+  assign FDPE_io_Stationary_matrix_0_0 = io_Stationary_matrix_0_0; // @[FlexDPUby2.scala 147:39]
+  assign FDPE_io_Stationary_matrix_0_1 = io_Stationary_matrix_0_1; // @[FlexDPUby2.scala 147:39]
+  assign FDPE_io_Stationary_matrix_1_0 = io_Stationary_matrix_1_0; // @[FlexDPUby2.scala 147:39]
+  assign FDPE_io_Stationary_matrix_1_1 = io_Stationary_matrix_1_1; // @[FlexDPUby2.scala 147:39]
+  assign FDPE_io_i_mux_bus_0_0 = _FDPE_io_i_mux_bus_0_0_rev_T_11 | _GEN_144; // @[FlexDPUby2.scala 80:17]
+  assign FDPE_io_i_mux_bus_0_1 = _FDPE_io_i_mux_bus_0_1_rev_T_11 | _GEN_150; // @[FlexDPUby2.scala 80:17]
+  assign FDPE_io_i_mux_bus_0_2 = _FDPE_io_i_mux_bus_0_2_rev_T_11 | _GEN_156; // @[FlexDPUby2.scala 80:17]
+  assign FDPE_io_i_mux_bus_0_3 = _FDPE_io_i_mux_bus_0_3_rev_T_11 | _GEN_162; // @[FlexDPUby2.scala 80:17]
+  assign FDPE_io_i_mux_bus_1_0 = _FDPE_io_i_mux_bus_1_0_rev_T_11 | _GEN_168; // @[FlexDPUby2.scala 80:17]
+  assign FDPE_io_i_mux_bus_1_1 = _FDPE_io_i_mux_bus_1_1_rev_T_11 | _GEN_174; // @[FlexDPUby2.scala 80:17]
+  assign FDPE_io_i_mux_bus_1_2 = _FDPE_io_i_mux_bus_1_2_rev_T_11 | _GEN_180; // @[FlexDPUby2.scala 80:17]
+  assign FDPE_io_i_mux_bus_1_3 = _FDPE_io_i_mux_bus_1_3_rev_T_11 | _GEN_186; // @[FlexDPUby2.scala 80:17]
+  assign FDPE_io_i_mux_bus_2_0 = _FDPE_io_i_mux_bus_2_0_rev_T_11 | _GEN_192; // @[FlexDPUby2.scala 80:17]
+  assign FDPE_io_i_mux_bus_2_1 = _FDPE_io_i_mux_bus_2_1_rev_T_11 | _GEN_198; // @[FlexDPUby2.scala 80:17]
+  assign FDPE_io_i_mux_bus_2_2 = _FDPE_io_i_mux_bus_2_2_rev_T_11 | _GEN_204; // @[FlexDPUby2.scala 80:17]
+  assign FDPE_io_i_mux_bus_2_3 = _FDPE_io_i_mux_bus_2_3_rev_T_11 | _GEN_210; // @[FlexDPUby2.scala 80:17]
+  assign FDPE_io_i_mux_bus_3_0 = _FDPE_io_i_mux_bus_3_0_rev_T_11 | _GEN_216; // @[FlexDPUby2.scala 80:17]
+  assign FDPE_io_i_mux_bus_3_1 = _FDPE_io_i_mux_bus_3_1_rev_T_11 | _GEN_222; // @[FlexDPUby2.scala 80:17]
+  assign FDPE_io_i_mux_bus_3_2 = _FDPE_io_i_mux_bus_3_2_rev_T_11 | _GEN_228; // @[FlexDPUby2.scala 80:17]
+  assign FDPE_io_i_mux_bus_3_3 = _FDPE_io_i_mux_bus_3_3_rev_T_11 | _GEN_234; // @[FlexDPUby2.scala 80:17]
   always @(posedge clock) begin
     if (reset) begin // @[FlexDPUby2.scala 15:26]
       DPEDest_0_0 <= 32'h0; // @[FlexDPUby2.scala 15:26]
-    end else if (_GEN_3 != 16'h0) begin // @[FlexDPUby2.scala 32:54]
-      if (~indexRow[0] & 2'h0 == indexCol[1:0]) begin // @[FlexDPUby2.scala 33:37]
-        DPEDest_0_0 <= _DPEDest_T_3_T_4; // @[FlexDPUby2.scala 33:37]
+    end else if (_GEN_3 != 16'h0 & iloop <= 32'h1) begin // @[FlexDPUby2.scala 33:89]
+      if (~indexRow[0] & 2'h0 == indexCol[1:0]) begin // @[FlexDPUby2.scala 34:37]
+        DPEDest_0_0 <= _DPEDest_T_5_T_6; // @[FlexDPUby2.scala 34:37]
       end
     end
     if (reset) begin // @[FlexDPUby2.scala 15:26]
       DPEDest_0_1 <= 32'h0; // @[FlexDPUby2.scala 15:26]
-    end else if (_GEN_3 != 16'h0) begin // @[FlexDPUby2.scala 32:54]
-      if (~indexRow[0] & 2'h1 == indexCol[1:0]) begin // @[FlexDPUby2.scala 33:37]
-        DPEDest_0_1 <= _DPEDest_T_3_T_4; // @[FlexDPUby2.scala 33:37]
+    end else if (_GEN_3 != 16'h0 & iloop <= 32'h1) begin // @[FlexDPUby2.scala 33:89]
+      if (~indexRow[0] & 2'h1 == indexCol[1:0]) begin // @[FlexDPUby2.scala 34:37]
+        DPEDest_0_1 <= _DPEDest_T_5_T_6; // @[FlexDPUby2.scala 34:37]
       end
     end
     if (reset) begin // @[FlexDPUby2.scala 15:26]
       DPEDest_0_2 <= 32'h0; // @[FlexDPUby2.scala 15:26]
-    end else if (_GEN_3 != 16'h0) begin // @[FlexDPUby2.scala 32:54]
-      if (~indexRow[0] & 2'h2 == indexCol[1:0]) begin // @[FlexDPUby2.scala 33:37]
-        DPEDest_0_2 <= _DPEDest_T_3_T_4; // @[FlexDPUby2.scala 33:37]
+    end else if (_GEN_3 != 16'h0 & iloop <= 32'h1) begin // @[FlexDPUby2.scala 33:89]
+      if (~indexRow[0] & 2'h2 == indexCol[1:0]) begin // @[FlexDPUby2.scala 34:37]
+        DPEDest_0_2 <= _DPEDest_T_5_T_6; // @[FlexDPUby2.scala 34:37]
       end
     end
     if (reset) begin // @[FlexDPUby2.scala 15:26]
       DPEDest_0_3 <= 32'h0; // @[FlexDPUby2.scala 15:26]
-    end else if (_GEN_3 != 16'h0) begin // @[FlexDPUby2.scala 32:54]
-      if (~indexRow[0] & 2'h3 == indexCol[1:0]) begin // @[FlexDPUby2.scala 33:37]
-        DPEDest_0_3 <= _DPEDest_T_3_T_4; // @[FlexDPUby2.scala 33:37]
+    end else if (_GEN_3 != 16'h0 & iloop <= 32'h1) begin // @[FlexDPUby2.scala 33:89]
+      if (~indexRow[0] & 2'h3 == indexCol[1:0]) begin // @[FlexDPUby2.scala 34:37]
+        DPEDest_0_3 <= _DPEDest_T_5_T_6; // @[FlexDPUby2.scala 34:37]
       end
     end
     if (reset) begin // @[FlexDPUby2.scala 16:25]
       DPESrc_0_0 <= 32'h0; // @[FlexDPUby2.scala 16:25]
-    end else if (_GEN_28 != 16'h0) begin // @[FlexDPUby2.scala 36:53]
-      if (~SindexRow[0] & ~SindexCol[0]) begin // @[FlexDPUby2.scala 37:38]
-        DPESrc_0_0 <= _DPESrc_T_8_T_9; // @[FlexDPUby2.scala 37:38]
+    end else if (_GEN_28 != 16'h0 & _T_3) begin // @[FlexDPUby2.scala 37:88]
+      if (~SindexRow[0] & ~SindexCol[0]) begin // @[FlexDPUby2.scala 38:38]
+        DPESrc_0_0 <= _DPESrc_T_12_T_13; // @[FlexDPUby2.scala 38:38]
       end
     end
     if (reset) begin // @[FlexDPUby2.scala 16:25]
       DPESrc_0_1 <= 32'h0; // @[FlexDPUby2.scala 16:25]
-    end else if (_GEN_28 != 16'h0) begin // @[FlexDPUby2.scala 36:53]
-      if (~SindexRow[0] & SindexCol[0]) begin // @[FlexDPUby2.scala 37:38]
-        DPESrc_0_1 <= _DPESrc_T_8_T_9; // @[FlexDPUby2.scala 37:38]
+    end else if (_GEN_28 != 16'h0 & _T_3) begin // @[FlexDPUby2.scala 37:88]
+      if (~SindexRow[0] & SindexCol[0]) begin // @[FlexDPUby2.scala 38:38]
+        DPESrc_0_1 <= _DPESrc_T_12_T_13; // @[FlexDPUby2.scala 38:38]
       end
     end
     if (reset) begin // @[FlexDPUby2.scala 16:25]
       DPESrc_1_0 <= 32'h0; // @[FlexDPUby2.scala 16:25]
-    end else if (_GEN_28 != 16'h0) begin // @[FlexDPUby2.scala 36:53]
-      if (SindexRow[0] & ~SindexCol[0]) begin // @[FlexDPUby2.scala 37:38]
-        DPESrc_1_0 <= _DPESrc_T_8_T_9; // @[FlexDPUby2.scala 37:38]
+    end else if (_GEN_28 != 16'h0 & _T_3) begin // @[FlexDPUby2.scala 37:88]
+      if (SindexRow[0] & ~SindexCol[0]) begin // @[FlexDPUby2.scala 38:38]
+        DPESrc_1_0 <= _DPESrc_T_12_T_13; // @[FlexDPUby2.scala 38:38]
       end
     end
     if (reset) begin // @[FlexDPUby2.scala 16:25]
       DPESrc_1_1 <= 32'h0; // @[FlexDPUby2.scala 16:25]
-    end else if (_GEN_28 != 16'h0) begin // @[FlexDPUby2.scala 36:53]
-      if (SindexRow[0] & SindexCol[0]) begin // @[FlexDPUby2.scala 37:38]
-        DPESrc_1_1 <= _DPESrc_T_8_T_9; // @[FlexDPUby2.scala 37:38]
+    end else if (_GEN_28 != 16'h0 & _T_3) begin // @[FlexDPUby2.scala 37:88]
+      if (SindexRow[0] & SindexCol[0]) begin // @[FlexDPUby2.scala 38:38]
+        DPESrc_1_1 <= _DPESrc_T_12_T_13; // @[FlexDPUby2.scala 38:38]
       end
     end
     if (reset) begin // @[FlexDPUby2.scala 18:27]
       indexRow <= 32'h0; // @[FlexDPUby2.scala 18:27]
-    end else if (!(indexCol == 32'h3 & indexRow == 32'h1)) begin // @[FlexDPUby2.scala 49:86]
-      if (_T_14) begin // @[FlexDPUby2.scala 52:52]
-        indexRow <= _indexRow_T_1; // @[FlexDPUby2.scala 53:18]
+    end else if (!(indexCol == 32'h3 & indexRow == 32'h1)) begin // @[FlexDPUby2.scala 50:86]
+      if (_T_18) begin // @[FlexDPUby2.scala 53:52]
+        indexRow <= _indexRow_T_1; // @[FlexDPUby2.scala 54:18]
       end
     end
     if (reset) begin // @[FlexDPUby2.scala 19:27]
       indexCol <= 32'h0; // @[FlexDPUby2.scala 19:27]
-    end else if (!(indexCol == 32'h3 & indexRow == 32'h1)) begin // @[FlexDPUby2.scala 49:86]
-      if (_T_14) begin // @[FlexDPUby2.scala 52:52]
-        indexCol <= 32'h0; // @[FlexDPUby2.scala 54:18]
-      end else if (_GEN_3 != 16'h0) begin // @[FlexDPUby2.scala 32:54]
-        indexCol <= _indexCol_T_1; // @[FlexDPUby2.scala 34:18]
+    end else if (!(indexCol == 32'h3 & indexRow == 32'h1)) begin // @[FlexDPUby2.scala 50:86]
+      if (_T_18) begin // @[FlexDPUby2.scala 53:52]
+        indexCol <= 32'h0; // @[FlexDPUby2.scala 55:18]
+      end else if (_GEN_3 != 16'h0 & iloop <= 32'h1) begin // @[FlexDPUby2.scala 33:89]
+        indexCol <= _indexCol_T_1; // @[FlexDPUby2.scala 35:18]
       end
     end
     if (reset) begin // @[FlexDPUby2.scala 20:28]
       SindexRow <= 32'h0; // @[FlexDPUby2.scala 20:28]
-    end else if (!(SindexCol == 32'h1 & SindexRow == 32'h1)) begin // @[FlexDPUby2.scala 41:88]
-      if (_T_10) begin // @[FlexDPUby2.scala 44:53]
-        SindexRow <= _SindexRow_T_1; // @[FlexDPUby2.scala 45:19]
+    end else if (!(SindexCol == 32'h1 & SindexRow == 32'h1)) begin // @[FlexDPUby2.scala 42:88]
+      if (_T_14) begin // @[FlexDPUby2.scala 45:53]
+        SindexRow <= _SindexRow_T_1; // @[FlexDPUby2.scala 46:19]
       end
     end
     if (reset) begin // @[FlexDPUby2.scala 21:28]
       SindexCol <= 32'h0; // @[FlexDPUby2.scala 21:28]
-    end else if (!(SindexCol == 32'h1 & SindexRow == 32'h1)) begin // @[FlexDPUby2.scala 41:88]
-      if (_T_10) begin // @[FlexDPUby2.scala 44:53]
-        SindexCol <= 32'h0; // @[FlexDPUby2.scala 46:19]
-      end else if (_GEN_28 != 16'h0) begin // @[FlexDPUby2.scala 36:53]
-        SindexCol <= _SindexCol_T_1; // @[FlexDPUby2.scala 38:19]
+    end else if (!(SindexCol == 32'h1 & SindexRow == 32'h1)) begin // @[FlexDPUby2.scala 42:88]
+      if (_T_14) begin // @[FlexDPUby2.scala 45:53]
+        SindexCol <= 32'h0; // @[FlexDPUby2.scala 47:19]
+      end else if (_GEN_28 != 16'h0 & _T_3) begin // @[FlexDPUby2.scala 37:88]
+        SindexCol <= _SindexCol_T_1; // @[FlexDPUby2.scala 39:19]
       end
     end
     if (reset) begin // @[FlexDPUby2.scala 22:24]
       iloop <= 32'h0; // @[FlexDPUby2.scala 22:24]
-    end else if (iloop < 32'h1 & _SrcDestValid_T_1) begin // @[FlexDPUby2.scala 58:77]
-      iloop <= _iloop_T_1; // @[FlexDPUby2.scala 59:15]
+    end else if (_T_3 & jloop < 32'h1) begin // @[FlexDPUby2.scala 63:76]
+      iloop <= _GEN_50;
+    end else if (_SrcDestValid_T_2) begin // @[FlexDPUby2.scala 65:83]
+      iloop <= 32'h2; // @[FlexDPUby2.scala 67:15]
+    end else if (_Statvalid_T_1 & _SrcDestValid_T_1) begin // @[FlexDPUby2.scala 68:49]
+      iloop <= 32'h2; // @[FlexDPUby2.scala 69:15]
+    end else begin
+      iloop <= _GEN_50;
     end
     if (reset) begin // @[FlexDPUby2.scala 23:24]
       jloop <= 32'h0; // @[FlexDPUby2.scala 23:24]
-    end else if (iloop <= 32'h1 & jloop < 32'h1) begin // @[FlexDPUby2.scala 62:76]
-      jloop <= _jloop_T_1; // @[FlexDPUby2.scala 63:15]
-    end else if (!(_SrcDestValid_T_2)) begin // @[FlexDPUby2.scala 64:83]
-      jloop <= 32'h0; // @[FlexDPUby2.scala 67:15]
+    end else if (_T_3 & jloop < 32'h1) begin // @[FlexDPUby2.scala 63:76]
+      jloop <= _jloop_T_1; // @[FlexDPUby2.scala 64:15]
+    end else if (!(_SrcDestValid_T_2)) begin // @[FlexDPUby2.scala 65:83]
+      jloop <= {{31'd0}, _T_33};
+    end
+    if (reset) begin // @[FlexDPUby2.scala 24:28]
+      Statvalid <= 1'h0; // @[FlexDPUby2.scala 24:28]
+    end else begin
+      Statvalid <= (_SrcDestValid_T | iloop == 32'h2) & _SrcDestValid_T_1; // @[FlexDPUby2.scala 31:15]
     end
     if (reset) begin // @[FlexDPUby2.scala 25:31]
       SrcDestValid <= 1'h0; // @[FlexDPUby2.scala 25:31]
     end else begin
       SrcDestValid <= iloop == 32'h1 & jloop == 32'h1; // @[FlexDPUby2.scala 26:18]
     end
-    if (reset) begin // @[FlexDPUby2.scala 79:22]
-      src_0 <= 32'h0; // @[FlexDPUby2.scala 79:22]
-    end else if (SrcDestValid) begin // @[FlexDPUby2.scala 87:24]
-      if (PF_io_PF_Valid) begin // @[FlexDPUby2.scala 101:30]
-        src_0 <= {{16'd0}, PF_io_Source_0}; // @[FlexDPUby2.scala 109:24]
+    if (reset) begin // @[FlexDPUby2.scala 85:22]
+      src_0 <= 32'h0; // @[FlexDPUby2.scala 85:22]
+    end else if (Statvalid) begin // @[FlexDPUby2.scala 103:21]
+      if (PF_io_PF_Valid) begin // @[FlexDPUby2.scala 117:30]
+        src_0 <= {{16'd0}, PF_io_Source_0}; // @[FlexDPUby2.scala 127:24]
       end
     end
-    if (reset) begin // @[FlexDPUby2.scala 79:22]
-      src_1 <= 32'h0; // @[FlexDPUby2.scala 79:22]
-    end else if (SrcDestValid) begin // @[FlexDPUby2.scala 87:24]
-      if (PF_io_PF_Valid) begin // @[FlexDPUby2.scala 101:30]
-        src_1 <= {{16'd0}, PF_io_Source_1}; // @[FlexDPUby2.scala 109:24]
+    if (reset) begin // @[FlexDPUby2.scala 85:22]
+      src_1 <= 32'h0; // @[FlexDPUby2.scala 85:22]
+    end else if (Statvalid) begin // @[FlexDPUby2.scala 103:21]
+      if (PF_io_PF_Valid) begin // @[FlexDPUby2.scala 117:30]
+        src_1 <= {{16'd0}, PF_io_Source_1}; // @[FlexDPUby2.scala 127:24]
       end
     end
-    if (reset) begin // @[FlexDPUby2.scala 79:22]
-      src_2 <= 32'h0; // @[FlexDPUby2.scala 79:22]
-    end else if (SrcDestValid) begin // @[FlexDPUby2.scala 87:24]
-      if (PF_io_PF_Valid) begin // @[FlexDPUby2.scala 101:30]
-        src_2 <= {{16'd0}, PF_io_Source_2}; // @[FlexDPUby2.scala 109:24]
+    if (reset) begin // @[FlexDPUby2.scala 85:22]
+      src_2 <= 32'h0; // @[FlexDPUby2.scala 85:22]
+    end else if (Statvalid) begin // @[FlexDPUby2.scala 103:21]
+      if (PF_io_PF_Valid) begin // @[FlexDPUby2.scala 117:30]
+        src_2 <= {{16'd0}, PF_io_Source_2}; // @[FlexDPUby2.scala 127:24]
       end
     end
-    if (reset) begin // @[FlexDPUby2.scala 79:22]
-      src_3 <= 32'h0; // @[FlexDPUby2.scala 79:22]
-    end else if (SrcDestValid) begin // @[FlexDPUby2.scala 87:24]
-      if (PF_io_PF_Valid) begin // @[FlexDPUby2.scala 101:30]
-        src_3 <= {{16'd0}, PF_io_Source_3}; // @[FlexDPUby2.scala 109:24]
+    if (reset) begin // @[FlexDPUby2.scala 85:22]
+      src_3 <= 32'h0; // @[FlexDPUby2.scala 85:22]
+    end else if (Statvalid) begin // @[FlexDPUby2.scala 103:21]
+      if (PF_io_PF_Valid) begin // @[FlexDPUby2.scala 117:30]
+        src_3 <= {{16'd0}, PF_io_Source_3}; // @[FlexDPUby2.scala 127:24]
       end
     end
-    if (reset) begin // @[FlexDPUby2.scala 80:24]
-      muxes_0_0 <= 4'h0; // @[FlexDPUby2.scala 80:24]
-    end else if (SrcDestValid) begin // @[FlexDPUby2.scala 87:24]
-      if (PF_io_PF_Valid) begin // @[FlexDPUby2.scala 101:30]
-        muxes_0_0 <= PF_io_i_mux_bus_0_0; // @[FlexDPUby2.scala 111:33]
+    if (reset) begin // @[FlexDPUby2.scala 86:24]
+      muxes_0_0 <= 4'h0; // @[FlexDPUby2.scala 86:24]
+    end else if (Statvalid) begin // @[FlexDPUby2.scala 103:21]
+      if (PF_io_PF_Valid) begin // @[FlexDPUby2.scala 117:30]
+        muxes_0_0 <= PF_io_i_mux_bus_0_0; // @[FlexDPUby2.scala 129:33]
       end
     end
-    if (reset) begin // @[FlexDPUby2.scala 80:24]
-      muxes_0_1 <= 4'h0; // @[FlexDPUby2.scala 80:24]
-    end else if (SrcDestValid) begin // @[FlexDPUby2.scala 87:24]
-      if (PF_io_PF_Valid) begin // @[FlexDPUby2.scala 101:30]
-        muxes_0_1 <= PF_io_i_mux_bus_0_1; // @[FlexDPUby2.scala 111:33]
+    if (reset) begin // @[FlexDPUby2.scala 86:24]
+      muxes_0_1 <= 4'h0; // @[FlexDPUby2.scala 86:24]
+    end else if (Statvalid) begin // @[FlexDPUby2.scala 103:21]
+      if (PF_io_PF_Valid) begin // @[FlexDPUby2.scala 117:30]
+        muxes_0_1 <= PF_io_i_mux_bus_0_1; // @[FlexDPUby2.scala 129:33]
       end
     end
-    if (reset) begin // @[FlexDPUby2.scala 80:24]
-      muxes_0_2 <= 4'h0; // @[FlexDPUby2.scala 80:24]
-    end else if (SrcDestValid) begin // @[FlexDPUby2.scala 87:24]
-      if (PF_io_PF_Valid) begin // @[FlexDPUby2.scala 101:30]
-        muxes_0_2 <= PF_io_i_mux_bus_0_2; // @[FlexDPUby2.scala 111:33]
+    if (reset) begin // @[FlexDPUby2.scala 86:24]
+      muxes_0_2 <= 4'h0; // @[FlexDPUby2.scala 86:24]
+    end else if (Statvalid) begin // @[FlexDPUby2.scala 103:21]
+      if (PF_io_PF_Valid) begin // @[FlexDPUby2.scala 117:30]
+        muxes_0_2 <= PF_io_i_mux_bus_0_2; // @[FlexDPUby2.scala 129:33]
       end
     end
-    if (reset) begin // @[FlexDPUby2.scala 80:24]
-      muxes_0_3 <= 4'h0; // @[FlexDPUby2.scala 80:24]
-    end else if (SrcDestValid) begin // @[FlexDPUby2.scala 87:24]
-      if (PF_io_PF_Valid) begin // @[FlexDPUby2.scala 101:30]
-        muxes_0_3 <= PF_io_i_mux_bus_0_3; // @[FlexDPUby2.scala 111:33]
+    if (reset) begin // @[FlexDPUby2.scala 86:24]
+      muxes_0_3 <= 4'h0; // @[FlexDPUby2.scala 86:24]
+    end else if (Statvalid) begin // @[FlexDPUby2.scala 103:21]
+      if (PF_io_PF_Valid) begin // @[FlexDPUby2.scala 117:30]
+        muxes_0_3 <= PF_io_i_mux_bus_0_3; // @[FlexDPUby2.scala 129:33]
       end
     end
-    if (reset) begin // @[FlexDPUby2.scala 80:24]
-      muxes_1_0 <= 4'h0; // @[FlexDPUby2.scala 80:24]
-    end else if (SrcDestValid) begin // @[FlexDPUby2.scala 87:24]
-      if (PF_io_PF_Valid) begin // @[FlexDPUby2.scala 101:30]
-        muxes_1_0 <= PF_io_i_mux_bus_1_0; // @[FlexDPUby2.scala 111:33]
+    if (reset) begin // @[FlexDPUby2.scala 86:24]
+      muxes_1_0 <= 4'h0; // @[FlexDPUby2.scala 86:24]
+    end else if (Statvalid) begin // @[FlexDPUby2.scala 103:21]
+      if (PF_io_PF_Valid) begin // @[FlexDPUby2.scala 117:30]
+        muxes_1_0 <= PF_io_i_mux_bus_1_0; // @[FlexDPUby2.scala 129:33]
       end
     end
-    if (reset) begin // @[FlexDPUby2.scala 80:24]
-      muxes_1_1 <= 4'h0; // @[FlexDPUby2.scala 80:24]
-    end else if (SrcDestValid) begin // @[FlexDPUby2.scala 87:24]
-      if (PF_io_PF_Valid) begin // @[FlexDPUby2.scala 101:30]
-        muxes_1_1 <= PF_io_i_mux_bus_1_1; // @[FlexDPUby2.scala 111:33]
+    if (reset) begin // @[FlexDPUby2.scala 86:24]
+      muxes_1_1 <= 4'h0; // @[FlexDPUby2.scala 86:24]
+    end else if (Statvalid) begin // @[FlexDPUby2.scala 103:21]
+      if (PF_io_PF_Valid) begin // @[FlexDPUby2.scala 117:30]
+        muxes_1_1 <= PF_io_i_mux_bus_1_1; // @[FlexDPUby2.scala 129:33]
       end
     end
-    if (reset) begin // @[FlexDPUby2.scala 80:24]
-      muxes_1_2 <= 4'h0; // @[FlexDPUby2.scala 80:24]
-    end else if (SrcDestValid) begin // @[FlexDPUby2.scala 87:24]
-      if (PF_io_PF_Valid) begin // @[FlexDPUby2.scala 101:30]
-        muxes_1_2 <= PF_io_i_mux_bus_1_2; // @[FlexDPUby2.scala 111:33]
+    if (reset) begin // @[FlexDPUby2.scala 86:24]
+      muxes_1_2 <= 4'h0; // @[FlexDPUby2.scala 86:24]
+    end else if (Statvalid) begin // @[FlexDPUby2.scala 103:21]
+      if (PF_io_PF_Valid) begin // @[FlexDPUby2.scala 117:30]
+        muxes_1_2 <= PF_io_i_mux_bus_1_2; // @[FlexDPUby2.scala 129:33]
       end
     end
-    if (reset) begin // @[FlexDPUby2.scala 80:24]
-      muxes_1_3 <= 4'h0; // @[FlexDPUby2.scala 80:24]
-    end else if (SrcDestValid) begin // @[FlexDPUby2.scala 87:24]
-      if (PF_io_PF_Valid) begin // @[FlexDPUby2.scala 101:30]
-        muxes_1_3 <= PF_io_i_mux_bus_1_3; // @[FlexDPUby2.scala 111:33]
+    if (reset) begin // @[FlexDPUby2.scala 86:24]
+      muxes_1_3 <= 4'h0; // @[FlexDPUby2.scala 86:24]
+    end else if (Statvalid) begin // @[FlexDPUby2.scala 103:21]
+      if (PF_io_PF_Valid) begin // @[FlexDPUby2.scala 117:30]
+        muxes_1_3 <= PF_io_i_mux_bus_1_3; // @[FlexDPUby2.scala 129:33]
       end
     end
-    if (reset) begin // @[FlexDPUby2.scala 80:24]
-      muxes_2_0 <= 4'h0; // @[FlexDPUby2.scala 80:24]
-    end else if (SrcDestValid) begin // @[FlexDPUby2.scala 87:24]
-      if (PF_io_PF_Valid) begin // @[FlexDPUby2.scala 101:30]
-        muxes_2_0 <= PF_io_i_mux_bus_2_0; // @[FlexDPUby2.scala 111:33]
+    if (reset) begin // @[FlexDPUby2.scala 86:24]
+      muxes_2_0 <= 4'h0; // @[FlexDPUby2.scala 86:24]
+    end else if (Statvalid) begin // @[FlexDPUby2.scala 103:21]
+      if (PF_io_PF_Valid) begin // @[FlexDPUby2.scala 117:30]
+        muxes_2_0 <= PF_io_i_mux_bus_2_0; // @[FlexDPUby2.scala 129:33]
       end
     end
-    if (reset) begin // @[FlexDPUby2.scala 80:24]
-      muxes_2_1 <= 4'h0; // @[FlexDPUby2.scala 80:24]
-    end else if (SrcDestValid) begin // @[FlexDPUby2.scala 87:24]
-      if (PF_io_PF_Valid) begin // @[FlexDPUby2.scala 101:30]
-        muxes_2_1 <= PF_io_i_mux_bus_2_1; // @[FlexDPUby2.scala 111:33]
+    if (reset) begin // @[FlexDPUby2.scala 86:24]
+      muxes_2_1 <= 4'h0; // @[FlexDPUby2.scala 86:24]
+    end else if (Statvalid) begin // @[FlexDPUby2.scala 103:21]
+      if (PF_io_PF_Valid) begin // @[FlexDPUby2.scala 117:30]
+        muxes_2_1 <= PF_io_i_mux_bus_2_1; // @[FlexDPUby2.scala 129:33]
       end
     end
-    if (reset) begin // @[FlexDPUby2.scala 80:24]
-      muxes_2_2 <= 4'h0; // @[FlexDPUby2.scala 80:24]
-    end else if (SrcDestValid) begin // @[FlexDPUby2.scala 87:24]
-      if (PF_io_PF_Valid) begin // @[FlexDPUby2.scala 101:30]
-        muxes_2_2 <= PF_io_i_mux_bus_2_2; // @[FlexDPUby2.scala 111:33]
+    if (reset) begin // @[FlexDPUby2.scala 86:24]
+      muxes_2_2 <= 4'h0; // @[FlexDPUby2.scala 86:24]
+    end else if (Statvalid) begin // @[FlexDPUby2.scala 103:21]
+      if (PF_io_PF_Valid) begin // @[FlexDPUby2.scala 117:30]
+        muxes_2_2 <= PF_io_i_mux_bus_2_2; // @[FlexDPUby2.scala 129:33]
       end
     end
-    if (reset) begin // @[FlexDPUby2.scala 80:24]
-      muxes_2_3 <= 4'h0; // @[FlexDPUby2.scala 80:24]
-    end else if (SrcDestValid) begin // @[FlexDPUby2.scala 87:24]
-      if (PF_io_PF_Valid) begin // @[FlexDPUby2.scala 101:30]
-        muxes_2_3 <= PF_io_i_mux_bus_2_3; // @[FlexDPUby2.scala 111:33]
+    if (reset) begin // @[FlexDPUby2.scala 86:24]
+      muxes_2_3 <= 4'h0; // @[FlexDPUby2.scala 86:24]
+    end else if (Statvalid) begin // @[FlexDPUby2.scala 103:21]
+      if (PF_io_PF_Valid) begin // @[FlexDPUby2.scala 117:30]
+        muxes_2_3 <= PF_io_i_mux_bus_2_3; // @[FlexDPUby2.scala 129:33]
       end
     end
-    if (reset) begin // @[FlexDPUby2.scala 80:24]
-      muxes_3_0 <= 4'h0; // @[FlexDPUby2.scala 80:24]
-    end else if (SrcDestValid) begin // @[FlexDPUby2.scala 87:24]
-      if (PF_io_PF_Valid) begin // @[FlexDPUby2.scala 101:30]
-        muxes_3_0 <= PF_io_i_mux_bus_3_0; // @[FlexDPUby2.scala 111:33]
+    if (reset) begin // @[FlexDPUby2.scala 86:24]
+      muxes_3_0 <= 4'h0; // @[FlexDPUby2.scala 86:24]
+    end else if (Statvalid) begin // @[FlexDPUby2.scala 103:21]
+      if (PF_io_PF_Valid) begin // @[FlexDPUby2.scala 117:30]
+        muxes_3_0 <= PF_io_i_mux_bus_3_0; // @[FlexDPUby2.scala 129:33]
       end
     end
-    if (reset) begin // @[FlexDPUby2.scala 80:24]
-      muxes_3_1 <= 4'h0; // @[FlexDPUby2.scala 80:24]
-    end else if (SrcDestValid) begin // @[FlexDPUby2.scala 87:24]
-      if (PF_io_PF_Valid) begin // @[FlexDPUby2.scala 101:30]
-        muxes_3_1 <= PF_io_i_mux_bus_3_1; // @[FlexDPUby2.scala 111:33]
+    if (reset) begin // @[FlexDPUby2.scala 86:24]
+      muxes_3_1 <= 4'h0; // @[FlexDPUby2.scala 86:24]
+    end else if (Statvalid) begin // @[FlexDPUby2.scala 103:21]
+      if (PF_io_PF_Valid) begin // @[FlexDPUby2.scala 117:30]
+        muxes_3_1 <= PF_io_i_mux_bus_3_1; // @[FlexDPUby2.scala 129:33]
       end
     end
-    if (reset) begin // @[FlexDPUby2.scala 80:24]
-      muxes_3_2 <= 4'h0; // @[FlexDPUby2.scala 80:24]
-    end else if (SrcDestValid) begin // @[FlexDPUby2.scala 87:24]
-      if (PF_io_PF_Valid) begin // @[FlexDPUby2.scala 101:30]
-        muxes_3_2 <= PF_io_i_mux_bus_3_2; // @[FlexDPUby2.scala 111:33]
+    if (reset) begin // @[FlexDPUby2.scala 86:24]
+      muxes_3_2 <= 4'h0; // @[FlexDPUby2.scala 86:24]
+    end else if (Statvalid) begin // @[FlexDPUby2.scala 103:21]
+      if (PF_io_PF_Valid) begin // @[FlexDPUby2.scala 117:30]
+        muxes_3_2 <= PF_io_i_mux_bus_3_2; // @[FlexDPUby2.scala 129:33]
       end
     end
-    if (reset) begin // @[FlexDPUby2.scala 80:24]
-      muxes_3_3 <= 4'h0; // @[FlexDPUby2.scala 80:24]
-    end else if (SrcDestValid) begin // @[FlexDPUby2.scala 87:24]
-      if (PF_io_PF_Valid) begin // @[FlexDPUby2.scala 101:30]
-        muxes_3_3 <= PF_io_i_mux_bus_3_3; // @[FlexDPUby2.scala 111:33]
+    if (reset) begin // @[FlexDPUby2.scala 86:24]
+      muxes_3_3 <= 4'h0; // @[FlexDPUby2.scala 86:24]
+    end else if (Statvalid) begin // @[FlexDPUby2.scala 103:21]
+      if (PF_io_PF_Valid) begin // @[FlexDPUby2.scala 117:30]
+        muxes_3_3 <= PF_io_i_mux_bus_3_3; // @[FlexDPUby2.scala 129:33]
       end
     end
-    if (reset) begin // @[FlexDPUby2.scala 81:23]
-      dest_0 <= 32'h0; // @[FlexDPUby2.scala 81:23]
-    end else if (SrcDestValid) begin // @[FlexDPUby2.scala 87:24]
-      dest_0 <= DPEDest_0_0; // @[FlexDPUby2.scala 97:21]
+    if (reset) begin // @[FlexDPUby2.scala 87:23]
+      dest_0 <= 32'h0; // @[FlexDPUby2.scala 87:23]
+    end else if (Statvalid) begin // @[FlexDPUby2.scala 103:21]
+      dest_0 <= DPEDest_0_0; // @[FlexDPUby2.scala 113:21]
     end
-    if (reset) begin // @[FlexDPUby2.scala 81:23]
-      dest_1 <= 32'h0; // @[FlexDPUby2.scala 81:23]
-    end else if (SrcDestValid) begin // @[FlexDPUby2.scala 87:24]
-      dest_1 <= DPEDest_0_1; // @[FlexDPUby2.scala 97:21]
+    if (reset) begin // @[FlexDPUby2.scala 87:23]
+      dest_1 <= 32'h0; // @[FlexDPUby2.scala 87:23]
+    end else if (Statvalid) begin // @[FlexDPUby2.scala 103:21]
+      dest_1 <= DPEDest_0_1; // @[FlexDPUby2.scala 113:21]
     end
-    if (reset) begin // @[FlexDPUby2.scala 81:23]
-      dest_2 <= 32'h0; // @[FlexDPUby2.scala 81:23]
-    end else if (SrcDestValid) begin // @[FlexDPUby2.scala 87:24]
-      dest_2 <= DPEDest_0_2; // @[FlexDPUby2.scala 97:21]
+    if (reset) begin // @[FlexDPUby2.scala 87:23]
+      dest_2 <= 32'h0; // @[FlexDPUby2.scala 87:23]
+    end else if (Statvalid) begin // @[FlexDPUby2.scala 103:21]
+      dest_2 <= DPEDest_0_2; // @[FlexDPUby2.scala 113:21]
     end
-    if (reset) begin // @[FlexDPUby2.scala 81:23]
-      dest_3 <= 32'h0; // @[FlexDPUby2.scala 81:23]
-    end else if (SrcDestValid) begin // @[FlexDPUby2.scala 87:24]
-      dest_3 <= DPEDest_0_3; // @[FlexDPUby2.scala 97:21]
+    if (reset) begin // @[FlexDPUby2.scala 87:23]
+      dest_3 <= 32'h0; // @[FlexDPUby2.scala 87:23]
+    end else if (Statvalid) begin // @[FlexDPUby2.scala 103:21]
+      dest_3 <= DPEDest_0_3; // @[FlexDPUby2.scala 113:21]
     end
-    if (reset) begin // @[FlexDPUby2.scala 86:34]
-      iterationChange <= 1'h0; // @[FlexDPUby2.scala 86:34]
-    end else if (SrcDestValid) begin // @[FlexDPUby2.scala 87:24]
-      if (PF_io_PF_Valid) begin // @[FlexDPUby2.scala 101:30]
-        if (!(iterationChange)) begin // @[FlexDPUby2.scala 102:58]
-          iterationChange <= _GEN_57;
+    if (reset) begin // @[FlexDPUby2.scala 102:34]
+      iterationChange <= 1'h0; // @[FlexDPUby2.scala 102:34]
+    end else if (Statvalid) begin // @[FlexDPUby2.scala 103:21]
+      if (PF_io_PF_Valid) begin // @[FlexDPUby2.scala 117:30]
+        if (!(iterationChange)) begin // @[FlexDPUby2.scala 118:58]
+          iterationChange <= _GEN_67;
         end
       end
     end
@@ -5678,57 +6145,59 @@ initial begin
   _RAND_13 = {1{`RANDOM}};
   jloop = _RAND_13[31:0];
   _RAND_14 = {1{`RANDOM}};
-  SrcDestValid = _RAND_14[0:0];
+  Statvalid = _RAND_14[0:0];
   _RAND_15 = {1{`RANDOM}};
-  src_0 = _RAND_15[31:0];
+  SrcDestValid = _RAND_15[0:0];
   _RAND_16 = {1{`RANDOM}};
-  src_1 = _RAND_16[31:0];
+  src_0 = _RAND_16[31:0];
   _RAND_17 = {1{`RANDOM}};
-  src_2 = _RAND_17[31:0];
+  src_1 = _RAND_17[31:0];
   _RAND_18 = {1{`RANDOM}};
-  src_3 = _RAND_18[31:0];
+  src_2 = _RAND_18[31:0];
   _RAND_19 = {1{`RANDOM}};
-  muxes_0_0 = _RAND_19[3:0];
+  src_3 = _RAND_19[31:0];
   _RAND_20 = {1{`RANDOM}};
-  muxes_0_1 = _RAND_20[3:0];
+  muxes_0_0 = _RAND_20[3:0];
   _RAND_21 = {1{`RANDOM}};
-  muxes_0_2 = _RAND_21[3:0];
+  muxes_0_1 = _RAND_21[3:0];
   _RAND_22 = {1{`RANDOM}};
-  muxes_0_3 = _RAND_22[3:0];
+  muxes_0_2 = _RAND_22[3:0];
   _RAND_23 = {1{`RANDOM}};
-  muxes_1_0 = _RAND_23[3:0];
+  muxes_0_3 = _RAND_23[3:0];
   _RAND_24 = {1{`RANDOM}};
-  muxes_1_1 = _RAND_24[3:0];
+  muxes_1_0 = _RAND_24[3:0];
   _RAND_25 = {1{`RANDOM}};
-  muxes_1_2 = _RAND_25[3:0];
+  muxes_1_1 = _RAND_25[3:0];
   _RAND_26 = {1{`RANDOM}};
-  muxes_1_3 = _RAND_26[3:0];
+  muxes_1_2 = _RAND_26[3:0];
   _RAND_27 = {1{`RANDOM}};
-  muxes_2_0 = _RAND_27[3:0];
+  muxes_1_3 = _RAND_27[3:0];
   _RAND_28 = {1{`RANDOM}};
-  muxes_2_1 = _RAND_28[3:0];
+  muxes_2_0 = _RAND_28[3:0];
   _RAND_29 = {1{`RANDOM}};
-  muxes_2_2 = _RAND_29[3:0];
+  muxes_2_1 = _RAND_29[3:0];
   _RAND_30 = {1{`RANDOM}};
-  muxes_2_3 = _RAND_30[3:0];
+  muxes_2_2 = _RAND_30[3:0];
   _RAND_31 = {1{`RANDOM}};
-  muxes_3_0 = _RAND_31[3:0];
+  muxes_2_3 = _RAND_31[3:0];
   _RAND_32 = {1{`RANDOM}};
-  muxes_3_1 = _RAND_32[3:0];
+  muxes_3_0 = _RAND_32[3:0];
   _RAND_33 = {1{`RANDOM}};
-  muxes_3_2 = _RAND_33[3:0];
+  muxes_3_1 = _RAND_33[3:0];
   _RAND_34 = {1{`RANDOM}};
-  muxes_3_3 = _RAND_34[3:0];
+  muxes_3_2 = _RAND_34[3:0];
   _RAND_35 = {1{`RANDOM}};
-  dest_0 = _RAND_35[31:0];
+  muxes_3_3 = _RAND_35[3:0];
   _RAND_36 = {1{`RANDOM}};
-  dest_1 = _RAND_36[31:0];
+  dest_0 = _RAND_36[31:0];
   _RAND_37 = {1{`RANDOM}};
-  dest_2 = _RAND_37[31:0];
+  dest_1 = _RAND_37[31:0];
   _RAND_38 = {1{`RANDOM}};
-  dest_3 = _RAND_38[31:0];
+  dest_2 = _RAND_38[31:0];
   _RAND_39 = {1{`RANDOM}};
-  iterationChange = _RAND_39[0:0];
+  dest_3 = _RAND_39[31:0];
+  _RAND_40 = {1{`RANDOM}};
+  iterationChange = _RAND_40[0:0];
 `endif // RANDOMIZE_REG_INIT
   `endif // RANDOMIZE
 end // initial
