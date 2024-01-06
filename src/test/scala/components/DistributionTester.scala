@@ -14,8 +14,8 @@ class DistributionTester extends FreeSpec with ChiselScalatestTester {
 
 
         val inputData = Seq(
-           Seq(1, 2, 0, 1),
-            Seq(3, 4, 3,4),
+           Seq(0, 0, 0, 1),
+            Seq(1, 2, 3,4),
            Seq(0, 0, 0, 0),
            Seq(1, 2, 3, 4)
         ) 

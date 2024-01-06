@@ -41,7 +41,6 @@ class Distribution(implicit val config:MagmasiConfig) extends Module{
     dontTouch(Jdex)
     
 
-
     when ((io.matrix(i)(j) === 1.U) ){//&& (i =/= (config.MaxRows-1).U) && (j =/= (config.MaxCols-1).U)){
         count := count + 1.U
         Idex(count) := i
@@ -65,10 +64,6 @@ part2.io.mat := io.matrix
     dontTouch(part2.io.IDex)
 
     val part3 = Module(new abc3)
-    // part3.io.merge := RegNext(c)
-    // part3.io.mat := io.matrix
-    // part3.io.i_valid := part2.io.ProcessValid
-    //val d = part3.io.valid
     val check = WireInit(0.B)
     when(part2.io.Ovalid){
         check := 0.B
@@ -77,7 +72,7 @@ part2.io.mat := io.matrix
     }
     val e = ((i === (config.MaxRows-1).U) && (j === (config.MaxCols-1).U) && ((count-1.U) < io.s))
     dontTouch(e)
-    when (part2.io.ProcessValid && check){
+    when (~(part2.io.ProcessValid) && check){
     part3.io.merge := RegNext(c)
     part3.io.mat := io.matrix
     part3.io.i_valid := part2.io.ProcessValid

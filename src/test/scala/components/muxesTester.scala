@@ -12,20 +12,20 @@ class MuxesTester extends AnyFreeSpec with ChiselScalatestTester {
         test(new Muxes()).withAnnotations  (Seq(VerilatorBackendAnnotation)) { dut =>
 
         val inputData = Seq(
-          Seq(11, 12, 3, 0),
-          Seq(3, 4, 7, 0),
+          Seq(0, 0, 3, 0),
+          Seq(1, 1, 7, 0),
           Seq(9, 10, 11, 0),
           Seq(13, 14, 15, 0)
         ) 
             
         val input = Seq(
-          Seq(1, 2, 2, 0),
-          Seq(3, 4, 1, 0),
+          Seq(0, 0, 2, 0),
+          Seq(1, 2, 1, 0),
           Seq(2, 3, 4, 0),
           Seq(1, 2, 3, 0)
         ) 
         
-        val inputData2 = Seq(2, 1, 3, 0,1)
+        val inputData2 = Seq(1, 2, 3, 0,1)
         val input2 = Seq(1, 2, 2, 0,1)
 
         for (i <- 0 until config.MaxRows) {

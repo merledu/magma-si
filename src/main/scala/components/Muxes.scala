@@ -81,10 +81,11 @@ class Muxes(implicit val config: MagmasiConfig) extends Module{
     //   counter := counter
    
     // }.else
-      when ( ~jValid && (io.counterMatrix1(0.U)(i+1.U) =/= 0.U) && (io.mat2(i+1.U) =/= 0.U) && (j === (config.MaxCols -1 ).U)){
-      counter := counter + 1.U
-      indexcounter := 0.U
-    }.elsewhen ( ~jValid && (io.counterMatrix1(j + 1.U)(i) =/= 0.U) && (io.mat2(i) =/= 0.U) && (j < (config.MaxCols -1 ).U)) {
+    //   when ( ~jValid && (io.counterMatrix1(0.U)(i+1.U) =/= 0.U) && (io.mat2(i+1.U) =/= 0.U) && (j === (config.MaxCols -1 ).U)){
+    //   counter := counter + 1.U
+    //   indexcounter := 0.U
+    // }.else
+      when ( ~jValid && (io.counterMatrix1(j + 1.U)(i) =/= 0.U) && (io.mat2(i) =/= 0.U) && (j < (config.MaxCols -1 ).U)) {
       indexcounter := indexcounter + 1.U
     }
 
@@ -99,6 +100,8 @@ class Muxes(implicit val config: MagmasiConfig) extends Module{
         j := 0.U
         when(i < (config.MaxRows - 1).U) {
           i := i + 1.U
+          counter := counter + 1.U
+          indexcounter := 0.U
         }
       }
     }.elsewhen ((jValid === 1.B) && (matricesAreEqual === 0.B)){

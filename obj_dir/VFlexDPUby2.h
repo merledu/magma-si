@@ -26,6 +26,7 @@ VL_MODULE(VFlexDPUby2) {
     // propagate new values into/out from the Verilated model.
     VL_IN8(clock,0,0);
     VL_IN8(reset,0,0);
+    VL_IN8(io_valid,0,0);
     VL_IN16(io_Stationary_matrix_0_0,15,0);
     VL_IN16(io_Stationary_matrix_0_1,15,0);
     VL_IN16(io_Stationary_matrix_1_0,15,0);
@@ -34,6 +35,10 @@ VL_MODULE(VFlexDPUby2) {
     VL_IN16(io_Streaming_matrix_0_1,15,0);
     VL_IN16(io_Streaming_matrix_1_0,15,0);
     VL_IN16(io_Streaming_matrix_1_1,15,0);
+    VL_OUT16(io_output_0_0,15,0);
+    VL_OUT16(io_output_0_1,15,0);
+    VL_OUT16(io_output_1_0,15,0);
+    VL_OUT16(io_output_1_1,15,0);
     
     // LOCAL SIGNALS
     // Internals; generally not touched by application code
@@ -61,11 +66,10 @@ VL_MODULE(VFlexDPUby2) {
         CData/*0:0*/ FlexDPUby2__DOT___SrcDestValid_T;
         CData/*0:0*/ FlexDPUby2__DOT___SrcDestValid_T_1;
         CData/*0:0*/ FlexDPUby2__DOT___SrcDestValid_T_2;
-        CData/*0:0*/ FlexDPUby2__DOT___Statvalid_T_1;
         CData/*0:0*/ FlexDPUby2__DOT___T_3;
-        CData/*0:0*/ FlexDPUby2__DOT___T_14;
-        CData/*0:0*/ FlexDPUby2__DOT___T_18;
-        CData/*0:0*/ FlexDPUby2__DOT___T_33;
+        CData/*0:0*/ FlexDPUby2__DOT___T_9;
+        CData/*0:0*/ FlexDPUby2__DOT___T_13;
+        CData/*0:0*/ FlexDPUby2__DOT___T_28;
         CData/*3:0*/ FlexDPUby2__DOT__muxes_0_0;
         CData/*3:0*/ FlexDPUby2__DOT__muxes_0_1;
         CData/*3:0*/ FlexDPUby2__DOT__muxes_0_2;
@@ -83,7 +87,7 @@ VL_MODULE(VFlexDPUby2) {
         CData/*3:0*/ FlexDPUby2__DOT__muxes_3_2;
         CData/*3:0*/ FlexDPUby2__DOT__muxes_3_3;
         CData/*0:0*/ FlexDPUby2__DOT__iterationChange;
-        CData/*0:0*/ FlexDPUby2__DOT___GEN_67;
+        CData/*0:0*/ FlexDPUby2__DOT___GEN_58;
         CData/*0:0*/ FlexDPUby2__DOT__PF__DOT__myCounter_io_valid;
         CData/*0:0*/ FlexDPUby2__DOT__PF__DOT__Distribution_io_ProcessValid;
         CData/*0:0*/ FlexDPUby2__DOT__PF__DOT__myCounter_io_start_REG;
@@ -103,9 +107,9 @@ VL_MODULE(VFlexDPUby2) {
         CData/*3:0*/ FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_2_2;
         CData/*3:0*/ FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_2_3;
         CData/*3:0*/ FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_3_0;
+        CData/*3:0*/ FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_3_1;
     };
     struct {
-        CData/*3:0*/ FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_3_1;
         CData/*3:0*/ FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_3_2;
         CData/*3:0*/ FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_3_3;
         CData/*0:0*/ FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___T_6;
@@ -125,9 +129,8 @@ VL_MODULE(VFlexDPUby2) {
         CData/*3:0*/ FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_127;
         CData/*3:0*/ FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_128;
         CData/*3:0*/ FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_129;
-        CData/*0:0*/ FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___T_37;
-        CData/*0:0*/ FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___T_49;
-        CData/*0:0*/ FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_152;
+        CData/*0:0*/ FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___T_36;
+        CData/*0:0*/ FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_148;
         CData/*0:0*/ FlexDPUby2__DOT__PF__DOT__myCounter__DOT__matricesAreEqual;
         CData/*0:0*/ FlexDPUby2__DOT__PF__DOT__myCounter__DOT__jValid;
         CData/*0:0*/ FlexDPUby2__DOT__PF__DOT__myCounter__DOT___reg_i_T_2;
@@ -169,10 +172,10 @@ VL_MODULE(VFlexDPUby2) {
         CData/*4:0*/ FlexDPUby2__DOT__FDPE__DOT__my_controller__DOT__w_vn_0;
         CData/*4:0*/ FlexDPUby2__DOT__FDPE__DOT__my_controller__DOT__w_vn_1;
         CData/*4:0*/ FlexDPUby2__DOT__FDPE__DOT__my_controller__DOT__w_vn_2;
-    };
-    struct {
         CData/*4:0*/ FlexDPUby2__DOT__FDPE__DOT__my_controller__DOT__w_vn_3;
         CData/*0:0*/ FlexDPUby2__DOT__FDPE__DOT__my_controller__DOT__r_valid_0;
+    };
+    struct {
         CData/*0:0*/ FlexDPUby2__DOT__FDPE__DOT__my_controller__DOT__r_valid_1;
         CData/*0:0*/ FlexDPUby2__DOT__FDPE__DOT__my_controller__DOT__r_valid_2;
         CData/*0:0*/ FlexDPUby2__DOT__FDPE__DOT__my_controller__DOT__r_valid_3;
@@ -235,10 +238,10 @@ VL_MODULE(VFlexDPUby2) {
         CData/*1:0*/ FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT__parsedindexvalue3_nextIndex_17;
         CData/*1:0*/ FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT__parsedindexvalue3_8;
         CData/*0:0*/ FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT___T_333;
-    };
-    struct {
         CData/*0:0*/ FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT___T_345;
         CData/*1:0*/ FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT___parsedindexvalue_nextIndex_T_1205;
+    };
+    struct {
         CData/*1:0*/ FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT__parsedindexvalue_nextIndex_30;
         CData/*1:0*/ FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT__parsedindexvalue_nextIndex_31;
         CData/*1:0*/ FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT__parsedindexvalue_15;
@@ -268,7 +271,6 @@ VL_MODULE(VFlexDPUby2) {
         CData/*0:0*/ FlexDPUby2__DOT__FDPE__DOT__my_fan_network__DOT__my_adder_2__DOT__r_valid;
         CData/*2:0*/ FlexDPUby2__DOT__FDPE__DOT__my_fan_network__DOT__my_adder_2__DOT__r_add_en;
         SData/*15:0*/ FlexDPUby2__DOT___GEN_3;
-        SData/*15:0*/ FlexDPUby2__DOT___GEN_28;
         SData/*15:0*/ FlexDPUby2__DOT__PF__DOT__myMuxes_io_mat1_0_0;
         SData/*15:0*/ FlexDPUby2__DOT__PF__DOT__myMuxes_io_mat1_0_1;
         SData/*15:0*/ FlexDPUby2__DOT__PF__DOT__myMuxes_io_mat1_1_0;
@@ -301,13 +303,11 @@ VL_MODULE(VFlexDPUby2) {
         SData/*15:0*/ FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_133;
         SData/*15:0*/ FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_134;
         SData/*15:0*/ FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_135;
-    };
-    struct {
         SData/*15:0*/ FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_136;
         SData/*15:0*/ FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_137;
-        SData/*15:0*/ FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_139;
-        SData/*15:0*/ FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_141;
         SData/*15:0*/ FlexDPUby2__DOT__PF__DOT__myCounter__DOT__prevStationary_matrix_0;
+    };
+    struct {
         SData/*15:0*/ FlexDPUby2__DOT__PF__DOT__myCounter__DOT__prevStationary_matrix_1;
         SData/*15:0*/ FlexDPUby2__DOT__PF__DOT__myCounter__DOT__counterRegs1_0_0;
         SData/*15:0*/ FlexDPUby2__DOT__PF__DOT__myCounter__DOT__counterRegs1_0_1;
@@ -367,13 +367,13 @@ VL_MODULE(VFlexDPUby2) {
         SData/*15:0*/ FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT___GEN_165;
         SData/*15:0*/ FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT___GEN_166;
         SData/*15:0*/ FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT___GEN_167;
-    };
-    struct {
         SData/*15:0*/ FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT___GEN_168;
         SData/*15:0*/ FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT___GEN_175;
         SData/*15:0*/ FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT___GEN_176;
         SData/*15:0*/ FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT___GEN_177;
         SData/*15:0*/ FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT___GEN_178;
+    };
+    struct {
         SData/*15:0*/ FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT___GEN_200;
         SData/*15:0*/ FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT___GEN_201;
         SData/*15:0*/ FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT___GEN_202;
@@ -433,13 +433,13 @@ VL_MODULE(VFlexDPUby2) {
         SData/*15:0*/ FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT___GEN_450;
         SData/*15:0*/ FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT___GEN_451;
         SData/*15:0*/ FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT___GEN_452;
-    };
-    struct {
         SData/*15:0*/ FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT___GEN_453;
         SData/*15:0*/ FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT___GEN_475;
         SData/*15:0*/ FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT___GEN_476;
         SData/*15:0*/ FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT___GEN_477;
         SData/*15:0*/ FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT___GEN_478;
+    };
+    struct {
         SData/*15:0*/ FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT___GEN_505;
         SData/*15:0*/ FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT___GEN_506;
         SData/*15:0*/ FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT___GEN_507;
@@ -490,24 +490,25 @@ VL_MODULE(VFlexDPUby2) {
         IData/*31:0*/ FlexDPUby2__DOT__SindexCol;
         IData/*31:0*/ FlexDPUby2__DOT__iloop;
         IData/*31:0*/ FlexDPUby2__DOT__jloop;
-        IData/*31:0*/ FlexDPUby2__DOT___indexCol_T_1;
+        IData/*31:0*/ FlexDPUby2__DOT___GEN_24;
         IData/*31:0*/ FlexDPUby2__DOT___SindexCol_T_1;
         IData/*31:0*/ FlexDPUby2__DOT___SindexRow_T_1;
         IData/*31:0*/ FlexDPUby2__DOT___indexRow_T_1;
-        IData/*31:0*/ FlexDPUby2__DOT___GEN_50;
+        IData/*31:0*/ FlexDPUby2__DOT___iloop_T_1;
         IData/*31:0*/ FlexDPUby2__DOT___jloop_T_1;
+        IData/*31:0*/ FlexDPUby2__DOT___GEN_42;
         IData/*31:0*/ FlexDPUby2__DOT__src_0;
         IData/*31:0*/ FlexDPUby2__DOT__src_1;
         IData/*31:0*/ FlexDPUby2__DOT__src_2;
-    };
-    struct {
         IData/*31:0*/ FlexDPUby2__DOT__src_3;
         IData/*31:0*/ FlexDPUby2__DOT__dest_0;
         IData/*31:0*/ FlexDPUby2__DOT__dest_1;
         IData/*31:0*/ FlexDPUby2__DOT__dest_2;
+    };
+    struct {
         IData/*31:0*/ FlexDPUby2__DOT__dest_3;
-        IData/*31:0*/ FlexDPUby2__DOT___GEN_58;
-        IData/*31:0*/ FlexDPUby2__DOT___GEN_60;
+        IData/*31:0*/ FlexDPUby2__DOT___GEN_49;
+        IData/*31:0*/ FlexDPUby2__DOT___GEN_51;
         IData/*31:0*/ FlexDPUby2__DOT__PF__DOT___GEN_7;
         IData/*31:0*/ FlexDPUby2__DOT__PF__DOT___GEN_8;
         IData/*31:0*/ FlexDPUby2__DOT__PF__DOT___GEN_9;
@@ -517,10 +518,11 @@ VL_MODULE(VFlexDPUby2) {
         IData/*31:0*/ FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__k;
         IData/*31:0*/ FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter;
         IData/*31:0*/ FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__indexcounter;
-        IData/*31:0*/ FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___T_41;
-        IData/*31:0*/ FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_149;
-        IData/*31:0*/ FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_150;
-        IData/*31:0*/ FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_151;
+        IData/*31:0*/ FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___T_28;
+        IData/*31:0*/ FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_144;
+        IData/*31:0*/ FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_145;
+        IData/*31:0*/ FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_146;
+        IData/*31:0*/ FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_147;
         IData/*31:0*/ FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__jNext;
         IData/*31:0*/ FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___k_T_1;
         IData/*31:0*/ FlexDPUby2__DOT__PF__DOT__myCounter__DOT__i;
@@ -565,11 +567,11 @@ VL_MODULE(VFlexDPUby2) {
         IData/*31:0*/ FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part2__DOT__j;
         IData/*31:0*/ FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part2__DOT__a;
         IData/*31:0*/ FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part2__DOT___GEN_6;
-    };
-    struct {
         IData/*31:0*/ FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part2__DOT___a_T_1;
         IData/*31:0*/ FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part2__DOT___j_T_1;
         IData/*31:0*/ FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__b_0_0;
+    };
+    struct {
         IData/*31:0*/ FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__b_0_1;
         IData/*31:0*/ FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__b_1_0;
         IData/*31:0*/ FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__b_1_1;

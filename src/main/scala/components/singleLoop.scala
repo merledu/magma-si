@@ -24,11 +24,11 @@ class abc2(implicit val config : MagmasiConfig) extends Module{
     when(io.valid && (a =/= 0.U)){
     b(io.IDex)(j) := io.mat(io.IDex)(j)}
     when (j === 1.U){
-    io.Ovalid := RegNext(io.mat(io.IDex)(1) === config.NUM_PES.U)
+    io.Ovalid := RegNext(io.mat(io.IDex)(1) === 2.U)
     }.otherwise{
         io.Ovalid := 0.B
     }
-    io.ProcessValid := WireInit(j === (config.MaxCols-1).U)
+    io.ProcessValid := WireInit(io.mat(io.IDex)(j) === config.NUM_PES.U)
 
 
     

@@ -10,6 +10,8 @@ class FlexDPUby2(implicit val config:MagmasiConfig) extends Module{
     val io = IO(new Bundle{
         val Stationary_matrix = Input(Vec(config.MaxRows, Vec(config.MaxCols, UInt(config.DATA_TYPE.W))))
         val Streaming_matrix = Input(Vec(config.MaxRows, Vec(config.MaxCols, UInt(config.DATA_TYPE.W))))
+        val output = Output(Vec(config.MaxRows, Vec(config.MaxCols, UInt(config.DATA_TYPE.W))))
+        val valid = Input(Bool())
     })
 
     val DPEDest = RegInit(VecInit(Seq.fill(2)(VecInit(Seq.fill(config.NUM_PES)(0.U(32.W))))))
@@ -30,14 +32,15 @@ class FlexDPUby2(implicit val config:MagmasiConfig) extends Module{
 
     Statvalid := (((iloop === (config.MaxRows-1).U) || (iloop === 2.U) ) && (jloop === (config.MaxCols-1).U))
     dontTouch(Statvalid)
+    when (io.valid){
     when (io.Stationary_matrix(iloop)(jloop) =/= 0.U && (iloop <= (config.MaxRows-1).U)){
         DPEDest(indexRow)(indexCol) := io.Stationary_matrix(iloop)(jloop)
         indexCol := indexCol + 1.U
     }
-    when (io.Streaming_matrix(jloop)(iloop) =/= 0.U && (iloop <= (config.MaxRows-1).U)){
+    //when (io.Streaming_matrix(jloop)(iloop) =/= 0.U && (iloop <= (config.MaxRows-1).U)){
         DPESrc(SindexRow)(SindexCol) := io.Streaming_matrix(jloop)(iloop)
         SindexCol := SindexCol + 1.U
-    }
+    //}
 
     when (SindexCol === (config.MaxCols -1).U && (SindexRow === (config.MaxRows -1).U)){
         SindexRow := SindexRow
@@ -150,14 +153,25 @@ class FlexDPUby2(implicit val config:MagmasiConfig) extends Module{
                     FDPE.io.i_mux_bus(i)(j) := Reverse(muxes(i)(j))
                 }
             }       
+            io.output := FDPE.io.matrix
+        }.otherwise{
+            io.output := RegInit(VecInit(Seq.fill(config.MaxCols)(VecInit(Seq.fill(config.MaxRows)(0.U(32.W))))))
+
         }
     
     
         
     
     
+    }.otherwise{
+        io.output := RegInit(VecInit(Seq.fill(config.MaxCols)(VecInit(Seq.fill(config.MaxRows)(0.U(32.W))))))
     }
 
+
+}.otherwise{
+    io.output := RegInit(VecInit(Seq.fill(config.MaxCols)(VecInit(Seq.fill(config.MaxRows)(0.U(32.W))))))
+
+}
 }
 object FlexDPUby2Driver extends App {
     implicit val config:MagmasiConfig = MagmasiConfig()

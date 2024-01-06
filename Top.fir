@@ -1,4 +1,89 @@
-circuit FlexDPUby2 :
+circuit Top :
+  module Regor :
+    input clock : Clock
+    input reset : Reset
+    output io : { flip mat1 : UInt<16>[2][2], flip mat2 : UInt<16>[2][2], compressedBitmap : UInt<16>[2][2], valid : UInt<1>}
+
+    wire _matReg1_WIRE : UInt<16>[2] @[MatrixPRE-Processor.scala 16:57]
+    _matReg1_WIRE[0] <= UInt<16>("h0") @[MatrixPRE-Processor.scala 16:57]
+    _matReg1_WIRE[1] <= UInt<16>("h0") @[MatrixPRE-Processor.scala 16:57]
+    wire _matReg1_WIRE_1 : UInt<16>[2] @[MatrixPRE-Processor.scala 16:57]
+    _matReg1_WIRE_1[0] <= UInt<16>("h0") @[MatrixPRE-Processor.scala 16:57]
+    _matReg1_WIRE_1[1] <= UInt<16>("h0") @[MatrixPRE-Processor.scala 16:57]
+    wire _matReg1_WIRE_2 : UInt<16>[2][2] @[MatrixPRE-Processor.scala 16:34]
+    _matReg1_WIRE_2[0] <= _matReg1_WIRE @[MatrixPRE-Processor.scala 16:34]
+    _matReg1_WIRE_2[1] <= _matReg1_WIRE_1 @[MatrixPRE-Processor.scala 16:34]
+    reg matReg1 : UInt<16>[2][2], clock with :
+      reset => (reset, _matReg1_WIRE_2) @[MatrixPRE-Processor.scala 16:26]
+    io.compressedBitmap <= matReg1 @[MatrixPRE-Processor.scala 17:25]
+    wire _reg_WIRE : UInt<1>[2] @[MatrixPRE-Processor.scala 21:30]
+    _reg_WIRE[0] <= UInt<1>("h0") @[MatrixPRE-Processor.scala 21:30]
+    _reg_WIRE[1] <= UInt<1>("h0") @[MatrixPRE-Processor.scala 21:30]
+    reg reg : UInt<1>[2], clock with :
+      reset => (reset, _reg_WIRE) @[MatrixPRE-Processor.scala 21:22]
+    node _reg_0_T = neq(io.mat1[0][0], UInt<1>("h0")) @[MatrixPRE-Processor.scala 24:36]
+    node _reg_0_T_1 = neq(io.mat1[0][1], UInt<1>("h0")) @[MatrixPRE-Processor.scala 24:36]
+    node _reg_0_T_2 = or(_reg_0_T, _reg_0_T_1) @[MatrixPRE-Processor.scala 24:54]
+    reg[0] <= _reg_0_T_2 @[MatrixPRE-Processor.scala 24:16]
+    node _reg_1_T = neq(io.mat1[1][0], UInt<1>("h0")) @[MatrixPRE-Processor.scala 24:36]
+    node _reg_1_T_1 = neq(io.mat1[1][1], UInt<1>("h0")) @[MatrixPRE-Processor.scala 24:36]
+    node _reg_1_T_2 = or(_reg_1_T, _reg_1_T_1) @[MatrixPRE-Processor.scala 24:54]
+    reg[1] <= _reg_1_T_2 @[MatrixPRE-Processor.scala 24:16]
+    reg delay : UInt<1>, clock with :
+      reset => (reset, UInt<1>("h0")) @[MatrixPRE-Processor.scala 28:24]
+    node _T = lt(delay, UInt<1>("h1")) @[MatrixPRE-Processor.scala 30:17]
+    when _T : @[MatrixPRE-Processor.scala 30:23]
+      node _delay_T = add(delay, UInt<1>("h1")) @[MatrixPRE-Processor.scala 31:24]
+      node _delay_T_1 = tail(_delay_T, 1) @[MatrixPRE-Processor.scala 31:24]
+      delay <= _delay_T_1 @[MatrixPRE-Processor.scala 31:15]
+    reg i : UInt<32>, clock with :
+      reset => (reset, UInt<32>("h0")) @[MatrixPRE-Processor.scala 35:20]
+    reg j : UInt<32>, clock with :
+      reset => (reset, UInt<32>("h0")) @[MatrixPRE-Processor.scala 36:20]
+    node _io_valid_T = eq(i, UInt<1>("h1")) @[MatrixPRE-Processor.scala 37:28]
+    node _io_valid_T_1 = eq(j, UInt<1>("h1")) @[MatrixPRE-Processor.scala 37:61]
+    node _io_valid_T_2 = and(_io_valid_T, _io_valid_T_1) @[MatrixPRE-Processor.scala 37:55]
+    reg io_valid_REG : UInt<1>, clock with :
+      reset => (UInt<1>("h0"), io_valid_REG) @[MatrixPRE-Processor.scala 37:24]
+    io_valid_REG <= _io_valid_T_2 @[MatrixPRE-Processor.scala 37:24]
+    io.valid <= io_valid_REG @[MatrixPRE-Processor.scala 37:14]
+    node _T_1 = bits(j, 0, 0)
+    node _T_2 = eq(reg[_T_1], UInt<1>("h0")) @[MatrixPRE-Processor.scala 48:19]
+    when _T_2 : @[MatrixPRE-Processor.scala 48:28]
+      node _T_3 = bits(i, 0, 0)
+      node _T_4 = bits(j, 0, 0)
+      matReg1[_T_3][_T_4] <= UInt<1>("h0") @[MatrixPRE-Processor.scala 49:27]
+    else :
+      node _T_5 = bits(i, 0, 0)
+      node _T_6 = bits(j, 0, 0)
+      node _matReg1_T = bits(i, 0, 0)
+      node _matReg1_T_1 = bits(j, 0, 0)
+      matReg1[_T_5][_T_6] <= io.mat1[_matReg1_T][_matReg1_T_1] @[MatrixPRE-Processor.scala 51:27]
+    node _T_7 = eq(delay, UInt<1>("h1")) @[MatrixPRE-Processor.scala 54:21]
+    when _T_7 : @[MatrixPRE-Processor.scala 54:29]
+      node _T_8 = lt(i, UInt<1>("h1")) @[MatrixPRE-Processor.scala 55:14]
+      node _T_9 = eq(j, UInt<1>("h1")) @[MatrixPRE-Processor.scala 55:43]
+      node _T_10 = and(_T_8, _T_9) @[MatrixPRE-Processor.scala 55:37]
+      when _T_10 : @[MatrixPRE-Processor.scala 55:69]
+        node _i_T = add(i, UInt<1>("h1")) @[MatrixPRE-Processor.scala 56:16]
+        node _i_T_1 = tail(_i_T, 1) @[MatrixPRE-Processor.scala 56:16]
+        i <= _i_T_1 @[MatrixPRE-Processor.scala 56:11]
+      node _T_11 = leq(i, UInt<1>("h1")) @[MatrixPRE-Processor.scala 59:14]
+      node _T_12 = lt(j, UInt<1>("h1")) @[MatrixPRE-Processor.scala 59:44]
+      node _T_13 = and(_T_11, _T_12) @[MatrixPRE-Processor.scala 59:38]
+      when _T_13 : @[MatrixPRE-Processor.scala 59:68]
+        node _j_T = add(j, UInt<1>("h1")) @[MatrixPRE-Processor.scala 60:16]
+        node _j_T_1 = tail(_j_T, 1) @[MatrixPRE-Processor.scala 60:16]
+        j <= _j_T_1 @[MatrixPRE-Processor.scala 60:11]
+      else :
+        node _T_14 = eq(i, UInt<1>("h1")) @[MatrixPRE-Processor.scala 61:18]
+        node _T_15 = eq(j, UInt<1>("h1")) @[MatrixPRE-Processor.scala 61:49]
+        node _T_16 = and(_T_14, _T_15) @[MatrixPRE-Processor.scala 61:43]
+        when _T_16 : @[MatrixPRE-Processor.scala 61:75]
+          j <= j @[MatrixPRE-Processor.scala 62:11]
+        else :
+          j <= UInt<1>("h0") @[MatrixPRE-Processor.scala 64:11]
+
   module Muxes :
     input clock : Clock
     input reset : Reset
@@ -473,7 +558,7 @@ circuit FlexDPUby2 :
     node _T_4 = eq(j, UInt<1>("h1")) @[singleLoop.scala 26:13]
     when _T_4 : @[singleLoop.scala 26:21]
       node _io_Ovalid_T = bits(io.IDex, 0, 0)
-      node _io_Ovalid_T_1 = eq(io.mat[_io_Ovalid_T][1], UInt<2>("h2")) @[singleLoop.scala 27:45]
+      node _io_Ovalid_T_1 = eq(io.mat[_io_Ovalid_T][1], UInt<1>("h1")) @[singleLoop.scala 27:45]
       reg io_Ovalid_REG : UInt<1>, clock with :
         reset => (UInt<1>("h0"), io_Ovalid_REG) @[singleLoop.scala 27:25]
       io_Ovalid_REG <= _io_Ovalid_T_1 @[singleLoop.scala 27:25]
@@ -1103,10 +1188,10 @@ circuit FlexDPUby2 :
         else :
           j <= UInt<1>("h0") @[ivncontrol4.scala 83:11]
     io.o_vn <= i_vn @[ivncontrol4.scala 90:13]
-    i_vn[0] <= UInt<5>("h1c") @[ivncontrol4.scala 93:17]
-    i_vn[1] <= UInt<5>("h1f") @[ivncontrol4.scala 93:17]
-    i_vn[2] <= UInt<5>("hd") @[ivncontrol4.scala 93:17]
-    i_vn[3] <= UInt<5>("h8") @[ivncontrol4.scala 93:17]
+    i_vn[0] <= UInt<5>("h7") @[ivncontrol4.scala 93:17]
+    i_vn[1] <= UInt<5>("h18") @[ivncontrol4.scala 93:17]
+    i_vn[2] <= UInt<5>("h15") @[ivncontrol4.scala 93:17]
+    i_vn[3] <= UInt<5>("hc") @[ivncontrol4.scala 93:17]
     node _T_23 = eq(i, UInt<1>("h1")) @[ivncontrol4.scala 103:14]
     node _T_24 = eq(j, UInt<1>("h1")) @[ivncontrol4.scala 103:45]
     node _T_25 = and(_T_23, _T_24) @[ivncontrol4.scala 103:39]
@@ -13680,7 +13765,7 @@ circuit FlexDPUby2 :
 
   module FlexDPUby2 :
     input clock : Clock
-    input reset : UInt<1>
+    input reset : Reset
     output io : { flip Stationary_matrix : UInt<16>[2][2], flip Streaming_matrix : UInt<16>[2][2], output : UInt<16>[2][2], flip valid : UInt<1>}
 
     wire _DPEDest_WIRE : UInt<32>[4] @[FlexDPUby2.scala 17:54]
@@ -13750,66 +13835,72 @@ circuit FlexDPUby2 :
         node _indexCol_T = add(indexCol, UInt<1>("h1")) @[FlexDPUby2.scala 38:30]
         node _indexCol_T_1 = tail(_indexCol_T, 1) @[FlexDPUby2.scala 38:30]
         indexCol <= _indexCol_T_1 @[FlexDPUby2.scala 38:18]
-      node _T_7 = bits(SindexRow, 0, 0)
-      node _T_8 = bits(SindexCol, 0, 0)
-      node _DPESrc_T = bits(jloop, 0, 0)
-      node _DPESrc_T_1 = bits(iloop, 0, 0)
-      DPESrc[_T_7][_T_8] <= io.Streaming_matrix[_DPESrc_T][_DPESrc_T_1] @[FlexDPUby2.scala 41:38]
-      node _SindexCol_T = add(SindexCol, UInt<1>("h1")) @[FlexDPUby2.scala 42:32]
-      node _SindexCol_T_1 = tail(_SindexCol_T, 1) @[FlexDPUby2.scala 42:32]
-      SindexCol <= _SindexCol_T_1 @[FlexDPUby2.scala 42:19]
-      node _T_9 = eq(SindexCol, UInt<1>("h1")) @[FlexDPUby2.scala 45:21]
-      node _T_10 = eq(SindexRow, UInt<1>("h1")) @[FlexDPUby2.scala 45:61]
-      node _T_11 = and(_T_9, _T_10) @[FlexDPUby2.scala 45:47]
-      when _T_11 : @[FlexDPUby2.scala 45:88]
+      node _T_7 = bits(jloop, 0, 0)
+      node _T_8 = bits(iloop, 0, 0)
+      node _T_9 = neq(io.Streaming_matrix[_T_7][_T_8], UInt<1>("h0")) @[FlexDPUby2.scala 40:45]
+      node _T_10 = leq(iloop, UInt<1>("h1")) @[FlexDPUby2.scala 40:63]
+      node _T_11 = and(_T_9, _T_10) @[FlexDPUby2.scala 40:53]
+      when _T_11 : @[FlexDPUby2.scala 40:88]
+        node _T_12 = bits(SindexRow, 0, 0)
+        node _T_13 = bits(SindexCol, 0, 0)
+        node _DPESrc_T = bits(jloop, 0, 0)
+        node _DPESrc_T_1 = bits(iloop, 0, 0)
+        DPESrc[_T_12][_T_13] <= io.Streaming_matrix[_DPESrc_T][_DPESrc_T_1] @[FlexDPUby2.scala 41:38]
+        node _SindexCol_T = add(SindexCol, UInt<1>("h1")) @[FlexDPUby2.scala 42:32]
+        node _SindexCol_T_1 = tail(_SindexCol_T, 1) @[FlexDPUby2.scala 42:32]
+        SindexCol <= _SindexCol_T_1 @[FlexDPUby2.scala 42:19]
+      node _T_14 = eq(SindexCol, UInt<1>("h1")) @[FlexDPUby2.scala 45:21]
+      node _T_15 = eq(SindexRow, UInt<1>("h1")) @[FlexDPUby2.scala 45:61]
+      node _T_16 = and(_T_14, _T_15) @[FlexDPUby2.scala 45:47]
+      when _T_16 : @[FlexDPUby2.scala 45:88]
         SindexRow <= SindexRow @[FlexDPUby2.scala 46:19]
         SindexCol <= SindexCol @[FlexDPUby2.scala 47:19]
       else :
-        node _T_12 = eq(SindexCol, UInt<1>("h1")) @[FlexDPUby2.scala 48:27]
-        when _T_12 : @[FlexDPUby2.scala 48:53]
+        node _T_17 = eq(SindexCol, UInt<1>("h1")) @[FlexDPUby2.scala 48:27]
+        when _T_17 : @[FlexDPUby2.scala 48:53]
           node _SindexRow_T = add(SindexRow, UInt<1>("h1")) @[FlexDPUby2.scala 49:32]
           node _SindexRow_T_1 = tail(_SindexRow_T, 1) @[FlexDPUby2.scala 49:32]
           SindexRow <= _SindexRow_T_1 @[FlexDPUby2.scala 49:19]
           SindexCol <= UInt<1>("h0") @[FlexDPUby2.scala 50:19]
-      node _T_13 = eq(indexCol, UInt<2>("h3")) @[FlexDPUby2.scala 53:20]
-      node _T_14 = eq(indexRow, UInt<1>("h1")) @[FlexDPUby2.scala 53:59]
-      node _T_15 = and(_T_13, _T_14) @[FlexDPUby2.scala 53:46]
-      when _T_15 : @[FlexDPUby2.scala 53:86]
+      node _T_18 = eq(indexCol, UInt<2>("h3")) @[FlexDPUby2.scala 53:20]
+      node _T_19 = eq(indexRow, UInt<1>("h1")) @[FlexDPUby2.scala 53:59]
+      node _T_20 = and(_T_18, _T_19) @[FlexDPUby2.scala 53:46]
+      when _T_20 : @[FlexDPUby2.scala 53:86]
         indexRow <= indexRow @[FlexDPUby2.scala 54:18]
         indexCol <= indexCol @[FlexDPUby2.scala 55:18]
       else :
-        node _T_16 = eq(indexCol, UInt<2>("h3")) @[FlexDPUby2.scala 56:26]
-        when _T_16 : @[FlexDPUby2.scala 56:52]
+        node _T_21 = eq(indexCol, UInt<2>("h3")) @[FlexDPUby2.scala 56:26]
+        when _T_21 : @[FlexDPUby2.scala 56:52]
           node _indexRow_T = add(indexRow, UInt<1>("h1")) @[FlexDPUby2.scala 57:30]
           node _indexRow_T_1 = tail(_indexRow_T, 1) @[FlexDPUby2.scala 57:30]
           indexRow <= _indexRow_T_1 @[FlexDPUby2.scala 57:18]
           indexCol <= UInt<1>("h0") @[FlexDPUby2.scala 58:18]
-      node _T_17 = lt(iloop, UInt<1>("h1")) @[FlexDPUby2.scala 62:18]
-      node _T_18 = eq(jloop, UInt<1>("h1")) @[FlexDPUby2.scala 62:51]
-      node _T_19 = and(_T_17, _T_18) @[FlexDPUby2.scala 62:41]
-      when _T_19 : @[FlexDPUby2.scala 62:77]
+      node _T_22 = lt(iloop, UInt<1>("h1")) @[FlexDPUby2.scala 62:18]
+      node _T_23 = eq(jloop, UInt<1>("h1")) @[FlexDPUby2.scala 62:51]
+      node _T_24 = and(_T_22, _T_23) @[FlexDPUby2.scala 62:41]
+      when _T_24 : @[FlexDPUby2.scala 62:77]
         node _iloop_T = add(iloop, UInt<1>("h1")) @[FlexDPUby2.scala 63:24]
         node _iloop_T_1 = tail(_iloop_T, 1) @[FlexDPUby2.scala 63:24]
         iloop <= _iloop_T_1 @[FlexDPUby2.scala 63:15]
-      node _T_20 = leq(iloop, UInt<1>("h1")) @[FlexDPUby2.scala 66:18]
-      node _T_21 = lt(jloop, UInt<1>("h1")) @[FlexDPUby2.scala 66:52]
-      node _T_22 = and(_T_20, _T_21) @[FlexDPUby2.scala 66:42]
-      when _T_22 : @[FlexDPUby2.scala 66:76]
+      node _T_25 = leq(iloop, UInt<1>("h1")) @[FlexDPUby2.scala 66:18]
+      node _T_26 = lt(jloop, UInt<1>("h1")) @[FlexDPUby2.scala 66:52]
+      node _T_27 = and(_T_25, _T_26) @[FlexDPUby2.scala 66:42]
+      when _T_27 : @[FlexDPUby2.scala 66:76]
         node _jloop_T = add(jloop, UInt<1>("h1")) @[FlexDPUby2.scala 67:24]
         node _jloop_T_1 = tail(_jloop_T, 1) @[FlexDPUby2.scala 67:24]
         jloop <= _jloop_T_1 @[FlexDPUby2.scala 67:15]
       else :
-        node _T_23 = eq(iloop, UInt<1>("h1")) @[FlexDPUby2.scala 68:22]
-        node _T_24 = eq(jloop, UInt<1>("h1")) @[FlexDPUby2.scala 68:57]
-        node _T_25 = and(_T_23, _T_24) @[FlexDPUby2.scala 68:47]
-        when _T_25 : @[FlexDPUby2.scala 68:83]
+        node _T_28 = eq(iloop, UInt<1>("h1")) @[FlexDPUby2.scala 68:22]
+        node _T_29 = eq(jloop, UInt<1>("h1")) @[FlexDPUby2.scala 68:57]
+        node _T_30 = and(_T_28, _T_29) @[FlexDPUby2.scala 68:47]
+        when _T_30 : @[FlexDPUby2.scala 68:83]
           jloop <= jloop @[FlexDPUby2.scala 69:15]
           iloop <= UInt<2>("h2") @[FlexDPUby2.scala 70:15]
         else :
-          node _T_26 = eq(iloop, UInt<2>("h2")) @[FlexDPUby2.scala 71:22]
-          node _T_27 = eq(jloop, UInt<1>("h1")) @[FlexDPUby2.scala 71:40]
-          node _T_28 = and(_T_26, _T_27) @[FlexDPUby2.scala 71:30]
-          when _T_28 : @[FlexDPUby2.scala 71:49]
+          node _T_31 = eq(iloop, UInt<2>("h2")) @[FlexDPUby2.scala 71:22]
+          node _T_32 = eq(jloop, UInt<1>("h1")) @[FlexDPUby2.scala 71:40]
+          node _T_33 = and(_T_31, _T_32) @[FlexDPUby2.scala 71:30]
+          when _T_33 : @[FlexDPUby2.scala 71:49]
             iloop <= UInt<2>("h2") @[FlexDPUby2.scala 72:15]
             jloop <= UInt<1>("h1") @[FlexDPUby2.scala 73:15]
           else :
@@ -13865,10 +13956,10 @@ circuit FlexDPUby2 :
         PF.io.Stationary_matrix[0][1] <= io.Stationary_matrix[0][1] @[FlexDPUby2.scala 108:33]
         PF.io.Stationary_matrix[1][0] <= io.Stationary_matrix[1][0] @[FlexDPUby2.scala 108:33]
         PF.io.Stationary_matrix[1][1] <= io.Stationary_matrix[1][1] @[FlexDPUby2.scala 108:33]
-        node _T_29 = or(iterationChange, UInt<1>("h0"))
-        node _T_30 = bits(_T_29, 0, 0)
-        PF.io.Streaming_matrix[0] <= DPESrc[_T_30][0] @[FlexDPUby2.scala 109:32]
-        PF.io.Streaming_matrix[1] <= DPESrc[_T_30][1] @[FlexDPUby2.scala 109:32]
+        node _T_34 = or(iterationChange, UInt<1>("h0"))
+        node _T_35 = bits(_T_34, 0, 0)
+        PF.io.Streaming_matrix[0] <= DPESrc[_T_35][0] @[FlexDPUby2.scala 109:32]
+        PF.io.Streaming_matrix[1] <= DPESrc[_T_35][1] @[FlexDPUby2.scala 109:32]
         PF.io.NoDPE <= UInt<1>("h0") @[FlexDPUby2.scala 110:21]
         PF.io.DataValid <= Statvalid @[FlexDPUby2.scala 111:25]
         dest[0] <= DPEDest[0][0] @[FlexDPUby2.scala 116:21]
@@ -13876,28 +13967,28 @@ circuit FlexDPUby2 :
         dest[2] <= DPEDest[0][2] @[FlexDPUby2.scala 116:21]
         dest[3] <= DPEDest[0][3] @[FlexDPUby2.scala 116:21]
         when PF.io.PF_Valid : @[FlexDPUby2.scala 120:30]
-          node _T_31 = eq(iterationChange, UInt<1>("h1")) @[FlexDPUby2.scala 121:31]
-          when _T_31 : @[FlexDPUby2.scala 121:58]
+          node _T_36 = eq(iterationChange, UInt<1>("h1")) @[FlexDPUby2.scala 121:31]
+          when _T_36 : @[FlexDPUby2.scala 121:58]
             iterationChange <= iterationChange @[FlexDPUby2.scala 122:29]
           else :
             when PF.io.PF_Valid : @[FlexDPUby2.scala 123:36]
-              node _T_32 = add(iterationChange, UInt<1>("h1")) @[FlexDPUby2.scala 125:48]
-              node _T_33 = tail(_T_32, 1) @[FlexDPUby2.scala 125:48]
-              node _T_34 = or(_T_33, UInt<1>("h0"))
-              node _T_35 = bits(_T_34, 0, 0)
-              node _T_36 = neq(DPESrc[_T_35][0], UInt<1>("h0")) @[FlexDPUby2.scala 96:20]
-              when _T_36 : @[FlexDPUby2.scala 96:28]
+              node _T_37 = add(iterationChange, UInt<1>("h1")) @[FlexDPUby2.scala 125:48]
+              node _T_38 = tail(_T_37, 1) @[FlexDPUby2.scala 125:48]
+              node _T_39 = or(_T_38, UInt<1>("h0"))
+              node _T_40 = bits(_T_39, 0, 0)
+              node _T_41 = neq(DPESrc[_T_40][0], UInt<1>("h0")) @[FlexDPUby2.scala 96:20]
+              when _T_41 : @[FlexDPUby2.scala 96:28]
                 node _inc_T = add(iterationChange, UInt<1>("h1")) @[FlexDPUby2.scala 97:31]
                 node inc = tail(_inc_T, 1) @[FlexDPUby2.scala 97:31]
                 iterationChange <= inc @[FlexDPUby2.scala 98:21]
               else :
                 skip
-              node _T_37 = add(iterationChange, UInt<1>("h1")) @[FlexDPUby2.scala 125:48]
-              node _T_38 = tail(_T_37, 1) @[FlexDPUby2.scala 125:48]
-              node _T_39 = or(_T_38, UInt<1>("h0"))
-              node _T_40 = bits(_T_39, 0, 0)
-              node _T_41 = neq(DPESrc[_T_40][1], UInt<1>("h0")) @[FlexDPUby2.scala 96:20]
-              when _T_41 : @[FlexDPUby2.scala 96:28]
+              node _T_42 = add(iterationChange, UInt<1>("h1")) @[FlexDPUby2.scala 125:48]
+              node _T_43 = tail(_T_42, 1) @[FlexDPUby2.scala 125:48]
+              node _T_44 = or(_T_43, UInt<1>("h0"))
+              node _T_45 = bits(_T_44, 0, 0)
+              node _T_46 = neq(DPESrc[_T_45][1], UInt<1>("h0")) @[FlexDPUby2.scala 96:20]
+              when _T_46 : @[FlexDPUby2.scala 96:28]
                 node _inc_T_1 = add(iterationChange, UInt<1>("h1")) @[FlexDPUby2.scala 97:31]
                 node inc_1 = tail(_inc_T_1, 1) @[FlexDPUby2.scala 97:31]
                 iterationChange <= inc_1 @[FlexDPUby2.scala 98:21]
@@ -14253,4 +14344,34 @@ circuit FlexDPUby2 :
       reg REG_2 : UInt<32>[2][2], clock with :
         reset => (reset, _WIRE_8) @[FlexDPUby2.scala 172:25]
       io.output <= REG_2 @[FlexDPUby2.scala 172:15]
+
+  module Top :
+    input clock : Clock
+    input reset : UInt<1>
+    output io : { flip Stationary_matrix : UInt<32>[2][2], flip Streaming_matrix : UInt<32>[2][2], Third_Matrix : UInt<32>[2][2]}
+
+    inst PreProcessor of Regor @[TOP.scala 15:30]
+    PreProcessor.clock <= clock
+    PreProcessor.reset <= reset
+    PreProcessor.io.mat1[0][0] <= io.Stationary_matrix[0][0] @[TOP.scala 16:26]
+    PreProcessor.io.mat1[0][1] <= io.Stationary_matrix[0][1] @[TOP.scala 16:26]
+    PreProcessor.io.mat1[1][0] <= io.Stationary_matrix[1][0] @[TOP.scala 16:26]
+    PreProcessor.io.mat1[1][1] <= io.Stationary_matrix[1][1] @[TOP.scala 16:26]
+    PreProcessor.io.mat2[0][0] <= io.Streaming_matrix[0][0] @[TOP.scala 17:26]
+    PreProcessor.io.mat2[0][1] <= io.Streaming_matrix[0][1] @[TOP.scala 17:26]
+    PreProcessor.io.mat2[1][0] <= io.Streaming_matrix[1][0] @[TOP.scala 17:26]
+    PreProcessor.io.mat2[1][1] <= io.Streaming_matrix[1][1] @[TOP.scala 17:26]
+    inst FDPU of FlexDPUby2 @[TOP.scala 26:26]
+    FDPU.clock <= clock
+    FDPU.reset <= reset
+    FDPU.io.Stationary_matrix[0][0] <= PreProcessor.io.compressedBitmap[0][0] @[TOP.scala 27:35]
+    FDPU.io.Stationary_matrix[0][1] <= PreProcessor.io.compressedBitmap[0][1] @[TOP.scala 27:35]
+    FDPU.io.Stationary_matrix[1][0] <= PreProcessor.io.compressedBitmap[1][0] @[TOP.scala 27:35]
+    FDPU.io.Stationary_matrix[1][1] <= PreProcessor.io.compressedBitmap[1][1] @[TOP.scala 27:35]
+    FDPU.io.Streaming_matrix[0][0] <= io.Streaming_matrix[0][0] @[TOP.scala 28:34]
+    FDPU.io.Streaming_matrix[0][1] <= io.Streaming_matrix[0][1] @[TOP.scala 28:34]
+    FDPU.io.Streaming_matrix[1][0] <= io.Streaming_matrix[1][0] @[TOP.scala 28:34]
+    FDPU.io.Streaming_matrix[1][1] <= io.Streaming_matrix[1][1] @[TOP.scala 28:34]
+    io.Third_Matrix <= FDPU.io.output @[TOP.scala 29:25]
+    FDPU.io.valid <= PreProcessor.io.valid @[TOP.scala 30:23]
 
