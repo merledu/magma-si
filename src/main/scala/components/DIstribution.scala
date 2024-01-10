@@ -75,7 +75,7 @@ part2.io.mat := io.matrix
     when (~(part2.io.ProcessValid) && check){
     part3.io.merge := RegNext(c)
     part3.io.mat := io.matrix
-    part3.io.i_valid := part2.io.ProcessValid
+    part3.io.i_valid := ~part2.io.ProcessValid
     part3.io.PreMat := part2.io.OutMat
     part3.io.mat := io.matrix
     part3.io.IDex := Idex(io.s)

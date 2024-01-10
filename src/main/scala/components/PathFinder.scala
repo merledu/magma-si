@@ -13,8 +13,8 @@ class PathFinder(implicit val config: MagmasiConfig) extends Module {
     val PF_Valid = Output(Bool())
     val NoDPE = Input(UInt(32.W))
     val DataValid = Input(Bool())
-    val iteration = Output(UInt(32.W))
-    val validIteration = Output(Bool())
+    // val iteration = Output(UInt(32.W))
+    // val validIteration = Output(Bool())
   })
 
 when (io.DataValid){
@@ -34,13 +34,13 @@ when (io.DataValid){
   myCounter.io.Stationary_matrix := io.Stationary_matrix
   myCounter.io.Streaming_matrix := io.Streaming_matrix
 
-  val Distribution = Module(new Distribution)
+  // val Distribution = Module(new Distribution)
 
-  Distribution.io.valid := myCounter.io.valid
-  Distribution.io.s := io.NoDPE
-  io.iteration := Distribution.io.iteration
-  io.validIteration := Distribution.io.validIteration
-  Distribution.io.matrix := myCounter.io.counterMatrix1.bits
+  // Distribution.io.valid := myCounter.io.valid
+  // Distribution.io.s := io.NoDPE
+  // io.iteration := Distribution.io.iteration
+  // io.validIteration := Distribution.io.validIteration
+  // Distribution.io.matrix := myCounter.io.counterMatrix1.bits
 // }.otherwise{
 //     Distribution.io.s := 0.U
 
@@ -49,13 +49,13 @@ when (io.DataValid){
 
 
   // when((delay >= (config.MaxRows * config.MaxCols).U) && myCounter.io.counterMatrix1.valid && myCounter.io.counterMatrix2.valid) {
-    when (Distribution.io.ProcessValid){
+    when (myCounter.io.valid){
     myCounter.io.counterMatrix1.ready := 1.B
     myCounter.io.counterMatrix2.ready := 1.B
     myMuxes.io.mat1 := io.Stationary_matrix
    // myMuxes.io.start := 1.B//Distribution.io.ProcessValid
     myMuxes.io.mat2 := io.Streaming_matrix
-    myMuxes.io.counterMatrix1 <> Distribution.io.out
+    myMuxes.io.counterMatrix1 <> myCounter.io.counterMatrix1.bits
     myMuxes.io.counterMatrix2 <> myCounter.io.counterMatrix2.bits
     
   }.otherwise{
@@ -76,8 +76,8 @@ when (io.DataValid){
   io.Source := myMuxes.io.Source
   io.destination := myMuxes.io.destination
 }.otherwise{
-  io.validIteration := 0.B
-  io.iteration := 0.U
+  // io.validIteration := 0.B
+  // io.iteration := 0.U
   io.PF_Valid := 0.B
   io.i_mux_bus := WireInit(VecInit(Seq.fill(config.NUM_PES)(VecInit(Seq.fill(config.NUM_PES)(0.U(4.W))))))
   io.Source := WireInit(VecInit(Seq.fill(config.MaxRows*config.MaxCols)(0.U(32.W))))

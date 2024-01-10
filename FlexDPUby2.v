@@ -88,22 +88,22 @@ module Muxes(
   reg [31:0] k; // @[Muxes.scala 30:20]
   reg [31:0] counter; // @[Muxes.scala 31:26]
   reg [31:0] indexcounter; // @[Muxes.scala 32:31]
-  reg [3:0] muxes_0_0; // @[Muxes.scala 34:24]
-  reg [3:0] muxes_0_1; // @[Muxes.scala 34:24]
-  reg [3:0] muxes_0_2; // @[Muxes.scala 34:24]
-  reg [3:0] muxes_0_3; // @[Muxes.scala 34:24]
-  reg [3:0] muxes_1_0; // @[Muxes.scala 34:24]
-  reg [3:0] muxes_1_1; // @[Muxes.scala 34:24]
-  reg [3:0] muxes_1_2; // @[Muxes.scala 34:24]
-  reg [3:0] muxes_1_3; // @[Muxes.scala 34:24]
-  reg [3:0] muxes_2_0; // @[Muxes.scala 34:24]
-  reg [3:0] muxes_2_1; // @[Muxes.scala 34:24]
-  reg [3:0] muxes_2_2; // @[Muxes.scala 34:24]
-  reg [3:0] muxes_2_3; // @[Muxes.scala 34:24]
-  reg [3:0] muxes_3_0; // @[Muxes.scala 34:24]
-  reg [3:0] muxes_3_1; // @[Muxes.scala 34:24]
-  reg [3:0] muxes_3_2; // @[Muxes.scala 34:24]
-  reg [3:0] muxes_3_3; // @[Muxes.scala 34:24]
+  reg [1:0] muxes_0_0; // @[Muxes.scala 34:24]
+  reg [1:0] muxes_0_1; // @[Muxes.scala 34:24]
+  reg [1:0] muxes_0_2; // @[Muxes.scala 34:24]
+  reg [1:0] muxes_0_3; // @[Muxes.scala 34:24]
+  reg [1:0] muxes_1_0; // @[Muxes.scala 34:24]
+  reg [1:0] muxes_1_1; // @[Muxes.scala 34:24]
+  reg [1:0] muxes_1_2; // @[Muxes.scala 34:24]
+  reg [1:0] muxes_1_3; // @[Muxes.scala 34:24]
+  reg [1:0] muxes_2_0; // @[Muxes.scala 34:24]
+  reg [1:0] muxes_2_1; // @[Muxes.scala 34:24]
+  reg [1:0] muxes_2_2; // @[Muxes.scala 34:24]
+  reg [1:0] muxes_2_3; // @[Muxes.scala 34:24]
+  reg [1:0] muxes_3_0; // @[Muxes.scala 34:24]
+  reg [1:0] muxes_3_1; // @[Muxes.scala 34:24]
+  reg [1:0] muxes_3_2; // @[Muxes.scala 34:24]
+  reg [1:0] muxes_3_3; // @[Muxes.scala 34:24]
   reg [15:0] src_0; // @[Muxes.scala 35:22]
   reg [15:0] src_1; // @[Muxes.scala 35:22]
   reg [15:0] src_2; // @[Muxes.scala 35:22]
@@ -115,155 +115,106 @@ module Muxes(
   wire  _GEN_0 = io_mat1_0_0 != prevStationary_matrix_0_0 ? 1'h0 : 1'h1; // @[Muxes.scala 22:22 47:61 48:28]
   wire  _GEN_1 = io_mat1_0_1 != prevStationary_matrix_0_1 ? 1'h0 : _GEN_0; // @[Muxes.scala 47:61 48:28]
   wire  _T_6 = ~jValid; // @[Muxes.scala 56:11]
-  wire  _GEN_218 = ~j[0]; // @[Muxes.scala 56:{47,47}]
+  wire  _GEN_152 = ~j[0]; // @[Muxes.scala 56:{47,47}]
   wire [15:0] _GEN_7 = ~j[0] & i[0] ? io_counterMatrix1_0_1 : io_counterMatrix1_0_0; // @[Muxes.scala 56:{47,47}]
-  wire  _GEN_219 = ~i[0]; // @[Muxes.scala 56:{47,47}]
+  wire  _GEN_153 = ~i[0]; // @[Muxes.scala 56:{47,47}]
   wire [15:0] _GEN_8 = j[0] & ~i[0] ? io_counterMatrix1_1_0 : _GEN_7; // @[Muxes.scala 56:{47,47}]
   wire [15:0] _GEN_9 = j[0] & i[0] ? io_counterMatrix1_1_1 : _GEN_8; // @[Muxes.scala 56:{47,47}]
   wire [15:0] _GEN_11 = i[0] ? io_mat2_1 : io_mat2_0; // @[Muxes.scala 56:{71,71}]
   wire  _T_12 = _GEN_11 != 16'h0; // @[Muxes.scala 56:71]
-  wire [15:0] _GEN_17 = i[0] ? io_counterMatrix2_1 : io_counterMatrix2_0; // @[Muxes.scala 58:{38,38}]
-  wire [15:0] _muxes_T_2 = _GEN_17 - 16'h1; // @[Muxes.scala 59:65]
-  wire [15:0] _muxes_T_6 = _GEN_9 - 16'h1; // @[Muxes.scala 59:99]
-  wire [15:0] _muxes_T_8 = _muxes_T_2 - _muxes_T_6; // @[Muxes.scala 59:72]
-  wire  _GEN_224 = 2'h0 == counter[1:0]; // @[Muxes.scala 34:24 59:{40,40}]
-  wire  _GEN_225 = 2'h0 == indexcounter[1:0]; // @[Muxes.scala 34:24 59:{40,40}]
-  wire [3:0] _GEN_24 = 2'h0 == counter[1:0] & 2'h0 == indexcounter[1:0] ? _muxes_T_8[3:0] : muxes_0_0; // @[Muxes.scala 34:24 59:{40,40}]
-  wire  _GEN_227 = 2'h1 == indexcounter[1:0]; // @[Muxes.scala 34:24 59:{40,40}]
-  wire [3:0] _GEN_25 = 2'h0 == counter[1:0] & 2'h1 == indexcounter[1:0] ? _muxes_T_8[3:0] : muxes_0_1; // @[Muxes.scala 34:24 59:{40,40}]
-  wire  _GEN_229 = 2'h2 == indexcounter[1:0]; // @[Muxes.scala 34:24 59:{40,40}]
-  wire [3:0] _GEN_26 = 2'h0 == counter[1:0] & 2'h2 == indexcounter[1:0] ? _muxes_T_8[3:0] : muxes_0_2; // @[Muxes.scala 34:24 59:{40,40}]
-  wire  _GEN_231 = 2'h3 == indexcounter[1:0]; // @[Muxes.scala 34:24 59:{40,40}]
-  wire [3:0] _GEN_27 = 2'h0 == counter[1:0] & 2'h3 == indexcounter[1:0] ? _muxes_T_8[3:0] : muxes_0_3; // @[Muxes.scala 34:24 59:{40,40}]
-  wire  _GEN_232 = 2'h1 == counter[1:0]; // @[Muxes.scala 34:24 59:{40,40}]
-  wire [3:0] _GEN_28 = 2'h1 == counter[1:0] & 2'h0 == indexcounter[1:0] ? _muxes_T_8[3:0] : muxes_1_0; // @[Muxes.scala 34:24 59:{40,40}]
-  wire [3:0] _GEN_29 = 2'h1 == counter[1:0] & 2'h1 == indexcounter[1:0] ? _muxes_T_8[3:0] : muxes_1_1; // @[Muxes.scala 34:24 59:{40,40}]
-  wire [3:0] _GEN_30 = 2'h1 == counter[1:0] & 2'h2 == indexcounter[1:0] ? _muxes_T_8[3:0] : muxes_1_2; // @[Muxes.scala 34:24 59:{40,40}]
-  wire [3:0] _GEN_31 = 2'h1 == counter[1:0] & 2'h3 == indexcounter[1:0] ? _muxes_T_8[3:0] : muxes_1_3; // @[Muxes.scala 34:24 59:{40,40}]
-  wire  _GEN_240 = 2'h2 == counter[1:0]; // @[Muxes.scala 34:24 59:{40,40}]
-  wire [3:0] _GEN_32 = 2'h2 == counter[1:0] & 2'h0 == indexcounter[1:0] ? _muxes_T_8[3:0] : muxes_2_0; // @[Muxes.scala 34:24 59:{40,40}]
-  wire [3:0] _GEN_33 = 2'h2 == counter[1:0] & 2'h1 == indexcounter[1:0] ? _muxes_T_8[3:0] : muxes_2_1; // @[Muxes.scala 34:24 59:{40,40}]
-  wire [3:0] _GEN_34 = 2'h2 == counter[1:0] & 2'h2 == indexcounter[1:0] ? _muxes_T_8[3:0] : muxes_2_2; // @[Muxes.scala 34:24 59:{40,40}]
-  wire [3:0] _GEN_35 = 2'h2 == counter[1:0] & 2'h3 == indexcounter[1:0] ? _muxes_T_8[3:0] : muxes_2_3; // @[Muxes.scala 34:24 59:{40,40}]
-  wire  _GEN_248 = 2'h3 == counter[1:0]; // @[Muxes.scala 34:24 59:{40,40}]
-  wire [3:0] _GEN_36 = 2'h3 == counter[1:0] & 2'h0 == indexcounter[1:0] ? _muxes_T_8[3:0] : muxes_3_0; // @[Muxes.scala 34:24 59:{40,40}]
-  wire [3:0] _GEN_37 = 2'h3 == counter[1:0] & 2'h1 == indexcounter[1:0] ? _muxes_T_8[3:0] : muxes_3_1; // @[Muxes.scala 34:24 59:{40,40}]
-  wire [3:0] _GEN_38 = 2'h3 == counter[1:0] & 2'h2 == indexcounter[1:0] ? _muxes_T_8[3:0] : muxes_3_2; // @[Muxes.scala 34:24 59:{40,40}]
-  wire [3:0] _GEN_39 = 2'h3 == counter[1:0] & 2'h3 == indexcounter[1:0] ? _muxes_T_8[3:0] : muxes_3_3; // @[Muxes.scala 34:24 59:{40,40}]
-  wire [15:0] _GEN_40 = 2'h0 == counter[1:0] ? _GEN_11 : src_0; // @[Muxes.scala 35:22 60:{24,24}]
-  wire [15:0] _GEN_41 = 2'h1 == counter[1:0] ? _GEN_11 : src_1; // @[Muxes.scala 35:22 60:{24,24}]
-  wire [15:0] _GEN_42 = 2'h2 == counter[1:0] ? _GEN_11 : src_2; // @[Muxes.scala 35:22 60:{24,24}]
-  wire [15:0] _GEN_43 = 2'h3 == counter[1:0] ? _GEN_11 : src_3; // @[Muxes.scala 35:22 60:{24,24}]
-  wire [15:0] _GEN_51 = _GEN_218 & i[0] ? io_mat1_0_1 : io_mat1_0_0; // @[Muxes.scala 61:{25,25}]
-  wire [15:0] _GEN_52 = j[0] & _GEN_219 ? io_mat1_1_0 : _GEN_51; // @[Muxes.scala 61:{25,25}]
-  wire [15:0] _GEN_53 = j[0] & i[0] ? io_mat1_1_1 : _GEN_52; // @[Muxes.scala 61:{25,25}]
-  wire [15:0] _GEN_46 = 2'h0 == counter[1:0] ? _GEN_53 : dest_0; // @[Muxes.scala 36:23 61:{25,25}]
-  wire [15:0] _GEN_47 = 2'h1 == counter[1:0] ? _GEN_53 : dest_1; // @[Muxes.scala 36:23 61:{25,25}]
-  wire [15:0] _GEN_48 = 2'h2 == counter[1:0] ? _GEN_53 : dest_2; // @[Muxes.scala 36:23 61:{25,25}]
-  wire [15:0] _GEN_49 = 2'h3 == counter[1:0] ? _GEN_53 : dest_3; // @[Muxes.scala 36:23 61:{25,25}]
-  wire [15:0] _muxes_T_17 = _muxes_T_6 - _muxes_T_2; // @[Muxes.scala 63:75]
-  wire [3:0] _GEN_60 = _GEN_224 & _GEN_225 ? _muxes_T_17[3:0] : muxes_0_0; // @[Muxes.scala 34:24 63:{40,40}]
-  wire [3:0] _GEN_61 = _GEN_224 & _GEN_227 ? _muxes_T_17[3:0] : muxes_0_1; // @[Muxes.scala 34:24 63:{40,40}]
-  wire [3:0] _GEN_62 = _GEN_224 & _GEN_229 ? _muxes_T_17[3:0] : muxes_0_2; // @[Muxes.scala 34:24 63:{40,40}]
-  wire [3:0] _GEN_63 = _GEN_224 & _GEN_231 ? _muxes_T_17[3:0] : muxes_0_3; // @[Muxes.scala 34:24 63:{40,40}]
-  wire [3:0] _GEN_64 = _GEN_232 & _GEN_225 ? _muxes_T_17[3:0] : muxes_1_0; // @[Muxes.scala 34:24 63:{40,40}]
-  wire [3:0] _GEN_65 = _GEN_232 & _GEN_227 ? _muxes_T_17[3:0] : muxes_1_1; // @[Muxes.scala 34:24 63:{40,40}]
-  wire [3:0] _GEN_66 = _GEN_232 & _GEN_229 ? _muxes_T_17[3:0] : muxes_1_2; // @[Muxes.scala 34:24 63:{40,40}]
-  wire [3:0] _GEN_67 = _GEN_232 & _GEN_231 ? _muxes_T_17[3:0] : muxes_1_3; // @[Muxes.scala 34:24 63:{40,40}]
-  wire [3:0] _GEN_68 = _GEN_240 & _GEN_225 ? _muxes_T_17[3:0] : muxes_2_0; // @[Muxes.scala 34:24 63:{40,40}]
-  wire [3:0] _GEN_69 = _GEN_240 & _GEN_227 ? _muxes_T_17[3:0] : muxes_2_1; // @[Muxes.scala 34:24 63:{40,40}]
-  wire [3:0] _GEN_70 = _GEN_240 & _GEN_229 ? _muxes_T_17[3:0] : muxes_2_2; // @[Muxes.scala 34:24 63:{40,40}]
-  wire [3:0] _GEN_71 = _GEN_240 & _GEN_231 ? _muxes_T_17[3:0] : muxes_2_3; // @[Muxes.scala 34:24 63:{40,40}]
-  wire [3:0] _GEN_72 = _GEN_248 & _GEN_225 ? _muxes_T_17[3:0] : muxes_3_0; // @[Muxes.scala 34:24 63:{40,40}]
-  wire [3:0] _GEN_73 = _GEN_248 & _GEN_227 ? _muxes_T_17[3:0] : muxes_3_1; // @[Muxes.scala 34:24 63:{40,40}]
-  wire [3:0] _GEN_74 = _GEN_248 & _GEN_229 ? _muxes_T_17[3:0] : muxes_3_2; // @[Muxes.scala 34:24 63:{40,40}]
-  wire [3:0] _GEN_75 = _GEN_248 & _GEN_231 ? _muxes_T_17[3:0] : muxes_3_3; // @[Muxes.scala 34:24 63:{40,40}]
-  wire [3:0] _GEN_90 = _GEN_9 <= _GEN_17 ? _GEN_24 : _GEN_60; // @[Muxes.scala 58:62]
-  wire [3:0] _GEN_91 = _GEN_9 <= _GEN_17 ? _GEN_25 : _GEN_61; // @[Muxes.scala 58:62]
-  wire [3:0] _GEN_92 = _GEN_9 <= _GEN_17 ? _GEN_26 : _GEN_62; // @[Muxes.scala 58:62]
-  wire [3:0] _GEN_93 = _GEN_9 <= _GEN_17 ? _GEN_27 : _GEN_63; // @[Muxes.scala 58:62]
-  wire [3:0] _GEN_94 = _GEN_9 <= _GEN_17 ? _GEN_28 : _GEN_64; // @[Muxes.scala 58:62]
-  wire [3:0] _GEN_95 = _GEN_9 <= _GEN_17 ? _GEN_29 : _GEN_65; // @[Muxes.scala 58:62]
-  wire [3:0] _GEN_96 = _GEN_9 <= _GEN_17 ? _GEN_30 : _GEN_66; // @[Muxes.scala 58:62]
-  wire [3:0] _GEN_97 = _GEN_9 <= _GEN_17 ? _GEN_31 : _GEN_67; // @[Muxes.scala 58:62]
-  wire [3:0] _GEN_98 = _GEN_9 <= _GEN_17 ? _GEN_32 : _GEN_68; // @[Muxes.scala 58:62]
-  wire [3:0] _GEN_99 = _GEN_9 <= _GEN_17 ? _GEN_33 : _GEN_69; // @[Muxes.scala 58:62]
-  wire [3:0] _GEN_100 = _GEN_9 <= _GEN_17 ? _GEN_34 : _GEN_70; // @[Muxes.scala 58:62]
-  wire [3:0] _GEN_101 = _GEN_9 <= _GEN_17 ? _GEN_35 : _GEN_71; // @[Muxes.scala 58:62]
-  wire [3:0] _GEN_102 = _GEN_9 <= _GEN_17 ? _GEN_36 : _GEN_72; // @[Muxes.scala 58:62]
-  wire [3:0] _GEN_103 = _GEN_9 <= _GEN_17 ? _GEN_37 : _GEN_73; // @[Muxes.scala 58:62]
-  wire [3:0] _GEN_104 = _GEN_9 <= _GEN_17 ? _GEN_38 : _GEN_74; // @[Muxes.scala 58:62]
-  wire [3:0] _GEN_105 = _GEN_9 <= _GEN_17 ? _GEN_39 : _GEN_75; // @[Muxes.scala 58:62]
-  wire [15:0] _GEN_106 = _GEN_9 <= _GEN_17 ? _GEN_40 : _GEN_40; // @[Muxes.scala 58:62]
-  wire [15:0] _GEN_107 = _GEN_9 <= _GEN_17 ? _GEN_41 : _GEN_41; // @[Muxes.scala 58:62]
-  wire [15:0] _GEN_108 = _GEN_9 <= _GEN_17 ? _GEN_42 : _GEN_42; // @[Muxes.scala 58:62]
-  wire [15:0] _GEN_109 = _GEN_9 <= _GEN_17 ? _GEN_43 : _GEN_43; // @[Muxes.scala 58:62]
-  wire [15:0] _GEN_110 = _GEN_9 <= _GEN_17 ? _GEN_46 : _GEN_46; // @[Muxes.scala 58:62]
-  wire [15:0] _GEN_111 = _GEN_9 <= _GEN_17 ? _GEN_47 : _GEN_47; // @[Muxes.scala 58:62]
-  wire [15:0] _GEN_112 = _GEN_9 <= _GEN_17 ? _GEN_48 : _GEN_48; // @[Muxes.scala 58:62]
-  wire [15:0] _GEN_113 = _GEN_9 <= _GEN_17 ? _GEN_49 : _GEN_49; // @[Muxes.scala 58:62]
-  wire [3:0] _GEN_114 = ~jValid & _GEN_9 != 16'h0 & _GEN_11 != 16'h0 ? _GEN_90 : muxes_0_0; // @[Muxes.scala 34:24 56:81]
-  wire [3:0] _GEN_115 = ~jValid & _GEN_9 != 16'h0 & _GEN_11 != 16'h0 ? _GEN_91 : muxes_0_1; // @[Muxes.scala 34:24 56:81]
-  wire [3:0] _GEN_116 = ~jValid & _GEN_9 != 16'h0 & _GEN_11 != 16'h0 ? _GEN_92 : muxes_0_2; // @[Muxes.scala 34:24 56:81]
-  wire [3:0] _GEN_117 = ~jValid & _GEN_9 != 16'h0 & _GEN_11 != 16'h0 ? _GEN_93 : muxes_0_3; // @[Muxes.scala 34:24 56:81]
-  wire [3:0] _GEN_118 = ~jValid & _GEN_9 != 16'h0 & _GEN_11 != 16'h0 ? _GEN_94 : muxes_1_0; // @[Muxes.scala 34:24 56:81]
-  wire [3:0] _GEN_119 = ~jValid & _GEN_9 != 16'h0 & _GEN_11 != 16'h0 ? _GEN_95 : muxes_1_1; // @[Muxes.scala 34:24 56:81]
-  wire [3:0] _GEN_120 = ~jValid & _GEN_9 != 16'h0 & _GEN_11 != 16'h0 ? _GEN_96 : muxes_1_2; // @[Muxes.scala 34:24 56:81]
-  wire [3:0] _GEN_121 = ~jValid & _GEN_9 != 16'h0 & _GEN_11 != 16'h0 ? _GEN_97 : muxes_1_3; // @[Muxes.scala 34:24 56:81]
-  wire [3:0] _GEN_122 = ~jValid & _GEN_9 != 16'h0 & _GEN_11 != 16'h0 ? _GEN_98 : muxes_2_0; // @[Muxes.scala 34:24 56:81]
-  wire [3:0] _GEN_123 = ~jValid & _GEN_9 != 16'h0 & _GEN_11 != 16'h0 ? _GEN_99 : muxes_2_1; // @[Muxes.scala 34:24 56:81]
-  wire [3:0] _GEN_124 = ~jValid & _GEN_9 != 16'h0 & _GEN_11 != 16'h0 ? _GEN_100 : muxes_2_2; // @[Muxes.scala 34:24 56:81]
-  wire [3:0] _GEN_125 = ~jValid & _GEN_9 != 16'h0 & _GEN_11 != 16'h0 ? _GEN_101 : muxes_2_3; // @[Muxes.scala 34:24 56:81]
-  wire [3:0] _GEN_126 = ~jValid & _GEN_9 != 16'h0 & _GEN_11 != 16'h0 ? _GEN_102 : muxes_3_0; // @[Muxes.scala 34:24 56:81]
-  wire [3:0] _GEN_127 = ~jValid & _GEN_9 != 16'h0 & _GEN_11 != 16'h0 ? _GEN_103 : muxes_3_1; // @[Muxes.scala 34:24 56:81]
-  wire [3:0] _GEN_128 = ~jValid & _GEN_9 != 16'h0 & _GEN_11 != 16'h0 ? _GEN_104 : muxes_3_2; // @[Muxes.scala 34:24 56:81]
-  wire [3:0] _GEN_129 = ~jValid & _GEN_9 != 16'h0 & _GEN_11 != 16'h0 ? _GEN_105 : muxes_3_3; // @[Muxes.scala 34:24 56:81]
-  wire [15:0] _GEN_130 = ~jValid & _GEN_9 != 16'h0 & _GEN_11 != 16'h0 ? _GEN_106 : src_0; // @[Muxes.scala 35:22 56:81]
-  wire [15:0] _GEN_131 = ~jValid & _GEN_9 != 16'h0 & _GEN_11 != 16'h0 ? _GEN_107 : src_1; // @[Muxes.scala 35:22 56:81]
-  wire [15:0] _GEN_132 = ~jValid & _GEN_9 != 16'h0 & _GEN_11 != 16'h0 ? _GEN_108 : src_2; // @[Muxes.scala 35:22 56:81]
-  wire [15:0] _GEN_133 = ~jValid & _GEN_9 != 16'h0 & _GEN_11 != 16'h0 ? _GEN_109 : src_3; // @[Muxes.scala 35:22 56:81]
-  wire [15:0] _GEN_134 = ~jValid & _GEN_9 != 16'h0 & _GEN_11 != 16'h0 ? _GEN_110 : dest_0; // @[Muxes.scala 36:23 56:81]
-  wire [15:0] _GEN_135 = ~jValid & _GEN_9 != 16'h0 & _GEN_11 != 16'h0 ? _GEN_111 : dest_1; // @[Muxes.scala 36:23 56:81]
-  wire [15:0] _GEN_136 = ~jValid & _GEN_9 != 16'h0 & _GEN_11 != 16'h0 ? _GEN_112 : dest_2; // @[Muxes.scala 36:23 56:81]
-  wire [15:0] _GEN_137 = ~jValid & _GEN_9 != 16'h0 & _GEN_11 != 16'h0 ? _GEN_113 : dest_3; // @[Muxes.scala 36:23 56:81]
-  wire [31:0] _T_28 = j + 32'h1; // @[Muxes.scala 88:46]
-  wire [15:0] _GEN_139 = ~_T_28[0] & i[0] ? io_counterMatrix1_0_1 : io_counterMatrix1_0_0; // @[Muxes.scala 88:{56,56}]
-  wire [15:0] _GEN_140 = _T_28[0] & _GEN_219 ? io_counterMatrix1_1_0 : _GEN_139; // @[Muxes.scala 88:{56,56}]
-  wire [15:0] _GEN_141 = _T_28[0] & i[0] ? io_counterMatrix1_1_1 : _GEN_140; // @[Muxes.scala 88:{56,56}]
-  wire  _T_36 = j < 32'h1; // @[Muxes.scala 88:95]
+  wire [15:0] _muxes_T_3 = _GEN_9 - 16'h1; // @[Muxes.scala 63:66]
+  wire [15:0] _GEN_17 = i[0] ? io_counterMatrix2_1 : io_counterMatrix2_0; // @[Muxes.scala 63:{97,97}]
+  wire [15:0] _muxes_T_6 = _GEN_17 - 16'h1; // @[Muxes.scala 63:97]
+  wire [15:0] _muxes_T_8 = _muxes_T_3 - _muxes_T_6; // @[Muxes.scala 63:73]
+  wire [1:0] _GEN_18 = 2'h0 == counter[1:0] & 2'h0 == indexcounter[1:0] ? _muxes_T_8[1:0] : muxes_0_0; // @[Muxes.scala 34:24 63:{38,38}]
+  wire [1:0] _GEN_19 = 2'h0 == counter[1:0] & 2'h1 == indexcounter[1:0] ? _muxes_T_8[1:0] : muxes_0_1; // @[Muxes.scala 34:24 63:{38,38}]
+  wire [1:0] _GEN_20 = 2'h0 == counter[1:0] & 2'h2 == indexcounter[1:0] ? _muxes_T_8[1:0] : muxes_0_2; // @[Muxes.scala 34:24 63:{38,38}]
+  wire [1:0] _GEN_21 = 2'h0 == counter[1:0] & 2'h3 == indexcounter[1:0] ? _muxes_T_8[1:0] : muxes_0_3; // @[Muxes.scala 34:24 63:{38,38}]
+  wire [1:0] _GEN_22 = 2'h1 == counter[1:0] & 2'h0 == indexcounter[1:0] ? _muxes_T_8[1:0] : muxes_1_0; // @[Muxes.scala 34:24 63:{38,38}]
+  wire [1:0] _GEN_23 = 2'h1 == counter[1:0] & 2'h1 == indexcounter[1:0] ? _muxes_T_8[1:0] : muxes_1_1; // @[Muxes.scala 34:24 63:{38,38}]
+  wire [1:0] _GEN_24 = 2'h1 == counter[1:0] & 2'h2 == indexcounter[1:0] ? _muxes_T_8[1:0] : muxes_1_2; // @[Muxes.scala 34:24 63:{38,38}]
+  wire [1:0] _GEN_25 = 2'h1 == counter[1:0] & 2'h3 == indexcounter[1:0] ? _muxes_T_8[1:0] : muxes_1_3; // @[Muxes.scala 34:24 63:{38,38}]
+  wire [1:0] _GEN_26 = 2'h2 == counter[1:0] & 2'h0 == indexcounter[1:0] ? _muxes_T_8[1:0] : muxes_2_0; // @[Muxes.scala 34:24 63:{38,38}]
+  wire [1:0] _GEN_27 = 2'h2 == counter[1:0] & 2'h1 == indexcounter[1:0] ? _muxes_T_8[1:0] : muxes_2_1; // @[Muxes.scala 34:24 63:{38,38}]
+  wire [1:0] _GEN_28 = 2'h2 == counter[1:0] & 2'h2 == indexcounter[1:0] ? _muxes_T_8[1:0] : muxes_2_2; // @[Muxes.scala 34:24 63:{38,38}]
+  wire [1:0] _GEN_29 = 2'h2 == counter[1:0] & 2'h3 == indexcounter[1:0] ? _muxes_T_8[1:0] : muxes_2_3; // @[Muxes.scala 34:24 63:{38,38}]
+  wire [1:0] _GEN_30 = 2'h3 == counter[1:0] & 2'h0 == indexcounter[1:0] ? _muxes_T_8[1:0] : muxes_3_0; // @[Muxes.scala 34:24 63:{38,38}]
+  wire [1:0] _GEN_31 = 2'h3 == counter[1:0] & 2'h1 == indexcounter[1:0] ? _muxes_T_8[1:0] : muxes_3_1; // @[Muxes.scala 34:24 63:{38,38}]
+  wire [1:0] _GEN_32 = 2'h3 == counter[1:0] & 2'h2 == indexcounter[1:0] ? _muxes_T_8[1:0] : muxes_3_2; // @[Muxes.scala 34:24 63:{38,38}]
+  wire [1:0] _GEN_33 = 2'h3 == counter[1:0] & 2'h3 == indexcounter[1:0] ? _muxes_T_8[1:0] : muxes_3_3; // @[Muxes.scala 34:24 63:{38,38}]
+  wire [15:0] _GEN_34 = 2'h0 == counter[1:0] ? _GEN_11 : src_0; // @[Muxes.scala 35:22 64:{22,22}]
+  wire [15:0] _GEN_35 = 2'h1 == counter[1:0] ? _GEN_11 : src_1; // @[Muxes.scala 35:22 64:{22,22}]
+  wire [15:0] _GEN_36 = 2'h2 == counter[1:0] ? _GEN_11 : src_2; // @[Muxes.scala 35:22 64:{22,22}]
+  wire [15:0] _GEN_37 = 2'h3 == counter[1:0] ? _GEN_11 : src_3; // @[Muxes.scala 35:22 64:{22,22}]
+  wire [15:0] _GEN_45 = _GEN_152 & i[0] ? io_mat1_0_1 : io_mat1_0_0; // @[Muxes.scala 65:{24,24}]
+  wire [15:0] _GEN_46 = j[0] & _GEN_153 ? io_mat1_1_0 : _GEN_45; // @[Muxes.scala 65:{24,24}]
+  wire [15:0] _GEN_47 = j[0] & i[0] ? io_mat1_1_1 : _GEN_46; // @[Muxes.scala 65:{24,24}]
+  wire [15:0] _GEN_40 = 2'h0 == counter[1:0] ? _GEN_47 : dest_0; // @[Muxes.scala 36:23 65:{24,24}]
+  wire [15:0] _GEN_41 = 2'h1 == counter[1:0] ? _GEN_47 : dest_1; // @[Muxes.scala 36:23 65:{24,24}]
+  wire [15:0] _GEN_42 = 2'h2 == counter[1:0] ? _GEN_47 : dest_2; // @[Muxes.scala 36:23 65:{24,24}]
+  wire [15:0] _GEN_43 = 2'h3 == counter[1:0] ? _GEN_47 : dest_3; // @[Muxes.scala 36:23 65:{24,24}]
+  wire [1:0] _GEN_48 = ~jValid & _GEN_9 != 16'h0 & _GEN_11 != 16'h0 ? _GEN_18 : muxes_0_0; // @[Muxes.scala 34:24 56:81]
+  wire [1:0] _GEN_49 = ~jValid & _GEN_9 != 16'h0 & _GEN_11 != 16'h0 ? _GEN_19 : muxes_0_1; // @[Muxes.scala 34:24 56:81]
+  wire [1:0] _GEN_50 = ~jValid & _GEN_9 != 16'h0 & _GEN_11 != 16'h0 ? _GEN_20 : muxes_0_2; // @[Muxes.scala 34:24 56:81]
+  wire [1:0] _GEN_51 = ~jValid & _GEN_9 != 16'h0 & _GEN_11 != 16'h0 ? _GEN_21 : muxes_0_3; // @[Muxes.scala 34:24 56:81]
+  wire [1:0] _GEN_52 = ~jValid & _GEN_9 != 16'h0 & _GEN_11 != 16'h0 ? _GEN_22 : muxes_1_0; // @[Muxes.scala 34:24 56:81]
+  wire [1:0] _GEN_53 = ~jValid & _GEN_9 != 16'h0 & _GEN_11 != 16'h0 ? _GEN_23 : muxes_1_1; // @[Muxes.scala 34:24 56:81]
+  wire [1:0] _GEN_54 = ~jValid & _GEN_9 != 16'h0 & _GEN_11 != 16'h0 ? _GEN_24 : muxes_1_2; // @[Muxes.scala 34:24 56:81]
+  wire [1:0] _GEN_55 = ~jValid & _GEN_9 != 16'h0 & _GEN_11 != 16'h0 ? _GEN_25 : muxes_1_3; // @[Muxes.scala 34:24 56:81]
+  wire [1:0] _GEN_56 = ~jValid & _GEN_9 != 16'h0 & _GEN_11 != 16'h0 ? _GEN_26 : muxes_2_0; // @[Muxes.scala 34:24 56:81]
+  wire [1:0] _GEN_57 = ~jValid & _GEN_9 != 16'h0 & _GEN_11 != 16'h0 ? _GEN_27 : muxes_2_1; // @[Muxes.scala 34:24 56:81]
+  wire [1:0] _GEN_58 = ~jValid & _GEN_9 != 16'h0 & _GEN_11 != 16'h0 ? _GEN_28 : muxes_2_2; // @[Muxes.scala 34:24 56:81]
+  wire [1:0] _GEN_59 = ~jValid & _GEN_9 != 16'h0 & _GEN_11 != 16'h0 ? _GEN_29 : muxes_2_3; // @[Muxes.scala 34:24 56:81]
+  wire [1:0] _GEN_60 = ~jValid & _GEN_9 != 16'h0 & _GEN_11 != 16'h0 ? _GEN_30 : muxes_3_0; // @[Muxes.scala 34:24 56:81]
+  wire [1:0] _GEN_61 = ~jValid & _GEN_9 != 16'h0 & _GEN_11 != 16'h0 ? _GEN_31 : muxes_3_1; // @[Muxes.scala 34:24 56:81]
+  wire [1:0] _GEN_62 = ~jValid & _GEN_9 != 16'h0 & _GEN_11 != 16'h0 ? _GEN_32 : muxes_3_2; // @[Muxes.scala 34:24 56:81]
+  wire [1:0] _GEN_63 = ~jValid & _GEN_9 != 16'h0 & _GEN_11 != 16'h0 ? _GEN_33 : muxes_3_3; // @[Muxes.scala 34:24 56:81]
+  wire [15:0] _GEN_64 = ~jValid & _GEN_9 != 16'h0 & _GEN_11 != 16'h0 ? _GEN_34 : src_0; // @[Muxes.scala 35:22 56:81]
+  wire [15:0] _GEN_65 = ~jValid & _GEN_9 != 16'h0 & _GEN_11 != 16'h0 ? _GEN_35 : src_1; // @[Muxes.scala 35:22 56:81]
+  wire [15:0] _GEN_66 = ~jValid & _GEN_9 != 16'h0 & _GEN_11 != 16'h0 ? _GEN_36 : src_2; // @[Muxes.scala 35:22 56:81]
+  wire [15:0] _GEN_67 = ~jValid & _GEN_9 != 16'h0 & _GEN_11 != 16'h0 ? _GEN_37 : src_3; // @[Muxes.scala 35:22 56:81]
+  wire [15:0] _GEN_68 = ~jValid & _GEN_9 != 16'h0 & _GEN_11 != 16'h0 ? _GEN_40 : dest_0; // @[Muxes.scala 36:23 56:81]
+  wire [15:0] _GEN_69 = ~jValid & _GEN_9 != 16'h0 & _GEN_11 != 16'h0 ? _GEN_41 : dest_1; // @[Muxes.scala 36:23 56:81]
+  wire [15:0] _GEN_70 = ~jValid & _GEN_9 != 16'h0 & _GEN_11 != 16'h0 ? _GEN_42 : dest_2; // @[Muxes.scala 36:23 56:81]
+  wire [15:0] _GEN_71 = ~jValid & _GEN_9 != 16'h0 & _GEN_11 != 16'h0 ? _GEN_43 : dest_3; // @[Muxes.scala 36:23 56:81]
+  wire [31:0] _T_20 = j + 32'h1; // @[Muxes.scala 88:46]
+  wire [15:0] _GEN_73 = ~_T_20[0] & i[0] ? io_counterMatrix1_0_1 : io_counterMatrix1_0_0; // @[Muxes.scala 88:{56,56}]
+  wire [15:0] _GEN_74 = _T_20[0] & _GEN_153 ? io_counterMatrix1_1_0 : _GEN_73; // @[Muxes.scala 88:{56,56}]
+  wire [15:0] _GEN_75 = _T_20[0] & i[0] ? io_counterMatrix1_1_1 : _GEN_74; // @[Muxes.scala 88:{56,56}]
+  wire  _T_28 = j < 32'h1; // @[Muxes.scala 88:95]
   wire [31:0] _indexcounter_T_1 = indexcounter + 32'h1; // @[Muxes.scala 89:36]
-  wire [31:0] _GEN_144 = _T_6 & _GEN_141 != 16'h0 & _T_12 & j < 32'h1 ? _indexcounter_T_1 : indexcounter; // @[Muxes.scala 88:122 89:20 32:31]
-  wire  _T_40 = j == 32'h1; // @[Muxes.scala 97:21]
-  wire  _T_41 = i == 32'h1; // @[Muxes.scala 97:55]
+  wire [31:0] _GEN_78 = _T_6 & _GEN_75 != 16'h0 & _T_12 & j < 32'h1 ? _indexcounter_T_1 : indexcounter; // @[Muxes.scala 88:122 89:20 32:31]
+  wire  _T_32 = j == 32'h1; // @[Muxes.scala 97:21]
+  wire  _T_33 = i == 32'h1; // @[Muxes.scala 97:55]
   wire [31:0] _i_T_1 = i + 32'h1; // @[Muxes.scala 102:18]
   wire [31:0] _counter_T_1 = counter + 32'h1; // @[Muxes.scala 103:30]
-  wire [31:0] _GEN_145 = i < 32'h1 ? _i_T_1 : i; // @[Muxes.scala 101:42 102:13 28:20]
-  wire [31:0] _GEN_146 = i < 32'h1 ? _counter_T_1 : counter; // @[Muxes.scala 101:42 103:19 31:26]
-  wire [31:0] _GEN_147 = i < 32'h1 ? 32'h0 : _GEN_144; // @[Muxes.scala 101:42 104:24]
-  wire  _GEN_148 = j == 32'h1 & i == 32'h1 | jValid; // @[Muxes.scala 97:83 98:16 27:25]
+  wire [31:0] _GEN_79 = i < 32'h1 ? _i_T_1 : i; // @[Muxes.scala 101:42 102:13 28:20]
+  wire [31:0] _GEN_80 = i < 32'h1 ? _counter_T_1 : counter; // @[Muxes.scala 101:42 103:19 31:26]
+  wire [31:0] _GEN_81 = i < 32'h1 ? 32'h0 : _GEN_78; // @[Muxes.scala 101:42 104:24]
+  wire  _GEN_82 = j == 32'h1 & i == 32'h1 | jValid; // @[Muxes.scala 97:83 98:16 27:25]
   reg [31:0] jNext; // @[Muxes.scala 126:24]
   wire [31:0] _k_T_1 = k + 32'h1; // @[Muxes.scala 135:14]
-  assign io_i_mux_bus_0_0 = muxes_0_0; // @[Muxes.scala 38:18]
-  assign io_i_mux_bus_0_1 = muxes_0_1; // @[Muxes.scala 38:18]
-  assign io_i_mux_bus_0_2 = muxes_0_2; // @[Muxes.scala 38:18]
-  assign io_i_mux_bus_0_3 = muxes_0_3; // @[Muxes.scala 38:18]
-  assign io_i_mux_bus_1_0 = muxes_1_0; // @[Muxes.scala 38:18]
-  assign io_i_mux_bus_1_1 = muxes_1_1; // @[Muxes.scala 38:18]
-  assign io_i_mux_bus_1_2 = muxes_1_2; // @[Muxes.scala 38:18]
-  assign io_i_mux_bus_1_3 = muxes_1_3; // @[Muxes.scala 38:18]
-  assign io_i_mux_bus_2_0 = muxes_2_0; // @[Muxes.scala 38:18]
-  assign io_i_mux_bus_2_1 = muxes_2_1; // @[Muxes.scala 38:18]
-  assign io_i_mux_bus_2_2 = muxes_2_2; // @[Muxes.scala 38:18]
-  assign io_i_mux_bus_2_3 = muxes_2_3; // @[Muxes.scala 38:18]
-  assign io_i_mux_bus_3_0 = muxes_3_0; // @[Muxes.scala 38:18]
-  assign io_i_mux_bus_3_1 = muxes_3_1; // @[Muxes.scala 38:18]
-  assign io_i_mux_bus_3_2 = muxes_3_2; // @[Muxes.scala 38:18]
-  assign io_i_mux_bus_3_3 = muxes_3_3; // @[Muxes.scala 38:18]
+  assign io_i_mux_bus_0_0 = {{2'd0}, muxes_0_0}; // @[Muxes.scala 38:18]
+  assign io_i_mux_bus_0_1 = {{2'd0}, muxes_0_1}; // @[Muxes.scala 38:18]
+  assign io_i_mux_bus_0_2 = {{2'd0}, muxes_0_2}; // @[Muxes.scala 38:18]
+  assign io_i_mux_bus_0_3 = {{2'd0}, muxes_0_3}; // @[Muxes.scala 38:18]
+  assign io_i_mux_bus_1_0 = {{2'd0}, muxes_1_0}; // @[Muxes.scala 38:18]
+  assign io_i_mux_bus_1_1 = {{2'd0}, muxes_1_1}; // @[Muxes.scala 38:18]
+  assign io_i_mux_bus_1_2 = {{2'd0}, muxes_1_2}; // @[Muxes.scala 38:18]
+  assign io_i_mux_bus_1_3 = {{2'd0}, muxes_1_3}; // @[Muxes.scala 38:18]
+  assign io_i_mux_bus_2_0 = {{2'd0}, muxes_2_0}; // @[Muxes.scala 38:18]
+  assign io_i_mux_bus_2_1 = {{2'd0}, muxes_2_1}; // @[Muxes.scala 38:18]
+  assign io_i_mux_bus_2_2 = {{2'd0}, muxes_2_2}; // @[Muxes.scala 38:18]
+  assign io_i_mux_bus_2_3 = {{2'd0}, muxes_2_3}; // @[Muxes.scala 38:18]
+  assign io_i_mux_bus_3_0 = {{2'd0}, muxes_3_0}; // @[Muxes.scala 38:18]
+  assign io_i_mux_bus_3_1 = {{2'd0}, muxes_3_1}; // @[Muxes.scala 38:18]
+  assign io_i_mux_bus_3_2 = {{2'd0}, muxes_3_2}; // @[Muxes.scala 38:18]
+  assign io_i_mux_bus_3_3 = {{2'd0}, muxes_3_3}; // @[Muxes.scala 38:18]
   assign io_Source_0 = src_0; // @[Muxes.scala 39:15]
   assign io_Source_1 = src_1; // @[Muxes.scala 39:15]
   assign io_Source_2 = src_2; // @[Muxes.scala 39:15]
   assign io_Source_3 = src_3; // @[Muxes.scala 39:15]
-  assign io_valid = k != 32'h0 & _T_40 & _T_41 & jNext == 32'h0; // @[Muxes.scala 129:86]
+  assign io_valid = k != 32'h0 & _T_32 & _T_33 & jNext == 32'h0; // @[Muxes.scala 129:86]
   always @(posedge clock) begin
     prevStationary_matrix_0_0 <= io_mat1_0_0; // @[Muxes.scala 19:40]
     prevStationary_matrix_0_1 <= io_mat1_0_1; // @[Muxes.scala 19:40]
@@ -285,8 +236,8 @@ module Muxes(
     if (reset) begin // @[Muxes.scala 27:25]
       jValid <= 1'h0; // @[Muxes.scala 27:25]
     end else if (_T_6) begin // @[Muxes.scala 93:29]
-      if (!(_T_36)) begin // @[Muxes.scala 95:40]
-        jValid <= _GEN_148;
+      if (!(_T_28)) begin // @[Muxes.scala 95:40]
+        jValid <= _GEN_82;
       end
     end else if (jValid & ~matricesAreEqual) begin // @[Muxes.scala 107:64]
       jValid <= 1'h0; // @[Muxes.scala 111:14]
@@ -294,9 +245,9 @@ module Muxes(
     if (reset) begin // @[Muxes.scala 28:20]
       i <= 32'h0; // @[Muxes.scala 28:20]
     end else if (_T_6) begin // @[Muxes.scala 93:29]
-      if (!(_T_36)) begin // @[Muxes.scala 95:40]
+      if (!(_T_28)) begin // @[Muxes.scala 95:40]
         if (!(j == 32'h1 & i == 32'h1)) begin // @[Muxes.scala 97:83]
-          i <= _GEN_145;
+          i <= _GEN_79;
         end
       end
     end else if (jValid & ~matricesAreEqual) begin // @[Muxes.scala 107:64]
@@ -305,8 +256,8 @@ module Muxes(
     if (reset) begin // @[Muxes.scala 29:20]
       j <= 32'h0; // @[Muxes.scala 29:20]
     end else if (_T_6) begin // @[Muxes.scala 93:29]
-      if (_T_36) begin // @[Muxes.scala 95:40]
-        j <= _T_28; // @[Muxes.scala 96:11]
+      if (_T_28) begin // @[Muxes.scala 95:40]
+        j <= _T_20; // @[Muxes.scala 96:11]
       end else if (!(j == 32'h1 & i == 32'h1)) begin // @[Muxes.scala 97:83]
         j <= 32'h0; // @[Muxes.scala 100:11]
       end
@@ -315,15 +266,15 @@ module Muxes(
     end
     if (reset) begin // @[Muxes.scala 30:20]
       k <= 32'h0; // @[Muxes.scala 30:20]
-    end else if (_T_41 & _T_40) begin // @[Muxes.scala 134:76]
+    end else if (_T_33 & _T_32) begin // @[Muxes.scala 134:76]
       k <= _k_T_1; // @[Muxes.scala 135:9]
     end
     if (reset) begin // @[Muxes.scala 31:26]
       counter <= 32'h0; // @[Muxes.scala 31:26]
     end else if (_T_6) begin // @[Muxes.scala 93:29]
-      if (!(_T_36)) begin // @[Muxes.scala 95:40]
+      if (!(_T_28)) begin // @[Muxes.scala 95:40]
         if (!(j == 32'h1 & i == 32'h1)) begin // @[Muxes.scala 97:83]
-          counter <= _GEN_146;
+          counter <= _GEN_80;
         end
       end
     end else if (jValid & ~matricesAreEqual) begin // @[Muxes.scala 107:64]
@@ -332,233 +283,233 @@ module Muxes(
     if (reset) begin // @[Muxes.scala 32:31]
       indexcounter <= 32'h0; // @[Muxes.scala 32:31]
     end else if (_T_6) begin // @[Muxes.scala 93:29]
-      if (_T_36) begin // @[Muxes.scala 95:40]
-        indexcounter <= _GEN_144;
+      if (_T_28) begin // @[Muxes.scala 95:40]
+        indexcounter <= _GEN_78;
       end else if (j == 32'h1 & i == 32'h1) begin // @[Muxes.scala 97:83]
-        indexcounter <= _GEN_144;
+        indexcounter <= _GEN_78;
       end else begin
-        indexcounter <= _GEN_147;
+        indexcounter <= _GEN_81;
       end
     end else if (jValid & ~matricesAreEqual) begin // @[Muxes.scala 107:64]
       indexcounter <= 32'h0; // @[Muxes.scala 113:20]
     end else begin
-      indexcounter <= _GEN_144;
+      indexcounter <= _GEN_78;
     end
     if (reset) begin // @[Muxes.scala 34:24]
-      muxes_0_0 <= 4'h0; // @[Muxes.scala 34:24]
+      muxes_0_0 <= 2'h0; // @[Muxes.scala 34:24]
     end else if (_T_6) begin // @[Muxes.scala 93:29]
-      muxes_0_0 <= _GEN_114;
+      muxes_0_0 <= _GEN_48;
     end else if (jValid & ~matricesAreEqual) begin // @[Muxes.scala 107:64]
-      muxes_0_0 <= 4'h0; // @[Muxes.scala 119:23]
+      muxes_0_0 <= 2'h0; // @[Muxes.scala 119:23]
     end else begin
-      muxes_0_0 <= _GEN_114;
+      muxes_0_0 <= _GEN_48;
     end
     if (reset) begin // @[Muxes.scala 34:24]
-      muxes_0_1 <= 4'h0; // @[Muxes.scala 34:24]
+      muxes_0_1 <= 2'h0; // @[Muxes.scala 34:24]
     end else if (_T_6) begin // @[Muxes.scala 93:29]
-      muxes_0_1 <= _GEN_115;
+      muxes_0_1 <= _GEN_49;
     end else if (jValid & ~matricesAreEqual) begin // @[Muxes.scala 107:64]
-      muxes_0_1 <= 4'h0; // @[Muxes.scala 119:23]
+      muxes_0_1 <= 2'h0; // @[Muxes.scala 119:23]
     end else begin
-      muxes_0_1 <= _GEN_115;
+      muxes_0_1 <= _GEN_49;
     end
     if (reset) begin // @[Muxes.scala 34:24]
-      muxes_0_2 <= 4'h0; // @[Muxes.scala 34:24]
+      muxes_0_2 <= 2'h0; // @[Muxes.scala 34:24]
     end else if (_T_6) begin // @[Muxes.scala 93:29]
-      muxes_0_2 <= _GEN_116;
+      muxes_0_2 <= _GEN_50;
     end else if (jValid & ~matricesAreEqual) begin // @[Muxes.scala 107:64]
-      muxes_0_2 <= 4'h0; // @[Muxes.scala 119:23]
+      muxes_0_2 <= 2'h0; // @[Muxes.scala 119:23]
     end else begin
-      muxes_0_2 <= _GEN_116;
+      muxes_0_2 <= _GEN_50;
     end
     if (reset) begin // @[Muxes.scala 34:24]
-      muxes_0_3 <= 4'h0; // @[Muxes.scala 34:24]
+      muxes_0_3 <= 2'h0; // @[Muxes.scala 34:24]
     end else if (_T_6) begin // @[Muxes.scala 93:29]
-      muxes_0_3 <= _GEN_117;
+      muxes_0_3 <= _GEN_51;
     end else if (jValid & ~matricesAreEqual) begin // @[Muxes.scala 107:64]
-      muxes_0_3 <= 4'h0; // @[Muxes.scala 119:23]
+      muxes_0_3 <= 2'h0; // @[Muxes.scala 119:23]
     end else begin
-      muxes_0_3 <= _GEN_117;
+      muxes_0_3 <= _GEN_51;
     end
     if (reset) begin // @[Muxes.scala 34:24]
-      muxes_1_0 <= 4'h0; // @[Muxes.scala 34:24]
+      muxes_1_0 <= 2'h0; // @[Muxes.scala 34:24]
     end else if (_T_6) begin // @[Muxes.scala 93:29]
-      muxes_1_0 <= _GEN_118;
+      muxes_1_0 <= _GEN_52;
     end else if (jValid & ~matricesAreEqual) begin // @[Muxes.scala 107:64]
-      muxes_1_0 <= 4'h0; // @[Muxes.scala 119:23]
+      muxes_1_0 <= 2'h0; // @[Muxes.scala 119:23]
     end else begin
-      muxes_1_0 <= _GEN_118;
+      muxes_1_0 <= _GEN_52;
     end
     if (reset) begin // @[Muxes.scala 34:24]
-      muxes_1_1 <= 4'h0; // @[Muxes.scala 34:24]
+      muxes_1_1 <= 2'h0; // @[Muxes.scala 34:24]
     end else if (_T_6) begin // @[Muxes.scala 93:29]
-      muxes_1_1 <= _GEN_119;
+      muxes_1_1 <= _GEN_53;
     end else if (jValid & ~matricesAreEqual) begin // @[Muxes.scala 107:64]
-      muxes_1_1 <= 4'h0; // @[Muxes.scala 119:23]
+      muxes_1_1 <= 2'h0; // @[Muxes.scala 119:23]
     end else begin
-      muxes_1_1 <= _GEN_119;
+      muxes_1_1 <= _GEN_53;
     end
     if (reset) begin // @[Muxes.scala 34:24]
-      muxes_1_2 <= 4'h0; // @[Muxes.scala 34:24]
+      muxes_1_2 <= 2'h0; // @[Muxes.scala 34:24]
     end else if (_T_6) begin // @[Muxes.scala 93:29]
-      muxes_1_2 <= _GEN_120;
+      muxes_1_2 <= _GEN_54;
     end else if (jValid & ~matricesAreEqual) begin // @[Muxes.scala 107:64]
-      muxes_1_2 <= 4'h0; // @[Muxes.scala 119:23]
+      muxes_1_2 <= 2'h0; // @[Muxes.scala 119:23]
     end else begin
-      muxes_1_2 <= _GEN_120;
+      muxes_1_2 <= _GEN_54;
     end
     if (reset) begin // @[Muxes.scala 34:24]
-      muxes_1_3 <= 4'h0; // @[Muxes.scala 34:24]
+      muxes_1_3 <= 2'h0; // @[Muxes.scala 34:24]
     end else if (_T_6) begin // @[Muxes.scala 93:29]
-      muxes_1_3 <= _GEN_121;
+      muxes_1_3 <= _GEN_55;
     end else if (jValid & ~matricesAreEqual) begin // @[Muxes.scala 107:64]
-      muxes_1_3 <= 4'h0; // @[Muxes.scala 119:23]
+      muxes_1_3 <= 2'h0; // @[Muxes.scala 119:23]
     end else begin
-      muxes_1_3 <= _GEN_121;
+      muxes_1_3 <= _GEN_55;
     end
     if (reset) begin // @[Muxes.scala 34:24]
-      muxes_2_0 <= 4'h0; // @[Muxes.scala 34:24]
+      muxes_2_0 <= 2'h0; // @[Muxes.scala 34:24]
     end else if (_T_6) begin // @[Muxes.scala 93:29]
-      muxes_2_0 <= _GEN_122;
+      muxes_2_0 <= _GEN_56;
     end else if (jValid & ~matricesAreEqual) begin // @[Muxes.scala 107:64]
-      muxes_2_0 <= 4'h0; // @[Muxes.scala 119:23]
+      muxes_2_0 <= 2'h0; // @[Muxes.scala 119:23]
     end else begin
-      muxes_2_0 <= _GEN_122;
+      muxes_2_0 <= _GEN_56;
     end
     if (reset) begin // @[Muxes.scala 34:24]
-      muxes_2_1 <= 4'h0; // @[Muxes.scala 34:24]
+      muxes_2_1 <= 2'h0; // @[Muxes.scala 34:24]
     end else if (_T_6) begin // @[Muxes.scala 93:29]
-      muxes_2_1 <= _GEN_123;
+      muxes_2_1 <= _GEN_57;
     end else if (jValid & ~matricesAreEqual) begin // @[Muxes.scala 107:64]
-      muxes_2_1 <= 4'h0; // @[Muxes.scala 119:23]
+      muxes_2_1 <= 2'h0; // @[Muxes.scala 119:23]
     end else begin
-      muxes_2_1 <= _GEN_123;
+      muxes_2_1 <= _GEN_57;
     end
     if (reset) begin // @[Muxes.scala 34:24]
-      muxes_2_2 <= 4'h0; // @[Muxes.scala 34:24]
+      muxes_2_2 <= 2'h0; // @[Muxes.scala 34:24]
     end else if (_T_6) begin // @[Muxes.scala 93:29]
-      muxes_2_2 <= _GEN_124;
+      muxes_2_2 <= _GEN_58;
     end else if (jValid & ~matricesAreEqual) begin // @[Muxes.scala 107:64]
-      muxes_2_2 <= 4'h0; // @[Muxes.scala 119:23]
+      muxes_2_2 <= 2'h0; // @[Muxes.scala 119:23]
     end else begin
-      muxes_2_2 <= _GEN_124;
+      muxes_2_2 <= _GEN_58;
     end
     if (reset) begin // @[Muxes.scala 34:24]
-      muxes_2_3 <= 4'h0; // @[Muxes.scala 34:24]
+      muxes_2_3 <= 2'h0; // @[Muxes.scala 34:24]
     end else if (_T_6) begin // @[Muxes.scala 93:29]
-      muxes_2_3 <= _GEN_125;
+      muxes_2_3 <= _GEN_59;
     end else if (jValid & ~matricesAreEqual) begin // @[Muxes.scala 107:64]
-      muxes_2_3 <= 4'h0; // @[Muxes.scala 119:23]
+      muxes_2_3 <= 2'h0; // @[Muxes.scala 119:23]
     end else begin
-      muxes_2_3 <= _GEN_125;
+      muxes_2_3 <= _GEN_59;
     end
     if (reset) begin // @[Muxes.scala 34:24]
-      muxes_3_0 <= 4'h0; // @[Muxes.scala 34:24]
+      muxes_3_0 <= 2'h0; // @[Muxes.scala 34:24]
     end else if (_T_6) begin // @[Muxes.scala 93:29]
-      muxes_3_0 <= _GEN_126;
+      muxes_3_0 <= _GEN_60;
     end else if (jValid & ~matricesAreEqual) begin // @[Muxes.scala 107:64]
-      muxes_3_0 <= 4'h0; // @[Muxes.scala 119:23]
+      muxes_3_0 <= 2'h0; // @[Muxes.scala 119:23]
     end else begin
-      muxes_3_0 <= _GEN_126;
+      muxes_3_0 <= _GEN_60;
     end
     if (reset) begin // @[Muxes.scala 34:24]
-      muxes_3_1 <= 4'h0; // @[Muxes.scala 34:24]
+      muxes_3_1 <= 2'h0; // @[Muxes.scala 34:24]
     end else if (_T_6) begin // @[Muxes.scala 93:29]
-      muxes_3_1 <= _GEN_127;
+      muxes_3_1 <= _GEN_61;
     end else if (jValid & ~matricesAreEqual) begin // @[Muxes.scala 107:64]
-      muxes_3_1 <= 4'h0; // @[Muxes.scala 119:23]
+      muxes_3_1 <= 2'h0; // @[Muxes.scala 119:23]
     end else begin
-      muxes_3_1 <= _GEN_127;
+      muxes_3_1 <= _GEN_61;
     end
     if (reset) begin // @[Muxes.scala 34:24]
-      muxes_3_2 <= 4'h0; // @[Muxes.scala 34:24]
+      muxes_3_2 <= 2'h0; // @[Muxes.scala 34:24]
     end else if (_T_6) begin // @[Muxes.scala 93:29]
-      muxes_3_2 <= _GEN_128;
+      muxes_3_2 <= _GEN_62;
     end else if (jValid & ~matricesAreEqual) begin // @[Muxes.scala 107:64]
-      muxes_3_2 <= 4'h0; // @[Muxes.scala 119:23]
+      muxes_3_2 <= 2'h0; // @[Muxes.scala 119:23]
     end else begin
-      muxes_3_2 <= _GEN_128;
+      muxes_3_2 <= _GEN_62;
     end
     if (reset) begin // @[Muxes.scala 34:24]
-      muxes_3_3 <= 4'h0; // @[Muxes.scala 34:24]
+      muxes_3_3 <= 2'h0; // @[Muxes.scala 34:24]
     end else if (_T_6) begin // @[Muxes.scala 93:29]
-      muxes_3_3 <= _GEN_129;
+      muxes_3_3 <= _GEN_63;
     end else if (jValid & ~matricesAreEqual) begin // @[Muxes.scala 107:64]
-      muxes_3_3 <= 4'h0; // @[Muxes.scala 119:23]
+      muxes_3_3 <= 2'h0; // @[Muxes.scala 119:23]
     end else begin
-      muxes_3_3 <= _GEN_129;
+      muxes_3_3 <= _GEN_63;
     end
     if (reset) begin // @[Muxes.scala 35:22]
       src_0 <= 16'h0; // @[Muxes.scala 35:22]
     end else if (_T_6) begin // @[Muxes.scala 93:29]
-      src_0 <= _GEN_130;
+      src_0 <= _GEN_64;
     end else if (jValid & ~matricesAreEqual) begin // @[Muxes.scala 107:64]
       src_0 <= 16'h0; // @[Muxes.scala 116:16]
     end else begin
-      src_0 <= _GEN_130;
+      src_0 <= _GEN_64;
     end
     if (reset) begin // @[Muxes.scala 35:22]
       src_1 <= 16'h0; // @[Muxes.scala 35:22]
     end else if (_T_6) begin // @[Muxes.scala 93:29]
-      src_1 <= _GEN_131;
+      src_1 <= _GEN_65;
     end else if (jValid & ~matricesAreEqual) begin // @[Muxes.scala 107:64]
       src_1 <= 16'h0; // @[Muxes.scala 116:16]
     end else begin
-      src_1 <= _GEN_131;
+      src_1 <= _GEN_65;
     end
     if (reset) begin // @[Muxes.scala 35:22]
       src_2 <= 16'h0; // @[Muxes.scala 35:22]
     end else if (_T_6) begin // @[Muxes.scala 93:29]
-      src_2 <= _GEN_132;
+      src_2 <= _GEN_66;
     end else if (jValid & ~matricesAreEqual) begin // @[Muxes.scala 107:64]
       src_2 <= 16'h0; // @[Muxes.scala 116:16]
     end else begin
-      src_2 <= _GEN_132;
+      src_2 <= _GEN_66;
     end
     if (reset) begin // @[Muxes.scala 35:22]
       src_3 <= 16'h0; // @[Muxes.scala 35:22]
     end else if (_T_6) begin // @[Muxes.scala 93:29]
-      src_3 <= _GEN_133;
+      src_3 <= _GEN_67;
     end else if (jValid & ~matricesAreEqual) begin // @[Muxes.scala 107:64]
       src_3 <= 16'h0; // @[Muxes.scala 116:16]
     end else begin
-      src_3 <= _GEN_133;
+      src_3 <= _GEN_67;
     end
     if (reset) begin // @[Muxes.scala 36:23]
       dest_0 <= 16'h0; // @[Muxes.scala 36:23]
     end else if (_T_6) begin // @[Muxes.scala 93:29]
-      dest_0 <= _GEN_134;
+      dest_0 <= _GEN_68;
     end else if (jValid & ~matricesAreEqual) begin // @[Muxes.scala 107:64]
       dest_0 <= 16'h0; // @[Muxes.scala 117:17]
     end else begin
-      dest_0 <= _GEN_134;
+      dest_0 <= _GEN_68;
     end
     if (reset) begin // @[Muxes.scala 36:23]
       dest_1 <= 16'h0; // @[Muxes.scala 36:23]
     end else if (_T_6) begin // @[Muxes.scala 93:29]
-      dest_1 <= _GEN_135;
+      dest_1 <= _GEN_69;
     end else if (jValid & ~matricesAreEqual) begin // @[Muxes.scala 107:64]
       dest_1 <= 16'h0; // @[Muxes.scala 117:17]
     end else begin
-      dest_1 <= _GEN_135;
+      dest_1 <= _GEN_69;
     end
     if (reset) begin // @[Muxes.scala 36:23]
       dest_2 <= 16'h0; // @[Muxes.scala 36:23]
     end else if (_T_6) begin // @[Muxes.scala 93:29]
-      dest_2 <= _GEN_136;
+      dest_2 <= _GEN_70;
     end else if (jValid & ~matricesAreEqual) begin // @[Muxes.scala 107:64]
       dest_2 <= 16'h0; // @[Muxes.scala 117:17]
     end else begin
-      dest_2 <= _GEN_136;
+      dest_2 <= _GEN_70;
     end
     if (reset) begin // @[Muxes.scala 36:23]
       dest_3 <= 16'h0; // @[Muxes.scala 36:23]
     end else if (_T_6) begin // @[Muxes.scala 93:29]
-      dest_3 <= _GEN_137;
+      dest_3 <= _GEN_71;
     end else if (jValid & ~matricesAreEqual) begin // @[Muxes.scala 107:64]
       dest_3 <= 16'h0; // @[Muxes.scala 117:17]
     end else begin
-      dest_3 <= _GEN_137;
+      dest_3 <= _GEN_71;
     end
     if (reset) begin // @[Muxes.scala 126:24]
       jNext <= 32'h0; // @[Muxes.scala 126:24]
@@ -629,37 +580,37 @@ initial begin
   _RAND_12 = {1{`RANDOM}};
   indexcounter = _RAND_12[31:0];
   _RAND_13 = {1{`RANDOM}};
-  muxes_0_0 = _RAND_13[3:0];
+  muxes_0_0 = _RAND_13[1:0];
   _RAND_14 = {1{`RANDOM}};
-  muxes_0_1 = _RAND_14[3:0];
+  muxes_0_1 = _RAND_14[1:0];
   _RAND_15 = {1{`RANDOM}};
-  muxes_0_2 = _RAND_15[3:0];
+  muxes_0_2 = _RAND_15[1:0];
   _RAND_16 = {1{`RANDOM}};
-  muxes_0_3 = _RAND_16[3:0];
+  muxes_0_3 = _RAND_16[1:0];
   _RAND_17 = {1{`RANDOM}};
-  muxes_1_0 = _RAND_17[3:0];
+  muxes_1_0 = _RAND_17[1:0];
   _RAND_18 = {1{`RANDOM}};
-  muxes_1_1 = _RAND_18[3:0];
+  muxes_1_1 = _RAND_18[1:0];
   _RAND_19 = {1{`RANDOM}};
-  muxes_1_2 = _RAND_19[3:0];
+  muxes_1_2 = _RAND_19[1:0];
   _RAND_20 = {1{`RANDOM}};
-  muxes_1_3 = _RAND_20[3:0];
+  muxes_1_3 = _RAND_20[1:0];
   _RAND_21 = {1{`RANDOM}};
-  muxes_2_0 = _RAND_21[3:0];
+  muxes_2_0 = _RAND_21[1:0];
   _RAND_22 = {1{`RANDOM}};
-  muxes_2_1 = _RAND_22[3:0];
+  muxes_2_1 = _RAND_22[1:0];
   _RAND_23 = {1{`RANDOM}};
-  muxes_2_2 = _RAND_23[3:0];
+  muxes_2_2 = _RAND_23[1:0];
   _RAND_24 = {1{`RANDOM}};
-  muxes_2_3 = _RAND_24[3:0];
+  muxes_2_3 = _RAND_24[1:0];
   _RAND_25 = {1{`RANDOM}};
-  muxes_3_0 = _RAND_25[3:0];
+  muxes_3_0 = _RAND_25[1:0];
   _RAND_26 = {1{`RANDOM}};
-  muxes_3_1 = _RAND_26[3:0];
+  muxes_3_1 = _RAND_26[1:0];
   _RAND_27 = {1{`RANDOM}};
-  muxes_3_2 = _RAND_27[3:0];
+  muxes_3_2 = _RAND_27[1:0];
   _RAND_28 = {1{`RANDOM}};
-  muxes_3_3 = _RAND_28[3:0];
+  muxes_3_3 = _RAND_28[1:0];
   _RAND_29 = {1{`RANDOM}};
   src_0 = _RAND_29[15:0];
   _RAND_30 = {1{`RANDOM}};
@@ -1017,722 +968,6 @@ end // initial
 `endif
 `endif // SYNTHESIS
 endmodule
-module abc2(
-  input         clock,
-  input         reset,
-  input  [31:0] io_IDex,
-  input  [31:0] io_JDex,
-  input         io_valid,
-  input  [31:0] io_mat_0_0,
-  input  [31:0] io_mat_0_1,
-  input  [31:0] io_mat_1_0,
-  input  [31:0] io_mat_1_1,
-  output [31:0] io_OutMat_0_0,
-  output [31:0] io_OutMat_0_1,
-  output [31:0] io_OutMat_1_0,
-  output [31:0] io_OutMat_1_1,
-  output        io_Ovalid,
-  output        io_ProcessValid
-);
-`ifdef RANDOMIZE_REG_INIT
-  reg [31:0] _RAND_0;
-  reg [31:0] _RAND_1;
-  reg [31:0] _RAND_2;
-  reg [31:0] _RAND_3;
-  reg [31:0] _RAND_4;
-  reg [31:0] _RAND_5;
-  reg [31:0] _RAND_6;
-`endif // RANDOMIZE_REG_INIT
-  reg [31:0] b_0_0; // @[singleLoop.scala 19:20]
-  reg [31:0] b_0_1; // @[singleLoop.scala 19:20]
-  reg [31:0] b_1_0; // @[singleLoop.scala 19:20]
-  reg [31:0] b_1_1; // @[singleLoop.scala 19:20]
-  reg [31:0] j; // @[singleLoop.scala 21:16]
-  reg [31:0] a; // @[singleLoop.scala 23:20]
-  wire  _T_1 = io_valid & a != 32'h0; // @[singleLoop.scala 24:19]
-  wire [31:0] _GEN_5 = ~io_IDex[0] & j[0] ? io_mat_0_1 : io_mat_0_0; // @[singleLoop.scala 25:{19,19}]
-  wire [31:0] _GEN_6 = io_IDex[0] & ~j[0] ? io_mat_1_0 : _GEN_5; // @[singleLoop.scala 25:{19,19}]
-  wire  _T_4 = j == 32'h1; // @[singleLoop.scala 26:13]
-  wire [31:0] _GEN_13 = io_IDex[0] ? io_mat_1_1 : io_mat_0_1; // @[singleLoop.scala 27:{45,45}]
-  reg  io_Ovalid_REG; // @[singleLoop.scala 27:25]
-  wire [31:0] _a_T_1 = a + 32'h1; // @[singleLoop.scala 46:12]
-  wire [31:0] _j_T_1 = j + 32'h1; // @[singleLoop.scala 49:16]
-  assign io_OutMat_0_0 = b_0_0; // @[singleLoop.scala 20:15]
-  assign io_OutMat_0_1 = b_0_1; // @[singleLoop.scala 20:15]
-  assign io_OutMat_1_0 = b_1_0; // @[singleLoop.scala 20:15]
-  assign io_OutMat_1_1 = b_1_1; // @[singleLoop.scala 20:15]
-  assign io_Ovalid = j == 32'h1 & io_Ovalid_REG; // @[singleLoop.scala 26:21 27:15 29:19]
-  assign io_ProcessValid = j == 32'h1; // @[singleLoop.scala 31:35]
-  always @(posedge clock) begin
-    if (reset) begin // @[singleLoop.scala 19:20]
-      b_0_0 <= 32'h0; // @[singleLoop.scala 19:20]
-    end else if (io_valid & a != 32'h0) begin // @[singleLoop.scala 24:34]
-      if (~io_IDex[0] & ~j[0]) begin // @[singleLoop.scala 25:19]
-        if (io_IDex[0] & j[0]) begin // @[singleLoop.scala 25:19]
-          b_0_0 <= io_mat_1_1; // @[singleLoop.scala 25:19]
-        end else begin
-          b_0_0 <= _GEN_6;
-        end
-      end
-    end
-    if (reset) begin // @[singleLoop.scala 19:20]
-      b_0_1 <= 32'h0; // @[singleLoop.scala 19:20]
-    end else if (io_valid & a != 32'h0) begin // @[singleLoop.scala 24:34]
-      if (~io_IDex[0] & j[0]) begin // @[singleLoop.scala 25:19]
-        if (io_IDex[0] & j[0]) begin // @[singleLoop.scala 25:19]
-          b_0_1 <= io_mat_1_1; // @[singleLoop.scala 25:19]
-        end else begin
-          b_0_1 <= _GEN_6;
-        end
-      end
-    end
-    if (reset) begin // @[singleLoop.scala 19:20]
-      b_1_0 <= 32'h0; // @[singleLoop.scala 19:20]
-    end else if (io_valid & a != 32'h0) begin // @[singleLoop.scala 24:34]
-      if (io_IDex[0] & ~j[0]) begin // @[singleLoop.scala 25:19]
-        if (io_IDex[0] & j[0]) begin // @[singleLoop.scala 25:19]
-          b_1_0 <= io_mat_1_1; // @[singleLoop.scala 25:19]
-        end else begin
-          b_1_0 <= _GEN_6;
-        end
-      end
-    end
-    if (reset) begin // @[singleLoop.scala 19:20]
-      b_1_1 <= 32'h0; // @[singleLoop.scala 19:20]
-    end else if (io_valid & a != 32'h0) begin // @[singleLoop.scala 24:34]
-      if (io_IDex[0] & j[0]) begin // @[singleLoop.scala 25:19]
-        if (io_IDex[0] & j[0]) begin // @[singleLoop.scala 25:19]
-          b_1_1 <= io_mat_1_1; // @[singleLoop.scala 25:19]
-        end else begin
-          b_1_1 <= _GEN_6;
-        end
-      end
-    end
-    if (_T_1 & j < 32'h1) begin // @[singleLoop.scala 48:65]
-      j <= _j_T_1; // @[singleLoop.scala 49:11]
-    end else if (!(_T_4)) begin // @[singleLoop.scala 50:43]
-      j <= io_JDex; // @[singleLoop.scala 22:7]
-    end
-    if (reset) begin // @[singleLoop.scala 23:20]
-      a <= 32'h0; // @[singleLoop.scala 23:20]
-    end else if (io_valid) begin // @[singleLoop.scala 45:20]
-      a <= _a_T_1; // @[singleLoop.scala 46:7]
-    end
-    io_Ovalid_REG <= _GEN_13 == 32'h2; // @[singleLoop.scala 27:45]
-  end
-// Register and memory initialization
-`ifdef RANDOMIZE_GARBAGE_ASSIGN
-`define RANDOMIZE
-`endif
-`ifdef RANDOMIZE_INVALID_ASSIGN
-`define RANDOMIZE
-`endif
-`ifdef RANDOMIZE_REG_INIT
-`define RANDOMIZE
-`endif
-`ifdef RANDOMIZE_MEM_INIT
-`define RANDOMIZE
-`endif
-`ifndef RANDOM
-`define RANDOM $random
-`endif
-`ifdef RANDOMIZE_MEM_INIT
-  integer initvar;
-`endif
-`ifndef SYNTHESIS
-`ifdef FIRRTL_BEFORE_INITIAL
-`FIRRTL_BEFORE_INITIAL
-`endif
-initial begin
-  `ifdef RANDOMIZE
-    `ifdef INIT_RANDOM
-      `INIT_RANDOM
-    `endif
-    `ifndef VERILATOR
-      `ifdef RANDOMIZE_DELAY
-        #`RANDOMIZE_DELAY begin end
-      `else
-        #0.002 begin end
-      `endif
-    `endif
-`ifdef RANDOMIZE_REG_INIT
-  _RAND_0 = {1{`RANDOM}};
-  b_0_0 = _RAND_0[31:0];
-  _RAND_1 = {1{`RANDOM}};
-  b_0_1 = _RAND_1[31:0];
-  _RAND_2 = {1{`RANDOM}};
-  b_1_0 = _RAND_2[31:0];
-  _RAND_3 = {1{`RANDOM}};
-  b_1_1 = _RAND_3[31:0];
-  _RAND_4 = {1{`RANDOM}};
-  j = _RAND_4[31:0];
-  _RAND_5 = {1{`RANDOM}};
-  a = _RAND_5[31:0];
-  _RAND_6 = {1{`RANDOM}};
-  io_Ovalid_REG = _RAND_6[0:0];
-`endif // RANDOMIZE_REG_INIT
-  `endif // RANDOMIZE
-end // initial
-`ifdef FIRRTL_AFTER_INITIAL
-`FIRRTL_AFTER_INITIAL
-`endif
-`endif // SYNTHESIS
-endmodule
-module abc3(
-  input         clock,
-  input         reset,
-  input  [31:0] io_PreMat_0_0,
-  input  [31:0] io_PreMat_0_1,
-  input  [31:0] io_PreMat_1_0,
-  input  [31:0] io_PreMat_1_1,
-  input  [31:0] io_IDex,
-  input  [31:0] io_mat_0_0,
-  input  [31:0] io_mat_0_1,
-  input  [31:0] io_mat_1_0,
-  input  [31:0] io_mat_1_1,
-  input         io_i_valid,
-  output        io_valid,
-  output [31:0] io_Omat_0_0,
-  output [31:0] io_Omat_0_1,
-  output [31:0] io_Omat_1_0,
-  output [31:0] io_Omat_1_1,
-  input         io_merge
-);
-`ifdef RANDOMIZE_REG_INIT
-  reg [31:0] _RAND_0;
-  reg [31:0] _RAND_1;
-  reg [31:0] _RAND_2;
-  reg [31:0] _RAND_3;
-  reg [31:0] _RAND_4;
-  reg [31:0] _RAND_5;
-  reg [31:0] _RAND_6;
-  reg [31:0] _RAND_7;
-  reg [31:0] _RAND_8;
-  reg [31:0] _RAND_9;
-`endif // RANDOMIZE_REG_INIT
-  reg [31:0] b_0_0; // @[MergeDIstribution.scala 18:20]
-  reg [31:0] b_0_1; // @[MergeDIstribution.scala 18:20]
-  reg [31:0] b_1_0; // @[MergeDIstribution.scala 18:20]
-  reg [31:0] b_1_1; // @[MergeDIstribution.scala 18:20]
-  reg [31:0] check; // @[MergeDIstribution.scala 20:24]
-  reg [31:0] i; // @[MergeDIstribution.scala 22:20]
-  reg [31:0] j; // @[MergeDIstribution.scala 23:20]
-  wire  _io_valid_T_1 = j == 32'h1; // @[MergeDIstribution.scala 24:52]
-  wire  _io_valid_T_2 = i == 32'h1 & j == 32'h1; // @[MergeDIstribution.scala 24:46]
-  reg [31:0] k; // @[MergeDIstribution.scala 26:20]
-  reg [31:0] l; // @[MergeDIstribution.scala 27:20]
-  reg [31:0] delay; // @[MergeDIstribution.scala 29:24]
-  wire [31:0] _delay_T_1 = delay + 32'h1; // @[MergeDIstribution.scala 32:24]
-  wire [31:0] _k_T_1 = k + 32'h1; // @[MergeDIstribution.scala 44:16]
-  wire [31:0] _l_T_1 = l + 32'h1; // @[MergeDIstribution.scala 47:16]
-  wire [31:0] _GEN_10 = ~k[0] & l[0] ? io_PreMat_0_1 : io_PreMat_0_0; // @[MergeDIstribution.scala 52:{13,13}]
-  wire [31:0] _GEN_11 = k[0] & ~l[0] ? io_PreMat_1_0 : _GEN_10; // @[MergeDIstribution.scala 52:{13,13}]
-  wire [31:0] _GEN_12 = k[0] & l[0] ? io_PreMat_1_1 : _GEN_11; // @[MergeDIstribution.scala 52:{13,13}]
-  wire [31:0] _GEN_5 = ~k[0] & ~l[0] ? _GEN_12 : b_0_0; // @[MergeDIstribution.scala 52:{13,13} 18:20]
-  wire [31:0] _GEN_6 = ~k[0] & l[0] ? _GEN_12 : b_0_1; // @[MergeDIstribution.scala 52:{13,13} 18:20]
-  wire [31:0] _GEN_7 = k[0] & ~l[0] ? _GEN_12 : b_1_0; // @[MergeDIstribution.scala 52:{13,13} 18:20]
-  wire [31:0] _GEN_8 = k[0] & l[0] ? _GEN_12 : b_1_1; // @[MergeDIstribution.scala 52:{13,13} 18:20]
-  wire [31:0] _GEN_15 = io_merge & delay == 32'h2 ? _GEN_5 : b_0_0; // @[MergeDIstribution.scala 18:20 41:53]
-  wire [31:0] _GEN_16 = io_merge & delay == 32'h2 ? _GEN_6 : b_0_1; // @[MergeDIstribution.scala 18:20 41:53]
-  wire [31:0] _GEN_17 = io_merge & delay == 32'h2 ? _GEN_7 : b_1_0; // @[MergeDIstribution.scala 18:20 41:53]
-  wire [31:0] _GEN_18 = io_merge & delay == 32'h2 ? _GEN_8 : b_1_1; // @[MergeDIstribution.scala 18:20 41:53]
-  wire [31:0] _i_T_1 = io_IDex + 32'h1; // @[MergeDIstribution.scala 55:22]
-  wire [31:0] _check_T_1 = check + 32'h1; // @[MergeDIstribution.scala 57:24]
-  wire [31:0] _GEN_19 = io_i_valid & i == 32'h0 & j == 32'h0 ? _i_T_1 : i; // @[MergeDIstribution.scala 54:53 55:11 22:20]
-  wire [31:0] _GEN_20 = io_i_valid & i == 32'h0 & j == 32'h0 ? 32'h0 : j; // @[MergeDIstribution.scala 54:53 56:11 23:20]
-  wire  _GEN_22 = check >= 32'h1; // @[MergeDIstribution.scala 60:17]
-  wire [31:0] _GEN_29 = ~i[0] & j[0] ? io_mat_0_1 : io_mat_0_0; // @[MergeDIstribution.scala 68:{13,13}]
-  wire [31:0] _GEN_30 = i[0] & ~j[0] ? io_mat_1_0 : _GEN_29; // @[MergeDIstribution.scala 68:{13,13}]
-  wire [31:0] _GEN_31 = i[0] & j[0] ? io_mat_1_1 : _GEN_30; // @[MergeDIstribution.scala 68:{13,13}]
-  wire [31:0] _i_T_3 = i + 32'h1; // @[MergeDIstribution.scala 105:16]
-  wire [31:0] _j_T_1 = j + 32'h1; // @[MergeDIstribution.scala 108:16]
-  wire [31:0] _GEN_40 = _io_valid_T_2 ? j : _GEN_20; // @[MergeDIstribution.scala 109:75 110:11]
-  wire [31:0] _GEN_41 = i <= 32'h1 & j < 32'h1 ? _j_T_1 : _GEN_40; // @[MergeDIstribution.scala 107:74 108:11]
-  wire  _GEN_46 = _GEN_31 == 32'h4 | i == 32'h1 & j == 32'h1; // @[MergeDIstribution.scala 100:44 103:18 24:14]
-  wire  counter = check >= 32'h1; // @[MergeDIstribution.scala 60:17]
-  assign io_valid = _GEN_22 ? _GEN_46 : i == 32'h1 & j == 32'h1; // @[MergeDIstribution.scala 24:14 97:14]
-  assign io_Omat_0_0 = b_0_0; // @[MergeDIstribution.scala 19:13]
-  assign io_Omat_0_1 = b_0_1; // @[MergeDIstribution.scala 19:13]
-  assign io_Omat_1_0 = b_1_0; // @[MergeDIstribution.scala 19:13]
-  assign io_Omat_1_1 = b_1_1; // @[MergeDIstribution.scala 19:13]
-  always @(posedge clock) begin
-    if (reset) begin // @[MergeDIstribution.scala 18:20]
-      b_0_0 <= 32'h0; // @[MergeDIstribution.scala 18:20]
-    end else if (io_merge) begin // @[MergeDIstribution.scala 67:19]
-      if (~i[0] & ~j[0]) begin // @[MergeDIstribution.scala 68:13]
-        if (i[0] & j[0]) begin // @[MergeDIstribution.scala 68:13]
-          b_0_0 <= io_mat_1_1; // @[MergeDIstribution.scala 68:13]
-        end else begin
-          b_0_0 <= _GEN_30;
-        end
-      end else begin
-        b_0_0 <= _GEN_15;
-      end
-    end else begin
-      b_0_0 <= _GEN_15;
-    end
-    if (reset) begin // @[MergeDIstribution.scala 18:20]
-      b_0_1 <= 32'h0; // @[MergeDIstribution.scala 18:20]
-    end else if (io_merge) begin // @[MergeDIstribution.scala 67:19]
-      if (~i[0] & j[0]) begin // @[MergeDIstribution.scala 68:13]
-        if (i[0] & j[0]) begin // @[MergeDIstribution.scala 68:13]
-          b_0_1 <= io_mat_1_1; // @[MergeDIstribution.scala 68:13]
-        end else begin
-          b_0_1 <= _GEN_30;
-        end
-      end else begin
-        b_0_1 <= _GEN_16;
-      end
-    end else begin
-      b_0_1 <= _GEN_16;
-    end
-    if (reset) begin // @[MergeDIstribution.scala 18:20]
-      b_1_0 <= 32'h0; // @[MergeDIstribution.scala 18:20]
-    end else if (io_merge) begin // @[MergeDIstribution.scala 67:19]
-      if (i[0] & ~j[0]) begin // @[MergeDIstribution.scala 68:13]
-        if (i[0] & j[0]) begin // @[MergeDIstribution.scala 68:13]
-          b_1_0 <= io_mat_1_1; // @[MergeDIstribution.scala 68:13]
-        end else begin
-          b_1_0 <= _GEN_30;
-        end
-      end else begin
-        b_1_0 <= _GEN_17;
-      end
-    end else begin
-      b_1_0 <= _GEN_17;
-    end
-    if (reset) begin // @[MergeDIstribution.scala 18:20]
-      b_1_1 <= 32'h0; // @[MergeDIstribution.scala 18:20]
-    end else if (io_merge) begin // @[MergeDIstribution.scala 67:19]
-      if (i[0] & j[0]) begin // @[MergeDIstribution.scala 68:13]
-        if (i[0] & j[0]) begin // @[MergeDIstribution.scala 68:13]
-          b_1_1 <= io_mat_1_1; // @[MergeDIstribution.scala 68:13]
-        end else begin
-          b_1_1 <= _GEN_30;
-        end
-      end else begin
-        b_1_1 <= _GEN_18;
-      end
-    end else begin
-      b_1_1 <= _GEN_18;
-    end
-    if (reset) begin // @[MergeDIstribution.scala 20:24]
-      check <= 32'h0; // @[MergeDIstribution.scala 20:24]
-    end else if (check >= 32'h1) begin // @[MergeDIstribution.scala 60:24]
-      check <= _check_T_1; // @[MergeDIstribution.scala 62:15]
-    end else if (io_i_valid & i == 32'h0 & j == 32'h0) begin // @[MergeDIstribution.scala 54:53]
-      check <= _check_T_1; // @[MergeDIstribution.scala 57:15]
-    end
-    if (reset) begin // @[MergeDIstribution.scala 22:20]
-      i <= 32'h0; // @[MergeDIstribution.scala 22:20]
-    end else if (_GEN_22) begin // @[MergeDIstribution.scala 97:14]
-      if (!(_GEN_31 == 32'h4)) begin // @[MergeDIstribution.scala 100:44]
-        if (i < 32'h1 & _io_valid_T_1) begin // @[MergeDIstribution.scala 104:75]
-          i <= _i_T_3; // @[MergeDIstribution.scala 105:11]
-        end else begin
-          i <= _GEN_19;
-        end
-      end
-    end else begin
-      i <= _GEN_19;
-    end
-    if (reset) begin // @[MergeDIstribution.scala 23:20]
-      j <= 32'h0; // @[MergeDIstribution.scala 23:20]
-    end else if (_GEN_22) begin // @[MergeDIstribution.scala 97:14]
-      if (!(_GEN_31 == 32'h4)) begin // @[MergeDIstribution.scala 100:44]
-        if (i < 32'h1 & _io_valid_T_1) begin // @[MergeDIstribution.scala 104:75]
-          j <= 32'h0; // @[MergeDIstribution.scala 106:11]
-        end else begin
-          j <= _GEN_41;
-        end
-      end
-    end else if (io_i_valid & i == 32'h0 & j == 32'h0) begin // @[MergeDIstribution.scala 54:53]
-      j <= 32'h0; // @[MergeDIstribution.scala 56:11]
-    end
-    if (reset) begin // @[MergeDIstribution.scala 26:20]
-      k <= 32'h0; // @[MergeDIstribution.scala 26:20]
-    end else if (io_merge & delay == 32'h2) begin // @[MergeDIstribution.scala 41:53]
-      if (k < io_IDex & l == 32'h1) begin // @[MergeDIstribution.scala 43:56]
-        k <= _k_T_1; // @[MergeDIstribution.scala 44:11]
-      end
-    end
-    if (reset) begin // @[MergeDIstribution.scala 27:20]
-      l <= 32'h0; // @[MergeDIstribution.scala 27:20]
-    end else if (io_merge & delay == 32'h2) begin // @[MergeDIstribution.scala 41:53]
-      if (k < io_IDex & l == 32'h1) begin // @[MergeDIstribution.scala 43:56]
-        l <= 32'h0; // @[MergeDIstribution.scala 45:11]
-      end else if (k <= io_IDex & l < 32'h1) begin // @[MergeDIstribution.scala 46:61]
-        l <= _l_T_1; // @[MergeDIstribution.scala 47:11]
-      end
-    end
-    if (reset) begin // @[MergeDIstribution.scala 29:24]
-      delay <= 32'h0; // @[MergeDIstribution.scala 29:24]
-    end else if (delay <= 32'h1 & io_merge) begin // @[MergeDIstribution.scala 31:53]
-      delay <= _delay_T_1; // @[MergeDIstribution.scala 32:15]
-    end
-  end
-// Register and memory initialization
-`ifdef RANDOMIZE_GARBAGE_ASSIGN
-`define RANDOMIZE
-`endif
-`ifdef RANDOMIZE_INVALID_ASSIGN
-`define RANDOMIZE
-`endif
-`ifdef RANDOMIZE_REG_INIT
-`define RANDOMIZE
-`endif
-`ifdef RANDOMIZE_MEM_INIT
-`define RANDOMIZE
-`endif
-`ifndef RANDOM
-`define RANDOM $random
-`endif
-`ifdef RANDOMIZE_MEM_INIT
-  integer initvar;
-`endif
-`ifndef SYNTHESIS
-`ifdef FIRRTL_BEFORE_INITIAL
-`FIRRTL_BEFORE_INITIAL
-`endif
-initial begin
-  `ifdef RANDOMIZE
-    `ifdef INIT_RANDOM
-      `INIT_RANDOM
-    `endif
-    `ifndef VERILATOR
-      `ifdef RANDOMIZE_DELAY
-        #`RANDOMIZE_DELAY begin end
-      `else
-        #0.002 begin end
-      `endif
-    `endif
-`ifdef RANDOMIZE_REG_INIT
-  _RAND_0 = {1{`RANDOM}};
-  b_0_0 = _RAND_0[31:0];
-  _RAND_1 = {1{`RANDOM}};
-  b_0_1 = _RAND_1[31:0];
-  _RAND_2 = {1{`RANDOM}};
-  b_1_0 = _RAND_2[31:0];
-  _RAND_3 = {1{`RANDOM}};
-  b_1_1 = _RAND_3[31:0];
-  _RAND_4 = {1{`RANDOM}};
-  check = _RAND_4[31:0];
-  _RAND_5 = {1{`RANDOM}};
-  i = _RAND_5[31:0];
-  _RAND_6 = {1{`RANDOM}};
-  j = _RAND_6[31:0];
-  _RAND_7 = {1{`RANDOM}};
-  k = _RAND_7[31:0];
-  _RAND_8 = {1{`RANDOM}};
-  l = _RAND_8[31:0];
-  _RAND_9 = {1{`RANDOM}};
-  delay = _RAND_9[31:0];
-`endif // RANDOMIZE_REG_INIT
-  `endif // RANDOMIZE
-end // initial
-`ifdef FIRRTL_AFTER_INITIAL
-`FIRRTL_AFTER_INITIAL
-`endif
-`endif // SYNTHESIS
-endmodule
-module Distribution(
-  input         clock,
-  input         reset,
-  input  [31:0] io_matrix_0_0,
-  input  [31:0] io_matrix_0_1,
-  input  [31:0] io_matrix_1_0,
-  input  [31:0] io_matrix_1_1,
-  output [31:0] io_out_0_0,
-  output [31:0] io_out_0_1,
-  output [31:0] io_out_1_0,
-  output [31:0] io_out_1_1,
-  output        io_ProcessValid,
-  input         io_valid
-);
-`ifdef RANDOMIZE_REG_INIT
-  reg [31:0] _RAND_0;
-  reg [31:0] _RAND_1;
-  reg [31:0] _RAND_2;
-  reg [31:0] _RAND_3;
-  reg [31:0] _RAND_4;
-  reg [31:0] _RAND_5;
-  reg [31:0] _RAND_6;
-  reg [31:0] _RAND_7;
-  reg [31:0] _RAND_8;
-  reg [31:0] _RAND_9;
-`endif // RANDOMIZE_REG_INIT
-  wire  part2_clock; // @[DIstribution.scala 52:19]
-  wire  part2_reset; // @[DIstribution.scala 52:19]
-  wire [31:0] part2_io_IDex; // @[DIstribution.scala 52:19]
-  wire [31:0] part2_io_JDex; // @[DIstribution.scala 52:19]
-  wire  part2_io_valid; // @[DIstribution.scala 52:19]
-  wire [31:0] part2_io_mat_0_0; // @[DIstribution.scala 52:19]
-  wire [31:0] part2_io_mat_0_1; // @[DIstribution.scala 52:19]
-  wire [31:0] part2_io_mat_1_0; // @[DIstribution.scala 52:19]
-  wire [31:0] part2_io_mat_1_1; // @[DIstribution.scala 52:19]
-  wire [31:0] part2_io_OutMat_0_0; // @[DIstribution.scala 52:19]
-  wire [31:0] part2_io_OutMat_0_1; // @[DIstribution.scala 52:19]
-  wire [31:0] part2_io_OutMat_1_0; // @[DIstribution.scala 52:19]
-  wire [31:0] part2_io_OutMat_1_1; // @[DIstribution.scala 52:19]
-  wire  part2_io_Ovalid; // @[DIstribution.scala 52:19]
-  wire  part2_io_ProcessValid; // @[DIstribution.scala 52:19]
-  wire  part3_clock; // @[DIstribution.scala 66:23]
-  wire  part3_reset; // @[DIstribution.scala 66:23]
-  wire [31:0] part3_io_PreMat_0_0; // @[DIstribution.scala 66:23]
-  wire [31:0] part3_io_PreMat_0_1; // @[DIstribution.scala 66:23]
-  wire [31:0] part3_io_PreMat_1_0; // @[DIstribution.scala 66:23]
-  wire [31:0] part3_io_PreMat_1_1; // @[DIstribution.scala 66:23]
-  wire [31:0] part3_io_IDex; // @[DIstribution.scala 66:23]
-  wire [31:0] part3_io_mat_0_0; // @[DIstribution.scala 66:23]
-  wire [31:0] part3_io_mat_0_1; // @[DIstribution.scala 66:23]
-  wire [31:0] part3_io_mat_1_0; // @[DIstribution.scala 66:23]
-  wire [31:0] part3_io_mat_1_1; // @[DIstribution.scala 66:23]
-  wire  part3_io_i_valid; // @[DIstribution.scala 66:23]
-  wire  part3_io_valid; // @[DIstribution.scala 66:23]
-  wire [31:0] part3_io_Omat_0_0; // @[DIstribution.scala 66:23]
-  wire [31:0] part3_io_Omat_0_1; // @[DIstribution.scala 66:23]
-  wire [31:0] part3_io_Omat_1_0; // @[DIstribution.scala 66:23]
-  wire [31:0] part3_io_Omat_1_1; // @[DIstribution.scala 66:23]
-  wire  part3_io_merge; // @[DIstribution.scala 66:23]
-  reg [31:0] i; // @[DIstribution.scala 17:20]
-  reg [31:0] j; // @[DIstribution.scala 18:20]
-  reg [31:0] count; // @[DIstribution.scala 19:24]
-  reg [31:0] Idex_0; // @[DIstribution.scala 20:23]
-  reg [31:0] Idex_1; // @[DIstribution.scala 20:23]
-  reg [31:0] Jdex_0; // @[DIstribution.scala 21:23]
-  reg [31:0] Jdex_1; // @[DIstribution.scala 21:23]
-  reg [31:0] iterationNo; // @[DIstribution.scala 23:30]
-  wire  _io_validIteration_T = i == 32'h1; // @[DIstribution.scala 28:29]
-  wire  _io_validIteration_T_1 = j == 32'h1; // @[DIstribution.scala 28:62]
-  wire  _io_validIteration_T_2 = i == 32'h1 & j == 32'h1; // @[DIstribution.scala 28:56]
-  wire [31:0] _GEN_1 = ~i[0] & j[0] ? io_matrix_0_1 : io_matrix_0_0; // @[DIstribution.scala 32:{27,27}]
-  wire [31:0] _GEN_2 = i[0] & ~j[0] ? io_matrix_1_0 : _GEN_1; // @[DIstribution.scala 32:{27,27}]
-  wire [31:0] _GEN_3 = i[0] & j[0] ? io_matrix_1_1 : _GEN_2; // @[DIstribution.scala 32:{27,27}]
-  wire  _T_2 = _GEN_3 == 32'h1; // @[DIstribution.scala 32:27]
-  wire [31:0] _iterationNo_T_1 = iterationNo + 32'h1; // @[DIstribution.scala 33:34]
-  wire [31:0] _count_T_1 = count + 32'h1; // @[DIstribution.scala 45:24]
-  wire [31:0] _GEN_9 = ~count[0] ? i : Idex_0; // @[DIstribution.scala 46:{21,21} 20:23]
-  wire [31:0] _GEN_10 = count[0] ? i : Idex_1; // @[DIstribution.scala 46:{21,21} 20:23]
-  wire [31:0] _GEN_11 = ~count[0] ? j : Jdex_0; // @[DIstribution.scala 47:{21,21} 21:23]
-  wire [31:0] _GEN_12 = count[0] ? j : Jdex_1; // @[DIstribution.scala 47:{21,21} 21:23]
-  reg  c; // @[DIstribution.scala 54:20]
-  wire  check = part2_io_Ovalid ? 1'h0 : 1'h1; // @[DIstribution.scala 68:26 69:15 71:15]
-  wire  e = 1'h0; // @[DIstribution.scala 73:75]
-  reg  part3_io_merge_REG; // @[DIstribution.scala 76:30]
-  wire [31:0] _GEN_41 = part3_io_Omat_0_0; // @[DIstribution.scala 83:96 84:16 86:12]
-  wire [31:0] _GEN_42 = part3_io_Omat_0_1; // @[DIstribution.scala 83:96 84:16 86:12]
-  wire [31:0] _GEN_43 = part3_io_Omat_1_0; // @[DIstribution.scala 83:96 84:16 86:12]
-  wire [31:0] _GEN_44 = part3_io_Omat_1_1; // @[DIstribution.scala 83:96 84:16 86:12]
-  wire [31:0] _GEN_45 = part2_io_OutMat_0_0; // @[DIstribution.scala 95:96 96:16 98:12]
-  wire [31:0] _GEN_46 = part2_io_OutMat_0_1; // @[DIstribution.scala 95:96 96:16 98:12]
-  wire [31:0] _GEN_47 = part2_io_OutMat_1_0; // @[DIstribution.scala 95:96 96:16 98:12]
-  wire [31:0] _GEN_48 = part2_io_OutMat_1_1; // @[DIstribution.scala 95:96 96:16 98:12]
-  wire [31:0] _GEN_61 = part2_io_ProcessValid & check ? _GEN_41 : _GEN_45; // @[DIstribution.scala 75:42]
-  wire [31:0] _GEN_62 = part2_io_ProcessValid & check ? _GEN_42 : _GEN_46; // @[DIstribution.scala 75:42]
-  wire [31:0] _GEN_63 = part2_io_ProcessValid & check ? _GEN_43 : _GEN_47; // @[DIstribution.scala 75:42]
-  wire [31:0] _GEN_64 = part2_io_ProcessValid & check ? _GEN_44 : _GEN_48; // @[DIstribution.scala 75:42]
-  wire  _GEN_65 = part2_io_ProcessValid & check ? part3_io_valid : part2_io_Ovalid; // @[DIstribution.scala 75:42 87:21 99:21]
-  wire [31:0] _i_T_1 = i + 32'h1; // @[DIstribution.scala 107:16]
-  wire  ab = i <= 32'h1 & j < 32'h1; // @[DIstribution.scala 110:42]
-  wire [31:0] _j_T_1 = j + 32'h1; // @[DIstribution.scala 113:16]
-  abc2 part2 ( // @[DIstribution.scala 52:19]
-    .clock(part2_clock),
-    .reset(part2_reset),
-    .io_IDex(part2_io_IDex),
-    .io_JDex(part2_io_JDex),
-    .io_valid(part2_io_valid),
-    .io_mat_0_0(part2_io_mat_0_0),
-    .io_mat_0_1(part2_io_mat_0_1),
-    .io_mat_1_0(part2_io_mat_1_0),
-    .io_mat_1_1(part2_io_mat_1_1),
-    .io_OutMat_0_0(part2_io_OutMat_0_0),
-    .io_OutMat_0_1(part2_io_OutMat_0_1),
-    .io_OutMat_1_0(part2_io_OutMat_1_0),
-    .io_OutMat_1_1(part2_io_OutMat_1_1),
-    .io_Ovalid(part2_io_Ovalid),
-    .io_ProcessValid(part2_io_ProcessValid)
-  );
-  abc3 part3 ( // @[DIstribution.scala 66:23]
-    .clock(part3_clock),
-    .reset(part3_reset),
-    .io_PreMat_0_0(part3_io_PreMat_0_0),
-    .io_PreMat_0_1(part3_io_PreMat_0_1),
-    .io_PreMat_1_0(part3_io_PreMat_1_0),
-    .io_PreMat_1_1(part3_io_PreMat_1_1),
-    .io_IDex(part3_io_IDex),
-    .io_mat_0_0(part3_io_mat_0_0),
-    .io_mat_0_1(part3_io_mat_0_1),
-    .io_mat_1_0(part3_io_mat_1_0),
-    .io_mat_1_1(part3_io_mat_1_1),
-    .io_i_valid(part3_io_i_valid),
-    .io_valid(part3_io_valid),
-    .io_Omat_0_0(part3_io_Omat_0_0),
-    .io_Omat_0_1(part3_io_Omat_0_1),
-    .io_Omat_1_0(part3_io_Omat_1_0),
-    .io_Omat_1_1(part3_io_Omat_1_1),
-    .io_merge(part3_io_merge)
-  );
-  assign io_out_0_0 = io_valid ? _GEN_61 : 32'h0; // @[DIstribution.scala 124:16 25:21]
-  assign io_out_0_1 = io_valid ? _GEN_62 : 32'h0; // @[DIstribution.scala 124:16 25:21]
-  assign io_out_1_0 = io_valid ? _GEN_63 : 32'h0; // @[DIstribution.scala 124:16 25:21]
-  assign io_out_1_1 = io_valid ? _GEN_64 : 32'h0; // @[DIstribution.scala 124:16 25:21]
-  assign io_ProcessValid = io_valid & _GEN_65; // @[DIstribution.scala 25:21 125:25]
-  assign part2_clock = clock;
-  assign part2_reset = reset;
-  assign part2_io_IDex = c ? Idex_0 : 32'h0; // @[DIstribution.scala 56:13 57:19 60:19]
-  assign part2_io_JDex = c ? Jdex_0 : 32'h0; // @[DIstribution.scala 56:13 58:19 61:19]
-  assign part2_io_valid = c; // @[DIstribution.scala 55:20]
-  assign part2_io_mat_0_0 = io_matrix_0_0; // @[DIstribution.scala 53:14]
-  assign part2_io_mat_0_1 = io_matrix_0_1; // @[DIstribution.scala 53:14]
-  assign part2_io_mat_1_0 = io_matrix_1_0; // @[DIstribution.scala 53:14]
-  assign part2_io_mat_1_1 = io_matrix_1_1; // @[DIstribution.scala 53:14]
-  assign part3_clock = clock;
-  assign part3_reset = reset;
-  assign part3_io_PreMat_0_0 = part2_io_ProcessValid & check ? part2_io_OutMat_0_0 : 32'h0; // @[DIstribution.scala 75:42 79:21 92:21]
-  assign part3_io_PreMat_0_1 = part2_io_ProcessValid & check ? part2_io_OutMat_0_1 : 32'h0; // @[DIstribution.scala 75:42 79:21 92:21]
-  assign part3_io_PreMat_1_0 = part2_io_ProcessValid & check ? part2_io_OutMat_1_0 : 32'h0; // @[DIstribution.scala 75:42 79:21 92:21]
-  assign part3_io_PreMat_1_1 = part2_io_ProcessValid & check ? part2_io_OutMat_1_1 : 32'h0; // @[DIstribution.scala 75:42 79:21 92:21]
-  assign part3_io_IDex = part2_io_ProcessValid & check ? Idex_0 : 32'h0; // @[DIstribution.scala 75:42 81:19 93:19]
-  assign part3_io_mat_0_0 = part2_io_ProcessValid & check ? io_matrix_0_0 : 32'h0; // @[DIstribution.scala 75:42 80:18 90:22]
-  assign part3_io_mat_0_1 = part2_io_ProcessValid & check ? io_matrix_0_1 : 32'h0; // @[DIstribution.scala 75:42 80:18 90:22]
-  assign part3_io_mat_1_0 = part2_io_ProcessValid & check ? io_matrix_1_0 : 32'h0; // @[DIstribution.scala 75:42 80:18 90:22]
-  assign part3_io_mat_1_1 = part2_io_ProcessValid & check ? io_matrix_1_1 : 32'h0; // @[DIstribution.scala 75:42 80:18 90:22]
-  assign part3_io_i_valid = part2_io_ProcessValid & check & part2_io_ProcessValid; // @[DIstribution.scala 75:42 78:22 91:26]
-  assign part3_io_merge = part2_io_ProcessValid & check & part3_io_merge_REG; // @[DIstribution.scala 75:42 76:20 89:24]
-  always @(posedge clock) begin
-    if (reset) begin // @[DIstribution.scala 17:20]
-      i <= 32'h0; // @[DIstribution.scala 17:20]
-    end else if (io_valid) begin // @[DIstribution.scala 25:21]
-      if (i < 32'h1 & _io_validIteration_T_1) begin // @[DIstribution.scala 106:69]
-        i <= _i_T_1; // @[DIstribution.scala 107:11]
-      end
-    end
-    if (reset) begin // @[DIstribution.scala 18:20]
-      j <= 32'h0; // @[DIstribution.scala 18:20]
-    end else if (io_valid) begin // @[DIstribution.scala 25:21]
-      if (ab) begin // @[DIstribution.scala 112:68]
-        j <= _j_T_1; // @[DIstribution.scala 113:11]
-      end else if (!(_io_validIteration_T_2)) begin // @[DIstribution.scala 114:75]
-        j <= 32'h0; // @[DIstribution.scala 117:11]
-      end
-    end
-    if (reset) begin // @[DIstribution.scala 19:24]
-      count <= 32'h0; // @[DIstribution.scala 19:24]
-    end else if (io_valid) begin // @[DIstribution.scala 25:21]
-      if (_T_2) begin // @[DIstribution.scala 44:38]
-        count <= _count_T_1; // @[DIstribution.scala 45:15]
-      end
-    end
-    if (reset) begin // @[DIstribution.scala 20:23]
-      Idex_0 <= 32'h0; // @[DIstribution.scala 20:23]
-    end else if (io_valid) begin // @[DIstribution.scala 25:21]
-      if (_T_2) begin // @[DIstribution.scala 44:38]
-        Idex_0 <= _GEN_9;
-      end else if (_T_2 & _io_validIteration_T & _io_validIteration_T_1) begin // @[DIstribution.scala 48:106]
-        Idex_0 <= _GEN_9;
-      end
-    end
-    if (reset) begin // @[DIstribution.scala 20:23]
-      Idex_1 <= 32'h0; // @[DIstribution.scala 20:23]
-    end else if (io_valid) begin // @[DIstribution.scala 25:21]
-      if (_T_2) begin // @[DIstribution.scala 44:38]
-        Idex_1 <= _GEN_10;
-      end else if (_T_2 & _io_validIteration_T & _io_validIteration_T_1) begin // @[DIstribution.scala 48:106]
-        Idex_1 <= _GEN_10;
-      end
-    end
-    if (reset) begin // @[DIstribution.scala 21:23]
-      Jdex_0 <= 32'h0; // @[DIstribution.scala 21:23]
-    end else if (io_valid) begin // @[DIstribution.scala 25:21]
-      if (_T_2) begin // @[DIstribution.scala 44:38]
-        Jdex_0 <= _GEN_11;
-      end else if (_T_2 & _io_validIteration_T & _io_validIteration_T_1) begin // @[DIstribution.scala 48:106]
-        Jdex_0 <= _GEN_11;
-      end
-    end
-    if (reset) begin // @[DIstribution.scala 21:23]
-      Jdex_1 <= 32'h0; // @[DIstribution.scala 21:23]
-    end else if (io_valid) begin // @[DIstribution.scala 25:21]
-      if (_T_2) begin // @[DIstribution.scala 44:38]
-        Jdex_1 <= _GEN_12;
-      end else if (_T_2 & _io_validIteration_T & _io_validIteration_T_1) begin // @[DIstribution.scala 48:106]
-        Jdex_1 <= _GEN_12;
-      end
-    end
-    if (reset) begin // @[DIstribution.scala 23:30]
-      iterationNo <= 32'h0; // @[DIstribution.scala 23:30]
-    end else if (io_valid) begin // @[DIstribution.scala 25:21]
-      if (_GEN_3 == 32'h1) begin // @[DIstribution.scala 32:35]
-        iterationNo <= _iterationNo_T_1; // @[DIstribution.scala 33:19]
-      end
-    end
-    c <= _io_validIteration_T & _io_validIteration_T_1; // @[DIstribution.scala 54:48]
-    part3_io_merge_REG <= c; // @[DIstribution.scala 76:30]
-  end
-// Register and memory initialization
-`ifdef RANDOMIZE_GARBAGE_ASSIGN
-`define RANDOMIZE
-`endif
-`ifdef RANDOMIZE_INVALID_ASSIGN
-`define RANDOMIZE
-`endif
-`ifdef RANDOMIZE_REG_INIT
-`define RANDOMIZE
-`endif
-`ifdef RANDOMIZE_MEM_INIT
-`define RANDOMIZE
-`endif
-`ifndef RANDOM
-`define RANDOM $random
-`endif
-`ifdef RANDOMIZE_MEM_INIT
-  integer initvar;
-`endif
-`ifndef SYNTHESIS
-`ifdef FIRRTL_BEFORE_INITIAL
-`FIRRTL_BEFORE_INITIAL
-`endif
-initial begin
-  `ifdef RANDOMIZE
-    `ifdef INIT_RANDOM
-      `INIT_RANDOM
-    `endif
-    `ifndef VERILATOR
-      `ifdef RANDOMIZE_DELAY
-        #`RANDOMIZE_DELAY begin end
-      `else
-        #0.002 begin end
-      `endif
-    `endif
-`ifdef RANDOMIZE_REG_INIT
-  _RAND_0 = {1{`RANDOM}};
-  i = _RAND_0[31:0];
-  _RAND_1 = {1{`RANDOM}};
-  j = _RAND_1[31:0];
-  _RAND_2 = {1{`RANDOM}};
-  count = _RAND_2[31:0];
-  _RAND_3 = {1{`RANDOM}};
-  Idex_0 = _RAND_3[31:0];
-  _RAND_4 = {1{`RANDOM}};
-  Idex_1 = _RAND_4[31:0];
-  _RAND_5 = {1{`RANDOM}};
-  Jdex_0 = _RAND_5[31:0];
-  _RAND_6 = {1{`RANDOM}};
-  Jdex_1 = _RAND_6[31:0];
-  _RAND_7 = {1{`RANDOM}};
-  iterationNo = _RAND_7[31:0];
-  _RAND_8 = {1{`RANDOM}};
-  c = _RAND_8[0:0];
-  _RAND_9 = {1{`RANDOM}};
-  part3_io_merge_REG = _RAND_9[0:0];
-`endif // RANDOMIZE_REG_INIT
-  `endif // RANDOMIZE
-end // initial
-`ifdef FIRRTL_AFTER_INITIAL
-`FIRRTL_AFTER_INITIAL
-`endif
-`endif // SYNTHESIS
-endmodule
 module PathFinder(
   input         clock,
   input         reset,
@@ -1820,28 +1055,12 @@ module PathFinder(
   wire [15:0] myCounter_io_counterMatrix2_bits_1; // @[PathFinder.scala 32:25]
   wire  myCounter_io_valid; // @[PathFinder.scala 32:25]
   wire  myCounter_io_start; // @[PathFinder.scala 32:25]
-  wire  Distribution_clock; // @[PathFinder.scala 37:28]
-  wire  Distribution_reset; // @[PathFinder.scala 37:28]
-  wire [31:0] Distribution_io_matrix_0_0; // @[PathFinder.scala 37:28]
-  wire [31:0] Distribution_io_matrix_0_1; // @[PathFinder.scala 37:28]
-  wire [31:0] Distribution_io_matrix_1_0; // @[PathFinder.scala 37:28]
-  wire [31:0] Distribution_io_matrix_1_1; // @[PathFinder.scala 37:28]
-  wire [31:0] Distribution_io_out_0_0; // @[PathFinder.scala 37:28]
-  wire [31:0] Distribution_io_out_0_1; // @[PathFinder.scala 37:28]
-  wire [31:0] Distribution_io_out_1_0; // @[PathFinder.scala 37:28]
-  wire [31:0] Distribution_io_out_1_1; // @[PathFinder.scala 37:28]
-  wire  Distribution_io_ProcessValid; // @[PathFinder.scala 37:28]
-  wire  Distribution_io_valid; // @[PathFinder.scala 37:28]
   reg  myCounter_io_start_REG; // @[PathFinder.scala 33:32]
-  wire [31:0] _GEN_7 = Distribution_io_ProcessValid ? Distribution_io_out_0_0 : 32'h0; // @[PathFinder.scala 52:40 58:31 67:31]
-  wire [31:0] _GEN_8 = Distribution_io_ProcessValid ? Distribution_io_out_0_1 : 32'h0; // @[PathFinder.scala 52:40 58:31 67:31]
-  wire [31:0] _GEN_9 = Distribution_io_ProcessValid ? Distribution_io_out_1_0 : 32'h0; // @[PathFinder.scala 52:40 58:31 67:31]
-  wire [31:0] _GEN_10 = Distribution_io_ProcessValid ? Distribution_io_out_1_1 : 32'h0; // @[PathFinder.scala 52:40 58:31 67:31]
   reg  io_PF_Valid_REG; // @[PathFinder.scala 74:25]
-  wire [31:0] _GEN_32 = io_DataValid ? {{16'd0}, myMuxes_io_Source_0} : 32'h0; // @[PathFinder.scala 20:20 76:13 83:13]
-  wire [31:0] _GEN_33 = io_DataValid ? {{16'd0}, myMuxes_io_Source_1} : 32'h0; // @[PathFinder.scala 20:20 76:13 83:13]
-  wire [31:0] _GEN_34 = io_DataValid ? {{16'd0}, myMuxes_io_Source_2} : 32'h0; // @[PathFinder.scala 20:20 76:13 83:13]
-  wire [31:0] _GEN_35 = io_DataValid ? {{16'd0}, myMuxes_io_Source_3} : 32'h0; // @[PathFinder.scala 20:20 76:13 83:13]
+  wire [31:0] _GEN_30 = io_DataValid ? {{16'd0}, myMuxes_io_Source_0} : 32'h0; // @[PathFinder.scala 20:20 76:13 83:13]
+  wire [31:0] _GEN_31 = io_DataValid ? {{16'd0}, myMuxes_io_Source_1} : 32'h0; // @[PathFinder.scala 20:20 76:13 83:13]
+  wire [31:0] _GEN_32 = io_DataValid ? {{16'd0}, myMuxes_io_Source_2} : 32'h0; // @[PathFinder.scala 20:20 76:13 83:13]
+  wire [31:0] _GEN_33 = io_DataValid ? {{16'd0}, myMuxes_io_Source_3} : 32'h0; // @[PathFinder.scala 20:20 76:13 83:13]
   Muxes myMuxes ( // @[PathFinder.scala 26:23]
     .clock(myMuxes_clock),
     .reset(myMuxes_reset),
@@ -1897,20 +1116,6 @@ module PathFinder(
     .io_valid(myCounter_io_valid),
     .io_start(myCounter_io_start)
   );
-  Distribution Distribution ( // @[PathFinder.scala 37:28]
-    .clock(Distribution_clock),
-    .reset(Distribution_reset),
-    .io_matrix_0_0(Distribution_io_matrix_0_0),
-    .io_matrix_0_1(Distribution_io_matrix_0_1),
-    .io_matrix_1_0(Distribution_io_matrix_1_0),
-    .io_matrix_1_1(Distribution_io_matrix_1_1),
-    .io_out_0_0(Distribution_io_out_0_0),
-    .io_out_0_1(Distribution_io_out_0_1),
-    .io_out_1_0(Distribution_io_out_1_0),
-    .io_out_1_1(Distribution_io_out_1_1),
-    .io_ProcessValid(Distribution_io_ProcessValid),
-    .io_valid(Distribution_io_valid)
-  );
   assign io_i_mux_bus_0_0 = io_DataValid ? myMuxes_io_i_mux_bus_0_0 : 4'h0; // @[PathFinder.scala 20:20 75:16 82:16]
   assign io_i_mux_bus_0_1 = io_DataValid ? myMuxes_io_i_mux_bus_0_1 : 4'h0; // @[PathFinder.scala 20:20 75:16 82:16]
   assign io_i_mux_bus_0_2 = io_DataValid ? myMuxes_io_i_mux_bus_0_2 : 4'h0; // @[PathFinder.scala 20:20 75:16 82:16]
@@ -1927,25 +1132,25 @@ module PathFinder(
   assign io_i_mux_bus_3_1 = io_DataValid ? myMuxes_io_i_mux_bus_3_1 : 4'h0; // @[PathFinder.scala 20:20 75:16 82:16]
   assign io_i_mux_bus_3_2 = io_DataValid ? myMuxes_io_i_mux_bus_3_2 : 4'h0; // @[PathFinder.scala 20:20 75:16 82:16]
   assign io_i_mux_bus_3_3 = io_DataValid ? myMuxes_io_i_mux_bus_3_3 : 4'h0; // @[PathFinder.scala 20:20 75:16 82:16]
-  assign io_Source_0 = _GEN_32[15:0];
-  assign io_Source_1 = _GEN_33[15:0];
-  assign io_Source_2 = _GEN_34[15:0];
-  assign io_Source_3 = _GEN_35[15:0];
+  assign io_Source_0 = _GEN_30[15:0];
+  assign io_Source_1 = _GEN_31[15:0];
+  assign io_Source_2 = _GEN_32[15:0];
+  assign io_Source_3 = _GEN_33[15:0];
   assign io_PF_Valid = io_DataValid & io_PF_Valid_REG; // @[PathFinder.scala 20:20 74:15 81:15]
   assign myMuxes_clock = clock;
   assign myMuxes_reset = reset;
-  assign myMuxes_io_mat1_0_0 = Distribution_io_ProcessValid ? io_Stationary_matrix_0_0 : 16'h0; // @[PathFinder.scala 52:40 55:21 65:21]
-  assign myMuxes_io_mat1_0_1 = Distribution_io_ProcessValid ? io_Stationary_matrix_0_1 : 16'h0; // @[PathFinder.scala 52:40 55:21 65:21]
-  assign myMuxes_io_mat1_1_0 = Distribution_io_ProcessValid ? io_Stationary_matrix_1_0 : 16'h0; // @[PathFinder.scala 52:40 55:21 65:21]
-  assign myMuxes_io_mat1_1_1 = Distribution_io_ProcessValid ? io_Stationary_matrix_1_1 : 16'h0; // @[PathFinder.scala 52:40 55:21 65:21]
-  assign myMuxes_io_mat2_0 = Distribution_io_ProcessValid ? io_Streaming_matrix_0 : 16'h0; // @[PathFinder.scala 52:40 57:21 66:21]
-  assign myMuxes_io_mat2_1 = Distribution_io_ProcessValid ? io_Streaming_matrix_1 : 16'h0; // @[PathFinder.scala 52:40 57:21 66:21]
-  assign myMuxes_io_counterMatrix1_0_0 = _GEN_7[15:0];
-  assign myMuxes_io_counterMatrix1_0_1 = _GEN_8[15:0];
-  assign myMuxes_io_counterMatrix1_1_0 = _GEN_9[15:0];
-  assign myMuxes_io_counterMatrix1_1_1 = _GEN_10[15:0];
-  assign myMuxes_io_counterMatrix2_0 = Distribution_io_ProcessValid ? myCounter_io_counterMatrix2_bits_0 : 16'h0; // @[PathFinder.scala 52:40 59:31 68:31]
-  assign myMuxes_io_counterMatrix2_1 = Distribution_io_ProcessValid ? myCounter_io_counterMatrix2_bits_1 : 16'h0; // @[PathFinder.scala 52:40 59:31 68:31]
+  assign myMuxes_io_mat1_0_0 = myCounter_io_valid ? io_Stationary_matrix_0_0 : 16'h0; // @[PathFinder.scala 52:30 55:21 65:21]
+  assign myMuxes_io_mat1_0_1 = myCounter_io_valid ? io_Stationary_matrix_0_1 : 16'h0; // @[PathFinder.scala 52:30 55:21 65:21]
+  assign myMuxes_io_mat1_1_0 = myCounter_io_valid ? io_Stationary_matrix_1_0 : 16'h0; // @[PathFinder.scala 52:30 55:21 65:21]
+  assign myMuxes_io_mat1_1_1 = myCounter_io_valid ? io_Stationary_matrix_1_1 : 16'h0; // @[PathFinder.scala 52:30 55:21 65:21]
+  assign myMuxes_io_mat2_0 = myCounter_io_valid ? io_Streaming_matrix_0 : 16'h0; // @[PathFinder.scala 52:30 57:21 66:21]
+  assign myMuxes_io_mat2_1 = myCounter_io_valid ? io_Streaming_matrix_1 : 16'h0; // @[PathFinder.scala 52:30 57:21 66:21]
+  assign myMuxes_io_counterMatrix1_0_0 = myCounter_io_valid ? myCounter_io_counterMatrix1_bits_0_0 : 16'h0; // @[PathFinder.scala 52:30 58:31 67:31]
+  assign myMuxes_io_counterMatrix1_0_1 = myCounter_io_valid ? myCounter_io_counterMatrix1_bits_0_1 : 16'h0; // @[PathFinder.scala 52:30 58:31 67:31]
+  assign myMuxes_io_counterMatrix1_1_0 = myCounter_io_valid ? myCounter_io_counterMatrix1_bits_1_0 : 16'h0; // @[PathFinder.scala 52:30 58:31 67:31]
+  assign myMuxes_io_counterMatrix1_1_1 = myCounter_io_valid ? myCounter_io_counterMatrix1_bits_1_1 : 16'h0; // @[PathFinder.scala 52:30 58:31 67:31]
+  assign myMuxes_io_counterMatrix2_0 = myCounter_io_valid ? myCounter_io_counterMatrix2_bits_0 : 16'h0; // @[PathFinder.scala 52:30 59:31 68:31]
+  assign myMuxes_io_counterMatrix2_1 = myCounter_io_valid ? myCounter_io_counterMatrix2_bits_1 : 16'h0; // @[PathFinder.scala 52:30 59:31 68:31]
   assign myCounter_clock = clock;
   assign myCounter_reset = reset;
   assign myCounter_io_Stationary_matrix_0_0 = io_Stationary_matrix_0_0; // @[PathFinder.scala 34:34]
@@ -1955,13 +1160,6 @@ module PathFinder(
   assign myCounter_io_Streaming_matrix_0 = io_Streaming_matrix_0; // @[PathFinder.scala 35:33]
   assign myCounter_io_Streaming_matrix_1 = io_Streaming_matrix_1; // @[PathFinder.scala 35:33]
   assign myCounter_io_start = myCounter_io_start_REG; // @[PathFinder.scala 33:22]
-  assign Distribution_clock = clock;
-  assign Distribution_reset = reset;
-  assign Distribution_io_matrix_0_0 = {{16'd0}, myCounter_io_counterMatrix1_bits_0_0}; // @[PathFinder.scala 43:26]
-  assign Distribution_io_matrix_0_1 = {{16'd0}, myCounter_io_counterMatrix1_bits_0_1}; // @[PathFinder.scala 43:26]
-  assign Distribution_io_matrix_1_0 = {{16'd0}, myCounter_io_counterMatrix1_bits_1_0}; // @[PathFinder.scala 43:26]
-  assign Distribution_io_matrix_1_1 = {{16'd0}, myCounter_io_counterMatrix1_bits_1_1}; // @[PathFinder.scala 43:26]
-  assign Distribution_io_valid = myCounter_io_valid; // @[PathFinder.scala 39:25]
   always @(posedge clock) begin
     myCounter_io_start_REG <= io_DataValid; // @[PathFinder.scala 33:32]
     io_PF_Valid_REG <= myMuxes_io_valid & myCounter_io_valid; // @[PathFinder.scala 74:43]
@@ -2069,10 +1267,10 @@ module ivncontrol4(
   wire [31:0] _j_T_1 = j + 32'h1; // @[ivncontrol4.scala 75:16]
   wire  _T_19 = _T_8 & _T_12; // @[ivncontrol4.scala 77:43]
   wire  _T_27 = rowcount_1 == 32'h2; // @[ivncontrol4.scala 120:34]
-  wire [4:0] _GEN_25 = rowcount_1 == 32'h2 ? 5'h1 : 5'hd; // @[ivncontrol4.scala 120:42 121:29 93:17]
+  wire [4:0] _GEN_25 = rowcount_1 == 32'h2 ? 5'h1 : 5'h18; // @[ivncontrol4.scala 120:42 121:29 93:17]
   wire  _T_29 = rowcount_1 == 32'h1; // @[ivncontrol4.scala 128:33]
-  wire [4:0] _GEN_27 = _T_27 ? 5'h1 : 5'h1f; // @[ivncontrol4.scala 131:46 132:29 93:17]
-  wire [4:0] _GEN_31 = _T_29 ? 5'h1 : 5'h1c; // @[ivncontrol4.scala 149:46 150:29 93:17]
+  wire [4:0] _GEN_27 = _T_27 ? 5'h1 : 5'h12; // @[ivncontrol4.scala 131:46 132:29 93:17]
+  wire [4:0] _GEN_31 = _T_29 ? 5'h1 : 5'h12; // @[ivncontrol4.scala 149:46 150:29 93:17]
   wire [4:0] _GEN_32 = _T_27 ? 5'h1 : _GEN_31; // @[ivncontrol4.scala 145:41 146:29]
   wire  valid = _T_19; // @[ivncontrol4.scala 103:71 104:14 106:14]
   wire  valid1 = 1'h0;
@@ -2092,7 +1290,7 @@ module ivncontrol4(
     end else if (rowcount_0 == 32'h0) begin // @[ivncontrol4.scala 144:43]
       i_vn_0 <= _GEN_32;
     end else begin
-      i_vn_0 <= 5'h1c; // @[ivncontrol4.scala 93:17]
+      i_vn_0 <= 5'h12; // @[ivncontrol4.scala 93:17]
     end
     if (reset) begin // @[ivncontrol4.scala 15:23]
       i_vn_1 <= 5'h0; // @[ivncontrol4.scala 15:23]
@@ -2107,7 +1305,7 @@ module ivncontrol4(
     end else if (rowcount_0 == 32'h0) begin // @[ivncontrol4.scala 144:43]
       i_vn_1 <= _GEN_27;
     end else begin
-      i_vn_1 <= 5'h1f; // @[ivncontrol4.scala 93:17]
+      i_vn_1 <= 5'h12; // @[ivncontrol4.scala 93:17]
     end
     if (reset) begin // @[ivncontrol4.scala 15:23]
       i_vn_2 <= 5'h0; // @[ivncontrol4.scala 15:23]
@@ -2115,12 +1313,12 @@ module ivncontrol4(
       i_vn_2 <= _GEN_25;
     end else if (rowcount_0 == 32'h1) begin // @[ivncontrol4.scala 126:43]
       if (rowcount_1 == 32'h1) begin // @[ivncontrol4.scala 128:40]
-        i_vn_2 <= 5'hd; // @[ivncontrol4.scala 93:17]
+        i_vn_2 <= 5'h18; // @[ivncontrol4.scala 93:17]
       end else begin
         i_vn_2 <= _GEN_25;
       end
     end else begin
-      i_vn_2 <= 5'hd; // @[ivncontrol4.scala 93:17]
+      i_vn_2 <= 5'h18; // @[ivncontrol4.scala 93:17]
     end
     if (reset) begin // @[ivncontrol4.scala 15:23]
       i_vn_3 <= 5'h0; // @[ivncontrol4.scala 15:23]
@@ -2128,10 +1326,10 @@ module ivncontrol4(
       if (rowcount_1 == 32'h2) begin // @[ivncontrol4.scala 120:42]
         i_vn_3 <= 5'h1; // @[ivncontrol4.scala 122:29]
       end else begin
-        i_vn_3 <= 5'h8; // @[ivncontrol4.scala 93:17]
+        i_vn_3 <= 5'h15; // @[ivncontrol4.scala 93:17]
       end
     end else begin
-      i_vn_3 <= 5'h8; // @[ivncontrol4.scala 93:17]
+      i_vn_3 <= 5'h15; // @[ivncontrol4.scala 93:17]
     end
     if (reset) begin // @[ivncontrol4.scala 19:27]
       rowcount_0 <= 32'h0; // @[ivncontrol4.scala 19:27]
@@ -5045,11 +4243,23 @@ module flexdpecom4(
   reg [15:0] matrix_0_1; // @[FlexDPEby2.scala 53:22]
   reg [15:0] matrix_1_0; // @[FlexDPEby2.scala 53:22]
   reg [15:0] matrix_1_1; // @[FlexDPEby2.scala 53:22]
-  wire [31:0] _counter_T_1 = counter + 32'h1; // @[FlexDPEby2.scala 136:24]
-  wire [15:0] _GEN_12 = reset ? 16'h0 : buffer_mult_io_out_0; // @[FlexDPEby2.scala 34:{26,26} 95:14]
-  wire [15:0] _GEN_13 = reset ? 16'h0 : buffer_mult_io_out_1; // @[FlexDPEby2.scala 34:{26,26} 95:14]
-  wire [15:0] _GEN_14 = reset ? 16'h0 : buffer_mult_io_out_2; // @[FlexDPEby2.scala 34:{26,26} 95:14]
-  wire [15:0] _GEN_15 = reset ? 16'h0 : buffer_mult_io_out_3; // @[FlexDPEby2.scala 34:{26,26} 95:14]
+  wire  _T_1 = io_Stationary_matrix_0_0 == 16'h0; // @[FlexDPEby2.scala 129:39]
+  wire  _T_2 = io_Stationary_matrix_1_0 == 16'h0; // @[FlexDPEby2.scala 129:77]
+  wire [15:0] _GEN_0 = io_Stationary_matrix_0_0 == 16'h0 & io_Stationary_matrix_1_0 == 16'h0 ? {{1'd0}, r_mult_0} :
+    io_o_adder_0; // @[FlexDPEby2.scala 116:20 129:85 130:23]
+  wire [15:0] _GEN_1 = io_Stationary_matrix_0_0 == 16'h0 & io_Stationary_matrix_1_0 == 16'h0 ? {{1'd0}, r_mult_0} :
+    io_o_adder_2; // @[FlexDPEby2.scala 117:20 129:85 131:24]
+  wire  _T_4 = io_Stationary_matrix_0_1 == 16'h0; // @[FlexDPEby2.scala 133:39]
+  wire  _T_5 = io_Stationary_matrix_1_1 == 16'h0; // @[FlexDPEby2.scala 133:77]
+  wire [15:0] _GEN_2 = io_Stationary_matrix_0_1 == 16'h0 & io_Stationary_matrix_1_1 == 16'h0 ? {{1'd0}, r_mult_0} :
+    _GEN_0; // @[FlexDPEby2.scala 133:85 134:23]
+  wire [15:0] _GEN_3 = io_Stationary_matrix_0_1 == 16'h0 & io_Stationary_matrix_1_1 == 16'h0 ? {{1'd0}, r_mult_1} :
+    _GEN_1; // @[FlexDPEby2.scala 133:85 135:24]
+  wire [31:0] _counter_T_1 = counter + 32'h1; // @[FlexDPEby2.scala 171:24]
+  wire [15:0] _GEN_24 = reset ? 16'h0 : buffer_mult_io_out_0; // @[FlexDPEby2.scala 34:{26,26} 95:14]
+  wire [15:0] _GEN_25 = reset ? 16'h0 : buffer_mult_io_out_1; // @[FlexDPEby2.scala 34:{26,26} 95:14]
+  wire [15:0] _GEN_26 = reset ? 16'h0 : buffer_mult_io_out_2; // @[FlexDPEby2.scala 34:{26,26} 95:14]
+  wire [15:0] _GEN_27 = reset ? 16'h0 : buffer_mult_io_out_3; // @[FlexDPEby2.scala 34:{26,26} 95:14]
   ivncontrol4 my_ivn ( // @[FlexDPEby2.scala 59:22]
     .clock(my_ivn_clock),
     .reset(my_ivn_reset),
@@ -5208,49 +4418,57 @@ module flexdpecom4(
   assign my_fan_network_io_i_cmd_bus_1 = my_controller_io_o_reduction_cmd_1; // @[FlexDPEby2.scala 106:33]
   assign my_fan_network_io_i_cmd_bus_2 = my_controller_io_o_reduction_cmd_2; // @[FlexDPEby2.scala 106:33]
   always @(posedge clock) begin
-    r_mult_0 <= _GEN_12[14:0]; // @[FlexDPEby2.scala 34:{26,26} 95:14]
-    r_mult_1 <= _GEN_13[14:0]; // @[FlexDPEby2.scala 34:{26,26} 95:14]
-    r_mult_2 <= _GEN_14[14:0]; // @[FlexDPEby2.scala 34:{26,26} 95:14]
-    r_mult_3 <= _GEN_15[14:0]; // @[FlexDPEby2.scala 34:{26,26} 95:14]
+    r_mult_0 <= _GEN_24[14:0]; // @[FlexDPEby2.scala 34:{26,26} 95:14]
+    r_mult_1 <= _GEN_25[14:0]; // @[FlexDPEby2.scala 34:{26,26} 95:14]
+    r_mult_2 <= _GEN_26[14:0]; // @[FlexDPEby2.scala 34:{26,26} 95:14]
+    r_mult_3 <= _GEN_27[14:0]; // @[FlexDPEby2.scala 34:{26,26} 95:14]
     if (reset) begin // @[FlexDPEby2.scala 38:26]
       counter <= 32'h0; // @[FlexDPEby2.scala 38:26]
     end else begin
-      counter <= _counter_T_1; // @[FlexDPEby2.scala 136:13]
+      counter <= _counter_T_1; // @[FlexDPEby2.scala 171:13]
     end
-    if (counter < 32'h1a) begin // @[FlexDPEby2.scala 112:27]
-      if (my_Benes_io_o_dist_bus1_1 == 16'h0) begin // @[FlexDPEby2.scala 115:35]
-        matrix_0_0 <= {{1'd0}, r_mult_0}; // @[FlexDPEby2.scala 116:23]
-      end else if (my_Benes_io_o_dist_bus1_0 == 16'h0) begin // @[FlexDPEby2.scala 117:41]
-        matrix_0_0 <= {{1'd0}, r_mult_1}; // @[FlexDPEby2.scala 118:23]
+    if (counter < 32'h1a) begin // @[FlexDPEby2.scala 115:27]
+      if (_T_1 & _T_4) begin // @[FlexDPEby2.scala 147:85]
+        matrix_0_0 <= io_o_adder_2; // @[FlexDPEby2.scala 148:23]
+      end else if (_T_4 & _T_2) begin // @[FlexDPEby2.scala 142:86]
+        matrix_0_0 <= {{1'd0}, r_mult_0}; // @[FlexDPEby2.scala 143:23]
+      end else if (_T_1 & _T_5) begin // @[FlexDPEby2.scala 137:85]
+        matrix_0_0 <= {{1'd0}, r_mult_0}; // @[FlexDPEby2.scala 138:23]
       end else begin
-        matrix_0_0 <= io_o_adder_0; // @[FlexDPEby2.scala 113:20]
+        matrix_0_0 <= _GEN_2;
       end
     end
-    if (counter > 32'h28) begin // @[FlexDPEby2.scala 139:26]
-      if (my_Benes_io_o_dist_bus1_1 == 16'h0) begin // @[FlexDPEby2.scala 115:35]
-        matrix_0_1 <= {{1'd0}, r_mult_0}; // @[FlexDPEby2.scala 116:23]
-      end else if (my_Benes_io_o_dist_bus1_0 == 16'h0) begin // @[FlexDPEby2.scala 117:41]
-        matrix_0_1 <= {{1'd0}, r_mult_1}; // @[FlexDPEby2.scala 118:23]
+    if (counter > 32'h29) begin // @[FlexDPEby2.scala 174:26]
+      if (_T_1 & _T_4) begin // @[FlexDPEby2.scala 147:85]
+        matrix_0_1 <= io_o_adder_2; // @[FlexDPEby2.scala 148:23]
+      end else if (_T_4 & _T_2) begin // @[FlexDPEby2.scala 142:86]
+        matrix_0_1 <= {{1'd0}, r_mult_0}; // @[FlexDPEby2.scala 143:23]
+      end else if (_T_1 & _T_5) begin // @[FlexDPEby2.scala 137:85]
+        matrix_0_1 <= {{1'd0}, r_mult_0}; // @[FlexDPEby2.scala 138:23]
       end else begin
-        matrix_0_1 <= io_o_adder_0; // @[FlexDPEby2.scala 113:20]
+        matrix_0_1 <= _GEN_2;
       end
     end
-    if (counter < 32'h1a) begin // @[FlexDPEby2.scala 112:27]
-      if (my_Benes_io_o_dist_bus1_3 == 16'h0) begin // @[FlexDPEby2.scala 120:36]
-        matrix_1_0 <= {{1'd0}, r_mult_2}; // @[FlexDPEby2.scala 121:22]
-      end else if (my_Benes_io_o_dist_bus1_2 == 16'h0) begin // @[FlexDPEby2.scala 122:41]
-        matrix_1_0 <= {{1'd0}, r_mult_3}; // @[FlexDPEby2.scala 123:23]
+    if (counter < 32'h1a) begin // @[FlexDPEby2.scala 115:27]
+      if (_T_1 & _T_4) begin // @[FlexDPEby2.scala 147:85]
+        matrix_1_0 <= io_o_adder_0; // @[FlexDPEby2.scala 149:23]
+      end else if (_T_4 & _T_2) begin // @[FlexDPEby2.scala 142:86]
+        matrix_1_0 <= {{1'd0}, r_mult_1}; // @[FlexDPEby2.scala 144:23]
+      end else if (_T_1 & _T_5) begin // @[FlexDPEby2.scala 137:85]
+        matrix_1_0 <= {{1'd0}, r_mult_1}; // @[FlexDPEby2.scala 139:23]
       end else begin
-        matrix_1_0 <= io_o_adder_2; // @[FlexDPEby2.scala 114:20]
+        matrix_1_0 <= _GEN_3;
       end
     end
-    if (counter > 32'h28) begin // @[FlexDPEby2.scala 139:26]
-      if (my_Benes_io_o_dist_bus1_3 == 16'h0) begin // @[FlexDPEby2.scala 120:36]
-        matrix_1_1 <= {{1'd0}, r_mult_2}; // @[FlexDPEby2.scala 121:22]
-      end else if (my_Benes_io_o_dist_bus1_2 == 16'h0) begin // @[FlexDPEby2.scala 122:41]
-        matrix_1_1 <= {{1'd0}, r_mult_3}; // @[FlexDPEby2.scala 123:23]
+    if (counter > 32'h29) begin // @[FlexDPEby2.scala 174:26]
+      if (_T_1 & _T_4) begin // @[FlexDPEby2.scala 147:85]
+        matrix_1_1 <= io_o_adder_0; // @[FlexDPEby2.scala 149:23]
+      end else if (_T_4 & _T_2) begin // @[FlexDPEby2.scala 142:86]
+        matrix_1_1 <= {{1'd0}, r_mult_1}; // @[FlexDPEby2.scala 144:23]
+      end else if (_T_1 & _T_5) begin // @[FlexDPEby2.scala 137:85]
+        matrix_1_1 <= {{1'd0}, r_mult_1}; // @[FlexDPEby2.scala 139:23]
       end else begin
-        matrix_1_1 <= io_o_adder_2; // @[FlexDPEby2.scala 114:20]
+        matrix_1_1 <= _GEN_3;
       end
     end
   end

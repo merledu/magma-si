@@ -109,20 +109,55 @@ dontTouch(w_dist_bus2)
     io.o_data_bus := my_fan_network.io.o_data_bus
     io.o_adder :=  my_fan_network.io.o_adder
 
+    dontTouch(r_mult)
+    dontTouch(w_dist_bus1)
+
      when (counter < 26.U){
       matrix(0)(0) := io.o_adder(0)
       matrix(1)(0) := io.o_adder(2)
-      when(w_dist_bus1(1) === 0.U){
-         matrix(0)(0) := r_mult(0)
-      }.elsewhen(w_dist_bus1(0) === 0.U){
-         matrix(0)(0) := r_mult(1)
-      }
-      when(w_dist_bus1(3) === 0.U ){
-        matrix(1)(0) := r_mult(2)
-      }.elsewhen(w_dist_bus1(2) === 0.U){
-         matrix(1)(0) := r_mult(3)
-      }
+      // when(w_dist_bus1(1) === 0.U){
+      //    matrix(0)(0) := r_mult(0)
+      // }.elsewhen(w_dist_bus1(0) === 0.U){
+      //    matrix(0)(0) := r_mult(1)
+      // }
+      // when(w_dist_bus1(3) === 0.U ){
+      //   matrix(1)(0) := r_mult(2)
+      // }.elsewhen(w_dist_bus1(2) === 0.U){
+      //    matrix(1)(0) := r_mult(3)
+      // }
 
+      when(io.Stationary_matrix(0)(0) === 0.U && io.Stationary_matrix(1)(0) === 0.U){
+         matrix(0)(0) := r_mult(0)
+          matrix(1)(0) := r_mult(0)
+      }
+      when(io.Stationary_matrix(0)(1) === 0.U && io.Stationary_matrix(1)(1) === 0.U){
+         matrix(0)(0) := r_mult(0)
+          matrix(1)(0) := r_mult(1)
+      }
+      when(io.Stationary_matrix(0)(0) === 0.U && io.Stationary_matrix(1)(1) === 0.U){
+         matrix(0)(0) := r_mult(0)
+         matrix(1)(0) := r_mult(1)
+         
+      }
+       when(io.Stationary_matrix(0)(1) === 0.U && io.Stationary_matrix(1)(0) === 0.U){
+         matrix(0)(0) := r_mult(0)
+         matrix(1)(0) := r_mult(1)
+         
+      }
+      when(io.Stationary_matrix(0)(0) === 0.U && io.Stationary_matrix(0)(1) === 0.U){
+         matrix(0)(0) := io.o_adder(2)
+         matrix(1)(0) := io.o_adder(0)
+         
+      }
+      //  when(io.Stationary_matrix(1)(0) === 0.U && io.Stationary_matrix(1)(1) === 0.U){
+      //    matrix(0)(0) := r_mult(0)
+      //    matrix(1)(0) := r_mult(1)
+         
+      // }
+      // when(w_dist_bus1(0) =/= 0.U && w_dist_bus1(1) =/= 0.U && w_dist_bus1(2) === 0.U && w_dist_bus1(3) === 0.U){
+      //    matrix(0)(0) := r_mult(0)
+      //     matrix(1)(0) := r_mult(0)
+      // }
       
       // matrix(0)(0) := io.o_adder(0)
       // matrix(1)(0) := io.o_adder(2)
@@ -136,21 +171,48 @@ dontTouch(w_dist_bus2)
     counter := counter + 1.U
     dontTouch(counter)
 
-    when (counter > 40.U){
+    when (counter > 41.U){
       matrix(0)(1) := io.o_adder(0)
       matrix(1)(1) := io.o_adder(2)
-       when(w_dist_bus1(1) === 0.U){
-         matrix(0)(1) := r_mult(0)
-      }.elsewhen(w_dist_bus1(0) === 0.U){
-         matrix(0)(1) := r_mult(1)
-      }
-         when(w_dist_bus1(3) === 0.U ){
-        matrix(1)(1) := r_mult(2)
+      //  when(w_dist_bus1(1) === 0.U){
+      //    matrix(0)(1) := r_mult(0)
+      // }.elsewhen(w_dist_bus1(0) === 0.U){
+      //    matrix(0)(1) := r_mult(1)
+      // }
+      //    when(w_dist_bus1(3) === 0.U ){
+      //   matrix(1)(1) := r_mult(2)
 
-      }.elsewhen(w_dist_bus1(2) === 0.U){
-         matrix(1)(1) := r_mult(3)
+      // }.elsewhen(w_dist_bus1(2) === 0.U){
+      //    matrix(1)(1) := r_mult(3)
+      // }
+       when(io.Stationary_matrix(0)(0) === 0.U && io.Stationary_matrix(1)(0) === 0.U){
+         matrix(0)(1) := r_mult(0)
+          matrix(1)(1) := r_mult(0)
       }
-     
+        when(io.Stationary_matrix(0)(1) === 0.U && io.Stationary_matrix(1)(1) === 0.U){
+         matrix(0)(1) := r_mult(0)
+          matrix(1)(1) := r_mult(1)
+      }
+        when(io.Stationary_matrix(0)(0) === 0.U && io.Stationary_matrix(1)(1) === 0.U){
+         matrix(0)(1) := r_mult(0)
+         matrix(1)(1) := r_mult(1)
+         
+      }
+       when(io.Stationary_matrix(0)(1) === 0.U && io.Stationary_matrix(1)(0) === 0.U){
+         matrix(0)(1) := r_mult(0)
+         matrix(1)(1) := r_mult(1)
+         
+      }
+       when(io.Stationary_matrix(0)(0) === 0.U && io.Stationary_matrix(0)(1) === 0.U){
+         matrix(0)(1) := io.o_adder(2)
+         matrix(1)(1) := io.o_adder(0)
+         
+      }
+      //  when(io.Stationary_matrix(1)(0) === 0.U && io.Stationary_matrix(1)(1) === 0.U){
+      //    matrix(0)(1) := r_mult(0)
+      //    matrix(1)(1) := r_mult(1)
+         
+      // }
       // matrix(0)(1) := io.o_adder(0)
       // matrix(1)(1) := io.o_adder(2)
 

@@ -15,13 +15,16 @@ class abc3(implicit val config:MagmasiConfig) extends Module{
         val Omat = Output(Vec(config.MaxRows,(Vec(config.MaxCols,UInt(32.W)))))
         val merge = Input(Bool())
     })
+
+    val valo = RegInit(0.U)
     val b = RegInit(VecInit(Seq.fill(config.MaxRows)(VecInit(Seq.fill(config.MaxCols)(0.U(32.W))))))
     io.Omat := b
     val check = RegInit(0.U(32.W))
     val counter = WireInit(0.B)
     val i = RegInit(0.U(32.W))
     val j = RegInit(0.U(32.W))
-    io.valid := (i === (config.MaxRows-1).U) && (j === (config.MaxCols-1).U)
+    io.valid := valo
+    valo := (i === (config.MaxRows-1).U) && (j === (config.MaxCols-1).U)
     val a = RegInit(0.U(32.W))
     val k = RegInit(0.U(32.W))
     val l = RegInit(0.U(32.W))
@@ -94,7 +97,7 @@ class abc3(implicit val config:MagmasiConfig) extends Module{
     // }.elsewhen(j === 4.U){
     //     i := i
     // }
-when(counter){
+when(counter & io.valid){
 
     
     when(io.mat(i)(j) === config.NUM_PES.U){

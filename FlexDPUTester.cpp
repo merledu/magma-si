@@ -16,14 +16,14 @@ int main(int argc, char** argv) {
     top->reset = 1;
 
     // Input matrix values for Stationary_matrix
-               top->io_Stationary_matrix_0_0 = 1;
+               top->io_Stationary_matrix_0_0 = 0;
               top->io_Stationary_matrix_0_1 = 1; 
 
                top->io_Stationary_matrix_1_0 = 1; 
                top->io_Stationary_matrix_1_1 = 1; 
 
     // Input matrix values for Streaming_matrix
-            top->io_Streaming_matrix_0_0 = 0;
+            top->io_Streaming_matrix_0_0 = 1;
             top->io_Streaming_matrix_0_1 = 3;
             top->io_Streaming_matrix_1_0 = 2;
             top->io_Streaming_matrix_1_1 = 1;

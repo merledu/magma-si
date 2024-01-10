@@ -29,32 +29,32 @@ circuit FlexDPUby2 :
       reset => (reset, UInt<32>("h0")) @[Muxes.scala 31:26]
     reg indexcounter : UInt<32>, clock with :
       reset => (reset, UInt<32>("h0")) @[Muxes.scala 32:31]
-    wire _muxes_WIRE : UInt<4>[4] @[Muxes.scala 34:65]
-    _muxes_WIRE[0] <= UInt<4>("h0") @[Muxes.scala 34:65]
-    _muxes_WIRE[1] <= UInt<4>("h0") @[Muxes.scala 34:65]
-    _muxes_WIRE[2] <= UInt<4>("h0") @[Muxes.scala 34:65]
-    _muxes_WIRE[3] <= UInt<4>("h0") @[Muxes.scala 34:65]
-    wire _muxes_WIRE_1 : UInt<4>[4] @[Muxes.scala 34:65]
-    _muxes_WIRE_1[0] <= UInt<4>("h0") @[Muxes.scala 34:65]
-    _muxes_WIRE_1[1] <= UInt<4>("h0") @[Muxes.scala 34:65]
-    _muxes_WIRE_1[2] <= UInt<4>("h0") @[Muxes.scala 34:65]
-    _muxes_WIRE_1[3] <= UInt<4>("h0") @[Muxes.scala 34:65]
-    wire _muxes_WIRE_2 : UInt<4>[4] @[Muxes.scala 34:65]
-    _muxes_WIRE_2[0] <= UInt<4>("h0") @[Muxes.scala 34:65]
-    _muxes_WIRE_2[1] <= UInt<4>("h0") @[Muxes.scala 34:65]
-    _muxes_WIRE_2[2] <= UInt<4>("h0") @[Muxes.scala 34:65]
-    _muxes_WIRE_2[3] <= UInt<4>("h0") @[Muxes.scala 34:65]
-    wire _muxes_WIRE_3 : UInt<4>[4] @[Muxes.scala 34:65]
-    _muxes_WIRE_3[0] <= UInt<4>("h0") @[Muxes.scala 34:65]
-    _muxes_WIRE_3[1] <= UInt<4>("h0") @[Muxes.scala 34:65]
-    _muxes_WIRE_3[2] <= UInt<4>("h0") @[Muxes.scala 34:65]
-    _muxes_WIRE_3[3] <= UInt<4>("h0") @[Muxes.scala 34:65]
-    wire _muxes_WIRE_4 : UInt<4>[4][4] @[Muxes.scala 34:32]
+    wire _muxes_WIRE : UInt<2>[4] @[Muxes.scala 34:65]
+    _muxes_WIRE[0] <= UInt<2>("h0") @[Muxes.scala 34:65]
+    _muxes_WIRE[1] <= UInt<2>("h0") @[Muxes.scala 34:65]
+    _muxes_WIRE[2] <= UInt<2>("h0") @[Muxes.scala 34:65]
+    _muxes_WIRE[3] <= UInt<2>("h0") @[Muxes.scala 34:65]
+    wire _muxes_WIRE_1 : UInt<2>[4] @[Muxes.scala 34:65]
+    _muxes_WIRE_1[0] <= UInt<2>("h0") @[Muxes.scala 34:65]
+    _muxes_WIRE_1[1] <= UInt<2>("h0") @[Muxes.scala 34:65]
+    _muxes_WIRE_1[2] <= UInt<2>("h0") @[Muxes.scala 34:65]
+    _muxes_WIRE_1[3] <= UInt<2>("h0") @[Muxes.scala 34:65]
+    wire _muxes_WIRE_2 : UInt<2>[4] @[Muxes.scala 34:65]
+    _muxes_WIRE_2[0] <= UInt<2>("h0") @[Muxes.scala 34:65]
+    _muxes_WIRE_2[1] <= UInt<2>("h0") @[Muxes.scala 34:65]
+    _muxes_WIRE_2[2] <= UInt<2>("h0") @[Muxes.scala 34:65]
+    _muxes_WIRE_2[3] <= UInt<2>("h0") @[Muxes.scala 34:65]
+    wire _muxes_WIRE_3 : UInt<2>[4] @[Muxes.scala 34:65]
+    _muxes_WIRE_3[0] <= UInt<2>("h0") @[Muxes.scala 34:65]
+    _muxes_WIRE_3[1] <= UInt<2>("h0") @[Muxes.scala 34:65]
+    _muxes_WIRE_3[2] <= UInt<2>("h0") @[Muxes.scala 34:65]
+    _muxes_WIRE_3[3] <= UInt<2>("h0") @[Muxes.scala 34:65]
+    wire _muxes_WIRE_4 : UInt<2>[4][4] @[Muxes.scala 34:32]
     _muxes_WIRE_4[0] <= _muxes_WIRE @[Muxes.scala 34:32]
     _muxes_WIRE_4[1] <= _muxes_WIRE_1 @[Muxes.scala 34:32]
     _muxes_WIRE_4[2] <= _muxes_WIRE_2 @[Muxes.scala 34:32]
     _muxes_WIRE_4[3] <= _muxes_WIRE_3 @[Muxes.scala 34:32]
-    reg muxes : UInt<4>[4][4], clock with :
+    reg muxes : UInt<2>[4][4], clock with :
       reset => (reset, _muxes_WIRE_4) @[Muxes.scala 34:24]
     wire _src_WIRE : UInt<16>[4] @[Muxes.scala 35:30]
     _src_WIRE[0] <= UInt<16>("h0") @[Muxes.scala 35:30]
@@ -100,83 +100,58 @@ circuit FlexDPUby2 :
     node _T_12 = neq(io.mat2[_T_11], UInt<1>("h0")) @[Muxes.scala 56:71]
     node _T_13 = and(_T_10, _T_12) @[Muxes.scala 56:56]
     when _T_13 : @[Muxes.scala 56:81]
-      node _T_14 = bits(j, 0, 0)
-      node _T_15 = bits(i, 0, 0)
-      node _T_16 = bits(i, 0, 0)
-      node _T_17 = leq(io.counterMatrix1[_T_14][_T_15], io.counterMatrix2[_T_16]) @[Muxes.scala 58:38]
-      when _T_17 : @[Muxes.scala 58:62]
-        node _T_18 = bits(counter, 1, 0)
-        node _T_19 = bits(indexcounter, 1, 0)
-        node _muxes_T = bits(i, 0, 0)
-        node _muxes_T_1 = sub(io.counterMatrix2[_muxes_T], UInt<1>("h1")) @[Muxes.scala 59:65]
-        node _muxes_T_2 = tail(_muxes_T_1, 1) @[Muxes.scala 59:65]
-        node _muxes_T_3 = bits(j, 0, 0)
-        node _muxes_T_4 = bits(i, 0, 0)
-        node _muxes_T_5 = sub(io.counterMatrix1[_muxes_T_3][_muxes_T_4], UInt<1>("h1")) @[Muxes.scala 59:99]
-        node _muxes_T_6 = tail(_muxes_T_5, 1) @[Muxes.scala 59:99]
-        node _muxes_T_7 = sub(_muxes_T_2, _muxes_T_6) @[Muxes.scala 59:72]
-        node _muxes_T_8 = tail(_muxes_T_7, 1) @[Muxes.scala 59:72]
-        muxes[_T_18][_T_19] <= _muxes_T_8 @[Muxes.scala 59:40]
-        node _T_20 = bits(counter, 1, 0)
-        node _src_T = bits(i, 0, 0)
-        src[_T_20] <= io.mat2[_src_T] @[Muxes.scala 60:24]
-        node _T_21 = bits(counter, 1, 0)
-        node _dest_T = bits(j, 0, 0)
-        node _dest_T_1 = bits(i, 0, 0)
-        dest[_T_21] <= io.mat1[_dest_T][_dest_T_1] @[Muxes.scala 61:25]
-      else :
-        node _T_22 = bits(counter, 1, 0)
-        node _T_23 = bits(indexcounter, 1, 0)
-        node _muxes_T_9 = bits(j, 0, 0)
-        node _muxes_T_10 = bits(i, 0, 0)
-        node _muxes_T_11 = sub(io.counterMatrix1[_muxes_T_9][_muxes_T_10], UInt<1>("h1")) @[Muxes.scala 63:68]
-        node _muxes_T_12 = tail(_muxes_T_11, 1) @[Muxes.scala 63:68]
-        node _muxes_T_13 = bits(i, 0, 0)
-        node _muxes_T_14 = sub(io.counterMatrix2[_muxes_T_13], UInt<1>("h1")) @[Muxes.scala 63:99]
-        node _muxes_T_15 = tail(_muxes_T_14, 1) @[Muxes.scala 63:99]
-        node _muxes_T_16 = sub(_muxes_T_12, _muxes_T_15) @[Muxes.scala 63:75]
-        node _muxes_T_17 = tail(_muxes_T_16, 1) @[Muxes.scala 63:75]
-        muxes[_T_22][_T_23] <= _muxes_T_17 @[Muxes.scala 63:40]
-        node _T_24 = bits(counter, 1, 0)
-        node _src_T_1 = bits(i, 0, 0)
-        src[_T_24] <= io.mat2[_src_T_1] @[Muxes.scala 64:24]
-        node _T_25 = bits(counter, 1, 0)
-        node _dest_T_2 = bits(j, 0, 0)
-        node _dest_T_3 = bits(i, 0, 0)
-        dest[_T_25] <= io.mat1[_dest_T_2][_dest_T_3] @[Muxes.scala 65:25]
-    node _T_26 = not(jValid) @[Muxes.scala 88:14]
-    node _T_27 = add(j, UInt<1>("h1")) @[Muxes.scala 88:46]
-    node _T_28 = tail(_T_27, 1) @[Muxes.scala 88:46]
-    node _T_29 = bits(_T_28, 0, 0)
-    node _T_30 = bits(i, 0, 0)
-    node _T_31 = neq(io.counterMatrix1[_T_29][_T_30], UInt<1>("h0")) @[Muxes.scala 88:56]
-    node _T_32 = and(_T_26, _T_31) @[Muxes.scala 88:22]
-    node _T_33 = bits(i, 0, 0)
-    node _T_34 = neq(io.mat2[_T_33], UInt<1>("h0")) @[Muxes.scala 88:80]
-    node _T_35 = and(_T_32, _T_34) @[Muxes.scala 88:65]
-    node _T_36 = lt(j, UInt<1>("h1")) @[Muxes.scala 88:95]
-    node _T_37 = and(_T_35, _T_36) @[Muxes.scala 88:89]
-    when _T_37 : @[Muxes.scala 88:122]
+      node _T_14 = bits(counter, 1, 0)
+      node _T_15 = bits(indexcounter, 1, 0)
+      node _muxes_T = bits(j, 0, 0)
+      node _muxes_T_1 = bits(i, 0, 0)
+      node _muxes_T_2 = sub(io.counterMatrix1[_muxes_T][_muxes_T_1], UInt<1>("h1")) @[Muxes.scala 63:66]
+      node _muxes_T_3 = tail(_muxes_T_2, 1) @[Muxes.scala 63:66]
+      node _muxes_T_4 = bits(i, 0, 0)
+      node _muxes_T_5 = sub(io.counterMatrix2[_muxes_T_4], UInt<1>("h1")) @[Muxes.scala 63:97]
+      node _muxes_T_6 = tail(_muxes_T_5, 1) @[Muxes.scala 63:97]
+      node _muxes_T_7 = sub(_muxes_T_3, _muxes_T_6) @[Muxes.scala 63:73]
+      node _muxes_T_8 = tail(_muxes_T_7, 1) @[Muxes.scala 63:73]
+      muxes[_T_14][_T_15] <= _muxes_T_8 @[Muxes.scala 63:38]
+      node _T_16 = bits(counter, 1, 0)
+      node _src_T = bits(i, 0, 0)
+      src[_T_16] <= io.mat2[_src_T] @[Muxes.scala 64:22]
+      node _T_17 = bits(counter, 1, 0)
+      node _dest_T = bits(j, 0, 0)
+      node _dest_T_1 = bits(i, 0, 0)
+      dest[_T_17] <= io.mat1[_dest_T][_dest_T_1] @[Muxes.scala 65:24]
+    node _T_18 = not(jValid) @[Muxes.scala 88:14]
+    node _T_19 = add(j, UInt<1>("h1")) @[Muxes.scala 88:46]
+    node _T_20 = tail(_T_19, 1) @[Muxes.scala 88:46]
+    node _T_21 = bits(_T_20, 0, 0)
+    node _T_22 = bits(i, 0, 0)
+    node _T_23 = neq(io.counterMatrix1[_T_21][_T_22], UInt<1>("h0")) @[Muxes.scala 88:56]
+    node _T_24 = and(_T_18, _T_23) @[Muxes.scala 88:22]
+    node _T_25 = bits(i, 0, 0)
+    node _T_26 = neq(io.mat2[_T_25], UInt<1>("h0")) @[Muxes.scala 88:80]
+    node _T_27 = and(_T_24, _T_26) @[Muxes.scala 88:65]
+    node _T_28 = lt(j, UInt<1>("h1")) @[Muxes.scala 88:95]
+    node _T_29 = and(_T_27, _T_28) @[Muxes.scala 88:89]
+    when _T_29 : @[Muxes.scala 88:122]
       node _indexcounter_T = add(indexcounter, UInt<1>("h1")) @[Muxes.scala 89:36]
       node _indexcounter_T_1 = tail(_indexcounter_T, 1) @[Muxes.scala 89:36]
       indexcounter <= _indexcounter_T_1 @[Muxes.scala 89:20]
-    node _T_38 = eq(jValid, UInt<1>("h0")) @[Muxes.scala 93:19]
-    when _T_38 : @[Muxes.scala 93:29]
-      node _T_39 = lt(j, UInt<1>("h1")) @[Muxes.scala 95:14]
-      when _T_39 : @[Muxes.scala 95:40]
+    node _T_30 = eq(jValid, UInt<1>("h0")) @[Muxes.scala 93:19]
+    when _T_30 : @[Muxes.scala 93:29]
+      node _T_31 = lt(j, UInt<1>("h1")) @[Muxes.scala 95:14]
+      when _T_31 : @[Muxes.scala 95:40]
         node _j_T = add(j, UInt<1>("h1")) @[Muxes.scala 96:16]
         node _j_T_1 = tail(_j_T, 1) @[Muxes.scala 96:16]
         j <= _j_T_1 @[Muxes.scala 96:11]
       else :
-        node _T_40 = eq(j, UInt<1>("h1")) @[Muxes.scala 97:21]
-        node _T_41 = eq(i, UInt<1>("h1")) @[Muxes.scala 97:55]
-        node _T_42 = and(_T_40, _T_41) @[Muxes.scala 97:49]
-        when _T_42 : @[Muxes.scala 97:83]
+        node _T_32 = eq(j, UInt<1>("h1")) @[Muxes.scala 97:21]
+        node _T_33 = eq(i, UInt<1>("h1")) @[Muxes.scala 97:55]
+        node _T_34 = and(_T_32, _T_33) @[Muxes.scala 97:49]
+        when _T_34 : @[Muxes.scala 97:83]
           jValid <= UInt<1>("h1") @[Muxes.scala 98:16]
         else :
           j <= UInt<1>("h0") @[Muxes.scala 100:11]
-          node _T_43 = lt(i, UInt<1>("h1")) @[Muxes.scala 101:16]
-          when _T_43 : @[Muxes.scala 101:42]
+          node _T_35 = lt(i, UInt<1>("h1")) @[Muxes.scala 101:16]
+          when _T_35 : @[Muxes.scala 101:42]
             node _i_T = add(i, UInt<1>("h1")) @[Muxes.scala 102:18]
             node _i_T_1 = tail(_i_T, 1) @[Muxes.scala 102:18]
             i <= _i_T_1 @[Muxes.scala 102:13]
@@ -185,10 +160,10 @@ circuit FlexDPUby2 :
             counter <= _counter_T_1 @[Muxes.scala 103:19]
             indexcounter <= UInt<1>("h0") @[Muxes.scala 104:24]
     else :
-      node _T_44 = eq(jValid, UInt<1>("h1")) @[Muxes.scala 107:25]
-      node _T_45 = eq(matricesAreEqual, UInt<1>("h0")) @[Muxes.scala 107:55]
-      node _T_46 = and(_T_44, _T_45) @[Muxes.scala 107:34]
-      when _T_46 : @[Muxes.scala 107:64]
+      node _T_36 = eq(jValid, UInt<1>("h1")) @[Muxes.scala 107:25]
+      node _T_37 = eq(matricesAreEqual, UInt<1>("h0")) @[Muxes.scala 107:55]
+      node _T_38 = and(_T_36, _T_37) @[Muxes.scala 107:34]
+      when _T_38 : @[Muxes.scala 107:64]
         i <= UInt<1>("h0") @[Muxes.scala 109:9]
         j <= UInt<1>("h0") @[Muxes.scala 110:9]
         jValid <= UInt<1>("h0") @[Muxes.scala 111:14]
@@ -221,21 +196,21 @@ circuit FlexDPUby2 :
     reg jNext : UInt, clock with :
       reset => (reset, UInt<1>("h0")) @[Muxes.scala 126:24]
     jNext <= j @[Muxes.scala 127:11]
-    node _T_47 = neq(k, UInt<1>("h0")) @[Muxes.scala 129:14]
-    node _T_48 = eq(j, UInt<1>("h1")) @[Muxes.scala 129:28]
-    node _T_49 = and(_T_47, _T_48) @[Muxes.scala 129:22]
-    node _T_50 = eq(i, UInt<1>("h1")) @[Muxes.scala 129:60]
-    node _T_51 = and(_T_49, _T_50) @[Muxes.scala 129:54]
-    node _T_52 = eq(jNext, UInt<1>("h0")) @[Muxes.scala 129:96]
-    node _T_53 = and(_T_51, _T_52) @[Muxes.scala 129:86]
-    when _T_53 : @[Muxes.scala 129:122]
+    node _T_39 = neq(k, UInt<1>("h0")) @[Muxes.scala 129:14]
+    node _T_40 = eq(j, UInt<1>("h1")) @[Muxes.scala 129:28]
+    node _T_41 = and(_T_39, _T_40) @[Muxes.scala 129:22]
+    node _T_42 = eq(i, UInt<1>("h1")) @[Muxes.scala 129:60]
+    node _T_43 = and(_T_41, _T_42) @[Muxes.scala 129:54]
+    node _T_44 = eq(jNext, UInt<1>("h0")) @[Muxes.scala 129:96]
+    node _T_45 = and(_T_43, _T_44) @[Muxes.scala 129:86]
+    when _T_45 : @[Muxes.scala 129:122]
       io.valid <= UInt<1>("h1") @[Muxes.scala 130:16]
     else :
       io.valid <= UInt<1>("h0") @[Muxes.scala 132:16]
-    node _T_54 = eq(i, UInt<1>("h1")) @[Muxes.scala 134:14]
-    node _T_55 = eq(j, UInt<1>("h1")) @[Muxes.scala 134:48]
-    node _T_56 = and(_T_54, _T_55) @[Muxes.scala 134:42]
-    when _T_56 : @[Muxes.scala 134:76]
+    node _T_46 = eq(i, UInt<1>("h1")) @[Muxes.scala 134:14]
+    node _T_47 = eq(j, UInt<1>("h1")) @[Muxes.scala 134:48]
+    node _T_48 = and(_T_46, _T_47) @[Muxes.scala 134:42]
+    when _T_48 : @[Muxes.scala 134:76]
       node _k_T = add(k, UInt<1>("h1")) @[Muxes.scala 135:14]
       node _k_T_1 = tail(_k_T, 1) @[Muxes.scala 135:14]
       k <= _k_T_1 @[Muxes.scala 135:9]
@@ -440,452 +415,10 @@ circuit FlexDPUby2 :
       io.counterMatrix2.valid <= UInt<1>("h0") @[SourceDestination.scala 126:27]
       io.valid <= UInt<1>("h0") @[SourceDestination.scala 127:12]
 
-  module abc2 :
-    input clock : Clock
-    input reset : Reset
-    output io : { flip IDex : UInt<32>, flip JDex : UInt<32>, flip valid : UInt<1>, flip mat : UInt<32>[2][2], OutMat : UInt<32>[2][2], Ovalid : UInt<1>, ProcessValid : UInt<1>}
-
-    wire _b_WIRE : UInt<32>[2] @[singleLoop.scala 19:61]
-    _b_WIRE[0] <= UInt<32>("h0") @[singleLoop.scala 19:61]
-    _b_WIRE[1] <= UInt<32>("h0") @[singleLoop.scala 19:61]
-    wire _b_WIRE_1 : UInt<32>[2] @[singleLoop.scala 19:61]
-    _b_WIRE_1[0] <= UInt<32>("h0") @[singleLoop.scala 19:61]
-    _b_WIRE_1[1] <= UInt<32>("h0") @[singleLoop.scala 19:61]
-    wire _b_WIRE_2 : UInt<32>[2][2] @[singleLoop.scala 19:28]
-    _b_WIRE_2[0] <= _b_WIRE @[singleLoop.scala 19:28]
-    _b_WIRE_2[1] <= _b_WIRE_1 @[singleLoop.scala 19:28]
-    reg b : UInt<32>[2][2], clock with :
-      reset => (reset, _b_WIRE_2) @[singleLoop.scala 19:20]
-    io.OutMat <= b @[singleLoop.scala 20:15]
-    reg j : UInt<32>, clock with :
-      reset => (UInt<1>("h0"), j) @[singleLoop.scala 21:16]
-    j <= io.JDex @[singleLoop.scala 22:7]
-    reg a : UInt<32>, clock with :
-      reset => (reset, UInt<32>("h0")) @[singleLoop.scala 23:20]
-    node _T = neq(a, UInt<1>("h0")) @[singleLoop.scala 24:25]
-    node _T_1 = and(io.valid, _T) @[singleLoop.scala 24:19]
-    when _T_1 : @[singleLoop.scala 24:34]
-      node _T_2 = bits(io.IDex, 0, 0)
-      node _T_3 = bits(j, 0, 0)
-      node _b_T = bits(io.IDex, 0, 0)
-      node _b_T_1 = bits(j, 0, 0)
-      b[_T_2][_T_3] <= io.mat[_b_T][_b_T_1] @[singleLoop.scala 25:19]
-    node _T_4 = eq(j, UInt<1>("h1")) @[singleLoop.scala 26:13]
-    when _T_4 : @[singleLoop.scala 26:21]
-      node _io_Ovalid_T = bits(io.IDex, 0, 0)
-      node _io_Ovalid_T_1 = eq(io.mat[_io_Ovalid_T][1], UInt<2>("h2")) @[singleLoop.scala 27:45]
-      reg io_Ovalid_REG : UInt<1>, clock with :
-        reset => (UInt<1>("h0"), io_Ovalid_REG) @[singleLoop.scala 27:25]
-      io_Ovalid_REG <= _io_Ovalid_T_1 @[singleLoop.scala 27:25]
-      io.Ovalid <= io_Ovalid_REG @[singleLoop.scala 27:15]
-    else :
-      io.Ovalid <= UInt<1>("h0") @[singleLoop.scala 29:19]
-    node _io_ProcessValid_T = eq(j, UInt<1>("h1")) @[singleLoop.scala 31:35]
-    wire _io_ProcessValid_WIRE : UInt<1>
-    _io_ProcessValid_WIRE <= _io_ProcessValid_T
-    io.ProcessValid <= _io_ProcessValid_WIRE @[singleLoop.scala 31:21]
-    when io.valid : @[singleLoop.scala 45:20]
-      node _a_T = add(a, UInt<1>("h1")) @[singleLoop.scala 46:12]
-      node _a_T_1 = tail(_a_T, 1) @[singleLoop.scala 46:12]
-      a <= _a_T_1 @[singleLoop.scala 46:7]
-    node _T_5 = neq(a, UInt<1>("h0")) @[singleLoop.scala 48:26]
-    node _T_6 = and(io.valid, _T_5) @[singleLoop.scala 48:20]
-    node _T_7 = lt(j, UInt<1>("h1")) @[singleLoop.scala 48:41]
-    node _T_8 = and(_T_6, _T_7) @[singleLoop.scala 48:35]
-    when _T_8 : @[singleLoop.scala 48:65]
-      node _j_T = add(j, UInt<1>("h1")) @[singleLoop.scala 49:16]
-      node _j_T_1 = tail(_j_T, 1) @[singleLoop.scala 49:16]
-      j <= _j_T_1 @[singleLoop.scala 49:11]
-    else :
-      node _T_9 = eq(j, UInt<1>("h1")) @[singleLoop.scala 50:18]
-      when _T_9 : @[singleLoop.scala 50:43]
-        j <= j @[singleLoop.scala 51:11]
-
-  module abc3 :
-    input clock : Clock
-    input reset : Reset
-    output io : { flip PreMat : UInt<32>[2][2], flip IDex : UInt<32>, flip JDex : UInt<32>, flip mat : UInt<32>[2][2], flip i_valid : UInt<1>, valid : UInt<1>, Omat : UInt<32>[2][2], flip merge : UInt<1>}
-
-    wire _b_WIRE : UInt<32>[2] @[MergeDIstribution.scala 18:61]
-    _b_WIRE[0] <= UInt<32>("h0") @[MergeDIstribution.scala 18:61]
-    _b_WIRE[1] <= UInt<32>("h0") @[MergeDIstribution.scala 18:61]
-    wire _b_WIRE_1 : UInt<32>[2] @[MergeDIstribution.scala 18:61]
-    _b_WIRE_1[0] <= UInt<32>("h0") @[MergeDIstribution.scala 18:61]
-    _b_WIRE_1[1] <= UInt<32>("h0") @[MergeDIstribution.scala 18:61]
-    wire _b_WIRE_2 : UInt<32>[2][2] @[MergeDIstribution.scala 18:28]
-    _b_WIRE_2[0] <= _b_WIRE @[MergeDIstribution.scala 18:28]
-    _b_WIRE_2[1] <= _b_WIRE_1 @[MergeDIstribution.scala 18:28]
-    reg b : UInt<32>[2][2], clock with :
-      reset => (reset, _b_WIRE_2) @[MergeDIstribution.scala 18:20]
-    io.Omat <= b @[MergeDIstribution.scala 19:13]
-    reg check : UInt<32>, clock with :
-      reset => (reset, UInt<32>("h0")) @[MergeDIstribution.scala 20:24]
-    wire counter : UInt<1>
-    counter <= UInt<1>("h0")
-    reg i : UInt<32>, clock with :
-      reset => (reset, UInt<32>("h0")) @[MergeDIstribution.scala 22:20]
-    reg j : UInt<32>, clock with :
-      reset => (reset, UInt<32>("h0")) @[MergeDIstribution.scala 23:20]
-    node _io_valid_T = eq(i, UInt<1>("h1")) @[MergeDIstribution.scala 24:20]
-    node _io_valid_T_1 = eq(j, UInt<1>("h1")) @[MergeDIstribution.scala 24:52]
-    node _io_valid_T_2 = and(_io_valid_T, _io_valid_T_1) @[MergeDIstribution.scala 24:46]
-    io.valid <= _io_valid_T_2 @[MergeDIstribution.scala 24:14]
-    reg a : UInt<32>, clock with :
-      reset => (reset, UInt<32>("h0")) @[MergeDIstribution.scala 25:20]
-    reg k : UInt<32>, clock with :
-      reset => (reset, UInt<32>("h0")) @[MergeDIstribution.scala 26:20]
-    reg l : UInt<32>, clock with :
-      reset => (reset, UInt<32>("h0")) @[MergeDIstribution.scala 27:20]
-    reg delay : UInt<32>, clock with :
-      reset => (reset, UInt<32>("h0")) @[MergeDIstribution.scala 29:24]
-    node _T = leq(delay, UInt<1>("h1")) @[MergeDIstribution.scala 31:17]
-    node _T_1 = and(_T, io.merge) @[MergeDIstribution.scala 31:41]
-    when _T_1 : @[MergeDIstribution.scala 31:53]
-      node _delay_T = add(delay, UInt<1>("h1")) @[MergeDIstribution.scala 32:24]
-      node _delay_T_1 = tail(_delay_T, 1) @[MergeDIstribution.scala 32:24]
-      delay <= _delay_T_1 @[MergeDIstribution.scala 32:15]
-    node _T_2 = eq(delay, UInt<2>("h2")) @[MergeDIstribution.scala 41:29]
-    node _T_3 = and(io.merge, _T_2) @[MergeDIstribution.scala 41:19]
-    when _T_3 : @[MergeDIstribution.scala 41:53]
-      node _T_4 = lt(k, io.IDex) @[MergeDIstribution.scala 43:14]
-      node _T_5 = eq(l, UInt<1>("h1")) @[MergeDIstribution.scala 43:30]
-      node _T_6 = and(_T_4, _T_5) @[MergeDIstribution.scala 43:24]
-      when _T_6 : @[MergeDIstribution.scala 43:56]
-        node _k_T = add(k, UInt<1>("h1")) @[MergeDIstribution.scala 44:16]
-        node _k_T_1 = tail(_k_T, 1) @[MergeDIstribution.scala 44:16]
-        k <= _k_T_1 @[MergeDIstribution.scala 44:11]
-        l <= UInt<1>("h0") @[MergeDIstribution.scala 45:11]
-      else :
-        node _T_7 = leq(k, io.IDex) @[MergeDIstribution.scala 46:20]
-        node _T_8 = lt(l, UInt<1>("h1")) @[MergeDIstribution.scala 46:37]
-        node _T_9 = and(_T_7, _T_8) @[MergeDIstribution.scala 46:31]
-        when _T_9 : @[MergeDIstribution.scala 46:61]
-          node _l_T = add(l, UInt<1>("h1")) @[MergeDIstribution.scala 47:16]
-          node _l_T_1 = tail(_l_T, 1) @[MergeDIstribution.scala 47:16]
-          l <= _l_T_1 @[MergeDIstribution.scala 47:11]
-        else :
-          node _T_10 = eq(k, io.IDex) @[MergeDIstribution.scala 48:18]
-          node _T_11 = eq(l, UInt<1>("h1")) @[MergeDIstribution.scala 48:36]
-          node _T_12 = and(_T_10, _T_11) @[MergeDIstribution.scala 48:30]
-          when _T_12 : @[MergeDIstribution.scala 48:62]
-            l <= l @[MergeDIstribution.scala 49:11]
-      node _T_13 = bits(k, 0, 0)
-      node _T_14 = bits(l, 0, 0)
-      node _b_T = bits(k, 0, 0)
-      node _b_T_1 = bits(l, 0, 0)
-      b[_T_13][_T_14] <= io.PreMat[_b_T][_b_T_1] @[MergeDIstribution.scala 52:13]
-    node _T_15 = eq(i, UInt<1>("h0")) @[MergeDIstribution.scala 54:28]
-    node _T_16 = and(io.i_valid, _T_15) @[MergeDIstribution.scala 54:22]
-    node _T_17 = eq(j, UInt<1>("h0")) @[MergeDIstribution.scala 54:44]
-    node _T_18 = and(_T_16, _T_17) @[MergeDIstribution.scala 54:37]
-    when _T_18 : @[MergeDIstribution.scala 54:53]
-      node _i_T = add(io.IDex, UInt<1>("h1")) @[MergeDIstribution.scala 55:22]
-      node _i_T_1 = tail(_i_T, 1) @[MergeDIstribution.scala 55:22]
-      i <= _i_T_1 @[MergeDIstribution.scala 55:11]
-      j <= UInt<1>("h0") @[MergeDIstribution.scala 56:11]
-      node _check_T = add(check, UInt<1>("h1")) @[MergeDIstribution.scala 57:24]
-      node _check_T_1 = tail(_check_T, 1) @[MergeDIstribution.scala 57:24]
-      check <= _check_T_1 @[MergeDIstribution.scala 57:15]
-    node _T_19 = geq(check, UInt<1>("h1")) @[MergeDIstribution.scala 60:17]
-    when _T_19 : @[MergeDIstribution.scala 60:24]
-      counter <= UInt<1>("h1") @[MergeDIstribution.scala 61:17]
-      node _check_T_2 = add(check, UInt<1>("h1")) @[MergeDIstribution.scala 62:24]
-      node _check_T_3 = tail(_check_T_2, 1) @[MergeDIstribution.scala 62:24]
-      check <= _check_T_3 @[MergeDIstribution.scala 62:15]
-    when io.merge : @[MergeDIstribution.scala 67:19]
-      node _T_20 = bits(i, 0, 0)
-      node _T_21 = bits(j, 0, 0)
-      node _b_T_2 = bits(i, 0, 0)
-      node _b_T_3 = bits(j, 0, 0)
-      b[_T_20][_T_21] <= io.mat[_b_T_2][_b_T_3] @[MergeDIstribution.scala 68:13]
-    when counter : @[MergeDIstribution.scala 97:14]
-      node _T_22 = bits(i, 0, 0)
-      node _T_23 = bits(j, 0, 0)
-      node _T_24 = eq(io.mat[_T_22][_T_23], UInt<3>("h4")) @[MergeDIstribution.scala 100:23]
-      when _T_24 : @[MergeDIstribution.scala 100:44]
-        i <= i @[MergeDIstribution.scala 101:11]
-        j <= j @[MergeDIstribution.scala 102:11]
-        io.valid <= UInt<1>("h1") @[MergeDIstribution.scala 103:18]
-      else :
-        node _T_25 = lt(i, UInt<1>("h1")) @[MergeDIstribution.scala 104:20]
-        node _T_26 = eq(j, UInt<1>("h1")) @[MergeDIstribution.scala 104:49]
-        node _T_27 = and(_T_25, _T_26) @[MergeDIstribution.scala 104:43]
-        when _T_27 : @[MergeDIstribution.scala 104:75]
-          node _i_T_2 = add(i, UInt<1>("h1")) @[MergeDIstribution.scala 105:16]
-          node _i_T_3 = tail(_i_T_2, 1) @[MergeDIstribution.scala 105:16]
-          i <= _i_T_3 @[MergeDIstribution.scala 105:11]
-          j <= UInt<1>("h0") @[MergeDIstribution.scala 106:11]
-        else :
-          node _T_28 = leq(i, UInt<1>("h1")) @[MergeDIstribution.scala 107:20]
-          node _T_29 = lt(j, UInt<1>("h1")) @[MergeDIstribution.scala 107:50]
-          node _T_30 = and(_T_28, _T_29) @[MergeDIstribution.scala 107:44]
-          when _T_30 : @[MergeDIstribution.scala 107:74]
-            node _j_T = add(j, UInt<1>("h1")) @[MergeDIstribution.scala 108:16]
-            node _j_T_1 = tail(_j_T, 1) @[MergeDIstribution.scala 108:16]
-            j <= _j_T_1 @[MergeDIstribution.scala 108:11]
-          else :
-            node _T_31 = eq(i, UInt<1>("h1")) @[MergeDIstribution.scala 109:18]
-            node _T_32 = eq(j, UInt<1>("h1")) @[MergeDIstribution.scala 109:49]
-            node _T_33 = and(_T_31, _T_32) @[MergeDIstribution.scala 109:43]
-            when _T_33 : @[MergeDIstribution.scala 109:75]
-              j <= j @[MergeDIstribution.scala 110:11]
-
-  module Distribution :
-    input clock : Clock
-    input reset : Reset
-    output io : { flip matrix : UInt<32>[2][2], flip s : UInt<32>, out : UInt<32>[2][2], ProcessValid : UInt<1>, flip valid : UInt<1>, iteration : UInt<32>, validIteration : UInt<1>}
-
-    reg i : UInt<32>, clock with :
-      reset => (reset, UInt<32>("h0")) @[DIstribution.scala 17:20]
-    reg j : UInt<32>, clock with :
-      reset => (reset, UInt<32>("h0")) @[DIstribution.scala 18:20]
-    reg count : UInt<32>, clock with :
-      reset => (reset, UInt<32>("h0")) @[DIstribution.scala 19:24]
-    wire _Idex_WIRE : UInt<32>[2] @[DIstribution.scala 20:31]
-    _Idex_WIRE[0] <= UInt<32>("h0") @[DIstribution.scala 20:31]
-    _Idex_WIRE[1] <= UInt<32>("h0") @[DIstribution.scala 20:31]
-    reg Idex : UInt<32>[2], clock with :
-      reset => (reset, _Idex_WIRE) @[DIstribution.scala 20:23]
-    wire _Jdex_WIRE : UInt<32>[2] @[DIstribution.scala 21:31]
-    _Jdex_WIRE[0] <= UInt<32>("h0") @[DIstribution.scala 21:31]
-    _Jdex_WIRE[1] <= UInt<32>("h0") @[DIstribution.scala 21:31]
-    reg Jdex : UInt<32>[2], clock with :
-      reset => (reset, _Jdex_WIRE) @[DIstribution.scala 21:23]
-    wire _mat_WIRE : UInt<1>[2] @[DIstribution.scala 22:63]
-    _mat_WIRE[0] <= UInt<1>("h0") @[DIstribution.scala 22:63]
-    _mat_WIRE[1] <= UInt<1>("h0") @[DIstribution.scala 22:63]
-    wire _mat_WIRE_1 : UInt<1>[2] @[DIstribution.scala 22:63]
-    _mat_WIRE_1[0] <= UInt<1>("h0") @[DIstribution.scala 22:63]
-    _mat_WIRE_1[1] <= UInt<1>("h0") @[DIstribution.scala 22:63]
-    wire _mat_WIRE_2 : UInt<1>[2][2] @[DIstribution.scala 22:30]
-    _mat_WIRE_2[0] <= _mat_WIRE @[DIstribution.scala 22:30]
-    _mat_WIRE_2[1] <= _mat_WIRE_1 @[DIstribution.scala 22:30]
-    reg mat : UInt<1>[2][2], clock with :
-      reset => (reset, _mat_WIRE_2) @[DIstribution.scala 22:22]
-    reg iterationNo : UInt<32>, clock with :
-      reset => (reset, UInt<32>("h0")) @[DIstribution.scala 23:30]
-    when io.valid : @[DIstribution.scala 25:21]
-      node _io_validIteration_T = eq(i, UInt<1>("h1")) @[DIstribution.scala 28:29]
-      node _io_validIteration_T_1 = eq(j, UInt<1>("h1")) @[DIstribution.scala 28:62]
-      node _io_validIteration_T_2 = and(_io_validIteration_T, _io_validIteration_T_1) @[DIstribution.scala 28:56]
-      io.validIteration <= _io_validIteration_T_2 @[DIstribution.scala 28:23]
-      io.iteration <= iterationNo @[DIstribution.scala 29:18]
-      node _T = bits(i, 0, 0)
-      node _T_1 = bits(j, 0, 0)
-      node _T_2 = eq(io.matrix[_T][_T_1], UInt<1>("h1")) @[DIstribution.scala 32:27]
-      when _T_2 : @[DIstribution.scala 32:35]
-        node _iterationNo_T = add(iterationNo, UInt<1>("h1")) @[DIstribution.scala 33:34]
-        node _iterationNo_T_1 = tail(_iterationNo_T, 1) @[DIstribution.scala 33:34]
-        iterationNo <= _iterationNo_T_1 @[DIstribution.scala 33:19]
-      mat <= io.matrix @[DIstribution.scala 36:9]
-      node _T_3 = bits(i, 0, 0)
-      node _T_4 = bits(j, 0, 0)
-      node _T_5 = eq(io.matrix[_T_3][_T_4], UInt<1>("h1")) @[DIstribution.scala 44:28]
-      when _T_5 : @[DIstribution.scala 44:38]
-        node _count_T = add(count, UInt<1>("h1")) @[DIstribution.scala 45:24]
-        node _count_T_1 = tail(_count_T, 1) @[DIstribution.scala 45:24]
-        count <= _count_T_1 @[DIstribution.scala 45:15]
-        node _T_6 = bits(count, 0, 0)
-        Idex[_T_6] <= i @[DIstribution.scala 46:21]
-        node _T_7 = bits(count, 0, 0)
-        Jdex[_T_7] <= j @[DIstribution.scala 47:21]
-      else :
-        node _T_8 = bits(i, 0, 0)
-        node _T_9 = bits(j, 0, 0)
-        node _T_10 = eq(io.matrix[_T_8][_T_9], UInt<1>("h1")) @[DIstribution.scala 48:33]
-        node _T_11 = eq(i, UInt<1>("h1")) @[DIstribution.scala 48:48]
-        node _T_12 = and(_T_10, _T_11) @[DIstribution.scala 48:42]
-        node _T_13 = eq(j, UInt<1>("h1")) @[DIstribution.scala 48:80]
-        node _T_14 = and(_T_12, _T_13) @[DIstribution.scala 48:74]
-        when _T_14 : @[DIstribution.scala 48:106]
-          node _T_15 = bits(count, 0, 0)
-          Idex[_T_15] <= i @[DIstribution.scala 49:21]
-          node _T_16 = bits(count, 0, 0)
-          Jdex[_T_16] <= j @[DIstribution.scala 50:21]
-      inst part2 of abc2 @[DIstribution.scala 52:19]
-      part2.clock <= clock
-      part2.reset <= reset
-      part2.io.mat[0][0] <= io.matrix[0][0] @[DIstribution.scala 53:14]
-      part2.io.mat[0][1] <= io.matrix[0][1] @[DIstribution.scala 53:14]
-      part2.io.mat[1][0] <= io.matrix[1][0] @[DIstribution.scala 53:14]
-      part2.io.mat[1][1] <= io.matrix[1][1] @[DIstribution.scala 53:14]
-      node _c_T = eq(i, UInt<1>("h1")) @[DIstribution.scala 54:23]
-      node _c_T_1 = eq(j, UInt<1>("h1")) @[DIstribution.scala 54:54]
-      node _c_T_2 = and(_c_T, _c_T_1) @[DIstribution.scala 54:48]
-      reg c : UInt<1>, clock with :
-        reset => (UInt<1>("h0"), c) @[DIstribution.scala 54:20]
-      c <= _c_T_2 @[DIstribution.scala 54:20]
-      part2.io.valid <= c @[DIstribution.scala 55:20]
-      when c : @[DIstribution.scala 56:13]
-        node _part2_io_IDex_T = bits(io.s, 0, 0)
-        part2.io.IDex <= Idex[_part2_io_IDex_T] @[DIstribution.scala 57:19]
-        node _part2_io_JDex_T = bits(io.s, 0, 0)
-        part2.io.JDex <= Jdex[_part2_io_JDex_T] @[DIstribution.scala 58:19]
-      else :
-        part2.io.IDex <= UInt<1>("h0") @[DIstribution.scala 60:19]
-        part2.io.JDex <= UInt<1>("h0") @[DIstribution.scala 61:19]
-      inst part3 of abc3 @[DIstribution.scala 66:23]
-      part3.clock <= clock
-      part3.reset <= reset
-      wire check : UInt<1>
-      check <= UInt<1>("h0")
-      when part2.io.Ovalid : @[DIstribution.scala 68:26]
-        check <= UInt<1>("h0") @[DIstribution.scala 69:15]
-      else :
-        check <= UInt<1>("h1") @[DIstribution.scala 71:15]
-      node _e_T = eq(i, UInt<1>("h1")) @[DIstribution.scala 73:17]
-      node _e_T_1 = eq(j, UInt<1>("h1")) @[DIstribution.scala 73:49]
-      node _e_T_2 = and(_e_T, _e_T_1) @[DIstribution.scala 73:43]
-      node _e_T_3 = sub(count, UInt<1>("h1")) @[DIstribution.scala 73:85]
-      node _e_T_4 = tail(_e_T_3, 1) @[DIstribution.scala 73:85]
-      node _e_T_5 = lt(_e_T_4, io.s) @[DIstribution.scala 73:91]
-      node e = and(_e_T_2, _e_T_5) @[DIstribution.scala 73:75]
-      node _T_17 = and(part2.io.ProcessValid, check) @[DIstribution.scala 75:33]
-      when _T_17 : @[DIstribution.scala 75:42]
-        reg part3_io_merge_REG : UInt<1>, clock with :
-          reset => (UInt<1>("h0"), part3_io_merge_REG) @[DIstribution.scala 76:30]
-        part3_io_merge_REG <= c @[DIstribution.scala 76:30]
-        part3.io.merge <= part3_io_merge_REG @[DIstribution.scala 76:20]
-        part3.io.mat[0][0] <= io.matrix[0][0] @[DIstribution.scala 77:18]
-        part3.io.mat[0][1] <= io.matrix[0][1] @[DIstribution.scala 77:18]
-        part3.io.mat[1][0] <= io.matrix[1][0] @[DIstribution.scala 77:18]
-        part3.io.mat[1][1] <= io.matrix[1][1] @[DIstribution.scala 77:18]
-        part3.io.i_valid <= part2.io.ProcessValid @[DIstribution.scala 78:22]
-        part3.io.PreMat[0][0] <= part2.io.OutMat[0][0] @[DIstribution.scala 79:21]
-        part3.io.PreMat[0][1] <= part2.io.OutMat[0][1] @[DIstribution.scala 79:21]
-        part3.io.PreMat[1][0] <= part2.io.OutMat[1][0] @[DIstribution.scala 79:21]
-        part3.io.PreMat[1][1] <= part2.io.OutMat[1][1] @[DIstribution.scala 79:21]
-        part3.io.mat[0][0] <= io.matrix[0][0] @[DIstribution.scala 80:18]
-        part3.io.mat[0][1] <= io.matrix[0][1] @[DIstribution.scala 80:18]
-        part3.io.mat[1][0] <= io.matrix[1][0] @[DIstribution.scala 80:18]
-        part3.io.mat[1][1] <= io.matrix[1][1] @[DIstribution.scala 80:18]
-        node _part3_io_IDex_T = bits(io.s, 0, 0)
-        part3.io.IDex <= Idex[_part3_io_IDex_T] @[DIstribution.scala 81:19]
-        node _part3_io_JDex_T = bits(io.s, 0, 0)
-        part3.io.JDex <= Jdex[_part3_io_JDex_T] @[DIstribution.scala 82:19]
-        node _T_18 = eq(i, UInt<1>("h1")) @[DIstribution.scala 83:14]
-        node _T_19 = eq(j, UInt<1>("h1")) @[DIstribution.scala 83:46]
-        node _T_20 = and(_T_18, _T_19) @[DIstribution.scala 83:40]
-        node _T_21 = sub(count, UInt<1>("h1")) @[DIstribution.scala 83:82]
-        node _T_22 = tail(_T_21, 1) @[DIstribution.scala 83:82]
-        node _T_23 = lt(_T_22, io.s) @[DIstribution.scala 83:88]
-        node _T_24 = and(_T_20, _T_23) @[DIstribution.scala 83:72]
-        when _T_24 : @[DIstribution.scala 83:96]
-          wire _WIRE : UInt<1>[2] @[DIstribution.scala 84:68]
-          _WIRE[0] <= UInt<1>("h0") @[DIstribution.scala 84:68]
-          _WIRE[1] <= UInt<1>("h0") @[DIstribution.scala 84:68]
-          wire _WIRE_1 : UInt<1>[2] @[DIstribution.scala 84:68]
-          _WIRE_1[0] <= UInt<1>("h0") @[DIstribution.scala 84:68]
-          _WIRE_1[1] <= UInt<1>("h0") @[DIstribution.scala 84:68]
-          wire _WIRE_2 : UInt<1>[2][2] @[DIstribution.scala 84:35]
-          _WIRE_2[0] <= _WIRE @[DIstribution.scala 84:35]
-          _WIRE_2[1] <= _WIRE_1 @[DIstribution.scala 84:35]
-          wire _WIRE_3 : UInt<1>[2][2]
-          _WIRE_3 <= _WIRE_2
-          io.out <= _WIRE_3 @[DIstribution.scala 84:16]
-        else :
-          io.out <= part3.io.Omat @[DIstribution.scala 86:12]
-        io.ProcessValid <= part3.io.valid @[DIstribution.scala 87:21]
-      else :
-        part3.io.merge <= UInt<1>("h0") @[DIstribution.scala 89:24]
-        wire _WIRE_4 : UInt<32>[2] @[DIstribution.scala 90:66]
-        _WIRE_4[0] <= UInt<32>("h0") @[DIstribution.scala 90:66]
-        _WIRE_4[1] <= UInt<32>("h0") @[DIstribution.scala 90:66]
-        wire _WIRE_5 : UInt<32>[2] @[DIstribution.scala 90:66]
-        _WIRE_5[0] <= UInt<32>("h0") @[DIstribution.scala 90:66]
-        _WIRE_5[1] <= UInt<32>("h0") @[DIstribution.scala 90:66]
-        wire _WIRE_6 : UInt<32>[2][2] @[DIstribution.scala 90:31]
-        _WIRE_6[0] <= _WIRE_4 @[DIstribution.scala 90:31]
-        _WIRE_6[1] <= _WIRE_5 @[DIstribution.scala 90:31]
-        part3.io.mat[0][0] <= _WIRE_6[0][0] @[DIstribution.scala 90:22]
-        part3.io.mat[0][1] <= _WIRE_6[0][1] @[DIstribution.scala 90:22]
-        part3.io.mat[1][0] <= _WIRE_6[1][0] @[DIstribution.scala 90:22]
-        part3.io.mat[1][1] <= _WIRE_6[1][1] @[DIstribution.scala 90:22]
-        part3.io.i_valid <= UInt<1>("h0") @[DIstribution.scala 91:26]
-        wire _WIRE_7 : UInt<32>[2] @[DIstribution.scala 92:64]
-        _WIRE_7[0] <= UInt<32>("h0") @[DIstribution.scala 92:64]
-        _WIRE_7[1] <= UInt<32>("h0") @[DIstribution.scala 92:64]
-        wire _WIRE_8 : UInt<32>[2] @[DIstribution.scala 92:64]
-        _WIRE_8[0] <= UInt<32>("h0") @[DIstribution.scala 92:64]
-        _WIRE_8[1] <= UInt<32>("h0") @[DIstribution.scala 92:64]
-        wire _WIRE_9 : UInt<32>[2][2] @[DIstribution.scala 92:31]
-        _WIRE_9[0] <= _WIRE_7 @[DIstribution.scala 92:31]
-        _WIRE_9[1] <= _WIRE_8 @[DIstribution.scala 92:31]
-        part3.io.PreMat[0][0] <= _WIRE_9[0][0] @[DIstribution.scala 92:21]
-        part3.io.PreMat[0][1] <= _WIRE_9[0][1] @[DIstribution.scala 92:21]
-        part3.io.PreMat[1][0] <= _WIRE_9[1][0] @[DIstribution.scala 92:21]
-        part3.io.PreMat[1][1] <= _WIRE_9[1][1] @[DIstribution.scala 92:21]
-        part3.io.IDex <= UInt<1>("h0") @[DIstribution.scala 93:19]
-        part3.io.JDex <= UInt<1>("h0") @[DIstribution.scala 94:19]
-        node _T_25 = eq(i, UInt<1>("h1")) @[DIstribution.scala 95:14]
-        node _T_26 = eq(j, UInt<1>("h1")) @[DIstribution.scala 95:46]
-        node _T_27 = and(_T_25, _T_26) @[DIstribution.scala 95:40]
-        node _T_28 = sub(count, UInt<1>("h1")) @[DIstribution.scala 95:82]
-        node _T_29 = tail(_T_28, 1) @[DIstribution.scala 95:82]
-        node _T_30 = lt(_T_29, io.s) @[DIstribution.scala 95:88]
-        node _T_31 = and(_T_27, _T_30) @[DIstribution.scala 95:72]
-        when _T_31 : @[DIstribution.scala 95:96]
-          wire _WIRE_10 : UInt<1>[2] @[DIstribution.scala 96:68]
-          _WIRE_10[0] <= UInt<1>("h0") @[DIstribution.scala 96:68]
-          _WIRE_10[1] <= UInt<1>("h0") @[DIstribution.scala 96:68]
-          wire _WIRE_11 : UInt<1>[2] @[DIstribution.scala 96:68]
-          _WIRE_11[0] <= UInt<1>("h0") @[DIstribution.scala 96:68]
-          _WIRE_11[1] <= UInt<1>("h0") @[DIstribution.scala 96:68]
-          wire _WIRE_12 : UInt<1>[2][2] @[DIstribution.scala 96:35]
-          _WIRE_12[0] <= _WIRE_10 @[DIstribution.scala 96:35]
-          _WIRE_12[1] <= _WIRE_11 @[DIstribution.scala 96:35]
-          wire _WIRE_13 : UInt<1>[2][2]
-          _WIRE_13 <= _WIRE_12
-          io.out <= _WIRE_13 @[DIstribution.scala 96:16]
-        else :
-          io.out <= part2.io.OutMat @[DIstribution.scala 98:12]
-        io.ProcessValid <= part2.io.Ovalid @[DIstribution.scala 99:21]
-      node _T_32 = lt(i, UInt<1>("h1")) @[DIstribution.scala 106:14]
-      node _T_33 = eq(j, UInt<1>("h1")) @[DIstribution.scala 106:43]
-      node _T_34 = and(_T_32, _T_33) @[DIstribution.scala 106:37]
-      when _T_34 : @[DIstribution.scala 106:69]
-        node _i_T = add(i, UInt<1>("h1")) @[DIstribution.scala 107:16]
-        node _i_T_1 = tail(_i_T, 1) @[DIstribution.scala 107:16]
-        i <= _i_T_1 @[DIstribution.scala 107:11]
-      node _ab_T = leq(i, UInt<1>("h1")) @[DIstribution.scala 110:18]
-      node _ab_T_1 = lt(j, UInt<1>("h1")) @[DIstribution.scala 110:48]
-      node ab = and(_ab_T, _ab_T_1) @[DIstribution.scala 110:42]
-      node _T_35 = leq(i, UInt<1>("h1")) @[DIstribution.scala 112:14]
-      node _T_36 = lt(j, UInt<1>("h1")) @[DIstribution.scala 112:44]
-      node _T_37 = and(_T_35, _T_36) @[DIstribution.scala 112:38]
-      when _T_37 : @[DIstribution.scala 112:68]
-        node _j_T = add(j, UInt<1>("h1")) @[DIstribution.scala 113:16]
-        node _j_T_1 = tail(_j_T, 1) @[DIstribution.scala 113:16]
-        j <= _j_T_1 @[DIstribution.scala 113:11]
-      else :
-        node _T_38 = eq(i, UInt<1>("h1")) @[DIstribution.scala 114:18]
-        node _T_39 = eq(j, UInt<1>("h1")) @[DIstribution.scala 114:49]
-        node _T_40 = and(_T_38, _T_39) @[DIstribution.scala 114:43]
-        when _T_40 : @[DIstribution.scala 114:75]
-          j <= j @[DIstribution.scala 115:11]
-        else :
-          j <= UInt<1>("h0") @[DIstribution.scala 117:11]
-    else :
-      wire _WIRE_14 : UInt<1>[2] @[DIstribution.scala 124:68]
-      _WIRE_14[0] <= UInt<1>("h0") @[DIstribution.scala 124:68]
-      _WIRE_14[1] <= UInt<1>("h0") @[DIstribution.scala 124:68]
-      wire _WIRE_15 : UInt<1>[2] @[DIstribution.scala 124:68]
-      _WIRE_15[0] <= UInt<1>("h0") @[DIstribution.scala 124:68]
-      _WIRE_15[1] <= UInt<1>("h0") @[DIstribution.scala 124:68]
-      wire _WIRE_16 : UInt<1>[2][2] @[DIstribution.scala 124:35]
-      _WIRE_16[0] <= _WIRE_14 @[DIstribution.scala 124:35]
-      _WIRE_16[1] <= _WIRE_15 @[DIstribution.scala 124:35]
-      wire _WIRE_17 : UInt<1>[2][2]
-      _WIRE_17 <= _WIRE_16
-      io.out <= _WIRE_17 @[DIstribution.scala 124:16]
-      io.ProcessValid <= UInt<1>("h0") @[DIstribution.scala 125:25]
-      io.iteration <= UInt<1>("h0") @[DIstribution.scala 126:22]
-      io.validIteration <= UInt<1>("h0") @[DIstribution.scala 127:27]
-
   module PathFinder :
     input clock : Clock
     input reset : Reset
-    output io : { flip Stationary_matrix : UInt<16>[2][2], flip Streaming_matrix : UInt<16>[2], i_mux_bus : UInt<4>[4][4], Source : UInt<16>[4], destination : UInt<16>[4], PF_Valid : UInt<1>, flip NoDPE : UInt<32>, flip DataValid : UInt<1>, iteration : UInt<32>, validIteration : UInt<1>}
+    output io : { flip Stationary_matrix : UInt<16>[2][2], flip Streaming_matrix : UInt<16>[2], i_mux_bus : UInt<4>[4][4], Source : UInt<16>[4], destination : UInt<16>[4], PF_Valid : UInt<1>, flip NoDPE : UInt<32>, flip DataValid : UInt<1>}
 
     when io.DataValid : @[PathFinder.scala 20:20]
       wire _counterRegs1_WIRE : UInt<16>[2] @[PathFinder.scala 21:70]
@@ -922,18 +455,7 @@ circuit FlexDPUby2 :
       myCounter.io.Stationary_matrix[1][1] <= io.Stationary_matrix[1][1] @[PathFinder.scala 34:34]
       myCounter.io.Streaming_matrix[0] <= io.Streaming_matrix[0] @[PathFinder.scala 35:33]
       myCounter.io.Streaming_matrix[1] <= io.Streaming_matrix[1] @[PathFinder.scala 35:33]
-      inst Distribution of Distribution @[PathFinder.scala 37:28]
-      Distribution.clock <= clock
-      Distribution.reset <= reset
-      Distribution.io.valid <= myCounter.io.valid @[PathFinder.scala 39:25]
-      Distribution.io.s <= io.NoDPE @[PathFinder.scala 40:21]
-      io.iteration <= Distribution.io.iteration @[PathFinder.scala 41:16]
-      io.validIteration <= Distribution.io.validIteration @[PathFinder.scala 42:21]
-      Distribution.io.matrix[0][0] <= myCounter.io.counterMatrix1.bits[0][0] @[PathFinder.scala 43:26]
-      Distribution.io.matrix[0][1] <= myCounter.io.counterMatrix1.bits[0][1] @[PathFinder.scala 43:26]
-      Distribution.io.matrix[1][0] <= myCounter.io.counterMatrix1.bits[1][0] @[PathFinder.scala 43:26]
-      Distribution.io.matrix[1][1] <= myCounter.io.counterMatrix1.bits[1][1] @[PathFinder.scala 43:26]
-      when Distribution.io.ProcessValid : @[PathFinder.scala 52:40]
+      when myCounter.io.valid : @[PathFinder.scala 52:30]
         myCounter.io.counterMatrix1.ready <= UInt<1>("h1") @[PathFinder.scala 53:39]
         myCounter.io.counterMatrix2.ready <= UInt<1>("h1") @[PathFinder.scala 54:39]
         myMuxes.io.mat1[0][0] <= io.Stationary_matrix[0][0] @[PathFinder.scala 55:21]
@@ -942,7 +464,7 @@ circuit FlexDPUby2 :
         myMuxes.io.mat1[1][1] <= io.Stationary_matrix[1][1] @[PathFinder.scala 55:21]
         myMuxes.io.mat2[0] <= io.Streaming_matrix[0] @[PathFinder.scala 57:21]
         myMuxes.io.mat2[1] <= io.Streaming_matrix[1] @[PathFinder.scala 57:21]
-        myMuxes.io.counterMatrix1 <= Distribution.io.out @[PathFinder.scala 58:31]
+        myMuxes.io.counterMatrix1 <= myCounter.io.counterMatrix1.bits @[PathFinder.scala 58:31]
         myMuxes.io.counterMatrix2 <= myCounter.io.counterMatrix2.bits @[PathFinder.scala 59:31]
       else :
         myCounter.io.counterMatrix1.ready <= UInt<1>("h0") @[PathFinder.scala 62:39]
@@ -968,8 +490,6 @@ circuit FlexDPUby2 :
       io.Source <= myMuxes.io.Source @[PathFinder.scala 76:13]
       io.destination <= myMuxes.io.destination @[PathFinder.scala 77:18]
     else :
-      io.validIteration <= UInt<1>("h0") @[PathFinder.scala 79:21]
-      io.iteration <= UInt<1>("h0") @[PathFinder.scala 80:16]
       io.PF_Valid <= UInt<1>("h0") @[PathFinder.scala 81:15]
       wire _WIRE : UInt<4>[4] @[PathFinder.scala 82:68]
       _WIRE[0] <= UInt<4>("h0") @[PathFinder.scala 82:68]
@@ -1103,10 +623,10 @@ circuit FlexDPUby2 :
         else :
           j <= UInt<1>("h0") @[ivncontrol4.scala 83:11]
     io.o_vn <= i_vn @[ivncontrol4.scala 90:13]
-    i_vn[0] <= UInt<5>("h1c") @[ivncontrol4.scala 93:17]
-    i_vn[1] <= UInt<5>("h1f") @[ivncontrol4.scala 93:17]
-    i_vn[2] <= UInt<5>("hd") @[ivncontrol4.scala 93:17]
-    i_vn[3] <= UInt<5>("h8") @[ivncontrol4.scala 93:17]
+    i_vn[0] <= UInt<5>("h12") @[ivncontrol4.scala 93:17]
+    i_vn[1] <= UInt<5>("h12") @[ivncontrol4.scala 93:17]
+    i_vn[2] <= UInt<5>("h18") @[ivncontrol4.scala 93:17]
+    i_vn[3] <= UInt<5>("h15") @[ivncontrol4.scala 93:17]
     node _T_23 = eq(i, UInt<1>("h1")) @[ivncontrol4.scala 103:14]
     node _T_24 = eq(j, UInt<1>("h1")) @[ivncontrol4.scala 103:45]
     node _T_25 = and(_T_23, _T_24) @[ivncontrol4.scala 103:39]
@@ -13638,45 +13158,77 @@ circuit FlexDPUby2 :
     io.o_valid <= my_fan_network.io.o_valid @[FlexDPEby2.scala 108:16]
     io.o_data_bus <= my_fan_network.io.o_data_bus @[FlexDPEby2.scala 109:19]
     io.o_adder <= my_fan_network.io.o_adder @[FlexDPEby2.scala 110:16]
-    node _T = lt(counter, UInt<5>("h1a")) @[FlexDPEby2.scala 112:20]
-    when _T : @[FlexDPEby2.scala 112:27]
-      matrix[0][0] <= io.o_adder[0] @[FlexDPEby2.scala 113:20]
-      matrix[1][0] <= io.o_adder[2] @[FlexDPEby2.scala 114:20]
-      node _T_1 = eq(my_Benes.io.o_dist_bus1[1], UInt<1>("h0")) @[FlexDPEby2.scala 115:27]
-      when _T_1 : @[FlexDPEby2.scala 115:35]
-        matrix[0][0] <= r_mult[0] @[FlexDPEby2.scala 116:23]
-      else :
-        node _T_2 = eq(my_Benes.io.o_dist_bus1[0], UInt<1>("h0")) @[FlexDPEby2.scala 117:33]
-        when _T_2 : @[FlexDPEby2.scala 117:41]
-          matrix[0][0] <= r_mult[1] @[FlexDPEby2.scala 118:23]
-      node _T_3 = eq(my_Benes.io.o_dist_bus1[3], UInt<1>("h0")) @[FlexDPEby2.scala 120:27]
-      when _T_3 : @[FlexDPEby2.scala 120:36]
-        matrix[1][0] <= r_mult[2] @[FlexDPEby2.scala 121:22]
-      else :
-        node _T_4 = eq(my_Benes.io.o_dist_bus1[2], UInt<1>("h0")) @[FlexDPEby2.scala 122:33]
-        when _T_4 : @[FlexDPEby2.scala 122:41]
-          matrix[1][0] <= r_mult[3] @[FlexDPEby2.scala 123:23]
-    node _counter_T = add(counter, UInt<1>("h1")) @[FlexDPEby2.scala 136:24]
-    node _counter_T_1 = tail(_counter_T, 1) @[FlexDPEby2.scala 136:24]
-    counter <= _counter_T_1 @[FlexDPEby2.scala 136:13]
-    node _T_5 = gt(counter, UInt<6>("h28")) @[FlexDPEby2.scala 139:19]
-    when _T_5 : @[FlexDPEby2.scala 139:26]
-      matrix[0][1] <= io.o_adder[0] @[FlexDPEby2.scala 140:20]
-      matrix[1][1] <= io.o_adder[2] @[FlexDPEby2.scala 141:20]
-      node _T_6 = eq(my_Benes.io.o_dist_bus1[1], UInt<1>("h0")) @[FlexDPEby2.scala 142:28]
-      when _T_6 : @[FlexDPEby2.scala 142:36]
-        matrix[0][1] <= r_mult[0] @[FlexDPEby2.scala 143:23]
-      else :
-        node _T_7 = eq(my_Benes.io.o_dist_bus1[0], UInt<1>("h0")) @[FlexDPEby2.scala 144:33]
-        when _T_7 : @[FlexDPEby2.scala 144:41]
-          matrix[0][1] <= r_mult[1] @[FlexDPEby2.scala 145:23]
-      node _T_8 = eq(my_Benes.io.o_dist_bus1[3], UInt<1>("h0")) @[FlexDPEby2.scala 147:30]
-      when _T_8 : @[FlexDPEby2.scala 147:39]
-        matrix[1][1] <= r_mult[2] @[FlexDPEby2.scala 148:22]
-      else :
-        node _T_9 = eq(my_Benes.io.o_dist_bus1[2], UInt<1>("h0")) @[FlexDPEby2.scala 150:33]
-        when _T_9 : @[FlexDPEby2.scala 150:41]
-          matrix[1][1] <= r_mult[3] @[FlexDPEby2.scala 151:23]
+    node _T = lt(counter, UInt<5>("h1a")) @[FlexDPEby2.scala 115:20]
+    when _T : @[FlexDPEby2.scala 115:27]
+      matrix[0][0] <= io.o_adder[0] @[FlexDPEby2.scala 116:20]
+      matrix[1][0] <= io.o_adder[2] @[FlexDPEby2.scala 117:20]
+      node _T_1 = eq(io.Stationary_matrix[0][0], UInt<1>("h0")) @[FlexDPEby2.scala 129:39]
+      node _T_2 = eq(io.Stationary_matrix[1][0], UInt<1>("h0")) @[FlexDPEby2.scala 129:77]
+      node _T_3 = and(_T_1, _T_2) @[FlexDPEby2.scala 129:47]
+      when _T_3 : @[FlexDPEby2.scala 129:85]
+        matrix[0][0] <= r_mult[0] @[FlexDPEby2.scala 130:23]
+        matrix[1][0] <= r_mult[0] @[FlexDPEby2.scala 131:24]
+      node _T_4 = eq(io.Stationary_matrix[0][1], UInt<1>("h0")) @[FlexDPEby2.scala 133:39]
+      node _T_5 = eq(io.Stationary_matrix[1][1], UInt<1>("h0")) @[FlexDPEby2.scala 133:77]
+      node _T_6 = and(_T_4, _T_5) @[FlexDPEby2.scala 133:47]
+      when _T_6 : @[FlexDPEby2.scala 133:85]
+        matrix[0][0] <= r_mult[0] @[FlexDPEby2.scala 134:23]
+        matrix[1][0] <= r_mult[1] @[FlexDPEby2.scala 135:24]
+      node _T_7 = eq(io.Stationary_matrix[0][0], UInt<1>("h0")) @[FlexDPEby2.scala 137:39]
+      node _T_8 = eq(io.Stationary_matrix[1][1], UInt<1>("h0")) @[FlexDPEby2.scala 137:77]
+      node _T_9 = and(_T_7, _T_8) @[FlexDPEby2.scala 137:47]
+      when _T_9 : @[FlexDPEby2.scala 137:85]
+        matrix[0][0] <= r_mult[0] @[FlexDPEby2.scala 138:23]
+        matrix[1][0] <= r_mult[1] @[FlexDPEby2.scala 139:23]
+      node _T_10 = eq(io.Stationary_matrix[0][1], UInt<1>("h0")) @[FlexDPEby2.scala 142:40]
+      node _T_11 = eq(io.Stationary_matrix[1][0], UInt<1>("h0")) @[FlexDPEby2.scala 142:78]
+      node _T_12 = and(_T_10, _T_11) @[FlexDPEby2.scala 142:48]
+      when _T_12 : @[FlexDPEby2.scala 142:86]
+        matrix[0][0] <= r_mult[0] @[FlexDPEby2.scala 143:23]
+        matrix[1][0] <= r_mult[1] @[FlexDPEby2.scala 144:23]
+      node _T_13 = eq(io.Stationary_matrix[0][0], UInt<1>("h0")) @[FlexDPEby2.scala 147:39]
+      node _T_14 = eq(io.Stationary_matrix[0][1], UInt<1>("h0")) @[FlexDPEby2.scala 147:77]
+      node _T_15 = and(_T_13, _T_14) @[FlexDPEby2.scala 147:47]
+      when _T_15 : @[FlexDPEby2.scala 147:85]
+        matrix[0][0] <= io.o_adder[2] @[FlexDPEby2.scala 148:23]
+        matrix[1][0] <= io.o_adder[0] @[FlexDPEby2.scala 149:23]
+    node _counter_T = add(counter, UInt<1>("h1")) @[FlexDPEby2.scala 171:24]
+    node _counter_T_1 = tail(_counter_T, 1) @[FlexDPEby2.scala 171:24]
+    counter <= _counter_T_1 @[FlexDPEby2.scala 171:13]
+    node _T_16 = gt(counter, UInt<6>("h29")) @[FlexDPEby2.scala 174:19]
+    when _T_16 : @[FlexDPEby2.scala 174:26]
+      matrix[0][1] <= io.o_adder[0] @[FlexDPEby2.scala 175:20]
+      matrix[1][1] <= io.o_adder[2] @[FlexDPEby2.scala 176:20]
+      node _T_17 = eq(io.Stationary_matrix[0][0], UInt<1>("h0")) @[FlexDPEby2.scala 188:40]
+      node _T_18 = eq(io.Stationary_matrix[1][0], UInt<1>("h0")) @[FlexDPEby2.scala 188:78]
+      node _T_19 = and(_T_17, _T_18) @[FlexDPEby2.scala 188:48]
+      when _T_19 : @[FlexDPEby2.scala 188:86]
+        matrix[0][1] <= r_mult[0] @[FlexDPEby2.scala 189:23]
+        matrix[1][1] <= r_mult[0] @[FlexDPEby2.scala 190:24]
+      node _T_20 = eq(io.Stationary_matrix[0][1], UInt<1>("h0")) @[FlexDPEby2.scala 192:41]
+      node _T_21 = eq(io.Stationary_matrix[1][1], UInt<1>("h0")) @[FlexDPEby2.scala 192:79]
+      node _T_22 = and(_T_20, _T_21) @[FlexDPEby2.scala 192:49]
+      when _T_22 : @[FlexDPEby2.scala 192:87]
+        matrix[0][1] <= r_mult[0] @[FlexDPEby2.scala 193:23]
+        matrix[1][1] <= r_mult[1] @[FlexDPEby2.scala 194:24]
+      node _T_23 = eq(io.Stationary_matrix[0][0], UInt<1>("h0")) @[FlexDPEby2.scala 196:41]
+      node _T_24 = eq(io.Stationary_matrix[1][1], UInt<1>("h0")) @[FlexDPEby2.scala 196:79]
+      node _T_25 = and(_T_23, _T_24) @[FlexDPEby2.scala 196:49]
+      when _T_25 : @[FlexDPEby2.scala 196:87]
+        matrix[0][1] <= r_mult[0] @[FlexDPEby2.scala 197:23]
+        matrix[1][1] <= r_mult[1] @[FlexDPEby2.scala 198:23]
+      node _T_26 = eq(io.Stationary_matrix[0][1], UInt<1>("h0")) @[FlexDPEby2.scala 201:40]
+      node _T_27 = eq(io.Stationary_matrix[1][0], UInt<1>("h0")) @[FlexDPEby2.scala 201:78]
+      node _T_28 = and(_T_26, _T_27) @[FlexDPEby2.scala 201:48]
+      when _T_28 : @[FlexDPEby2.scala 201:86]
+        matrix[0][1] <= r_mult[0] @[FlexDPEby2.scala 202:23]
+        matrix[1][1] <= r_mult[1] @[FlexDPEby2.scala 203:23]
+      node _T_29 = eq(io.Stationary_matrix[0][0], UInt<1>("h0")) @[FlexDPEby2.scala 206:40]
+      node _T_30 = eq(io.Stationary_matrix[0][1], UInt<1>("h0")) @[FlexDPEby2.scala 206:78]
+      node _T_31 = and(_T_29, _T_30) @[FlexDPEby2.scala 206:48]
+      when _T_31 : @[FlexDPEby2.scala 206:86]
+        matrix[0][1] <= io.o_adder[2] @[FlexDPEby2.scala 207:23]
+        matrix[1][1] <= io.o_adder[0] @[FlexDPEby2.scala 208:23]
 
   module FlexDPUby2 :
     input clock : Clock

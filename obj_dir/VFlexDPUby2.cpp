@@ -31,7 +31,7 @@ void VFlexDPUby2::eval_step() {
             Verilated::debug(1);
             __Vchange = _change_request(vlSymsp);
             Verilated::debug(__Vsaved_debug);
-            VL_FATAL_MT("FlexDPUby2.v", 5319, "",
+            VL_FATAL_MT("FlexDPUby2.v", 4537, "",
                 "Verilated model didn't converge\n"
                 "- See DIDNOTCONVERGE in the Verilator manual");
         } else {
@@ -57,7 +57,7 @@ void VFlexDPUby2::_eval_initial_loop(VFlexDPUby2__Syms* __restrict vlSymsp) {
             Verilated::debug(1);
             __Vchange = _change_request(vlSymsp);
             Verilated::debug(__Vsaved_debug);
-            VL_FATAL_MT("FlexDPUby2.v", 5319, "",
+            VL_FATAL_MT("FlexDPUby2.v", 4537, "",
                 "Verilated model didn't DC converge\n"
                 "- See DIDNOTCONVERGE in the Verilator manual");
         } else {
@@ -81,13 +81,6 @@ VL_INLINE_OPT void VFlexDPUby2::_sequent__TOP__1(VFlexDPUby2__Syms* __restrict v
     IData/*31:0*/ __Vdly__FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__i;
     IData/*31:0*/ __Vdly__FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__j;
     IData/*31:0*/ __Vdly__FlexDPUby2__DOT__PF__DOT__myCounter__DOT__j;
-    IData/*31:0*/ __Vdly__FlexDPUby2__DOT__PF__DOT__Distribution__DOT__i;
-    IData/*31:0*/ __Vdly__FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__check;
-    IData/*31:0*/ __Vdly__FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__i;
-    IData/*31:0*/ __Vdly__FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__j;
-    IData/*31:0*/ __Vdly__FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__k;
-    IData/*31:0*/ __Vdly__FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__l;
-    IData/*31:0*/ __Vdly__FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__delay;
     IData/*31:0*/ __Vdly__FlexDPUby2__DOT__FDPE__DOT__my_ivn__DOT__i;
     IData/*31:0*/ __Vdly__FlexDPUby2__DOT__FDPE__DOT__my_ivn__DOT__j;
     // Body
@@ -99,12 +92,6 @@ VL_INLINE_OPT void VFlexDPUby2::_sequent__TOP__1(VFlexDPUby2__Syms* __restrict v
     __Vdly__FlexDPUby2__DOT__indexCol = vlTOPp->FlexDPUby2__DOT__indexCol;
     __Vdly__FlexDPUby2__DOT__jloop = vlTOPp->FlexDPUby2__DOT__jloop;
     __Vdly__FlexDPUby2__DOT__iloop = vlTOPp->FlexDPUby2__DOT__iloop;
-    __Vdly__FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__delay 
-        = vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__delay;
-    __Vdly__FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__l 
-        = vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__l;
-    __Vdly__FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__k 
-        = vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__k;
     __Vdly__FlexDPUby2__DOT__SindexRow = vlTOPp->FlexDPUby2__DOT__SindexRow;
     __Vdly__FlexDPUby2__DOT__SindexCol = vlTOPp->FlexDPUby2__DOT__SindexCol;
     __Vdly__FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__jValid 
@@ -113,58 +100,9 @@ VL_INLINE_OPT void VFlexDPUby2::_sequent__TOP__1(VFlexDPUby2__Syms* __restrict v
         = vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__j;
     __Vdly__FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__i 
         = vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__i;
-    __Vdly__FlexDPUby2__DOT__PF__DOT__Distribution__DOT__i 
-        = vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__i;
-    __Vdly__FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__check 
-        = vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__check;
-    __Vdly__FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__j 
-        = vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__j;
-    __Vdly__FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__i 
-        = vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__i;
     __Vdly__FlexDPUby2__DOT__PF__DOT__myCounter__DOT__j 
         = vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter__DOT__j;
     __Vdly__FlexDPUby2__DOT__iterationChange = vlTOPp->FlexDPUby2__DOT__iterationChange;
-    if (vlTOPp->reset) {
-        __Vdly__FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__k = 0U;
-    } else {
-        if (((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3_io_merge) 
-             & (2U == vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__delay))) {
-            if (((vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__k 
-                  < vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3_io_IDex) 
-                 & (1U == vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__l))) {
-                __Vdly__FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__k 
-                    = vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT___k_T_1;
-            }
-        }
-    }
-    if (vlTOPp->reset) {
-        __Vdly__FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__l = 0U;
-    } else {
-        if (((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3_io_merge) 
-             & (2U == vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__delay))) {
-            if (((vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__k 
-                  < vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3_io_IDex) 
-                 & (1U == vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__l))) {
-                __Vdly__FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__l = 0U;
-            } else {
-                if (((vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__k 
-                      <= vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3_io_IDex) 
-                     & (1U > vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__l))) {
-                    __Vdly__FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__l 
-                        = vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT___l_T_1;
-                }
-            }
-        }
-    }
-    if (vlTOPp->reset) {
-        __Vdly__FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__delay = 0U;
-    } else {
-        if (((1U >= vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__delay) 
-             & (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3_io_merge))) {
-            __Vdly__FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__delay 
-                = vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT___delay_T_1;
-        }
-    }
     if (vlTOPp->reset) {
         vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_fan_network__DOT__my_adder_1__DOT__r_add_en = 0U;
         vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_fan_network__DOT__my_adder_0__DOT__r_add_en = 0U;
@@ -300,272 +238,46 @@ VL_INLINE_OPT void VFlexDPUby2::_sequent__TOP__1(VFlexDPUby2__Syms* __restrict v
             }
         }
     }
-    if (vlTOPp->reset) {
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__iterationNo = 0U;
-    } else {
-        if (vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter_io_valid) {
-            if ((1U == vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT___GEN_3)) {
-                vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__iterationNo 
-                    = vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT___iterationNo_T_1;
-            }
-        }
-    }
-    if (vlTOPp->reset) {
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__count = 0U;
-    } else {
-        if (vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter_io_valid) {
-            if ((1U == vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT___GEN_3)) {
-                vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__count 
-                    = vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT___count_T_1;
-            }
-        }
-    }
-    vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3_io_merge_REG 
-        = vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__c;
     vlTOPp->FlexDPUby2__DOT__PF__DOT__io_PF_Valid_REG 
         = (((((0U != vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__k) 
               & (1U == vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__j)) 
              & (1U == vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__i)) 
             & (0U == vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__jNext)) 
            & (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter_io_valid));
-    if (vlTOPp->reset) {
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__Idex_1 = 0U;
-    } else {
-        if (vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter_io_valid) {
-            if ((1U == vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT___GEN_3)) {
-                vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__Idex_1 
-                    = vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT___GEN_10;
-            } else {
-                if ((((1U == vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT___GEN_3) 
-                      & (1U == vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__i)) 
-                     & (1U == vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__j))) {
-                    vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__Idex_1 
-                        = vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT___GEN_10;
-                }
-            }
-        }
-    }
-    if (vlTOPp->reset) {
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__Jdex_1 = 0U;
-    } else {
-        if (vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter_io_valid) {
-            if ((1U == vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT___GEN_3)) {
-                vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__Jdex_1 
-                    = vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT___GEN_12;
-            } else {
-                if ((((1U == vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT___GEN_3) 
-                      & (1U == vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__i)) 
-                     & (1U == vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__j))) {
-                    vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__Jdex_1 
-                        = vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT___GEN_12;
-                }
-            }
-        }
-    }
-    if (vlTOPp->reset) {
-        __Vdly__FlexDPUby2__DOT__PF__DOT__Distribution__DOT__i = 0U;
-    } else {
-        if (vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter_io_valid) {
-            if (((1U > vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__i) 
-                 & (1U == vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__j))) {
-                __Vdly__FlexDPUby2__DOT__PF__DOT__Distribution__DOT__i 
-                    = vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT___i_T_1;
-            }
-        }
-    }
-    if (vlTOPp->reset) {
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__Idex_0 = 0U;
-    } else {
-        if (vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter_io_valid) {
-            if ((1U == vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT___GEN_3)) {
-                vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__Idex_0 
-                    = vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT___GEN_9;
-            } else {
-                if ((((1U == vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT___GEN_3) 
-                      & (1U == vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__i)) 
-                     & (1U == vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__j))) {
-                    vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__Idex_0 
-                        = vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT___GEN_9;
-                }
-            }
-        }
-    }
-    if (vlTOPp->reset) {
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__b_0_0 = 0U;
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__b_0_1 = 0U;
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__b_1_0 = 0U;
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__b_1_1 = 0U;
-    } else {
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__b_0_0 
-            = ((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3_io_merge)
-                ? ((1U & ((~ vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__i) 
-                          & (~ vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__j)))
-                    ? ((1U & (vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__i 
-                              & vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__j))
-                        ? vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3_io_mat_1_1
-                        : vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT___GEN_30)
-                    : vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT___GEN_15)
-                : vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT___GEN_15);
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__b_0_1 
-            = ((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3_io_merge)
-                ? ((1U & ((~ vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__i) 
-                          & vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__j))
-                    ? ((1U & (vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__i 
-                              & vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__j))
-                        ? vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3_io_mat_1_1
-                        : vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT___GEN_30)
-                    : vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT___GEN_16)
-                : vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT___GEN_16);
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__b_1_0 
-            = ((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3_io_merge)
-                ? ((1U & (vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__i 
-                          & (~ vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__j)))
-                    ? ((1U & (vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__i 
-                              & vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__j))
-                        ? vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3_io_mat_1_1
-                        : vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT___GEN_30)
-                    : vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT___GEN_17)
-                : vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT___GEN_17);
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__b_1_1 
-            = ((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3_io_merge)
-                ? ((1U & (vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__i 
-                          & vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__j))
-                    ? ((1U & (vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__i 
-                              & vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__j))
-                        ? vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3_io_mat_1_1
-                        : vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT___GEN_30)
-                    : vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT___GEN_18)
-                : vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT___GEN_18);
-    }
-    if (vlTOPp->reset) {
-        __Vdly__FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__check = 0U;
-    } else {
-        if ((1U <= vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__check)) {
-            __Vdly__FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__check 
-                = vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT___check_T_1;
-        } else {
-            if ((((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3_io_i_valid) 
-                  & (0U == vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__i)) 
-                 & (0U == vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__j))) {
-                __Vdly__FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__check 
-                    = vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT___check_T_1;
-            }
-        }
-    }
-    if (vlTOPp->reset) {
-        __Vdly__FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__i = 0U;
-    } else {
-        if (vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT___GEN_22) {
-            if ((4U != vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT___GEN_31)) {
-                __Vdly__FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__i 
-                    = (((1U > vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__i) 
-                        & (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT___io_valid_T_1))
-                        ? vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT___i_T_3
-                        : vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT___GEN_19);
-            }
-        } else {
-            __Vdly__FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__i 
-                = vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT___GEN_19;
-        }
-    }
-    if (vlTOPp->reset) {
-        __Vdly__FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__j = 0U;
-    } else {
-        if (vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT___GEN_22) {
-            if ((4U != vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT___GEN_31)) {
-                __Vdly__FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__j 
-                    = (((1U > vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__i) 
-                        & (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT___io_valid_T_1))
-                        ? 0U : vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT___GEN_41);
-            }
-        } else {
-            if ((((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3_io_i_valid) 
-                  & (0U == vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__i)) 
-                 & (0U == vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__j))) {
-                __Vdly__FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__j = 0U;
-            }
-        }
-    }
-    vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part2__DOT__io_Ovalid_REG 
-        = (2U == ((1U & vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part2_io_IDex)
-                   ? (0xffffU & vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter__DOT___GEN_94)
-                   : (0xffffU & vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter__DOT___GEN_92)));
-    if (vlTOPp->reset) {
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part2__DOT__b_0_0 = 0U;
-    } else {
-        if (((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__c) 
-             & (0U != vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part2__DOT__a))) {
-            if ((1U & ((~ vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part2_io_IDex) 
-                       & (~ vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part2__DOT__j)))) {
-                vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part2__DOT__b_0_0 
-                    = ((1U & (vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part2_io_IDex 
-                              & vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part2__DOT__j))
-                        ? (0xffffU & vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter__DOT___GEN_94)
-                        : vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part2__DOT___GEN_6);
-            }
-        }
-    }
-    if (vlTOPp->reset) {
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part2__DOT__b_0_1 = 0U;
-    } else {
-        if (((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__c) 
-             & (0U != vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part2__DOT__a))) {
-            if ((1U & ((~ vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part2_io_IDex) 
-                       & vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part2__DOT__j))) {
-                vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part2__DOT__b_0_1 
-                    = ((1U & (vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part2_io_IDex 
-                              & vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part2__DOT__j))
-                        ? (0xffffU & vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter__DOT___GEN_94)
-                        : vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part2__DOT___GEN_6);
-            }
-        }
-    }
-    if (vlTOPp->reset) {
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part2__DOT__b_1_0 = 0U;
-    } else {
-        if (((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__c) 
-             & (0U != vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part2__DOT__a))) {
-            if ((1U & (vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part2_io_IDex 
-                       & (~ vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part2__DOT__j)))) {
-                vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part2__DOT__b_1_0 
-                    = ((1U & (vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part2_io_IDex 
-                              & vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part2__DOT__j))
-                        ? (0xffffU & vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter__DOT___GEN_94)
-                        : vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part2__DOT___GEN_6);
-            }
-        }
-    }
-    if (vlTOPp->reset) {
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part2__DOT__b_1_1 = 0U;
-    } else {
-        if (((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__c) 
-             & (0U != vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part2__DOT__a))) {
-            if ((1U & (vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part2_io_IDex 
-                       & vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part2__DOT__j))) {
-                vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part2__DOT__b_1_1 
-                    = ((1U & (vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part2_io_IDex 
-                              & vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part2__DOT__j))
-                        ? (0xffffU & vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter__DOT___GEN_94)
-                        : vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part2__DOT___GEN_6);
-            }
-        }
-    }
-    if ((((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__c) 
-          & (0U != vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part2__DOT__a)) 
-         & (1U > vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part2__DOT__j))) {
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part2__DOT__j 
-            = vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part2__DOT___j_T_1;
-    } else {
-        if ((1U & (~ (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part2__DOT___T_4)))) {
-            vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part2__DOT__j 
-                = ((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__c)
-                    ? vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__Jdex_0
-                    : 0U);
-        }
-    }
     vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter__DOT__io_valid_REG 
         = ((1U == vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter__DOT__i) 
            & (1U == vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter__DOT__j));
+    vlTOPp->FlexDPUby2__DOT__FDPE__DOT__r_mult_3 = 
+        ((IData)(vlTOPp->reset) ? 0U : (0x7fffU & (
+                                                   (0xffffU 
+                                                    & vlTOPp->FlexDPUby2__DOT__dest_3) 
+                                                   * 
+                                                   (0xffffU 
+                                                    & ((0U 
+                                                        != 
+                                                        (0xffffU 
+                                                         & vlTOPp->FlexDPUby2__DOT__src_3))
+                                                        ? 
+                                                       ((IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT___T_414)
+                                                         ? 
+                                                        ((3U 
+                                                          == (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT__parsedindexvalue3_12))
+                                                          ? vlTOPp->FlexDPUby2__DOT__src_3
+                                                          : 
+                                                         ((3U 
+                                                           == (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT__parsedindexvalue2_18))
+                                                           ? vlTOPp->FlexDPUby2__DOT__src_3
+                                                           : 
+                                                          ((3U 
+                                                            == (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT__parsedindexvalue1_21))
+                                                            ? vlTOPp->FlexDPUby2__DOT__src_3
+                                                            : 
+                                                           ((3U 
+                                                             == (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT__parsedindexvalue_15))
+                                                             ? vlTOPp->FlexDPUby2__DOT__src_3
+                                                             : (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT___GEN_648)))))
+                                                         : (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT___GEN_648))
+                                                        : (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT___GEN_508))))));
     if (vlTOPp->reset) {
         vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_fan_network__DOT__my_adder_0__DOT__r_adder = 0U;
     } else {
@@ -596,56 +308,58 @@ VL_INLINE_OPT void VFlexDPUby2::_sequent__TOP__1(VFlexDPUby2__Syms* __restrict v
     }
     if ((0x1aU > vlTOPp->FlexDPUby2__DOT__FDPE__DOT__counter)) {
         vlTOPp->FlexDPUby2__DOT__FDPE__DOT__matrix_0_0 
-            = (0xffffU & ((0U == (0xffffU & vlTOPp->FlexDPUby2__DOT__dest_1))
-                           ? (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__r_mult_0)
-                           : ((0U == (0xffffU & vlTOPp->FlexDPUby2__DOT__dest_0))
-                               ? (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__r_mult_1)
-                               : (IData)((QData)((IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_fan_network__DOT__my_adder_0_io_o_adder))))));
+            = (0xffffU & (((0U == (IData)(vlTOPp->io_Stationary_matrix_0_0)) 
+                           & (0U == (IData)(vlTOPp->io_Stationary_matrix_0_1)))
+                           ? (IData)((QData)((IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_fan_network__DOT__my_adder_2_io_o_adder)))
+                           : (((0U == (IData)(vlTOPp->io_Stationary_matrix_0_1)) 
+                               & (0U == (IData)(vlTOPp->io_Stationary_matrix_1_0)))
+                               ? (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__r_mult_0)
+                               : (((0U == (IData)(vlTOPp->io_Stationary_matrix_0_0)) 
+                                   & (0U == (IData)(vlTOPp->io_Stationary_matrix_1_1)))
+                                   ? (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__r_mult_0)
+                                   : (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT___GEN_2)))));
     }
-    if ((0x28U < vlTOPp->FlexDPUby2__DOT__FDPE__DOT__counter)) {
+    if ((0x29U < vlTOPp->FlexDPUby2__DOT__FDPE__DOT__counter)) {
         vlTOPp->FlexDPUby2__DOT__FDPE__DOT__matrix_0_1 
-            = (0xffffU & ((0U == (0xffffU & vlTOPp->FlexDPUby2__DOT__dest_1))
-                           ? (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__r_mult_0)
-                           : ((0U == (0xffffU & vlTOPp->FlexDPUby2__DOT__dest_0))
-                               ? (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__r_mult_1)
-                               : (IData)((QData)((IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_fan_network__DOT__my_adder_0_io_o_adder))))));
+            = (0xffffU & (((0U == (IData)(vlTOPp->io_Stationary_matrix_0_0)) 
+                           & (0U == (IData)(vlTOPp->io_Stationary_matrix_0_1)))
+                           ? (IData)((QData)((IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_fan_network__DOT__my_adder_2_io_o_adder)))
+                           : (((0U == (IData)(vlTOPp->io_Stationary_matrix_0_1)) 
+                               & (0U == (IData)(vlTOPp->io_Stationary_matrix_1_0)))
+                               ? (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__r_mult_0)
+                               : (((0U == (IData)(vlTOPp->io_Stationary_matrix_0_0)) 
+                                   & (0U == (IData)(vlTOPp->io_Stationary_matrix_1_1)))
+                                   ? (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__r_mult_0)
+                                   : (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT___GEN_2)))));
     }
     if ((0x1aU > vlTOPp->FlexDPUby2__DOT__FDPE__DOT__counter)) {
         vlTOPp->FlexDPUby2__DOT__FDPE__DOT__matrix_1_0 
-            = (0xffffU & ((0U == (0xffffU & vlTOPp->FlexDPUby2__DOT__dest_3))
-                           ? (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__r_mult_2)
-                           : ((0U == (0xffffU & vlTOPp->FlexDPUby2__DOT__dest_2))
-                               ? (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__r_mult_3)
-                               : (IData)((QData)((IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_fan_network__DOT__my_adder_2_io_o_adder))))));
+            = (0xffffU & (((0U == (IData)(vlTOPp->io_Stationary_matrix_0_0)) 
+                           & (0U == (IData)(vlTOPp->io_Stationary_matrix_0_1)))
+                           ? (IData)((QData)((IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_fan_network__DOT__my_adder_0_io_o_adder)))
+                           : (((0U == (IData)(vlTOPp->io_Stationary_matrix_0_1)) 
+                               & (0U == (IData)(vlTOPp->io_Stationary_matrix_1_0)))
+                               ? (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__r_mult_1)
+                               : (((0U == (IData)(vlTOPp->io_Stationary_matrix_0_0)) 
+                                   & (0U == (IData)(vlTOPp->io_Stationary_matrix_1_1)))
+                                   ? (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__r_mult_1)
+                                   : (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT___GEN_3)))));
     }
-    if ((0x28U < vlTOPp->FlexDPUby2__DOT__FDPE__DOT__counter)) {
+    if ((0x29U < vlTOPp->FlexDPUby2__DOT__FDPE__DOT__counter)) {
         vlTOPp->FlexDPUby2__DOT__FDPE__DOT__matrix_1_1 
-            = (0xffffU & ((0U == (0xffffU & vlTOPp->FlexDPUby2__DOT__dest_3))
-                           ? (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__r_mult_2)
-                           : ((0U == (0xffffU & vlTOPp->FlexDPUby2__DOT__dest_2))
-                               ? (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__r_mult_3)
-                               : (IData)((QData)((IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_fan_network__DOT__my_adder_2_io_o_adder))))));
+            = (0xffffU & (((0U == (IData)(vlTOPp->io_Stationary_matrix_0_0)) 
+                           & (0U == (IData)(vlTOPp->io_Stationary_matrix_0_1)))
+                           ? (IData)((QData)((IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_fan_network__DOT__my_adder_0_io_o_adder)))
+                           : (((0U == (IData)(vlTOPp->io_Stationary_matrix_0_1)) 
+                               & (0U == (IData)(vlTOPp->io_Stationary_matrix_1_0)))
+                               ? (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__r_mult_1)
+                               : (((0U == (IData)(vlTOPp->io_Stationary_matrix_0_0)) 
+                                   & (0U == (IData)(vlTOPp->io_Stationary_matrix_1_1)))
+                                   ? (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__r_mult_1)
+                                   : (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT___GEN_3)))));
     }
-    vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__delay 
-        = __Vdly__FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__delay;
-    vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__k 
-        = __Vdly__FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__k;
-    vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__l 
-        = __Vdly__FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__l;
     vlTOPp->FlexDPUby2__DOT__SindexRow = __Vdly__FlexDPUby2__DOT__SindexRow;
     vlTOPp->FlexDPUby2__DOT__SindexCol = __Vdly__FlexDPUby2__DOT__SindexCol;
-    vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__check 
-        = __Vdly__FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__check;
-    vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__i 
-        = __Vdly__FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__i;
-    vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__j 
-        = __Vdly__FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__j;
-    vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT___delay_T_1 
-        = ((IData)(1U) + vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__delay);
-    vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT___k_T_1 
-        = ((IData)(1U) + vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__k);
-    vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT___l_T_1 
-        = ((IData)(1U) + vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__l);
     vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_controller__DOT__r_add_lvl_1Reg_4 
         = ((~ (IData)(vlTOPp->reset)) & (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_controller__DOT__r_reduction_add_2));
     vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_controller__DOT__r_add_lvl_0Reg_6 
@@ -661,10 +375,6 @@ VL_INLINE_OPT void VFlexDPUby2::_sequent__TOP__1(VFlexDPUby2__Syms* __restrict v
     vlTOPp->FlexDPUby2__DOT___SindexCol_T_1 = ((IData)(1U) 
                                                + vlTOPp->FlexDPUby2__DOT__SindexCol);
     vlTOPp->FlexDPUby2__DOT___T_9 = (1U == vlTOPp->FlexDPUby2__DOT__SindexCol);
-    vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT___iterationNo_T_1 
-        = ((IData)(1U) + vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__iterationNo);
-    vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT___count_T_1 
-        = ((IData)(1U) + vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__count);
     if (vlTOPp->reset) {
         vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__k = 0U;
     } else {
@@ -674,46 +384,6 @@ VL_INLINE_OPT void VFlexDPUby2::_sequent__TOP__1(VFlexDPUby2__Syms* __restrict v
                 = vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___k_T_1;
         }
     }
-    vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT___check_T_1 
-        = ((IData)(1U) + vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__check);
-    vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT___GEN_22 
-        = (1U <= vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__check);
-    vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT___i_T_3 
-        = ((IData)(1U) + vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__i);
-    vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT___io_valid_T_1 
-        = (1U == vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__j);
-    if (vlTOPp->reset) {
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part2__DOT__a = 0U;
-    } else {
-        if (vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__c) {
-            vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part2__DOT__a 
-                = vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part2__DOT___a_T_1;
-        }
-    }
-    if (vlTOPp->reset) {
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__Jdex_0 = 0U;
-    } else {
-        if (vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter_io_valid) {
-            if ((1U == vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT___GEN_3)) {
-                vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__Jdex_0 
-                    = vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT___GEN_11;
-            } else {
-                if ((((1U == vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT___GEN_3) 
-                      & (1U == vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__i)) 
-                     & (1U == vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__j))) {
-                    vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__Jdex_0 
-                        = vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT___GEN_11;
-                }
-            }
-        }
-    }
-    vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part2__DOT___T_4 
-        = (1U == vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part2__DOT__j);
-    vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part2__DOT___j_T_1 
-        = ((IData)(1U) + vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part2__DOT__j);
-    vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part2_io_Ovalid 
-        = ((1U == vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part2__DOT__j) 
-           & (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part2__DOT__io_Ovalid_REG));
     if (vlTOPp->reset) {
         vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter__DOT__counterRegs1_0_0 = 0U;
     } else {
@@ -876,60 +546,11 @@ VL_INLINE_OPT void VFlexDPUby2::_sequent__TOP__1(VFlexDPUby2__Syms* __restrict v
     vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_fan_network__DOT__my_adder_2__DOT__r_valid 
         = ((~ (IData)(vlTOPp->reset)) & (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_fan_network__DOT__r_valid_0));
     if (vlTOPp->reset) {
-        vlTOPp->FlexDPUby2__DOT__FDPE__DOT__counter = 0U;
-        vlTOPp->FlexDPUby2__DOT__FDPE__DOT__r_mult_0 = 0U;
-        vlTOPp->FlexDPUby2__DOT__FDPE__DOT__r_mult_1 = 0U;
         vlTOPp->FlexDPUby2__DOT__FDPE__DOT__r_mult_2 = 0U;
-        vlTOPp->FlexDPUby2__DOT__FDPE__DOT__r_mult_3 = 0U;
+        vlTOPp->FlexDPUby2__DOT__FDPE__DOT__counter = 0U;
+        vlTOPp->FlexDPUby2__DOT__FDPE__DOT__r_mult_1 = 0U;
+        vlTOPp->FlexDPUby2__DOT__FDPE__DOT__r_mult_0 = 0U;
     } else {
-        vlTOPp->FlexDPUby2__DOT__FDPE__DOT__counter 
-            = vlTOPp->FlexDPUby2__DOT__FDPE__DOT___counter_T_1;
-        vlTOPp->FlexDPUby2__DOT__FDPE__DOT__r_mult_0 
-            = (0x7fffU & ((0xffffU & vlTOPp->FlexDPUby2__DOT__dest_0) 
-                          * (0xffffU & ((0U != (0xffffU 
-                                                & vlTOPp->FlexDPUby2__DOT__src_3))
-                                         ? ((IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT___T_414)
-                                             ? ((0U 
-                                                 == (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT__parsedindexvalue3_12))
-                                                 ? vlTOPp->FlexDPUby2__DOT__src_3
-                                                 : 
-                                                ((0U 
-                                                  == (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT__parsedindexvalue2_18))
-                                                  ? vlTOPp->FlexDPUby2__DOT__src_3
-                                                  : 
-                                                 ((0U 
-                                                   == (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT__parsedindexvalue1_21))
-                                                   ? vlTOPp->FlexDPUby2__DOT__src_3
-                                                   : 
-                                                  ((0U 
-                                                    == (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT__parsedindexvalue_15))
-                                                    ? vlTOPp->FlexDPUby2__DOT__src_3
-                                                    : (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT___GEN_645)))))
-                                             : (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT___GEN_645))
-                                         : (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT___GEN_505)))));
-        vlTOPp->FlexDPUby2__DOT__FDPE__DOT__r_mult_1 
-            = (0x7fffU & ((0xffffU & vlTOPp->FlexDPUby2__DOT__dest_1) 
-                          * (0xffffU & ((0U != (0xffffU 
-                                                & vlTOPp->FlexDPUby2__DOT__src_3))
-                                         ? ((IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT___T_414)
-                                             ? ((1U 
-                                                 == (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT__parsedindexvalue3_12))
-                                                 ? vlTOPp->FlexDPUby2__DOT__src_3
-                                                 : 
-                                                ((1U 
-                                                  == (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT__parsedindexvalue2_18))
-                                                  ? vlTOPp->FlexDPUby2__DOT__src_3
-                                                  : 
-                                                 ((1U 
-                                                   == (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT__parsedindexvalue1_21))
-                                                   ? vlTOPp->FlexDPUby2__DOT__src_3
-                                                   : 
-                                                  ((1U 
-                                                    == (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT__parsedindexvalue_15))
-                                                    ? vlTOPp->FlexDPUby2__DOT__src_3
-                                                    : (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT___GEN_646)))))
-                                             : (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT___GEN_646))
-                                         : (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT___GEN_506)))));
         vlTOPp->FlexDPUby2__DOT__FDPE__DOT__r_mult_2 
             = (0x7fffU & ((0xffffU & vlTOPp->FlexDPUby2__DOT__dest_2) 
                           * (0xffffU & ((0U != (0xffffU 
@@ -953,66 +574,55 @@ VL_INLINE_OPT void VFlexDPUby2::_sequent__TOP__1(VFlexDPUby2__Syms* __restrict v
                                                     : (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT___GEN_647)))))
                                              : (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT___GEN_647))
                                          : (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT___GEN_507)))));
-        vlTOPp->FlexDPUby2__DOT__FDPE__DOT__r_mult_3 
-            = (0x7fffU & ((0xffffU & vlTOPp->FlexDPUby2__DOT__dest_3) 
+        vlTOPp->FlexDPUby2__DOT__FDPE__DOT__counter 
+            = vlTOPp->FlexDPUby2__DOT__FDPE__DOT___counter_T_1;
+        vlTOPp->FlexDPUby2__DOT__FDPE__DOT__r_mult_1 
+            = (0x7fffU & ((0xffffU & vlTOPp->FlexDPUby2__DOT__dest_1) 
                           * (0xffffU & ((0U != (0xffffU 
                                                 & vlTOPp->FlexDPUby2__DOT__src_3))
                                          ? ((IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT___T_414)
-                                             ? ((3U 
+                                             ? ((1U 
                                                  == (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT__parsedindexvalue3_12))
                                                  ? vlTOPp->FlexDPUby2__DOT__src_3
                                                  : 
-                                                ((3U 
+                                                ((1U 
                                                   == (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT__parsedindexvalue2_18))
                                                   ? vlTOPp->FlexDPUby2__DOT__src_3
                                                   : 
-                                                 ((3U 
+                                                 ((1U 
                                                    == (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT__parsedindexvalue1_21))
                                                    ? vlTOPp->FlexDPUby2__DOT__src_3
                                                    : 
-                                                  ((3U 
+                                                  ((1U 
                                                     == (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT__parsedindexvalue_15))
                                                     ? vlTOPp->FlexDPUby2__DOT__src_3
-                                                    : (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT___GEN_648)))))
-                                             : (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT___GEN_648))
-                                         : (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT___GEN_508)))));
+                                                    : (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT___GEN_646)))))
+                                             : (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT___GEN_646))
+                                         : (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT___GEN_506)))));
+        vlTOPp->FlexDPUby2__DOT__FDPE__DOT__r_mult_0 
+            = (0x7fffU & ((0xffffU & vlTOPp->FlexDPUby2__DOT__dest_0) 
+                          * (0xffffU & ((0U != (0xffffU 
+                                                & vlTOPp->FlexDPUby2__DOT__src_3))
+                                         ? ((IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT___T_414)
+                                             ? ((0U 
+                                                 == (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT__parsedindexvalue3_12))
+                                                 ? vlTOPp->FlexDPUby2__DOT__src_3
+                                                 : 
+                                                ((0U 
+                                                  == (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT__parsedindexvalue2_18))
+                                                  ? vlTOPp->FlexDPUby2__DOT__src_3
+                                                  : 
+                                                 ((0U 
+                                                   == (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT__parsedindexvalue1_21))
+                                                   ? vlTOPp->FlexDPUby2__DOT__src_3
+                                                   : 
+                                                  ((0U 
+                                                    == (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT__parsedindexvalue_15))
+                                                    ? vlTOPp->FlexDPUby2__DOT__src_3
+                                                    : (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT___GEN_645)))))
+                                             : (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT___GEN_645))
+                                         : (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT___GEN_505)))));
     }
-    if (((1U == vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part2__DOT__j) 
-         & (~ (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part2_io_Ovalid)))) {
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3_io_IDex 
-            = vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__Idex_0;
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3_io_i_valid 
-            = ((1U == vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part2__DOT__j) 
-               & 1U);
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3_io_merge 
-            = ((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3_io_merge_REG) 
-               & 1U);
-    } else {
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3_io_IDex = 0U;
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3_io_i_valid = 0U;
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3_io_merge = 0U;
-    }
-    vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT___GEN_12 
-        = ((1U & (vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__k 
-                  & vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__l))
-            ? (((1U == vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part2__DOT__j) 
-                & (~ (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part2_io_Ovalid)))
-                ? vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part2__DOT__b_1_1
-                : 0U) : ((1U & (vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__k 
-                                & (~ vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__l)))
-                          ? (((1U == vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part2__DOT__j) 
-                              & (~ (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part2_io_Ovalid)))
-                              ? vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part2__DOT__b_1_0
-                              : 0U) : ((1U & ((~ vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__k) 
-                                              & vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__l))
-                                        ? (((1U == vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part2__DOT__j) 
-                                            & (~ (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part2_io_Ovalid)))
-                                            ? vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part2__DOT__b_0_1
-                                            : 0U) : 
-                                       (((1U == vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part2__DOT__j) 
-                                         & (~ (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part2_io_Ovalid)))
-                                         ? vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part2__DOT__b_0_0
-                                         : 0U))));
     vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter__DOT__j 
         = __Vdly__FlexDPUby2__DOT__PF__DOT__myCounter__DOT__j;
     vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_controller__DOT__r_reduction_add_2 
@@ -1031,60 +641,6 @@ VL_INLINE_OPT void VFlexDPUby2::_sequent__TOP__1(VFlexDPUby2__Syms* __restrict v
         = ((~ (IData)(vlTOPp->reset)) & (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_fan_network__DOT__r_valid_0));
     vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___k_T_1 
         = ((IData)(1U) + vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__k);
-    vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part2__DOT___a_T_1 
-        = ((IData)(1U) + vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part2__DOT__a);
-    vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__c 
-        = ((1U == vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__i) 
-           & (1U == vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__j));
-    vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT___GEN_41 
-        = (((1U >= vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__i) 
-            & (1U > vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__j))
-            ? ((IData)(1U) + vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__j)
-            : (((1U == vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__i) 
-                & (1U == vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__j))
-                ? vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__j
-                : ((((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3_io_i_valid) 
-                     & (0U == vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__i)) 
-                    & (0U == vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__j))
-                    ? 0U : vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__j)));
-    vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT___GEN_19 
-        = ((((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3_io_i_valid) 
-             & (0U == vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__i)) 
-            & (0U == vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__j))
-            ? ((IData)(1U) + vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3_io_IDex)
-            : vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__i);
-    if (((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3_io_merge) 
-         & (2U == vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__delay))) {
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT___GEN_15 
-            = ((1U & ((~ vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__k) 
-                      & (~ vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__l)))
-                ? vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT___GEN_12
-                : vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__b_0_0);
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT___GEN_16 
-            = ((1U & ((~ vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__k) 
-                      & vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__l))
-                ? vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT___GEN_12
-                : vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__b_0_1);
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT___GEN_17 
-            = ((1U & (vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__k 
-                      & (~ vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__l)))
-                ? vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT___GEN_12
-                : vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__b_1_0);
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT___GEN_18 
-            = ((1U & (vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__k 
-                      & vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__l))
-                ? vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT___GEN_12
-                : vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__b_1_1);
-    } else {
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT___GEN_15 
-            = vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__b_0_0;
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT___GEN_16 
-            = vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__b_0_1;
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT___GEN_17 
-            = vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__b_1_0;
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT___GEN_18 
-            = vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__b_1_1;
-    }
     vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter__DOT___GEN_40 
         = ((1U == vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter__DOT__k)
             ? vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter__DOT__k
@@ -1103,16 +659,16 @@ VL_INLINE_OPT void VFlexDPUby2::_sequent__TOP__1(VFlexDPUby2__Syms* __restrict v
         vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter__DOT__jValid 
             = vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter__DOT___GEN_62;
     }
+    vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_fan_network__DOT__my_adder_2__DOT___GEN_3 
+        = ((4U == (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_controller__DOT__r_cmd_lvl_0Reg_7))
+            ? (IData)((QData)((IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__r_mult_3)))
+            : vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_fan_network__DOT__my_adder_2__DOT__r_adder);
     vlTOPp->FlexDPUby2__DOT__FDPE__DOT___counter_T_1 
         = ((IData)(1U) + vlTOPp->FlexDPUby2__DOT__FDPE__DOT__counter);
     vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_fan_network__DOT__my_adder_0__DOT___GEN_3 
         = ((4U == (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_controller__DOT__r_cmd_lvl_0Reg_6))
             ? (IData)((QData)((IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__r_mult_1)))
             : vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_fan_network__DOT__my_adder_0__DOT__r_adder);
-    vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_fan_network__DOT__my_adder_2__DOT___GEN_3 
-        = ((4U == (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_controller__DOT__r_cmd_lvl_0Reg_7))
-            ? (IData)((QData)((IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__r_mult_3)))
-            : vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_fan_network__DOT__my_adder_2__DOT__r_adder);
     if (vlTOPp->reset) {
         __Vdly__FlexDPUby2__DOT__iterationChange = 0U;
     } else {
@@ -1397,8 +953,6 @@ VL_INLINE_OPT void VFlexDPUby2::_sequent__TOP__1(VFlexDPUby2__Syms* __restrict v
             vlTOPp->FlexDPUby2__DOT__dest_3 = vlTOPp->FlexDPUby2__DOT__DPEDest_0_3;
         }
     }
-    vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__i 
-        = __Vdly__FlexDPUby2__DOT__PF__DOT__Distribution__DOT__i;
     if (vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter__DOT___reg_i_T_2) {
         vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter__DOT___GEN_44 
             = vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter__DOT__j;
@@ -1416,37 +970,6 @@ VL_INLINE_OPT void VFlexDPUby2::_sequent__TOP__1(VFlexDPUby2__Syms* __restrict v
         = ((IData)(vlTOPp->reset) ? 0U : (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_ivn__DOT__i_vn_3));
     vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_fan_network__DOT__r_valid_0 
         = ((~ (IData)(vlTOPp->reset)) & (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_controller__DOT__r_valid_3));
-    vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part2_io_IDex 
-        = ((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__c)
-            ? vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__Idex_0
-            : 0U);
-    vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT___i_T_1 
-        = ((IData)(1U) + vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__i);
-    if ((1U & vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__count)) {
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT___GEN_9 
-            = vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__Idex_0;
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT___GEN_10 
-            = vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__i;
-    } else {
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT___GEN_9 
-            = vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__i;
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT___GEN_10 
-            = vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__Idex_1;
-    }
-    if (vlTOPp->reset) {
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__j = 0U;
-    } else {
-        if (vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter_io_valid) {
-            if (vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__ab) {
-                vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__j 
-                    = vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT___j_T_1;
-            } else {
-                if ((1U & (~ (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT___io_validIteration_T_2)))) {
-                    vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__j = 0U;
-                }
-            }
-        }
-    }
     vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter__DOT___GEN_62 
         = ((~ (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter__DOT__jValid)) 
            & ((1U <= vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter__DOT__j) 
@@ -1464,9 +987,9 @@ VL_INLINE_OPT void VFlexDPUby2::_sequent__TOP__1(VFlexDPUby2__Syms* __restrict v
         __Vdly__FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__jValid = 0U;
     } else {
         if (vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___T_6) {
-            if ((1U & (~ (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___T_36)))) {
+            if ((1U & (~ (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___T_28)))) {
                 __Vdly__FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__jValid 
-                    = vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_148;
+                    = vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_82;
             }
         } else {
             if (((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__jValid) 
@@ -1479,11 +1002,11 @@ VL_INLINE_OPT void VFlexDPUby2::_sequent__TOP__1(VFlexDPUby2__Syms* __restrict v
         __Vdly__FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__i = 0U;
     } else {
         if (vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___T_6) {
-            if ((1U & (~ (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___T_36)))) {
+            if ((1U & (~ (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___T_28)))) {
                 if ((1U & (~ ((1U == vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__j) 
                               & (1U == vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__i))))) {
                     __Vdly__FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__i 
-                        = vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_145;
+                        = vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_79;
                 }
             }
         } else {
@@ -1497,9 +1020,9 @@ VL_INLINE_OPT void VFlexDPUby2::_sequent__TOP__1(VFlexDPUby2__Syms* __restrict v
         __Vdly__FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__j = 0U;
     } else {
         if (vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___T_6) {
-            if (vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___T_36) {
+            if (vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___T_28) {
                 __Vdly__FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__j 
-                    = vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___T_28;
+                    = vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___T_20;
             } else {
                 if ((1U & (~ ((1U == vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__j) 
                               & (1U == vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__i))))) {
@@ -1517,11 +1040,11 @@ VL_INLINE_OPT void VFlexDPUby2::_sequent__TOP__1(VFlexDPUby2__Syms* __restrict v
         vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter = 0U;
     } else {
         if (vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___T_6) {
-            if ((1U & (~ (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___T_36)))) {
+            if ((1U & (~ (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___T_28)))) {
                 if ((1U & (~ ((1U == vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__j) 
                               & (1U == vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__i))))) {
                     vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter 
-                        = vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_146;
+                        = vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_80;
                 }
             }
         } else {
@@ -1561,159 +1084,159 @@ VL_INLINE_OPT void VFlexDPUby2::_sequent__TOP__1(VFlexDPUby2__Syms* __restrict v
     } else {
         vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__indexcounter 
             = ((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___T_6)
-                ? ((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___T_36)
-                    ? vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_144
+                ? ((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___T_28)
+                    ? vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_78
                     : (((1U == vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__j) 
                         & (1U == vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__i))
-                        ? vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_144
-                        : vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_147))
+                        ? vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_78
+                        : vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_81))
                 : (((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__jValid) 
                     & (~ (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__matricesAreEqual)))
-                    ? 0U : vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_144));
+                    ? 0U : vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_78));
         vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_0_0 
             = ((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___T_6)
-                ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_114)
+                ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_48)
                 : (((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__jValid) 
                     & (~ (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__matricesAreEqual)))
-                    ? 0U : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_114)));
+                    ? 0U : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_48)));
         vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_0_1 
             = ((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___T_6)
-                ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_115)
+                ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_49)
                 : (((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__jValid) 
                     & (~ (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__matricesAreEqual)))
-                    ? 0U : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_115)));
+                    ? 0U : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_49)));
         vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_0_2 
             = ((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___T_6)
-                ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_116)
+                ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_50)
                 : (((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__jValid) 
                     & (~ (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__matricesAreEqual)))
-                    ? 0U : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_116)));
+                    ? 0U : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_50)));
         vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_0_3 
             = ((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___T_6)
-                ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_117)
+                ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_51)
                 : (((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__jValid) 
                     & (~ (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__matricesAreEqual)))
-                    ? 0U : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_117)));
+                    ? 0U : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_51)));
         vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_1_0 
             = ((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___T_6)
-                ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_118)
+                ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_52)
                 : (((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__jValid) 
                     & (~ (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__matricesAreEqual)))
-                    ? 0U : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_118)));
+                    ? 0U : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_52)));
         vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_1_1 
             = ((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___T_6)
-                ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_119)
+                ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_53)
                 : (((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__jValid) 
                     & (~ (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__matricesAreEqual)))
-                    ? 0U : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_119)));
+                    ? 0U : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_53)));
         vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_1_2 
             = ((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___T_6)
-                ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_120)
+                ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_54)
                 : (((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__jValid) 
                     & (~ (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__matricesAreEqual)))
-                    ? 0U : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_120)));
+                    ? 0U : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_54)));
         vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_1_3 
             = ((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___T_6)
-                ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_121)
+                ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_55)
                 : (((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__jValid) 
                     & (~ (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__matricesAreEqual)))
-                    ? 0U : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_121)));
+                    ? 0U : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_55)));
         vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_2_0 
             = ((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___T_6)
-                ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_122)
+                ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_56)
                 : (((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__jValid) 
                     & (~ (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__matricesAreEqual)))
-                    ? 0U : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_122)));
+                    ? 0U : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_56)));
         vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_2_1 
             = ((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___T_6)
-                ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_123)
+                ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_57)
                 : (((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__jValid) 
                     & (~ (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__matricesAreEqual)))
-                    ? 0U : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_123)));
+                    ? 0U : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_57)));
         vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_2_2 
             = ((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___T_6)
-                ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_124)
+                ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_58)
                 : (((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__jValid) 
                     & (~ (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__matricesAreEqual)))
-                    ? 0U : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_124)));
+                    ? 0U : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_58)));
         vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_2_3 
             = ((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___T_6)
-                ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_125)
+                ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_59)
                 : (((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__jValid) 
                     & (~ (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__matricesAreEqual)))
-                    ? 0U : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_125)));
+                    ? 0U : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_59)));
         vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_3_0 
             = ((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___T_6)
-                ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_126)
+                ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_60)
                 : (((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__jValid) 
                     & (~ (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__matricesAreEqual)))
-                    ? 0U : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_126)));
+                    ? 0U : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_60)));
         vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_3_1 
             = ((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___T_6)
-                ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_127)
+                ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_61)
                 : (((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__jValid) 
                     & (~ (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__matricesAreEqual)))
-                    ? 0U : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_127)));
+                    ? 0U : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_61)));
         vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_3_2 
             = ((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___T_6)
-                ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_128)
+                ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_62)
                 : (((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__jValid) 
                     & (~ (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__matricesAreEqual)))
-                    ? 0U : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_128)));
+                    ? 0U : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_62)));
         vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_3_3 
             = ((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___T_6)
-                ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_129)
+                ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_63)
                 : (((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__jValid) 
                     & (~ (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__matricesAreEqual)))
-                    ? 0U : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_129)));
+                    ? 0U : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_63)));
         vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__src_0 
             = ((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___T_6)
-                ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_130)
+                ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_64)
                 : (((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__jValid) 
                     & (~ (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__matricesAreEqual)))
-                    ? 0U : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_130)));
+                    ? 0U : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_64)));
         vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__src_1 
             = ((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___T_6)
-                ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_131)
+                ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_65)
                 : (((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__jValid) 
                     & (~ (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__matricesAreEqual)))
-                    ? 0U : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_131)));
+                    ? 0U : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_65)));
         vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__src_2 
             = ((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___T_6)
-                ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_132)
+                ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_66)
                 : (((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__jValid) 
                     & (~ (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__matricesAreEqual)))
-                    ? 0U : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_132)));
+                    ? 0U : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_66)));
         vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__src_3 
             = ((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___T_6)
-                ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_133)
+                ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_67)
                 : (((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__jValid) 
                     & (~ (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__matricesAreEqual)))
-                    ? 0U : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_133)));
+                    ? 0U : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_67)));
         vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__dest_0 
             = ((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___T_6)
-                ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_134)
+                ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_68)
                 : (((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__jValid) 
                     & (~ (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__matricesAreEqual)))
-                    ? 0U : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_134)));
+                    ? 0U : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_68)));
         vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__dest_1 
             = ((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___T_6)
-                ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_135)
+                ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_69)
                 : (((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__jValid) 
                     & (~ (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__matricesAreEqual)))
-                    ? 0U : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_135)));
+                    ? 0U : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_69)));
         vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__dest_2 
             = ((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___T_6)
-                ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_136)
+                ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_70)
                 : (((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__jValid) 
                     & (~ (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__matricesAreEqual)))
-                    ? 0U : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_136)));
+                    ? 0U : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_70)));
         vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__dest_3 
             = ((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___T_6)
-                ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_137)
+                ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_71)
                 : (((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__jValid) 
                     & (~ (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__matricesAreEqual)))
-                    ? 0U : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_137)));
+                    ? 0U : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_71)));
         vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__jNext 
             = vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__j;
     }
@@ -2527,25 +2050,6 @@ VL_INLINE_OPT void VFlexDPUby2::_sequent__TOP__1(VFlexDPUby2__Syms* __restrict v
                               : (1U & (IData)(vlTOPp->FlexDPUby2__DOT__FDPE_io_i_mux_bus_0_0)))))));
     vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_controller__DOT__r_valid_3 
         = ((~ (IData)(vlTOPp->reset)) & (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_controller__DOT__r_valid_2));
-    vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT___j_T_1 
-        = ((IData)(1U) + vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__j);
-    vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT___io_validIteration_T_2 
-        = ((1U == vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__i) 
-           & (1U == vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__j));
-    vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__ab 
-        = ((1U >= vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__i) 
-           & (1U > vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__j));
-    if ((1U & vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__count)) {
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT___GEN_11 
-            = vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__Jdex_0;
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT___GEN_12 
-            = vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__j;
-    } else {
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT___GEN_11 
-            = vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__j;
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT___GEN_12 
-            = vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__Jdex_1;
-    }
     if (vlTOPp->reset) {
         vlTOPp->FlexDPUby2__DOT__DPEDest_0_0 = 0U;
     } else {
@@ -2673,30 +2177,15 @@ VL_INLINE_OPT void VFlexDPUby2::_sequent__TOP__1(VFlexDPUby2__Syms* __restrict v
     vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter_io_valid 
         = ((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter_io_start_REG) 
            & (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter__DOT__io_valid_REG));
-    if (vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter_io_start_REG) {
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter__DOT___GEN_94 
-            = vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter__DOT__counterRegs1_1_1;
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter__DOT___GEN_91 
-            = vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter__DOT__counterRegs1_0_0;
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter__DOT___GEN_92 
-            = vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter__DOT__counterRegs1_0_1;
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter__DOT___GEN_93 
-            = vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter__DOT__counterRegs1_1_0;
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter__DOT___GEN_88 
-            = ((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter__DOT__jValid)
+    vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter__DOT___GEN_88 
+        = ((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter_io_start_REG)
+            ? ((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter__DOT__jValid)
                 ? ((((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter__DOT__jValid) 
                      & (~ (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter__DOT__matricesAreEqual))) 
                     & (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter__DOT__high)) 
                    | (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter__DOT___GEN_4))
-                : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter__DOT___GEN_4));
-    } else {
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter__DOT___GEN_94 = 0U;
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter__DOT___GEN_91 = 0U;
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter__DOT___GEN_92 = 0U;
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter__DOT___GEN_93 = 0U;
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter__DOT___GEN_88 
-            = vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter__DOT___GEN_4;
-    }
+                : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter__DOT___GEN_4))
+            : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter__DOT___GEN_4));
     vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter__DOT___GEN_41 
         = ((1U == vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter__DOT__k)
             ? vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter__DOT__counter2
@@ -2720,22 +2209,22 @@ VL_INLINE_OPT void VFlexDPUby2::_sequent__TOP__1(VFlexDPUby2__Syms* __restrict v
     }
     vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___T_6 
         = (1U & (~ (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__jValid)));
-    vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___T_28 
+    vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___T_20 
         = ((IData)(1U) + vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__j);
-    vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___T_36 
+    vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___T_28 
         = (1U > vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__j);
     if ((1U > vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__i)) {
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_145 
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_79 
             = ((IData)(1U) + vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__i);
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_146 
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_80 
             = ((IData)(1U) + vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter);
     } else {
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_145 
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_79 
             = vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__i;
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_146 
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_80 
             = vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter;
     }
-    vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_148 
+    vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_82 
         = (((1U == vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__j) 
             & (1U == vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__i)) 
            | (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__jValid));
@@ -3288,46 +2777,29 @@ VL_INLINE_OPT void VFlexDPUby2::_sequent__TOP__1(VFlexDPUby2__Syms* __restrict v
     vlTOPp->FlexDPUby2__DOT__indexCol = __Vdly__FlexDPUby2__DOT__indexCol;
     vlTOPp->FlexDPUby2__DOT__jloop = __Vdly__FlexDPUby2__DOT__jloop;
     vlTOPp->FlexDPUby2__DOT__iloop = __Vdly__FlexDPUby2__DOT__iloop;
-    vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3_io_mat_1_1 
-        = (((1U == vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part2__DOT__j) 
-            & (~ (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part2_io_Ovalid)))
-            ? (0xffffU & vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter__DOT___GEN_94)
-            : 0U);
-    vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part2__DOT___GEN_6 
-        = ((1U & (vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part2_io_IDex 
-                  & (~ vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part2__DOT__j)))
-            ? (0xffffU & vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter__DOT___GEN_93)
-            : ((1U & ((~ vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part2_io_IDex) 
-                      & vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part2__DOT__j))
-                ? (0xffffU & vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter__DOT___GEN_92)
-                : (0xffffU & vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter__DOT___GEN_91)));
-    vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT___GEN_3 
-        = ((1U & (vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__i 
-                  & vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__j))
-            ? (0xffffU & vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter__DOT___GEN_94)
-            : ((1U & (vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__i 
-                      & (~ vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__j)))
-                ? (0xffffU & vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter__DOT___GEN_93)
-                : ((1U & ((~ vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__i) 
-                          & vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__j))
-                    ? (0xffffU & vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter__DOT___GEN_92)
-                    : (0xffffU & vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter__DOT___GEN_91))));
-    vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT___GEN_30 
-        = ((1U & (vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__i 
-                  & (~ vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__j)))
-            ? (((1U == vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part2__DOT__j) 
-                & (~ (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part2_io_Ovalid)))
-                ? (0xffffU & vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter__DOT___GEN_93)
-                : 0U) : ((1U & ((~ vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__i) 
-                                & vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__j))
-                          ? (((1U == vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part2__DOT__j) 
-                              & (~ (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part2_io_Ovalid)))
-                              ? (0xffffU & vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter__DOT___GEN_92)
-                              : 0U) : (((1U == vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part2__DOT__j) 
-                                        & (~ (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part2_io_Ovalid)))
-                                        ? (0xffffU 
-                                           & vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter__DOT___GEN_91)
-                                        : 0U)));
+    if (vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter_io_valid) {
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes_io_counterMatrix1_0_0 
+            = ((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter_io_start_REG)
+                ? (0xffffU & (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter__DOT__counterRegs1_0_0))
+                : 0U);
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes_io_counterMatrix1_0_1 
+            = ((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter_io_start_REG)
+                ? (0xffffU & (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter__DOT__counterRegs1_0_1))
+                : 0U);
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes_io_counterMatrix1_1_0 
+            = ((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter_io_start_REG)
+                ? (0xffffU & (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter__DOT__counterRegs1_1_0))
+                : 0U);
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes_io_counterMatrix1_1_1 
+            = ((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter_io_start_REG)
+                ? (0xffffU & (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter__DOT__counterRegs1_1_1))
+                : 0U);
+    } else {
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes_io_counterMatrix1_0_0 = 0U;
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes_io_counterMatrix1_0_1 = 0U;
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes_io_counterMatrix1_1_0 = 0U;
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes_io_counterMatrix1_1_1 = 0U;
+    }
     vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT__parsedindexvalue3_nextIndex_25 
         = (3U & (((0U == (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT__parsedindexvalue3_nextIndex_24)) 
                   & (~ ((IData)(vlTOPp->FlexDPUby2__DOT__FDPE_io_i_mux_bus_3_3) 
@@ -3702,11 +3174,17 @@ VL_INLINE_OPT void VFlexDPUby2::_sequent__TOP__1(VFlexDPUby2__Syms* __restrict v
                                                   : vlTOPp->FlexDPUby2__DOT__iloop));
     vlTOPp->FlexDPUby2__DOT__PF_io_PF_Valid = ((IData)(vlTOPp->FlexDPUby2__DOT__Statvalid) 
                                                & (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__io_PF_Valid_REG));
-    vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT___GEN_31 
-        = ((1U & (vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__i 
-                  & vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__j))
-            ? vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3_io_mat_1_1
-            : vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT___GEN_30);
+    vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_9 
+        = ((1U & (vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__j 
+                  & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__i))
+            ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes_io_counterMatrix1_1_1)
+            : ((1U & (vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__j 
+                      & (~ vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__i)))
+                ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes_io_counterMatrix1_1_0)
+                : ((1U & ((~ vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__j) 
+                          & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__i))
+                    ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes_io_counterMatrix1_0_1)
+                    : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes_io_counterMatrix1_0_0))));
     vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__prevStationary_matrix_1_1 
         = vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes_io_mat1_1_1;
     vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__prevStationary_matrix_1_0 
@@ -3817,17 +3295,29 @@ VL_INLINE_OPT void VFlexDPUby2::_sequent__TOP__1(VFlexDPUby2__Syms* __restrict v
                                                     + (IData)(vlTOPp->FlexDPUby2__DOT__iterationChange))
                                                     : (IData)(vlTOPp->FlexDPUby2__DOT__iterationChange)))
                                                : (IData)(vlTOPp->FlexDPUby2__DOT__iterationChange)));
-    vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution_io_ProcessValid 
-        = ((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter_io_valid) 
-           & (((1U == vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part2__DOT__j) 
-               & (~ (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part2_io_Ovalid)))
-               ? ((1U <= vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__check)
-                   ? ((4U == vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT___GEN_31) 
-                      | ((1U == vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__i) 
-                         & (1U == vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__j)))
-                   : ((1U == vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__i) 
-                      & (1U == vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__j)))
-               : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part2_io_Ovalid)));
+    vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___muxes_T_8 
+        = (0xffffU & (((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_9) 
+                       - (IData)(1U)) - (((1U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__i)
+                                           ? ((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter_io_valid)
+                                               ? ((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter_io_start_REG)
+                                                   ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter__DOT__counterRegs2_1)
+                                                   : 0U)
+                                               : 0U)
+                                           : ((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter_io_valid)
+                                               ? ((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter_io_start_REG)
+                                                   ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter__DOT__counterRegs2_0)
+                                                   : 0U)
+                                               : 0U)) 
+                                         - (IData)(1U))));
+    if (vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter_io_valid) {
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes_io_mat2_1 
+            = (0xffffU & vlTOPp->FlexDPUby2__DOT___GEN_51);
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes_io_mat2_0 
+            = (0xffffU & vlTOPp->FlexDPUby2__DOT___GEN_49);
+    } else {
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes_io_mat2_1 = 0U;
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes_io_mat2_0 = 0U;
+    }
     if (((((~ (IData)((0U != (IData)(vlTOPp->FlexDPUby2__DOT__FDPE_io_i_mux_bus_0_0)))) 
            & (0U != (IData)(vlTOPp->FlexDPUby2__DOT__FDPE_io_i_mux_bus_0_1))) 
           & (0U != (IData)(vlTOPp->FlexDPUby2__DOT__FDPE_io_i_mux_bus_0_2))) 
@@ -3896,60 +3386,10 @@ VL_INLINE_OPT void VFlexDPUby2::_sequent__TOP__1(VFlexDPUby2__Syms* __restrict v
         vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_controller__DOT__w_vn_2 
             = vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_ivn__DOT__i_vn_2;
     }
-    if (vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution_io_ProcessValid) {
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes_io_mat2_0 
-            = (0xffffU & vlTOPp->FlexDPUby2__DOT___GEN_49);
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes_io_mat2_1 
-            = (0xffffU & vlTOPp->FlexDPUby2__DOT___GEN_51);
-    } else {
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes_io_mat2_0 = 0U;
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes_io_mat2_1 = 0U;
-    }
-    vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_17 
-        = (0xffffU & ((1U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__i)
-                       ? ((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution_io_ProcessValid)
-                           ? ((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter_io_start_REG)
-                               ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter__DOT__counterRegs2_1)
-                               : 0U) : 0U) : ((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution_io_ProcessValid)
-                                               ? ((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter_io_start_REG)
-                                                   ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter__DOT__counterRegs2_0)
-                                                   : 0U)
-                                               : 0U)));
-    if (vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution_io_ProcessValid) {
-        vlTOPp->FlexDPUby2__DOT__PF__DOT___GEN_7 = 
-            ((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter_io_valid)
-              ? (((1U == vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part2__DOT__j) 
-                  & (~ (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part2_io_Ovalid)))
-                  ? vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__b_0_0
-                  : vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part2__DOT__b_0_0)
-              : 0U);
-        vlTOPp->FlexDPUby2__DOT__PF__DOT___GEN_8 = 
-            ((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter_io_valid)
-              ? (((1U == vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part2__DOT__j) 
-                  & (~ (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part2_io_Ovalid)))
-                  ? vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__b_0_1
-                  : vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part2__DOT__b_0_1)
-              : 0U);
-        vlTOPp->FlexDPUby2__DOT__PF__DOT___GEN_9 = 
-            ((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter_io_valid)
-              ? (((1U == vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part2__DOT__j) 
-                  & (~ (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part2_io_Ovalid)))
-                  ? vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__b_1_0
-                  : vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part2__DOT__b_1_0)
-              : 0U);
-        vlTOPp->FlexDPUby2__DOT__PF__DOT___GEN_10 = 
-            ((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter_io_valid)
-              ? (((1U == vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part2__DOT__j) 
-                  & (~ (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part2_io_Ovalid)))
-                  ? vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part3__DOT__b_1_1
-                  : vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution__DOT__part2__DOT__b_1_1)
-              : 0U);
-    } else {
-        vlTOPp->FlexDPUby2__DOT__PF__DOT___GEN_7 = 0U;
-        vlTOPp->FlexDPUby2__DOT__PF__DOT___GEN_8 = 0U;
-        vlTOPp->FlexDPUby2__DOT__PF__DOT___GEN_9 = 0U;
-        vlTOPp->FlexDPUby2__DOT__PF__DOT___GEN_10 = 0U;
-    }
+    vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_11 
+        = ((1U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__i)
+            ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes_io_mat2_1)
+            : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes_io_mat2_0));
     if (((IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT___T_21) 
          & (~ (IData)((0U != (IData)(vlTOPp->FlexDPUby2__DOT__FDPE_io_i_mux_bus_0_3)))))) {
         vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT___GEN_50 
@@ -3994,21 +3434,164 @@ VL_INLINE_OPT void VFlexDPUby2::_sequent__TOP__1(VFlexDPUby2__Syms* __restrict v
         vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT___GEN_53 
             = (0xffffU & (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT___GEN_33));
     }
-    vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_11 
-        = ((1U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__i)
-            ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes_io_mat2_1)
-            : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes_io_mat2_0));
-    vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_9 
-        = (0xffffU & ((1U & (vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__j 
-                             & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__i))
-                       ? vlTOPp->FlexDPUby2__DOT__PF__DOT___GEN_10
-                       : ((1U & (vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__j 
-                                 & (~ vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__i)))
-                           ? vlTOPp->FlexDPUby2__DOT__PF__DOT___GEN_9
-                           : ((1U & ((~ vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__j) 
-                                     & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__i))
-                               ? vlTOPp->FlexDPUby2__DOT__PF__DOT___GEN_8
-                               : vlTOPp->FlexDPUby2__DOT__PF__DOT___GEN_7))));
+    if ((((~ (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__jValid)) 
+          & (0U != (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_9))) 
+         & (0U != (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_11)))) {
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_64 
+            = ((0U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter))
+                ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_11)
+                : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__src_0));
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_65 
+            = ((1U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter))
+                ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_11)
+                : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__src_1));
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_66 
+            = ((2U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter))
+                ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_11)
+                : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__src_2));
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_67 
+            = ((3U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter))
+                ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_11)
+                : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__src_3));
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_48 
+            = (3U & (((0U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter)) 
+                      & (0U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__indexcounter)))
+                      ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___muxes_T_8)
+                      : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_0_0)));
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_49 
+            = (3U & (((0U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter)) 
+                      & (1U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__indexcounter)))
+                      ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___muxes_T_8)
+                      : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_0_1)));
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_50 
+            = (3U & (((0U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter)) 
+                      & (2U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__indexcounter)))
+                      ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___muxes_T_8)
+                      : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_0_2)));
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_51 
+            = (3U & (((0U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter)) 
+                      & (3U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__indexcounter)))
+                      ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___muxes_T_8)
+                      : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_0_3)));
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_52 
+            = (3U & (((1U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter)) 
+                      & (0U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__indexcounter)))
+                      ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___muxes_T_8)
+                      : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_1_0)));
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_53 
+            = (3U & (((1U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter)) 
+                      & (1U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__indexcounter)))
+                      ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___muxes_T_8)
+                      : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_1_1)));
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_54 
+            = (3U & (((1U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter)) 
+                      & (2U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__indexcounter)))
+                      ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___muxes_T_8)
+                      : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_1_2)));
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_55 
+            = (3U & (((1U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter)) 
+                      & (3U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__indexcounter)))
+                      ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___muxes_T_8)
+                      : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_1_3)));
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_56 
+            = (3U & (((2U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter)) 
+                      & (0U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__indexcounter)))
+                      ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___muxes_T_8)
+                      : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_2_0)));
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_57 
+            = (3U & (((2U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter)) 
+                      & (1U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__indexcounter)))
+                      ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___muxes_T_8)
+                      : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_2_1)));
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_58 
+            = (3U & (((2U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter)) 
+                      & (2U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__indexcounter)))
+                      ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___muxes_T_8)
+                      : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_2_2)));
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_59 
+            = (3U & (((2U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter)) 
+                      & (3U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__indexcounter)))
+                      ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___muxes_T_8)
+                      : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_2_3)));
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_60 
+            = (3U & (((3U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter)) 
+                      & (0U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__indexcounter)))
+                      ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___muxes_T_8)
+                      : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_3_0)));
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_61 
+            = (3U & (((3U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter)) 
+                      & (1U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__indexcounter)))
+                      ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___muxes_T_8)
+                      : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_3_1)));
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_62 
+            = (3U & (((3U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter)) 
+                      & (2U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__indexcounter)))
+                      ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___muxes_T_8)
+                      : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_3_2)));
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_63 
+            = (3U & (((3U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter)) 
+                      & (3U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__indexcounter)))
+                      ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___muxes_T_8)
+                      : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_3_3)));
+    } else {
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_64 
+            = vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__src_0;
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_65 
+            = vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__src_1;
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_66 
+            = vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__src_2;
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_67 
+            = vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__src_3;
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_48 
+            = (3U & (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_0_0));
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_49 
+            = (3U & (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_0_1));
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_50 
+            = (3U & (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_0_2));
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_51 
+            = (3U & (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_0_3));
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_52 
+            = (3U & (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_1_0));
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_53 
+            = (3U & (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_1_1));
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_54 
+            = (3U & (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_1_2));
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_55 
+            = (3U & (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_1_3));
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_56 
+            = (3U & (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_2_0));
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_57 
+            = (3U & (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_2_1));
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_58 
+            = (3U & (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_2_2));
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_59 
+            = (3U & (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_2_3));
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_60 
+            = (3U & (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_3_0));
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_61 
+            = (3U & (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_3_1));
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_62 
+            = (3U & (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_3_2));
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_63 
+            = (3U & (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_3_3));
+    }
+    vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_78 
+        = (((((~ (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__jValid)) 
+              & (0U != ((1U & (((IData)(1U) + vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__j) 
+                               & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__i))
+                         ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes_io_counterMatrix1_1_1)
+                         : ((1U & (((IData)(1U) + vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__j) 
+                                   & (~ vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__i)))
+                             ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes_io_counterMatrix1_1_0)
+                             : ((1U & ((~ ((IData)(1U) 
+                                           + vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__j)) 
+                                       & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__i))
+                                 ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes_io_counterMatrix1_0_1)
+                                 : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes_io_counterMatrix1_0_0)))))) 
+             & (0U != (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_11))) 
+            & (1U > vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__j))
+            ? ((IData)(1U) + vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__indexcounter)
+            : vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__indexcounter);
     if ((((IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT___T_18) 
           & (~ (IData)((0U != (IData)(vlTOPp->FlexDPUby2__DOT__FDPE_io_i_mux_bus_0_2))))) 
          & (~ (IData)((0U != (IData)(vlTOPp->FlexDPUby2__DOT__FDPE_io_i_mux_bus_0_3)))))) {
@@ -4076,90 +3659,34 @@ VL_INLINE_OPT void VFlexDPUby2::_sequent__TOP__1(VFlexDPUby2__Syms* __restrict v
                                   ? ((2U == vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_ivn__DOT__rowcount_1)
                                       ? 1U : ((1U == vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_ivn__DOT__rowcount_1)
                                                ? 1U
-                                               : 0x1cU))
-                                  : 0x1cU)));
+                                               : 0x12U))
+                                  : 0x12U)));
         vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_ivn__DOT__i_vn_1 
             = ((2U == vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_ivn__DOT__rowcount_0)
                 ? 0U : ((1U == vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_ivn__DOT__rowcount_0)
                          ? ((1U == vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_ivn__DOT__rowcount_1)
                              ? 1U : ((2U == vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_ivn__DOT__rowcount_1)
-                                      ? 1U : 0x1fU))
+                                      ? 1U : 0x12U))
                          : ((0U == vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_ivn__DOT__rowcount_0)
                              ? ((2U == vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_ivn__DOT__rowcount_1)
-                                 ? 1U : 0x1fU) : 0x1fU)));
+                                 ? 1U : 0x12U) : 0x12U)));
         vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_ivn__DOT__i_vn_2 
             = ((2U == vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_ivn__DOT__rowcount_0)
                 ? ((2U == vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_ivn__DOT__rowcount_1)
-                    ? 1U : 0xdU) : ((1U == vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_ivn__DOT__rowcount_0)
-                                     ? ((1U == vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_ivn__DOT__rowcount_1)
-                                         ? 0xdU : (
-                                                   (2U 
-                                                    == vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_ivn__DOT__rowcount_1)
-                                                    ? 1U
-                                                    : 0xdU))
-                                     : 0xdU));
+                    ? 1U : 0x18U) : ((1U == vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_ivn__DOT__rowcount_0)
+                                      ? ((1U == vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_ivn__DOT__rowcount_1)
+                                          ? 0x18U : 
+                                         ((2U == vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_ivn__DOT__rowcount_1)
+                                           ? 1U : 0x18U))
+                                      : 0x18U));
         vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_ivn__DOT__i_vn_3 
             = ((2U == vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_ivn__DOT__rowcount_0)
                 ? ((2U == vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_ivn__DOT__rowcount_1)
-                    ? 1U : 8U) : 8U);
+                    ? 1U : 0x15U) : 0x15U);
     }
-    vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_144 
-        = (((((~ (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__jValid)) 
-              & (0U != (0xffffU & ((1U & (((IData)(1U) 
-                                           + vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__j) 
-                                          & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__i))
-                                    ? vlTOPp->FlexDPUby2__DOT__PF__DOT___GEN_10
-                                    : ((1U & (((IData)(1U) 
-                                               + vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__j) 
-                                              & (~ vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__i)))
-                                        ? vlTOPp->FlexDPUby2__DOT__PF__DOT___GEN_9
-                                        : ((1U & ((~ 
-                                                   ((IData)(1U) 
-                                                    + vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__j)) 
-                                                  & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__i))
-                                            ? vlTOPp->FlexDPUby2__DOT__PF__DOT___GEN_8
-                                            : vlTOPp->FlexDPUby2__DOT__PF__DOT___GEN_7)))))) 
-             & (0U != (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_11))) 
-            & (1U > vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__j))
-            ? ((IData)(1U) + vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__indexcounter)
-            : vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__indexcounter);
-    if ((((~ (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__jValid)) 
-          & (0U != (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_9))) 
-         & (0U != (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_11)))) {
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_130 
-            = ((0U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter))
-                ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_11)
-                : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__src_0));
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_131 
-            = ((1U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter))
-                ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_11)
-                : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__src_1));
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_132 
-            = ((2U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter))
-                ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_11)
-                : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__src_2));
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_133 
-            = ((3U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter))
-                ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_11)
-                : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__src_3));
-    } else {
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_130 
-            = vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__src_0;
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_131 
-            = vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__src_1;
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_132 
-            = vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__src_2;
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_133 
-            = vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__src_3;
-    }
-    vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___muxes_T_8 
-        = (0xffffU & (((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_17) 
-                       - (IData)(1U)) - ((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_9) 
-                                         - (IData)(1U))));
-    vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___muxes_T_17 
-        = (0xffffU & (((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_9) 
-                       - (IData)(1U)) - ((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_17) 
-                                         - (IData)(1U))));
+    vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_81 
+        = ((1U > vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__i)
+            ? 0U : vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_78);
     if ((0U != (IData)(vlTOPp->FlexDPUby2__DOT__FDPE_io_i_mux_bus_0_0))) {
         vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT___GEN_75 
             = (0xffffU & ((0U == (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT__parsedindexvalue))
@@ -4186,222 +3713,6 @@ VL_INLINE_OPT void VFlexDPUby2::_sequent__TOP__1(VFlexDPUby2__Syms* __restrict v
             = (0xffffU & (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT___GEN_67));
         vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT___GEN_78 
             = (0xffffU & (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT___GEN_68));
-    }
-    vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_147 
-        = ((1U > vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__i)
-            ? 0U : vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_144);
-    if ((((~ (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__jValid)) 
-          & (0U != (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_9))) 
-         & (0U != (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_11)))) {
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_114 
-            = (0xfU & (((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_9) 
-                        <= (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_17))
-                        ? (((0U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter)) 
-                            & (0U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__indexcounter)))
-                            ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___muxes_T_8)
-                            : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_0_0))
-                        : (((0U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter)) 
-                            & (0U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__indexcounter)))
-                            ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___muxes_T_17)
-                            : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_0_0))));
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_115 
-            = (0xfU & (((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_9) 
-                        <= (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_17))
-                        ? (((0U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter)) 
-                            & (1U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__indexcounter)))
-                            ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___muxes_T_8)
-                            : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_0_1))
-                        : (((0U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter)) 
-                            & (1U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__indexcounter)))
-                            ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___muxes_T_17)
-                            : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_0_1))));
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_116 
-            = (0xfU & (((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_9) 
-                        <= (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_17))
-                        ? (((0U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter)) 
-                            & (2U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__indexcounter)))
-                            ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___muxes_T_8)
-                            : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_0_2))
-                        : (((0U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter)) 
-                            & (2U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__indexcounter)))
-                            ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___muxes_T_17)
-                            : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_0_2))));
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_117 
-            = (0xfU & (((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_9) 
-                        <= (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_17))
-                        ? (((0U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter)) 
-                            & (3U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__indexcounter)))
-                            ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___muxes_T_8)
-                            : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_0_3))
-                        : (((0U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter)) 
-                            & (3U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__indexcounter)))
-                            ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___muxes_T_17)
-                            : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_0_3))));
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_118 
-            = (0xfU & (((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_9) 
-                        <= (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_17))
-                        ? (((1U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter)) 
-                            & (0U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__indexcounter)))
-                            ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___muxes_T_8)
-                            : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_1_0))
-                        : (((1U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter)) 
-                            & (0U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__indexcounter)))
-                            ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___muxes_T_17)
-                            : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_1_0))));
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_119 
-            = (0xfU & (((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_9) 
-                        <= (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_17))
-                        ? (((1U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter)) 
-                            & (1U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__indexcounter)))
-                            ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___muxes_T_8)
-                            : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_1_1))
-                        : (((1U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter)) 
-                            & (1U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__indexcounter)))
-                            ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___muxes_T_17)
-                            : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_1_1))));
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_120 
-            = (0xfU & (((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_9) 
-                        <= (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_17))
-                        ? (((1U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter)) 
-                            & (2U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__indexcounter)))
-                            ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___muxes_T_8)
-                            : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_1_2))
-                        : (((1U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter)) 
-                            & (2U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__indexcounter)))
-                            ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___muxes_T_17)
-                            : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_1_2))));
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_121 
-            = (0xfU & (((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_9) 
-                        <= (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_17))
-                        ? (((1U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter)) 
-                            & (3U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__indexcounter)))
-                            ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___muxes_T_8)
-                            : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_1_3))
-                        : (((1U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter)) 
-                            & (3U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__indexcounter)))
-                            ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___muxes_T_17)
-                            : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_1_3))));
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_122 
-            = (0xfU & (((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_9) 
-                        <= (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_17))
-                        ? (((2U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter)) 
-                            & (0U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__indexcounter)))
-                            ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___muxes_T_8)
-                            : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_2_0))
-                        : (((2U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter)) 
-                            & (0U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__indexcounter)))
-                            ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___muxes_T_17)
-                            : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_2_0))));
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_123 
-            = (0xfU & (((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_9) 
-                        <= (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_17))
-                        ? (((2U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter)) 
-                            & (1U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__indexcounter)))
-                            ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___muxes_T_8)
-                            : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_2_1))
-                        : (((2U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter)) 
-                            & (1U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__indexcounter)))
-                            ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___muxes_T_17)
-                            : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_2_1))));
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_124 
-            = (0xfU & (((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_9) 
-                        <= (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_17))
-                        ? (((2U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter)) 
-                            & (2U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__indexcounter)))
-                            ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___muxes_T_8)
-                            : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_2_2))
-                        : (((2U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter)) 
-                            & (2U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__indexcounter)))
-                            ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___muxes_T_17)
-                            : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_2_2))));
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_125 
-            = (0xfU & (((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_9) 
-                        <= (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_17))
-                        ? (((2U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter)) 
-                            & (3U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__indexcounter)))
-                            ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___muxes_T_8)
-                            : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_2_3))
-                        : (((2U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter)) 
-                            & (3U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__indexcounter)))
-                            ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___muxes_T_17)
-                            : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_2_3))));
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_126 
-            = (0xfU & (((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_9) 
-                        <= (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_17))
-                        ? (((3U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter)) 
-                            & (0U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__indexcounter)))
-                            ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___muxes_T_8)
-                            : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_3_0))
-                        : (((3U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter)) 
-                            & (0U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__indexcounter)))
-                            ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___muxes_T_17)
-                            : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_3_0))));
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_127 
-            = (0xfU & (((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_9) 
-                        <= (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_17))
-                        ? (((3U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter)) 
-                            & (1U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__indexcounter)))
-                            ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___muxes_T_8)
-                            : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_3_1))
-                        : (((3U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter)) 
-                            & (1U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__indexcounter)))
-                            ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___muxes_T_17)
-                            : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_3_1))));
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_128 
-            = (0xfU & (((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_9) 
-                        <= (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_17))
-                        ? (((3U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter)) 
-                            & (2U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__indexcounter)))
-                            ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___muxes_T_8)
-                            : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_3_2))
-                        : (((3U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter)) 
-                            & (2U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__indexcounter)))
-                            ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___muxes_T_17)
-                            : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_3_2))));
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_129 
-            = (0xfU & (((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_9) 
-                        <= (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_17))
-                        ? (((3U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter)) 
-                            & (3U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__indexcounter)))
-                            ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___muxes_T_8)
-                            : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_3_3))
-                        : (((3U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter)) 
-                            & (3U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__indexcounter)))
-                            ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___muxes_T_17)
-                            : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_3_3))));
-    } else {
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_114 
-            = (0xfU & (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_0_0));
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_115 
-            = (0xfU & (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_0_1));
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_116 
-            = (0xfU & (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_0_2));
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_117 
-            = (0xfU & (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_0_3));
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_118 
-            = (0xfU & (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_1_0));
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_119 
-            = (0xfU & (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_1_1));
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_120 
-            = (0xfU & (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_1_2));
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_121 
-            = (0xfU & (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_1_3));
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_122 
-            = (0xfU & (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_2_0));
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_123 
-            = (0xfU & (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_2_1));
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_124 
-            = (0xfU & (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_2_2));
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_125 
-            = (0xfU & (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_2_3));
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_126 
-            = (0xfU & (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_3_0));
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_127 
-            = (0xfU & (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_3_1));
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_128 
-            = (0xfU & (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_3_2));
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_129 
-            = (0xfU & (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_3_3));
     }
     if (((0U != (IData)(vlTOPp->FlexDPUby2__DOT__FDPE_io_i_mux_bus_0_0)) 
          & (0U != (IData)(vlTOPp->FlexDPUby2__DOT__FDPE_io_i_mux_bus_0_1)))) {
@@ -5421,19 +4732,6 @@ VL_INLINE_OPT void VFlexDPUby2::_sequent__TOP__1(VFlexDPUby2__Syms* __restrict v
                                            ? vlTOPp->FlexDPUby2__DOT__src_2
                                            : (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT___GEN_476)))))
                            : (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT___GEN_476)));
-    } else {
-        vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT___GEN_505 
-            = (0xffffU & (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT___GEN_335));
-        vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT___GEN_506 
-            = (0xffffU & (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT___GEN_336));
-    }
-}
-
-VL_INLINE_OPT void VFlexDPUby2::_sequent__TOP__2(VFlexDPUby2__Syms* __restrict vlSymsp) {
-    VL_DEBUG_IF(VL_DBG_MSGF("+    VFlexDPUby2::_sequent__TOP__2\n"); );
-    VFlexDPUby2* const __restrict vlTOPp VL_ATTR_UNUSED = vlSymsp->TOPp;
-    // Body
-    if ((0U != (0xffffU & vlTOPp->FlexDPUby2__DOT__src_2))) {
         vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT___GEN_507 
             = (0xffffU & ((IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT___T_284)
                            ? ((2U == (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT__parsedindexvalue3_8))
@@ -5459,6 +4757,10 @@ VL_INLINE_OPT void VFlexDPUby2::_sequent__TOP__2(VFlexDPUby2__Syms* __restrict v
                                            : (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT___GEN_478)))))
                            : (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT___GEN_478)));
     } else {
+        vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT___GEN_505 
+            = (0xffffU & (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT___GEN_335));
+        vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT___GEN_506 
+            = (0xffffU & (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT___GEN_336));
         vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT___GEN_507 
             = (0xffffU & (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT___GEN_337));
         vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT___GEN_508 
@@ -5790,8 +5092,8 @@ VL_INLINE_OPT void VFlexDPUby2::_sequent__TOP__2(VFlexDPUby2__Syms* __restrict v
     }
 }
 
-VL_INLINE_OPT void VFlexDPUby2::_combo__TOP__4(VFlexDPUby2__Syms* __restrict vlSymsp) {
-    VL_DEBUG_IF(VL_DBG_MSGF("+    VFlexDPUby2::_combo__TOP__4\n"); );
+VL_INLINE_OPT void VFlexDPUby2::_combo__TOP__3(VFlexDPUby2__Syms* __restrict vlSymsp) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+    VFlexDPUby2::_combo__TOP__3\n"); );
     VFlexDPUby2* const __restrict vlTOPp VL_ATTR_UNUSED = vlSymsp->TOPp;
     // Body
     vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter__DOT___GEN_8 
@@ -5806,19 +5108,19 @@ VL_INLINE_OPT void VFlexDPUby2::_combo__TOP__4(VFlexDPUby2__Syms* __restrict vlS
                     ? (IData)(vlTOPp->io_Stationary_matrix_0_1)
                     : (IData)(vlTOPp->io_Stationary_matrix_0_0))));
     if (vlTOPp->reset) {
-        vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_fan_network__DOT__my_adder_0_io_o_adder = 0U;
         vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_fan_network__DOT__my_adder_2_io_o_adder = 0U;
+        vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_fan_network__DOT__my_adder_0_io_o_adder = 0U;
     } else {
-        vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_fan_network__DOT__my_adder_0_io_o_adder 
-            = ((0U == (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_fan_network__DOT__my_adder_0__DOT__r_add_en))
-                ? vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_fan_network__DOT__my_adder_0__DOT__r_adder
-                : ((IData)((QData)((IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__r_mult_0))) 
-                   + (IData)((QData)((IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__r_mult_1)))));
         vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_fan_network__DOT__my_adder_2_io_o_adder 
             = ((0U == (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_fan_network__DOT__my_adder_2__DOT__r_add_en))
                 ? vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_fan_network__DOT__my_adder_2__DOT__r_adder
                 : ((IData)((QData)((IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__r_mult_2))) 
                    + (IData)((QData)((IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__r_mult_3)))));
+        vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_fan_network__DOT__my_adder_0_io_o_adder 
+            = ((0U == (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_fan_network__DOT__my_adder_0__DOT__r_add_en))
+                ? vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_fan_network__DOT__my_adder_0__DOT__r_adder
+                : ((IData)((QData)((IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__r_mult_0))) 
+                   + (IData)((QData)((IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__r_mult_1)))));
     }
     vlTOPp->FlexDPUby2__DOT___GEN_3 = ((1U & (vlTOPp->FlexDPUby2__DOT__iloop 
                                               & vlTOPp->FlexDPUby2__DOT__jloop))
@@ -5854,20 +5156,20 @@ VL_INLINE_OPT void VFlexDPUby2::_combo__TOP__4(VFlexDPUby2__Syms* __restrict vlS
         vlTOPp->io_output_1_0 = 0U;
         vlTOPp->io_output_1_1 = 0U;
     }
-    if (vlTOPp->FlexDPUby2__DOT__PF__DOT__Distribution_io_ProcessValid) {
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes_io_mat1_0_0 
-            = vlTOPp->io_Stationary_matrix_0_0;
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes_io_mat1_0_1 
-            = vlTOPp->io_Stationary_matrix_0_1;
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes_io_mat1_1_0 
-            = vlTOPp->io_Stationary_matrix_1_0;
+    if (vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter_io_valid) {
         vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes_io_mat1_1_1 
             = vlTOPp->io_Stationary_matrix_1_1;
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes_io_mat1_1_0 
+            = vlTOPp->io_Stationary_matrix_1_0;
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes_io_mat1_0_1 
+            = vlTOPp->io_Stationary_matrix_0_1;
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes_io_mat1_0_0 
+            = vlTOPp->io_Stationary_matrix_0_0;
     } else {
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes_io_mat1_0_0 = 0U;
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes_io_mat1_0_1 = 0U;
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes_io_mat1_1_0 = 0U;
         vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes_io_mat1_1_1 = 0U;
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes_io_mat1_1_0 = 0U;
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes_io_mat1_0_1 = 0U;
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes_io_mat1_0_0 = 0U;
     }
     vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_ivn__DOT___GEN_7 
         = ((1U & (vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_ivn__DOT__i 
@@ -5947,12 +5249,30 @@ VL_INLINE_OPT void VFlexDPUby2::_combo__TOP__4(VFlexDPUby2__Syms* __restrict vlS
         = ((4U == (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_controller__DOT__r_cmd_lvl_1Reg_4))
             ? vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_fan_network__DOT__my_adder_2_io_o_adder
             : vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_fan_network__DOT__my_adder_1__DOT__r_adder);
+    if (((0U == (IData)(vlTOPp->io_Stationary_matrix_0_1)) 
+         & (0U == (IData)(vlTOPp->io_Stationary_matrix_1_1)))) {
+        vlTOPp->FlexDPUby2__DOT__FDPE__DOT___GEN_3 
+            = (0xffffU & (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__r_mult_1));
+        vlTOPp->FlexDPUby2__DOT__FDPE__DOT___GEN_2 
+            = (0xffffU & (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__r_mult_0));
+    } else {
+        vlTOPp->FlexDPUby2__DOT__FDPE__DOT___GEN_3 
+            = (0xffffU & (((0U == (IData)(vlTOPp->io_Stationary_matrix_0_0)) 
+                           & (0U == (IData)(vlTOPp->io_Stationary_matrix_1_0)))
+                           ? (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__r_mult_0)
+                           : (IData)((QData)((IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_fan_network__DOT__my_adder_2_io_o_adder)))));
+        vlTOPp->FlexDPUby2__DOT__FDPE__DOT___GEN_2 
+            = (0xffffU & (((0U == (IData)(vlTOPp->io_Stationary_matrix_0_0)) 
+                           & (0U == (IData)(vlTOPp->io_Stationary_matrix_1_0)))
+                           ? (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__r_mult_0)
+                           : (IData)((QData)((IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_fan_network__DOT__my_adder_0_io_o_adder)))));
+    }
     vlTOPp->FlexDPUby2__DOT___GEN_24 = (((0U != (IData)(vlTOPp->FlexDPUby2__DOT___GEN_3)) 
                                          & (1U >= vlTOPp->FlexDPUby2__DOT__iloop))
                                          ? ((IData)(1U) 
                                             + vlTOPp->FlexDPUby2__DOT__indexCol)
                                          : vlTOPp->FlexDPUby2__DOT__indexCol);
-    vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_53 
+    vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_47 
         = ((1U & (vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__j 
                   & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__i))
             ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes_io_mat1_1_1)
@@ -5966,30 +5286,30 @@ VL_INLINE_OPT void VFlexDPUby2::_combo__TOP__4(VFlexDPUby2__Syms* __restrict vlS
     if ((((~ (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__jValid)) 
           & (0U != (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_9))) 
          & (0U != (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_11)))) {
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_134 
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_68 
             = ((0U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter))
-                ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_53)
+                ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_47)
                 : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__dest_0));
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_135 
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_69 
             = ((1U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter))
-                ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_53)
+                ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_47)
                 : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__dest_1));
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_136 
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_70 
             = ((2U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter))
-                ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_53)
+                ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_47)
                 : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__dest_2));
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_137 
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_71 
             = ((3U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter))
-                ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_53)
+                ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_47)
                 : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__dest_3));
     } else {
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_134 
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_68 
             = vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__dest_0;
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_135 
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_69 
             = vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__dest_1;
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_136 
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_70 
             = vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__dest_2;
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_137 
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_71 
             = vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__dest_3;
     }
 }
@@ -6001,9 +5321,8 @@ void VFlexDPUby2::_eval(VFlexDPUby2__Syms* __restrict vlSymsp) {
     if (((IData)(vlTOPp->clock) & (~ (IData)(vlTOPp->__Vclklast__TOP__clock)))) {
         vlTOPp->_sequent__TOP__1(vlSymsp);
         vlTOPp->__Vm_traceActivity[1U] = 1U;
-        vlTOPp->_sequent__TOP__2(vlSymsp);
     }
-    vlTOPp->_combo__TOP__4(vlSymsp);
+    vlTOPp->_combo__TOP__3(vlSymsp);
     vlTOPp->__Vm_traceActivity[2U] = 1U;
     // Final
     vlTOPp->__Vclklast__TOP__clock = vlTOPp->clock;
