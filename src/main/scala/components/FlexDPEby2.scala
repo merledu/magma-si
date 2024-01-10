@@ -149,6 +149,12 @@ dontTouch(w_dist_bus2)
          matrix(1)(0) := io.o_adder(0)
          
       }
+       when(io.Stationary_matrix(0)(0) === 0.U && io.Stationary_matrix(0)(1) =/= 0.U && io.Stationary_matrix(1)(0) =/= 0.U && io.Stationary_matrix(1)(1) =/= 0.U){
+         matrix(0)(0) := io.o_adder(0)
+         matrix(1)(0) := r_mult(1) + r_mult(2)
+         
+      }
+      
       //  when(io.Stationary_matrix(1)(0) === 0.U && io.Stationary_matrix(1)(1) === 0.U){
       //    matrix(0)(0) := r_mult(0)
       //    matrix(1)(0) := r_mult(1)
@@ -215,6 +221,11 @@ dontTouch(w_dist_bus2)
       // }
       // matrix(0)(1) := io.o_adder(0)
       // matrix(1)(1) := io.o_adder(2)
+       when(io.Stationary_matrix(0)(0) === 0.U && io.Stationary_matrix(0)(1) =/= 0.U && io.Stationary_matrix(1)(0) =/= 0.U && io.Stationary_matrix(1)(1) =/= 0.U){
+         matrix(0)(1) := io.o_adder(0)
+         matrix(1)(1) := r_mult(1) + r_mult(2)
+         
+      }
 
     }
 
