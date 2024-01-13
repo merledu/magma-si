@@ -25,8 +25,8 @@ class SourceDestination(implicit val config: MagmasiConfig) extends Module {
     val jValid = Reg(Bool())
     val k = RegInit(0.U(32.W))
 
-    val counter1 = RegInit(1.U(32.W))
-    val counter2 = RegInit(1.U(32.W))
+    val counter1 = RegInit(0.U(32.W))
+    val counter2 = RegInit(0.U(32.W))
 
     val reg_i = RegNext(((j === (config.MaxCols - 1).U) && (i === (config.MaxRows - 1).U)), 1.B)
     //matricesAreEqual := true.B
@@ -95,8 +95,8 @@ class SourceDestination(implicit val config: MagmasiConfig) extends Module {
       i := 0.U
       j := 0.U
       k := 0.U
-      counter1 := 1.U
-      counter2 := 1.U
+      counter1 := 0.U
+      counter2 := 0.U
       matricesAreEqual := 1.B
       for ( i <- 0 until config.MaxRows){
         for (j <- 0 until config.MaxCols){

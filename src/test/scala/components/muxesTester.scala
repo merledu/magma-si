@@ -19,14 +19,14 @@ class MuxesTester extends AnyFreeSpec with ChiselScalatestTester {
         )
             
         val input = Seq(
-          Seq(0, 1, 2, 0),
-          Seq(2, 3, 1, 0),
+          Seq(0, 0, 2, 0),
+          Seq(1, 2, 1, 0),
           Seq(2, 3, 4, 0),
           Seq(1, 2, 3, 0)
         ) 
         
         val inputData2 = Seq(1, 2, 3, 0,1)
-        val input2 = Seq(1, 2, 2, 0,1)
+        val input2 = Seq(0, 1, 2, 0,1)
 
         for (i <- 0 until config.MaxRows) {
           for (j <- 0 until config.MaxCols) {

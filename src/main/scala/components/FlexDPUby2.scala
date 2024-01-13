@@ -37,10 +37,10 @@ class FlexDPUby2(implicit val config:MagmasiConfig) extends Module{
         DPEDest(indexRow)(indexCol) := io.Stationary_matrix(iloop)(jloop)
         indexCol := indexCol + 1.U
     }
-    //when (io.Streaming_matrix(jloop)(iloop) =/= 0.U && (iloop <= (config.MaxRows-1).U)){
+    when (io.Streaming_matrix(jloop)(iloop) =/= 0.U && (iloop <= (config.MaxRows-1).U)){
         DPESrc(SindexRow)(SindexCol) := io.Streaming_matrix(jloop)(iloop)
         SindexCol := SindexCol + 1.U
-    //}
+    }
 
     when (SindexCol === (config.MaxCols -1).U && (SindexRow === (config.MaxRows -1).U)){
         SindexRow := SindexRow

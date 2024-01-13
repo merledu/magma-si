@@ -32,9 +32,7 @@ void VFlexDPUby2::_settle__TOP__2(VFlexDPUby2__Syms* __restrict vlSymsp) {
     VL_DEBUG_IF(VL_DBG_MSGF("+    VFlexDPUby2::_settle__TOP__2\n"); );
     VFlexDPUby2* const __restrict vlTOPp VL_ATTR_UNUSED = vlSymsp->TOPp;
     // Body
-    vlTOPp->FlexDPUby2__DOT___SindexCol_T_1 = ((IData)(1U) 
-                                               + vlTOPp->FlexDPUby2__DOT__SindexCol);
-    vlTOPp->FlexDPUby2__DOT___T_9 = (1U == vlTOPp->FlexDPUby2__DOT__SindexCol);
+    vlTOPp->FlexDPUby2__DOT___T_14 = (1U == vlTOPp->FlexDPUby2__DOT__SindexCol);
     vlTOPp->FlexDPUby2__DOT___SindexRow_T_1 = ((IData)(1U) 
                                                + vlTOPp->FlexDPUby2__DOT__SindexRow);
     vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___k_T_1 
@@ -47,6 +45,9 @@ void VFlexDPUby2::_settle__TOP__2(VFlexDPUby2__Syms* __restrict vlSymsp) {
         = ((IData)(1U) + vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter__DOT__j);
     vlTOPp->FlexDPUby2__DOT__FDPE__DOT___counter_T_1 
         = ((IData)(1U) + vlTOPp->FlexDPUby2__DOT__FDPE__DOT__counter);
+    vlTOPp->FlexDPUby2__DOT__FDPE__DOT___matrix_1_0_T_1 
+        = (0x7fffU & ((IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__r_mult_1) 
+                      + (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__r_mult_2)));
     vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_fan_network__DOT__my_adder_0__DOT___GEN_3 
         = ((4U == (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_controller__DOT__r_cmd_lvl_0Reg_6))
             ? (IData)((QData)((IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__r_mult_1)))
@@ -88,11 +89,11 @@ void VFlexDPUby2::_settle__TOP__2(VFlexDPUby2__Syms* __restrict vlSymsp) {
                     ? (IData)(vlTOPp->io_Stationary_matrix_0_1)
                     : (IData)(vlTOPp->io_Stationary_matrix_0_0))));
     if (vlTOPp->FlexDPUby2__DOT__iterationChange) {
-        vlTOPp->FlexDPUby2__DOT___GEN_49 = vlTOPp->FlexDPUby2__DOT__DPESrc_1_0;
-        vlTOPp->FlexDPUby2__DOT___GEN_51 = vlTOPp->FlexDPUby2__DOT__DPESrc_1_1;
+        vlTOPp->FlexDPUby2__DOT___GEN_58 = vlTOPp->FlexDPUby2__DOT__DPESrc_1_0;
+        vlTOPp->FlexDPUby2__DOT___GEN_60 = vlTOPp->FlexDPUby2__DOT__DPESrc_1_1;
     } else {
-        vlTOPp->FlexDPUby2__DOT___GEN_49 = vlTOPp->FlexDPUby2__DOT__DPESrc_0_0;
-        vlTOPp->FlexDPUby2__DOT___GEN_51 = vlTOPp->FlexDPUby2__DOT__DPESrc_0_1;
+        vlTOPp->FlexDPUby2__DOT___GEN_58 = vlTOPp->FlexDPUby2__DOT__DPESrc_0_0;
+        vlTOPp->FlexDPUby2__DOT___GEN_60 = vlTOPp->FlexDPUby2__DOT__DPESrc_0_1;
     }
     vlTOPp->FlexDPUby2__DOT__FDPE_io_i_mux_bus_3_3 
         = ((((8U & ((IData)(vlTOPp->FlexDPUby2__DOT__muxes_3_3) 
@@ -222,24 +223,24 @@ void VFlexDPUby2::_settle__TOP__2(VFlexDPUby2__Syms* __restrict vlSymsp) {
                                                     >> 1U))) 
            | (1U & ((IData)(vlTOPp->FlexDPUby2__DOT__muxes_0_0) 
                     >> 3U)));
-    vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___T_6 
+    vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___T_12 
         = (1U & (~ (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__jValid)));
-    vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___T_20 
-        = ((IData)(1U) + vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__j);
-    vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___T_28 
+    vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___T_49 
         = (1U > vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__j);
+    vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___j_T_1 
+        = ((IData)(1U) + vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__j);
     if ((1U > vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__i)) {
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_79 
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_151 
             = ((IData)(1U) + vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__i);
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_80 
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_152 
             = ((IData)(1U) + vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter);
     } else {
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_79 
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_151 
             = vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__i;
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_80 
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_152 
             = vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter;
     }
-    vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_82 
+    vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_154 
         = (((1U == vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__j) 
             & (1U == vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__i)) 
            | (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__jValid));
@@ -251,7 +252,7 @@ void VFlexDPUby2::_settle__TOP__2(VFlexDPUby2__Syms* __restrict vlSymsp) {
     vlTOPp->FlexDPUby2__DOT___SrcDestValid_T_1 = (1U 
                                                   == vlTOPp->FlexDPUby2__DOT__jloop);
     vlTOPp->FlexDPUby2__DOT___T_3 = (1U >= vlTOPp->FlexDPUby2__DOT__iloop);
-    vlTOPp->FlexDPUby2__DOT___T_13 = (3U == vlTOPp->FlexDPUby2__DOT__indexCol);
+    vlTOPp->FlexDPUby2__DOT___T_18 = (3U == vlTOPp->FlexDPUby2__DOT__indexCol);
     vlTOPp->FlexDPUby2__DOT___indexRow_T_1 = ((IData)(1U) 
                                               + vlTOPp->FlexDPUby2__DOT__indexRow);
     vlTOPp->FlexDPUby2__DOT___iloop_T_1 = ((IData)(1U) 
@@ -262,9 +263,9 @@ void VFlexDPUby2::_settle__TOP__2(VFlexDPUby2__Syms* __restrict vlSymsp) {
                                                    == vlTOPp->FlexDPUby2__DOT__iloop) 
                                                   & (1U 
                                                      == vlTOPp->FlexDPUby2__DOT__jloop));
-    vlTOPp->FlexDPUby2__DOT___T_28 = ((2U == vlTOPp->FlexDPUby2__DOT__iloop) 
+    vlTOPp->FlexDPUby2__DOT___T_33 = ((2U == vlTOPp->FlexDPUby2__DOT__iloop) 
                                       & (1U == vlTOPp->FlexDPUby2__DOT__jloop));
-    vlTOPp->FlexDPUby2__DOT___GEN_42 = (((2U == vlTOPp->FlexDPUby2__DOT__iloop) 
+    vlTOPp->FlexDPUby2__DOT___GEN_51 = (((2U == vlTOPp->FlexDPUby2__DOT__iloop) 
                                          & (1U == vlTOPp->FlexDPUby2__DOT__jloop))
                                          ? 2U : (((1U 
                                                    > vlTOPp->FlexDPUby2__DOT__iloop) 
@@ -285,6 +286,17 @@ void VFlexDPUby2::_settle__TOP__2(VFlexDPUby2__Syms* __restrict vlSymsp) {
                                                    & vlTOPp->FlexDPUby2__DOT__jloop))
                                                 ? (IData)(vlTOPp->io_Stationary_matrix_0_1)
                                                 : (IData)(vlTOPp->io_Stationary_matrix_0_0))));
+    vlTOPp->FlexDPUby2__DOT___GEN_28 = ((1U & (vlTOPp->FlexDPUby2__DOT__jloop 
+                                               & vlTOPp->FlexDPUby2__DOT__iloop))
+                                         ? (IData)(vlTOPp->io_Streaming_matrix_1_1)
+                                         : ((1U & (vlTOPp->FlexDPUby2__DOT__jloop 
+                                                   & (~ vlTOPp->FlexDPUby2__DOT__iloop)))
+                                             ? (IData)(vlTOPp->io_Streaming_matrix_1_0)
+                                             : ((1U 
+                                                 & ((~ vlTOPp->FlexDPUby2__DOT__jloop) 
+                                                    & vlTOPp->FlexDPUby2__DOT__iloop))
+                                                 ? (IData)(vlTOPp->io_Streaming_matrix_0_1)
+                                                 : (IData)(vlTOPp->io_Streaming_matrix_0_0))));
     vlTOPp->FlexDPUby2__DOT__PF_io_PF_Valid = ((IData)(vlTOPp->FlexDPUby2__DOT__Statvalid) 
                                                & (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__io_PF_Valid_REG));
     vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_controller__DOT___T_32 
@@ -328,36 +340,48 @@ void VFlexDPUby2::_settle__TOP__2(VFlexDPUby2__Syms* __restrict vlSymsp) {
                           & vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_ivn__DOT__j))
                     ? (IData)(vlTOPp->io_Stationary_matrix_0_1)
                     : (IData)(vlTOPp->io_Stationary_matrix_0_0))));
-    vlTOPp->FlexDPUby2__DOT__FDPE__DOT___GEN_2 = (0xffffU 
+    vlTOPp->FlexDPUby2__DOT__FDPE__DOT___GEN_4 = (0xffffU 
                                                   & (((0U 
-                                                       == (IData)(vlTOPp->io_Stationary_matrix_0_1)) 
+                                                       == (IData)(vlTOPp->io_Stationary_matrix_0_0)) 
                                                       & (0U 
                                                          == (IData)(vlTOPp->io_Stationary_matrix_1_1)))
                                                       ? (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__r_mult_0)
                                                       : 
                                                      (((0U 
-                                                        == (IData)(vlTOPp->io_Stationary_matrix_0_0)) 
+                                                        == (IData)(vlTOPp->io_Stationary_matrix_0_1)) 
                                                        & (0U 
-                                                          == (IData)(vlTOPp->io_Stationary_matrix_1_0)))
+                                                          == (IData)(vlTOPp->io_Stationary_matrix_1_1)))
                                                        ? (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__r_mult_0)
-                                                       : (IData)((QData)((IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_fan_network__DOT__my_adder_0_io_o_adder))))));
+                                                       : 
+                                                      (((0U 
+                                                         == (IData)(vlTOPp->io_Stationary_matrix_0_0)) 
+                                                        & (0U 
+                                                           == (IData)(vlTOPp->io_Stationary_matrix_1_0)))
+                                                        ? (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__r_mult_0)
+                                                        : (IData)((QData)((IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_fan_network__DOT__my_adder_0_io_o_adder)))))));
     vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_fan_network__DOT__my_adder_1__DOT___GEN_3 
         = ((4U == (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_controller__DOT__r_cmd_lvl_1Reg_4))
             ? vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_fan_network__DOT__my_adder_2_io_o_adder
             : vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_fan_network__DOT__my_adder_1__DOT__r_adder);
-    vlTOPp->FlexDPUby2__DOT__FDPE__DOT___GEN_3 = (0xffffU 
+    vlTOPp->FlexDPUby2__DOT__FDPE__DOT___GEN_5 = (0xffffU 
                                                   & (((0U 
-                                                       == (IData)(vlTOPp->io_Stationary_matrix_0_1)) 
+                                                       == (IData)(vlTOPp->io_Stationary_matrix_0_0)) 
                                                       & (0U 
                                                          == (IData)(vlTOPp->io_Stationary_matrix_1_1)))
                                                       ? (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__r_mult_1)
                                                       : 
                                                      (((0U 
-                                                        == (IData)(vlTOPp->io_Stationary_matrix_0_0)) 
+                                                        == (IData)(vlTOPp->io_Stationary_matrix_0_1)) 
                                                        & (0U 
-                                                          == (IData)(vlTOPp->io_Stationary_matrix_1_0)))
-                                                       ? (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__r_mult_0)
-                                                       : (IData)((QData)((IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_fan_network__DOT__my_adder_2_io_o_adder))))));
+                                                          == (IData)(vlTOPp->io_Stationary_matrix_1_1)))
+                                                       ? (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__r_mult_1)
+                                                       : 
+                                                      (((0U 
+                                                         == (IData)(vlTOPp->io_Stationary_matrix_0_0)) 
+                                                        & (0U 
+                                                           == (IData)(vlTOPp->io_Stationary_matrix_1_0)))
+                                                        ? (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__r_mult_0)
+                                                        : (IData)((QData)((IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_fan_network__DOT__my_adder_2_io_o_adder)))))));
     if (vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter__DOT___reg_i_T_2) {
         vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter__DOT___GEN_44 
             = vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter__DOT__j;
@@ -439,22 +463,22 @@ void VFlexDPUby2::_settle__TOP__2(VFlexDPUby2__Syms* __restrict vlSymsp) {
     }
     vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter__DOT___GEN_4 
         = (1U & ((~ (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter__DOT__high)) 
-                 | (((1U & (vlTOPp->FlexDPUby2__DOT___GEN_51 
+                 | (((1U & (vlTOPp->FlexDPUby2__DOT___GEN_60 
                             >> 1U)) == (1U & ((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter__DOT__prevStationary_matrix_1) 
                                               >> 1U))) 
-                    & (((1U & vlTOPp->FlexDPUby2__DOT___GEN_51) 
+                    & (((1U & vlTOPp->FlexDPUby2__DOT___GEN_60) 
                         == (1U & (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter__DOT__prevStationary_matrix_1))) 
-                       & (((1U & (vlTOPp->FlexDPUby2__DOT___GEN_49 
+                       & (((1U & (vlTOPp->FlexDPUby2__DOT___GEN_58 
                                   >> 1U)) == (1U & 
                                               ((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter__DOT__prevStationary_matrix_0) 
                                                >> 1U))) 
-                          & (((1U & vlTOPp->FlexDPUby2__DOT___GEN_49) 
+                          & (((1U & vlTOPp->FlexDPUby2__DOT___GEN_58) 
                               == (1U & (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter__DOT__prevStationary_matrix_0))) 
                              & (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter__DOT__matricesAreEqual)))))));
     vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter__DOT___GEN_33 
         = (0xffffU & ((1U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter__DOT__k)
-                       ? vlTOPp->FlexDPUby2__DOT___GEN_51
-                       : vlTOPp->FlexDPUby2__DOT___GEN_49));
+                       ? vlTOPp->FlexDPUby2__DOT___GEN_60
+                       : vlTOPp->FlexDPUby2__DOT___GEN_58));
     vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT___parsedindexvalue3_nextIndex_T_971 
         = (3U & (((0U == ((1U & (IData)(vlTOPp->FlexDPUby2__DOT__FDPE_io_i_mux_bus_3_3))
                            ? 2U : 3U)) & ((IData)(vlTOPp->FlexDPUby2__DOT__FDPE_io_i_mux_bus_3_3) 
@@ -1112,6 +1136,14 @@ void VFlexDPUby2::_settle__TOP__2(VFlexDPUby2__Syms* __restrict vlSymsp) {
                                                     & (IData)(vlTOPp->FlexDPUby2__DOT__FDPE_io_i_mux_bus_0_0)))
                               : (1U & (IData)(vlTOPp->FlexDPUby2__DOT__FDPE_io_i_mux_bus_0_0)))))));
     if (vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter_io_valid) {
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes_io_counterMatrix2_0 
+            = ((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter_io_start_REG)
+                ? (0xffffU & (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter__DOT__counterRegs2_0))
+                : 0U);
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes_io_counterMatrix2_1 
+            = ((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter_io_start_REG)
+                ? (0xffffU & (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter__DOT__counterRegs2_1))
+                : 0U);
         vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes_io_counterMatrix1_0_0 
             = ((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter_io_start_REG)
                 ? (0xffffU & (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter__DOT__counterRegs1_0_0))
@@ -1128,6 +1160,10 @@ void VFlexDPUby2::_settle__TOP__2(VFlexDPUby2__Syms* __restrict vlSymsp) {
             = ((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter_io_start_REG)
                 ? (0xffffU & (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter__DOT__counterRegs1_1_1))
                 : 0U);
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes_io_mat2_0 
+            = (0xffffU & vlTOPp->FlexDPUby2__DOT___GEN_58);
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes_io_mat2_1 
+            = (0xffffU & vlTOPp->FlexDPUby2__DOT___GEN_60);
         vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes_io_mat1_0_0 
             = vlTOPp->io_Stationary_matrix_0_0;
         vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes_io_mat1_0_1 
@@ -1136,27 +1172,30 @@ void VFlexDPUby2::_settle__TOP__2(VFlexDPUby2__Syms* __restrict vlSymsp) {
             = vlTOPp->io_Stationary_matrix_1_0;
         vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes_io_mat1_1_1 
             = vlTOPp->io_Stationary_matrix_1_1;
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes_io_mat2_0 
-            = (0xffffU & vlTOPp->FlexDPUby2__DOT___GEN_49);
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes_io_mat2_1 
-            = (0xffffU & vlTOPp->FlexDPUby2__DOT___GEN_51);
     } else {
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes_io_counterMatrix2_0 = 0U;
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes_io_counterMatrix2_1 = 0U;
         vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes_io_counterMatrix1_0_0 = 0U;
         vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes_io_counterMatrix1_0_1 = 0U;
         vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes_io_counterMatrix1_1_0 = 0U;
         vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes_io_counterMatrix1_1_1 = 0U;
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes_io_mat2_0 = 0U;
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes_io_mat2_1 = 0U;
         vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes_io_mat1_0_0 = 0U;
         vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes_io_mat1_0_1 = 0U;
         vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes_io_mat1_1_0 = 0U;
         vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes_io_mat1_1_1 = 0U;
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes_io_mat2_0 = 0U;
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes_io_mat2_1 = 0U;
     }
     vlTOPp->FlexDPUby2__DOT___GEN_24 = (((0U != (IData)(vlTOPp->FlexDPUby2__DOT___GEN_3)) 
                                          & (1U >= vlTOPp->FlexDPUby2__DOT__iloop))
                                          ? ((IData)(1U) 
                                             + vlTOPp->FlexDPUby2__DOT__indexCol)
                                          : vlTOPp->FlexDPUby2__DOT__indexCol);
+    vlTOPp->FlexDPUby2__DOT___GEN_41 = (((0U != (IData)(vlTOPp->FlexDPUby2__DOT___GEN_28)) 
+                                         & (1U >= vlTOPp->FlexDPUby2__DOT__iloop))
+                                         ? ((IData)(1U) 
+                                            + vlTOPp->FlexDPUby2__DOT__SindexCol)
+                                         : vlTOPp->FlexDPUby2__DOT__SindexCol);
     if (vlTOPp->io_valid) {
         vlTOPp->io_output_0_0 = ((IData)(vlTOPp->FlexDPUby2__DOT__Statvalid)
                                   ? ((IData)(vlTOPp->FlexDPUby2__DOT__PF_io_PF_Valid)
@@ -1180,7 +1219,7 @@ void VFlexDPUby2::_settle__TOP__2(VFlexDPUby2__Syms* __restrict vlSymsp) {
         vlTOPp->io_output_1_0 = 0U;
         vlTOPp->io_output_1_1 = 0U;
     }
-    vlTOPp->FlexDPUby2__DOT___GEN_58 = (1U & ((IData)(vlTOPp->FlexDPUby2__DOT__PF_io_PF_Valid)
+    vlTOPp->FlexDPUby2__DOT___GEN_67 = (1U & ((IData)(vlTOPp->FlexDPUby2__DOT__PF_io_PF_Valid)
                                                ? ((0U 
                                                    != 
                                                    ((1U 
@@ -1766,34 +1805,36 @@ void VFlexDPUby2::_settle__TOP__2(VFlexDPUby2__Syms* __restrict vlSymsp) {
                                               ? ((IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT__parsedindexvalue_nextIndex) 
                                                  - (IData)(2U))
                                               : (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT__parsedindexvalue_nextIndex))))))))));
-    if ((1U & (vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__j 
-               & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__i))) {
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_9 
-            = vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes_io_counterMatrix1_1_1;
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_47 
-            = vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes_io_mat1_1_1;
-    } else {
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_9 
-            = ((1U & (vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__j 
+    vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_23 
+        = ((1U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__i)
+            ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes_io_counterMatrix2_1)
+            : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes_io_counterMatrix2_0));
+    vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_21 
+        = ((1U & (vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__j 
+                  & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__i))
+            ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes_io_counterMatrix1_1_1)
+            : ((1U & (vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__j 
                       & (~ vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__i)))
                 ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes_io_counterMatrix1_1_0)
                 : ((1U & ((~ vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__j) 
                           & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__i))
                     ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes_io_counterMatrix1_0_1)
-                    : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes_io_counterMatrix1_0_0)));
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_47 
-            = ((1U & (vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__j 
+                    : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes_io_counterMatrix1_0_0))));
+    vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_17 
+        = ((1U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__i)
+            ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes_io_mat2_1)
+            : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes_io_mat2_0));
+    vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_15 
+        = ((1U & (vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__j 
+                  & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__i))
+            ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes_io_mat1_1_1)
+            : ((1U & (vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__j 
                       & (~ vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__i)))
                 ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes_io_mat1_1_0)
                 : ((1U & ((~ vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__j) 
                           & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__i))
                     ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes_io_mat1_0_1)
-                    : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes_io_mat1_0_0)));
-    }
-    vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_11 
-        = ((1U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__i)
-            ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes_io_mat2_1)
-            : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes_io_mat2_0));
+                    : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes_io_mat1_0_0))));
     vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT__parsedindexvalue3_nextIndex_25 
         = (3U & (((0U == (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT__parsedindexvalue3_nextIndex_24)) 
                   & (~ ((IData)(vlTOPp->FlexDPUby2__DOT__FDPE_io_i_mux_bus_3_3) 
@@ -2098,87 +2139,67 @@ void VFlexDPUby2::_settle__TOP__2(VFlexDPUby2__Syms* __restrict vlSymsp) {
                       ? ((IData)(1U) + (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT__parsedindexvalue_nextIndex_1))
                       : ((IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT__parsedindexvalue_nextIndex_1) 
                          - (IData)(1U))) : (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT__parsedindexvalue_nextIndex_1)));
-    vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___muxes_T_8 
-        = (0xffffU & (((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_9) 
-                       - (IData)(1U)) - (((1U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__i)
-                                           ? ((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter_io_valid)
-                                               ? ((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter_io_start_REG)
-                                                   ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter__DOT__counterRegs2_1)
-                                                   : 0U)
-                                               : 0U)
-                                           : ((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter_io_valid)
-                                               ? ((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter_io_start_REG)
-                                                   ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter__DOT__counterRegs2_0)
-                                                   : 0U)
-                                               : 0U)) 
+    vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___muxes_T_12 
+        = (0xffffU & (((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_23) 
+                       - (IData)(1U)) - ((IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_21) 
                                          - (IData)(1U))));
     if ((((~ (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__jValid)) 
-          & (0U != (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_9))) 
-         & (0U != (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_11)))) {
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_64 
+          & (0U != (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_15))) 
+         & (0U != (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_17)))) {
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_136 
             = ((0U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter))
-                ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_11)
+                ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_17)
                 : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__src_0));
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_65 
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_137 
             = ((1U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter))
-                ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_11)
+                ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_17)
                 : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__src_1));
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_66 
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_138 
             = ((2U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter))
-                ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_11)
+                ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_17)
                 : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__src_2));
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_67 
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_139 
             = ((3U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter))
-                ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_11)
+                ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_17)
                 : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__src_3));
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_68 
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_140 
             = ((0U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter))
-                ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_47)
+                ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_15)
                 : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__dest_0));
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_69 
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_141 
             = ((1U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter))
-                ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_47)
+                ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_15)
                 : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__dest_1));
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_70 
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_142 
             = ((2U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter))
-                ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_47)
+                ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_15)
                 : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__dest_2));
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_71 
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_143 
             = ((3U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter))
-                ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_47)
+                ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_15)
                 : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__dest_3));
     } else {
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_64 
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_136 
             = vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__src_0;
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_65 
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_137 
             = vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__src_1;
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_66 
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_138 
             = vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__src_2;
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_67 
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_139 
             = vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__src_3;
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_68 
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_140 
             = vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__dest_0;
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_69 
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_141 
             = vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__dest_1;
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_70 
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_142 
             = vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__dest_2;
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_71 
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_143 
             = vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__dest_3;
     }
-    vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_78 
+    vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_150 
         = (((((~ (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__jValid)) 
-              & (0U != ((1U & (((IData)(1U) + vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__j) 
-                               & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__i))
-                         ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes_io_counterMatrix1_1_1)
-                         : ((1U & (((IData)(1U) + vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__j) 
-                                   & (~ vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__i)))
-                             ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes_io_counterMatrix1_1_0)
-                             : ((1U & ((~ ((IData)(1U) 
-                                           + vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__j)) 
-                                       & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__i))
-                                 ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes_io_counterMatrix1_0_1)
-                                 : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes_io_counterMatrix1_0_0)))))) 
-             & (0U != (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_11))) 
+              & (0U != (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_15))) 
+             & (0U != (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_17))) 
             & (1U > vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__j))
             ? ((IData)(1U) + vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__indexcounter)
             : vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__indexcounter);
@@ -2257,125 +2278,237 @@ void VFlexDPUby2::_settle__TOP__2(VFlexDPUby2__Syms* __restrict vlSymsp) {
         vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT___GEN_8 = 0U;
     }
     if ((((~ (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__jValid)) 
-          & (0U != (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_9))) 
-         & (0U != (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_11)))) {
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_48 
-            = (3U & (((0U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter)) 
-                      & (0U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__indexcounter)))
-                      ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___muxes_T_8)
-                      : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_0_0)));
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_49 
-            = (3U & (((0U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter)) 
-                      & (1U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__indexcounter)))
-                      ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___muxes_T_8)
-                      : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_0_1)));
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_50 
-            = (3U & (((0U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter)) 
-                      & (2U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__indexcounter)))
-                      ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___muxes_T_8)
-                      : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_0_2)));
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_51 
-            = (3U & (((0U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter)) 
-                      & (3U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__indexcounter)))
-                      ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___muxes_T_8)
-                      : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_0_3)));
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_52 
-            = (3U & (((1U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter)) 
-                      & (0U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__indexcounter)))
-                      ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___muxes_T_8)
-                      : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_1_0)));
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_53 
-            = (3U & (((1U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter)) 
-                      & (1U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__indexcounter)))
-                      ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___muxes_T_8)
-                      : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_1_1)));
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_54 
-            = (3U & (((1U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter)) 
-                      & (2U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__indexcounter)))
-                      ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___muxes_T_8)
-                      : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_1_2)));
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_55 
-            = (3U & (((1U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter)) 
-                      & (3U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__indexcounter)))
-                      ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___muxes_T_8)
-                      : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_1_3)));
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_56 
-            = (3U & (((2U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter)) 
-                      & (0U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__indexcounter)))
-                      ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___muxes_T_8)
-                      : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_2_0)));
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_57 
-            = (3U & (((2U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter)) 
-                      & (1U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__indexcounter)))
-                      ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___muxes_T_8)
-                      : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_2_1)));
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_58 
-            = (3U & (((2U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter)) 
-                      & (2U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__indexcounter)))
-                      ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___muxes_T_8)
-                      : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_2_2)));
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_59 
-            = (3U & (((2U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter)) 
-                      & (3U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__indexcounter)))
-                      ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___muxes_T_8)
-                      : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_2_3)));
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_60 
-            = (3U & (((3U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter)) 
-                      & (0U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__indexcounter)))
-                      ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___muxes_T_8)
-                      : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_3_0)));
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_61 
-            = (3U & (((3U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter)) 
-                      & (1U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__indexcounter)))
-                      ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___muxes_T_8)
-                      : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_3_1)));
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_62 
-            = (3U & (((3U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter)) 
-                      & (2U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__indexcounter)))
-                      ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___muxes_T_8)
-                      : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_3_2)));
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_63 
-            = (3U & (((3U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter)) 
-                      & (3U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__indexcounter)))
-                      ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___muxes_T_8)
-                      : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_3_3)));
+          & (0U != (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_15))) 
+         & (0U != (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_17)))) {
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_120 
+            = (3U & ((((1U == (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_21)) 
+                       & (0U == (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_23))) 
+                      | ((9U == (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_21)) 
+                         & (1U == (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_23))))
+                      ? (((0U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter)) 
+                          & (0U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__indexcounter)))
+                          ? 1U : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_0_0))
+                      : (((0U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter)) 
+                          & (0U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__indexcounter)))
+                          ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___muxes_T_12)
+                          : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_0_0))));
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_121 
+            = (3U & ((((1U == (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_21)) 
+                       & (0U == (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_23))) 
+                      | ((9U == (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_21)) 
+                         & (1U == (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_23))))
+                      ? (((0U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter)) 
+                          & (1U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__indexcounter)))
+                          ? 1U : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_0_1))
+                      : (((0U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter)) 
+                          & (1U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__indexcounter)))
+                          ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___muxes_T_12)
+                          : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_0_1))));
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_122 
+            = (3U & ((((1U == (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_21)) 
+                       & (0U == (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_23))) 
+                      | ((9U == (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_21)) 
+                         & (1U == (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_23))))
+                      ? (((0U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter)) 
+                          & (2U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__indexcounter)))
+                          ? 1U : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_0_2))
+                      : (((0U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter)) 
+                          & (2U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__indexcounter)))
+                          ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___muxes_T_12)
+                          : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_0_2))));
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_123 
+            = (3U & ((((1U == (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_21)) 
+                       & (0U == (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_23))) 
+                      | ((9U == (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_21)) 
+                         & (1U == (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_23))))
+                      ? (((0U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter)) 
+                          & (3U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__indexcounter)))
+                          ? 1U : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_0_3))
+                      : (((0U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter)) 
+                          & (3U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__indexcounter)))
+                          ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___muxes_T_12)
+                          : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_0_3))));
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_124 
+            = (3U & ((((1U == (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_21)) 
+                       & (0U == (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_23))) 
+                      | ((9U == (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_21)) 
+                         & (1U == (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_23))))
+                      ? (((1U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter)) 
+                          & (0U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__indexcounter)))
+                          ? 1U : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_1_0))
+                      : (((1U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter)) 
+                          & (0U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__indexcounter)))
+                          ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___muxes_T_12)
+                          : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_1_0))));
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_125 
+            = (3U & ((((1U == (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_21)) 
+                       & (0U == (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_23))) 
+                      | ((9U == (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_21)) 
+                         & (1U == (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_23))))
+                      ? (((1U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter)) 
+                          & (1U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__indexcounter)))
+                          ? 1U : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_1_1))
+                      : (((1U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter)) 
+                          & (1U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__indexcounter)))
+                          ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___muxes_T_12)
+                          : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_1_1))));
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_126 
+            = (3U & ((((1U == (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_21)) 
+                       & (0U == (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_23))) 
+                      | ((9U == (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_21)) 
+                         & (1U == (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_23))))
+                      ? (((1U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter)) 
+                          & (2U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__indexcounter)))
+                          ? 1U : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_1_2))
+                      : (((1U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter)) 
+                          & (2U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__indexcounter)))
+                          ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___muxes_T_12)
+                          : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_1_2))));
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_127 
+            = (3U & ((((1U == (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_21)) 
+                       & (0U == (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_23))) 
+                      | ((9U == (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_21)) 
+                         & (1U == (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_23))))
+                      ? (((1U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter)) 
+                          & (3U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__indexcounter)))
+                          ? 1U : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_1_3))
+                      : (((1U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter)) 
+                          & (3U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__indexcounter)))
+                          ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___muxes_T_12)
+                          : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_1_3))));
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_128 
+            = (3U & ((((1U == (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_21)) 
+                       & (0U == (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_23))) 
+                      | ((9U == (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_21)) 
+                         & (1U == (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_23))))
+                      ? (((2U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter)) 
+                          & (0U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__indexcounter)))
+                          ? 1U : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_2_0))
+                      : (((2U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter)) 
+                          & (0U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__indexcounter)))
+                          ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___muxes_T_12)
+                          : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_2_0))));
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_129 
+            = (3U & ((((1U == (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_21)) 
+                       & (0U == (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_23))) 
+                      | ((9U == (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_21)) 
+                         & (1U == (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_23))))
+                      ? (((2U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter)) 
+                          & (1U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__indexcounter)))
+                          ? 1U : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_2_1))
+                      : (((2U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter)) 
+                          & (1U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__indexcounter)))
+                          ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___muxes_T_12)
+                          : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_2_1))));
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_130 
+            = (3U & ((((1U == (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_21)) 
+                       & (0U == (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_23))) 
+                      | ((9U == (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_21)) 
+                         & (1U == (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_23))))
+                      ? (((2U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter)) 
+                          & (2U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__indexcounter)))
+                          ? 1U : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_2_2))
+                      : (((2U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter)) 
+                          & (2U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__indexcounter)))
+                          ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___muxes_T_12)
+                          : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_2_2))));
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_131 
+            = (3U & ((((1U == (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_21)) 
+                       & (0U == (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_23))) 
+                      | ((9U == (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_21)) 
+                         & (1U == (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_23))))
+                      ? (((2U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter)) 
+                          & (3U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__indexcounter)))
+                          ? 1U : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_2_3))
+                      : (((2U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter)) 
+                          & (3U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__indexcounter)))
+                          ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___muxes_T_12)
+                          : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_2_3))));
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_132 
+            = (3U & ((((1U == (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_21)) 
+                       & (0U == (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_23))) 
+                      | ((9U == (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_21)) 
+                         & (1U == (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_23))))
+                      ? (((3U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter)) 
+                          & (0U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__indexcounter)))
+                          ? 1U : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_3_0))
+                      : (((3U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter)) 
+                          & (0U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__indexcounter)))
+                          ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___muxes_T_12)
+                          : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_3_0))));
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_133 
+            = (3U & ((((1U == (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_21)) 
+                       & (0U == (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_23))) 
+                      | ((9U == (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_21)) 
+                         & (1U == (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_23))))
+                      ? (((3U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter)) 
+                          & (1U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__indexcounter)))
+                          ? 1U : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_3_1))
+                      : (((3U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter)) 
+                          & (1U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__indexcounter)))
+                          ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___muxes_T_12)
+                          : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_3_1))));
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_134 
+            = (3U & ((((1U == (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_21)) 
+                       & (0U == (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_23))) 
+                      | ((9U == (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_21)) 
+                         & (1U == (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_23))))
+                      ? (((3U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter)) 
+                          & (2U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__indexcounter)))
+                          ? 1U : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_3_2))
+                      : (((3U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter)) 
+                          & (2U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__indexcounter)))
+                          ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___muxes_T_12)
+                          : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_3_2))));
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_135 
+            = (3U & ((((1U == (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_21)) 
+                       & (0U == (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_23))) 
+                      | ((9U == (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_21)) 
+                         & (1U == (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_23))))
+                      ? (((3U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter)) 
+                          & (3U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__indexcounter)))
+                          ? 1U : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_3_3))
+                      : (((3U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__counter)) 
+                          & (3U == (3U & vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__indexcounter)))
+                          ? (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___muxes_T_12)
+                          : (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_3_3))));
     } else {
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_48 
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_120 
             = (3U & (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_0_0));
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_49 
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_121 
             = (3U & (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_0_1));
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_50 
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_122 
             = (3U & (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_0_2));
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_51 
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_123 
             = (3U & (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_0_3));
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_52 
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_124 
             = (3U & (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_1_0));
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_53 
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_125 
             = (3U & (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_1_1));
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_54 
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_126 
             = (3U & (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_1_2));
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_55 
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_127 
             = (3U & (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_1_3));
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_56 
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_128 
             = (3U & (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_2_0));
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_57 
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_129 
             = (3U & (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_2_1));
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_58 
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_130 
             = (3U & (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_2_2));
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_59 
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_131 
             = (3U & (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_2_3));
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_60 
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_132 
             = (3U & (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_3_0));
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_61 
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_133 
             = (3U & (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_3_1));
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_62 
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_134 
             = (3U & (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_3_2));
-        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_63 
+        vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_135 
             = (3U & (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_3_3));
     }
-    vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_81 
+    vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_153 
         = ((1U > vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__i)
-            ? 0U : vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_78);
+            ? 0U : vlTOPp->FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_150);
     if (((((~ (IData)((0U != (IData)(vlTOPp->FlexDPUby2__DOT__FDPE_io_i_mux_bus_0_0)))) 
            & (0U != (IData)(vlTOPp->FlexDPUby2__DOT__FDPE_io_i_mux_bus_0_1))) 
           & (0U != (IData)(vlTOPp->FlexDPUby2__DOT__FDPE_io_i_mux_bus_0_2))) 
@@ -3898,15 +4031,16 @@ void VFlexDPUby2::_ctor_var_reset() {
     FlexDPUby2__DOT___GEN_3 = VL_RAND_RESET_I(16);
     FlexDPUby2__DOT___T_3 = VL_RAND_RESET_I(1);
     FlexDPUby2__DOT___GEN_24 = VL_RAND_RESET_I(32);
-    FlexDPUby2__DOT___SindexCol_T_1 = VL_RAND_RESET_I(32);
-    FlexDPUby2__DOT___T_9 = VL_RAND_RESET_I(1);
+    FlexDPUby2__DOT___GEN_28 = VL_RAND_RESET_I(16);
+    FlexDPUby2__DOT___GEN_41 = VL_RAND_RESET_I(32);
+    FlexDPUby2__DOT___T_14 = VL_RAND_RESET_I(1);
     FlexDPUby2__DOT___SindexRow_T_1 = VL_RAND_RESET_I(32);
-    FlexDPUby2__DOT___T_13 = VL_RAND_RESET_I(1);
+    FlexDPUby2__DOT___T_18 = VL_RAND_RESET_I(1);
     FlexDPUby2__DOT___indexRow_T_1 = VL_RAND_RESET_I(32);
     FlexDPUby2__DOT___iloop_T_1 = VL_RAND_RESET_I(32);
     FlexDPUby2__DOT___jloop_T_1 = VL_RAND_RESET_I(32);
-    FlexDPUby2__DOT___T_28 = VL_RAND_RESET_I(1);
-    FlexDPUby2__DOT___GEN_42 = VL_RAND_RESET_I(32);
+    FlexDPUby2__DOT___T_33 = VL_RAND_RESET_I(1);
+    FlexDPUby2__DOT___GEN_51 = VL_RAND_RESET_I(32);
     FlexDPUby2__DOT__src_0 = VL_RAND_RESET_I(32);
     FlexDPUby2__DOT__src_1 = VL_RAND_RESET_I(32);
     FlexDPUby2__DOT__src_2 = VL_RAND_RESET_I(32);
@@ -3932,9 +4066,9 @@ void VFlexDPUby2::_ctor_var_reset() {
     FlexDPUby2__DOT__dest_2 = VL_RAND_RESET_I(32);
     FlexDPUby2__DOT__dest_3 = VL_RAND_RESET_I(32);
     FlexDPUby2__DOT__iterationChange = VL_RAND_RESET_I(1);
-    FlexDPUby2__DOT___GEN_49 = VL_RAND_RESET_I(32);
-    FlexDPUby2__DOT___GEN_51 = VL_RAND_RESET_I(32);
-    FlexDPUby2__DOT___GEN_58 = VL_RAND_RESET_I(1);
+    FlexDPUby2__DOT___GEN_58 = VL_RAND_RESET_I(32);
+    FlexDPUby2__DOT___GEN_60 = VL_RAND_RESET_I(32);
+    FlexDPUby2__DOT___GEN_67 = VL_RAND_RESET_I(1);
     FlexDPUby2__DOT__PF__DOT__myMuxes_io_mat1_0_0 = VL_RAND_RESET_I(16);
     FlexDPUby2__DOT__PF__DOT__myMuxes_io_mat1_0_1 = VL_RAND_RESET_I(16);
     FlexDPUby2__DOT__PF__DOT__myMuxes_io_mat1_1_0 = VL_RAND_RESET_I(16);
@@ -3945,6 +4079,8 @@ void VFlexDPUby2::_ctor_var_reset() {
     FlexDPUby2__DOT__PF__DOT__myMuxes_io_counterMatrix1_0_1 = VL_RAND_RESET_I(16);
     FlexDPUby2__DOT__PF__DOT__myMuxes_io_counterMatrix1_1_0 = VL_RAND_RESET_I(16);
     FlexDPUby2__DOT__PF__DOT__myMuxes_io_counterMatrix1_1_1 = VL_RAND_RESET_I(16);
+    FlexDPUby2__DOT__PF__DOT__myMuxes_io_counterMatrix2_0 = VL_RAND_RESET_I(16);
+    FlexDPUby2__DOT__PF__DOT__myMuxes_io_counterMatrix2_1 = VL_RAND_RESET_I(16);
     FlexDPUby2__DOT__PF__DOT__myCounter_io_valid = VL_RAND_RESET_I(1);
     FlexDPUby2__DOT__PF__DOT__myCounter_io_start_REG = VL_RAND_RESET_I(1);
     FlexDPUby2__DOT__PF__DOT__io_PF_Valid_REG = VL_RAND_RESET_I(1);
@@ -3985,42 +4121,43 @@ void VFlexDPUby2::_ctor_var_reset() {
     FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__dest_1 = VL_RAND_RESET_I(16);
     FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__dest_2 = VL_RAND_RESET_I(16);
     FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__dest_3 = VL_RAND_RESET_I(16);
-    FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___T_6 = VL_RAND_RESET_I(1);
-    FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_9 = VL_RAND_RESET_I(16);
-    FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_11 = VL_RAND_RESET_I(16);
-    FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___muxes_T_8 = VL_RAND_RESET_I(16);
-    FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_47 = VL_RAND_RESET_I(16);
-    FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_48 = VL_RAND_RESET_I(2);
-    FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_49 = VL_RAND_RESET_I(2);
-    FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_50 = VL_RAND_RESET_I(2);
-    FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_51 = VL_RAND_RESET_I(2);
-    FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_52 = VL_RAND_RESET_I(2);
-    FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_53 = VL_RAND_RESET_I(2);
-    FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_54 = VL_RAND_RESET_I(2);
-    FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_55 = VL_RAND_RESET_I(2);
-    FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_56 = VL_RAND_RESET_I(2);
-    FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_57 = VL_RAND_RESET_I(2);
-    FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_58 = VL_RAND_RESET_I(2);
-    FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_59 = VL_RAND_RESET_I(2);
-    FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_60 = VL_RAND_RESET_I(2);
-    FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_61 = VL_RAND_RESET_I(2);
-    FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_62 = VL_RAND_RESET_I(2);
-    FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_63 = VL_RAND_RESET_I(2);
-    FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_64 = VL_RAND_RESET_I(16);
-    FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_65 = VL_RAND_RESET_I(16);
-    FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_66 = VL_RAND_RESET_I(16);
-    FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_67 = VL_RAND_RESET_I(16);
-    FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_68 = VL_RAND_RESET_I(16);
-    FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_69 = VL_RAND_RESET_I(16);
-    FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_70 = VL_RAND_RESET_I(16);
-    FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_71 = VL_RAND_RESET_I(16);
-    FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___T_20 = VL_RAND_RESET_I(32);
-    FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___T_28 = VL_RAND_RESET_I(1);
-    FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_78 = VL_RAND_RESET_I(32);
-    FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_79 = VL_RAND_RESET_I(32);
-    FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_80 = VL_RAND_RESET_I(32);
-    FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_81 = VL_RAND_RESET_I(32);
-    FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_82 = VL_RAND_RESET_I(1);
+    FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___T_12 = VL_RAND_RESET_I(1);
+    FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_15 = VL_RAND_RESET_I(16);
+    FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_17 = VL_RAND_RESET_I(16);
+    FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_21 = VL_RAND_RESET_I(16);
+    FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_23 = VL_RAND_RESET_I(16);
+    FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___muxes_T_12 = VL_RAND_RESET_I(16);
+    FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_120 = VL_RAND_RESET_I(2);
+    FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_121 = VL_RAND_RESET_I(2);
+    FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_122 = VL_RAND_RESET_I(2);
+    FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_123 = VL_RAND_RESET_I(2);
+    FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_124 = VL_RAND_RESET_I(2);
+    FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_125 = VL_RAND_RESET_I(2);
+    FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_126 = VL_RAND_RESET_I(2);
+    FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_127 = VL_RAND_RESET_I(2);
+    FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_128 = VL_RAND_RESET_I(2);
+    FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_129 = VL_RAND_RESET_I(2);
+    FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_130 = VL_RAND_RESET_I(2);
+    FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_131 = VL_RAND_RESET_I(2);
+    FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_132 = VL_RAND_RESET_I(2);
+    FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_133 = VL_RAND_RESET_I(2);
+    FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_134 = VL_RAND_RESET_I(2);
+    FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_135 = VL_RAND_RESET_I(2);
+    FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_136 = VL_RAND_RESET_I(16);
+    FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_137 = VL_RAND_RESET_I(16);
+    FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_138 = VL_RAND_RESET_I(16);
+    FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_139 = VL_RAND_RESET_I(16);
+    FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_140 = VL_RAND_RESET_I(16);
+    FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_141 = VL_RAND_RESET_I(16);
+    FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_142 = VL_RAND_RESET_I(16);
+    FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_143 = VL_RAND_RESET_I(16);
+    FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___T_49 = VL_RAND_RESET_I(1);
+    FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_150 = VL_RAND_RESET_I(32);
+    FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___j_T_1 = VL_RAND_RESET_I(32);
+    FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_151 = VL_RAND_RESET_I(32);
+    FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_152 = VL_RAND_RESET_I(32);
+    FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_153 = VL_RAND_RESET_I(32);
+    FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_154 = VL_RAND_RESET_I(1);
     FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__jNext = VL_RAND_RESET_I(32);
     FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___k_T_1 = VL_RAND_RESET_I(32);
     FlexDPUby2__DOT__PF__DOT__myCounter__DOT__prevStationary_matrix_0 = VL_RAND_RESET_I(16);
@@ -4067,8 +4204,9 @@ void VFlexDPUby2::_ctor_var_reset() {
     FlexDPUby2__DOT__FDPE__DOT__matrix_0_1 = VL_RAND_RESET_I(16);
     FlexDPUby2__DOT__FDPE__DOT__matrix_1_0 = VL_RAND_RESET_I(16);
     FlexDPUby2__DOT__FDPE__DOT__matrix_1_1 = VL_RAND_RESET_I(16);
-    FlexDPUby2__DOT__FDPE__DOT___GEN_2 = VL_RAND_RESET_I(16);
-    FlexDPUby2__DOT__FDPE__DOT___GEN_3 = VL_RAND_RESET_I(16);
+    FlexDPUby2__DOT__FDPE__DOT___GEN_4 = VL_RAND_RESET_I(16);
+    FlexDPUby2__DOT__FDPE__DOT___GEN_5 = VL_RAND_RESET_I(16);
+    FlexDPUby2__DOT__FDPE__DOT___matrix_1_0_T_1 = VL_RAND_RESET_I(15);
     FlexDPUby2__DOT__FDPE__DOT___counter_T_1 = VL_RAND_RESET_I(32);
     FlexDPUby2__DOT__FDPE__DOT__my_ivn__DOT__i_vn_0 = VL_RAND_RESET_I(5);
     FlexDPUby2__DOT__FDPE__DOT__my_ivn__DOT__i_vn_1 = VL_RAND_RESET_I(5);

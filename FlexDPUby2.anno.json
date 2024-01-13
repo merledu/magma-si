@@ -271,6 +271,30 @@
   },
   {
     "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~FlexDPUby2|Muxes>mat2_0"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~FlexDPUby2|Muxes>mat2_1"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~FlexDPUby2|Muxes>mat1_0_0"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~FlexDPUby2|Muxes>mat1_0_1"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~FlexDPUby2|Muxes>mat1_1_0"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~FlexDPUby2|Muxes>mat1_1_1"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
     "target":"~FlexDPUby2|Muxes>k"
   },
   {
