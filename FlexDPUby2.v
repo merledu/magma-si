@@ -1328,11 +1328,10 @@ module ivncontrol4(
   wire [31:0] _j_T_1 = j + 32'h1; // @[ivncontrol4.scala 75:16]
   wire  _T_19 = _T_8 & _T_12; // @[ivncontrol4.scala 77:43]
   wire  _T_27 = rowcount_1 == 32'h2; // @[ivncontrol4.scala 120:34]
-  wire [4:0] _GEN_25 = rowcount_1 == 32'h2 ? 5'h1 : 5'h13; // @[ivncontrol4.scala 120:42 121:29 93:17]
+  wire [4:0] _GEN_25 = rowcount_1 == 32'h2 ? 5'h1 : 5'h9; // @[ivncontrol4.scala 120:42 121:29 93:17]
   wire  _T_29 = rowcount_1 == 32'h1; // @[ivncontrol4.scala 128:33]
-  wire [4:0] _GEN_27 = _T_27 ? 5'h1 : 5'hb; // @[ivncontrol4.scala 131:46 132:29 93:17]
-  wire [4:0] _GEN_31 = _T_29 ? 5'h1 : 5'h17; // @[ivncontrol4.scala 149:46 150:29 93:17]
-  wire [4:0] _GEN_32 = _T_27 ? 5'h1 : _GEN_31; // @[ivncontrol4.scala 145:41 146:29]
+  wire [4:0] _GEN_30 = _T_29 ? 5'h1 : 5'hb; // @[ivncontrol4.scala 149:46 150:29 93:17]
+  wire [4:0] _GEN_31 = _T_27 ? 5'h1 : _GEN_30; // @[ivncontrol4.scala 145:41 146:29]
   wire  valid = _T_19; // @[ivncontrol4.scala 103:71 104:14 106:14]
   wire  valid1 = 1'h0;
   wire [1:0] rowlength = 2'h2;
@@ -1349,9 +1348,9 @@ module ivncontrol4(
     end else if (rowcount_0 == 32'h1) begin // @[ivncontrol4.scala 126:43]
       i_vn_0 <= 5'h0; // @[ivncontrol4.scala 127:25]
     end else if (rowcount_0 == 32'h0) begin // @[ivncontrol4.scala 144:43]
-      i_vn_0 <= _GEN_32;
+      i_vn_0 <= _GEN_31;
     end else begin
-      i_vn_0 <= 5'h17; // @[ivncontrol4.scala 93:17]
+      i_vn_0 <= 5'hb; // @[ivncontrol4.scala 93:17]
     end
     if (reset) begin // @[ivncontrol4.scala 15:23]
       i_vn_1 <= 5'h0; // @[ivncontrol4.scala 15:23]
@@ -1361,12 +1360,12 @@ module ivncontrol4(
       if (rowcount_1 == 32'h1) begin // @[ivncontrol4.scala 128:40]
         i_vn_1 <= 5'h1; // @[ivncontrol4.scala 129:29]
       end else begin
-        i_vn_1 <= _GEN_27;
+        i_vn_1 <= _GEN_25;
       end
     end else if (rowcount_0 == 32'h0) begin // @[ivncontrol4.scala 144:43]
-      i_vn_1 <= _GEN_27;
+      i_vn_1 <= _GEN_25;
     end else begin
-      i_vn_1 <= 5'hb; // @[ivncontrol4.scala 93:17]
+      i_vn_1 <= 5'h9; // @[ivncontrol4.scala 93:17]
     end
     if (reset) begin // @[ivncontrol4.scala 15:23]
       i_vn_2 <= 5'h0; // @[ivncontrol4.scala 15:23]
@@ -1374,12 +1373,12 @@ module ivncontrol4(
       i_vn_2 <= _GEN_25;
     end else if (rowcount_0 == 32'h1) begin // @[ivncontrol4.scala 126:43]
       if (rowcount_1 == 32'h1) begin // @[ivncontrol4.scala 128:40]
-        i_vn_2 <= 5'h13; // @[ivncontrol4.scala 93:17]
+        i_vn_2 <= 5'h9; // @[ivncontrol4.scala 93:17]
       end else begin
         i_vn_2 <= _GEN_25;
       end
     end else begin
-      i_vn_2 <= 5'h13; // @[ivncontrol4.scala 93:17]
+      i_vn_2 <= 5'h9; // @[ivncontrol4.scala 93:17]
     end
     if (reset) begin // @[ivncontrol4.scala 15:23]
       i_vn_3 <= 5'h0; // @[ivncontrol4.scala 15:23]
@@ -1387,10 +1386,10 @@ module ivncontrol4(
       if (rowcount_1 == 32'h2) begin // @[ivncontrol4.scala 120:42]
         i_vn_3 <= 5'h1; // @[ivncontrol4.scala 122:29]
       end else begin
-        i_vn_3 <= 5'h14; // @[ivncontrol4.scala 93:17]
+        i_vn_3 <= 5'h17; // @[ivncontrol4.scala 93:17]
       end
     end else begin
-      i_vn_3 <= 5'h14; // @[ivncontrol4.scala 93:17]
+      i_vn_3 <= 5'h17; // @[ivncontrol4.scala 93:17]
     end
     if (reset) begin // @[ivncontrol4.scala 19:27]
       rowcount_0 <= 32'h0; // @[ivncontrol4.scala 19:27]

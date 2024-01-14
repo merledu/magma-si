@@ -8,9 +8,10 @@ import org.scalatest.freespec.AnyFreeSpec
 class FlexDPUTester extends AnyFreeSpec with ChiselScalatestTester {
     "FlexDPU tester" in {
         implicit val config = MagmasiConfig()
-        test(new FlexDPUby2()){ c =>
+        test(new FlexDPUby2()).withAnnotations(Seq(VerilatorBackendAnnotation)) { c =>
+        c.io.valid.poke(1.B)
         val inputData = Seq(
-          Seq(0,1),
+          Seq(1,0),
           Seq(1, 1),
         
         )
