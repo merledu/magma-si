@@ -169,6 +169,8 @@ class Fan4(Num : Int = 4 , Data_type : 32 ) extends Module {
     r_final_sum := w_fan_lvl_1(0)
  
 
+
+    //  output adder 0,1,2
     io.o_data_bus(0) := 0.U
     io.o_data_bus(1) := 0.U
     io.o_data_bus(2) := 0.U
