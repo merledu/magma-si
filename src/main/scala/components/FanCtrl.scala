@@ -36,6 +36,8 @@ class fancontrol4(DATA_TYPE: Int = 32, NUM_PES: Int = 4, LOG2_PES: Int = 5) exte
   
     w_vn := io.i_vn
 
+    // adder 0
+
     for (x <- 0 until 2) {
       when(x.U === 0.U) {
         when(r_valid(1) === 1.U) {
@@ -50,7 +52,7 @@ class fancontrol4(DATA_TYPE: Int = 32, NUM_PES: Int = 4, LOG2_PES: Int = 5) exte
                 (w_vn(2.U * x.U + 0.U)  =/=
                 w_vn(2.U * x.U + 1.U) )) {
 
-                r_reduction_cmd(0 ) := "b101".U // both vn done
+                r_reduction_cmd(0 ) := "b011".U // both vn done // change to ledft vn
 
             }.elsewhen((w_vn(2.U * x.U + 1.U)  ===
                       w_vn(2.U * x.U + 2.U)) &&
@@ -70,7 +72,7 @@ class fancontrol4(DATA_TYPE: Int = 32, NUM_PES: Int = 4, LOG2_PES: Int = 5) exte
           }
       
 
-
+     // adder 2
         }.otherwise {
    
    
@@ -88,13 +90,12 @@ class fancontrol4(DATA_TYPE: Int = 32, NUM_PES: Int = 4, LOG2_PES: Int = 5) exte
           when((w_vn(2.U * x.U + 0.U) =/= w_vn(2.U * x.U - 1.U) ) &&
             (w_vn(2.U * x.U + 0.U)  =/= w_vn(2.U * x.U + 1.U) )) {
 
-             r_reduction_cmd(x.U ) := "b101".U // both vn done
+             r_reduction_cmd(x.U ) := "b011".U // both vn done  // sahi karne ke baad left vn
 
           }.elsewhen((w_vn(2.U * x.U + 0.U)  === w_vn(2.U * x.U - 1.U) )&&
             (w_vn(2.U * x.U + 0.U)  =/= w_vn(2.U * x.U + 1.U) )) {
 
-            r_reduction_cmd(x.U ) := "b100".U  // right vn done
-
+            r_reduction_cmd(x.U ) := "b100".U // left vn done // "b100".U  // right vn done isko change kya hai
           }.otherwise {
             r_reduction_cmd(x.U ) := "b000".U
           }
@@ -107,6 +108,7 @@ class fancontrol4(DATA_TYPE: Int = 32, NUM_PES: Int = 4, LOG2_PES: Int = 5) exte
      
     } 
     }
+    //adder 1
 
   for (x <- 0 until 1) {
     when(x.U === 0.U) {
