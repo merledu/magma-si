@@ -141,6 +141,9 @@ class FlexDPUby2(implicit val config:MagmasiConfig) extends Module{
             FDPE.io.i_stationary := 1.B
             FDPE.io.i_data_valid := 1.B
             FDPE.io.i_data_bus := dest
+            // valid pin work here
+            // ....
+            // ....
             //for (i <- 0 until 2){
             FDPE.io.i_data_bus2 := src
             // }
