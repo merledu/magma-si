@@ -114,6 +114,10 @@ class ivncontrol4(implicit val Config: MagmasiConfig) extends Module {
 
     //when(valid === true.B){
         // when (rowlength >= 2.U){
+
+        // ivn value assign
+
+        
            when(rowcount(0) === 2.U ){
                 i_vn(0) := "b00000".U
                 i_vn(1) := "b00000".U 
