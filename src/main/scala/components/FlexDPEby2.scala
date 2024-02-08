@@ -29,7 +29,7 @@ class flexdpecom4(implicit val Config: MagmasiConfig) extends Module {
      val output_valid = Output(Bool())
 
   })
-  //io.output_valid := 0.U
+
 
 
  when (io.input_valid === 1.B){
@@ -122,7 +122,7 @@ dontTouch(w_dist_bus2)
 
      when (counter < 26.U){
 
-  
+      io.output_valid := 1.B
 
       matrix(0)(0) := io.o_adder(0)
       matrix(1)(0) := io.o_adder(2)
