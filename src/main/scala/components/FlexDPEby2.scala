@@ -25,13 +25,14 @@ class flexdpecom4(implicit val Config: MagmasiConfig) extends Module {
      val matrix =Output(Vec(2, Vec(2, UInt(Config.DATA_TYPE.W))))
 
     //valid
-    //  val input_valid = Input(Bool())
-    //  val output_valid = Output(Bool())
+     val input_valid = Input(Bool())
+     val output_valid = Output(Bool())
 
   })
+  //io.output_valid := 0.U
 
 
- // when (io.input_valid === 1.B){
+ when (io.input_valid === 1.B){
   dontTouch(io.i_data_valid)
 
 val o_vn = Reg(Vec(Config.NUM_PES, UInt(Config.LOG2_PES.W)))
@@ -121,7 +122,7 @@ dontTouch(w_dist_bus2)
 
      when (counter < 26.U){
 
-      //io.output_valid := 1.B
+  
 
       matrix(0)(0) := io.o_adder(0)
       matrix(1)(0) := io.o_adder(2)
@@ -200,7 +201,7 @@ dontTouch(w_dist_bus2)
 
     when (counter > 41.U){
 
-     // io.output_valid := 1.B
+     io.output_valid := 1.B
 
       matrix(0)(1) := io.o_adder(0)
       matrix(1)(1) := io.o_adder(2)
@@ -261,9 +262,18 @@ dontTouch(w_dist_bus2)
   matrix(1)(1) := io.o_adder(2)
     }
 
+  }.otherwise{
+    io.output_valid := 0.B
   }
+}.otherwise{
+  io.i_vn := VecInit(0.U,0.U,0.U,0.U)
+  io.o_valid := VecInit(0.U,0.U,0.U,0.U)
+  io.o_data_bus := VecInit(0.U,0.U,0.U,0.U)
+  io.o_adder := VecInit(0.U,0.U,0.U)
+  io.matrix := RegInit(VecInit(Seq.fill(Config.MaxCols)(VecInit(Seq.fill(Config.MaxRows)(0.U(32.W))))))
+  io.output_valid := 0.B
 }
-//}
+}
 
 // valid pin work in
 //line 28,29,34,124,202

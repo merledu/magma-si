@@ -133,6 +133,10 @@ class FlexDPUby2(implicit val config:MagmasiConfig) extends Module{
                 }
             }
         }
+        val hi = RegInit(0.B)
+        when (PF.io.PF_Valid){
+            hi := 1.B
+        }
         
 
 
@@ -141,6 +145,7 @@ class FlexDPUby2(implicit val config:MagmasiConfig) extends Module{
             FDPE.io.i_stationary := 1.B
             FDPE.io.i_data_valid := 1.B
             FDPE.io.i_data_bus := dest
+            FDPE.io.input_valid := hi
             // valid pin work here
             // ....
             // ....

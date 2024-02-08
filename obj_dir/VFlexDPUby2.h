@@ -88,6 +88,8 @@ VL_MODULE(VFlexDPUby2) {
         CData/*3:0*/ FlexDPUby2__DOT__muxes_3_3;
         CData/*0:0*/ FlexDPUby2__DOT__iterationChange;
         CData/*0:0*/ FlexDPUby2__DOT___GEN_67;
+        CData/*0:0*/ FlexDPUby2__DOT__hi;
+        CData/*0:0*/ FlexDPUby2__DOT___GEN_90;
         CData/*0:0*/ FlexDPUby2__DOT__PF__DOT__myCounter_io_valid;
         CData/*0:0*/ FlexDPUby2__DOT__PF__DOT__myCounter_io_start_REG;
         CData/*0:0*/ FlexDPUby2__DOT__PF__DOT__io_PF_Valid_REG;
@@ -106,10 +108,10 @@ VL_MODULE(VFlexDPUby2) {
         CData/*1:0*/ FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_2_2;
         CData/*1:0*/ FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_2_3;
         CData/*1:0*/ FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_3_0;
-        CData/*1:0*/ FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_3_1;
-        CData/*1:0*/ FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_3_2;
     };
     struct {
+        CData/*1:0*/ FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_3_1;
+        CData/*1:0*/ FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_3_2;
         CData/*1:0*/ FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__muxes_3_3;
         CData/*0:0*/ FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___T_12;
         CData/*1:0*/ FlexDPUby2__DOT__PF__DOT__myMuxes__DOT___GEN_120;
@@ -138,6 +140,8 @@ VL_MODULE(VFlexDPUby2) {
         CData/*0:0*/ FlexDPUby2__DOT__PF__DOT__myCounter__DOT___GEN_62;
         CData/*0:0*/ FlexDPUby2__DOT__PF__DOT__myCounter__DOT__io_valid_REG;
         CData/*0:0*/ FlexDPUby2__DOT__PF__DOT__myCounter__DOT___GEN_88;
+        CData/*0:0*/ FlexDPUby2__DOT__FDPE__DOT___T_31;
+        CData/*0:0*/ FlexDPUby2__DOT__FDPE__DOT___T_46;
         CData/*4:0*/ FlexDPUby2__DOT__FDPE__DOT__my_ivn__DOT__i_vn_0;
         CData/*4:0*/ FlexDPUby2__DOT__FDPE__DOT__my_ivn__DOT__i_vn_1;
         CData/*4:0*/ FlexDPUby2__DOT__FDPE__DOT__my_ivn__DOT__i_vn_2;
@@ -170,12 +174,12 @@ VL_MODULE(VFlexDPUby2) {
         CData/*0:0*/ FlexDPUby2__DOT__FDPE__DOT__my_controller__DOT___T_258;
         CData/*0:0*/ FlexDPUby2__DOT__FDPE__DOT__my_controller__DOT___T_268;
         CData/*0:0*/ FlexDPUby2__DOT__FDPE__DOT__my_controller__DOT___T_278;
+    };
+    struct {
         CData/*1:0*/ FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT__parsedindexvalue_nextIndex;
         CData/*1:0*/ FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT__parsedindexvalue_nextIndex_1;
         CData/*1:0*/ FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT__parsedindexvalue;
         CData/*0:0*/ FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT___T_18;
-    };
-    struct {
         CData/*0:0*/ FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT___T_21;
         CData/*0:0*/ FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT___T_24;
         CData/*1:0*/ FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT__parsedindexvalue1_nextIndex;
@@ -236,12 +240,12 @@ VL_MODULE(VFlexDPUby2) {
         CData/*0:0*/ FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT___T_414;
         CData/*1:0*/ FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT___parsedindexvalue1_nextIndex_T_1673;
         CData/*1:0*/ FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT__parsedindexvalue1_nextIndex_42;
+    };
+    struct {
         CData/*1:0*/ FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT__parsedindexvalue1_nextIndex_43;
         CData/*1:0*/ FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT__parsedindexvalue1_21;
         CData/*1:0*/ FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT___parsedindexvalue2_nextIndex_T_1439;
         CData/*1:0*/ FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT__parsedindexvalue2_nextIndex_36;
-    };
-    struct {
         CData/*1:0*/ FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT__parsedindexvalue2_nextIndex_37;
         CData/*1:0*/ FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT__parsedindexvalue2_18;
         CData/*1:0*/ FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT___parsedindexvalue3_nextIndex_T_971;
@@ -302,12 +306,12 @@ VL_MODULE(VFlexDPUby2) {
         SData/*15:0*/ FlexDPUby2__DOT__PF__DOT__myCounter__DOT__prevStationary_matrix_0;
         SData/*15:0*/ FlexDPUby2__DOT__PF__DOT__myCounter__DOT__prevStationary_matrix_1;
         SData/*15:0*/ FlexDPUby2__DOT__PF__DOT__myCounter__DOT__counterRegs1_0_0;
+    };
+    struct {
         SData/*15:0*/ FlexDPUby2__DOT__PF__DOT__myCounter__DOT__counterRegs1_0_1;
         SData/*15:0*/ FlexDPUby2__DOT__PF__DOT__myCounter__DOT__counterRegs1_1_0;
         SData/*15:0*/ FlexDPUby2__DOT__PF__DOT__myCounter__DOT__counterRegs1_1_1;
         SData/*15:0*/ FlexDPUby2__DOT__PF__DOT__myCounter__DOT__counterRegs2_0;
-    };
-    struct {
         SData/*15:0*/ FlexDPUby2__DOT__PF__DOT__myCounter__DOT__counterRegs2_1;
         SData/*15:0*/ FlexDPUby2__DOT__PF__DOT__myCounter__DOT___GEN_8;
         SData/*15:0*/ FlexDPUby2__DOT__PF__DOT__myCounter__DOT___GEN_27;
@@ -325,9 +329,8 @@ VL_MODULE(VFlexDPUby2) {
         SData/*15:0*/ FlexDPUby2__DOT__FDPE__DOT__matrix_0_1;
         SData/*15:0*/ FlexDPUby2__DOT__FDPE__DOT__matrix_1_0;
         SData/*15:0*/ FlexDPUby2__DOT__FDPE__DOT__matrix_1_1;
-        SData/*15:0*/ FlexDPUby2__DOT__FDPE__DOT___GEN_4;
-        SData/*15:0*/ FlexDPUby2__DOT__FDPE__DOT___GEN_5;
-        SData/*14:0*/ FlexDPUby2__DOT__FDPE__DOT___matrix_1_0_T_1;
+        SData/*15:0*/ FlexDPUby2__DOT__FDPE__DOT___GEN_6;
+        SData/*15:0*/ FlexDPUby2__DOT__FDPE__DOT___GEN_7;
         SData/*15:0*/ FlexDPUby2__DOT__FDPE__DOT__my_ivn__DOT___GEN_7;
         SData/*15:0*/ FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT___GEN_5;
         SData/*15:0*/ FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT___GEN_6;
@@ -369,11 +372,11 @@ VL_MODULE(VFlexDPUby2) {
         SData/*15:0*/ FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT___GEN_176;
         SData/*15:0*/ FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT___GEN_177;
         SData/*15:0*/ FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT___GEN_178;
+    };
+    struct {
         SData/*15:0*/ FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT___GEN_200;
         SData/*15:0*/ FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT___GEN_201;
         SData/*15:0*/ FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT___GEN_202;
-    };
-    struct {
         SData/*15:0*/ FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT___GEN_203;
         SData/*15:0*/ FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT___GEN_220;
         SData/*15:0*/ FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT___GEN_221;
@@ -435,11 +438,11 @@ VL_MODULE(VFlexDPUby2) {
         SData/*15:0*/ FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT___GEN_476;
         SData/*15:0*/ FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT___GEN_477;
         SData/*15:0*/ FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT___GEN_478;
+    };
+    struct {
         SData/*15:0*/ FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT___GEN_505;
         SData/*15:0*/ FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT___GEN_506;
         SData/*15:0*/ FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT___GEN_507;
-    };
-    struct {
         SData/*15:0*/ FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT___GEN_508;
         SData/*15:0*/ FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT___GEN_515;
         SData/*15:0*/ FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT___GEN_516;
@@ -501,11 +504,11 @@ VL_MODULE(VFlexDPUby2) {
         IData/*31:0*/ FlexDPUby2__DOT__dest_0;
         IData/*31:0*/ FlexDPUby2__DOT__dest_1;
         IData/*31:0*/ FlexDPUby2__DOT__dest_2;
+    };
+    struct {
         IData/*31:0*/ FlexDPUby2__DOT__dest_3;
         IData/*31:0*/ FlexDPUby2__DOT___GEN_58;
         IData/*31:0*/ FlexDPUby2__DOT___GEN_60;
-    };
-    struct {
         IData/*31:0*/ FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__i;
         IData/*31:0*/ FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__j;
         IData/*31:0*/ FlexDPUby2__DOT__PF__DOT__myMuxes__DOT__k;
@@ -531,6 +534,8 @@ VL_MODULE(VFlexDPUby2) {
         IData/*31:0*/ FlexDPUby2__DOT__PF__DOT__myCounter__DOT___GEN_45;
         IData/*31:0*/ FlexDPUby2__DOT__FDPE__DOT__counter;
         IData/*31:0*/ FlexDPUby2__DOT__FDPE__DOT___counter_T_1;
+        IData/*31:0*/ FlexDPUby2__DOT__FDPE__DOT___GEN_49;
+        IData/*31:0*/ FlexDPUby2__DOT__FDPE__DOT___GEN_51;
         IData/*31:0*/ FlexDPUby2__DOT__FDPE__DOT__my_ivn__DOT__rowcount_0;
         IData/*31:0*/ FlexDPUby2__DOT__FDPE__DOT__my_ivn__DOT__rowcount_1;
         IData/*31:0*/ FlexDPUby2__DOT__FDPE__DOT__my_ivn__DOT__i;
