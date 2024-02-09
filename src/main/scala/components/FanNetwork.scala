@@ -34,7 +34,7 @@ class Fan4(Num : Int = 4 , Data_type : 32 ) extends Module {
     var r_final_add2 = RegInit(0.U)
 
 
-
+//nothing
     when (w_vn_lvl_0_valid(1)(0) === 1.U && w_vn_lvl_0_valid(0)(0) === 1.U) {
         r_lvl_output_ff(1) := w_vn_lvl_0(1)
         r_lvl_output_ff(0) := w_vn_lvl_0(0)
