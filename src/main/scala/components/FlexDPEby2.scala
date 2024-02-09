@@ -1,4 +1,3 @@
-
 package magmasi.components
 
 import chisel3._
@@ -33,7 +32,7 @@ class flexdpecom4(implicit val Config: MagmasiConfig) extends Module {
 
 
  when (io.input_valid === 1.B){
-  dontTouch(io.i_data_valid)
+  dontTouch(io.input_valid)
 
 val o_vn = Reg(Vec(Config.NUM_PES, UInt(Config.LOG2_PES.W)))
   //when(io.valid){
@@ -44,6 +43,8 @@ val o_vn = Reg(Vec(Config.NUM_PES, UInt(Config.LOG2_PES.W)))
 
 
     var counter = RegInit(0.U(32.W))
+    // output valid
+    var o_valid = Reg(Bool())
 
     // matrix(0)(0) := 1.U
     
@@ -91,8 +92,8 @@ val o_vn = Reg(Vec(Config.NUM_PES, UInt(Config.LOG2_PES.W)))
     val w_dist_bus1 = my_Benes.io.o_dist_bus1
     val w_dist_bus2 = my_Benes.io.o_dist_bus2
 
-dontTouch(w_dist_bus1)
-dontTouch(w_dist_bus2)
+    dontTouch(w_dist_bus1)
+    dontTouch(w_dist_bus2)
 
      val buffer_mult = Module(new buffer_multiplication())
 
@@ -119,10 +120,11 @@ dontTouch(w_dist_bus2)
 
     dontTouch(r_mult)
     dontTouch(w_dist_bus1)
-
+    //io.output_valid := 1.B
      when (counter < 26.U){
 
-      io.output_valid := 1.B
+      // o_valid := 1.B
+      // dontTouch(o_valid)
 
       matrix(0)(0) := io.o_adder(0)
       matrix(1)(0) := io.o_adder(2)
@@ -161,19 +163,19 @@ dontTouch(w_dist_bus2)
          
       }
        when(
-  (io.Stationary_matrix(0)(0) === 0.U && io.Stationary_matrix(0)(1) =/= 0.U && io.Stationary_matrix(1)(0) =/= 0.U && io.Stationary_matrix(1)(1) =/= 0.U) |
-  (io.Stationary_matrix(0)(0) =/= 0.U && io.Stationary_matrix(0)(1) === 0.U && io.Stationary_matrix(1)(0) =/= 0.U && io.Stationary_matrix(1)(1) =/= 0.U) 
- 
-) {
+      (io.Stationary_matrix(0)(0) === 0.U && io.Stationary_matrix(0)(1) =/= 0.U && io.Stationary_matrix(1)(0) =/= 0.U && io.Stationary_matrix(1)(1) =/= 0.U) |
+      (io.Stationary_matrix(0)(0) =/= 0.U && io.Stationary_matrix(0)(1) === 0.U && io.Stationary_matrix(1)(0) =/= 0.U && io.Stationary_matrix(1)(1) =/= 0.U) 
+  
+    ) {
          matrix(0)(0) := io.o_adder(0)
          matrix(1)(0) := io.o_adder(1)
          
       }
-    when( (io.Stationary_matrix(0)(0) =/= 0.U && io.Stationary_matrix(0)(1) =/= 0.U && io.Stationary_matrix(1)(0) === 0.U && io.Stationary_matrix(1)(1) =/= 0.U) |
-  (io.Stationary_matrix(0)(0) =/= 0.U && io.Stationary_matrix(0)(1) =/= 0.U && io.Stationary_matrix(1)(0) =/= 0.U && io.Stationary_matrix(1)(1) === 0.U)
-) {
-    matrix(0)(0) := io.o_adder(0)
-         matrix(1)(0) := io.o_adder(2)   
+      when( (io.Stationary_matrix(0)(0) =/= 0.U && io.Stationary_matrix(0)(1) =/= 0.U && io.Stationary_matrix(1)(0) === 0.U && io.Stationary_matrix(1)(1) =/= 0.U) |
+      (io.Stationary_matrix(0)(0) =/= 0.U && io.Stationary_matrix(0)(1) =/= 0.U && io.Stationary_matrix(1)(0) =/= 0.U && io.Stationary_matrix(1)(1) === 0.U)
+    ) {
+        matrix(0)(0) := io.o_adder(0)
+        matrix(1)(0) := io.o_adder(2)   
       }
 
       
@@ -201,8 +203,7 @@ dontTouch(w_dist_bus2)
 
     when (counter > 41.U){
 
-     io.output_valid := 1.B
-
+   
       matrix(0)(1) := io.o_adder(0)
       matrix(1)(1) := io.o_adder(2)
       //  when(w_dist_bus1(1) === 0.U){
@@ -246,25 +247,28 @@ dontTouch(w_dist_bus2)
       // }
       // matrix(0)(1) := io.o_adder(0)
       // matrix(1)(1) := io.o_adder(2)
-      when(
-  (io.Stationary_matrix(0)(0) === 0.U && io.Stationary_matrix(0)(1) =/= 0.U && io.Stationary_matrix(1)(0) =/= 0.U && io.Stationary_matrix(1)(1) =/= 0.U) |
-  (io.Stationary_matrix(0)(0) =/= 0.U && io.Stationary_matrix(0)(1) === 0.U && io.Stationary_matrix(1)(0) =/= 0.U && io.Stationary_matrix(1)(1) =/= 0.U) 
-  
-) {
-  matrix(0)(1) := io.o_adder(0)
-  matrix(1)(1) := io.o_adder(1)
-}
-
-    when( (io.Stationary_matrix(0)(0) =/= 0.U && io.Stationary_matrix(0)(1) =/= 0.U && io.Stationary_matrix(1)(0) === 0.U && io.Stationary_matrix(1)(1) =/= 0.U) |
-  (io.Stationary_matrix(0)(0) =/= 0.U && io.Stationary_matrix(0)(1) =/= 0.U && io.Stationary_matrix(1)(0) =/= 0.U && io.Stationary_matrix(1)(1) === 0.U)
-) {
+          when(
+      (io.Stationary_matrix(0)(0) === 0.U && io.Stationary_matrix(0)(1) =/= 0.U && io.Stationary_matrix(1)(0) =/= 0.U && io.Stationary_matrix(1)(1) =/= 0.U) |
+      (io.Stationary_matrix(0)(0) =/= 0.U && io.Stationary_matrix(0)(1) === 0.U && io.Stationary_matrix(1)(0) =/= 0.U && io.Stationary_matrix(1)(1) =/= 0.U) 
+        
+      ) {
         matrix(0)(1) := io.o_adder(0)
-  matrix(1)(1) := io.o_adder(2)
-    }
+        matrix(1)(1) := io.o_adder(1)
+      }
 
-  }.otherwise{
-    io.output_valid := 0.B
-  }
+          when( (io.Stationary_matrix(0)(0) =/= 0.U && io.Stationary_matrix(0)(1) =/= 0.U && io.Stationary_matrix(1)(0) === 0.U && io.Stationary_matrix(1)(1) =/= 0.U) |
+        (io.Stationary_matrix(0)(0) =/= 0.U && io.Stationary_matrix(0)(1) =/= 0.U && io.Stationary_matrix(1)(0) =/= 0.U && io.Stationary_matrix(1)(1) === 0.U)
+      ) {
+              matrix(0)(1) := io.o_adder(0)
+        matrix(1)(1) := io.o_adder(2)
+          }
+        o_valid := 1.B
+      dontTouch(o_valid)
+
+
+    }
+    io.output_valid := o_valid
+    dontTouch(io.output_valid)
 }.otherwise{
   io.i_vn := VecInit(0.U,0.U,0.U,0.U)
   io.o_valid := VecInit(0.U,0.U,0.U,0.U)
