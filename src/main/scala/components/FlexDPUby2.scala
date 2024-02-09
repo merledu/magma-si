@@ -133,19 +133,21 @@ class FlexDPUby2(implicit val config:MagmasiConfig) extends Module{
                 }
             }
         }
-        val hi = RegInit(0.B)
+        val hi = RegInit(0.U)
         when (PF.io.PF_Valid){
-            hi := 1.B
+            hi := 1.U
+        }
+        val hig = RegInit(0.B)
+        when (hi > 0.U){
+            hig := 1.B
         }
         
 
-
-        when (PF.io.PF_Valid){
-            val FDPE = Module(new flexdpecom4)
+        val FDPE = Module(new flexdpecom4)
             FDPE.io.i_stationary := 1.B
             FDPE.io.i_data_valid := 1.B
             FDPE.io.i_data_bus := dest
-            FDPE.io.input_valid := hi
+            FDPE.io.input_valid := hig
             // valid pin work here
             // ....
             // ....
@@ -161,9 +163,29 @@ class FlexDPUby2(implicit val config:MagmasiConfig) extends Module{
                     FDPE.io.i_mux_bus(i)(j) := Reverse(muxes(i)(j))
                 }
             }       
+            //io.output := FDPE.io.matrix
+        // }.otherwise{
+        //     FDPE.io.i_stationary := 0.B
+        //     FDPE.io.i_data_valid := 0.B
+        //     FDPE.io.i_data_bus := dest
+        //     FDPE.io.input_valid := 0.B
+        //     // valid pin work here
+        //     // ....
+        //     // ....
+        //     //for (i <- 0 until 2){
+        //     FDPE.io.i_data_bus2 := src
+        //     // }
+        //     // for (i <- 2 until 4){
+        //     //     FDPE.io.i_data_bus2(i) := 0.U
+        //     // }
+        //     FDPE.io.Stationary_matrix := io.Stationary_matrix
+        //     for (i <- 0 until 4){
+        //         for (j <- 0 until 4){
+        //             FDPE.io.i_mux_bus(i)(j) := Reverse(muxes(i)(j))
+        //         }
+        //     }     
+
             io.output := FDPE.io.matrix
-        }.otherwise{
-            io.output := RegInit(VecInit(Seq.fill(config.MaxCols)(VecInit(Seq.fill(config.MaxRows)(0.U(32.W))))))
 
         }
     
@@ -171,16 +193,17 @@ class FlexDPUby2(implicit val config:MagmasiConfig) extends Module{
         
     
     
-    }.otherwise{
+    .otherwise{
         io.output := RegInit(VecInit(Seq.fill(config.MaxCols)(VecInit(Seq.fill(config.MaxRows)(0.U(32.W))))))
     }
 
 
 }.otherwise{
-    io.output := RegInit(VecInit(Seq.fill(config.MaxCols)(VecInit(Seq.fill(config.MaxRows)(0.U(32.W))))))
+     io.output := RegInit(VecInit(Seq.fill(config.MaxCols)(VecInit(Seq.fill(config.MaxRows)(0.U(32.W))))))
 
 }
 }
+
 object FlexDPUby2Driver extends App {
     implicit val config:MagmasiConfig = MagmasiConfig()
   (new ChiselStage).emitVerilog(new FlexDPUby2)

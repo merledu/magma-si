@@ -79,6 +79,8 @@ void VFlexDPUby2::_settle__TOP__2(VFlexDPUby2__Syms* __restrict vlSymsp) {
         = ((IData)(1U) + vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter__DOT__j);
     vlTOPp->FlexDPUby2__DOT__FDPE__DOT___counter_T_1 
         = ((IData)(1U) + vlTOPp->FlexDPUby2__DOT__FDPE__DOT__counter);
+    vlTOPp->FlexDPUby2__DOT___GEN_91 = ((IData)(vlTOPp->FlexDPUby2__DOT__hi) 
+                                        | (IData)(vlTOPp->FlexDPUby2__DOT__hig));
     vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_fan_network__DOT__my_adder_0__DOT___GEN_3 
         = ((4U == (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_controller__DOT__r_cmd_lvl_0Reg_6))
             ? (IData)((QData)((IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__r_mult_1)))
@@ -306,6 +308,29 @@ void VFlexDPUby2::_settle__TOP__2(VFlexDPUby2__Syms* __restrict vlSymsp) {
                                                  ((IData)(1U) 
                                                   + vlTOPp->FlexDPUby2__DOT__iloop)
                                                   : vlTOPp->FlexDPUby2__DOT__iloop));
+    if (vlTOPp->io_valid) {
+        vlTOPp->io_output_0_0 = ((IData)(vlTOPp->FlexDPUby2__DOT__Statvalid)
+                                  ? ((IData)(vlTOPp->FlexDPUby2__DOT__hig)
+                                      ? (0xffffU & (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__matrix_0_0))
+                                      : 0U) : 0U);
+        vlTOPp->io_output_0_1 = ((IData)(vlTOPp->FlexDPUby2__DOT__Statvalid)
+                                  ? ((IData)(vlTOPp->FlexDPUby2__DOT__hig)
+                                      ? (0xffffU & (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__matrix_0_1))
+                                      : 0U) : 0U);
+        vlTOPp->io_output_1_0 = ((IData)(vlTOPp->FlexDPUby2__DOT__Statvalid)
+                                  ? ((IData)(vlTOPp->FlexDPUby2__DOT__hig)
+                                      ? (0xffffU & (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__matrix_1_0))
+                                      : 0U) : 0U);
+        vlTOPp->io_output_1_1 = ((IData)(vlTOPp->FlexDPUby2__DOT__Statvalid)
+                                  ? ((IData)(vlTOPp->FlexDPUby2__DOT__hig)
+                                      ? (0xffffU & (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__matrix_1_1))
+                                      : 0U) : 0U);
+    } else {
+        vlTOPp->io_output_0_0 = 0U;
+        vlTOPp->io_output_0_1 = 0U;
+        vlTOPp->io_output_1_0 = 0U;
+        vlTOPp->io_output_1_1 = 0U;
+    }
     vlTOPp->FlexDPUby2__DOT___GEN_3 = ((1U & (vlTOPp->FlexDPUby2__DOT__iloop 
                                               & vlTOPp->FlexDPUby2__DOT__jloop))
                                         ? (IData)(vlTOPp->io_Stationary_matrix_1_1)
@@ -387,7 +412,7 @@ void VFlexDPUby2::_settle__TOP__2(VFlexDPUby2__Syms* __restrict vlSymsp) {
         = ((~ (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter__DOT__jValid)) 
            & ((1U <= vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter__DOT__j) 
               & (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__myCounter__DOT___reg_i_T_2)));
-    if (vlTOPp->FlexDPUby2__DOT__hi) {
+    if (vlTOPp->FlexDPUby2__DOT__hig) {
         vlTOPp->FlexDPUby2__DOT__FDPE__DOT___GEN_49 
             = vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_fan_network__DOT__my_adder_0_io_o_adder;
         vlTOPp->FlexDPUby2__DOT__FDPE__DOT___GEN_51 
@@ -1200,41 +1225,6 @@ void VFlexDPUby2::_settle__TOP__2(VFlexDPUby2__Syms* __restrict vlSymsp) {
                                          : vlTOPp->FlexDPUby2__DOT__SindexCol);
     vlTOPp->FlexDPUby2__DOT___GEN_90 = ((IData)(vlTOPp->FlexDPUby2__DOT__PF_io_PF_Valid) 
                                         | (IData)(vlTOPp->FlexDPUby2__DOT__hi));
-    if (vlTOPp->io_valid) {
-        vlTOPp->io_output_0_0 = ((IData)(vlTOPp->FlexDPUby2__DOT__Statvalid)
-                                  ? ((IData)(vlTOPp->FlexDPUby2__DOT__PF_io_PF_Valid)
-                                      ? ((IData)(vlTOPp->FlexDPUby2__DOT__hi)
-                                          ? (0xffffU 
-                                             & (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__matrix_0_0))
-                                          : 0U) : 0U)
-                                  : 0U);
-        vlTOPp->io_output_0_1 = ((IData)(vlTOPp->FlexDPUby2__DOT__Statvalid)
-                                  ? ((IData)(vlTOPp->FlexDPUby2__DOT__PF_io_PF_Valid)
-                                      ? ((IData)(vlTOPp->FlexDPUby2__DOT__hi)
-                                          ? (0xffffU 
-                                             & (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__matrix_0_1))
-                                          : 0U) : 0U)
-                                  : 0U);
-        vlTOPp->io_output_1_0 = ((IData)(vlTOPp->FlexDPUby2__DOT__Statvalid)
-                                  ? ((IData)(vlTOPp->FlexDPUby2__DOT__PF_io_PF_Valid)
-                                      ? ((IData)(vlTOPp->FlexDPUby2__DOT__hi)
-                                          ? (0xffffU 
-                                             & (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__matrix_1_0))
-                                          : 0U) : 0U)
-                                  : 0U);
-        vlTOPp->io_output_1_1 = ((IData)(vlTOPp->FlexDPUby2__DOT__Statvalid)
-                                  ? ((IData)(vlTOPp->FlexDPUby2__DOT__PF_io_PF_Valid)
-                                      ? ((IData)(vlTOPp->FlexDPUby2__DOT__hi)
-                                          ? (0xffffU 
-                                             & (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__matrix_1_1))
-                                          : 0U) : 0U)
-                                  : 0U);
-    } else {
-        vlTOPp->io_output_0_0 = 0U;
-        vlTOPp->io_output_0_1 = 0U;
-        vlTOPp->io_output_1_0 = 0U;
-        vlTOPp->io_output_1_1 = 0U;
-    }
     vlTOPp->FlexDPUby2__DOT___GEN_67 = (1U & ((IData)(vlTOPp->FlexDPUby2__DOT__PF_io_PF_Valid)
                                                ? ((0U 
                                                    != 
@@ -4117,6 +4107,8 @@ void VFlexDPUby2::_ctor_var_reset() {
     FlexDPUby2__DOT___GEN_67 = VL_RAND_RESET_I(1);
     FlexDPUby2__DOT__hi = VL_RAND_RESET_I(1);
     FlexDPUby2__DOT___GEN_90 = VL_RAND_RESET_I(1);
+    FlexDPUby2__DOT__hig = VL_RAND_RESET_I(1);
+    FlexDPUby2__DOT___GEN_91 = VL_RAND_RESET_I(1);
     FlexDPUby2__DOT__PF__DOT__myMuxes_io_mat1_0_0 = VL_RAND_RESET_I(16);
     FlexDPUby2__DOT__PF__DOT__myMuxes_io_mat1_0_1 = VL_RAND_RESET_I(16);
     FlexDPUby2__DOT__PF__DOT__myMuxes_io_mat1_1_0 = VL_RAND_RESET_I(16);
@@ -4248,6 +4240,7 @@ void VFlexDPUby2::_ctor_var_reset() {
     FlexDPUby2__DOT__FDPE__DOT__r_mult_2 = VL_RAND_RESET_I(15);
     FlexDPUby2__DOT__FDPE__DOT__r_mult_3 = VL_RAND_RESET_I(15);
     FlexDPUby2__DOT__FDPE__DOT__counter = VL_RAND_RESET_I(32);
+    FlexDPUby2__DOT__FDPE__DOT__o_valid = VL_RAND_RESET_I(1);
     FlexDPUby2__DOT__FDPE__DOT__matrix_0_0 = VL_RAND_RESET_I(16);
     FlexDPUby2__DOT__FDPE__DOT__matrix_0_1 = VL_RAND_RESET_I(16);
     FlexDPUby2__DOT__FDPE__DOT__matrix_1_0 = VL_RAND_RESET_I(16);

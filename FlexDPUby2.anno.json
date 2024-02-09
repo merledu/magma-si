@@ -59,6 +59,14 @@
   },
   {
     "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~FlexDPUby2|flexdpecom4>io_output_valid"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~FlexDPUby2|flexdpecom4>o_valid"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
     "target":"~FlexDPUby2|flexdpecom4>counter"
   },
   {
@@ -183,7 +191,7 @@
   },
   {
     "class":"firrtl.transforms.DontTouchAnnotation",
-    "target":"~FlexDPUby2|flexdpecom4>io_i_data_valid"
+    "target":"~FlexDPUby2|flexdpecom4>io_input_valid"
   },
   {
     "class":"firrtl.transforms.DontTouchAnnotation",

@@ -5,7 +5,7 @@ import chisel3.util._
 import chiseltest._ 
 import org.scalatest.freespec.AnyFreeSpec
 
-class FlexDPUTester extends AnyFreeSpec with ChiselScalatestTester {
+class FlexDPETester extends AnyFreeSpec with ChiselScalatestTester {
     "FlexDPU tester" in {
         implicit val config = MagmasiConfig()
         test(new FlexDPUby2()).withAnnotations(Seq(VerilatorBackendAnnotation)) { c =>
