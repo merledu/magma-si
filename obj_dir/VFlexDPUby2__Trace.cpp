@@ -884,7 +884,8 @@ void VFlexDPUby2::traceChgSub0(void* userp, VerilatedVcd* tracep) {
         tracep->chgSData(oldp+407,(vlTOPp->io_output_1_0),16);
         tracep->chgSData(oldp+408,(vlTOPp->io_output_1_1),16);
         tracep->chgBit(oldp+409,(vlTOPp->io_valid));
-        tracep->chgSData(oldp+410,(((IData)(vlTOPp->FlexDPUby2__DOT__hig)
+        tracep->chgBit(oldp+410,(vlTOPp->io_O_valid));
+        tracep->chgSData(oldp+411,(((IData)(vlTOPp->FlexDPUby2__DOT__hig)
                                      ? ((IData)(vlTOPp->reset)
                                          ? 0U : (0xffffU 
                                                  & ((0U 
@@ -894,7 +895,7 @@ void VFlexDPUby2::traceChgSub0(void* userp, VerilatedVcd* tracep) {
                                                     (vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_fan_network__DOT__my_adder_0_io_o_adder 
                                                      + vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_fan_network__DOT__my_adder_2_io_o_adder))))
                                      : 0U)),16);
-        tracep->chgIData(oldp+411,(((IData)(vlTOPp->reset)
+        tracep->chgIData(oldp+412,(((IData)(vlTOPp->reset)
                                      ? 0U : ((0U == (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_fan_network__DOT__my_adder_1__DOT__r_add_en))
                                               ? vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_fan_network__DOT__my_adder_1__DOT__r_adder
                                               : (vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_fan_network__DOT__my_adder_0_io_o_adder 

@@ -10,8 +10,8 @@ class RegorTester extends AnyFreeSpec with ChiselScalatestTester {
         implicit val config = MagmasiConfig()
         test(new Regor(2,2,32)).withAnnotations  (Seq(VerilatorBackendAnnotation)) { dut =>
       val inputData = Seq(
-        Seq(0, 0, 3, 1),
-        Seq(5, 6, 7, 0),
+        Seq(0, 1, 3, 1),
+        Seq(0, 0, 7, 0),
         Seq(9, 10, 11, 0),
         Seq(1, 2, 3, 0)
       ) 

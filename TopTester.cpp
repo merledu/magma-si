@@ -21,8 +21,8 @@ int main(int argc, char** argv) {
 
     // for (int i = 0; i < 32; i++) {
     //     switch(i) {
-               top->io_Stationary_matrix_0_0 = 0;
-              top->io_Stationary_matrix_0_1 = 0; 
+               top->io_Stationary_matrix_0_0 = 1;
+              top->io_Stationary_matrix_0_1 = 1; 
             //  top->io_Stationary_matrix_0_2 = 13; 
             //    top->io_Stationary_matrix_0_3 = 14; 
                top->io_Stationary_matrix_1_0 = 1; 

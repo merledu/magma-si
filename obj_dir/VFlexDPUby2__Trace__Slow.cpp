@@ -59,6 +59,7 @@ void VFlexDPUby2::traceInitSub0(void* userp, VerilatedVcd* tracep) {
         tracep->declBus(c+408,"io_output_1_0", false,-1, 15,0);
         tracep->declBus(c+409,"io_output_1_1", false,-1, 15,0);
         tracep->declBit(c+410,"io_valid", false,-1);
+        tracep->declBit(c+411,"io_O_valid", false,-1);
         tracep->declBit(c+396,"FlexDPUby2 clock", false,-1);
         tracep->declBit(c+397,"FlexDPUby2 reset", false,-1);
         tracep->declBus(c+398,"FlexDPUby2 io_Stationary_matrix_0_0", false,-1, 15,0);
@@ -74,6 +75,7 @@ void VFlexDPUby2::traceInitSub0(void* userp, VerilatedVcd* tracep) {
         tracep->declBus(c+408,"FlexDPUby2 io_output_1_0", false,-1, 15,0);
         tracep->declBus(c+409,"FlexDPUby2 io_output_1_1", false,-1, 15,0);
         tracep->declBit(c+410,"FlexDPUby2 io_valid", false,-1);
+        tracep->declBit(c+411,"FlexDPUby2 io_O_valid", false,-1);
         tracep->declBit(c+396,"FlexDPUby2 PF_clock", false,-1);
         tracep->declBit(c+397,"FlexDPUby2 PF_reset", false,-1);
         tracep->declBus(c+398,"FlexDPUby2 PF_io_Stationary_matrix_0_0", false,-1, 15,0);
@@ -119,7 +121,7 @@ void VFlexDPUby2::traceInitSub0(void* userp, VerilatedVcd* tracep) {
         tracep->declBus(c+400,"FlexDPUby2 FDPE_io_Stationary_matrix_1_0", false,-1, 15,0);
         tracep->declBus(c+401,"FlexDPUby2 FDPE_io_Stationary_matrix_1_1", false,-1, 15,0);
         tracep->declBus(c+383,"FlexDPUby2 FDPE_io_o_adder_0", false,-1, 15,0);
-        tracep->declBus(c+411,"FlexDPUby2 FDPE_io_o_adder_1", false,-1, 15,0);
+        tracep->declBus(c+412,"FlexDPUby2 FDPE_io_o_adder_1", false,-1, 15,0);
         tracep->declBus(c+384,"FlexDPUby2 FDPE_io_o_adder_2", false,-1, 15,0);
         tracep->declBus(c+33,"FlexDPUby2 FDPE_io_i_mux_bus_0_0", false,-1, 3,0);
         tracep->declBus(c+34,"FlexDPUby2 FDPE_io_i_mux_bus_0_1", false,-1, 3,0);
@@ -396,7 +398,7 @@ void VFlexDPUby2::traceInitSub0(void* userp, VerilatedVcd* tracep) {
         tracep->declBus(c+400,"FlexDPUby2 FDPE io_Stationary_matrix_1_0", false,-1, 15,0);
         tracep->declBus(c+401,"FlexDPUby2 FDPE io_Stationary_matrix_1_1", false,-1, 15,0);
         tracep->declBus(c+383,"FlexDPUby2 FDPE io_o_adder_0", false,-1, 15,0);
-        tracep->declBus(c+411,"FlexDPUby2 FDPE io_o_adder_1", false,-1, 15,0);
+        tracep->declBus(c+412,"FlexDPUby2 FDPE io_o_adder_1", false,-1, 15,0);
         tracep->declBus(c+384,"FlexDPUby2 FDPE io_o_adder_2", false,-1, 15,0);
         tracep->declBus(c+33,"FlexDPUby2 FDPE io_i_mux_bus_0_0", false,-1, 3,0);
         tracep->declBus(c+34,"FlexDPUby2 FDPE io_i_mux_bus_0_1", false,-1, 3,0);
@@ -501,7 +503,7 @@ void VFlexDPUby2::traceInitSub0(void* userp, VerilatedVcd* tracep) {
         tracep->declBus(c+199,"FlexDPUby2 FDPE my_fan_network_io_i_cmd_bus_1", false,-1, 2,0);
         tracep->declBus(c+200,"FlexDPUby2 FDPE my_fan_network_io_i_cmd_bus_2", false,-1, 2,0);
         tracep->declBus(c+389,"FlexDPUby2 FDPE my_fan_network_io_o_adder_0", false,-1, 31,0);
-        tracep->declBus(c+412,"FlexDPUby2 FDPE my_fan_network_io_o_adder_1", false,-1, 31,0);
+        tracep->declBus(c+413,"FlexDPUby2 FDPE my_fan_network_io_o_adder_1", false,-1, 31,0);
         tracep->declBus(c+390,"FlexDPUby2 FDPE my_fan_network_io_o_adder_2", false,-1, 31,0);
         tracep->declBus(c+214,"FlexDPUby2 FDPE r_mult_0", false,-1, 14,0);
         tracep->declBus(c+215,"FlexDPUby2 FDPE r_mult_1", false,-1, 14,0);
@@ -538,9 +540,9 @@ void VFlexDPUby2::traceInitSub0(void* userp, VerilatedVcd* tracep) {
         tracep->declBus(c+232,"FlexDPUby2 FDPE my_ivn count_0", false,-1, 31,0);
         tracep->declBus(c+233,"FlexDPUby2 FDPE my_ivn count_1", false,-1, 31,0);
         tracep->declBit(c+234,"FlexDPUby2 FDPE my_ivn valid", false,-1);
-        tracep->declBit(c+413,"FlexDPUby2 FDPE my_ivn valid1", false,-1);
-        tracep->declBus(c+414,"FlexDPUby2 FDPE my_ivn rowlength", false,-1, 1,0);
-        tracep->declBus(c+414,"FlexDPUby2 FDPE my_ivn matlength", false,-1, 1,0);
+        tracep->declBit(c+414,"FlexDPUby2 FDPE my_ivn valid1", false,-1);
+        tracep->declBus(c+415,"FlexDPUby2 FDPE my_ivn rowlength", false,-1, 1,0);
+        tracep->declBus(c+415,"FlexDPUby2 FDPE my_ivn matlength", false,-1, 1,0);
         tracep->declBit(c+396,"FlexDPUby2 FDPE my_controller clock", false,-1);
         tracep->declBit(c+397,"FlexDPUby2 FDPE my_controller reset", false,-1);
         tracep->declBus(c+191,"FlexDPUby2 FDPE my_controller io_i_vn_0", false,-1, 4,0);
@@ -764,7 +766,7 @@ void VFlexDPUby2::traceInitSub0(void* userp, VerilatedVcd* tracep) {
         tracep->declBus(c+199,"FlexDPUby2 FDPE my_fan_network io_i_cmd_bus_1", false,-1, 2,0);
         tracep->declBus(c+200,"FlexDPUby2 FDPE my_fan_network io_i_cmd_bus_2", false,-1, 2,0);
         tracep->declBus(c+389,"FlexDPUby2 FDPE my_fan_network io_o_adder_0", false,-1, 31,0);
-        tracep->declBus(c+412,"FlexDPUby2 FDPE my_fan_network io_o_adder_1", false,-1, 31,0);
+        tracep->declBus(c+413,"FlexDPUby2 FDPE my_fan_network io_o_adder_1", false,-1, 31,0);
         tracep->declBus(c+390,"FlexDPUby2 FDPE my_fan_network io_o_adder_2", false,-1, 31,0);
         tracep->declBit(c+396,"FlexDPUby2 FDPE my_fan_network my_adder_0_clock", false,-1);
         tracep->declBit(c+397,"FlexDPUby2 FDPE my_fan_network my_adder_0_reset", false,-1);
@@ -781,7 +783,7 @@ void VFlexDPUby2::traceInitSub0(void* userp, VerilatedVcd* tracep) {
         tracep->declQuad(c+393,"FlexDPUby2 FDPE my_fan_network my_adder_1_io_i_data_bus_1", false,-1, 63,0);
         tracep->declBus(c+360,"FlexDPUby2 FDPE my_fan_network my_adder_1_io_i_add_en", false,-1, 2,0);
         tracep->declBus(c+361,"FlexDPUby2 FDPE my_fan_network my_adder_1_io_i_cmd", false,-1, 4,0);
-        tracep->declBus(c+412,"FlexDPUby2 FDPE my_fan_network my_adder_1_io_o_adder", false,-1, 31,0);
+        tracep->declBus(c+413,"FlexDPUby2 FDPE my_fan_network my_adder_1_io_o_adder", false,-1, 31,0);
         tracep->declBit(c+396,"FlexDPUby2 FDPE my_fan_network my_adder_2_clock", false,-1);
         tracep->declBit(c+397,"FlexDPUby2 FDPE my_fan_network my_adder_2_reset", false,-1);
         tracep->declBit(c+352,"FlexDPUby2 FDPE my_fan_network my_adder_2_io_i_valid", false,-1);
@@ -826,7 +828,7 @@ void VFlexDPUby2::traceInitSub0(void* userp, VerilatedVcd* tracep) {
         tracep->declQuad(c+393,"FlexDPUby2 FDPE my_fan_network my_adder_1 io_i_data_bus_1", false,-1, 63,0);
         tracep->declBus(c+360,"FlexDPUby2 FDPE my_fan_network my_adder_1 io_i_add_en", false,-1, 2,0);
         tracep->declBus(c+361,"FlexDPUby2 FDPE my_fan_network my_adder_1 io_i_cmd", false,-1, 4,0);
-        tracep->declBus(c+412,"FlexDPUby2 FDPE my_fan_network my_adder_1 io_o_adder", false,-1, 31,0);
+        tracep->declBus(c+413,"FlexDPUby2 FDPE my_fan_network my_adder_1 io_o_adder", false,-1, 31,0);
         tracep->declBus(c+390,"FlexDPUby2 FDPE my_fan_network my_adder_1 reductionMux_io_i_data_0", false,-1, 31,0);
         tracep->declBus(c+389,"FlexDPUby2 FDPE my_fan_network my_adder_1 reductionMux_io_i_data_1", false,-1, 31,0);
         tracep->declBus(c+390,"FlexDPUby2 FDPE my_fan_network my_adder_1 reductionMux_io_o_data_0", false,-1, 31,0);
@@ -1737,7 +1739,8 @@ void VFlexDPUby2::traceFullSub0(void* userp, VerilatedVcd* tracep) {
         tracep->fullSData(oldp+408,(vlTOPp->io_output_1_0),16);
         tracep->fullSData(oldp+409,(vlTOPp->io_output_1_1),16);
         tracep->fullBit(oldp+410,(vlTOPp->io_valid));
-        tracep->fullSData(oldp+411,(((IData)(vlTOPp->FlexDPUby2__DOT__hig)
+        tracep->fullBit(oldp+411,(vlTOPp->io_O_valid));
+        tracep->fullSData(oldp+412,(((IData)(vlTOPp->FlexDPUby2__DOT__hig)
                                       ? ((IData)(vlTOPp->reset)
                                           ? 0U : (0xffffU 
                                                   & ((0U 
@@ -1747,12 +1750,12 @@ void VFlexDPUby2::traceFullSub0(void* userp, VerilatedVcd* tracep) {
                                                      (vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_fan_network__DOT__my_adder_0_io_o_adder 
                                                       + vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_fan_network__DOT__my_adder_2_io_o_adder))))
                                       : 0U)),16);
-        tracep->fullIData(oldp+412,(((IData)(vlTOPp->reset)
+        tracep->fullIData(oldp+413,(((IData)(vlTOPp->reset)
                                       ? 0U : ((0U == (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_fan_network__DOT__my_adder_1__DOT__r_add_en))
                                                ? vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_fan_network__DOT__my_adder_1__DOT__r_adder
                                                : (vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_fan_network__DOT__my_adder_0_io_o_adder 
                                                   + vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_fan_network__DOT__my_adder_2_io_o_adder)))),32);
-        tracep->fullBit(oldp+413,(0U));
-        tracep->fullCData(oldp+414,(2U),2);
+        tracep->fullBit(oldp+414,(0U));
+        tracep->fullCData(oldp+415,(2U),2);
     }
 }

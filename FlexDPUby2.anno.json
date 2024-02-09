@@ -550,6 +550,13 @@
   },
   {
     "class":"firrtl.transforms.CombinationalPath",
+    "sink":"~FlexDPUby2|FlexDPUby2>io_O_valid",
+    "sources":[
+      "~FlexDPUby2|FlexDPUby2>io_valid"
+    ]
+  },
+  {
+    "class":"firrtl.transforms.CombinationalPath",
     "sink":"~FlexDPUby2|FlexDPUby2>io_output_1_0",
     "sources":[
       "~FlexDPUby2|FlexDPUby2>io_valid"

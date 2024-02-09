@@ -27,6 +27,7 @@ VL_MODULE(VFlexDPUby2) {
     VL_IN8(clock,0,0);
     VL_IN8(reset,0,0);
     VL_IN8(io_valid,0,0);
+    VL_OUT8(io_O_valid,0,0);
     VL_IN16(io_Stationary_matrix_0_0,15,0);
     VL_IN16(io_Stationary_matrix_0_1,15,0);
     VL_IN16(io_Stationary_matrix_1_0,15,0);

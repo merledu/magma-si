@@ -3123,12 +3123,12 @@ VL_INLINE_OPT void VFlexDPUby2::_sequent__TOP__1(VFlexDPUby2__Syms* __restrict v
     vlTOPp->FlexDPUby2__DOT___indexRow_T_1 = ((IData)(1U) 
                                               + vlTOPp->FlexDPUby2__DOT__indexRow);
     vlTOPp->FlexDPUby2__DOT___T_18 = (3U == vlTOPp->FlexDPUby2__DOT__indexCol);
-    vlTOPp->FlexDPUby2__DOT__PF_io_PF_Valid = ((IData)(vlTOPp->FlexDPUby2__DOT__Statvalid) 
-                                               & (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__io_PF_Valid_REG));
     vlTOPp->FlexDPUby2__DOT___SrcDestValid_T_1 = (1U 
                                                   == vlTOPp->FlexDPUby2__DOT__jloop);
     vlTOPp->FlexDPUby2__DOT___jloop_T_1 = ((IData)(1U) 
                                            + vlTOPp->FlexDPUby2__DOT__jloop);
+    vlTOPp->FlexDPUby2__DOT__PF_io_PF_Valid = ((IData)(vlTOPp->FlexDPUby2__DOT__Statvalid) 
+                                               & (IData)(vlTOPp->FlexDPUby2__DOT__PF__DOT__io_PF_Valid_REG));
     vlTOPp->FlexDPUby2__DOT___SrcDestValid_T = (1U 
                                                 == vlTOPp->FlexDPUby2__DOT__iloop);
     vlTOPp->FlexDPUby2__DOT___T_3 = (1U >= vlTOPp->FlexDPUby2__DOT__iloop);
@@ -3566,31 +3566,30 @@ VL_INLINE_OPT void VFlexDPUby2::_sequent__TOP__1(VFlexDPUby2__Syms* __restrict v
                                   ? ((2U == vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_ivn__DOT__rowcount_1)
                                       ? 1U : ((1U == vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_ivn__DOT__rowcount_1)
                                                ? 1U
-                                               : 0xdU))
-                                  : 0xdU)));
+                                               : 0xaU))
+                                  : 0xaU)));
         vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_ivn__DOT__i_vn_1 
             = ((2U == vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_ivn__DOT__rowcount_0)
                 ? 0U : ((1U == vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_ivn__DOT__rowcount_0)
                          ? ((1U == vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_ivn__DOT__rowcount_1)
                              ? 1U : ((2U == vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_ivn__DOT__rowcount_1)
-                                      ? 1U : 3U)) : 
-                        ((0U == vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_ivn__DOT__rowcount_0)
-                          ? ((2U == vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_ivn__DOT__rowcount_1)
-                              ? 1U : 3U) : 3U)));
+                                      ? 1U : 0x15U))
+                         : ((0U == vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_ivn__DOT__rowcount_0)
+                             ? ((2U == vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_ivn__DOT__rowcount_1)
+                                 ? 1U : 0x15U) : 0x15U)));
         vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_ivn__DOT__i_vn_2 
             = ((2U == vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_ivn__DOT__rowcount_0)
                 ? ((2U == vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_ivn__DOT__rowcount_1)
-                    ? 1U : 6U) : ((1U == vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_ivn__DOT__rowcount_0)
-                                   ? ((1U == vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_ivn__DOT__rowcount_1)
-                                       ? 6U : ((2U 
-                                                == vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_ivn__DOT__rowcount_1)
-                                                ? 1U
-                                                : 6U))
-                                   : 6U));
+                    ? 1U : 0x19U) : ((1U == vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_ivn__DOT__rowcount_0)
+                                      ? ((1U == vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_ivn__DOT__rowcount_1)
+                                          ? 0x19U : 
+                                         ((2U == vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_ivn__DOT__rowcount_1)
+                                           ? 1U : 0x19U))
+                                      : 0x19U));
         vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_ivn__DOT__i_vn_3 
             = ((2U == vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_ivn__DOT__rowcount_0)
                 ? ((2U == vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_ivn__DOT__rowcount_1)
-                    ? 1U : 8U) : 8U);
+                    ? 1U : 2U) : 2U);
     }
     if (((IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__my_Benes__DOT___T_73) 
          & (0U != (IData)(vlTOPp->FlexDPUby2__DOT__FDPE_io_i_mux_bus_0_2)))) {
@@ -5015,11 +5014,16 @@ VL_INLINE_OPT void VFlexDPUby2::_combo__TOP__3(VFlexDPUby2__Syms* __restrict vlS
                                   ? ((IData)(vlTOPp->FlexDPUby2__DOT__hig)
                                       ? (0xffffU & (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__matrix_1_1))
                                       : 0U) : 0U);
+        vlTOPp->io_O_valid = (((IData)(vlTOPp->FlexDPUby2__DOT__Statvalid) 
+                               & ((IData)(vlTOPp->FlexDPUby2__DOT__hig) 
+                                  & (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__o_valid))) 
+                              & 1U);
     } else {
         vlTOPp->io_output_0_0 = 0U;
         vlTOPp->io_output_0_1 = 0U;
         vlTOPp->io_output_1_0 = 0U;
         vlTOPp->io_output_1_1 = 0U;
+        vlTOPp->io_O_valid = 0U;
     }
     vlTOPp->FlexDPUby2__DOT___GEN_3 = ((1U & (vlTOPp->FlexDPUby2__DOT__iloop 
                                               & vlTOPp->FlexDPUby2__DOT__jloop))

@@ -325,11 +325,16 @@ void VFlexDPUby2::_settle__TOP__2(VFlexDPUby2__Syms* __restrict vlSymsp) {
                                   ? ((IData)(vlTOPp->FlexDPUby2__DOT__hig)
                                       ? (0xffffU & (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__matrix_1_1))
                                       : 0U) : 0U);
+        vlTOPp->io_O_valid = (((IData)(vlTOPp->FlexDPUby2__DOT__Statvalid) 
+                               & ((IData)(vlTOPp->FlexDPUby2__DOT__hig) 
+                                  & (IData)(vlTOPp->FlexDPUby2__DOT__FDPE__DOT__o_valid))) 
+                              & 1U);
     } else {
         vlTOPp->io_output_0_0 = 0U;
         vlTOPp->io_output_0_1 = 0U;
         vlTOPp->io_output_1_0 = 0U;
         vlTOPp->io_output_1_1 = 0U;
+        vlTOPp->io_O_valid = 0U;
     }
     vlTOPp->FlexDPUby2__DOT___GEN_3 = ((1U & (vlTOPp->FlexDPUby2__DOT__iloop 
                                               & vlTOPp->FlexDPUby2__DOT__jloop))
@@ -4028,6 +4033,7 @@ void VFlexDPUby2::_ctor_var_reset() {
     io_output_1_0 = VL_RAND_RESET_I(16);
     io_output_1_1 = VL_RAND_RESET_I(16);
     io_valid = VL_RAND_RESET_I(1);
+    io_O_valid = VL_RAND_RESET_I(1);
     FlexDPUby2__DOT__PF_io_PF_Valid = VL_RAND_RESET_I(1);
     FlexDPUby2__DOT__FDPE_io_i_mux_bus_0_0 = VL_RAND_RESET_I(4);
     FlexDPUby2__DOT__FDPE_io_i_mux_bus_0_1 = VL_RAND_RESET_I(4);

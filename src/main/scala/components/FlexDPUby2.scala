@@ -12,6 +12,7 @@ class FlexDPUby2(implicit val config:MagmasiConfig) extends Module{
         val Streaming_matrix = Input(Vec(config.MaxRows, Vec(config.MaxCols, UInt(config.DATA_TYPE.W))))
         val output = Output(Vec(config.MaxRows, Vec(config.MaxCols, UInt(config.DATA_TYPE.W))))
         val valid = Input(Bool())
+        val O_valid = Output(Bool())
     })
 
     val DPEDest = RegInit(VecInit(Seq.fill(2)(VecInit(Seq.fill(config.NUM_PES)(0.U(32.W))))))
@@ -186,6 +187,7 @@ class FlexDPUby2(implicit val config:MagmasiConfig) extends Module{
         //     }     
 
             io.output := FDPE.io.matrix
+            io.O_valid := FDPE.io.output_valid
 
         }
     
@@ -195,12 +197,13 @@ class FlexDPUby2(implicit val config:MagmasiConfig) extends Module{
     
     .otherwise{
         io.output := RegInit(VecInit(Seq.fill(config.MaxCols)(VecInit(Seq.fill(config.MaxRows)(0.U(32.W))))))
+        io.O_valid := 0.B
     }
 
 
 }.otherwise{
      io.output := RegInit(VecInit(Seq.fill(config.MaxCols)(VecInit(Seq.fill(config.MaxRows)(0.U(32.W))))))
-
+    io.O_valid := 0.B
 }
 }
 

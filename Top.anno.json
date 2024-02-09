@@ -3,59 +3,67 @@
     "class":"firrtl.transforms.DedupedResult",
     "original":"~Top|ReductionMux",
     "duplicate":"~Top|Top/FDPU:FlexDPUby2/FDPE:flexdpecom4/my_fan_network:Fan4/my_adder_0:EdgeAdderSwitch/reductionMux:ReductionMux",
-    "index":0.4782608695652174
+    "index":0.4
   },
   {
     "class":"firrtl.transforms.DedupedResult",
     "original":"~Top|SimpleAdder",
     "duplicate":"~Top|Top/FDPU:FlexDPUby2/FDPE:flexdpecom4/my_fan_network:Fan4/my_adder_0:EdgeAdderSwitch/adder32:SimpleAdder",
-    "index":0.5217391304347826
+    "index":0.45
   },
   {
     "class":"firrtl.transforms.DedupedResult",
     "original":"~Top|EdgeAdderSwitch",
     "duplicate":"~Top|Top/FDPU:FlexDPUby2/FDPE:flexdpecom4/my_fan_network:Fan4/my_adder_0:EdgeAdderSwitch",
-    "index":0.5652173913043478
+    "index":0.5
   },
   {
     "class":"firrtl.transforms.DedupedResult",
     "original":"~Top|ReductionMux_1",
     "duplicate":"~Top|Top/FDPU:FlexDPUby2/FDPE:flexdpecom4/my_fan_network:Fan4/my_adder_1:EdgeAdderSwitch/reductionMux:ReductionMux",
-    "index":0.6086956521739131
+    "index":0.55
   },
   {
     "class":"firrtl.transforms.DedupedResult",
     "original":"~Top|SimpleAdder_1",
     "duplicate":"~Top|Top/FDPU:FlexDPUby2/FDPE:flexdpecom4/my_fan_network:Fan4/my_adder_1:EdgeAdderSwitch/adder32:SimpleAdder",
-    "index":0.6521739130434783
+    "index":0.6
   },
   {
     "class":"firrtl.transforms.DedupedResult",
     "original":"~Top|EdgeAdderSwitch_1",
     "duplicate":"~Top|Top/FDPU:FlexDPUby2/FDPE:flexdpecom4/my_fan_network:Fan4/my_adder_1:EdgeAdderSwitch",
-    "index":0.6956521739130435
+    "index":0.65
   },
   {
     "class":"firrtl.transforms.DedupedResult",
     "original":"~Top|ReductionMux_2",
     "duplicate":"~Top|Top/FDPU:FlexDPUby2/FDPE:flexdpecom4/my_fan_network:Fan4/my_adder_2:EdgeAdderSwitch/reductionMux:ReductionMux",
-    "index":0.7391304347826086
+    "index":0.7
   },
   {
     "class":"firrtl.transforms.DedupedResult",
     "original":"~Top|SimpleAdder_2",
     "duplicate":"~Top|Top/FDPU:FlexDPUby2/FDPE:flexdpecom4/my_fan_network:Fan4/my_adder_2:EdgeAdderSwitch/adder32:SimpleAdder",
-    "index":0.782608695652174
+    "index":0.75
   },
   {
     "class":"firrtl.transforms.DedupedResult",
     "original":"~Top|EdgeAdderSwitch_2",
     "duplicate":"~Top|Top/FDPU:FlexDPUby2/FDPE:flexdpecom4/my_fan_network:Fan4/my_adder_2:EdgeAdderSwitch",
-    "index":0.8260869565217391
+    "index":0.8
   },
   {
     "class":"firrtl.EmitCircuitAnnotation",
     "emitter":"firrtl.VerilogEmitter"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~Top|flexdpecom4>io_output_valid"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~Top|flexdpecom4>o_valid"
   },
   {
     "class":"firrtl.transforms.DontTouchAnnotation",
@@ -79,22 +87,6 @@
   },
   {
     "class":"firrtl.transforms.DontTouchAnnotation",
-    "target":"~Top|Benes3>io_o_dist_bus2_0"
-  },
-  {
-    "class":"firrtl.transforms.DontTouchAnnotation",
-    "target":"~Top|Benes3>io_o_dist_bus2_1"
-  },
-  {
-    "class":"firrtl.transforms.DontTouchAnnotation",
-    "target":"~Top|Benes3>io_o_dist_bus2_2"
-  },
-  {
-    "class":"firrtl.transforms.DontTouchAnnotation",
-    "target":"~Top|Benes3>io_o_dist_bus2_3"
-  },
-  {
-    "class":"firrtl.transforms.DontTouchAnnotation",
     "target":"~Top|Benes3>io_o_dist_bus1_0"
   },
   {
@@ -108,6 +100,38 @@
   {
     "class":"firrtl.transforms.DontTouchAnnotation",
     "target":"~Top|Benes3>io_o_dist_bus1_3"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~Top|flexdpecom4>r_mult_0"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~Top|flexdpecom4>r_mult_1"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~Top|flexdpecom4>r_mult_2"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~Top|flexdpecom4>r_mult_3"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~Top|Benes3>io_o_dist_bus2_0"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~Top|Benes3>io_o_dist_bus2_1"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~Top|Benes3>io_o_dist_bus2_2"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~Top|Benes3>io_o_dist_bus2_3"
   },
   {
     "class":"firrtl.transforms.DontTouchAnnotation",
@@ -167,7 +191,7 @@
   },
   {
     "class":"firrtl.transforms.DontTouchAnnotation",
-    "target":"~Top|flexdpecom4>io_i_data_valid"
+    "target":"~Top|flexdpecom4>io_input_valid"
   },
   {
     "class":"firrtl.transforms.DontTouchAnnotation",
@@ -235,66 +259,6 @@
   },
   {
     "class":"firrtl.transforms.DontTouchAnnotation",
-    "target":"~Top|Distribution>ab"
-  },
-  {
-    "class":"firrtl.transforms.DontTouchAnnotation",
-    "target":"~Top|Distribution>e"
-  },
-  {
-    "class":"firrtl.transforms.DontTouchAnnotation",
-    "target":"~Top|abc3>j"
-  },
-  {
-    "class":"firrtl.transforms.DontTouchAnnotation",
-    "target":"~Top|abc3>counter"
-  },
-  {
-    "class":"firrtl.transforms.DontTouchAnnotation",
-    "target":"~Top|abc3>delay"
-  },
-  {
-    "class":"firrtl.transforms.DontTouchAnnotation",
-    "target":"~Top|abc2>io_IDex"
-  },
-  {
-    "class":"firrtl.transforms.DontTouchAnnotation",
-    "target":"~Top|abc2>j"
-  },
-  {
-    "class":"firrtl.transforms.DontTouchAnnotation",
-    "target":"~Top|Distribution>Jdex_0"
-  },
-  {
-    "class":"firrtl.transforms.DontTouchAnnotation",
-    "target":"~Top|Distribution>Jdex_1"
-  },
-  {
-    "class":"firrtl.transforms.DontTouchAnnotation",
-    "target":"~Top|Distribution>Idex_0"
-  },
-  {
-    "class":"firrtl.transforms.DontTouchAnnotation",
-    "target":"~Top|Distribution>Idex_1"
-  },
-  {
-    "class":"firrtl.transforms.DontTouchAnnotation",
-    "target":"~Top|Distribution>count"
-  },
-  {
-    "class":"firrtl.transforms.DontTouchAnnotation",
-    "target":"~Top|Distribution>j"
-  },
-  {
-    "class":"firrtl.transforms.DontTouchAnnotation",
-    "target":"~Top|Distribution>i"
-  },
-  {
-    "class":"firrtl.transforms.DontTouchAnnotation",
-    "target":"~Top|Distribution>iterationNo"
-  },
-  {
-    "class":"firrtl.transforms.DontTouchAnnotation",
     "target":"~Top|SourceDestination>counter2"
   },
   {
@@ -312,6 +276,30 @@
   {
     "class":"firrtl.transforms.DontTouchAnnotation",
     "target":"~Top|Muxes>jNext"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~Top|Muxes>mat2_0"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~Top|Muxes>mat2_1"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~Top|Muxes>mat1_0_0"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~Top|Muxes>mat1_0_1"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~Top|Muxes>mat1_1_0"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~Top|Muxes>mat1_1_1"
   },
   {
     "class":"firrtl.transforms.DontTouchAnnotation",

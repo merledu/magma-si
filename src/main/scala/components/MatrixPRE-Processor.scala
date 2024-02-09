@@ -48,7 +48,7 @@ class Regor(rows:Int,cols:Int,DATA_TYPE:Int) extends Module{
     when ((reg(j) === 0.U)){
             matReg1(i)(j) := 0.U//bitmap.io.bitmap1(i)(j)
         }.otherwise{
-            matReg1(i)(j) := io.mat1(i)(j)
+            matReg1(i)(j) := io.mat2(i)(j)
         }
 
         when (delay === 1.U){
