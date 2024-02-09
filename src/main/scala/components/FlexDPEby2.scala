@@ -279,5 +279,3 @@ val o_vn = Reg(Vec(Config.NUM_PES, UInt(Config.LOG2_PES.W)))
 }
 }
 
-// valid pin work in
-//line 28,29,34,124,202
