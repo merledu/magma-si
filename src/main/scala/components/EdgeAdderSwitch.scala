@@ -13,6 +13,7 @@ class EdgeAdderSwitch(DATA_TYPE: Int = 32, NUM_IN: Int = 2, SEL_IN: Int = 2,NUM_
     val o_adder = Output(UInt(DATA_TYPE.W))
   })
 
+  //edge adder
   val clk = clock
   val rst = reset.asBool
 
