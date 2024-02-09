@@ -93,6 +93,7 @@
 //     my_ivn3.io.validpin := valid2
 
 //      val my_ivn4= Module(new ivncontrol4())
+//design
 //     my_ivn4.io.Stationary_matrix := station4 
 
 //     val i_vn7 = my_ivn4.io.o_vn
