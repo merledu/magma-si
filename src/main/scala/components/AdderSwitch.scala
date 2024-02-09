@@ -75,3 +75,4 @@ class AdderSwitch(DATA_TYPE: Int = 32, NUM_IN: Int = 2, SEL_IN: Int = 2,NUM_OUT:
     io.o_vn_valid := r_vn_valid
   }
 }
+//adder switch
