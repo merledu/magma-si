@@ -144,7 +144,7 @@ class fancontrol4(DATA_TYPE: Int = 32, NUM_PES: Int = 4, LOG2_PES: Int = 5) exte
         }
       }.otherwise {
         r_reduction_add(2.U + x.U) := 0.U
-        r_reduction_cmd( 2.U + x.U) := "b000".U // nothing
+        r_reduction_cmd( 2.U + x.U) := "b000".U // nothings
       }
     
   
