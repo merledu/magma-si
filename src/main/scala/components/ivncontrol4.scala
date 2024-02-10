@@ -1,6 +1,6 @@
 package magmasi.components
 
-import scala.util.Random // Add import for Random
+import scala.util.Random // Add import for Randoms
 
 import chisel3._
 import chisel3.util._
