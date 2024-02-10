@@ -36,7 +36,7 @@ class fancontrol4(DATA_TYPE: Int = 32, NUM_PES: Int = 4, LOG2_PES: Int = 5) exte
   
     w_vn := io.i_vn
 
-    // adder 0
+    // adders 0
 
     for (x <- 0 until 2) {
       when(x.U === 0.U) {
@@ -72,7 +72,7 @@ class fancontrol4(DATA_TYPE: Int = 32, NUM_PES: Int = 4, LOG2_PES: Int = 5) exte
           }
       
 
-     // adder 2
+     // adders 2
         }.otherwise {
    
    
@@ -108,7 +108,7 @@ class fancontrol4(DATA_TYPE: Int = 32, NUM_PES: Int = 4, LOG2_PES: Int = 5) exte
      
     } 
     }
-    //adder 1
+    //adders 1
 
   for (x <- 0 until 1) {
     when(x.U === 0.U) {
