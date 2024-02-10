@@ -17,7 +17,7 @@ class Top (implicit val config:MagmasiConfig) extends Module{
     PreProcessor.io.mat1 := io.Streaming_matrix
     PreProcessor.io.mat2 := io.Stationary_matrix
 
-    // val delay = RegInit(0.U(1.W))
+    // val delay = RegInit(0.U(1.W)).
     
     // when ( delay <= 0.U){
     //     delay := delay + 1.U
