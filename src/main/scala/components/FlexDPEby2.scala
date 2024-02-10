@@ -46,6 +46,7 @@ val o_vn = Reg(Vec(Config.NUM_PES, UInt(Config.LOG2_PES.W)))
     // output valid
     var o_valid = Reg(Bool())
 
+
     // matrix(0)(0) := 1.U
     
     val r_stationary_ff = Reg(Bool())
@@ -121,6 +122,10 @@ val o_vn = Reg(Vec(Config.NUM_PES, UInt(Config.LOG2_PES.W)))
     dontTouch(r_mult)
     dontTouch(w_dist_bus1)
     //io.output_valid := 1.B
+
+     counter := counter + 1.U
+    dontTouch(counter)
+
      when (counter < 26.U){
 
       // o_valid := 1.B
@@ -198,9 +203,17 @@ val o_vn = Reg(Vec(Config.NUM_PES, UInt(Config.LOG2_PES.W)))
     // matrix(1)(0) := io.o_adder(2)
     dontTouch(matrix)
 
-    counter := counter + 1.U
-    dontTouch(counter)
+    // counter := counter + 1.U
+    // dontTouch(counter)
 
+     when(counter === 17.U || counter === 42.U){
+          o_valid := 1.B
+      }.otherwise{
+        o_valid := 0.B
+      }
+      dontTouch(o_valid)
+      io.output_valid := o_valid
+      dontTouch(io.output_valid)
     when (counter > 41.U){
 
    
@@ -262,13 +275,18 @@ val o_vn = Reg(Vec(Config.NUM_PES, UInt(Config.LOG2_PES.W)))
               matrix(0)(1) := io.o_adder(0)
         matrix(1)(1) := io.o_adder(2)
           }
-        o_valid := 1.B
-      dontTouch(o_valid)
+
+     
+      //   o_valid := 1.B
+      // dontTouch(o_valid)
 
 
     }
-    io.output_valid := o_valid
-    dontTouch(io.output_valid)
+   
+
+
+    // io.output_valid := o_valid
+    // dontTouch(io.output_valid)
 }.otherwise{
   io.i_vn := VecInit(0.U,0.U,0.U,0.U)
   io.o_valid := VecInit(0.U,0.U,0.U,0.U)
