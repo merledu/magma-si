@@ -77,7 +77,7 @@ class FlexDPUby2(implicit val config:MagmasiConfig) extends Module{
     }
 
 
-    // ------------------------- source destination calculation is complete ---------------------
+    // ------------------------- source destination calculation is complete ----------------------
     
     def Reverse(in:UInt):UInt={
         val rev =(0 until 4).foldLeft(0.U) { (acc, i) =>
