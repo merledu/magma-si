@@ -30,7 +30,7 @@ class FlexDPUTester extends AnyFreeSpec with ChiselScalatestTester {
               c.io.Stationary_matrix(i)(j).poke(inputData(i)(j).U)
           }
         }
-        //c.io.CalFDE.poke(2.U)
+        //c.io.CalFDE.poke(2.U)//.
         c.clock.step(400)
     }
   }
