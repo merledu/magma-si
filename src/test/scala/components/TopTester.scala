@@ -9,17 +9,15 @@ class TopTester extends AnyFreeSpec with ChiselScalatestTester {
     "FlexDPU tester" in {
         implicit val config = MagmasiConfig()
         test(new Top()){ c =>
-        val inputData = Seq(
-          Seq(1,1,13,14),
-          Seq(1, 1, 5, 6),
-            Seq(7, 8, 9, 10),
-            Seq(21,22,23,25)
+         val inputData = Seq(
+          Seq(1,1),
+          Seq(1, 1),
+        
         )
         val inputData2 = Seq(
-           Seq(1,3,0,0),
-            Seq(2,1,0,0,0),
-           Seq(6,3,0,0,0),
-           Seq(7,1,0,0,0)
+           Seq(1,3),
+            Seq(2,1),
+       
         ) 
         for ( i <- 0 until 2){
           for ( j <- 0 until 2){
