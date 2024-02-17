@@ -1,3 +1,6 @@
+
+
+
 package magmasi.components
 
 import chisel3._
@@ -64,13 +67,15 @@ val o_vn = Reg(Vec(Config.NUM_PES, UInt(Config.LOG2_PES.W)))
      dontTouch(matrix)
 
 
-  io.matrix := matrix
+    io.matrix := matrix
     
    val my_ivn= Module(new ivncontrol4())
     my_ivn.io.Stationary_matrix := io.Stationary_matrix
     val i_vn = my_ivn.io.o_vn
     io.i_vn := i_vn
+    my_ivn.io.in_valid := io.input_valid
 
+   
    // io.out_vn := i_vn
  
 
@@ -109,6 +114,7 @@ val o_vn = Reg(Vec(Config.NUM_PES, UInt(Config.LOG2_PES.W)))
 
 
     val my_fan_network = Module(new Fan4(4,32))
+    
 
     my_fan_network.io.i_valid := w_reduction_valid
     my_fan_network.io.i_data_bus :=   r_mult 
@@ -296,4 +302,3 @@ val o_vn = Reg(Vec(Config.NUM_PES, UInt(Config.LOG2_PES.W)))
   io.output_valid := 0.B
 }
 }
-
