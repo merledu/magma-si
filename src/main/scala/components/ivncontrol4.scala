@@ -11,7 +11,7 @@ class ivncontrol4(implicit val Config: MagmasiConfig) extends Module {
     val Stationary_matrix = Input(Vec(Config.MaxRows, Vec(Config.MaxCols, UInt(Config.DATA_TYPE.W))))
     val o_vn = Output(Vec(Config.NUM_PES, UInt(Config.LOG2_PES.W)))         //row: Int = 3,col: Int = 3
    
-   val in_valid = Input(Bool())
+  
   })
   val input_valid = RegInit(false.B)
 
