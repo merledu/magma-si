@@ -1,3 +1,4 @@
+
 package magmasi.components
 
 import scala.util.Random // Add import for Random
@@ -10,7 +11,17 @@ class ivncontrol4(implicit val Config: MagmasiConfig) extends Module {
     val Stationary_matrix = Input(Vec(Config.MaxRows, Vec(Config.MaxCols, UInt(Config.DATA_TYPE.W))))
     val o_vn = Output(Vec(Config.NUM_PES, UInt(Config.LOG2_PES.W)))         //row: Int = 3,col: Int = 3
    
+   val in_valid = Input(Bool())
   })
+  val input_valid = RegInit(false.B)
+
+
+  var i_valid = WireDefault(false.B)
+  i_valid := input_valid
+  var counter = RegInit(0.U(32.W))  
+  when ( counter === 6.U){
+    input_valid := true.B
+  }
 
     val i_vn = RegInit(VecInit(Seq.fill(Config.NUM_PES)(0.U(Config.LOG2_PES.W))))
 
@@ -35,18 +46,22 @@ class ivncontrol4(implicit val Config: MagmasiConfig) extends Module {
 
     dontTouch(count) 
 
-
+ val chec = ( io.Stationary_matrix(i)(j) =/= 0.U && (j < (Config.MaxCols).U))
+ dontTouch(chec)
    mat(i)(j) := io.Stationary_matrix(i)(j)
  //   when(valid1=== false.B){
-        when ( io.Stationary_matrix(i)(j) =/= 0.U && (j < (Config.MaxCols).U)){
+        when ( io.Stationary_matrix(i)(j) =/= 0.U && (j < (Config.MaxCols).U) && (input_valid)){
 
             count(i) := count(i)+1.U
             dontTouch(count)
+
+            matlength := mat(1).length.U
+    dontTouch(matlength)
     }
    // }
+  
     
-    matlength := mat(1).length.U
-    dontTouch(matlength)
+    
 
 
     // when (count(0) > 2.U) {
@@ -66,23 +81,23 @@ class ivncontrol4(implicit val Config: MagmasiConfig) extends Module {
     dontTouch(i)
     dontTouch(j)
     dontTouch(rowcount)
-
-    when ((i < (Config.MaxRows-1).U) && (j === (Config.MaxCols-1).U)){
+    when ((i < (Config.MaxRows-1).U) && (j === (Config.MaxCols-1).U) && (input_valid)){
         i := i + 1.U
     }
 
-    when ((j < (Config.MaxCols-1).U)&&(i <= (Config.MaxRows-1).U)){
+    when ((j < (Config.MaxCols-1).U)&&(i <= (Config.MaxRows-1).U)  && (input_valid)){
         j := j + 1.U
 
-    }.elsewhen(i === (Config.MaxRows-1).U && (j === (Config.MaxCols-1).U)){
+    }.elsewhen(i === (Config.MaxRows-1).U && (j === (Config.MaxCols-1).U) && (input_valid)){
         j := j+1.U
-    }.elsewhen(i === (Config.MaxRows-1).U && (j === (Config.MaxCols).U)){
+    }.elsewhen(i === (Config.MaxRows-1).U && (j === (Config.MaxCols).U) && (input_valid)){
         j := j
 
     }.otherwise{
         j := 0.U
 
     }
+    
     dontTouch(j)
     dontTouch(i)
 
@@ -108,6 +123,10 @@ class ivncontrol4(implicit val Config: MagmasiConfig) extends Module {
     dontTouch(valid)
 
      rowlength := rowcount.length.U
+
+    // counter work for delay
+     counter := counter + 1.U
+    dontTouch(counter)
      
 
      dontTouch(rowlength)
@@ -134,12 +153,6 @@ class ivncontrol4(implicit val Config: MagmasiConfig) extends Module {
             
                 }
                 
-             
-            
-            
-                
-
-       
 
             }.elsewhen(rowcount(0)=== 0.U){
                 when(rowcount(1)=== 2.U){
@@ -152,4 +165,6 @@ class ivncontrol4(implicit val Config: MagmasiConfig) extends Module {
                 }
 
     }
-    }
+
+
+}
