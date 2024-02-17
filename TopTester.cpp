@@ -24,6 +24,28 @@ int main(int argc, char** argv) {
     // Initialize signals
     top->reset = 1;
 
+    // Generate matrices only once
+    int stationary_matrix_0_0 = std::rand() % 10;
+    int stationary_matrix_0_1 = std::rand() % 10;
+    int stationary_matrix_1_0 = std::rand() % 10;
+    int stationary_matrix_1_1 = std::rand() % 10;
+
+    int streaming_matrix_0_0 = std::rand() % 10;
+    int streaming_matrix_0_1 = std::rand() % 10;
+    int streaming_matrix_1_0 = std::rand() % 10;
+    int streaming_matrix_1_1 = std::rand() % 10;
+
+    // Set the matrices
+    top->io_Stationary_matrix_0_0 = stationary_matrix_0_0;
+    top->io_Stationary_matrix_0_1 = stationary_matrix_0_1;
+    top->io_Stationary_matrix_1_0 = stationary_matrix_1_0;
+    top->io_Stationary_matrix_1_1 = stationary_matrix_1_1;
+
+    top->io_Streaming_matrix_0_0 = streaming_matrix_0_0;
+    top->io_Streaming_matrix_0_1 = streaming_matrix_0_1;
+    top->io_Streaming_matrix_1_0 = streaming_matrix_1_0;
+    top->io_Streaming_matrix_1_1 = streaming_matrix_1_1;
+
     // Simulation steps
     for (int cycle = 0; cycle < 2000; cycle++) {
         // Toggle clock
@@ -39,53 +61,40 @@ int main(int argc, char** argv) {
             top->reset = 0;
         }
 
-        // Randomly generate input matrices
-        top->io_Stationary_matrix_0_0 = std::rand() % 10;
-        top->io_Stationary_matrix_0_1 = std::rand() % 10;
-        top->io_Stationary_matrix_1_0 = std::rand() % 10;
-        top->io_Stationary_matrix_1_1 = std::rand() % 10;
-
-        top->io_Streaming_matrix_0_0 = std::rand() % 10;
-        top->io_Streaming_matrix_0_1 = std::rand() % 10;
-        top->io_Streaming_matrix_1_0 = std::rand() % 10;
-        top->io_Streaming_matrix_1_1 = std::rand() % 10;
-
         // Calculate expected output (matrix multiplication)
-        int expected_output_0_0 = top->io_Stationary_matrix_0_0 * top->io_Streaming_matrix_0_0 +
-                                 top->io_Stationary_matrix_0_1 * top->io_Streaming_matrix_1_0;
-        int expected_output_0_1 = top->io_Stationary_matrix_0_0 * top->io_Streaming_matrix_0_1 +
-                                 top->io_Stationary_matrix_0_1 * top->io_Streaming_matrix_1_1;
-        int expected_output_1_0 = top->io_Stationary_matrix_1_0 * top->io_Streaming_matrix_0_0 +
-                                 top->io_Stationary_matrix_1_1 * top->io_Streaming_matrix_1_0;
-        int expected_output_1_1 = top->io_Stationary_matrix_1_0 * top->io_Streaming_matrix_0_1 +
-                                 top->io_Stationary_matrix_1_1 * top->io_Streaming_matrix_1_1;
-    
-        if (top->io_O_valid) {
-        // Print matrices
-        printf("Cycle %d:\n", cycle);
-        printf("Input Stationary Matrix:\n");
-        printf("%d\t%d\n%d\t%d\n",
-               top->io_Stationary_matrix_0_0, top->io_Stationary_matrix_0_1,
-               top->io_Stationary_matrix_1_0, top->io_Stationary_matrix_1_1);
-
-        printf("Input Streaming Matrix:\n");
-        printf("%d\t%d\n%d\t%d\n",
-               top->io_Streaming_matrix_0_0, top->io_Streaming_matrix_0_1,
-               top->io_Streaming_matrix_1_0, top->io_Streaming_matrix_1_1);
-
-        printf("Expected Output Matrix:\n");
-        printf("%d\t%d\n%d\t%d\n", expected_output_0_0, expected_output_0_1,
-               expected_output_1_0, expected_output_1_1);
-
-        printf("Actual Third Matrix:\n");
-        printf("%d\t%d\n%d\t%d\n",
-               top->io_Third_Matrix_0_0, top->io_Third_Matrix_0_1,
-               top->io_Third_Matrix_1_0, top->io_Third_Matrix_1_1);
-        printf("\n");
-        }
+        int expected_output_0_0 = stationary_matrix_0_0 * streaming_matrix_0_0 +
+                                 stationary_matrix_0_1 * streaming_matrix_1_0;
+        int expected_output_0_1 = stationary_matrix_0_0 * streaming_matrix_0_1 +
+                                 stationary_matrix_0_1 * streaming_matrix_1_1;
+        int expected_output_1_0 = stationary_matrix_1_0 * streaming_matrix_0_0 +
+                                 stationary_matrix_1_1 * streaming_matrix_1_0;
+        int expected_output_1_1 = stationary_matrix_1_0 * streaming_matrix_0_1 +
+                                 stationary_matrix_1_1 * streaming_matrix_1_1;
 
         // Check output after io_O_Valid is high
         if (top->io_O_valid) {
+            // Print matrices and results only when O_Valid is high
+            printf("Cycle %d:\n", cycle);
+            printf("Input Stationary Matrix:\n");
+            printf("%d\t%d\n%d\t%d\n",
+                   stationary_matrix_0_0, stationary_matrix_0_1,
+                   stationary_matrix_1_0, stationary_matrix_1_1);
+
+            printf("Input Streaming Matrix:\n");
+            printf("%d\t%d\n%d\t%d\n",
+                   streaming_matrix_0_0, streaming_matrix_0_1,
+                   streaming_matrix_1_0, streaming_matrix_1_1);
+
+            printf("Expected Output Matrix:\n");
+            printf("%d\t%d\n%d\t%d\n", expected_output_0_0, expected_output_0_1,
+                   expected_output_1_0, expected_output_1_1);
+
+            printf("Actual Third Matrix:\n");
+            printf("%d\t%d\n%d\t%d\n",
+                   top->io_Third_Matrix_0_0, top->io_Third_Matrix_0_1,
+                   top->io_Third_Matrix_1_0, top->io_Third_Matrix_1_1);
+            printf("\n");
+
             if (top->io_Third_Matrix_0_0 == expected_output_0_0 &&
                 top->io_Third_Matrix_0_1 == expected_output_0_1 &&
                 top->io_Third_Matrix_1_0 == expected_output_1_0 &&
