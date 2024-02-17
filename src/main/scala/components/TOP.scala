@@ -23,16 +23,17 @@ class Top (implicit val config:MagmasiConfig) extends Module{
     //     delay := delay + 1.U
     // }
 
-    // when (delay === 1.U){
+    when (PreProcessor.io.valid){
         val FDPU = Module(new FlexDPUby2)
         FDPU.io.Stationary_matrix := PreProcessor.io.compressedBitmap
         FDPU.io.Streaming_matrix := io.Streaming_matrix
         io.Third_Matrix := FDPU.io.output
         io.O_valid := FDPU.io.O_valid
         FDPU.io.valid := PreProcessor.io.valid
-    // }.otherwise{
-    //     io.Third_Matrix := WireInit(VecInit(Seq.fill(config.MaxRows)(VecInit(Seq.fill(config.MaxCols)(0.U(32.W))))))
-    // }
+    }.otherwise{
+         io.Third_Matrix := WireInit(VecInit(Seq.fill(config.MaxRows)(VecInit(Seq.fill(config.MaxCols)(0.U(32.W))))))
+         io.O_valid := 0.B
+    }
 
 }
 object TopDriver extends App {

@@ -154,13 +154,18 @@ VL_MODULE(VTop) {
         CData/*0:0*/ Top__DOT__FDPU__DOT__FDPE__DOT__o_valid;
         CData/*0:0*/ Top__DOT__FDPU__DOT__FDPE__DOT___T_31;
         CData/*0:0*/ Top__DOT__FDPU__DOT__FDPE__DOT___T_46;
+        CData/*0:0*/ Top__DOT__FDPU__DOT__FDPE__DOT__my_ivn__DOT__input_valid;
+        CData/*0:0*/ Top__DOT__FDPU__DOT__FDPE__DOT__my_ivn__DOT___GEN_0;
         CData/*4:0*/ Top__DOT__FDPU__DOT__FDPE__DOT__my_ivn__DOT__i_vn_0;
         CData/*4:0*/ Top__DOT__FDPU__DOT__FDPE__DOT__my_ivn__DOT__i_vn_1;
         CData/*4:0*/ Top__DOT__FDPU__DOT__FDPE__DOT__my_ivn__DOT__i_vn_2;
         CData/*4:0*/ Top__DOT__FDPU__DOT__FDPE__DOT__my_ivn__DOT__i_vn_3;
-        CData/*0:0*/ Top__DOT__FDPU__DOT__FDPE__DOT__my_ivn__DOT___T_8;
+        CData/*0:0*/ Top__DOT__FDPU__DOT__FDPE__DOT__my_ivn__DOT___GEN_48;
+        CData/*0:0*/ Top__DOT__FDPU__DOT__FDPE__DOT__my_ivn__DOT___GEN_49;
+        CData/*0:0*/ Top__DOT__FDPU__DOT__FDPE__DOT__my_ivn__DOT__chec;
         CData/*0:0*/ Top__DOT__FDPU__DOT__FDPE__DOT__my_ivn__DOT___T_10;
         CData/*0:0*/ Top__DOT__FDPU__DOT__FDPE__DOT__my_ivn__DOT___T_12;
+        CData/*0:0*/ Top__DOT__FDPU__DOT__FDPE__DOT__my_ivn__DOT___T_14;
         CData/*0:0*/ Top__DOT__FDPU__DOT__FDPE__DOT__my_controller__DOT__r_reduction_add_0;
         CData/*0:0*/ Top__DOT__FDPU__DOT__FDPE__DOT__my_controller__DOT__r_reduction_add_1;
         CData/*0:0*/ Top__DOT__FDPU__DOT__FDPE__DOT__my_controller__DOT__r_reduction_add_2;
@@ -169,13 +174,13 @@ VL_MODULE(VTop) {
         CData/*2:0*/ Top__DOT__FDPU__DOT__FDPE__DOT__my_controller__DOT__r_reduction_cmd_2;
         CData/*0:0*/ Top__DOT__FDPU__DOT__FDPE__DOT__my_controller__DOT__r_add_lvl_0Reg_6;
         CData/*0:0*/ Top__DOT__FDPU__DOT__FDPE__DOT__my_controller__DOT__r_add_lvl_0Reg_7;
+    };
+    struct {
         CData/*0:0*/ Top__DOT__FDPU__DOT__FDPE__DOT__my_controller__DOT__r_add_lvl_1Reg_4;
         CData/*2:0*/ Top__DOT__FDPU__DOT__FDPE__DOT__my_controller__DOT__r_cmd_lvl_0Reg_6;
         CData/*2:0*/ Top__DOT__FDPU__DOT__FDPE__DOT__my_controller__DOT__r_cmd_lvl_0Reg_7;
         CData/*2:0*/ Top__DOT__FDPU__DOT__FDPE__DOT__my_controller__DOT__r_cmd_lvl_1Reg_4;
         CData/*4:0*/ Top__DOT__FDPU__DOT__FDPE__DOT__my_controller__DOT__w_vn_0;
-    };
-    struct {
         CData/*4:0*/ Top__DOT__FDPU__DOT__FDPE__DOT__my_controller__DOT__w_vn_1;
         CData/*4:0*/ Top__DOT__FDPU__DOT__FDPE__DOT__my_controller__DOT__w_vn_2;
         CData/*4:0*/ Top__DOT__FDPU__DOT__FDPE__DOT__my_controller__DOT__w_vn_3;
@@ -235,13 +240,13 @@ VL_MODULE(VTop) {
         CData/*1:0*/ Top__DOT__FDPU__DOT__FDPE__DOT__my_Benes__DOT__parsedindexvalue1_14;
         CData/*1:0*/ Top__DOT__FDPU__DOT__FDPE__DOT__my_Benes__DOT___parsedindexvalue2_nextIndex_T_971;
         CData/*1:0*/ Top__DOT__FDPU__DOT__FDPE__DOT__my_Benes__DOT__parsedindexvalue2_nextIndex_24;
+    };
+    struct {
         CData/*1:0*/ Top__DOT__FDPU__DOT__FDPE__DOT__my_Benes__DOT__parsedindexvalue2_nextIndex_25;
         CData/*1:0*/ Top__DOT__FDPU__DOT__FDPE__DOT__my_Benes__DOT__parsedindexvalue2_12;
         CData/*1:0*/ Top__DOT__FDPU__DOT__FDPE__DOT__my_Benes__DOT___parsedindexvalue3_nextIndex_T_659;
         CData/*1:0*/ Top__DOT__FDPU__DOT__FDPE__DOT__my_Benes__DOT__parsedindexvalue3_nextIndex_16;
         CData/*1:0*/ Top__DOT__FDPU__DOT__FDPE__DOT__my_Benes__DOT__parsedindexvalue3_nextIndex_17;
-    };
-    struct {
         CData/*1:0*/ Top__DOT__FDPU__DOT__FDPE__DOT__my_Benes__DOT__parsedindexvalue3_8;
         CData/*0:0*/ Top__DOT__FDPU__DOT__FDPE__DOT__my_Benes__DOT___T_333;
         CData/*0:0*/ Top__DOT__FDPU__DOT__FDPE__DOT__my_Benes__DOT___T_345;
@@ -301,13 +306,13 @@ VL_MODULE(VTop) {
         SData/*15:0*/ Top__DOT__FDPU__DOT__PF__DOT__myMuxes__DOT__prevStreaming_matrix_1;
         SData/*15:0*/ Top__DOT__FDPU__DOT__PF__DOT__myMuxes__DOT__src_0;
         SData/*15:0*/ Top__DOT__FDPU__DOT__PF__DOT__myMuxes__DOT__src_1;
+    };
+    struct {
         SData/*15:0*/ Top__DOT__FDPU__DOT__PF__DOT__myMuxes__DOT__src_2;
         SData/*15:0*/ Top__DOT__FDPU__DOT__PF__DOT__myMuxes__DOT__src_3;
         SData/*15:0*/ Top__DOT__FDPU__DOT__PF__DOT__myMuxes__DOT__dest_0;
         SData/*15:0*/ Top__DOT__FDPU__DOT__PF__DOT__myMuxes__DOT__dest_1;
         SData/*15:0*/ Top__DOT__FDPU__DOT__PF__DOT__myMuxes__DOT__dest_2;
-    };
-    struct {
         SData/*15:0*/ Top__DOT__FDPU__DOT__PF__DOT__myMuxes__DOT__dest_3;
         SData/*15:0*/ Top__DOT__FDPU__DOT__PF__DOT__myMuxes__DOT___GEN_15;
         SData/*15:0*/ Top__DOT__FDPU__DOT__PF__DOT__myMuxes__DOT___GEN_17;
@@ -348,7 +353,7 @@ VL_MODULE(VTop) {
         SData/*15:0*/ Top__DOT__FDPU__DOT__FDPE__DOT__matrix_1_1;
         SData/*15:0*/ Top__DOT__FDPU__DOT__FDPE__DOT___GEN_6;
         SData/*15:0*/ Top__DOT__FDPU__DOT__FDPE__DOT___GEN_7;
-        SData/*15:0*/ Top__DOT__FDPU__DOT__FDPE__DOT__my_ivn__DOT___GEN_7;
+        SData/*15:0*/ Top__DOT__FDPU__DOT__FDPE__DOT__my_ivn__DOT___GEN_4;
         SData/*15:0*/ Top__DOT__FDPU__DOT__FDPE__DOT__my_Benes__DOT___GEN_5;
         SData/*15:0*/ Top__DOT__FDPU__DOT__FDPE__DOT__my_Benes__DOT___GEN_6;
         SData/*15:0*/ Top__DOT__FDPU__DOT__FDPE__DOT__my_Benes__DOT___GEN_7;
@@ -367,13 +372,13 @@ VL_MODULE(VTop) {
         SData/*15:0*/ Top__DOT__FDPU__DOT__FDPE__DOT__my_Benes__DOT___GEN_68;
         SData/*15:0*/ Top__DOT__FDPU__DOT__FDPE__DOT__my_Benes__DOT___GEN_75;
         SData/*15:0*/ Top__DOT__FDPU__DOT__FDPE__DOT__my_Benes__DOT___GEN_76;
+    };
+    struct {
         SData/*15:0*/ Top__DOT__FDPU__DOT__FDPE__DOT__my_Benes__DOT___GEN_77;
         SData/*15:0*/ Top__DOT__FDPU__DOT__FDPE__DOT__my_Benes__DOT___GEN_78;
         SData/*15:0*/ Top__DOT__FDPU__DOT__FDPE__DOT__my_Benes__DOT___GEN_90;
         SData/*15:0*/ Top__DOT__FDPU__DOT__FDPE__DOT__my_Benes__DOT___GEN_91;
         SData/*15:0*/ Top__DOT__FDPU__DOT__FDPE__DOT__my_Benes__DOT___GEN_92;
-    };
-    struct {
         SData/*15:0*/ Top__DOT__FDPU__DOT__FDPE__DOT__my_Benes__DOT___GEN_93;
         SData/*15:0*/ Top__DOT__FDPU__DOT__FDPE__DOT__my_Benes__DOT___GEN_110;
         SData/*15:0*/ Top__DOT__FDPU__DOT__FDPE__DOT__my_Benes__DOT___GEN_111;
@@ -433,13 +438,13 @@ VL_MODULE(VTop) {
         SData/*15:0*/ Top__DOT__FDPU__DOT__FDPE__DOT__my_Benes__DOT___GEN_373;
         SData/*15:0*/ Top__DOT__FDPU__DOT__FDPE__DOT__my_Benes__DOT___GEN_390;
         SData/*15:0*/ Top__DOT__FDPU__DOT__FDPE__DOT__my_Benes__DOT___GEN_391;
+    };
+    struct {
         SData/*15:0*/ Top__DOT__FDPU__DOT__FDPE__DOT__my_Benes__DOT___GEN_392;
         SData/*15:0*/ Top__DOT__FDPU__DOT__FDPE__DOT__my_Benes__DOT___GEN_393;
         SData/*15:0*/ Top__DOT__FDPU__DOT__FDPE__DOT__my_Benes__DOT___GEN_405;
         SData/*15:0*/ Top__DOT__FDPU__DOT__FDPE__DOT__my_Benes__DOT___GEN_406;
         SData/*15:0*/ Top__DOT__FDPU__DOT__FDPE__DOT__my_Benes__DOT___GEN_407;
-    };
-    struct {
         SData/*15:0*/ Top__DOT__FDPU__DOT__FDPE__DOT__my_Benes__DOT___GEN_408;
         SData/*15:0*/ Top__DOT__FDPU__DOT__FDPE__DOT__my_Benes__DOT___GEN_415;
         SData/*15:0*/ Top__DOT__FDPU__DOT__FDPE__DOT__my_Benes__DOT___GEN_416;
@@ -499,13 +504,13 @@ VL_MODULE(VTop) {
         IData/*31:0*/ Top__DOT__PreProcessor__DOT___j_T_1;
         IData/*31:0*/ Top__DOT__FDPU__DOT__DPEDest_0_0;
         IData/*31:0*/ Top__DOT__FDPU__DOT__DPEDest_0_1;
+    };
+    struct {
         IData/*31:0*/ Top__DOT__FDPU__DOT__DPEDest_0_2;
         IData/*31:0*/ Top__DOT__FDPU__DOT__DPEDest_0_3;
         IData/*31:0*/ Top__DOT__FDPU__DOT__DPESrc_0_0;
         IData/*31:0*/ Top__DOT__FDPU__DOT__DPESrc_0_1;
         IData/*31:0*/ Top__DOT__FDPU__DOT__DPESrc_1_0;
-    };
-    struct {
         IData/*31:0*/ Top__DOT__FDPU__DOT__DPESrc_1_1;
         IData/*31:0*/ Top__DOT__FDPU__DOT__indexRow;
         IData/*31:0*/ Top__DOT__FDPU__DOT__indexCol;
@@ -557,6 +562,7 @@ VL_MODULE(VTop) {
         IData/*31:0*/ Top__DOT__FDPU__DOT__FDPE__DOT___counter_T_1;
         IData/*31:0*/ Top__DOT__FDPU__DOT__FDPE__DOT___GEN_49;
         IData/*31:0*/ Top__DOT__FDPU__DOT__FDPE__DOT___GEN_51;
+        IData/*31:0*/ Top__DOT__FDPU__DOT__FDPE__DOT__my_ivn__DOT__counter;
         IData/*31:0*/ Top__DOT__FDPU__DOT__FDPE__DOT__my_ivn__DOT__rowcount_0;
         IData/*31:0*/ Top__DOT__FDPU__DOT__FDPE__DOT__my_ivn__DOT__rowcount_1;
         IData/*31:0*/ Top__DOT__FDPU__DOT__FDPE__DOT__my_ivn__DOT__i;
@@ -564,14 +570,15 @@ VL_MODULE(VTop) {
         IData/*31:0*/ Top__DOT__FDPU__DOT__FDPE__DOT__my_ivn__DOT__mat_0_0;
         IData/*31:0*/ Top__DOT__FDPU__DOT__FDPE__DOT__my_ivn__DOT__mat_0_1;
         IData/*31:0*/ Top__DOT__FDPU__DOT__FDPE__DOT__my_ivn__DOT__mat_1_0;
+    };
+    struct {
         IData/*31:0*/ Top__DOT__FDPU__DOT__FDPE__DOT__my_ivn__DOT__mat_1_1;
         IData/*31:0*/ Top__DOT__FDPU__DOT__FDPE__DOT__my_ivn__DOT__count_0;
         IData/*31:0*/ Top__DOT__FDPU__DOT__FDPE__DOT__my_ivn__DOT__count_1;
-        IData/*31:0*/ Top__DOT__FDPU__DOT__FDPE__DOT__my_ivn__DOT___GEN_13;
+        IData/*31:0*/ Top__DOT__FDPU__DOT__FDPE__DOT__my_ivn__DOT___GEN_18;
         IData/*31:0*/ Top__DOT__FDPU__DOT__FDPE__DOT__my_ivn__DOT___i_T_1;
         IData/*31:0*/ Top__DOT__FDPU__DOT__FDPE__DOT__my_ivn__DOT___j_T_1;
-    };
-    struct {
+        IData/*31:0*/ Top__DOT__FDPU__DOT__FDPE__DOT__my_ivn__DOT___counter_T_1;
         IData/*31:0*/ Top__DOT__FDPU__DOT__FDPE__DOT__my_fan_network__DOT__my_adder_0_io_o_adder;
         IData/*31:0*/ Top__DOT__FDPU__DOT__FDPE__DOT__my_fan_network__DOT__my_adder_2_io_o_adder;
         IData/*31:0*/ Top__DOT__FDPU__DOT__FDPE__DOT__my_fan_network__DOT__my_adder_0__DOT__r_adder;
@@ -585,7 +592,7 @@ VL_MODULE(VTop) {
     // LOCAL VARIABLES
     // Internals; generally not touched by application code
     CData/*0:0*/ __Vclklast__TOP__clock;
-    CData/*0:0*/ __Vm_traceActivity[3];
+    IData/*31:0*/ __Vm_traceActivity;
     
     // INTERNAL VARIABLES
     // Internals; generally not touched by application code
@@ -606,12 +613,7 @@ VL_MODULE(VTop) {
     
     // API METHODS
     /// Evaluate the model.  Application must call when inputs change.
-    void eval() { eval_step(); }
-    /// Evaluate when calling multiple units/models per time step.
-    void eval_step();
-    /// Evaluate at end of a timestep for tracing, when using eval_step().
-    /// Application must call after all eval() and before time changes.
-    void eval_end_step() {}
+    void eval();
     /// Simulation complete, run final blocks.  Application must call on completion.
     void final();
     
@@ -622,9 +624,8 @@ VL_MODULE(VTop) {
     void __Vconfigure(VTop__Syms* symsp, bool first);
   private:
     static QData _change_request(VTop__Syms* __restrict vlSymsp);
-    static QData _change_request_1(VTop__Syms* __restrict vlSymsp);
   public:
-    static void _combo__TOP__4(VTop__Syms* __restrict vlSymsp);
+    static void _combo__TOP__3(VTop__Syms* __restrict vlSymsp);
   private:
     void _ctor_var_reset() VL_ATTR_COLD;
   public:
@@ -637,18 +638,19 @@ VL_MODULE(VTop) {
     static void _eval_initial(VTop__Syms* __restrict vlSymsp) VL_ATTR_COLD;
     static void _eval_settle(VTop__Syms* __restrict vlSymsp) VL_ATTR_COLD;
     static void _sequent__TOP__1(VTop__Syms* __restrict vlSymsp);
-    static void _sequent__TOP__2(VTop__Syms* __restrict vlSymsp);
-    static void _settle__TOP__3(VTop__Syms* __restrict vlSymsp) VL_ATTR_COLD;
-  private:
-    static void traceChgSub0(void* userp, VerilatedVcd* tracep);
-    static void traceChgTop0(void* userp, VerilatedVcd* tracep);
-    static void traceCleanup(void* userp, VerilatedVcd* /*unused*/);
-    static void traceFullSub0(void* userp, VerilatedVcd* tracep) VL_ATTR_COLD;
-    static void traceFullTop0(void* userp, VerilatedVcd* tracep) VL_ATTR_COLD;
-    static void traceInitSub0(void* userp, VerilatedVcd* tracep) VL_ATTR_COLD;
-    static void traceInitTop(void* userp, VerilatedVcd* tracep) VL_ATTR_COLD;
-    void traceRegister(VerilatedVcd* tracep) VL_ATTR_COLD;
-    static void traceInit(void* userp, VerilatedVcd* tracep, uint32_t code) VL_ATTR_COLD;
+    static void _settle__TOP__2(VTop__Syms* __restrict vlSymsp) VL_ATTR_COLD;
+    static void traceChgThis(VTop__Syms* __restrict vlSymsp, VerilatedVcd* vcdp, uint32_t code);
+    static void traceChgThis__2(VTop__Syms* __restrict vlSymsp, VerilatedVcd* vcdp, uint32_t code);
+    static void traceChgThis__3(VTop__Syms* __restrict vlSymsp, VerilatedVcd* vcdp, uint32_t code);
+    static void traceChgThis__4(VTop__Syms* __restrict vlSymsp, VerilatedVcd* vcdp, uint32_t code);
+    static void traceChgThis__5(VTop__Syms* __restrict vlSymsp, VerilatedVcd* vcdp, uint32_t code);
+    static void traceFullThis(VTop__Syms* __restrict vlSymsp, VerilatedVcd* vcdp, uint32_t code) VL_ATTR_COLD;
+    static void traceFullThis__1(VTop__Syms* __restrict vlSymsp, VerilatedVcd* vcdp, uint32_t code) VL_ATTR_COLD;
+    static void traceInitThis(VTop__Syms* __restrict vlSymsp, VerilatedVcd* vcdp, uint32_t code) VL_ATTR_COLD;
+    static void traceInitThis__1(VTop__Syms* __restrict vlSymsp, VerilatedVcd* vcdp, uint32_t code) VL_ATTR_COLD;
+    static void traceInit(VerilatedVcd* vcdp, void* userthis, uint32_t code);
+    static void traceFull(VerilatedVcd* vcdp, void* userthis, uint32_t code);
+    static void traceChg(VerilatedVcd* vcdp, void* userthis, uint32_t code);
 } VL_ATTR_ALIGNED(VL_CACHE_LINE_BYTES);
 
 //----------

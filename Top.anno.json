@@ -67,10 +67,6 @@
   },
   {
     "class":"firrtl.transforms.DontTouchAnnotation",
-    "target":"~Top|flexdpecom4>counter"
-  },
-  {
-    "class":"firrtl.transforms.DontTouchAnnotation",
     "target":"~Top|flexdpecom4>matrix_0_0"
   },
   {
@@ -84,6 +80,10 @@
   {
     "class":"firrtl.transforms.DontTouchAnnotation",
     "target":"~Top|flexdpecom4>matrix_1_1"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~Top|flexdpecom4>counter"
   },
   {
     "class":"firrtl.transforms.DontTouchAnnotation",
@@ -139,6 +139,10 @@
   },
   {
     "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~Top|ivncontrol4>counter"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
     "target":"~Top|ivncontrol4>valid"
   },
   {
@@ -172,6 +176,10 @@
   {
     "class":"firrtl.transforms.DontTouchAnnotation",
     "target":"~Top|ivncontrol4>count_1"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~Top|ivncontrol4>chec"
   },
   {
     "class":"firrtl.transforms.DontTouchAnnotation",
