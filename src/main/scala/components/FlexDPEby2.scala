@@ -178,7 +178,7 @@ val o_vn = Reg(Vec(Config.NUM_PES, UInt(Config.LOG2_PES.W)))
       (io.Stationary_matrix(0)(0) =/= 0.U && io.Stationary_matrix(0)(1) === 0.U && io.Stationary_matrix(1)(0) =/= 0.U && io.Stationary_matrix(1)(1) =/= 0.U) 
   
     ) {
-         matrix(0)(0) := io.o_adder(0)
+         matrix(0)(0) := r_mult(0)
          matrix(1)(0) := io.o_adder(1)
          
       }
@@ -271,7 +271,7 @@ val o_vn = Reg(Vec(Config.NUM_PES, UInt(Config.LOG2_PES.W)))
       (io.Stationary_matrix(0)(0) =/= 0.U && io.Stationary_matrix(0)(1) === 0.U && io.Stationary_matrix(1)(0) =/= 0.U && io.Stationary_matrix(1)(1) =/= 0.U) 
         
       ) {
-        matrix(0)(1) := io.o_adder(0)
+        matrix(0)(1) := r_mult(0)
         matrix(1)(1) := io.o_adder(1)
       }
 
