@@ -73,7 +73,7 @@ val o_vn = Reg(Vec(Config.NUM_PES, UInt(Config.LOG2_PES.W)))
     my_ivn.io.Stationary_matrix := io.Stationary_matrix
     val i_vn = my_ivn.io.o_vn
     io.i_vn := i_vn
-    my_ivn.io.in_valid := io.input_valid
+ 
 
    
    // io.out_vn := i_vn
