@@ -1,54 +1,69 @@
+# MAGMA-Si
+#### Matrix Accelerator Generator for GeMM Operations
 
-# MAGMA-Si(Matrix Accelerator Generator for GeMM Operations)
-## Overview
-Matrix Accelerator Generator designed in CHISEL HDL for efficient General Matrix Multiply (GeMM) operations. The architecture employed is the innovative SIGMA Architecture, which enhances performance and scalability in matrix multiplication tasks.
+### Overview
+MAGMA-Si is a Matrix Accelerator Generator developed in CHISEL HDL. It is a Netowrk on Chip based Generic Matrix Multiplication Accelerator following the SIGMA Architecture defined by Georgia Tech. It is designed in such a way using Distribution Networks (Benes) and Reduction Networks (Forwarding Adder Network) which work in parallel to compute sparse matrix multiplications in lesser number of clock cycles as compared to Systolic Array based GeMM Accelerators.
+
+This Caravel Contains a 2x2 Matrix Multiplication Accelerator generated from MAGMA-Si with following Specifications.
+**Component** | **Configuration**
+--- | --- 
+No. of Processing Elements | 4
+No. of Flexible - Dot Product Engines | 1
+Floating Point Enabled | No
+Data Width | 32
+Max Rows | 2
+Max Cols | 2
+
+## Architecture
+This Caravel Contains the following Modules.
+**RTL Module** | **Functional Reference**
+--- | ---
+AcceleratoTop | Top Wrapper
+MMU | Memory Management Unit (GF180 SRAM)
+Top | Actual Accelerator Top
+
+### Top Wrapper
+This Module is directly attached with the Wishbone Interface of Caravel. It consists of a Controller logic that is responsible for directing the wb requests either into the MMU or to the Accelerator Configuration Registers.
+
+### Memory Management Unit
+This Module contains 4 GF-180 PDK SRAM Macros (512x8). It is responsible for storing the input matrices from WB to SRAMs and then loading them from Memory upon Accelerator Request as well as storing the output matrix from Accelerator to SRAMs and then loading them from Memory upon WB Read Request.
+
+<img src="https://github.com/merledu/magmasi_caravel/blob/main/docs/top.png" />
+
+### MAGMA-Si Accelerator
+This is the Core Component, The Accelerator itself. It comprises of a Pre-Processing Module and a Dot Procduct Unit (Flex-DPU) which controls all the Engines working in parallel to compute the resultant matrix. The Input Matrices first go through a Pathfinder Module inside the DPU which decides the fate of each input element and generates its src/destinaation pair which is further fed into the Flex-DPE for computaion.
+
+<img src="https://github.com/merledu/magmasi_caravel/blob/main/docs/magmasi.png" />
+
+### Flex-DPE
+Flexible Dot Product Engine (Flex-DPE) is the most crucial part of the Accelerator. It consists of 2 Network Topologies, one for Distributing the input PEs (Benes Topology) to their desired destinations and other one is for Reducing them into a Matrix shape (Forwading Adder Network (FAN) Topology).
+
+<img src="https://github.com/merledu/magmasi_caravel/blob/main/docs/flexdpe.png" width="50%" />
 
 ## Key Features
-CHISEL HDL: Developed using the CHISEL hardware description language, ensuring flexibility and control in hardware design.
+### CHISEL HDL
+MAGMA-Si is implemented using the CHISEL hardware description language, offering flexibility and control in hardware design. This feature ensures adaptability and facilitates customization for various hardware configurations.
 
-GeMM Optimization: Tailored for General Matrix Multiply (GeMM) operations, a fundamental computational kernel in many numerical and machine learning applications.
+### GeMM Optimization
+MAGMA-Si is intricately optimized for General Matrix Multiply (GeMM) operations, a crucial computational kernel in numerical and machine learning applications. This specialization allows MAGMA-Si to excel in tasks involving matrix multiplication.
 
-SIGMA Architecture: Leveraging the SIGMA Architecture, known for its efficiency and scalability, to accelerate matrix multiplication tasks.
+### SIGMA Architecture
+Leveraging the SIGMA Architecture, MAGMA-Si enhances both performance and scalability. This architecture is particularly adept at accelerating matrix multiplication tasks, making MAGMA-Si well-suited for demanding computational workloads.
 
-Performance: Designed with a focus on performance improvements, allowing for faster and more efficient matrix operations.
+### Performance
+MAGMA-Si prioritizes performance improvements by optimizing hardware and utilizing the SIGMA Architecture. This design approach ensures faster and more efficient matrix operations, contributing to overall system performance gains.
 
-## Usage
-1. **Clone the Repository:**
+## Reference
+For a comprehensive understanding of the architectural and algorithmic aspects of MAGMA-Si, refer to the associated research paper: [**SIGMA Research Paper**](https://bpb-us-w2.wpmucdn.com/sites.gatech.edu/dist/c/332/files/2020/01/sigma_hpca2020.pdf).
 
-   ```bash
-   git clone https://github.com/merledu/magma-si.git
 
-2. **Access the Project Directory:**
+## Team Members
 
-      ```bash
-    cd magma-si
+**Member** | **Role**
+--- | ---
+Dr. Farhan | Supervisor
+Sajjad Ahmed | Backend Team Lead
+Shahzaib Kashif | Design Team Lead
+Asfiyan Shivani | Design Team Member
+Syed Owais Ali Shah | Design Team Member
 
-3. **Compile the project using SBT (Scala Build Tool) with the following command:**
-
-      ```bash
-    sbt
-4. **Execute the tests with VCD output by issuing the following command:**
-
-      ```bash
-    testOnly magmasi.components.flexdpecom2test -- -DwriteVcd=1
-5. **Test case that has been executed in this manner:**
-
-      ```bash
-    1.  // for input data base 1
-            c.io.i_data_bus(0).poke(1.U) 
-    2. // for input data bus 2
-            c.io.i_data_bus2(0).poke(0.U)
-    3. // for i vn
-            c.io.i_vn(3).poke("b11101".U)
-    4. // for muxes
-            c.io.i_mux_bus(576).poke(1.B)
-    5. // stationary and valid
-            c.io.i_stationary.poke(1.B)
-            c.io.i_data_valid.poke(1.B)
-6. **Desire Output:**
-
-      ```bash
-    When you provide the correct input values for i_vn and muxes pins, you will receive the expected matrix output.
-
-### Documentation of Matrix multiplication achieved using it
-In this document, we illustrate the matrix multiplication process and conduct a comparative analysis between the results obtained from traditional matrix multiplication and the flexDpe multiplication which is use in magma-si .[**matrix multiplication**](https://docs.google.com/document/d/15aigRM_oNeKfkhLxfViAmdg0WECZvXFH9sVD7_mFjsg/edit)
