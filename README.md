@@ -54,7 +54,7 @@ Leveraging the SIGMA Architecture, MAGMA-Si enhances both performance and scalab
 MAGMA-Si prioritizes performance improvements by optimizing hardware and utilizing the SIGMA Architecture. This design approach ensures faster and more efficient matrix operations, contributing to overall system performance gains.
 
 ## Reference
-For a comprehensive understanding of the architectural and algorithmic aspects of MAGMA-Si, refer to the associated research paper: [**SIGMA Research Paper**](https://bpb-us-w2.wpmucdn.com/sites.gatech.edu/dist/c/332/files/2020/01/sigma_hpca2020.pdf).
+For a comprehensive understanding of the architectural and algorithmic aspects of MAGMA-Si, refer to the associated research paper: [**SIGMA Research Paper**](https://bpb-us-w2.wpmucdn.com/sites.gatech.edu/dist/c/332/files/2020/01/sigma_hpca2020.pdf)
 
 
 ## Team Members
