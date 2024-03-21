@@ -41,7 +41,7 @@ class Muxes(implicit val config: MagmasiConfig) extends Module{
     dontTouch(src)
     dontTouch(dest)
     dontTouch(k)
-    val mat1 = WireInit(VecInit(Seq.fill(config.MaxRows)(VecInit(Seq.fill(config.MaxCols)(0.U(config.DATA_TYPE))))))
+    val mat1 = WireInit(VecInit(Seq.fill(config.MaxRows)(VecInit(Seq.fill(config.MaxCols)(0.U(config.DATA_TYPE.W))))))
     val mat2 = WireInit(VecInit(Seq.fill(config.MaxRows)(0.U((config.DATA_TYPE).W))))
     //when (io.start){
         for (i <- 0 until config.MaxRows) {
@@ -76,7 +76,7 @@ class Muxes(implicit val config: MagmasiConfig) extends Module{
          src(counter) := io.mat2(i)
          dest(counter) := io.mat1(j)(i)
         }.otherwise{
-         muxes(counter)(indexcounter) := (((io.counterMatrix2(i)).asUInt - (1.U).asUInt).asSInt - ((io.counterMatrix1(j)(i)).asUInt - (1.U).asUInt).asSInt).asUInt
+         muxes(counter)(indexcounter) := (((io.counterMatrix1(j)(i)).asUInt).asSInt - ((io.counterMatrix2(i)).asUInt).asSInt).asUInt
          src(counter) := io.mat2(i)
          dest(counter) := io.mat1(j)(i)
         }
@@ -121,8 +121,10 @@ class Muxes(implicit val config: MagmasiConfig) extends Module{
         j := 0.U
         when(i < (config.MaxRows - 1).U) {
           i := i + 1.U
+          when(io.mat2(0) =/= 0.U){
           counter := counter + 1.U
           indexcounter := 0.U
+          }
         }
       }
     }.elsewhen ((jValid === 1.B) && (matricesAreEqual === 0.B)){

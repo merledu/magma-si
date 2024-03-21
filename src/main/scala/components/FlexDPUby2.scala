@@ -17,7 +17,8 @@ class FlexDPUby2(implicit val config:MagmasiConfig) extends Module{
 
     val DPEDest = RegInit(VecInit(Seq.fill(2)(VecInit(Seq.fill(config.NUM_PES)(0.U(32.W))))))
     val DPESrc = RegInit(VecInit(Seq.fill(config.MaxCols)(VecInit(Seq.fill(config.MaxRows)(0.U(32.W))))))
-    dontTouch(DPESrc)
+    val DPESrc2 = RegInit(VecInit(Seq.fill(config.MaxCols)(VecInit(Seq.fill(config.MaxRows)(0.U(32.W))))))
+    dontTouch(DPESrc2)
     val indexRow = RegInit(0.U(32.W))
     val indexCol = RegInit(0.U(32.W))
     val SindexRow = RegInit(0.U(32.W))
@@ -93,6 +94,18 @@ class FlexDPUby2(implicit val config:MagmasiConfig) extends Module{
     dontTouch(muxes)
     dontTouch(src)
 
+    DPESrc(0) := VecInit(0.U,7.U)
+    DPESrc(1) := VecInit(8.U,3.U)
+
+      // Transpose the matrix
+    for (i <- 0 until config.MaxRows) {
+        for (j <- 0 until config.MaxCols) {
+            DPESrc2(j)(i) := io.Streaming_matrix(i)(j)
+        }
+    }
+
+
+
     def checker(vale:UInt , counter:UInt):Any={
         when (vale =/= 0.U){
             val inc = counter + 1.U
@@ -107,7 +120,7 @@ class FlexDPUby2(implicit val config:MagmasiConfig) extends Module{
     when (Statvalid){
         val PF = Module(new PathFinder)
         PF.io.Stationary_matrix := io.Stationary_matrix
-        PF.io.Streaming_matrix := DPESrc(iterationChange)
+        PF.io.Streaming_matrix := DPESrc2(iterationChange)
         PF.io.NoDPE := 0.U
         PF.io.DataValid := Statvalid
         dontTouch(PF.io.i_mux_bus)

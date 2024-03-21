@@ -4,34 +4,36 @@
 // Internal details; most calling programs do not need this header,
 // unless using verilator public meta comments.
 
-#ifndef _VTOP__SYMS_H_
-#define _VTOP__SYMS_H_  // guard
+#ifndef VERILATED_VTOP__SYMS_H_
+#define VERILATED_VTOP__SYMS_H_  // guard
 
 #include "verilated.h"
 
-// INCLUDE MODULE CLASSES
+// INCLUDE MODEL CLASS
+
 #include "VTop.h"
 
-// SYMS CLASS
-class VTop__Syms : public VerilatedSyms {
+// INCLUDE MODULE CLASSES
+#include "VTop___024root.h"
+
+// SYMS CLASS (contains all model state)
+class VTop__Syms final : public VerilatedSyms {
   public:
-    
-    // LOCAL STATE
-    const char* __Vm_namep;
-    bool __Vm_activity;  ///< Used by trace routines to determine change occurred
-    bool __Vm_didInit;
-    
-    // SUBCELL STATE
-    VTop*                          TOPp;
-    
-    // CREATORS
-    VTop__Syms(VTop* topp, const char* namep);
-    ~VTop__Syms() {}
-    
+    // INTERNAL STATE
+    VTop* const __Vm_modelp;
+    bool __Vm_activity = false;  ///< Used by trace routines to determine change occurred
+    uint32_t __Vm_baseCode = 0;  ///< Used by trace routines when tracing multiple models
+    bool __Vm_didInit = false;
+
+    // MODULE INSTANCE STATE
+    VTop___024root                 TOP;
+
+    // CONSTRUCTORS
+    VTop__Syms(VerilatedContext* contextp, const char* namep, VTop* modelp);
+    ~VTop__Syms();
+
     // METHODS
-    inline const char* name() { return __Vm_namep; }
-    inline bool getClearActivity() { bool r=__Vm_activity; __Vm_activity=false; return r; }
-    
+    const char* name() { return TOP.name(); }
 } VL_ATTR_ALIGNED(VL_CACHE_LINE_BYTES);
 
 #endif  // guard

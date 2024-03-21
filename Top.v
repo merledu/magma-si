@@ -316,49 +316,45 @@ module Muxes(
   reg [15:0] dest_2; // @[Muxes.scala 36:23]
   reg [15:0] dest_3; // @[Muxes.scala 36:23]
   wire [15:0] _mat1_0_0_T_5 = $signed(io_counterMatrix1_0_0) - -16'sh1; // @[Muxes.scala 50:73]
-  wire [15:0] _GEN_0 = io_counterMatrix1_0_0 != 16'h0 ? _mat1_0_0_T_5 : 16'h0; // @[Muxes.scala 49:47 50:20]
   wire  _GEN_1 = io_mat1_0_0 != prevStationary_matrix_0_0 ? 1'h0 : 1'h1; // @[Muxes.scala 22:22 52:61 53:28]
   wire [15:0] _mat1_0_1_T_5 = $signed(io_counterMatrix1_0_1) - -16'sh1; // @[Muxes.scala 50:73]
-  wire [15:0] _GEN_2 = io_counterMatrix1_0_1 != 16'h0 ? _mat1_0_1_T_5 : 16'h0; // @[Muxes.scala 49:47 50:20]
   wire  _GEN_3 = io_mat1_0_1 != prevStationary_matrix_0_1 ? 1'h0 : _GEN_1; // @[Muxes.scala 52:61 53:28]
   wire [15:0] _mat2_0_T_5 = $signed(io_counterMatrix2_0) - -16'sh1; // @[Muxes.scala 57:65]
   wire [15:0] _mat1_1_0_T_5 = $signed(io_counterMatrix1_1_0) - -16'sh1; // @[Muxes.scala 50:73]
-  wire [15:0] _GEN_6 = io_counterMatrix1_1_0 != 16'h0 ? _mat1_1_0_T_5 : 16'h0; // @[Muxes.scala 49:47 50:20]
   wire [15:0] _mat1_1_1_T_5 = $signed(io_counterMatrix1_1_1) - -16'sh1; // @[Muxes.scala 50:73]
-  wire [15:0] _GEN_8 = io_counterMatrix1_1_1 != 16'h0 ? _mat1_1_1_T_5 : 16'h0; // @[Muxes.scala 49:47 50:20]
   wire [15:0] _mat2_1_T_5 = $signed(io_counterMatrix2_1) - -16'sh1; // @[Muxes.scala 57:65]
   wire  _T_12 = ~jValid; // @[Muxes.scala 69:11]
-  wire  _GEN_224 = ~j[0]; // @[Muxes.scala 69:{37,37}]
+  wire  _GEN_226 = ~j[0]; // @[Muxes.scala 69:{37,37}]
   wire [15:0] _GEN_13 = ~j[0] & i[0] ? io_mat1_0_1 : io_mat1_0_0; // @[Muxes.scala 69:{37,37}]
-  wire  _GEN_225 = ~i[0]; // @[Muxes.scala 69:{37,37}]
+  wire  _GEN_227 = ~i[0]; // @[Muxes.scala 69:{37,37}]
   wire [15:0] _GEN_14 = j[0] & ~i[0] ? io_mat1_1_0 : _GEN_13; // @[Muxes.scala 69:{37,37}]
   wire [15:0] _GEN_15 = j[0] & i[0] ? io_mat1_1_1 : _GEN_14; // @[Muxes.scala 69:{37,37}]
   wire [15:0] _GEN_17 = i[0] ? io_mat2_1 : io_mat2_0; // @[Muxes.scala 69:{61,61}]
   wire  _T_19 = ~jValid & _GEN_15 != 16'h0 & _GEN_17 != 16'h0; // @[Muxes.scala 69:46]
-  wire [15:0] _GEN_19 = _GEN_224 & i[0] ? io_counterMatrix1_0_1 : io_counterMatrix1_0_0; // @[Muxes.scala 74:{40,40}]
-  wire [15:0] _GEN_20 = j[0] & _GEN_225 ? io_counterMatrix1_1_0 : _GEN_19; // @[Muxes.scala 74:{40,40}]
+  wire [15:0] _GEN_19 = _GEN_226 & i[0] ? io_counterMatrix1_0_1 : io_counterMatrix1_0_0; // @[Muxes.scala 74:{40,40}]
+  wire [15:0] _GEN_20 = j[0] & _GEN_227 ? io_counterMatrix1_1_0 : _GEN_19; // @[Muxes.scala 74:{40,40}]
   wire [15:0] _GEN_21 = j[0] & i[0] ? io_counterMatrix1_1_1 : _GEN_20; // @[Muxes.scala 74:{40,40}]
   wire [15:0] _GEN_23 = i[0] ? io_counterMatrix2_1 : io_counterMatrix2_0; // @[Muxes.scala 74:{75,75}]
-  wire  _GEN_230 = 2'h0 == counter[1:0]; // @[Muxes.scala 34:24 75:{40,40}]
-  wire  _GEN_231 = 2'h0 == indexcounter[1:0]; // @[Muxes.scala 34:24 75:{40,40}]
+  wire  _GEN_232 = 2'h0 == counter[1:0]; // @[Muxes.scala 34:24 75:{40,40}]
+  wire  _GEN_233 = 2'h0 == indexcounter[1:0]; // @[Muxes.scala 34:24 75:{40,40}]
   wire [1:0] _GEN_30 = 2'h0 == counter[1:0] & 2'h0 == indexcounter[1:0] ? 2'h1 : muxes_0_0; // @[Muxes.scala 34:24 75:{40,40}]
-  wire  _GEN_233 = 2'h1 == indexcounter[1:0]; // @[Muxes.scala 34:24 75:{40,40}]
+  wire  _GEN_235 = 2'h1 == indexcounter[1:0]; // @[Muxes.scala 34:24 75:{40,40}]
   wire [1:0] _GEN_31 = 2'h0 == counter[1:0] & 2'h1 == indexcounter[1:0] ? 2'h1 : muxes_0_1; // @[Muxes.scala 34:24 75:{40,40}]
-  wire  _GEN_235 = 2'h2 == indexcounter[1:0]; // @[Muxes.scala 34:24 75:{40,40}]
+  wire  _GEN_237 = 2'h2 == indexcounter[1:0]; // @[Muxes.scala 34:24 75:{40,40}]
   wire [1:0] _GEN_32 = 2'h0 == counter[1:0] & 2'h2 == indexcounter[1:0] ? 2'h1 : muxes_0_2; // @[Muxes.scala 34:24 75:{40,40}]
-  wire  _GEN_237 = 2'h3 == indexcounter[1:0]; // @[Muxes.scala 34:24 75:{40,40}]
+  wire  _GEN_239 = 2'h3 == indexcounter[1:0]; // @[Muxes.scala 34:24 75:{40,40}]
   wire [1:0] _GEN_33 = 2'h0 == counter[1:0] & 2'h3 == indexcounter[1:0] ? 2'h1 : muxes_0_3; // @[Muxes.scala 34:24 75:{40,40}]
-  wire  _GEN_238 = 2'h1 == counter[1:0]; // @[Muxes.scala 34:24 75:{40,40}]
+  wire  _GEN_240 = 2'h1 == counter[1:0]; // @[Muxes.scala 34:24 75:{40,40}]
   wire [1:0] _GEN_34 = 2'h1 == counter[1:0] & 2'h0 == indexcounter[1:0] ? 2'h1 : muxes_1_0; // @[Muxes.scala 34:24 75:{40,40}]
   wire [1:0] _GEN_35 = 2'h1 == counter[1:0] & 2'h1 == indexcounter[1:0] ? 2'h1 : muxes_1_1; // @[Muxes.scala 34:24 75:{40,40}]
   wire [1:0] _GEN_36 = 2'h1 == counter[1:0] & 2'h2 == indexcounter[1:0] ? 2'h1 : muxes_1_2; // @[Muxes.scala 34:24 75:{40,40}]
   wire [1:0] _GEN_37 = 2'h1 == counter[1:0] & 2'h3 == indexcounter[1:0] ? 2'h1 : muxes_1_3; // @[Muxes.scala 34:24 75:{40,40}]
-  wire  _GEN_246 = 2'h2 == counter[1:0]; // @[Muxes.scala 34:24 75:{40,40}]
+  wire  _GEN_248 = 2'h2 == counter[1:0]; // @[Muxes.scala 34:24 75:{40,40}]
   wire [1:0] _GEN_38 = 2'h2 == counter[1:0] & 2'h0 == indexcounter[1:0] ? 2'h1 : muxes_2_0; // @[Muxes.scala 34:24 75:{40,40}]
   wire [1:0] _GEN_39 = 2'h2 == counter[1:0] & 2'h1 == indexcounter[1:0] ? 2'h1 : muxes_2_1; // @[Muxes.scala 34:24 75:{40,40}]
   wire [1:0] _GEN_40 = 2'h2 == counter[1:0] & 2'h2 == indexcounter[1:0] ? 2'h1 : muxes_2_2; // @[Muxes.scala 34:24 75:{40,40}]
   wire [1:0] _GEN_41 = 2'h2 == counter[1:0] & 2'h3 == indexcounter[1:0] ? 2'h1 : muxes_2_3; // @[Muxes.scala 34:24 75:{40,40}]
-  wire  _GEN_254 = 2'h3 == counter[1:0]; // @[Muxes.scala 34:24 75:{40,40}]
+  wire  _GEN_256 = 2'h3 == counter[1:0]; // @[Muxes.scala 34:24 75:{40,40}]
   wire [1:0] _GEN_42 = 2'h3 == counter[1:0] & 2'h0 == indexcounter[1:0] ? 2'h1 : muxes_3_0; // @[Muxes.scala 34:24 75:{40,40}]
   wire [1:0] _GEN_43 = 2'h3 == counter[1:0] & 2'h1 == indexcounter[1:0] ? 2'h1 : muxes_3_1; // @[Muxes.scala 34:24 75:{40,40}]
   wire [1:0] _GEN_44 = 2'h3 == counter[1:0] & 2'h2 == indexcounter[1:0] ? 2'h1 : muxes_3_2; // @[Muxes.scala 34:24 75:{40,40}]
@@ -371,25 +367,25 @@ module Muxes(
   wire [15:0] _GEN_53 = 2'h1 == counter[1:0] ? _GEN_15 : dest_1; // @[Muxes.scala 36:23 77:{24,24}]
   wire [15:0] _GEN_54 = 2'h2 == counter[1:0] ? _GEN_15 : dest_2; // @[Muxes.scala 36:23 77:{24,24}]
   wire [15:0] _GEN_55 = 2'h3 == counter[1:0] ? _GEN_15 : dest_3; // @[Muxes.scala 36:23 77:{24,24}]
-  wire [15:0] _muxes_T_3 = _GEN_23 - 16'h1; // @[Muxes.scala 79:90]
-  wire [15:0] _muxes_T_8 = _GEN_21 - 16'h1; // @[Muxes.scala 79:149]
-  wire [15:0] _muxes_T_12 = $signed(_muxes_T_3) - $signed(_muxes_T_8); // @[Muxes.scala 79:157]
-  wire [1:0] _GEN_66 = _GEN_230 & _GEN_231 ? _muxes_T_12[1:0] : muxes_0_0; // @[Muxes.scala 34:24 79:{39,39}]
-  wire [1:0] _GEN_67 = _GEN_230 & _GEN_233 ? _muxes_T_12[1:0] : muxes_0_1; // @[Muxes.scala 34:24 79:{39,39}]
-  wire [1:0] _GEN_68 = _GEN_230 & _GEN_235 ? _muxes_T_12[1:0] : muxes_0_2; // @[Muxes.scala 34:24 79:{39,39}]
-  wire [1:0] _GEN_69 = _GEN_230 & _GEN_237 ? _muxes_T_12[1:0] : muxes_0_3; // @[Muxes.scala 34:24 79:{39,39}]
-  wire [1:0] _GEN_70 = _GEN_238 & _GEN_231 ? _muxes_T_12[1:0] : muxes_1_0; // @[Muxes.scala 34:24 79:{39,39}]
-  wire [1:0] _GEN_71 = _GEN_238 & _GEN_233 ? _muxes_T_12[1:0] : muxes_1_1; // @[Muxes.scala 34:24 79:{39,39}]
-  wire [1:0] _GEN_72 = _GEN_238 & _GEN_235 ? _muxes_T_12[1:0] : muxes_1_2; // @[Muxes.scala 34:24 79:{39,39}]
-  wire [1:0] _GEN_73 = _GEN_238 & _GEN_237 ? _muxes_T_12[1:0] : muxes_1_3; // @[Muxes.scala 34:24 79:{39,39}]
-  wire [1:0] _GEN_74 = _GEN_246 & _GEN_231 ? _muxes_T_12[1:0] : muxes_2_0; // @[Muxes.scala 34:24 79:{39,39}]
-  wire [1:0] _GEN_75 = _GEN_246 & _GEN_233 ? _muxes_T_12[1:0] : muxes_2_1; // @[Muxes.scala 34:24 79:{39,39}]
-  wire [1:0] _GEN_76 = _GEN_246 & _GEN_235 ? _muxes_T_12[1:0] : muxes_2_2; // @[Muxes.scala 34:24 79:{39,39}]
-  wire [1:0] _GEN_77 = _GEN_246 & _GEN_237 ? _muxes_T_12[1:0] : muxes_2_3; // @[Muxes.scala 34:24 79:{39,39}]
-  wire [1:0] _GEN_78 = _GEN_254 & _GEN_231 ? _muxes_T_12[1:0] : muxes_3_0; // @[Muxes.scala 34:24 79:{39,39}]
-  wire [1:0] _GEN_79 = _GEN_254 & _GEN_233 ? _muxes_T_12[1:0] : muxes_3_1; // @[Muxes.scala 34:24 79:{39,39}]
-  wire [1:0] _GEN_80 = _GEN_254 & _GEN_235 ? _muxes_T_12[1:0] : muxes_3_2; // @[Muxes.scala 34:24 79:{39,39}]
-  wire [1:0] _GEN_81 = _GEN_254 & _GEN_237 ? _muxes_T_12[1:0] : muxes_3_3; // @[Muxes.scala 34:24 79:{39,39}]
+  wire [15:0] _muxes_T_2 = j[0] & i[0] ? io_counterMatrix1_1_1 : _GEN_20; // @[Muxes.scala 79:78]
+  wire [15:0] _muxes_T_4 = i[0] ? io_counterMatrix2_1 : io_counterMatrix2_0; // @[Muxes.scala 79:119]
+  wire [15:0] _muxes_T_8 = $signed(_muxes_T_2) - $signed(_muxes_T_4); // @[Muxes.scala 79:127]
+  wire [1:0] _GEN_66 = _GEN_232 & _GEN_233 ? _muxes_T_8[1:0] : muxes_0_0; // @[Muxes.scala 34:24 79:{39,39}]
+  wire [1:0] _GEN_67 = _GEN_232 & _GEN_235 ? _muxes_T_8[1:0] : muxes_0_1; // @[Muxes.scala 34:24 79:{39,39}]
+  wire [1:0] _GEN_68 = _GEN_232 & _GEN_237 ? _muxes_T_8[1:0] : muxes_0_2; // @[Muxes.scala 34:24 79:{39,39}]
+  wire [1:0] _GEN_69 = _GEN_232 & _GEN_239 ? _muxes_T_8[1:0] : muxes_0_3; // @[Muxes.scala 34:24 79:{39,39}]
+  wire [1:0] _GEN_70 = _GEN_240 & _GEN_233 ? _muxes_T_8[1:0] : muxes_1_0; // @[Muxes.scala 34:24 79:{39,39}]
+  wire [1:0] _GEN_71 = _GEN_240 & _GEN_235 ? _muxes_T_8[1:0] : muxes_1_1; // @[Muxes.scala 34:24 79:{39,39}]
+  wire [1:0] _GEN_72 = _GEN_240 & _GEN_237 ? _muxes_T_8[1:0] : muxes_1_2; // @[Muxes.scala 34:24 79:{39,39}]
+  wire [1:0] _GEN_73 = _GEN_240 & _GEN_239 ? _muxes_T_8[1:0] : muxes_1_3; // @[Muxes.scala 34:24 79:{39,39}]
+  wire [1:0] _GEN_74 = _GEN_248 & _GEN_233 ? _muxes_T_8[1:0] : muxes_2_0; // @[Muxes.scala 34:24 79:{39,39}]
+  wire [1:0] _GEN_75 = _GEN_248 & _GEN_235 ? _muxes_T_8[1:0] : muxes_2_1; // @[Muxes.scala 34:24 79:{39,39}]
+  wire [1:0] _GEN_76 = _GEN_248 & _GEN_237 ? _muxes_T_8[1:0] : muxes_2_2; // @[Muxes.scala 34:24 79:{39,39}]
+  wire [1:0] _GEN_77 = _GEN_248 & _GEN_239 ? _muxes_T_8[1:0] : muxes_2_3; // @[Muxes.scala 34:24 79:{39,39}]
+  wire [1:0] _GEN_78 = _GEN_256 & _GEN_233 ? _muxes_T_8[1:0] : muxes_3_0; // @[Muxes.scala 34:24 79:{39,39}]
+  wire [1:0] _GEN_79 = _GEN_256 & _GEN_235 ? _muxes_T_8[1:0] : muxes_3_1; // @[Muxes.scala 34:24 79:{39,39}]
+  wire [1:0] _GEN_80 = _GEN_256 & _GEN_237 ? _muxes_T_8[1:0] : muxes_3_2; // @[Muxes.scala 34:24 79:{39,39}]
+  wire [1:0] _GEN_81 = _GEN_256 & _GEN_239 ? _muxes_T_8[1:0] : muxes_3_3; // @[Muxes.scala 34:24 79:{39,39}]
   wire [1:0] _GEN_96 = _GEN_21 == 16'h1 & _GEN_23 == 16'h0 | _GEN_21 == 16'h9 & _GEN_23 == 16'h1 ? _GEN_30 : _GEN_66; // @[Muxes.scala 74:156]
   wire [1:0] _GEN_97 = _GEN_21 == 16'h1 & _GEN_23 == 16'h0 | _GEN_21 == 16'h9 & _GEN_23 == 16'h1 ? _GEN_31 : _GEN_67; // @[Muxes.scala 74:156]
   wire [1:0] _GEN_98 = _GEN_21 == 16'h1 & _GEN_23 == 16'h0 | _GEN_21 == 16'h9 & _GEN_23 == 16'h1 ? _GEN_32 : _GEN_68; // @[Muxes.scala 74:156]
@@ -445,17 +441,19 @@ module Muxes(
   wire  _T_53 = j == 32'h1; // @[Muxes.scala 118:21]
   wire  _T_54 = i == 32'h1; // @[Muxes.scala 118:55]
   wire [31:0] _i_T_1 = i + 32'h1; // @[Muxes.scala 123:18]
-  wire [31:0] _counter_T_1 = counter + 32'h1; // @[Muxes.scala 124:30]
-  wire [31:0] _GEN_151 = i < 32'h1 ? _i_T_1 : i; // @[Muxes.scala 122:42 123:13 28:20]
-  wire [31:0] _GEN_152 = i < 32'h1 ? _counter_T_1 : counter; // @[Muxes.scala 122:42 124:19 31:26]
-  wire [31:0] _GEN_153 = i < 32'h1 ? 32'h0 : _GEN_150; // @[Muxes.scala 122:42 125:24]
-  wire  _GEN_154 = j == 32'h1 & i == 32'h1 | jValid; // @[Muxes.scala 118:83 119:16 27:25]
-  reg [31:0] jNext; // @[Muxes.scala 147:24]
-  wire [31:0] _k_T_1 = k + 32'h1; // @[Muxes.scala 156:14]
-  wire  mat1_0_0 = _GEN_0[0];
-  wire  mat1_0_1 = _GEN_2[0];
-  wire  mat1_1_0 = _GEN_6[0];
-  wire  mat1_1_1 = _GEN_8[0];
+  wire [31:0] _counter_T_1 = counter + 32'h1; // @[Muxes.scala 125:30]
+  wire [31:0] _GEN_151 = io_mat2_0 != 16'h0 ? _counter_T_1 : counter; // @[Muxes.scala 124:35 125:19 31:26]
+  wire [31:0] _GEN_152 = io_mat2_0 != 16'h0 ? 32'h0 : _GEN_150; // @[Muxes.scala 124:35 126:24]
+  wire [31:0] _GEN_153 = i < 32'h1 ? _i_T_1 : i; // @[Muxes.scala 122:42 123:13 28:20]
+  wire [31:0] _GEN_154 = i < 32'h1 ? _GEN_151 : counter; // @[Muxes.scala 122:42 31:26]
+  wire [31:0] _GEN_155 = i < 32'h1 ? _GEN_152 : _GEN_150; // @[Muxes.scala 122:42]
+  wire  _GEN_156 = j == 32'h1 & i == 32'h1 | jValid; // @[Muxes.scala 118:83 119:16 27:25]
+  reg [31:0] jNext; // @[Muxes.scala 149:24]
+  wire [31:0] _k_T_1 = k + 32'h1; // @[Muxes.scala 158:14]
+  wire [15:0] mat1_0_0 = io_counterMatrix1_0_0 != 16'h0 ? _mat1_0_0_T_5 : 16'h0; // @[Muxes.scala 49:47 50:20]
+  wire [15:0] mat1_0_1 = io_counterMatrix1_0_1 != 16'h0 ? _mat1_0_1_T_5 : 16'h0; // @[Muxes.scala 49:47 50:20]
+  wire [15:0] mat1_1_0 = io_counterMatrix1_1_0 != 16'h0 ? _mat1_1_0_T_5 : 16'h0; // @[Muxes.scala 49:47 50:20]
+  wire [15:0] mat1_1_1 = io_counterMatrix1_1_1 != 16'h0 ? _mat1_1_1_T_5 : 16'h0; // @[Muxes.scala 49:47 50:20]
   wire [15:0] mat2_0 = io_counterMatrix2_0 != 16'h0 ? _mat2_0_T_5 : 16'h0; // @[Muxes.scala 56:42 57:15]
   wire [15:0] mat2_1 = io_counterMatrix2_1 != 16'h0 ? _mat2_1_T_5 : 16'h0; // @[Muxes.scala 56:42 57:15]
   assign io_i_mux_bus_0_0 = {{2'd0}, muxes_0_0}; // @[Muxes.scala 38:18]
@@ -478,7 +476,7 @@ module Muxes(
   assign io_Source_1 = src_1; // @[Muxes.scala 39:15]
   assign io_Source_2 = src_2; // @[Muxes.scala 39:15]
   assign io_Source_3 = src_3; // @[Muxes.scala 39:15]
-  assign io_valid = k != 32'h0 & _T_53 & _T_54 & jNext == 32'h0; // @[Muxes.scala 150:86]
+  assign io_valid = k != 32'h0 & _T_53 & _T_54 & jNext == 32'h0; // @[Muxes.scala 152:86]
   always @(posedge clock) begin
     prevStationary_matrix_0_0 <= io_mat1_0_0; // @[Muxes.scala 19:40]
     prevStationary_matrix_0_1 <= io_mat1_0_1; // @[Muxes.scala 19:40]
@@ -501,21 +499,21 @@ module Muxes(
       jValid <= 1'h0; // @[Muxes.scala 27:25]
     end else if (_T_12) begin // @[Muxes.scala 114:29]
       if (!(_T_49)) begin // @[Muxes.scala 116:40]
-        jValid <= _GEN_154;
+        jValid <= _GEN_156;
       end
-    end else if (jValid & ~matricesAreEqual) begin // @[Muxes.scala 128:64]
-      jValid <= 1'h0; // @[Muxes.scala 132:14]
+    end else if (jValid & ~matricesAreEqual) begin // @[Muxes.scala 130:64]
+      jValid <= 1'h0; // @[Muxes.scala 134:14]
     end
     if (reset) begin // @[Muxes.scala 28:20]
       i <= 32'h0; // @[Muxes.scala 28:20]
     end else if (_T_12) begin // @[Muxes.scala 114:29]
       if (!(_T_49)) begin // @[Muxes.scala 116:40]
         if (!(j == 32'h1 & i == 32'h1)) begin // @[Muxes.scala 118:83]
-          i <= _GEN_151;
+          i <= _GEN_153;
         end
       end
-    end else if (jValid & ~matricesAreEqual) begin // @[Muxes.scala 128:64]
-      i <= 32'h0; // @[Muxes.scala 130:9]
+    end else if (jValid & ~matricesAreEqual) begin // @[Muxes.scala 130:64]
+      i <= 32'h0; // @[Muxes.scala 132:9]
     end
     if (reset) begin // @[Muxes.scala 29:20]
       j <= 32'h0; // @[Muxes.scala 29:20]
@@ -525,24 +523,24 @@ module Muxes(
       end else if (!(j == 32'h1 & i == 32'h1)) begin // @[Muxes.scala 118:83]
         j <= 32'h0; // @[Muxes.scala 121:11]
       end
-    end else if (jValid & ~matricesAreEqual) begin // @[Muxes.scala 128:64]
-      j <= 32'h0; // @[Muxes.scala 131:9]
+    end else if (jValid & ~matricesAreEqual) begin // @[Muxes.scala 130:64]
+      j <= 32'h0; // @[Muxes.scala 133:9]
     end
     if (reset) begin // @[Muxes.scala 30:20]
       k <= 32'h0; // @[Muxes.scala 30:20]
-    end else if (_T_54 & _T_53) begin // @[Muxes.scala 155:76]
-      k <= _k_T_1; // @[Muxes.scala 156:9]
+    end else if (_T_54 & _T_53) begin // @[Muxes.scala 157:76]
+      k <= _k_T_1; // @[Muxes.scala 158:9]
     end
     if (reset) begin // @[Muxes.scala 31:26]
       counter <= 32'h0; // @[Muxes.scala 31:26]
     end else if (_T_12) begin // @[Muxes.scala 114:29]
       if (!(_T_49)) begin // @[Muxes.scala 116:40]
         if (!(j == 32'h1 & i == 32'h1)) begin // @[Muxes.scala 118:83]
-          counter <= _GEN_152;
+          counter <= _GEN_154;
         end
       end
-    end else if (jValid & ~matricesAreEqual) begin // @[Muxes.scala 128:64]
-      counter <= 32'h0; // @[Muxes.scala 133:15]
+    end else if (jValid & ~matricesAreEqual) begin // @[Muxes.scala 130:64]
+      counter <= 32'h0; // @[Muxes.scala 135:15]
     end
     if (reset) begin // @[Muxes.scala 32:31]
       indexcounter <= 32'h0; // @[Muxes.scala 32:31]
@@ -552,10 +550,10 @@ module Muxes(
       end else if (j == 32'h1 & i == 32'h1) begin // @[Muxes.scala 118:83]
         indexcounter <= _GEN_150;
       end else begin
-        indexcounter <= _GEN_153;
+        indexcounter <= _GEN_155;
       end
-    end else if (jValid & ~matricesAreEqual) begin // @[Muxes.scala 128:64]
-      indexcounter <= 32'h0; // @[Muxes.scala 134:20]
+    end else if (jValid & ~matricesAreEqual) begin // @[Muxes.scala 130:64]
+      indexcounter <= 32'h0; // @[Muxes.scala 136:20]
     end else begin
       indexcounter <= _GEN_150;
     end
@@ -563,8 +561,8 @@ module Muxes(
       muxes_0_0 <= 2'h0; // @[Muxes.scala 34:24]
     end else if (_T_12) begin // @[Muxes.scala 114:29]
       muxes_0_0 <= _GEN_120;
-    end else if (jValid & ~matricesAreEqual) begin // @[Muxes.scala 128:64]
-      muxes_0_0 <= 2'h0; // @[Muxes.scala 140:23]
+    end else if (jValid & ~matricesAreEqual) begin // @[Muxes.scala 130:64]
+      muxes_0_0 <= 2'h0; // @[Muxes.scala 142:23]
     end else begin
       muxes_0_0 <= _GEN_120;
     end
@@ -572,8 +570,8 @@ module Muxes(
       muxes_0_1 <= 2'h0; // @[Muxes.scala 34:24]
     end else if (_T_12) begin // @[Muxes.scala 114:29]
       muxes_0_1 <= _GEN_121;
-    end else if (jValid & ~matricesAreEqual) begin // @[Muxes.scala 128:64]
-      muxes_0_1 <= 2'h0; // @[Muxes.scala 140:23]
+    end else if (jValid & ~matricesAreEqual) begin // @[Muxes.scala 130:64]
+      muxes_0_1 <= 2'h0; // @[Muxes.scala 142:23]
     end else begin
       muxes_0_1 <= _GEN_121;
     end
@@ -581,8 +579,8 @@ module Muxes(
       muxes_0_2 <= 2'h0; // @[Muxes.scala 34:24]
     end else if (_T_12) begin // @[Muxes.scala 114:29]
       muxes_0_2 <= _GEN_122;
-    end else if (jValid & ~matricesAreEqual) begin // @[Muxes.scala 128:64]
-      muxes_0_2 <= 2'h0; // @[Muxes.scala 140:23]
+    end else if (jValid & ~matricesAreEqual) begin // @[Muxes.scala 130:64]
+      muxes_0_2 <= 2'h0; // @[Muxes.scala 142:23]
     end else begin
       muxes_0_2 <= _GEN_122;
     end
@@ -590,8 +588,8 @@ module Muxes(
       muxes_0_3 <= 2'h0; // @[Muxes.scala 34:24]
     end else if (_T_12) begin // @[Muxes.scala 114:29]
       muxes_0_3 <= _GEN_123;
-    end else if (jValid & ~matricesAreEqual) begin // @[Muxes.scala 128:64]
-      muxes_0_3 <= 2'h0; // @[Muxes.scala 140:23]
+    end else if (jValid & ~matricesAreEqual) begin // @[Muxes.scala 130:64]
+      muxes_0_3 <= 2'h0; // @[Muxes.scala 142:23]
     end else begin
       muxes_0_3 <= _GEN_123;
     end
@@ -599,8 +597,8 @@ module Muxes(
       muxes_1_0 <= 2'h0; // @[Muxes.scala 34:24]
     end else if (_T_12) begin // @[Muxes.scala 114:29]
       muxes_1_0 <= _GEN_124;
-    end else if (jValid & ~matricesAreEqual) begin // @[Muxes.scala 128:64]
-      muxes_1_0 <= 2'h0; // @[Muxes.scala 140:23]
+    end else if (jValid & ~matricesAreEqual) begin // @[Muxes.scala 130:64]
+      muxes_1_0 <= 2'h0; // @[Muxes.scala 142:23]
     end else begin
       muxes_1_0 <= _GEN_124;
     end
@@ -608,8 +606,8 @@ module Muxes(
       muxes_1_1 <= 2'h0; // @[Muxes.scala 34:24]
     end else if (_T_12) begin // @[Muxes.scala 114:29]
       muxes_1_1 <= _GEN_125;
-    end else if (jValid & ~matricesAreEqual) begin // @[Muxes.scala 128:64]
-      muxes_1_1 <= 2'h0; // @[Muxes.scala 140:23]
+    end else if (jValid & ~matricesAreEqual) begin // @[Muxes.scala 130:64]
+      muxes_1_1 <= 2'h0; // @[Muxes.scala 142:23]
     end else begin
       muxes_1_1 <= _GEN_125;
     end
@@ -617,8 +615,8 @@ module Muxes(
       muxes_1_2 <= 2'h0; // @[Muxes.scala 34:24]
     end else if (_T_12) begin // @[Muxes.scala 114:29]
       muxes_1_2 <= _GEN_126;
-    end else if (jValid & ~matricesAreEqual) begin // @[Muxes.scala 128:64]
-      muxes_1_2 <= 2'h0; // @[Muxes.scala 140:23]
+    end else if (jValid & ~matricesAreEqual) begin // @[Muxes.scala 130:64]
+      muxes_1_2 <= 2'h0; // @[Muxes.scala 142:23]
     end else begin
       muxes_1_2 <= _GEN_126;
     end
@@ -626,8 +624,8 @@ module Muxes(
       muxes_1_3 <= 2'h0; // @[Muxes.scala 34:24]
     end else if (_T_12) begin // @[Muxes.scala 114:29]
       muxes_1_3 <= _GEN_127;
-    end else if (jValid & ~matricesAreEqual) begin // @[Muxes.scala 128:64]
-      muxes_1_3 <= 2'h0; // @[Muxes.scala 140:23]
+    end else if (jValid & ~matricesAreEqual) begin // @[Muxes.scala 130:64]
+      muxes_1_3 <= 2'h0; // @[Muxes.scala 142:23]
     end else begin
       muxes_1_3 <= _GEN_127;
     end
@@ -635,8 +633,8 @@ module Muxes(
       muxes_2_0 <= 2'h0; // @[Muxes.scala 34:24]
     end else if (_T_12) begin // @[Muxes.scala 114:29]
       muxes_2_0 <= _GEN_128;
-    end else if (jValid & ~matricesAreEqual) begin // @[Muxes.scala 128:64]
-      muxes_2_0 <= 2'h0; // @[Muxes.scala 140:23]
+    end else if (jValid & ~matricesAreEqual) begin // @[Muxes.scala 130:64]
+      muxes_2_0 <= 2'h0; // @[Muxes.scala 142:23]
     end else begin
       muxes_2_0 <= _GEN_128;
     end
@@ -644,8 +642,8 @@ module Muxes(
       muxes_2_1 <= 2'h0; // @[Muxes.scala 34:24]
     end else if (_T_12) begin // @[Muxes.scala 114:29]
       muxes_2_1 <= _GEN_129;
-    end else if (jValid & ~matricesAreEqual) begin // @[Muxes.scala 128:64]
-      muxes_2_1 <= 2'h0; // @[Muxes.scala 140:23]
+    end else if (jValid & ~matricesAreEqual) begin // @[Muxes.scala 130:64]
+      muxes_2_1 <= 2'h0; // @[Muxes.scala 142:23]
     end else begin
       muxes_2_1 <= _GEN_129;
     end
@@ -653,8 +651,8 @@ module Muxes(
       muxes_2_2 <= 2'h0; // @[Muxes.scala 34:24]
     end else if (_T_12) begin // @[Muxes.scala 114:29]
       muxes_2_2 <= _GEN_130;
-    end else if (jValid & ~matricesAreEqual) begin // @[Muxes.scala 128:64]
-      muxes_2_2 <= 2'h0; // @[Muxes.scala 140:23]
+    end else if (jValid & ~matricesAreEqual) begin // @[Muxes.scala 130:64]
+      muxes_2_2 <= 2'h0; // @[Muxes.scala 142:23]
     end else begin
       muxes_2_2 <= _GEN_130;
     end
@@ -662,8 +660,8 @@ module Muxes(
       muxes_2_3 <= 2'h0; // @[Muxes.scala 34:24]
     end else if (_T_12) begin // @[Muxes.scala 114:29]
       muxes_2_3 <= _GEN_131;
-    end else if (jValid & ~matricesAreEqual) begin // @[Muxes.scala 128:64]
-      muxes_2_3 <= 2'h0; // @[Muxes.scala 140:23]
+    end else if (jValid & ~matricesAreEqual) begin // @[Muxes.scala 130:64]
+      muxes_2_3 <= 2'h0; // @[Muxes.scala 142:23]
     end else begin
       muxes_2_3 <= _GEN_131;
     end
@@ -671,8 +669,8 @@ module Muxes(
       muxes_3_0 <= 2'h0; // @[Muxes.scala 34:24]
     end else if (_T_12) begin // @[Muxes.scala 114:29]
       muxes_3_0 <= _GEN_132;
-    end else if (jValid & ~matricesAreEqual) begin // @[Muxes.scala 128:64]
-      muxes_3_0 <= 2'h0; // @[Muxes.scala 140:23]
+    end else if (jValid & ~matricesAreEqual) begin // @[Muxes.scala 130:64]
+      muxes_3_0 <= 2'h0; // @[Muxes.scala 142:23]
     end else begin
       muxes_3_0 <= _GEN_132;
     end
@@ -680,8 +678,8 @@ module Muxes(
       muxes_3_1 <= 2'h0; // @[Muxes.scala 34:24]
     end else if (_T_12) begin // @[Muxes.scala 114:29]
       muxes_3_1 <= _GEN_133;
-    end else if (jValid & ~matricesAreEqual) begin // @[Muxes.scala 128:64]
-      muxes_3_1 <= 2'h0; // @[Muxes.scala 140:23]
+    end else if (jValid & ~matricesAreEqual) begin // @[Muxes.scala 130:64]
+      muxes_3_1 <= 2'h0; // @[Muxes.scala 142:23]
     end else begin
       muxes_3_1 <= _GEN_133;
     end
@@ -689,8 +687,8 @@ module Muxes(
       muxes_3_2 <= 2'h0; // @[Muxes.scala 34:24]
     end else if (_T_12) begin // @[Muxes.scala 114:29]
       muxes_3_2 <= _GEN_134;
-    end else if (jValid & ~matricesAreEqual) begin // @[Muxes.scala 128:64]
-      muxes_3_2 <= 2'h0; // @[Muxes.scala 140:23]
+    end else if (jValid & ~matricesAreEqual) begin // @[Muxes.scala 130:64]
+      muxes_3_2 <= 2'h0; // @[Muxes.scala 142:23]
     end else begin
       muxes_3_2 <= _GEN_134;
     end
@@ -698,8 +696,8 @@ module Muxes(
       muxes_3_3 <= 2'h0; // @[Muxes.scala 34:24]
     end else if (_T_12) begin // @[Muxes.scala 114:29]
       muxes_3_3 <= _GEN_135;
-    end else if (jValid & ~matricesAreEqual) begin // @[Muxes.scala 128:64]
-      muxes_3_3 <= 2'h0; // @[Muxes.scala 140:23]
+    end else if (jValid & ~matricesAreEqual) begin // @[Muxes.scala 130:64]
+      muxes_3_3 <= 2'h0; // @[Muxes.scala 142:23]
     end else begin
       muxes_3_3 <= _GEN_135;
     end
@@ -707,8 +705,8 @@ module Muxes(
       src_0 <= 16'h0; // @[Muxes.scala 35:22]
     end else if (_T_12) begin // @[Muxes.scala 114:29]
       src_0 <= _GEN_136;
-    end else if (jValid & ~matricesAreEqual) begin // @[Muxes.scala 128:64]
-      src_0 <= 16'h0; // @[Muxes.scala 137:16]
+    end else if (jValid & ~matricesAreEqual) begin // @[Muxes.scala 130:64]
+      src_0 <= 16'h0; // @[Muxes.scala 139:16]
     end else begin
       src_0 <= _GEN_136;
     end
@@ -716,8 +714,8 @@ module Muxes(
       src_1 <= 16'h0; // @[Muxes.scala 35:22]
     end else if (_T_12) begin // @[Muxes.scala 114:29]
       src_1 <= _GEN_137;
-    end else if (jValid & ~matricesAreEqual) begin // @[Muxes.scala 128:64]
-      src_1 <= 16'h0; // @[Muxes.scala 137:16]
+    end else if (jValid & ~matricesAreEqual) begin // @[Muxes.scala 130:64]
+      src_1 <= 16'h0; // @[Muxes.scala 139:16]
     end else begin
       src_1 <= _GEN_137;
     end
@@ -725,8 +723,8 @@ module Muxes(
       src_2 <= 16'h0; // @[Muxes.scala 35:22]
     end else if (_T_12) begin // @[Muxes.scala 114:29]
       src_2 <= _GEN_138;
-    end else if (jValid & ~matricesAreEqual) begin // @[Muxes.scala 128:64]
-      src_2 <= 16'h0; // @[Muxes.scala 137:16]
+    end else if (jValid & ~matricesAreEqual) begin // @[Muxes.scala 130:64]
+      src_2 <= 16'h0; // @[Muxes.scala 139:16]
     end else begin
       src_2 <= _GEN_138;
     end
@@ -734,8 +732,8 @@ module Muxes(
       src_3 <= 16'h0; // @[Muxes.scala 35:22]
     end else if (_T_12) begin // @[Muxes.scala 114:29]
       src_3 <= _GEN_139;
-    end else if (jValid & ~matricesAreEqual) begin // @[Muxes.scala 128:64]
-      src_3 <= 16'h0; // @[Muxes.scala 137:16]
+    end else if (jValid & ~matricesAreEqual) begin // @[Muxes.scala 130:64]
+      src_3 <= 16'h0; // @[Muxes.scala 139:16]
     end else begin
       src_3 <= _GEN_139;
     end
@@ -743,8 +741,8 @@ module Muxes(
       dest_0 <= 16'h0; // @[Muxes.scala 36:23]
     end else if (_T_12) begin // @[Muxes.scala 114:29]
       dest_0 <= _GEN_140;
-    end else if (jValid & ~matricesAreEqual) begin // @[Muxes.scala 128:64]
-      dest_0 <= 16'h0; // @[Muxes.scala 138:17]
+    end else if (jValid & ~matricesAreEqual) begin // @[Muxes.scala 130:64]
+      dest_0 <= 16'h0; // @[Muxes.scala 140:17]
     end else begin
       dest_0 <= _GEN_140;
     end
@@ -752,8 +750,8 @@ module Muxes(
       dest_1 <= 16'h0; // @[Muxes.scala 36:23]
     end else if (_T_12) begin // @[Muxes.scala 114:29]
       dest_1 <= _GEN_141;
-    end else if (jValid & ~matricesAreEqual) begin // @[Muxes.scala 128:64]
-      dest_1 <= 16'h0; // @[Muxes.scala 138:17]
+    end else if (jValid & ~matricesAreEqual) begin // @[Muxes.scala 130:64]
+      dest_1 <= 16'h0; // @[Muxes.scala 140:17]
     end else begin
       dest_1 <= _GEN_141;
     end
@@ -761,8 +759,8 @@ module Muxes(
       dest_2 <= 16'h0; // @[Muxes.scala 36:23]
     end else if (_T_12) begin // @[Muxes.scala 114:29]
       dest_2 <= _GEN_142;
-    end else if (jValid & ~matricesAreEqual) begin // @[Muxes.scala 128:64]
-      dest_2 <= 16'h0; // @[Muxes.scala 138:17]
+    end else if (jValid & ~matricesAreEqual) begin // @[Muxes.scala 130:64]
+      dest_2 <= 16'h0; // @[Muxes.scala 140:17]
     end else begin
       dest_2 <= _GEN_142;
     end
@@ -770,15 +768,15 @@ module Muxes(
       dest_3 <= 16'h0; // @[Muxes.scala 36:23]
     end else if (_T_12) begin // @[Muxes.scala 114:29]
       dest_3 <= _GEN_143;
-    end else if (jValid & ~matricesAreEqual) begin // @[Muxes.scala 128:64]
-      dest_3 <= 16'h0; // @[Muxes.scala 138:17]
+    end else if (jValid & ~matricesAreEqual) begin // @[Muxes.scala 130:64]
+      dest_3 <= 16'h0; // @[Muxes.scala 140:17]
     end else begin
       dest_3 <= _GEN_143;
     end
-    if (reset) begin // @[Muxes.scala 147:24]
-      jNext <= 32'h0; // @[Muxes.scala 147:24]
+    if (reset) begin // @[Muxes.scala 149:24]
+      jNext <= 32'h0; // @[Muxes.scala 149:24]
     end else begin
-      jNext <= j; // @[Muxes.scala 148:11]
+      jNext <= j; // @[Muxes.scala 150:11]
     end
   end
 // Register and memory initialization
@@ -936,225 +934,239 @@ module SourceDestination(
   reg [31:0] _RAND_13;
   reg [31:0] _RAND_14;
   reg [31:0] _RAND_15;
+  reg [31:0] _RAND_16;
+  reg [31:0] _RAND_17;
+  reg [31:0] _RAND_18;
+  reg [31:0] _RAND_19;
 `endif // RANDOMIZE_REG_INIT
-  reg [15:0] prevStationary_matrix_0; // @[SourceDestination.scala 15:40]
-  reg [15:0] prevStationary_matrix_1; // @[SourceDestination.scala 15:40]
-  reg  matricesAreEqual; // @[SourceDestination.scala 16:35]
-  reg [15:0] counterRegs1_0_0; // @[SourceDestination.scala 17:31]
-  reg [15:0] counterRegs1_0_1; // @[SourceDestination.scala 17:31]
-  reg [15:0] counterRegs1_1_0; // @[SourceDestination.scala 17:31]
-  reg [15:0] counterRegs1_1_1; // @[SourceDestination.scala 17:31]
-  reg [15:0] counterRegs2_0; // @[SourceDestination.scala 18:31]
-  reg [15:0] counterRegs2_1; // @[SourceDestination.scala 18:31]
-  reg [31:0] i; // @[SourceDestination.scala 20:20]
-  reg [31:0] j; // @[SourceDestination.scala 21:20]
-  reg  jValid; // @[SourceDestination.scala 25:21]
-  reg [31:0] k; // @[SourceDestination.scala 26:20]
-  reg [31:0] counter1; // @[SourceDestination.scala 28:27]
-  reg [31:0] counter2; // @[SourceDestination.scala 29:27]
-  wire  _reg_i_T = j == 32'h1; // @[SourceDestination.scala 31:29]
-  wire  _reg_i_T_1 = i == 32'h1; // @[SourceDestination.scala 31:63]
-  wire  _reg_i_T_2 = j == 32'h1 & i == 32'h1; // @[SourceDestination.scala 31:57]
-  wire  _GEN_0 = io_Streaming_matrix_0[0] != prevStationary_matrix_0[0] ? 1'h0 : matricesAreEqual; // @[SourceDestination.scala 36:73 37:28 16:35]
-  wire  _GEN_1 = io_Streaming_matrix_0[1] != prevStationary_matrix_0[1] ? 1'h0 : _GEN_0; // @[SourceDestination.scala 36:73 37:28]
-  wire  _GEN_2 = io_Streaming_matrix_1[0] != prevStationary_matrix_1[0] ? 1'h0 : _GEN_1; // @[SourceDestination.scala 36:73 37:28]
-  wire  _GEN_3 = io_Streaming_matrix_1[1] != prevStationary_matrix_1[1] ? 1'h0 : _GEN_2; // @[SourceDestination.scala 36:73 37:28]
-  wire  high = _reg_i_T_1 & _reg_i_T; // @[SourceDestination.scala 42:28]
-  wire  _GEN_4 = ~high | _GEN_3; // @[SourceDestination.scala 43:17 44:24]
-  wire  _GEN_97 = ~i[0]; // @[SourceDestination.scala 57:{38,38}]
-  wire [15:0] _GEN_6 = ~i[0] & j[0] ? io_Stationary_matrix_0_1 : io_Stationary_matrix_0_0; // @[SourceDestination.scala 57:{38,38}]
-  wire  _GEN_98 = ~j[0]; // @[SourceDestination.scala 57:{38,38}]
-  wire [15:0] _GEN_7 = i[0] & ~j[0] ? io_Stationary_matrix_1_0 : _GEN_6; // @[SourceDestination.scala 57:{38,38}]
-  wire [15:0] _GEN_8 = i[0] & j[0] ? io_Stationary_matrix_1_1 : _GEN_7; // @[SourceDestination.scala 57:{38,38}]
-  wire [15:0] _GEN_9 = _GEN_97 & _GEN_98 ? counter1[15:0] : counterRegs1_0_0; // @[SourceDestination.scala 59:{28,28} 17:31]
-  wire [15:0] _GEN_10 = _GEN_97 & j[0] ? counter1[15:0] : counterRegs1_0_1; // @[SourceDestination.scala 59:{28,28} 17:31]
-  wire [15:0] _GEN_11 = i[0] & _GEN_98 ? counter1[15:0] : counterRegs1_1_0; // @[SourceDestination.scala 59:{28,28} 17:31]
-  wire [15:0] _GEN_12 = i[0] & j[0] ? counter1[15:0] : counterRegs1_1_1; // @[SourceDestination.scala 59:{28,28} 17:31]
-  wire [31:0] _counter1_T_1 = counter1 + 32'h1; // @[SourceDestination.scala 61:32]
-  wire [31:0] _GEN_13 = ~_reg_i_T_2 ? _counter1_T_1 : counter1; // @[SourceDestination.scala 60:83 61:20 28:27]
-  wire [15:0] _GEN_14 = _GEN_97 & _GEN_98 ? 16'h1 : counterRegs1_0_0; // @[SourceDestination.scala 64:{28,28} 17:31]
-  wire [15:0] _GEN_15 = _GEN_97 & j[0] ? 16'h1 : counterRegs1_0_1; // @[SourceDestination.scala 64:{28,28} 17:31]
-  wire [15:0] _GEN_16 = i[0] & _GEN_98 ? 16'h1 : counterRegs1_1_0; // @[SourceDestination.scala 64:{28,28} 17:31]
-  wire [15:0] _GEN_17 = i[0] & j[0] ? 16'h1 : counterRegs1_1_1; // @[SourceDestination.scala 64:{28,28} 17:31]
-  wire [15:0] _GEN_18 = counter1 < 32'h5 ? _GEN_9 : _GEN_14; // @[SourceDestination.scala 58:48]
-  wire [15:0] _GEN_19 = counter1 < 32'h5 ? _GEN_10 : _GEN_15; // @[SourceDestination.scala 58:48]
-  wire [15:0] _GEN_20 = counter1 < 32'h5 ? _GEN_11 : _GEN_16; // @[SourceDestination.scala 58:48]
-  wire [15:0] _GEN_21 = counter1 < 32'h5 ? _GEN_12 : _GEN_17; // @[SourceDestination.scala 58:48]
-  wire [31:0] _GEN_22 = counter1 < 32'h5 ? _GEN_13 : 32'h2; // @[SourceDestination.scala 58:48 65:18]
-  wire [15:0] _GEN_23 = _GEN_97 & _GEN_98 ? 16'h0 : counterRegs1_0_0; // @[SourceDestination.scala 68:{26,26} 17:31]
-  wire [15:0] _GEN_24 = _GEN_97 & j[0] ? 16'h0 : counterRegs1_0_1; // @[SourceDestination.scala 68:{26,26} 17:31]
-  wire [15:0] _GEN_25 = i[0] & _GEN_98 ? 16'h0 : counterRegs1_1_0; // @[SourceDestination.scala 68:{26,26} 17:31]
-  wire [15:0] _GEN_26 = i[0] & j[0] ? 16'h0 : counterRegs1_1_1; // @[SourceDestination.scala 68:{26,26} 17:31]
-  wire [15:0] _GEN_27 = _GEN_8 != 16'h0 ? _GEN_18 : _GEN_23; // @[SourceDestination.scala 57:47]
-  wire [15:0] _GEN_28 = _GEN_8 != 16'h0 ? _GEN_19 : _GEN_24; // @[SourceDestination.scala 57:47]
-  wire [15:0] _GEN_29 = _GEN_8 != 16'h0 ? _GEN_20 : _GEN_25; // @[SourceDestination.scala 57:47]
-  wire [15:0] _GEN_30 = _GEN_8 != 16'h0 ? _GEN_21 : _GEN_26; // @[SourceDestination.scala 57:47]
-  wire [31:0] _GEN_31 = _GEN_8 != 16'h0 ? _GEN_22 : counter1; // @[SourceDestination.scala 28:27 57:47]
-  wire [15:0] _GEN_33 = k[0] ? io_Streaming_matrix_1 : io_Streaming_matrix_0; // @[SourceDestination.scala 71:{34,34}]
-  wire [15:0] _GEN_34 = ~k[0] ? counter2[15:0] : counterRegs2_0; // @[SourceDestination.scala 72:{23,23} 18:31]
-  wire [15:0] _GEN_35 = k[0] ? counter2[15:0] : counterRegs2_1; // @[SourceDestination.scala 72:{23,23} 18:31]
-  wire [31:0] _counter2_T_1 = counter2 + 32'h1; // @[SourceDestination.scala 73:28]
-  wire [15:0] _GEN_36 = _GEN_33 != 16'h0 ? _GEN_34 : counterRegs2_0; // @[SourceDestination.scala 18:31 71:43]
-  wire [15:0] _GEN_37 = _GEN_33 != 16'h0 ? _GEN_35 : counterRegs2_1; // @[SourceDestination.scala 18:31 71:43]
-  wire [31:0] _GEN_38 = _GEN_33 != 16'h0 ? _counter2_T_1 : counter2; // @[SourceDestination.scala 71:43 73:16 29:27]
-  wire [31:0] _k_T_1 = k + 32'h1; // @[SourceDestination.scala 81:16]
-  wire [31:0] _GEN_40 = k == 32'h1 ? k : _k_T_1; // @[SourceDestination.scala 77:37 78:9]
-  wire [31:0] _GEN_41 = k == 32'h1 ? counter2 : _GEN_38; // @[SourceDestination.scala 77:37 79:16]
-  wire [31:0] _j_T_1 = j + 32'h1; // @[SourceDestination.scala 85:16]
-  wire [31:0] _i_T_1 = i + 32'h1; // @[SourceDestination.scala 91:18]
-  wire [31:0] _GEN_42 = i < 32'h1 ? _i_T_1 : i; // @[SourceDestination.scala 90:42 91:13 20:20]
-  wire [31:0] _GEN_44 = _reg_i_T_2 ? j : 32'h0; // @[SourceDestination.scala 21:20 86:83 89:11]
-  wire [31:0] _GEN_45 = _reg_i_T_2 ? i : _GEN_42; // @[SourceDestination.scala 20:20 86:83]
-  wire  _GEN_47 = j < 32'h1 ? 1'h0 : _reg_i_T_2; // @[SourceDestination.scala 53:12 84:40]
-  wire  _GEN_54 = jValid & ~matricesAreEqual & high | _GEN_4; // @[SourceDestination.scala 100:24 94:74]
-  wire  _GEN_62 = ~jValid & _GEN_47; // @[SourceDestination.scala 53:12 83:26]
-  wire  _GEN_67 = ~jValid ? _GEN_4 : _GEN_54; // @[SourceDestination.scala 83:26]
-  reg  io_valid_REG; // @[SourceDestination.scala 109:24]
-  wire  _GEN_88 = io_start ? _GEN_67 : _GEN_4; // @[SourceDestination.scala 47:17]
-  wire [31:0] _GEN_91 = io_start ? {{16'd0}, counterRegs1_0_0} : 32'h0; // @[SourceDestination.scala 47:17 119:28 123:26]
-  wire [31:0] _GEN_92 = io_start ? {{16'd0}, counterRegs1_0_1} : 32'h0; // @[SourceDestination.scala 47:17 119:28 123:26]
-  wire [31:0] _GEN_93 = io_start ? {{16'd0}, counterRegs1_1_0} : 32'h0; // @[SourceDestination.scala 47:17 119:28 123:26]
-  wire [31:0] _GEN_94 = io_start ? {{16'd0}, counterRegs1_1_1} : 32'h0; // @[SourceDestination.scala 47:17 119:28 123:26]
-  wire [31:0] _GEN_95 = io_start ? {{16'd0}, counterRegs2_0} : 32'h0; // @[SourceDestination.scala 47:17 120:28 124:26]
-  wire [31:0] _GEN_96 = io_start ? {{16'd0}, counterRegs2_1} : 32'h0; // @[SourceDestination.scala 47:17 120:28 124:26]
-  assign io_counterMatrix1_bits_0_0 = _GEN_91[15:0];
-  assign io_counterMatrix1_bits_0_1 = _GEN_92[15:0];
-  assign io_counterMatrix1_bits_1_0 = _GEN_93[15:0];
-  assign io_counterMatrix1_bits_1_1 = _GEN_94[15:0];
-  assign io_counterMatrix2_bits_0 = _GEN_95[15:0];
-  assign io_counterMatrix2_bits_1 = _GEN_96[15:0];
-  assign io_valid = io_start & io_valid_REG; // @[SourceDestination.scala 109:14 127:12 47:17]
+  reg [15:0] prevStationary_matrix_0_0; // @[SourceDestination.scala 15:40]
+  reg [15:0] prevStationary_matrix_0_1; // @[SourceDestination.scala 15:40]
+  reg [15:0] prevStationary_matrix_1_0; // @[SourceDestination.scala 15:40]
+  reg [15:0] prevStationary_matrix_1_1; // @[SourceDestination.scala 15:40]
+  reg [15:0] prevStreaming_matrix_0; // @[SourceDestination.scala 16:39]
+  reg [15:0] prevStreaming_matrix_1; // @[SourceDestination.scala 16:39]
+  reg  matricesAreEqual; // @[SourceDestination.scala 17:35]
+  reg [15:0] counterRegs1_0_0; // @[SourceDestination.scala 18:31]
+  reg [15:0] counterRegs1_0_1; // @[SourceDestination.scala 18:31]
+  reg [15:0] counterRegs1_1_0; // @[SourceDestination.scala 18:31]
+  reg [15:0] counterRegs1_1_1; // @[SourceDestination.scala 18:31]
+  reg [15:0] counterRegs2_0; // @[SourceDestination.scala 19:31]
+  reg [15:0] counterRegs2_1; // @[SourceDestination.scala 19:31]
+  reg [31:0] i; // @[SourceDestination.scala 21:20]
+  reg [31:0] j; // @[SourceDestination.scala 22:20]
+  reg  jValid; // @[SourceDestination.scala 26:21]
+  reg [31:0] k; // @[SourceDestination.scala 27:20]
+  reg [31:0] counter1; // @[SourceDestination.scala 29:27]
+  reg [31:0] counter2; // @[SourceDestination.scala 30:27]
+  wire  _reg_i_T = j == 32'h1; // @[SourceDestination.scala 32:29]
+  wire  _reg_i_T_1 = i == 32'h1; // @[SourceDestination.scala 32:63]
+  wire  _reg_i_T_2 = j == 32'h1 & i == 32'h1; // @[SourceDestination.scala 32:57]
+  wire  _GEN_0 = io_Stationary_matrix_0_0 != prevStationary_matrix_0_0 ? 1'h0 : matricesAreEqual; // @[SourceDestination.scala 37:70 38:24 17:35]
+  wire  _GEN_1 = io_Stationary_matrix_0_1 != prevStationary_matrix_0_1 ? 1'h0 : _GEN_0; // @[SourceDestination.scala 37:70 38:24]
+  wire  _GEN_2 = io_Streaming_matrix_0 != prevStreaming_matrix_0 ? 1'h0 : _GEN_1; // @[SourceDestination.scala 41:60 42:22]
+  wire  _GEN_3 = io_Stationary_matrix_1_0 != prevStationary_matrix_1_0 ? 1'h0 : _GEN_2; // @[SourceDestination.scala 37:70 38:24]
+  wire  _GEN_4 = io_Stationary_matrix_1_1 != prevStationary_matrix_1_1 ? 1'h0 : _GEN_3; // @[SourceDestination.scala 37:70 38:24]
+  wire  _GEN_5 = io_Streaming_matrix_1 != prevStreaming_matrix_1 ? 1'h0 : _GEN_4; // @[SourceDestination.scala 41:60 42:22]
+  wire  high = _reg_i_T_1 & _reg_i_T; // @[SourceDestination.scala 46:28]
+  wire  _GEN_6 = ~high | _GEN_5; // @[SourceDestination.scala 47:17 48:24]
+  wire  _GEN_99 = ~i[0]; // @[SourceDestination.scala 61:{38,38}]
+  wire [15:0] _GEN_8 = ~i[0] & j[0] ? io_Stationary_matrix_0_1 : io_Stationary_matrix_0_0; // @[SourceDestination.scala 61:{38,38}]
+  wire  _GEN_100 = ~j[0]; // @[SourceDestination.scala 61:{38,38}]
+  wire [15:0] _GEN_9 = i[0] & ~j[0] ? io_Stationary_matrix_1_0 : _GEN_8; // @[SourceDestination.scala 61:{38,38}]
+  wire [15:0] _GEN_10 = i[0] & j[0] ? io_Stationary_matrix_1_1 : _GEN_9; // @[SourceDestination.scala 61:{38,38}]
+  wire [15:0] _GEN_11 = _GEN_99 & _GEN_100 ? counter1[15:0] : counterRegs1_0_0; // @[SourceDestination.scala 63:{28,28} 18:31]
+  wire [15:0] _GEN_12 = _GEN_99 & j[0] ? counter1[15:0] : counterRegs1_0_1; // @[SourceDestination.scala 63:{28,28} 18:31]
+  wire [15:0] _GEN_13 = i[0] & _GEN_100 ? counter1[15:0] : counterRegs1_1_0; // @[SourceDestination.scala 63:{28,28} 18:31]
+  wire [15:0] _GEN_14 = i[0] & j[0] ? counter1[15:0] : counterRegs1_1_1; // @[SourceDestination.scala 63:{28,28} 18:31]
+  wire [31:0] _counter1_T_1 = counter1 + 32'h1; // @[SourceDestination.scala 65:32]
+  wire [31:0] _GEN_15 = ~_reg_i_T_2 ? _counter1_T_1 : counter1; // @[SourceDestination.scala 64:83 65:20 29:27]
+  wire [15:0] _GEN_16 = _GEN_99 & _GEN_100 ? 16'h1 : counterRegs1_0_0; // @[SourceDestination.scala 68:{28,28} 18:31]
+  wire [15:0] _GEN_17 = _GEN_99 & j[0] ? 16'h1 : counterRegs1_0_1; // @[SourceDestination.scala 68:{28,28} 18:31]
+  wire [15:0] _GEN_18 = i[0] & _GEN_100 ? 16'h1 : counterRegs1_1_0; // @[SourceDestination.scala 68:{28,28} 18:31]
+  wire [15:0] _GEN_19 = i[0] & j[0] ? 16'h1 : counterRegs1_1_1; // @[SourceDestination.scala 68:{28,28} 18:31]
+  wire [15:0] _GEN_20 = counter1 < 32'h5 ? _GEN_11 : _GEN_16; // @[SourceDestination.scala 62:48]
+  wire [15:0] _GEN_21 = counter1 < 32'h5 ? _GEN_12 : _GEN_17; // @[SourceDestination.scala 62:48]
+  wire [15:0] _GEN_22 = counter1 < 32'h5 ? _GEN_13 : _GEN_18; // @[SourceDestination.scala 62:48]
+  wire [15:0] _GEN_23 = counter1 < 32'h5 ? _GEN_14 : _GEN_19; // @[SourceDestination.scala 62:48]
+  wire [31:0] _GEN_24 = counter1 < 32'h5 ? _GEN_15 : 32'h2; // @[SourceDestination.scala 62:48 69:18]
+  wire [15:0] _GEN_25 = _GEN_99 & _GEN_100 ? 16'h0 : counterRegs1_0_0; // @[SourceDestination.scala 72:{26,26} 18:31]
+  wire [15:0] _GEN_26 = _GEN_99 & j[0] ? 16'h0 : counterRegs1_0_1; // @[SourceDestination.scala 72:{26,26} 18:31]
+  wire [15:0] _GEN_27 = i[0] & _GEN_100 ? 16'h0 : counterRegs1_1_0; // @[SourceDestination.scala 72:{26,26} 18:31]
+  wire [15:0] _GEN_28 = i[0] & j[0] ? 16'h0 : counterRegs1_1_1; // @[SourceDestination.scala 72:{26,26} 18:31]
+  wire [15:0] _GEN_29 = _GEN_10 != 16'h0 ? _GEN_20 : _GEN_25; // @[SourceDestination.scala 61:47]
+  wire [15:0] _GEN_30 = _GEN_10 != 16'h0 ? _GEN_21 : _GEN_26; // @[SourceDestination.scala 61:47]
+  wire [15:0] _GEN_31 = _GEN_10 != 16'h0 ? _GEN_22 : _GEN_27; // @[SourceDestination.scala 61:47]
+  wire [15:0] _GEN_32 = _GEN_10 != 16'h0 ? _GEN_23 : _GEN_28; // @[SourceDestination.scala 61:47]
+  wire [31:0] _GEN_33 = _GEN_10 != 16'h0 ? _GEN_24 : counter1; // @[SourceDestination.scala 29:27 61:47]
+  wire [15:0] _GEN_35 = k[0] ? io_Streaming_matrix_1 : io_Streaming_matrix_0; // @[SourceDestination.scala 75:{34,34}]
+  wire [15:0] _GEN_36 = ~k[0] ? counter2[15:0] : counterRegs2_0; // @[SourceDestination.scala 76:{23,23} 19:31]
+  wire [15:0] _GEN_37 = k[0] ? counter2[15:0] : counterRegs2_1; // @[SourceDestination.scala 76:{23,23} 19:31]
+  wire [31:0] _counter2_T_1 = counter2 + 32'h1; // @[SourceDestination.scala 77:28]
+  wire [15:0] _GEN_38 = _GEN_35 != 16'h0 ? _GEN_36 : counterRegs2_0; // @[SourceDestination.scala 19:31 75:43]
+  wire [15:0] _GEN_39 = _GEN_35 != 16'h0 ? _GEN_37 : counterRegs2_1; // @[SourceDestination.scala 19:31 75:43]
+  wire [31:0] _GEN_40 = _GEN_35 != 16'h0 ? _counter2_T_1 : counter2; // @[SourceDestination.scala 75:43 77:16 30:27]
+  wire [31:0] _k_T_1 = k + 32'h1; // @[SourceDestination.scala 85:16]
+  wire [31:0] _GEN_42 = k == 32'h1 ? k : _k_T_1; // @[SourceDestination.scala 81:37 82:9]
+  wire [31:0] _GEN_43 = k == 32'h1 ? counter2 : _GEN_40; // @[SourceDestination.scala 81:37 83:16]
+  wire [31:0] _j_T_1 = j + 32'h1; // @[SourceDestination.scala 89:16]
+  wire [31:0] _i_T_1 = i + 32'h1; // @[SourceDestination.scala 95:18]
+  wire [31:0] _GEN_44 = i < 32'h1 ? _i_T_1 : i; // @[SourceDestination.scala 94:42 95:13 21:20]
+  wire [31:0] _GEN_46 = _reg_i_T_2 ? j : 32'h0; // @[SourceDestination.scala 22:20 90:83 93:11]
+  wire [31:0] _GEN_47 = _reg_i_T_2 ? i : _GEN_44; // @[SourceDestination.scala 21:20 90:83]
+  wire  _GEN_49 = j < 32'h1 ? 1'h0 : _reg_i_T_2; // @[SourceDestination.scala 57:12 88:40]
+  wire  _GEN_56 = jValid & ~matricesAreEqual & high | _GEN_6; // @[SourceDestination.scala 104:24 98:74]
+  wire  _GEN_64 = ~jValid & _GEN_49; // @[SourceDestination.scala 57:12 87:26]
+  wire  _GEN_69 = ~jValid ? _GEN_6 : _GEN_56; // @[SourceDestination.scala 87:26]
+  reg  io_valid_REG; // @[SourceDestination.scala 113:24]
+  wire  _GEN_90 = io_start ? _GEN_69 : _GEN_6; // @[SourceDestination.scala 51:17]
+  wire [31:0] _GEN_93 = io_start ? {{16'd0}, counterRegs1_0_0} : 32'h0; // @[SourceDestination.scala 51:17 123:28 127:26]
+  wire [31:0] _GEN_94 = io_start ? {{16'd0}, counterRegs1_0_1} : 32'h0; // @[SourceDestination.scala 51:17 123:28 127:26]
+  wire [31:0] _GEN_95 = io_start ? {{16'd0}, counterRegs1_1_0} : 32'h0; // @[SourceDestination.scala 51:17 123:28 127:26]
+  wire [31:0] _GEN_96 = io_start ? {{16'd0}, counterRegs1_1_1} : 32'h0; // @[SourceDestination.scala 51:17 123:28 127:26]
+  wire [31:0] _GEN_97 = io_start ? {{16'd0}, counterRegs2_0} : 32'h0; // @[SourceDestination.scala 51:17 124:28 128:26]
+  wire [31:0] _GEN_98 = io_start ? {{16'd0}, counterRegs2_1} : 32'h0; // @[SourceDestination.scala 51:17 124:28 128:26]
+  assign io_counterMatrix1_bits_0_0 = _GEN_93[15:0];
+  assign io_counterMatrix1_bits_0_1 = _GEN_94[15:0];
+  assign io_counterMatrix1_bits_1_0 = _GEN_95[15:0];
+  assign io_counterMatrix1_bits_1_1 = _GEN_96[15:0];
+  assign io_counterMatrix2_bits_0 = _GEN_97[15:0];
+  assign io_counterMatrix2_bits_1 = _GEN_98[15:0];
+  assign io_valid = io_start & io_valid_REG; // @[SourceDestination.scala 113:14 131:12 51:17]
   always @(posedge clock) begin
-    prevStationary_matrix_0 <= io_Streaming_matrix_0; // @[SourceDestination.scala 15:40]
-    prevStationary_matrix_1 <= io_Streaming_matrix_1; // @[SourceDestination.scala 15:40]
-    matricesAreEqual <= reset | _GEN_88; // @[SourceDestination.scala 16:{35,35}]
-    if (reset) begin // @[SourceDestination.scala 17:31]
-      counterRegs1_0_0 <= 16'h0; // @[SourceDestination.scala 17:31]
-    end else if (io_start) begin // @[SourceDestination.scala 47:17]
-      if (~jValid) begin // @[SourceDestination.scala 83:26]
-        counterRegs1_0_0 <= _GEN_27;
-      end else if (jValid & ~matricesAreEqual & high) begin // @[SourceDestination.scala 94:74]
-        counterRegs1_0_0 <= 16'h0; // @[SourceDestination.scala 103:30]
+    prevStationary_matrix_0_0 <= io_Stationary_matrix_0_0; // @[SourceDestination.scala 15:40]
+    prevStationary_matrix_0_1 <= io_Stationary_matrix_0_1; // @[SourceDestination.scala 15:40]
+    prevStationary_matrix_1_0 <= io_Stationary_matrix_1_0; // @[SourceDestination.scala 15:40]
+    prevStationary_matrix_1_1 <= io_Stationary_matrix_1_1; // @[SourceDestination.scala 15:40]
+    prevStreaming_matrix_0 <= io_Streaming_matrix_0; // @[SourceDestination.scala 16:39]
+    prevStreaming_matrix_1 <= io_Streaming_matrix_1; // @[SourceDestination.scala 16:39]
+    matricesAreEqual <= reset | _GEN_90; // @[SourceDestination.scala 17:{35,35}]
+    if (reset) begin // @[SourceDestination.scala 18:31]
+      counterRegs1_0_0 <= 16'h0; // @[SourceDestination.scala 18:31]
+    end else if (io_start) begin // @[SourceDestination.scala 51:17]
+      if (~jValid) begin // @[SourceDestination.scala 87:26]
+        counterRegs1_0_0 <= _GEN_29;
+      end else if (jValid & ~matricesAreEqual & high) begin // @[SourceDestination.scala 98:74]
+        counterRegs1_0_0 <= 16'h0; // @[SourceDestination.scala 107:30]
       end else begin
-        counterRegs1_0_0 <= _GEN_27;
-      end
-    end
-    if (reset) begin // @[SourceDestination.scala 17:31]
-      counterRegs1_0_1 <= 16'h0; // @[SourceDestination.scala 17:31]
-    end else if (io_start) begin // @[SourceDestination.scala 47:17]
-      if (~jValid) begin // @[SourceDestination.scala 83:26]
-        counterRegs1_0_1 <= _GEN_28;
-      end else if (jValid & ~matricesAreEqual & high) begin // @[SourceDestination.scala 94:74]
-        counterRegs1_0_1 <= 16'h0; // @[SourceDestination.scala 103:30]
-      end else begin
-        counterRegs1_0_1 <= _GEN_28;
-      end
-    end
-    if (reset) begin // @[SourceDestination.scala 17:31]
-      counterRegs1_1_0 <= 16'h0; // @[SourceDestination.scala 17:31]
-    end else if (io_start) begin // @[SourceDestination.scala 47:17]
-      if (~jValid) begin // @[SourceDestination.scala 83:26]
-        counterRegs1_1_0 <= _GEN_29;
-      end else if (jValid & ~matricesAreEqual & high) begin // @[SourceDestination.scala 94:74]
-        counterRegs1_1_0 <= 16'h0; // @[SourceDestination.scala 103:30]
-      end else begin
-        counterRegs1_1_0 <= _GEN_29;
-      end
-    end
-    if (reset) begin // @[SourceDestination.scala 17:31]
-      counterRegs1_1_1 <= 16'h0; // @[SourceDestination.scala 17:31]
-    end else if (io_start) begin // @[SourceDestination.scala 47:17]
-      if (~jValid) begin // @[SourceDestination.scala 83:26]
-        counterRegs1_1_1 <= _GEN_30;
-      end else if (jValid & ~matricesAreEqual & high) begin // @[SourceDestination.scala 94:74]
-        counterRegs1_1_1 <= 16'h0; // @[SourceDestination.scala 103:30]
-      end else begin
-        counterRegs1_1_1 <= _GEN_30;
+        counterRegs1_0_0 <= _GEN_29;
       end
     end
     if (reset) begin // @[SourceDestination.scala 18:31]
-      counterRegs2_0 <= 16'h0; // @[SourceDestination.scala 18:31]
-    end else if (io_start) begin // @[SourceDestination.scala 47:17]
-      if (~jValid) begin // @[SourceDestination.scala 83:26]
-        counterRegs2_0 <= _GEN_36;
-      end else if (jValid & ~matricesAreEqual & high) begin // @[SourceDestination.scala 94:74]
-        counterRegs2_0 <= 16'h0; // @[SourceDestination.scala 105:25]
+      counterRegs1_0_1 <= 16'h0; // @[SourceDestination.scala 18:31]
+    end else if (io_start) begin // @[SourceDestination.scala 51:17]
+      if (~jValid) begin // @[SourceDestination.scala 87:26]
+        counterRegs1_0_1 <= _GEN_30;
+      end else if (jValid & ~matricesAreEqual & high) begin // @[SourceDestination.scala 98:74]
+        counterRegs1_0_1 <= 16'h0; // @[SourceDestination.scala 107:30]
       end else begin
-        counterRegs2_0 <= _GEN_36;
+        counterRegs1_0_1 <= _GEN_30;
       end
     end
     if (reset) begin // @[SourceDestination.scala 18:31]
-      counterRegs2_1 <= 16'h0; // @[SourceDestination.scala 18:31]
-    end else if (io_start) begin // @[SourceDestination.scala 47:17]
-      if (~jValid) begin // @[SourceDestination.scala 83:26]
-        counterRegs2_1 <= _GEN_37;
-      end else if (jValid & ~matricesAreEqual & high) begin // @[SourceDestination.scala 94:74]
-        counterRegs2_1 <= 16'h0; // @[SourceDestination.scala 105:25]
+      counterRegs1_1_0 <= 16'h0; // @[SourceDestination.scala 18:31]
+    end else if (io_start) begin // @[SourceDestination.scala 51:17]
+      if (~jValid) begin // @[SourceDestination.scala 87:26]
+        counterRegs1_1_0 <= _GEN_31;
+      end else if (jValid & ~matricesAreEqual & high) begin // @[SourceDestination.scala 98:74]
+        counterRegs1_1_0 <= 16'h0; // @[SourceDestination.scala 107:30]
       end else begin
-        counterRegs2_1 <= _GEN_37;
+        counterRegs1_1_0 <= _GEN_31;
       end
     end
-    if (reset) begin // @[SourceDestination.scala 20:20]
-      i <= 32'h0; // @[SourceDestination.scala 20:20]
-    end else if (io_start) begin // @[SourceDestination.scala 47:17]
-      if (~jValid) begin // @[SourceDestination.scala 83:26]
-        if (!(j < 32'h1)) begin // @[SourceDestination.scala 84:40]
-          i <= _GEN_45;
-        end
-      end else if (jValid & ~matricesAreEqual & high) begin // @[SourceDestination.scala 94:74]
-        i <= 32'h0; // @[SourceDestination.scala 95:9]
+    if (reset) begin // @[SourceDestination.scala 18:31]
+      counterRegs1_1_1 <= 16'h0; // @[SourceDestination.scala 18:31]
+    end else if (io_start) begin // @[SourceDestination.scala 51:17]
+      if (~jValid) begin // @[SourceDestination.scala 87:26]
+        counterRegs1_1_1 <= _GEN_32;
+      end else if (jValid & ~matricesAreEqual & high) begin // @[SourceDestination.scala 98:74]
+        counterRegs1_1_1 <= 16'h0; // @[SourceDestination.scala 107:30]
+      end else begin
+        counterRegs1_1_1 <= _GEN_32;
+      end
+    end
+    if (reset) begin // @[SourceDestination.scala 19:31]
+      counterRegs2_0 <= 16'h0; // @[SourceDestination.scala 19:31]
+    end else if (io_start) begin // @[SourceDestination.scala 51:17]
+      if (~jValid) begin // @[SourceDestination.scala 87:26]
+        counterRegs2_0 <= _GEN_38;
+      end else if (jValid & ~matricesAreEqual & high) begin // @[SourceDestination.scala 98:74]
+        counterRegs2_0 <= 16'h0; // @[SourceDestination.scala 109:25]
+      end else begin
+        counterRegs2_0 <= _GEN_38;
+      end
+    end
+    if (reset) begin // @[SourceDestination.scala 19:31]
+      counterRegs2_1 <= 16'h0; // @[SourceDestination.scala 19:31]
+    end else if (io_start) begin // @[SourceDestination.scala 51:17]
+      if (~jValid) begin // @[SourceDestination.scala 87:26]
+        counterRegs2_1 <= _GEN_39;
+      end else if (jValid & ~matricesAreEqual & high) begin // @[SourceDestination.scala 98:74]
+        counterRegs2_1 <= 16'h0; // @[SourceDestination.scala 109:25]
+      end else begin
+        counterRegs2_1 <= _GEN_39;
       end
     end
     if (reset) begin // @[SourceDestination.scala 21:20]
-      j <= 32'h0; // @[SourceDestination.scala 21:20]
-    end else if (io_start) begin // @[SourceDestination.scala 47:17]
-      if (~jValid) begin // @[SourceDestination.scala 83:26]
-        if (j < 32'h1) begin // @[SourceDestination.scala 84:40]
-          j <= _j_T_1; // @[SourceDestination.scala 85:11]
-        end else begin
-          j <= _GEN_44;
+      i <= 32'h0; // @[SourceDestination.scala 21:20]
+    end else if (io_start) begin // @[SourceDestination.scala 51:17]
+      if (~jValid) begin // @[SourceDestination.scala 87:26]
+        if (!(j < 32'h1)) begin // @[SourceDestination.scala 88:40]
+          i <= _GEN_47;
         end
-      end else if (jValid & ~matricesAreEqual & high) begin // @[SourceDestination.scala 94:74]
-        j <= 32'h0; // @[SourceDestination.scala 96:9]
+      end else if (jValid & ~matricesAreEqual & high) begin // @[SourceDestination.scala 98:74]
+        i <= 32'h0; // @[SourceDestination.scala 99:9]
       end
     end
-    if (io_start) begin // @[SourceDestination.scala 47:17]
-      jValid <= _GEN_62;
-    end
-    if (reset) begin // @[SourceDestination.scala 26:20]
-      k <= 32'h0; // @[SourceDestination.scala 26:20]
-    end else if (io_start) begin // @[SourceDestination.scala 47:17]
-      if (~jValid) begin // @[SourceDestination.scala 83:26]
-        k <= _GEN_40;
-      end else if (jValid & ~matricesAreEqual & high) begin // @[SourceDestination.scala 94:74]
-        k <= 32'h0; // @[SourceDestination.scala 97:9]
-      end else begin
-        k <= _GEN_40;
+    if (reset) begin // @[SourceDestination.scala 22:20]
+      j <= 32'h0; // @[SourceDestination.scala 22:20]
+    end else if (io_start) begin // @[SourceDestination.scala 51:17]
+      if (~jValid) begin // @[SourceDestination.scala 87:26]
+        if (j < 32'h1) begin // @[SourceDestination.scala 88:40]
+          j <= _j_T_1; // @[SourceDestination.scala 89:11]
+        end else begin
+          j <= _GEN_46;
+        end
+      end else if (jValid & ~matricesAreEqual & high) begin // @[SourceDestination.scala 98:74]
+        j <= 32'h0; // @[SourceDestination.scala 100:9]
       end
     end
-    if (reset) begin // @[SourceDestination.scala 28:27]
-      counter1 <= 32'h0; // @[SourceDestination.scala 28:27]
-    end else if (io_start) begin // @[SourceDestination.scala 47:17]
-      if (~jValid) begin // @[SourceDestination.scala 83:26]
-        counter1 <= _GEN_31;
-      end else if (jValid & ~matricesAreEqual & high) begin // @[SourceDestination.scala 94:74]
-        counter1 <= 32'h0; // @[SourceDestination.scala 98:16]
+    if (io_start) begin // @[SourceDestination.scala 51:17]
+      jValid <= _GEN_64;
+    end
+    if (reset) begin // @[SourceDestination.scala 27:20]
+      k <= 32'h0; // @[SourceDestination.scala 27:20]
+    end else if (io_start) begin // @[SourceDestination.scala 51:17]
+      if (~jValid) begin // @[SourceDestination.scala 87:26]
+        k <= _GEN_42;
+      end else if (jValid & ~matricesAreEqual & high) begin // @[SourceDestination.scala 98:74]
+        k <= 32'h0; // @[SourceDestination.scala 101:9]
       end else begin
-        counter1 <= _GEN_31;
+        k <= _GEN_42;
       end
     end
     if (reset) begin // @[SourceDestination.scala 29:27]
-      counter2 <= 32'h0; // @[SourceDestination.scala 29:27]
-    end else if (io_start) begin // @[SourceDestination.scala 47:17]
-      if (~jValid) begin // @[SourceDestination.scala 83:26]
-        counter2 <= _GEN_41;
-      end else if (jValid & ~matricesAreEqual & high) begin // @[SourceDestination.scala 94:74]
-        counter2 <= 32'h0; // @[SourceDestination.scala 99:16]
+      counter1 <= 32'h1; // @[SourceDestination.scala 29:27]
+    end else if (io_start) begin // @[SourceDestination.scala 51:17]
+      if (~jValid) begin // @[SourceDestination.scala 87:26]
+        counter1 <= _GEN_33;
+      end else if (jValid & ~matricesAreEqual & high) begin // @[SourceDestination.scala 98:74]
+        counter1 <= 32'h1; // @[SourceDestination.scala 102:16]
       end else begin
-        counter2 <= _GEN_41;
+        counter1 <= _GEN_33;
       end
     end
-    io_valid_REG <= _reg_i_T_1 & _reg_i_T; // @[SourceDestination.scala 109:54]
+    if (reset) begin // @[SourceDestination.scala 30:27]
+      counter2 <= 32'h1; // @[SourceDestination.scala 30:27]
+    end else if (io_start) begin // @[SourceDestination.scala 51:17]
+      if (~jValid) begin // @[SourceDestination.scala 87:26]
+        counter2 <= _GEN_43;
+      end else if (jValid & ~matricesAreEqual & high) begin // @[SourceDestination.scala 98:74]
+        counter2 <= 32'h1; // @[SourceDestination.scala 103:16]
+      end else begin
+        counter2 <= _GEN_43;
+      end
+    end
+    io_valid_REG <= _reg_i_T_1 & _reg_i_T; // @[SourceDestination.scala 113:54]
   end
 // Register and memory initialization
 `ifdef RANDOMIZE_GARBAGE_ASSIGN
@@ -1193,37 +1205,45 @@ initial begin
     `endif
 `ifdef RANDOMIZE_REG_INIT
   _RAND_0 = {1{`RANDOM}};
-  prevStationary_matrix_0 = _RAND_0[15:0];
+  prevStationary_matrix_0_0 = _RAND_0[15:0];
   _RAND_1 = {1{`RANDOM}};
-  prevStationary_matrix_1 = _RAND_1[15:0];
+  prevStationary_matrix_0_1 = _RAND_1[15:0];
   _RAND_2 = {1{`RANDOM}};
-  matricesAreEqual = _RAND_2[0:0];
+  prevStationary_matrix_1_0 = _RAND_2[15:0];
   _RAND_3 = {1{`RANDOM}};
-  counterRegs1_0_0 = _RAND_3[15:0];
+  prevStationary_matrix_1_1 = _RAND_3[15:0];
   _RAND_4 = {1{`RANDOM}};
-  counterRegs1_0_1 = _RAND_4[15:0];
+  prevStreaming_matrix_0 = _RAND_4[15:0];
   _RAND_5 = {1{`RANDOM}};
-  counterRegs1_1_0 = _RAND_5[15:0];
+  prevStreaming_matrix_1 = _RAND_5[15:0];
   _RAND_6 = {1{`RANDOM}};
-  counterRegs1_1_1 = _RAND_6[15:0];
+  matricesAreEqual = _RAND_6[0:0];
   _RAND_7 = {1{`RANDOM}};
-  counterRegs2_0 = _RAND_7[15:0];
+  counterRegs1_0_0 = _RAND_7[15:0];
   _RAND_8 = {1{`RANDOM}};
-  counterRegs2_1 = _RAND_8[15:0];
+  counterRegs1_0_1 = _RAND_8[15:0];
   _RAND_9 = {1{`RANDOM}};
-  i = _RAND_9[31:0];
+  counterRegs1_1_0 = _RAND_9[15:0];
   _RAND_10 = {1{`RANDOM}};
-  j = _RAND_10[31:0];
+  counterRegs1_1_1 = _RAND_10[15:0];
   _RAND_11 = {1{`RANDOM}};
-  jValid = _RAND_11[0:0];
+  counterRegs2_0 = _RAND_11[15:0];
   _RAND_12 = {1{`RANDOM}};
-  k = _RAND_12[31:0];
+  counterRegs2_1 = _RAND_12[15:0];
   _RAND_13 = {1{`RANDOM}};
-  counter1 = _RAND_13[31:0];
+  i = _RAND_13[31:0];
   _RAND_14 = {1{`RANDOM}};
-  counter2 = _RAND_14[31:0];
+  j = _RAND_14[31:0];
   _RAND_15 = {1{`RANDOM}};
-  io_valid_REG = _RAND_15[0:0];
+  jValid = _RAND_15[0:0];
+  _RAND_16 = {1{`RANDOM}};
+  k = _RAND_16[31:0];
+  _RAND_17 = {1{`RANDOM}};
+  counter1 = _RAND_17[31:0];
+  _RAND_18 = {1{`RANDOM}};
+  counter2 = _RAND_18[31:0];
+  _RAND_19 = {1{`RANDOM}};
+  io_valid_REG = _RAND_19[0:0];
 `endif // RANDOMIZE_REG_INIT
   `endif // RANDOMIZE
 end // initial
@@ -1523,9 +1543,9 @@ module ivncontrol4(
   reg [31:0] mat_1_1; // @[ivncontrol4.scala 41:18]
   reg [31:0] count_0; // @[ivncontrol4.scala 45:20]
   reg [31:0] count_1; // @[ivncontrol4.scala 45:20]
-  wire  _GEN_48 = ~i[0]; // @[ivncontrol4.scala 49:{42,42}]
+  wire  _GEN_49 = ~i[0]; // @[ivncontrol4.scala 49:{42,42}]
   wire [15:0] _GEN_2 = ~i[0] & j[0] ? io_Stationary_matrix_0_1 : io_Stationary_matrix_0_0; // @[ivncontrol4.scala 49:{42,42}]
-  wire  _GEN_49 = ~j[0]; // @[ivncontrol4.scala 49:{42,42}]
+  wire  _GEN_50 = ~j[0]; // @[ivncontrol4.scala 49:{42,42}]
   wire [15:0] _GEN_3 = i[0] & ~j[0] ? io_Stationary_matrix_1_0 : _GEN_2; // @[ivncontrol4.scala 49:{42,42}]
   wire [15:0] _GEN_4 = i[0] & j[0] ? io_Stationary_matrix_1_1 : _GEN_3; // @[ivncontrol4.scala 49:{42,42}]
   wire  chec = _GEN_4 != 16'h0 & j < 32'h2; // @[ivncontrol4.scala 49:50]
@@ -1540,10 +1560,11 @@ module ivncontrol4(
   wire  _T_23 = _T_10 & _T_14; // @[ivncontrol4.scala 91:43]
   wire [31:0] _counter_T_1 = counter + 32'h1; // @[ivncontrol4.scala 128:25]
   wire  _T_33 = rowcount_1 == 32'h2; // @[ivncontrol4.scala 139:34]
-  wire [4:0] _GEN_31 = rowcount_1 == 32'h2 ? 5'h1 : 5'h10; // @[ivncontrol4.scala 108:17 139:42 140:29]
+  wire [4:0] _GEN_31 = rowcount_1 == 32'h2 ? 5'h1 : 5'h8; // @[ivncontrol4.scala 108:17 139:42 140:29]
   wire  _T_35 = rowcount_1 == 32'h1; // @[ivncontrol4.scala 147:33]
-  wire [4:0] _GEN_36 = _T_35 ? 5'h1 : 5'h8; // @[ivncontrol4.scala 108:17 162:46 163:29]
-  wire [4:0] _GEN_37 = _T_33 ? 5'h1 : _GEN_36; // @[ivncontrol4.scala 158:41 159:29]
+  wire [4:0] _GEN_33 = _T_33 ? 5'h1 : 5'h1a; // @[ivncontrol4.scala 108:17 150:46 151:29]
+  wire [4:0] _GEN_37 = _T_35 ? 5'h1 : 5'h12; // @[ivncontrol4.scala 108:17 162:46 163:29]
+  wire [4:0] _GEN_38 = _T_33 ? 5'h1 : _GEN_37; // @[ivncontrol4.scala 158:41 159:29]
   wire  valid = _T_23; // @[ivncontrol4.scala 118:71 119:14 121:14]
   wire  valid1 = 1'h0;
   wire [1:0] rowlength = 2'h2;
@@ -1570,9 +1591,9 @@ module ivncontrol4(
     end else if (rowcount_0 == 32'h1) begin // @[ivncontrol4.scala 145:43]
       i_vn_0 <= 5'h0; // @[ivncontrol4.scala 146:25]
     end else if (rowcount_0 == 32'h0) begin // @[ivncontrol4.scala 157:43]
-      i_vn_0 <= _GEN_37;
+      i_vn_0 <= _GEN_38;
     end else begin
-      i_vn_0 <= 5'h8; // @[ivncontrol4.scala 108:17]
+      i_vn_0 <= 5'h12; // @[ivncontrol4.scala 108:17]
     end
     if (reset) begin // @[ivncontrol4.scala 26:23]
       i_vn_1 <= 5'h0; // @[ivncontrol4.scala 26:23]
@@ -1582,12 +1603,12 @@ module ivncontrol4(
       if (rowcount_1 == 32'h1) begin // @[ivncontrol4.scala 147:40]
         i_vn_1 <= 5'h1; // @[ivncontrol4.scala 148:29]
       end else begin
-        i_vn_1 <= _GEN_31;
+        i_vn_1 <= _GEN_33;
       end
     end else if (rowcount_0 == 32'h0) begin // @[ivncontrol4.scala 157:43]
-      i_vn_1 <= _GEN_31;
+      i_vn_1 <= _GEN_33;
     end else begin
-      i_vn_1 <= 5'h10; // @[ivncontrol4.scala 108:17]
+      i_vn_1 <= 5'h1a; // @[ivncontrol4.scala 108:17]
     end
     if (reset) begin // @[ivncontrol4.scala 26:23]
       i_vn_2 <= 5'h0; // @[ivncontrol4.scala 26:23]
@@ -1595,12 +1616,12 @@ module ivncontrol4(
       i_vn_2 <= _GEN_31;
     end else if (rowcount_0 == 32'h1) begin // @[ivncontrol4.scala 145:43]
       if (rowcount_1 == 32'h1) begin // @[ivncontrol4.scala 147:40]
-        i_vn_2 <= 5'h10; // @[ivncontrol4.scala 108:17]
+        i_vn_2 <= 5'h8; // @[ivncontrol4.scala 108:17]
       end else begin
         i_vn_2 <= _GEN_31;
       end
     end else begin
-      i_vn_2 <= 5'h10; // @[ivncontrol4.scala 108:17]
+      i_vn_2 <= 5'h8; // @[ivncontrol4.scala 108:17]
     end
     if (reset) begin // @[ivncontrol4.scala 26:23]
       i_vn_3 <= 5'h0; // @[ivncontrol4.scala 26:23]
@@ -1608,10 +1629,10 @@ module ivncontrol4(
       if (rowcount_1 == 32'h2) begin // @[ivncontrol4.scala 139:42]
         i_vn_3 <= 5'h1; // @[ivncontrol4.scala 141:29]
       end else begin
-        i_vn_3 <= 5'h1f; // @[ivncontrol4.scala 108:17]
+        i_vn_3 <= 5'h19; // @[ivncontrol4.scala 108:17]
       end
     end else begin
-      i_vn_3 <= 5'h1f; // @[ivncontrol4.scala 108:17]
+      i_vn_3 <= 5'h19; // @[ivncontrol4.scala 108:17]
     end
     if (reset) begin // @[ivncontrol4.scala 30:27]
       rowcount_0 <= 32'h0; // @[ivncontrol4.scala 30:27]
@@ -1637,13 +1658,13 @@ module ivncontrol4(
     end else if (!(_T_12 & input_valid)) begin // @[ivncontrol4.scala 93:90]
       j <= 32'h0; // @[ivncontrol4.scala 97:11]
     end
-    if (_GEN_48 & _GEN_49) begin // @[ivncontrol4.scala 51:14]
+    if (_GEN_49 & _GEN_50) begin // @[ivncontrol4.scala 51:14]
       mat_0_0 <= _mat_T_1_T_2; // @[ivncontrol4.scala 51:14]
     end
-    if (_GEN_48 & j[0]) begin // @[ivncontrol4.scala 51:14]
+    if (_GEN_49 & j[0]) begin // @[ivncontrol4.scala 51:14]
       mat_0_1 <= _mat_T_1_T_2; // @[ivncontrol4.scala 51:14]
     end
-    if (i[0] & _GEN_49) begin // @[ivncontrol4.scala 51:14]
+    if (i[0] & _GEN_50) begin // @[ivncontrol4.scala 51:14]
       mat_1_0 <= _mat_T_1_T_2; // @[ivncontrol4.scala 51:14]
     end
     if (i[0] & j[0]) begin // @[ivncontrol4.scala 51:14]
@@ -1812,11 +1833,7 @@ module fancontrol4(
   wire  _T_33 = _T_23 & _T_32; // @[FanCtrl.scala 51:41]
   wire  _T_42 = _GEN_7 == _GEN_24; // @[FanCtrl.scala 57:48]
   wire  _T_52 = _T_42 & _T_32; // @[FanCtrl.scala 58:46]
-  wire [1:0] _GEN_49 = _T_52 ? 2'h3 : 2'h0; // @[FanCtrl.scala 60:48 62:40 65:38]
-  wire [1:0] _GEN_50 = _T_33 ? 2'h3 : _GEN_49; // @[FanCtrl.scala 53:42 55:37]
   wire  _GEN_54 = r_valid_1 & _T_10; // @[FanCtrl.scala 43:34]
-  wire [1:0] _GEN_57 = r_valid_1 ? _GEN_50 : 2'h0; // @[FanCtrl.scala 43:34 70:33]
-  wire [2:0] _GEN_122 = {{1'd0}, _GEN_57}; // @[FanCtrl.scala 42:25]
   wire [2:0] _T_113 = 2'h2 * 1'h1; // @[FanCtrl.scala 44:25]
   wire [3:0] _T_114 = {{1'd0}, _T_113}; // @[FanCtrl.scala 44:31]
   wire [2:0] _T_119 = _T_113 + 3'h1; // @[FanCtrl.scala 44:58]
@@ -1835,6 +1852,10 @@ module fancontrol4(
   wire [4:0] _GEN_208 = 2'h3 == _T_188[1:0] ? w_vn_3 : _GEN_207; // @[FanCtrl.scala 90:{39,39}]
   wire  _T_200 = _GEN_126 != _GEN_208 & _T_143; // @[FanCtrl.scala 90:67]
   wire  _T_219 = _GEN_126 == _GEN_208 & _T_143; // @[FanCtrl.scala 95:73]
+  wire [1:0] _GEN_233 = _T_219 ? 2'h3 : 2'h0; // @[FanCtrl.scala 100:35 96:66 98:35]
+  wire [1:0] _GEN_234 = _T_200 ? 2'h3 : _GEN_233; // @[FanCtrl.scala 91:66 93:36]
+  wire [1:0] _GEN_241 = r_valid_1 ? _GEN_234 : 2'h0; // @[FanCtrl.scala 104:33 83:34]
+  wire [2:0] _GEN_246 = {{1'd0}, _GEN_241}; // @[FanCtrl.scala 42:25 20:34]
   wire [3:0] _T_228 = 3'h4 * 1'h0; // @[FanCtrl.scala 119:23]
   wire [3:0] _T_230 = _T_228 + 4'h1; // @[FanCtrl.scala 119:29]
   wire [3:0] _T_234 = _T_228 + 4'h2; // @[FanCtrl.scala 119:56]
@@ -1894,21 +1915,21 @@ module fancontrol4(
     end
     if (reset) begin // @[FanCtrl.scala 20:34]
       r_reduction_cmd_0 <= 3'h0; // @[FanCtrl.scala 20:34]
+    end else if (r_valid_1) begin // @[FanCtrl.scala 43:34]
+      if (_T_33) begin // @[FanCtrl.scala 53:42]
+        r_reduction_cmd_0 <= 3'h3; // @[FanCtrl.scala 55:37]
+      end else if (_T_52) begin // @[FanCtrl.scala 60:48]
+        r_reduction_cmd_0 <= 3'h4; // @[FanCtrl.scala 62:40]
+      end else begin
+        r_reduction_cmd_0 <= 3'h0; // @[FanCtrl.scala 65:38]
+      end
     end else begin
-      r_reduction_cmd_0 <= _GEN_122;
+      r_reduction_cmd_0 <= 3'h0; // @[FanCtrl.scala 70:33]
     end
     if (reset) begin // @[FanCtrl.scala 20:34]
       r_reduction_cmd_1 <= 3'h0; // @[FanCtrl.scala 20:34]
-    end else if (r_valid_1) begin // @[FanCtrl.scala 83:34]
-      if (_T_200) begin // @[FanCtrl.scala 91:66]
-        r_reduction_cmd_1 <= 3'h3; // @[FanCtrl.scala 93:36]
-      end else if (_T_219) begin // @[FanCtrl.scala 96:66]
-        r_reduction_cmd_1 <= 3'h4; // @[FanCtrl.scala 98:35]
-      end else begin
-        r_reduction_cmd_1 <= 3'h0; // @[FanCtrl.scala 100:35]
-      end
     end else begin
-      r_reduction_cmd_1 <= 3'h0; // @[FanCtrl.scala 104:33]
+      r_reduction_cmd_1 <= _GEN_246;
     end
     if (reset) begin // @[FanCtrl.scala 20:34]
       r_reduction_cmd_2 <= 3'h0; // @[FanCtrl.scala 20:34]
@@ -4742,7 +4763,7 @@ module flexdpecom4(
       if (_T_46) begin // @[FlexDPEby2.scala 187:7]
         matrix_0_0 <= io_o_adder_0; // @[FlexDPEby2.scala 188:22]
       end else if (_T_31) begin // @[FlexDPEby2.scala 180:7]
-        matrix_0_0 <= io_o_adder_0; // @[FlexDPEby2.scala 181:23]
+        matrix_0_0 <= {{1'd0}, r_mult_0}; // @[FlexDPEby2.scala 181:23]
       end else if (_T_2 & _T_5) begin // @[FlexDPEby2.scala 171:85]
         matrix_0_0 <= io_o_adder_2; // @[FlexDPEby2.scala 172:23]
       end else begin
@@ -4753,7 +4774,7 @@ module flexdpecom4(
       if (_T_46) begin // @[FlexDPEby2.scala 187:7]
         matrix_0_1 <= io_o_adder_0; // @[FlexDPEby2.scala 188:22]
       end else if (_T_31) begin // @[FlexDPEby2.scala 180:7]
-        matrix_0_1 <= io_o_adder_0; // @[FlexDPEby2.scala 181:23]
+        matrix_0_1 <= {{1'd0}, r_mult_0}; // @[FlexDPEby2.scala 181:23]
       end else if (_T_2 & _T_5) begin // @[FlexDPEby2.scala 171:85]
         matrix_0_1 <= io_o_adder_2; // @[FlexDPEby2.scala 172:23]
       end else begin
@@ -4909,359 +4930,364 @@ module FlexDPUby2(
   reg [31:0] _RAND_40;
   reg [31:0] _RAND_41;
   reg [31:0] _RAND_42;
+  reg [31:0] _RAND_43;
+  reg [31:0] _RAND_44;
+  reg [31:0] _RAND_45;
 `endif // RANDOMIZE_REG_INIT
-  wire  PF_clock; // @[FlexDPUby2.scala 108:24]
-  wire  PF_reset; // @[FlexDPUby2.scala 108:24]
-  wire [15:0] PF_io_Stationary_matrix_0_0; // @[FlexDPUby2.scala 108:24]
-  wire [15:0] PF_io_Stationary_matrix_0_1; // @[FlexDPUby2.scala 108:24]
-  wire [15:0] PF_io_Stationary_matrix_1_0; // @[FlexDPUby2.scala 108:24]
-  wire [15:0] PF_io_Stationary_matrix_1_1; // @[FlexDPUby2.scala 108:24]
-  wire [15:0] PF_io_Streaming_matrix_0; // @[FlexDPUby2.scala 108:24]
-  wire [15:0] PF_io_Streaming_matrix_1; // @[FlexDPUby2.scala 108:24]
-  wire [3:0] PF_io_i_mux_bus_0_0; // @[FlexDPUby2.scala 108:24]
-  wire [3:0] PF_io_i_mux_bus_0_1; // @[FlexDPUby2.scala 108:24]
-  wire [3:0] PF_io_i_mux_bus_0_2; // @[FlexDPUby2.scala 108:24]
-  wire [3:0] PF_io_i_mux_bus_0_3; // @[FlexDPUby2.scala 108:24]
-  wire [3:0] PF_io_i_mux_bus_1_0; // @[FlexDPUby2.scala 108:24]
-  wire [3:0] PF_io_i_mux_bus_1_1; // @[FlexDPUby2.scala 108:24]
-  wire [3:0] PF_io_i_mux_bus_1_2; // @[FlexDPUby2.scala 108:24]
-  wire [3:0] PF_io_i_mux_bus_1_3; // @[FlexDPUby2.scala 108:24]
-  wire [3:0] PF_io_i_mux_bus_2_0; // @[FlexDPUby2.scala 108:24]
-  wire [3:0] PF_io_i_mux_bus_2_1; // @[FlexDPUby2.scala 108:24]
-  wire [3:0] PF_io_i_mux_bus_2_2; // @[FlexDPUby2.scala 108:24]
-  wire [3:0] PF_io_i_mux_bus_2_3; // @[FlexDPUby2.scala 108:24]
-  wire [3:0] PF_io_i_mux_bus_3_0; // @[FlexDPUby2.scala 108:24]
-  wire [3:0] PF_io_i_mux_bus_3_1; // @[FlexDPUby2.scala 108:24]
-  wire [3:0] PF_io_i_mux_bus_3_2; // @[FlexDPUby2.scala 108:24]
-  wire [3:0] PF_io_i_mux_bus_3_3; // @[FlexDPUby2.scala 108:24]
-  wire [15:0] PF_io_Source_0; // @[FlexDPUby2.scala 108:24]
-  wire [15:0] PF_io_Source_1; // @[FlexDPUby2.scala 108:24]
-  wire [15:0] PF_io_Source_2; // @[FlexDPUby2.scala 108:24]
-  wire [15:0] PF_io_Source_3; // @[FlexDPUby2.scala 108:24]
-  wire  PF_io_PF_Valid; // @[FlexDPUby2.scala 108:24]
-  wire  PF_io_DataValid; // @[FlexDPUby2.scala 108:24]
-  wire  FDPE_clock; // @[FlexDPUby2.scala 147:26]
-  wire  FDPE_reset; // @[FlexDPUby2.scala 147:26]
-  wire [15:0] FDPE_io_i_data_bus_0; // @[FlexDPUby2.scala 147:26]
-  wire [15:0] FDPE_io_i_data_bus_1; // @[FlexDPUby2.scala 147:26]
-  wire [15:0] FDPE_io_i_data_bus_2; // @[FlexDPUby2.scala 147:26]
-  wire [15:0] FDPE_io_i_data_bus_3; // @[FlexDPUby2.scala 147:26]
-  wire [15:0] FDPE_io_i_data_bus2_0; // @[FlexDPUby2.scala 147:26]
-  wire [15:0] FDPE_io_i_data_bus2_1; // @[FlexDPUby2.scala 147:26]
-  wire [15:0] FDPE_io_i_data_bus2_2; // @[FlexDPUby2.scala 147:26]
-  wire [15:0] FDPE_io_i_data_bus2_3; // @[FlexDPUby2.scala 147:26]
-  wire [15:0] FDPE_io_Stationary_matrix_0_0; // @[FlexDPUby2.scala 147:26]
-  wire [15:0] FDPE_io_Stationary_matrix_0_1; // @[FlexDPUby2.scala 147:26]
-  wire [15:0] FDPE_io_Stationary_matrix_1_0; // @[FlexDPUby2.scala 147:26]
-  wire [15:0] FDPE_io_Stationary_matrix_1_1; // @[FlexDPUby2.scala 147:26]
-  wire [15:0] FDPE_io_o_adder_0; // @[FlexDPUby2.scala 147:26]
-  wire [15:0] FDPE_io_o_adder_1; // @[FlexDPUby2.scala 147:26]
-  wire [15:0] FDPE_io_o_adder_2; // @[FlexDPUby2.scala 147:26]
-  wire [3:0] FDPE_io_i_mux_bus_0_0; // @[FlexDPUby2.scala 147:26]
-  wire [3:0] FDPE_io_i_mux_bus_0_1; // @[FlexDPUby2.scala 147:26]
-  wire [3:0] FDPE_io_i_mux_bus_0_2; // @[FlexDPUby2.scala 147:26]
-  wire [3:0] FDPE_io_i_mux_bus_0_3; // @[FlexDPUby2.scala 147:26]
-  wire [3:0] FDPE_io_i_mux_bus_1_0; // @[FlexDPUby2.scala 147:26]
-  wire [3:0] FDPE_io_i_mux_bus_1_1; // @[FlexDPUby2.scala 147:26]
-  wire [3:0] FDPE_io_i_mux_bus_1_2; // @[FlexDPUby2.scala 147:26]
-  wire [3:0] FDPE_io_i_mux_bus_1_3; // @[FlexDPUby2.scala 147:26]
-  wire [3:0] FDPE_io_i_mux_bus_2_0; // @[FlexDPUby2.scala 147:26]
-  wire [3:0] FDPE_io_i_mux_bus_2_1; // @[FlexDPUby2.scala 147:26]
-  wire [3:0] FDPE_io_i_mux_bus_2_2; // @[FlexDPUby2.scala 147:26]
-  wire [3:0] FDPE_io_i_mux_bus_2_3; // @[FlexDPUby2.scala 147:26]
-  wire [3:0] FDPE_io_i_mux_bus_3_0; // @[FlexDPUby2.scala 147:26]
-  wire [3:0] FDPE_io_i_mux_bus_3_1; // @[FlexDPUby2.scala 147:26]
-  wire [3:0] FDPE_io_i_mux_bus_3_2; // @[FlexDPUby2.scala 147:26]
-  wire [3:0] FDPE_io_i_mux_bus_3_3; // @[FlexDPUby2.scala 147:26]
-  wire [15:0] FDPE_io_matrix_0_0; // @[FlexDPUby2.scala 147:26]
-  wire [15:0] FDPE_io_matrix_0_1; // @[FlexDPUby2.scala 147:26]
-  wire [15:0] FDPE_io_matrix_1_0; // @[FlexDPUby2.scala 147:26]
-  wire [15:0] FDPE_io_matrix_1_1; // @[FlexDPUby2.scala 147:26]
-  wire  FDPE_io_input_valid; // @[FlexDPUby2.scala 147:26]
-  wire  FDPE_io_output_valid; // @[FlexDPUby2.scala 147:26]
+  wire  PF_clock; // @[FlexDPUby2.scala 121:24]
+  wire  PF_reset; // @[FlexDPUby2.scala 121:24]
+  wire [15:0] PF_io_Stationary_matrix_0_0; // @[FlexDPUby2.scala 121:24]
+  wire [15:0] PF_io_Stationary_matrix_0_1; // @[FlexDPUby2.scala 121:24]
+  wire [15:0] PF_io_Stationary_matrix_1_0; // @[FlexDPUby2.scala 121:24]
+  wire [15:0] PF_io_Stationary_matrix_1_1; // @[FlexDPUby2.scala 121:24]
+  wire [15:0] PF_io_Streaming_matrix_0; // @[FlexDPUby2.scala 121:24]
+  wire [15:0] PF_io_Streaming_matrix_1; // @[FlexDPUby2.scala 121:24]
+  wire [3:0] PF_io_i_mux_bus_0_0; // @[FlexDPUby2.scala 121:24]
+  wire [3:0] PF_io_i_mux_bus_0_1; // @[FlexDPUby2.scala 121:24]
+  wire [3:0] PF_io_i_mux_bus_0_2; // @[FlexDPUby2.scala 121:24]
+  wire [3:0] PF_io_i_mux_bus_0_3; // @[FlexDPUby2.scala 121:24]
+  wire [3:0] PF_io_i_mux_bus_1_0; // @[FlexDPUby2.scala 121:24]
+  wire [3:0] PF_io_i_mux_bus_1_1; // @[FlexDPUby2.scala 121:24]
+  wire [3:0] PF_io_i_mux_bus_1_2; // @[FlexDPUby2.scala 121:24]
+  wire [3:0] PF_io_i_mux_bus_1_3; // @[FlexDPUby2.scala 121:24]
+  wire [3:0] PF_io_i_mux_bus_2_0; // @[FlexDPUby2.scala 121:24]
+  wire [3:0] PF_io_i_mux_bus_2_1; // @[FlexDPUby2.scala 121:24]
+  wire [3:0] PF_io_i_mux_bus_2_2; // @[FlexDPUby2.scala 121:24]
+  wire [3:0] PF_io_i_mux_bus_2_3; // @[FlexDPUby2.scala 121:24]
+  wire [3:0] PF_io_i_mux_bus_3_0; // @[FlexDPUby2.scala 121:24]
+  wire [3:0] PF_io_i_mux_bus_3_1; // @[FlexDPUby2.scala 121:24]
+  wire [3:0] PF_io_i_mux_bus_3_2; // @[FlexDPUby2.scala 121:24]
+  wire [3:0] PF_io_i_mux_bus_3_3; // @[FlexDPUby2.scala 121:24]
+  wire [15:0] PF_io_Source_0; // @[FlexDPUby2.scala 121:24]
+  wire [15:0] PF_io_Source_1; // @[FlexDPUby2.scala 121:24]
+  wire [15:0] PF_io_Source_2; // @[FlexDPUby2.scala 121:24]
+  wire [15:0] PF_io_Source_3; // @[FlexDPUby2.scala 121:24]
+  wire  PF_io_PF_Valid; // @[FlexDPUby2.scala 121:24]
+  wire  PF_io_DataValid; // @[FlexDPUby2.scala 121:24]
+  wire  FDPE_clock; // @[FlexDPUby2.scala 160:26]
+  wire  FDPE_reset; // @[FlexDPUby2.scala 160:26]
+  wire [15:0] FDPE_io_i_data_bus_0; // @[FlexDPUby2.scala 160:26]
+  wire [15:0] FDPE_io_i_data_bus_1; // @[FlexDPUby2.scala 160:26]
+  wire [15:0] FDPE_io_i_data_bus_2; // @[FlexDPUby2.scala 160:26]
+  wire [15:0] FDPE_io_i_data_bus_3; // @[FlexDPUby2.scala 160:26]
+  wire [15:0] FDPE_io_i_data_bus2_0; // @[FlexDPUby2.scala 160:26]
+  wire [15:0] FDPE_io_i_data_bus2_1; // @[FlexDPUby2.scala 160:26]
+  wire [15:0] FDPE_io_i_data_bus2_2; // @[FlexDPUby2.scala 160:26]
+  wire [15:0] FDPE_io_i_data_bus2_3; // @[FlexDPUby2.scala 160:26]
+  wire [15:0] FDPE_io_Stationary_matrix_0_0; // @[FlexDPUby2.scala 160:26]
+  wire [15:0] FDPE_io_Stationary_matrix_0_1; // @[FlexDPUby2.scala 160:26]
+  wire [15:0] FDPE_io_Stationary_matrix_1_0; // @[FlexDPUby2.scala 160:26]
+  wire [15:0] FDPE_io_Stationary_matrix_1_1; // @[FlexDPUby2.scala 160:26]
+  wire [15:0] FDPE_io_o_adder_0; // @[FlexDPUby2.scala 160:26]
+  wire [15:0] FDPE_io_o_adder_1; // @[FlexDPUby2.scala 160:26]
+  wire [15:0] FDPE_io_o_adder_2; // @[FlexDPUby2.scala 160:26]
+  wire [3:0] FDPE_io_i_mux_bus_0_0; // @[FlexDPUby2.scala 160:26]
+  wire [3:0] FDPE_io_i_mux_bus_0_1; // @[FlexDPUby2.scala 160:26]
+  wire [3:0] FDPE_io_i_mux_bus_0_2; // @[FlexDPUby2.scala 160:26]
+  wire [3:0] FDPE_io_i_mux_bus_0_3; // @[FlexDPUby2.scala 160:26]
+  wire [3:0] FDPE_io_i_mux_bus_1_0; // @[FlexDPUby2.scala 160:26]
+  wire [3:0] FDPE_io_i_mux_bus_1_1; // @[FlexDPUby2.scala 160:26]
+  wire [3:0] FDPE_io_i_mux_bus_1_2; // @[FlexDPUby2.scala 160:26]
+  wire [3:0] FDPE_io_i_mux_bus_1_3; // @[FlexDPUby2.scala 160:26]
+  wire [3:0] FDPE_io_i_mux_bus_2_0; // @[FlexDPUby2.scala 160:26]
+  wire [3:0] FDPE_io_i_mux_bus_2_1; // @[FlexDPUby2.scala 160:26]
+  wire [3:0] FDPE_io_i_mux_bus_2_2; // @[FlexDPUby2.scala 160:26]
+  wire [3:0] FDPE_io_i_mux_bus_2_3; // @[FlexDPUby2.scala 160:26]
+  wire [3:0] FDPE_io_i_mux_bus_3_0; // @[FlexDPUby2.scala 160:26]
+  wire [3:0] FDPE_io_i_mux_bus_3_1; // @[FlexDPUby2.scala 160:26]
+  wire [3:0] FDPE_io_i_mux_bus_3_2; // @[FlexDPUby2.scala 160:26]
+  wire [3:0] FDPE_io_i_mux_bus_3_3; // @[FlexDPUby2.scala 160:26]
+  wire [15:0] FDPE_io_matrix_0_0; // @[FlexDPUby2.scala 160:26]
+  wire [15:0] FDPE_io_matrix_0_1; // @[FlexDPUby2.scala 160:26]
+  wire [15:0] FDPE_io_matrix_1_0; // @[FlexDPUby2.scala 160:26]
+  wire [15:0] FDPE_io_matrix_1_1; // @[FlexDPUby2.scala 160:26]
+  wire  FDPE_io_input_valid; // @[FlexDPUby2.scala 160:26]
+  wire  FDPE_io_output_valid; // @[FlexDPUby2.scala 160:26]
   reg [31:0] DPEDest_0_0; // @[FlexDPUby2.scala 18:26]
   reg [31:0] DPEDest_0_1; // @[FlexDPUby2.scala 18:26]
   reg [31:0] DPEDest_0_2; // @[FlexDPUby2.scala 18:26]
   reg [31:0] DPEDest_0_3; // @[FlexDPUby2.scala 18:26]
-  reg [31:0] DPESrc_0_0; // @[FlexDPUby2.scala 19:25]
   reg [31:0] DPESrc_0_1; // @[FlexDPUby2.scala 19:25]
   reg [31:0] DPESrc_1_0; // @[FlexDPUby2.scala 19:25]
   reg [31:0] DPESrc_1_1; // @[FlexDPUby2.scala 19:25]
-  reg [31:0] indexRow; // @[FlexDPUby2.scala 21:27]
-  reg [31:0] indexCol; // @[FlexDPUby2.scala 22:27]
-  reg [31:0] SindexRow; // @[FlexDPUby2.scala 23:28]
-  reg [31:0] SindexCol; // @[FlexDPUby2.scala 24:28]
-  reg [31:0] iloop; // @[FlexDPUby2.scala 25:24]
-  reg [31:0] jloop; // @[FlexDPUby2.scala 26:24]
-  reg  Statvalid; // @[FlexDPUby2.scala 27:28]
-  reg  SrcDestValid; // @[FlexDPUby2.scala 28:31]
-  wire  _SrcDestValid_T = iloop == 32'h1; // @[FlexDPUby2.scala 29:28]
-  wire  _SrcDestValid_T_1 = jloop == 32'h1; // @[FlexDPUby2.scala 29:65]
-  wire  _SrcDestValid_T_2 = iloop == 32'h1 & jloop == 32'h1; // @[FlexDPUby2.scala 29:55]
-  wire  _Statvalid_T_1 = iloop == 32'h2; // @[FlexDPUby2.scala 34:63]
-  wire  _GEN_145 = ~iloop[0]; // @[FlexDPUby2.scala 37:{46,46}]
-  wire [15:0] _GEN_1 = ~iloop[0] & jloop[0] ? io_Stationary_matrix_0_1 : io_Stationary_matrix_0_0; // @[FlexDPUby2.scala 37:{46,46}]
-  wire  _GEN_146 = ~jloop[0]; // @[FlexDPUby2.scala 37:{46,46}]
-  wire [15:0] _GEN_2 = iloop[0] & ~jloop[0] ? io_Stationary_matrix_1_0 : _GEN_1; // @[FlexDPUby2.scala 37:{46,46}]
-  wire [15:0] _GEN_3 = iloop[0] & jloop[0] ? io_Stationary_matrix_1_1 : _GEN_2; // @[FlexDPUby2.scala 37:{46,46}]
-  wire  _T_3 = iloop <= 32'h1; // @[FlexDPUby2.scala 37:64]
-  wire [31:0] _DPEDest_T_5_T_6 = {{16'd0}, _GEN_3}; // @[FlexDPUby2.scala 38:{37,37}]
-  wire [31:0] _indexCol_T_1 = indexCol + 32'h1; // @[FlexDPUby2.scala 39:30]
-  wire [31:0] _GEN_24 = _GEN_3 != 16'h0 & iloop <= 32'h1 ? _indexCol_T_1 : indexCol; // @[FlexDPUby2.scala 37:89 39:18 22:27]
-  wire [15:0] _GEN_26 = _GEN_146 & iloop[0] ? io_Streaming_matrix_0_1 : io_Streaming_matrix_0_0; // @[FlexDPUby2.scala 41:{45,45}]
-  wire [15:0] _GEN_27 = jloop[0] & _GEN_145 ? io_Streaming_matrix_1_0 : _GEN_26; // @[FlexDPUby2.scala 41:{45,45}]
-  wire [15:0] _GEN_28 = jloop[0] & iloop[0] ? io_Streaming_matrix_1_1 : _GEN_27; // @[FlexDPUby2.scala 41:{45,45}]
-  wire [31:0] _DPESrc_T_12_T_13 = {{16'd0}, _GEN_28}; // @[FlexDPUby2.scala 42:{38,38}]
-  wire [31:0] _SindexCol_T_1 = SindexCol + 32'h1; // @[FlexDPUby2.scala 43:32]
-  wire [31:0] _GEN_41 = _GEN_28 != 16'h0 & _T_3 ? _SindexCol_T_1 : SindexCol; // @[FlexDPUby2.scala 41:88 43:19 24:28]
-  wire  _T_14 = SindexCol == 32'h1; // @[FlexDPUby2.scala 46:21]
-  wire [31:0] _SindexRow_T_1 = SindexRow + 32'h1; // @[FlexDPUby2.scala 50:32]
-  wire  _T_18 = indexCol == 32'h3; // @[FlexDPUby2.scala 54:20]
-  wire [31:0] _indexRow_T_1 = indexRow + 32'h1; // @[FlexDPUby2.scala 58:30]
-  wire [31:0] _iloop_T_1 = iloop + 32'h1; // @[FlexDPUby2.scala 64:24]
-  wire [31:0] _GEN_50 = iloop < 32'h1 & _SrcDestValid_T_1 ? _iloop_T_1 : iloop; // @[FlexDPUby2.scala 63:77 64:15 25:24]
-  wire [31:0] _jloop_T_1 = jloop + 32'h1; // @[FlexDPUby2.scala 68:24]
-  wire  _T_33 = _Statvalid_T_1 & _SrcDestValid_T_1; // @[FlexDPUby2.scala 72:30]
-  wire [31:0] _GEN_51 = _Statvalid_T_1 & _SrcDestValid_T_1 ? 32'h2 : _GEN_50; // @[FlexDPUby2.scala 72:49 73:15]
-  reg [31:0] src_0; // @[FlexDPUby2.scala 89:22]
-  reg [31:0] src_1; // @[FlexDPUby2.scala 89:22]
-  reg [31:0] src_2; // @[FlexDPUby2.scala 89:22]
-  reg [31:0] src_3; // @[FlexDPUby2.scala 89:22]
-  reg [3:0] muxes_0_0; // @[FlexDPUby2.scala 90:24]
-  reg [3:0] muxes_0_1; // @[FlexDPUby2.scala 90:24]
-  reg [3:0] muxes_0_2; // @[FlexDPUby2.scala 90:24]
-  reg [3:0] muxes_0_3; // @[FlexDPUby2.scala 90:24]
-  reg [3:0] muxes_1_0; // @[FlexDPUby2.scala 90:24]
-  reg [3:0] muxes_1_1; // @[FlexDPUby2.scala 90:24]
-  reg [3:0] muxes_1_2; // @[FlexDPUby2.scala 90:24]
-  reg [3:0] muxes_1_3; // @[FlexDPUby2.scala 90:24]
-  reg [3:0] muxes_2_0; // @[FlexDPUby2.scala 90:24]
-  reg [3:0] muxes_2_1; // @[FlexDPUby2.scala 90:24]
-  reg [3:0] muxes_2_2; // @[FlexDPUby2.scala 90:24]
-  reg [3:0] muxes_2_3; // @[FlexDPUby2.scala 90:24]
-  reg [3:0] muxes_3_0; // @[FlexDPUby2.scala 90:24]
-  reg [3:0] muxes_3_1; // @[FlexDPUby2.scala 90:24]
-  reg [3:0] muxes_3_2; // @[FlexDPUby2.scala 90:24]
-  reg [3:0] muxes_3_3; // @[FlexDPUby2.scala 90:24]
-  reg [31:0] dest_0; // @[FlexDPUby2.scala 91:23]
-  reg [31:0] dest_1; // @[FlexDPUby2.scala 91:23]
-  reg [31:0] dest_2; // @[FlexDPUby2.scala 91:23]
-  reg [31:0] dest_3; // @[FlexDPUby2.scala 91:23]
-  reg  iterationChange; // @[FlexDPUby2.scala 106:34]
-  wire [31:0] _GEN_58 = iterationChange ? DPESrc_1_0 : DPESrc_0_0; // @[FlexDPUby2.scala 110:{32,32}]
-  wire [31:0] _GEN_60 = iterationChange ? DPESrc_1_1 : DPESrc_0_1; // @[FlexDPUby2.scala 110:{32,32}]
-  wire  _T_38 = iterationChange + 1'h1; // @[FlexDPUby2.scala 126:48]
-  wire [31:0] _GEN_62 = _T_38 ? DPESrc_1_0 : DPESrc_0_0; // @[FlexDPUby2.scala 97:{20,20}]
-  wire  _GEN_63 = _GEN_62 != 32'h0 ? _T_38 : iterationChange; // @[FlexDPUby2.scala 97:28 99:21 106:34]
-  wire [31:0] _GEN_65 = _T_38 ? DPESrc_1_1 : DPESrc_0_1; // @[FlexDPUby2.scala 97:{20,20}]
-  wire  _GEN_66 = _GEN_65 != 32'h0 ? _T_38 : _GEN_63; // @[FlexDPUby2.scala 97:28 99:21]
-  wire  _GEN_67 = PF_io_PF_Valid ? _GEN_66 : iterationChange; // @[FlexDPUby2.scala 106:34 124:36]
-  reg  hi; // @[FlexDPUby2.scala 137:25]
-  wire  _GEN_90 = PF_io_PF_Valid | hi; // @[FlexDPUby2.scala 138:30 139:16 137:25]
-  reg  hig; // @[FlexDPUby2.scala 141:26]
-  wire  _GEN_91 = hi > 1'h0 | hig; // @[FlexDPUby2.scala 142:24 143:17 141:26]
-  wire [3:0] _FDPE_io_i_mux_bus_0_0_rev_T_2 = {muxes_0_0[0], 3'h0}; // @[FlexDPUby2.scala 84:35]
-  wire [3:0] _FDPE_io_i_mux_bus_0_0_rev_T_4 = {{1'd0}, muxes_0_0[3:1]}; // @[FlexDPUby2.scala 84:24]
-  wire [2:0] _GEN_170 = {_FDPE_io_i_mux_bus_0_0_rev_T_4[0], 2'h0}; // @[FlexDPUby2.scala 84:35]
-  wire [3:0] _FDPE_io_i_mux_bus_0_0_rev_T_6 = {{1'd0}, _GEN_170}; // @[FlexDPUby2.scala 84:35]
-  wire [3:0] _FDPE_io_i_mux_bus_0_0_rev_T_7 = _FDPE_io_i_mux_bus_0_0_rev_T_2 | _FDPE_io_i_mux_bus_0_0_rev_T_6; // @[FlexDPUby2.scala 84:17]
-  wire [3:0] _FDPE_io_i_mux_bus_0_0_rev_T_8 = {{2'd0}, muxes_0_0[3:2]}; // @[FlexDPUby2.scala 84:24]
-  wire [1:0] _FDPE_io_i_mux_bus_0_0_rev_T_10 = {_FDPE_io_i_mux_bus_0_0_rev_T_8[0], 1'h0}; // @[FlexDPUby2.scala 84:35]
-  wire [3:0] _GEN_172 = {{2'd0}, _FDPE_io_i_mux_bus_0_0_rev_T_10}; // @[FlexDPUby2.scala 84:17]
-  wire [3:0] _FDPE_io_i_mux_bus_0_0_rev_T_11 = _FDPE_io_i_mux_bus_0_0_rev_T_7 | _GEN_172; // @[FlexDPUby2.scala 84:17]
-  wire [3:0] _FDPE_io_i_mux_bus_0_0_rev_T_12 = {{3'd0}, muxes_0_0[3]}; // @[FlexDPUby2.scala 84:24]
-  wire [1:0] _FDPE_io_i_mux_bus_0_0_rev_T_14 = {{1'd0}, _FDPE_io_i_mux_bus_0_0_rev_T_12[0]}; // @[FlexDPUby2.scala 84:35]
-  wire [3:0] _GEN_174 = {{2'd0}, _FDPE_io_i_mux_bus_0_0_rev_T_14}; // @[FlexDPUby2.scala 84:17]
-  wire [3:0] _FDPE_io_i_mux_bus_0_1_rev_T_2 = {muxes_0_1[0], 3'h0}; // @[FlexDPUby2.scala 84:35]
-  wire [3:0] _FDPE_io_i_mux_bus_0_1_rev_T_4 = {{1'd0}, muxes_0_1[3:1]}; // @[FlexDPUby2.scala 84:24]
-  wire [2:0] _GEN_176 = {_FDPE_io_i_mux_bus_0_1_rev_T_4[0], 2'h0}; // @[FlexDPUby2.scala 84:35]
-  wire [3:0] _FDPE_io_i_mux_bus_0_1_rev_T_6 = {{1'd0}, _GEN_176}; // @[FlexDPUby2.scala 84:35]
-  wire [3:0] _FDPE_io_i_mux_bus_0_1_rev_T_7 = _FDPE_io_i_mux_bus_0_1_rev_T_2 | _FDPE_io_i_mux_bus_0_1_rev_T_6; // @[FlexDPUby2.scala 84:17]
-  wire [3:0] _FDPE_io_i_mux_bus_0_1_rev_T_8 = {{2'd0}, muxes_0_1[3:2]}; // @[FlexDPUby2.scala 84:24]
-  wire [1:0] _FDPE_io_i_mux_bus_0_1_rev_T_10 = {_FDPE_io_i_mux_bus_0_1_rev_T_8[0], 1'h0}; // @[FlexDPUby2.scala 84:35]
-  wire [3:0] _GEN_178 = {{2'd0}, _FDPE_io_i_mux_bus_0_1_rev_T_10}; // @[FlexDPUby2.scala 84:17]
-  wire [3:0] _FDPE_io_i_mux_bus_0_1_rev_T_11 = _FDPE_io_i_mux_bus_0_1_rev_T_7 | _GEN_178; // @[FlexDPUby2.scala 84:17]
-  wire [3:0] _FDPE_io_i_mux_bus_0_1_rev_T_12 = {{3'd0}, muxes_0_1[3]}; // @[FlexDPUby2.scala 84:24]
-  wire [1:0] _FDPE_io_i_mux_bus_0_1_rev_T_14 = {{1'd0}, _FDPE_io_i_mux_bus_0_1_rev_T_12[0]}; // @[FlexDPUby2.scala 84:35]
-  wire [3:0] _GEN_180 = {{2'd0}, _FDPE_io_i_mux_bus_0_1_rev_T_14}; // @[FlexDPUby2.scala 84:17]
-  wire [3:0] _FDPE_io_i_mux_bus_0_2_rev_T_2 = {muxes_0_2[0], 3'h0}; // @[FlexDPUby2.scala 84:35]
-  wire [3:0] _FDPE_io_i_mux_bus_0_2_rev_T_4 = {{1'd0}, muxes_0_2[3:1]}; // @[FlexDPUby2.scala 84:24]
-  wire [2:0] _GEN_182 = {_FDPE_io_i_mux_bus_0_2_rev_T_4[0], 2'h0}; // @[FlexDPUby2.scala 84:35]
-  wire [3:0] _FDPE_io_i_mux_bus_0_2_rev_T_6 = {{1'd0}, _GEN_182}; // @[FlexDPUby2.scala 84:35]
-  wire [3:0] _FDPE_io_i_mux_bus_0_2_rev_T_7 = _FDPE_io_i_mux_bus_0_2_rev_T_2 | _FDPE_io_i_mux_bus_0_2_rev_T_6; // @[FlexDPUby2.scala 84:17]
-  wire [3:0] _FDPE_io_i_mux_bus_0_2_rev_T_8 = {{2'd0}, muxes_0_2[3:2]}; // @[FlexDPUby2.scala 84:24]
-  wire [1:0] _FDPE_io_i_mux_bus_0_2_rev_T_10 = {_FDPE_io_i_mux_bus_0_2_rev_T_8[0], 1'h0}; // @[FlexDPUby2.scala 84:35]
-  wire [3:0] _GEN_184 = {{2'd0}, _FDPE_io_i_mux_bus_0_2_rev_T_10}; // @[FlexDPUby2.scala 84:17]
-  wire [3:0] _FDPE_io_i_mux_bus_0_2_rev_T_11 = _FDPE_io_i_mux_bus_0_2_rev_T_7 | _GEN_184; // @[FlexDPUby2.scala 84:17]
-  wire [3:0] _FDPE_io_i_mux_bus_0_2_rev_T_12 = {{3'd0}, muxes_0_2[3]}; // @[FlexDPUby2.scala 84:24]
-  wire [1:0] _FDPE_io_i_mux_bus_0_2_rev_T_14 = {{1'd0}, _FDPE_io_i_mux_bus_0_2_rev_T_12[0]}; // @[FlexDPUby2.scala 84:35]
-  wire [3:0] _GEN_186 = {{2'd0}, _FDPE_io_i_mux_bus_0_2_rev_T_14}; // @[FlexDPUby2.scala 84:17]
-  wire [3:0] _FDPE_io_i_mux_bus_0_3_rev_T_2 = {muxes_0_3[0], 3'h0}; // @[FlexDPUby2.scala 84:35]
-  wire [3:0] _FDPE_io_i_mux_bus_0_3_rev_T_4 = {{1'd0}, muxes_0_3[3:1]}; // @[FlexDPUby2.scala 84:24]
-  wire [2:0] _GEN_188 = {_FDPE_io_i_mux_bus_0_3_rev_T_4[0], 2'h0}; // @[FlexDPUby2.scala 84:35]
-  wire [3:0] _FDPE_io_i_mux_bus_0_3_rev_T_6 = {{1'd0}, _GEN_188}; // @[FlexDPUby2.scala 84:35]
-  wire [3:0] _FDPE_io_i_mux_bus_0_3_rev_T_7 = _FDPE_io_i_mux_bus_0_3_rev_T_2 | _FDPE_io_i_mux_bus_0_3_rev_T_6; // @[FlexDPUby2.scala 84:17]
-  wire [3:0] _FDPE_io_i_mux_bus_0_3_rev_T_8 = {{2'd0}, muxes_0_3[3:2]}; // @[FlexDPUby2.scala 84:24]
-  wire [1:0] _FDPE_io_i_mux_bus_0_3_rev_T_10 = {_FDPE_io_i_mux_bus_0_3_rev_T_8[0], 1'h0}; // @[FlexDPUby2.scala 84:35]
-  wire [3:0] _GEN_190 = {{2'd0}, _FDPE_io_i_mux_bus_0_3_rev_T_10}; // @[FlexDPUby2.scala 84:17]
-  wire [3:0] _FDPE_io_i_mux_bus_0_3_rev_T_11 = _FDPE_io_i_mux_bus_0_3_rev_T_7 | _GEN_190; // @[FlexDPUby2.scala 84:17]
-  wire [3:0] _FDPE_io_i_mux_bus_0_3_rev_T_12 = {{3'd0}, muxes_0_3[3]}; // @[FlexDPUby2.scala 84:24]
-  wire [1:0] _FDPE_io_i_mux_bus_0_3_rev_T_14 = {{1'd0}, _FDPE_io_i_mux_bus_0_3_rev_T_12[0]}; // @[FlexDPUby2.scala 84:35]
-  wire [3:0] _GEN_192 = {{2'd0}, _FDPE_io_i_mux_bus_0_3_rev_T_14}; // @[FlexDPUby2.scala 84:17]
-  wire [3:0] _FDPE_io_i_mux_bus_1_0_rev_T_2 = {muxes_1_0[0], 3'h0}; // @[FlexDPUby2.scala 84:35]
-  wire [3:0] _FDPE_io_i_mux_bus_1_0_rev_T_4 = {{1'd0}, muxes_1_0[3:1]}; // @[FlexDPUby2.scala 84:24]
-  wire [2:0] _GEN_194 = {_FDPE_io_i_mux_bus_1_0_rev_T_4[0], 2'h0}; // @[FlexDPUby2.scala 84:35]
-  wire [3:0] _FDPE_io_i_mux_bus_1_0_rev_T_6 = {{1'd0}, _GEN_194}; // @[FlexDPUby2.scala 84:35]
-  wire [3:0] _FDPE_io_i_mux_bus_1_0_rev_T_7 = _FDPE_io_i_mux_bus_1_0_rev_T_2 | _FDPE_io_i_mux_bus_1_0_rev_T_6; // @[FlexDPUby2.scala 84:17]
-  wire [3:0] _FDPE_io_i_mux_bus_1_0_rev_T_8 = {{2'd0}, muxes_1_0[3:2]}; // @[FlexDPUby2.scala 84:24]
-  wire [1:0] _FDPE_io_i_mux_bus_1_0_rev_T_10 = {_FDPE_io_i_mux_bus_1_0_rev_T_8[0], 1'h0}; // @[FlexDPUby2.scala 84:35]
-  wire [3:0] _GEN_196 = {{2'd0}, _FDPE_io_i_mux_bus_1_0_rev_T_10}; // @[FlexDPUby2.scala 84:17]
-  wire [3:0] _FDPE_io_i_mux_bus_1_0_rev_T_11 = _FDPE_io_i_mux_bus_1_0_rev_T_7 | _GEN_196; // @[FlexDPUby2.scala 84:17]
-  wire [3:0] _FDPE_io_i_mux_bus_1_0_rev_T_12 = {{3'd0}, muxes_1_0[3]}; // @[FlexDPUby2.scala 84:24]
-  wire [1:0] _FDPE_io_i_mux_bus_1_0_rev_T_14 = {{1'd0}, _FDPE_io_i_mux_bus_1_0_rev_T_12[0]}; // @[FlexDPUby2.scala 84:35]
-  wire [3:0] _GEN_198 = {{2'd0}, _FDPE_io_i_mux_bus_1_0_rev_T_14}; // @[FlexDPUby2.scala 84:17]
-  wire [3:0] _FDPE_io_i_mux_bus_1_1_rev_T_2 = {muxes_1_1[0], 3'h0}; // @[FlexDPUby2.scala 84:35]
-  wire [3:0] _FDPE_io_i_mux_bus_1_1_rev_T_4 = {{1'd0}, muxes_1_1[3:1]}; // @[FlexDPUby2.scala 84:24]
-  wire [2:0] _GEN_200 = {_FDPE_io_i_mux_bus_1_1_rev_T_4[0], 2'h0}; // @[FlexDPUby2.scala 84:35]
-  wire [3:0] _FDPE_io_i_mux_bus_1_1_rev_T_6 = {{1'd0}, _GEN_200}; // @[FlexDPUby2.scala 84:35]
-  wire [3:0] _FDPE_io_i_mux_bus_1_1_rev_T_7 = _FDPE_io_i_mux_bus_1_1_rev_T_2 | _FDPE_io_i_mux_bus_1_1_rev_T_6; // @[FlexDPUby2.scala 84:17]
-  wire [3:0] _FDPE_io_i_mux_bus_1_1_rev_T_8 = {{2'd0}, muxes_1_1[3:2]}; // @[FlexDPUby2.scala 84:24]
-  wire [1:0] _FDPE_io_i_mux_bus_1_1_rev_T_10 = {_FDPE_io_i_mux_bus_1_1_rev_T_8[0], 1'h0}; // @[FlexDPUby2.scala 84:35]
-  wire [3:0] _GEN_202 = {{2'd0}, _FDPE_io_i_mux_bus_1_1_rev_T_10}; // @[FlexDPUby2.scala 84:17]
-  wire [3:0] _FDPE_io_i_mux_bus_1_1_rev_T_11 = _FDPE_io_i_mux_bus_1_1_rev_T_7 | _GEN_202; // @[FlexDPUby2.scala 84:17]
-  wire [3:0] _FDPE_io_i_mux_bus_1_1_rev_T_12 = {{3'd0}, muxes_1_1[3]}; // @[FlexDPUby2.scala 84:24]
-  wire [1:0] _FDPE_io_i_mux_bus_1_1_rev_T_14 = {{1'd0}, _FDPE_io_i_mux_bus_1_1_rev_T_12[0]}; // @[FlexDPUby2.scala 84:35]
-  wire [3:0] _GEN_204 = {{2'd0}, _FDPE_io_i_mux_bus_1_1_rev_T_14}; // @[FlexDPUby2.scala 84:17]
-  wire [3:0] _FDPE_io_i_mux_bus_1_2_rev_T_2 = {muxes_1_2[0], 3'h0}; // @[FlexDPUby2.scala 84:35]
-  wire [3:0] _FDPE_io_i_mux_bus_1_2_rev_T_4 = {{1'd0}, muxes_1_2[3:1]}; // @[FlexDPUby2.scala 84:24]
-  wire [2:0] _GEN_206 = {_FDPE_io_i_mux_bus_1_2_rev_T_4[0], 2'h0}; // @[FlexDPUby2.scala 84:35]
-  wire [3:0] _FDPE_io_i_mux_bus_1_2_rev_T_6 = {{1'd0}, _GEN_206}; // @[FlexDPUby2.scala 84:35]
-  wire [3:0] _FDPE_io_i_mux_bus_1_2_rev_T_7 = _FDPE_io_i_mux_bus_1_2_rev_T_2 | _FDPE_io_i_mux_bus_1_2_rev_T_6; // @[FlexDPUby2.scala 84:17]
-  wire [3:0] _FDPE_io_i_mux_bus_1_2_rev_T_8 = {{2'd0}, muxes_1_2[3:2]}; // @[FlexDPUby2.scala 84:24]
-  wire [1:0] _FDPE_io_i_mux_bus_1_2_rev_T_10 = {_FDPE_io_i_mux_bus_1_2_rev_T_8[0], 1'h0}; // @[FlexDPUby2.scala 84:35]
-  wire [3:0] _GEN_208 = {{2'd0}, _FDPE_io_i_mux_bus_1_2_rev_T_10}; // @[FlexDPUby2.scala 84:17]
-  wire [3:0] _FDPE_io_i_mux_bus_1_2_rev_T_11 = _FDPE_io_i_mux_bus_1_2_rev_T_7 | _GEN_208; // @[FlexDPUby2.scala 84:17]
-  wire [3:0] _FDPE_io_i_mux_bus_1_2_rev_T_12 = {{3'd0}, muxes_1_2[3]}; // @[FlexDPUby2.scala 84:24]
-  wire [1:0] _FDPE_io_i_mux_bus_1_2_rev_T_14 = {{1'd0}, _FDPE_io_i_mux_bus_1_2_rev_T_12[0]}; // @[FlexDPUby2.scala 84:35]
-  wire [3:0] _GEN_210 = {{2'd0}, _FDPE_io_i_mux_bus_1_2_rev_T_14}; // @[FlexDPUby2.scala 84:17]
-  wire [3:0] _FDPE_io_i_mux_bus_1_3_rev_T_2 = {muxes_1_3[0], 3'h0}; // @[FlexDPUby2.scala 84:35]
-  wire [3:0] _FDPE_io_i_mux_bus_1_3_rev_T_4 = {{1'd0}, muxes_1_3[3:1]}; // @[FlexDPUby2.scala 84:24]
-  wire [2:0] _GEN_212 = {_FDPE_io_i_mux_bus_1_3_rev_T_4[0], 2'h0}; // @[FlexDPUby2.scala 84:35]
-  wire [3:0] _FDPE_io_i_mux_bus_1_3_rev_T_6 = {{1'd0}, _GEN_212}; // @[FlexDPUby2.scala 84:35]
-  wire [3:0] _FDPE_io_i_mux_bus_1_3_rev_T_7 = _FDPE_io_i_mux_bus_1_3_rev_T_2 | _FDPE_io_i_mux_bus_1_3_rev_T_6; // @[FlexDPUby2.scala 84:17]
-  wire [3:0] _FDPE_io_i_mux_bus_1_3_rev_T_8 = {{2'd0}, muxes_1_3[3:2]}; // @[FlexDPUby2.scala 84:24]
-  wire [1:0] _FDPE_io_i_mux_bus_1_3_rev_T_10 = {_FDPE_io_i_mux_bus_1_3_rev_T_8[0], 1'h0}; // @[FlexDPUby2.scala 84:35]
-  wire [3:0] _GEN_214 = {{2'd0}, _FDPE_io_i_mux_bus_1_3_rev_T_10}; // @[FlexDPUby2.scala 84:17]
-  wire [3:0] _FDPE_io_i_mux_bus_1_3_rev_T_11 = _FDPE_io_i_mux_bus_1_3_rev_T_7 | _GEN_214; // @[FlexDPUby2.scala 84:17]
-  wire [3:0] _FDPE_io_i_mux_bus_1_3_rev_T_12 = {{3'd0}, muxes_1_3[3]}; // @[FlexDPUby2.scala 84:24]
-  wire [1:0] _FDPE_io_i_mux_bus_1_3_rev_T_14 = {{1'd0}, _FDPE_io_i_mux_bus_1_3_rev_T_12[0]}; // @[FlexDPUby2.scala 84:35]
-  wire [3:0] _GEN_216 = {{2'd0}, _FDPE_io_i_mux_bus_1_3_rev_T_14}; // @[FlexDPUby2.scala 84:17]
-  wire [3:0] _FDPE_io_i_mux_bus_2_0_rev_T_2 = {muxes_2_0[0], 3'h0}; // @[FlexDPUby2.scala 84:35]
-  wire [3:0] _FDPE_io_i_mux_bus_2_0_rev_T_4 = {{1'd0}, muxes_2_0[3:1]}; // @[FlexDPUby2.scala 84:24]
-  wire [2:0] _GEN_218 = {_FDPE_io_i_mux_bus_2_0_rev_T_4[0], 2'h0}; // @[FlexDPUby2.scala 84:35]
-  wire [3:0] _FDPE_io_i_mux_bus_2_0_rev_T_6 = {{1'd0}, _GEN_218}; // @[FlexDPUby2.scala 84:35]
-  wire [3:0] _FDPE_io_i_mux_bus_2_0_rev_T_7 = _FDPE_io_i_mux_bus_2_0_rev_T_2 | _FDPE_io_i_mux_bus_2_0_rev_T_6; // @[FlexDPUby2.scala 84:17]
-  wire [3:0] _FDPE_io_i_mux_bus_2_0_rev_T_8 = {{2'd0}, muxes_2_0[3:2]}; // @[FlexDPUby2.scala 84:24]
-  wire [1:0] _FDPE_io_i_mux_bus_2_0_rev_T_10 = {_FDPE_io_i_mux_bus_2_0_rev_T_8[0], 1'h0}; // @[FlexDPUby2.scala 84:35]
-  wire [3:0] _GEN_220 = {{2'd0}, _FDPE_io_i_mux_bus_2_0_rev_T_10}; // @[FlexDPUby2.scala 84:17]
-  wire [3:0] _FDPE_io_i_mux_bus_2_0_rev_T_11 = _FDPE_io_i_mux_bus_2_0_rev_T_7 | _GEN_220; // @[FlexDPUby2.scala 84:17]
-  wire [3:0] _FDPE_io_i_mux_bus_2_0_rev_T_12 = {{3'd0}, muxes_2_0[3]}; // @[FlexDPUby2.scala 84:24]
-  wire [1:0] _FDPE_io_i_mux_bus_2_0_rev_T_14 = {{1'd0}, _FDPE_io_i_mux_bus_2_0_rev_T_12[0]}; // @[FlexDPUby2.scala 84:35]
-  wire [3:0] _GEN_222 = {{2'd0}, _FDPE_io_i_mux_bus_2_0_rev_T_14}; // @[FlexDPUby2.scala 84:17]
-  wire [3:0] _FDPE_io_i_mux_bus_2_1_rev_T_2 = {muxes_2_1[0], 3'h0}; // @[FlexDPUby2.scala 84:35]
-  wire [3:0] _FDPE_io_i_mux_bus_2_1_rev_T_4 = {{1'd0}, muxes_2_1[3:1]}; // @[FlexDPUby2.scala 84:24]
-  wire [2:0] _GEN_224 = {_FDPE_io_i_mux_bus_2_1_rev_T_4[0], 2'h0}; // @[FlexDPUby2.scala 84:35]
-  wire [3:0] _FDPE_io_i_mux_bus_2_1_rev_T_6 = {{1'd0}, _GEN_224}; // @[FlexDPUby2.scala 84:35]
-  wire [3:0] _FDPE_io_i_mux_bus_2_1_rev_T_7 = _FDPE_io_i_mux_bus_2_1_rev_T_2 | _FDPE_io_i_mux_bus_2_1_rev_T_6; // @[FlexDPUby2.scala 84:17]
-  wire [3:0] _FDPE_io_i_mux_bus_2_1_rev_T_8 = {{2'd0}, muxes_2_1[3:2]}; // @[FlexDPUby2.scala 84:24]
-  wire [1:0] _FDPE_io_i_mux_bus_2_1_rev_T_10 = {_FDPE_io_i_mux_bus_2_1_rev_T_8[0], 1'h0}; // @[FlexDPUby2.scala 84:35]
-  wire [3:0] _GEN_226 = {{2'd0}, _FDPE_io_i_mux_bus_2_1_rev_T_10}; // @[FlexDPUby2.scala 84:17]
-  wire [3:0] _FDPE_io_i_mux_bus_2_1_rev_T_11 = _FDPE_io_i_mux_bus_2_1_rev_T_7 | _GEN_226; // @[FlexDPUby2.scala 84:17]
-  wire [3:0] _FDPE_io_i_mux_bus_2_1_rev_T_12 = {{3'd0}, muxes_2_1[3]}; // @[FlexDPUby2.scala 84:24]
-  wire [1:0] _FDPE_io_i_mux_bus_2_1_rev_T_14 = {{1'd0}, _FDPE_io_i_mux_bus_2_1_rev_T_12[0]}; // @[FlexDPUby2.scala 84:35]
-  wire [3:0] _GEN_228 = {{2'd0}, _FDPE_io_i_mux_bus_2_1_rev_T_14}; // @[FlexDPUby2.scala 84:17]
-  wire [3:0] _FDPE_io_i_mux_bus_2_2_rev_T_2 = {muxes_2_2[0], 3'h0}; // @[FlexDPUby2.scala 84:35]
-  wire [3:0] _FDPE_io_i_mux_bus_2_2_rev_T_4 = {{1'd0}, muxes_2_2[3:1]}; // @[FlexDPUby2.scala 84:24]
-  wire [2:0] _GEN_230 = {_FDPE_io_i_mux_bus_2_2_rev_T_4[0], 2'h0}; // @[FlexDPUby2.scala 84:35]
-  wire [3:0] _FDPE_io_i_mux_bus_2_2_rev_T_6 = {{1'd0}, _GEN_230}; // @[FlexDPUby2.scala 84:35]
-  wire [3:0] _FDPE_io_i_mux_bus_2_2_rev_T_7 = _FDPE_io_i_mux_bus_2_2_rev_T_2 | _FDPE_io_i_mux_bus_2_2_rev_T_6; // @[FlexDPUby2.scala 84:17]
-  wire [3:0] _FDPE_io_i_mux_bus_2_2_rev_T_8 = {{2'd0}, muxes_2_2[3:2]}; // @[FlexDPUby2.scala 84:24]
-  wire [1:0] _FDPE_io_i_mux_bus_2_2_rev_T_10 = {_FDPE_io_i_mux_bus_2_2_rev_T_8[0], 1'h0}; // @[FlexDPUby2.scala 84:35]
-  wire [3:0] _GEN_232 = {{2'd0}, _FDPE_io_i_mux_bus_2_2_rev_T_10}; // @[FlexDPUby2.scala 84:17]
-  wire [3:0] _FDPE_io_i_mux_bus_2_2_rev_T_11 = _FDPE_io_i_mux_bus_2_2_rev_T_7 | _GEN_232; // @[FlexDPUby2.scala 84:17]
-  wire [3:0] _FDPE_io_i_mux_bus_2_2_rev_T_12 = {{3'd0}, muxes_2_2[3]}; // @[FlexDPUby2.scala 84:24]
-  wire [1:0] _FDPE_io_i_mux_bus_2_2_rev_T_14 = {{1'd0}, _FDPE_io_i_mux_bus_2_2_rev_T_12[0]}; // @[FlexDPUby2.scala 84:35]
-  wire [3:0] _GEN_234 = {{2'd0}, _FDPE_io_i_mux_bus_2_2_rev_T_14}; // @[FlexDPUby2.scala 84:17]
-  wire [3:0] _FDPE_io_i_mux_bus_2_3_rev_T_2 = {muxes_2_3[0], 3'h0}; // @[FlexDPUby2.scala 84:35]
-  wire [3:0] _FDPE_io_i_mux_bus_2_3_rev_T_4 = {{1'd0}, muxes_2_3[3:1]}; // @[FlexDPUby2.scala 84:24]
-  wire [2:0] _GEN_236 = {_FDPE_io_i_mux_bus_2_3_rev_T_4[0], 2'h0}; // @[FlexDPUby2.scala 84:35]
-  wire [3:0] _FDPE_io_i_mux_bus_2_3_rev_T_6 = {{1'd0}, _GEN_236}; // @[FlexDPUby2.scala 84:35]
-  wire [3:0] _FDPE_io_i_mux_bus_2_3_rev_T_7 = _FDPE_io_i_mux_bus_2_3_rev_T_2 | _FDPE_io_i_mux_bus_2_3_rev_T_6; // @[FlexDPUby2.scala 84:17]
-  wire [3:0] _FDPE_io_i_mux_bus_2_3_rev_T_8 = {{2'd0}, muxes_2_3[3:2]}; // @[FlexDPUby2.scala 84:24]
-  wire [1:0] _FDPE_io_i_mux_bus_2_3_rev_T_10 = {_FDPE_io_i_mux_bus_2_3_rev_T_8[0], 1'h0}; // @[FlexDPUby2.scala 84:35]
-  wire [3:0] _GEN_238 = {{2'd0}, _FDPE_io_i_mux_bus_2_3_rev_T_10}; // @[FlexDPUby2.scala 84:17]
-  wire [3:0] _FDPE_io_i_mux_bus_2_3_rev_T_11 = _FDPE_io_i_mux_bus_2_3_rev_T_7 | _GEN_238; // @[FlexDPUby2.scala 84:17]
-  wire [3:0] _FDPE_io_i_mux_bus_2_3_rev_T_12 = {{3'd0}, muxes_2_3[3]}; // @[FlexDPUby2.scala 84:24]
-  wire [1:0] _FDPE_io_i_mux_bus_2_3_rev_T_14 = {{1'd0}, _FDPE_io_i_mux_bus_2_3_rev_T_12[0]}; // @[FlexDPUby2.scala 84:35]
-  wire [3:0] _GEN_240 = {{2'd0}, _FDPE_io_i_mux_bus_2_3_rev_T_14}; // @[FlexDPUby2.scala 84:17]
-  wire [3:0] _FDPE_io_i_mux_bus_3_0_rev_T_2 = {muxes_3_0[0], 3'h0}; // @[FlexDPUby2.scala 84:35]
-  wire [3:0] _FDPE_io_i_mux_bus_3_0_rev_T_4 = {{1'd0}, muxes_3_0[3:1]}; // @[FlexDPUby2.scala 84:24]
-  wire [2:0] _GEN_242 = {_FDPE_io_i_mux_bus_3_0_rev_T_4[0], 2'h0}; // @[FlexDPUby2.scala 84:35]
-  wire [3:0] _FDPE_io_i_mux_bus_3_0_rev_T_6 = {{1'd0}, _GEN_242}; // @[FlexDPUby2.scala 84:35]
-  wire [3:0] _FDPE_io_i_mux_bus_3_0_rev_T_7 = _FDPE_io_i_mux_bus_3_0_rev_T_2 | _FDPE_io_i_mux_bus_3_0_rev_T_6; // @[FlexDPUby2.scala 84:17]
-  wire [3:0] _FDPE_io_i_mux_bus_3_0_rev_T_8 = {{2'd0}, muxes_3_0[3:2]}; // @[FlexDPUby2.scala 84:24]
-  wire [1:0] _FDPE_io_i_mux_bus_3_0_rev_T_10 = {_FDPE_io_i_mux_bus_3_0_rev_T_8[0], 1'h0}; // @[FlexDPUby2.scala 84:35]
-  wire [3:0] _GEN_244 = {{2'd0}, _FDPE_io_i_mux_bus_3_0_rev_T_10}; // @[FlexDPUby2.scala 84:17]
-  wire [3:0] _FDPE_io_i_mux_bus_3_0_rev_T_11 = _FDPE_io_i_mux_bus_3_0_rev_T_7 | _GEN_244; // @[FlexDPUby2.scala 84:17]
-  wire [3:0] _FDPE_io_i_mux_bus_3_0_rev_T_12 = {{3'd0}, muxes_3_0[3]}; // @[FlexDPUby2.scala 84:24]
-  wire [1:0] _FDPE_io_i_mux_bus_3_0_rev_T_14 = {{1'd0}, _FDPE_io_i_mux_bus_3_0_rev_T_12[0]}; // @[FlexDPUby2.scala 84:35]
-  wire [3:0] _GEN_246 = {{2'd0}, _FDPE_io_i_mux_bus_3_0_rev_T_14}; // @[FlexDPUby2.scala 84:17]
-  wire [3:0] _FDPE_io_i_mux_bus_3_1_rev_T_2 = {muxes_3_1[0], 3'h0}; // @[FlexDPUby2.scala 84:35]
-  wire [3:0] _FDPE_io_i_mux_bus_3_1_rev_T_4 = {{1'd0}, muxes_3_1[3:1]}; // @[FlexDPUby2.scala 84:24]
-  wire [2:0] _GEN_248 = {_FDPE_io_i_mux_bus_3_1_rev_T_4[0], 2'h0}; // @[FlexDPUby2.scala 84:35]
-  wire [3:0] _FDPE_io_i_mux_bus_3_1_rev_T_6 = {{1'd0}, _GEN_248}; // @[FlexDPUby2.scala 84:35]
-  wire [3:0] _FDPE_io_i_mux_bus_3_1_rev_T_7 = _FDPE_io_i_mux_bus_3_1_rev_T_2 | _FDPE_io_i_mux_bus_3_1_rev_T_6; // @[FlexDPUby2.scala 84:17]
-  wire [3:0] _FDPE_io_i_mux_bus_3_1_rev_T_8 = {{2'd0}, muxes_3_1[3:2]}; // @[FlexDPUby2.scala 84:24]
-  wire [1:0] _FDPE_io_i_mux_bus_3_1_rev_T_10 = {_FDPE_io_i_mux_bus_3_1_rev_T_8[0], 1'h0}; // @[FlexDPUby2.scala 84:35]
-  wire [3:0] _GEN_250 = {{2'd0}, _FDPE_io_i_mux_bus_3_1_rev_T_10}; // @[FlexDPUby2.scala 84:17]
-  wire [3:0] _FDPE_io_i_mux_bus_3_1_rev_T_11 = _FDPE_io_i_mux_bus_3_1_rev_T_7 | _GEN_250; // @[FlexDPUby2.scala 84:17]
-  wire [3:0] _FDPE_io_i_mux_bus_3_1_rev_T_12 = {{3'd0}, muxes_3_1[3]}; // @[FlexDPUby2.scala 84:24]
-  wire [1:0] _FDPE_io_i_mux_bus_3_1_rev_T_14 = {{1'd0}, _FDPE_io_i_mux_bus_3_1_rev_T_12[0]}; // @[FlexDPUby2.scala 84:35]
-  wire [3:0] _GEN_252 = {{2'd0}, _FDPE_io_i_mux_bus_3_1_rev_T_14}; // @[FlexDPUby2.scala 84:17]
-  wire [3:0] _FDPE_io_i_mux_bus_3_2_rev_T_2 = {muxes_3_2[0], 3'h0}; // @[FlexDPUby2.scala 84:35]
-  wire [3:0] _FDPE_io_i_mux_bus_3_2_rev_T_4 = {{1'd0}, muxes_3_2[3:1]}; // @[FlexDPUby2.scala 84:24]
-  wire [2:0] _GEN_254 = {_FDPE_io_i_mux_bus_3_2_rev_T_4[0], 2'h0}; // @[FlexDPUby2.scala 84:35]
-  wire [3:0] _FDPE_io_i_mux_bus_3_2_rev_T_6 = {{1'd0}, _GEN_254}; // @[FlexDPUby2.scala 84:35]
-  wire [3:0] _FDPE_io_i_mux_bus_3_2_rev_T_7 = _FDPE_io_i_mux_bus_3_2_rev_T_2 | _FDPE_io_i_mux_bus_3_2_rev_T_6; // @[FlexDPUby2.scala 84:17]
-  wire [3:0] _FDPE_io_i_mux_bus_3_2_rev_T_8 = {{2'd0}, muxes_3_2[3:2]}; // @[FlexDPUby2.scala 84:24]
-  wire [1:0] _FDPE_io_i_mux_bus_3_2_rev_T_10 = {_FDPE_io_i_mux_bus_3_2_rev_T_8[0], 1'h0}; // @[FlexDPUby2.scala 84:35]
-  wire [3:0] _GEN_256 = {{2'd0}, _FDPE_io_i_mux_bus_3_2_rev_T_10}; // @[FlexDPUby2.scala 84:17]
-  wire [3:0] _FDPE_io_i_mux_bus_3_2_rev_T_11 = _FDPE_io_i_mux_bus_3_2_rev_T_7 | _GEN_256; // @[FlexDPUby2.scala 84:17]
-  wire [3:0] _FDPE_io_i_mux_bus_3_2_rev_T_12 = {{3'd0}, muxes_3_2[3]}; // @[FlexDPUby2.scala 84:24]
-  wire [1:0] _FDPE_io_i_mux_bus_3_2_rev_T_14 = {{1'd0}, _FDPE_io_i_mux_bus_3_2_rev_T_12[0]}; // @[FlexDPUby2.scala 84:35]
-  wire [3:0] _GEN_258 = {{2'd0}, _FDPE_io_i_mux_bus_3_2_rev_T_14}; // @[FlexDPUby2.scala 84:17]
-  wire [3:0] _FDPE_io_i_mux_bus_3_3_rev_T_2 = {muxes_3_3[0], 3'h0}; // @[FlexDPUby2.scala 84:35]
-  wire [3:0] _FDPE_io_i_mux_bus_3_3_rev_T_4 = {{1'd0}, muxes_3_3[3:1]}; // @[FlexDPUby2.scala 84:24]
-  wire [2:0] _GEN_260 = {_FDPE_io_i_mux_bus_3_3_rev_T_4[0], 2'h0}; // @[FlexDPUby2.scala 84:35]
-  wire [3:0] _FDPE_io_i_mux_bus_3_3_rev_T_6 = {{1'd0}, _GEN_260}; // @[FlexDPUby2.scala 84:35]
-  wire [3:0] _FDPE_io_i_mux_bus_3_3_rev_T_7 = _FDPE_io_i_mux_bus_3_3_rev_T_2 | _FDPE_io_i_mux_bus_3_3_rev_T_6; // @[FlexDPUby2.scala 84:17]
-  wire [3:0] _FDPE_io_i_mux_bus_3_3_rev_T_8 = {{2'd0}, muxes_3_3[3:2]}; // @[FlexDPUby2.scala 84:24]
-  wire [1:0] _FDPE_io_i_mux_bus_3_3_rev_T_10 = {_FDPE_io_i_mux_bus_3_3_rev_T_8[0], 1'h0}; // @[FlexDPUby2.scala 84:35]
-  wire [3:0] _GEN_262 = {{2'd0}, _FDPE_io_i_mux_bus_3_3_rev_T_10}; // @[FlexDPUby2.scala 84:17]
-  wire [3:0] _FDPE_io_i_mux_bus_3_3_rev_T_11 = _FDPE_io_i_mux_bus_3_3_rev_T_7 | _GEN_262; // @[FlexDPUby2.scala 84:17]
-  wire [3:0] _FDPE_io_i_mux_bus_3_3_rev_T_12 = {{3'd0}, muxes_3_3[3]}; // @[FlexDPUby2.scala 84:24]
-  wire [1:0] _FDPE_io_i_mux_bus_3_3_rev_T_14 = {{1'd0}, _FDPE_io_i_mux_bus_3_3_rev_T_12[0]}; // @[FlexDPUby2.scala 84:35]
-  wire [3:0] _GEN_264 = {{2'd0}, _FDPE_io_i_mux_bus_3_3_rev_T_14}; // @[FlexDPUby2.scala 84:17]
-  wire [31:0] _GEN_117 = Statvalid ? {{16'd0}, FDPE_io_matrix_0_0} : 32'h0; // @[FlexDPUby2.scala 107:21 189:23 199:19]
-  wire [31:0] _GEN_118 = Statvalid ? {{16'd0}, FDPE_io_matrix_0_1} : 32'h0; // @[FlexDPUby2.scala 107:21 189:23 199:19]
-  wire [31:0] _GEN_119 = Statvalid ? {{16'd0}, FDPE_io_matrix_1_0} : 32'h0; // @[FlexDPUby2.scala 107:21 189:23 199:19]
-  wire [31:0] _GEN_120 = Statvalid ? {{16'd0}, FDPE_io_matrix_1_1} : 32'h0; // @[FlexDPUby2.scala 107:21 189:23 199:19]
-  wire  _GEN_121 = Statvalid & FDPE_io_output_valid; // @[FlexDPUby2.scala 107:21 190:24 200:20]
-  wire [31:0] _GEN_140 = io_valid ? _GEN_117 : 32'h0; // @[FlexDPUby2.scala 205:16 36:20]
-  wire [31:0] _GEN_141 = io_valid ? _GEN_118 : 32'h0; // @[FlexDPUby2.scala 205:16 36:20]
-  wire [31:0] _GEN_142 = io_valid ? _GEN_119 : 32'h0; // @[FlexDPUby2.scala 205:16 36:20]
-  wire [31:0] _GEN_143 = io_valid ? _GEN_120 : 32'h0; // @[FlexDPUby2.scala 205:16 36:20]
-  PathFinder PF ( // @[FlexDPUby2.scala 108:24]
+  reg [31:0] DPESrc2_0_0; // @[FlexDPUby2.scala 20:26]
+  reg [31:0] DPESrc2_0_1; // @[FlexDPUby2.scala 20:26]
+  reg [31:0] DPESrc2_1_0; // @[FlexDPUby2.scala 20:26]
+  reg [31:0] DPESrc2_1_1; // @[FlexDPUby2.scala 20:26]
+  reg [31:0] indexRow; // @[FlexDPUby2.scala 22:27]
+  reg [31:0] indexCol; // @[FlexDPUby2.scala 23:27]
+  reg [31:0] SindexRow; // @[FlexDPUby2.scala 24:28]
+  reg [31:0] SindexCol; // @[FlexDPUby2.scala 25:28]
+  reg [31:0] iloop; // @[FlexDPUby2.scala 26:24]
+  reg [31:0] jloop; // @[FlexDPUby2.scala 27:24]
+  reg  Statvalid; // @[FlexDPUby2.scala 28:28]
+  reg  SrcDestValid; // @[FlexDPUby2.scala 29:31]
+  wire  _SrcDestValid_T = iloop == 32'h1; // @[FlexDPUby2.scala 30:28]
+  wire  _SrcDestValid_T_1 = jloop == 32'h1; // @[FlexDPUby2.scala 30:65]
+  wire  _SrcDestValid_T_2 = iloop == 32'h1 & jloop == 32'h1; // @[FlexDPUby2.scala 30:55]
+  wire  _Statvalid_T_1 = iloop == 32'h2; // @[FlexDPUby2.scala 35:63]
+  wire  _GEN_149 = ~iloop[0]; // @[FlexDPUby2.scala 38:{46,46}]
+  wire [15:0] _GEN_1 = ~iloop[0] & jloop[0] ? io_Stationary_matrix_0_1 : io_Stationary_matrix_0_0; // @[FlexDPUby2.scala 38:{46,46}]
+  wire  _GEN_150 = ~jloop[0]; // @[FlexDPUby2.scala 38:{46,46}]
+  wire [15:0] _GEN_2 = iloop[0] & ~jloop[0] ? io_Stationary_matrix_1_0 : _GEN_1; // @[FlexDPUby2.scala 38:{46,46}]
+  wire [15:0] _GEN_3 = iloop[0] & jloop[0] ? io_Stationary_matrix_1_1 : _GEN_2; // @[FlexDPUby2.scala 38:{46,46}]
+  wire  _T_3 = iloop <= 32'h1; // @[FlexDPUby2.scala 38:64]
+  wire [31:0] _DPEDest_T_5_T_6 = {{16'd0}, _GEN_3}; // @[FlexDPUby2.scala 39:{37,37}]
+  wire [31:0] _indexCol_T_1 = indexCol + 32'h1; // @[FlexDPUby2.scala 40:30]
+  wire [31:0] _GEN_24 = _GEN_3 != 16'h0 & iloop <= 32'h1 ? _indexCol_T_1 : indexCol; // @[FlexDPUby2.scala 38:89 40:18 23:27]
+  wire [15:0] _GEN_26 = _GEN_150 & iloop[0] ? io_Streaming_matrix_0_1 : io_Streaming_matrix_0_0; // @[FlexDPUby2.scala 42:{45,45}]
+  wire [15:0] _GEN_27 = jloop[0] & _GEN_149 ? io_Streaming_matrix_1_0 : _GEN_26; // @[FlexDPUby2.scala 42:{45,45}]
+  wire [15:0] _GEN_28 = jloop[0] & iloop[0] ? io_Streaming_matrix_1_1 : _GEN_27; // @[FlexDPUby2.scala 42:{45,45}]
+  wire [31:0] _SindexCol_T_1 = SindexCol + 32'h1; // @[FlexDPUby2.scala 44:32]
+  wire [31:0] _GEN_41 = _GEN_28 != 16'h0 & _T_3 ? _SindexCol_T_1 : SindexCol; // @[FlexDPUby2.scala 42:88 44:19 25:28]
+  wire  _T_14 = SindexCol == 32'h1; // @[FlexDPUby2.scala 47:21]
+  wire [31:0] _SindexRow_T_1 = SindexRow + 32'h1; // @[FlexDPUby2.scala 51:32]
+  wire  _T_18 = indexCol == 32'h3; // @[FlexDPUby2.scala 55:20]
+  wire [31:0] _indexRow_T_1 = indexRow + 32'h1; // @[FlexDPUby2.scala 59:30]
+  wire [31:0] _iloop_T_1 = iloop + 32'h1; // @[FlexDPUby2.scala 65:24]
+  wire [31:0] _GEN_50 = iloop < 32'h1 & _SrcDestValid_T_1 ? _iloop_T_1 : iloop; // @[FlexDPUby2.scala 64:77 65:15 26:24]
+  wire [31:0] _jloop_T_1 = jloop + 32'h1; // @[FlexDPUby2.scala 69:24]
+  wire  _T_33 = _Statvalid_T_1 & _SrcDestValid_T_1; // @[FlexDPUby2.scala 73:30]
+  wire [31:0] _GEN_51 = _Statvalid_T_1 & _SrcDestValid_T_1 ? 32'h2 : _GEN_50; // @[FlexDPUby2.scala 73:49 74:15]
+  reg [31:0] src_0; // @[FlexDPUby2.scala 90:22]
+  reg [31:0] src_1; // @[FlexDPUby2.scala 90:22]
+  reg [31:0] src_2; // @[FlexDPUby2.scala 90:22]
+  reg [31:0] src_3; // @[FlexDPUby2.scala 90:22]
+  reg [3:0] muxes_0_0; // @[FlexDPUby2.scala 91:24]
+  reg [3:0] muxes_0_1; // @[FlexDPUby2.scala 91:24]
+  reg [3:0] muxes_0_2; // @[FlexDPUby2.scala 91:24]
+  reg [3:0] muxes_0_3; // @[FlexDPUby2.scala 91:24]
+  reg [3:0] muxes_1_0; // @[FlexDPUby2.scala 91:24]
+  reg [3:0] muxes_1_1; // @[FlexDPUby2.scala 91:24]
+  reg [3:0] muxes_1_2; // @[FlexDPUby2.scala 91:24]
+  reg [3:0] muxes_1_3; // @[FlexDPUby2.scala 91:24]
+  reg [3:0] muxes_2_0; // @[FlexDPUby2.scala 91:24]
+  reg [3:0] muxes_2_1; // @[FlexDPUby2.scala 91:24]
+  reg [3:0] muxes_2_2; // @[FlexDPUby2.scala 91:24]
+  reg [3:0] muxes_2_3; // @[FlexDPUby2.scala 91:24]
+  reg [3:0] muxes_3_0; // @[FlexDPUby2.scala 91:24]
+  reg [3:0] muxes_3_1; // @[FlexDPUby2.scala 91:24]
+  reg [3:0] muxes_3_2; // @[FlexDPUby2.scala 91:24]
+  reg [3:0] muxes_3_3; // @[FlexDPUby2.scala 91:24]
+  reg [31:0] dest_0; // @[FlexDPUby2.scala 92:23]
+  reg [31:0] dest_1; // @[FlexDPUby2.scala 92:23]
+  reg [31:0] dest_2; // @[FlexDPUby2.scala 92:23]
+  reg [31:0] dest_3; // @[FlexDPUby2.scala 92:23]
+  reg  iterationChange; // @[FlexDPUby2.scala 119:34]
+  wire [31:0] _GEN_58 = iterationChange ? DPESrc2_1_0 : DPESrc2_0_0; // @[FlexDPUby2.scala 123:{32,32}]
+  wire [31:0] _GEN_60 = iterationChange ? DPESrc2_1_1 : DPESrc2_0_1; // @[FlexDPUby2.scala 123:{32,32}]
+  wire  _T_38 = iterationChange + 1'h1; // @[FlexDPUby2.scala 139:48]
+  wire [31:0] _GEN_62 = _T_38 ? DPESrc_1_0 : 32'h0; // @[FlexDPUby2.scala 110:{20,20}]
+  wire  _GEN_63 = _GEN_62 != 32'h0 ? _T_38 : iterationChange; // @[FlexDPUby2.scala 110:28 112:21 119:34]
+  wire [31:0] _GEN_65 = _T_38 ? DPESrc_1_1 : DPESrc_0_1; // @[FlexDPUby2.scala 110:{20,20}]
+  wire  _GEN_66 = _GEN_65 != 32'h0 ? _T_38 : _GEN_63; // @[FlexDPUby2.scala 110:28 112:21]
+  wire  _GEN_67 = PF_io_PF_Valid ? _GEN_66 : iterationChange; // @[FlexDPUby2.scala 119:34 137:36]
+  reg  hi; // @[FlexDPUby2.scala 150:25]
+  wire  _GEN_90 = PF_io_PF_Valid | hi; // @[FlexDPUby2.scala 151:30 152:16 150:25]
+  reg  hig; // @[FlexDPUby2.scala 154:26]
+  wire  _GEN_91 = hi > 1'h0 | hig; // @[FlexDPUby2.scala 155:24 156:17 154:26]
+  wire [3:0] _FDPE_io_i_mux_bus_0_0_rev_T_2 = {muxes_0_0[0], 3'h0}; // @[FlexDPUby2.scala 85:35]
+  wire [3:0] _FDPE_io_i_mux_bus_0_0_rev_T_4 = {{1'd0}, muxes_0_0[3:1]}; // @[FlexDPUby2.scala 85:24]
+  wire [2:0] _GEN_174 = {_FDPE_io_i_mux_bus_0_0_rev_T_4[0], 2'h0}; // @[FlexDPUby2.scala 85:35]
+  wire [3:0] _FDPE_io_i_mux_bus_0_0_rev_T_6 = {{1'd0}, _GEN_174}; // @[FlexDPUby2.scala 85:35]
+  wire [3:0] _FDPE_io_i_mux_bus_0_0_rev_T_7 = _FDPE_io_i_mux_bus_0_0_rev_T_2 | _FDPE_io_i_mux_bus_0_0_rev_T_6; // @[FlexDPUby2.scala 85:17]
+  wire [3:0] _FDPE_io_i_mux_bus_0_0_rev_T_8 = {{2'd0}, muxes_0_0[3:2]}; // @[FlexDPUby2.scala 85:24]
+  wire [1:0] _FDPE_io_i_mux_bus_0_0_rev_T_10 = {_FDPE_io_i_mux_bus_0_0_rev_T_8[0], 1'h0}; // @[FlexDPUby2.scala 85:35]
+  wire [3:0] _GEN_176 = {{2'd0}, _FDPE_io_i_mux_bus_0_0_rev_T_10}; // @[FlexDPUby2.scala 85:17]
+  wire [3:0] _FDPE_io_i_mux_bus_0_0_rev_T_11 = _FDPE_io_i_mux_bus_0_0_rev_T_7 | _GEN_176; // @[FlexDPUby2.scala 85:17]
+  wire [3:0] _FDPE_io_i_mux_bus_0_0_rev_T_12 = {{3'd0}, muxes_0_0[3]}; // @[FlexDPUby2.scala 85:24]
+  wire [1:0] _FDPE_io_i_mux_bus_0_0_rev_T_14 = {{1'd0}, _FDPE_io_i_mux_bus_0_0_rev_T_12[0]}; // @[FlexDPUby2.scala 85:35]
+  wire [3:0] _GEN_178 = {{2'd0}, _FDPE_io_i_mux_bus_0_0_rev_T_14}; // @[FlexDPUby2.scala 85:17]
+  wire [3:0] _FDPE_io_i_mux_bus_0_1_rev_T_2 = {muxes_0_1[0], 3'h0}; // @[FlexDPUby2.scala 85:35]
+  wire [3:0] _FDPE_io_i_mux_bus_0_1_rev_T_4 = {{1'd0}, muxes_0_1[3:1]}; // @[FlexDPUby2.scala 85:24]
+  wire [2:0] _GEN_180 = {_FDPE_io_i_mux_bus_0_1_rev_T_4[0], 2'h0}; // @[FlexDPUby2.scala 85:35]
+  wire [3:0] _FDPE_io_i_mux_bus_0_1_rev_T_6 = {{1'd0}, _GEN_180}; // @[FlexDPUby2.scala 85:35]
+  wire [3:0] _FDPE_io_i_mux_bus_0_1_rev_T_7 = _FDPE_io_i_mux_bus_0_1_rev_T_2 | _FDPE_io_i_mux_bus_0_1_rev_T_6; // @[FlexDPUby2.scala 85:17]
+  wire [3:0] _FDPE_io_i_mux_bus_0_1_rev_T_8 = {{2'd0}, muxes_0_1[3:2]}; // @[FlexDPUby2.scala 85:24]
+  wire [1:0] _FDPE_io_i_mux_bus_0_1_rev_T_10 = {_FDPE_io_i_mux_bus_0_1_rev_T_8[0], 1'h0}; // @[FlexDPUby2.scala 85:35]
+  wire [3:0] _GEN_182 = {{2'd0}, _FDPE_io_i_mux_bus_0_1_rev_T_10}; // @[FlexDPUby2.scala 85:17]
+  wire [3:0] _FDPE_io_i_mux_bus_0_1_rev_T_11 = _FDPE_io_i_mux_bus_0_1_rev_T_7 | _GEN_182; // @[FlexDPUby2.scala 85:17]
+  wire [3:0] _FDPE_io_i_mux_bus_0_1_rev_T_12 = {{3'd0}, muxes_0_1[3]}; // @[FlexDPUby2.scala 85:24]
+  wire [1:0] _FDPE_io_i_mux_bus_0_1_rev_T_14 = {{1'd0}, _FDPE_io_i_mux_bus_0_1_rev_T_12[0]}; // @[FlexDPUby2.scala 85:35]
+  wire [3:0] _GEN_184 = {{2'd0}, _FDPE_io_i_mux_bus_0_1_rev_T_14}; // @[FlexDPUby2.scala 85:17]
+  wire [3:0] _FDPE_io_i_mux_bus_0_2_rev_T_2 = {muxes_0_2[0], 3'h0}; // @[FlexDPUby2.scala 85:35]
+  wire [3:0] _FDPE_io_i_mux_bus_0_2_rev_T_4 = {{1'd0}, muxes_0_2[3:1]}; // @[FlexDPUby2.scala 85:24]
+  wire [2:0] _GEN_186 = {_FDPE_io_i_mux_bus_0_2_rev_T_4[0], 2'h0}; // @[FlexDPUby2.scala 85:35]
+  wire [3:0] _FDPE_io_i_mux_bus_0_2_rev_T_6 = {{1'd0}, _GEN_186}; // @[FlexDPUby2.scala 85:35]
+  wire [3:0] _FDPE_io_i_mux_bus_0_2_rev_T_7 = _FDPE_io_i_mux_bus_0_2_rev_T_2 | _FDPE_io_i_mux_bus_0_2_rev_T_6; // @[FlexDPUby2.scala 85:17]
+  wire [3:0] _FDPE_io_i_mux_bus_0_2_rev_T_8 = {{2'd0}, muxes_0_2[3:2]}; // @[FlexDPUby2.scala 85:24]
+  wire [1:0] _FDPE_io_i_mux_bus_0_2_rev_T_10 = {_FDPE_io_i_mux_bus_0_2_rev_T_8[0], 1'h0}; // @[FlexDPUby2.scala 85:35]
+  wire [3:0] _GEN_188 = {{2'd0}, _FDPE_io_i_mux_bus_0_2_rev_T_10}; // @[FlexDPUby2.scala 85:17]
+  wire [3:0] _FDPE_io_i_mux_bus_0_2_rev_T_11 = _FDPE_io_i_mux_bus_0_2_rev_T_7 | _GEN_188; // @[FlexDPUby2.scala 85:17]
+  wire [3:0] _FDPE_io_i_mux_bus_0_2_rev_T_12 = {{3'd0}, muxes_0_2[3]}; // @[FlexDPUby2.scala 85:24]
+  wire [1:0] _FDPE_io_i_mux_bus_0_2_rev_T_14 = {{1'd0}, _FDPE_io_i_mux_bus_0_2_rev_T_12[0]}; // @[FlexDPUby2.scala 85:35]
+  wire [3:0] _GEN_190 = {{2'd0}, _FDPE_io_i_mux_bus_0_2_rev_T_14}; // @[FlexDPUby2.scala 85:17]
+  wire [3:0] _FDPE_io_i_mux_bus_0_3_rev_T_2 = {muxes_0_3[0], 3'h0}; // @[FlexDPUby2.scala 85:35]
+  wire [3:0] _FDPE_io_i_mux_bus_0_3_rev_T_4 = {{1'd0}, muxes_0_3[3:1]}; // @[FlexDPUby2.scala 85:24]
+  wire [2:0] _GEN_192 = {_FDPE_io_i_mux_bus_0_3_rev_T_4[0], 2'h0}; // @[FlexDPUby2.scala 85:35]
+  wire [3:0] _FDPE_io_i_mux_bus_0_3_rev_T_6 = {{1'd0}, _GEN_192}; // @[FlexDPUby2.scala 85:35]
+  wire [3:0] _FDPE_io_i_mux_bus_0_3_rev_T_7 = _FDPE_io_i_mux_bus_0_3_rev_T_2 | _FDPE_io_i_mux_bus_0_3_rev_T_6; // @[FlexDPUby2.scala 85:17]
+  wire [3:0] _FDPE_io_i_mux_bus_0_3_rev_T_8 = {{2'd0}, muxes_0_3[3:2]}; // @[FlexDPUby2.scala 85:24]
+  wire [1:0] _FDPE_io_i_mux_bus_0_3_rev_T_10 = {_FDPE_io_i_mux_bus_0_3_rev_T_8[0], 1'h0}; // @[FlexDPUby2.scala 85:35]
+  wire [3:0] _GEN_194 = {{2'd0}, _FDPE_io_i_mux_bus_0_3_rev_T_10}; // @[FlexDPUby2.scala 85:17]
+  wire [3:0] _FDPE_io_i_mux_bus_0_3_rev_T_11 = _FDPE_io_i_mux_bus_0_3_rev_T_7 | _GEN_194; // @[FlexDPUby2.scala 85:17]
+  wire [3:0] _FDPE_io_i_mux_bus_0_3_rev_T_12 = {{3'd0}, muxes_0_3[3]}; // @[FlexDPUby2.scala 85:24]
+  wire [1:0] _FDPE_io_i_mux_bus_0_3_rev_T_14 = {{1'd0}, _FDPE_io_i_mux_bus_0_3_rev_T_12[0]}; // @[FlexDPUby2.scala 85:35]
+  wire [3:0] _GEN_196 = {{2'd0}, _FDPE_io_i_mux_bus_0_3_rev_T_14}; // @[FlexDPUby2.scala 85:17]
+  wire [3:0] _FDPE_io_i_mux_bus_1_0_rev_T_2 = {muxes_1_0[0], 3'h0}; // @[FlexDPUby2.scala 85:35]
+  wire [3:0] _FDPE_io_i_mux_bus_1_0_rev_T_4 = {{1'd0}, muxes_1_0[3:1]}; // @[FlexDPUby2.scala 85:24]
+  wire [2:0] _GEN_198 = {_FDPE_io_i_mux_bus_1_0_rev_T_4[0], 2'h0}; // @[FlexDPUby2.scala 85:35]
+  wire [3:0] _FDPE_io_i_mux_bus_1_0_rev_T_6 = {{1'd0}, _GEN_198}; // @[FlexDPUby2.scala 85:35]
+  wire [3:0] _FDPE_io_i_mux_bus_1_0_rev_T_7 = _FDPE_io_i_mux_bus_1_0_rev_T_2 | _FDPE_io_i_mux_bus_1_0_rev_T_6; // @[FlexDPUby2.scala 85:17]
+  wire [3:0] _FDPE_io_i_mux_bus_1_0_rev_T_8 = {{2'd0}, muxes_1_0[3:2]}; // @[FlexDPUby2.scala 85:24]
+  wire [1:0] _FDPE_io_i_mux_bus_1_0_rev_T_10 = {_FDPE_io_i_mux_bus_1_0_rev_T_8[0], 1'h0}; // @[FlexDPUby2.scala 85:35]
+  wire [3:0] _GEN_200 = {{2'd0}, _FDPE_io_i_mux_bus_1_0_rev_T_10}; // @[FlexDPUby2.scala 85:17]
+  wire [3:0] _FDPE_io_i_mux_bus_1_0_rev_T_11 = _FDPE_io_i_mux_bus_1_0_rev_T_7 | _GEN_200; // @[FlexDPUby2.scala 85:17]
+  wire [3:0] _FDPE_io_i_mux_bus_1_0_rev_T_12 = {{3'd0}, muxes_1_0[3]}; // @[FlexDPUby2.scala 85:24]
+  wire [1:0] _FDPE_io_i_mux_bus_1_0_rev_T_14 = {{1'd0}, _FDPE_io_i_mux_bus_1_0_rev_T_12[0]}; // @[FlexDPUby2.scala 85:35]
+  wire [3:0] _GEN_202 = {{2'd0}, _FDPE_io_i_mux_bus_1_0_rev_T_14}; // @[FlexDPUby2.scala 85:17]
+  wire [3:0] _FDPE_io_i_mux_bus_1_1_rev_T_2 = {muxes_1_1[0], 3'h0}; // @[FlexDPUby2.scala 85:35]
+  wire [3:0] _FDPE_io_i_mux_bus_1_1_rev_T_4 = {{1'd0}, muxes_1_1[3:1]}; // @[FlexDPUby2.scala 85:24]
+  wire [2:0] _GEN_204 = {_FDPE_io_i_mux_bus_1_1_rev_T_4[0], 2'h0}; // @[FlexDPUby2.scala 85:35]
+  wire [3:0] _FDPE_io_i_mux_bus_1_1_rev_T_6 = {{1'd0}, _GEN_204}; // @[FlexDPUby2.scala 85:35]
+  wire [3:0] _FDPE_io_i_mux_bus_1_1_rev_T_7 = _FDPE_io_i_mux_bus_1_1_rev_T_2 | _FDPE_io_i_mux_bus_1_1_rev_T_6; // @[FlexDPUby2.scala 85:17]
+  wire [3:0] _FDPE_io_i_mux_bus_1_1_rev_T_8 = {{2'd0}, muxes_1_1[3:2]}; // @[FlexDPUby2.scala 85:24]
+  wire [1:0] _FDPE_io_i_mux_bus_1_1_rev_T_10 = {_FDPE_io_i_mux_bus_1_1_rev_T_8[0], 1'h0}; // @[FlexDPUby2.scala 85:35]
+  wire [3:0] _GEN_206 = {{2'd0}, _FDPE_io_i_mux_bus_1_1_rev_T_10}; // @[FlexDPUby2.scala 85:17]
+  wire [3:0] _FDPE_io_i_mux_bus_1_1_rev_T_11 = _FDPE_io_i_mux_bus_1_1_rev_T_7 | _GEN_206; // @[FlexDPUby2.scala 85:17]
+  wire [3:0] _FDPE_io_i_mux_bus_1_1_rev_T_12 = {{3'd0}, muxes_1_1[3]}; // @[FlexDPUby2.scala 85:24]
+  wire [1:0] _FDPE_io_i_mux_bus_1_1_rev_T_14 = {{1'd0}, _FDPE_io_i_mux_bus_1_1_rev_T_12[0]}; // @[FlexDPUby2.scala 85:35]
+  wire [3:0] _GEN_208 = {{2'd0}, _FDPE_io_i_mux_bus_1_1_rev_T_14}; // @[FlexDPUby2.scala 85:17]
+  wire [3:0] _FDPE_io_i_mux_bus_1_2_rev_T_2 = {muxes_1_2[0], 3'h0}; // @[FlexDPUby2.scala 85:35]
+  wire [3:0] _FDPE_io_i_mux_bus_1_2_rev_T_4 = {{1'd0}, muxes_1_2[3:1]}; // @[FlexDPUby2.scala 85:24]
+  wire [2:0] _GEN_210 = {_FDPE_io_i_mux_bus_1_2_rev_T_4[0], 2'h0}; // @[FlexDPUby2.scala 85:35]
+  wire [3:0] _FDPE_io_i_mux_bus_1_2_rev_T_6 = {{1'd0}, _GEN_210}; // @[FlexDPUby2.scala 85:35]
+  wire [3:0] _FDPE_io_i_mux_bus_1_2_rev_T_7 = _FDPE_io_i_mux_bus_1_2_rev_T_2 | _FDPE_io_i_mux_bus_1_2_rev_T_6; // @[FlexDPUby2.scala 85:17]
+  wire [3:0] _FDPE_io_i_mux_bus_1_2_rev_T_8 = {{2'd0}, muxes_1_2[3:2]}; // @[FlexDPUby2.scala 85:24]
+  wire [1:0] _FDPE_io_i_mux_bus_1_2_rev_T_10 = {_FDPE_io_i_mux_bus_1_2_rev_T_8[0], 1'h0}; // @[FlexDPUby2.scala 85:35]
+  wire [3:0] _GEN_212 = {{2'd0}, _FDPE_io_i_mux_bus_1_2_rev_T_10}; // @[FlexDPUby2.scala 85:17]
+  wire [3:0] _FDPE_io_i_mux_bus_1_2_rev_T_11 = _FDPE_io_i_mux_bus_1_2_rev_T_7 | _GEN_212; // @[FlexDPUby2.scala 85:17]
+  wire [3:0] _FDPE_io_i_mux_bus_1_2_rev_T_12 = {{3'd0}, muxes_1_2[3]}; // @[FlexDPUby2.scala 85:24]
+  wire [1:0] _FDPE_io_i_mux_bus_1_2_rev_T_14 = {{1'd0}, _FDPE_io_i_mux_bus_1_2_rev_T_12[0]}; // @[FlexDPUby2.scala 85:35]
+  wire [3:0] _GEN_214 = {{2'd0}, _FDPE_io_i_mux_bus_1_2_rev_T_14}; // @[FlexDPUby2.scala 85:17]
+  wire [3:0] _FDPE_io_i_mux_bus_1_3_rev_T_2 = {muxes_1_3[0], 3'h0}; // @[FlexDPUby2.scala 85:35]
+  wire [3:0] _FDPE_io_i_mux_bus_1_3_rev_T_4 = {{1'd0}, muxes_1_3[3:1]}; // @[FlexDPUby2.scala 85:24]
+  wire [2:0] _GEN_216 = {_FDPE_io_i_mux_bus_1_3_rev_T_4[0], 2'h0}; // @[FlexDPUby2.scala 85:35]
+  wire [3:0] _FDPE_io_i_mux_bus_1_3_rev_T_6 = {{1'd0}, _GEN_216}; // @[FlexDPUby2.scala 85:35]
+  wire [3:0] _FDPE_io_i_mux_bus_1_3_rev_T_7 = _FDPE_io_i_mux_bus_1_3_rev_T_2 | _FDPE_io_i_mux_bus_1_3_rev_T_6; // @[FlexDPUby2.scala 85:17]
+  wire [3:0] _FDPE_io_i_mux_bus_1_3_rev_T_8 = {{2'd0}, muxes_1_3[3:2]}; // @[FlexDPUby2.scala 85:24]
+  wire [1:0] _FDPE_io_i_mux_bus_1_3_rev_T_10 = {_FDPE_io_i_mux_bus_1_3_rev_T_8[0], 1'h0}; // @[FlexDPUby2.scala 85:35]
+  wire [3:0] _GEN_218 = {{2'd0}, _FDPE_io_i_mux_bus_1_3_rev_T_10}; // @[FlexDPUby2.scala 85:17]
+  wire [3:0] _FDPE_io_i_mux_bus_1_3_rev_T_11 = _FDPE_io_i_mux_bus_1_3_rev_T_7 | _GEN_218; // @[FlexDPUby2.scala 85:17]
+  wire [3:0] _FDPE_io_i_mux_bus_1_3_rev_T_12 = {{3'd0}, muxes_1_3[3]}; // @[FlexDPUby2.scala 85:24]
+  wire [1:0] _FDPE_io_i_mux_bus_1_3_rev_T_14 = {{1'd0}, _FDPE_io_i_mux_bus_1_3_rev_T_12[0]}; // @[FlexDPUby2.scala 85:35]
+  wire [3:0] _GEN_220 = {{2'd0}, _FDPE_io_i_mux_bus_1_3_rev_T_14}; // @[FlexDPUby2.scala 85:17]
+  wire [3:0] _FDPE_io_i_mux_bus_2_0_rev_T_2 = {muxes_2_0[0], 3'h0}; // @[FlexDPUby2.scala 85:35]
+  wire [3:0] _FDPE_io_i_mux_bus_2_0_rev_T_4 = {{1'd0}, muxes_2_0[3:1]}; // @[FlexDPUby2.scala 85:24]
+  wire [2:0] _GEN_222 = {_FDPE_io_i_mux_bus_2_0_rev_T_4[0], 2'h0}; // @[FlexDPUby2.scala 85:35]
+  wire [3:0] _FDPE_io_i_mux_bus_2_0_rev_T_6 = {{1'd0}, _GEN_222}; // @[FlexDPUby2.scala 85:35]
+  wire [3:0] _FDPE_io_i_mux_bus_2_0_rev_T_7 = _FDPE_io_i_mux_bus_2_0_rev_T_2 | _FDPE_io_i_mux_bus_2_0_rev_T_6; // @[FlexDPUby2.scala 85:17]
+  wire [3:0] _FDPE_io_i_mux_bus_2_0_rev_T_8 = {{2'd0}, muxes_2_0[3:2]}; // @[FlexDPUby2.scala 85:24]
+  wire [1:0] _FDPE_io_i_mux_bus_2_0_rev_T_10 = {_FDPE_io_i_mux_bus_2_0_rev_T_8[0], 1'h0}; // @[FlexDPUby2.scala 85:35]
+  wire [3:0] _GEN_224 = {{2'd0}, _FDPE_io_i_mux_bus_2_0_rev_T_10}; // @[FlexDPUby2.scala 85:17]
+  wire [3:0] _FDPE_io_i_mux_bus_2_0_rev_T_11 = _FDPE_io_i_mux_bus_2_0_rev_T_7 | _GEN_224; // @[FlexDPUby2.scala 85:17]
+  wire [3:0] _FDPE_io_i_mux_bus_2_0_rev_T_12 = {{3'd0}, muxes_2_0[3]}; // @[FlexDPUby2.scala 85:24]
+  wire [1:0] _FDPE_io_i_mux_bus_2_0_rev_T_14 = {{1'd0}, _FDPE_io_i_mux_bus_2_0_rev_T_12[0]}; // @[FlexDPUby2.scala 85:35]
+  wire [3:0] _GEN_226 = {{2'd0}, _FDPE_io_i_mux_bus_2_0_rev_T_14}; // @[FlexDPUby2.scala 85:17]
+  wire [3:0] _FDPE_io_i_mux_bus_2_1_rev_T_2 = {muxes_2_1[0], 3'h0}; // @[FlexDPUby2.scala 85:35]
+  wire [3:0] _FDPE_io_i_mux_bus_2_1_rev_T_4 = {{1'd0}, muxes_2_1[3:1]}; // @[FlexDPUby2.scala 85:24]
+  wire [2:0] _GEN_228 = {_FDPE_io_i_mux_bus_2_1_rev_T_4[0], 2'h0}; // @[FlexDPUby2.scala 85:35]
+  wire [3:0] _FDPE_io_i_mux_bus_2_1_rev_T_6 = {{1'd0}, _GEN_228}; // @[FlexDPUby2.scala 85:35]
+  wire [3:0] _FDPE_io_i_mux_bus_2_1_rev_T_7 = _FDPE_io_i_mux_bus_2_1_rev_T_2 | _FDPE_io_i_mux_bus_2_1_rev_T_6; // @[FlexDPUby2.scala 85:17]
+  wire [3:0] _FDPE_io_i_mux_bus_2_1_rev_T_8 = {{2'd0}, muxes_2_1[3:2]}; // @[FlexDPUby2.scala 85:24]
+  wire [1:0] _FDPE_io_i_mux_bus_2_1_rev_T_10 = {_FDPE_io_i_mux_bus_2_1_rev_T_8[0], 1'h0}; // @[FlexDPUby2.scala 85:35]
+  wire [3:0] _GEN_230 = {{2'd0}, _FDPE_io_i_mux_bus_2_1_rev_T_10}; // @[FlexDPUby2.scala 85:17]
+  wire [3:0] _FDPE_io_i_mux_bus_2_1_rev_T_11 = _FDPE_io_i_mux_bus_2_1_rev_T_7 | _GEN_230; // @[FlexDPUby2.scala 85:17]
+  wire [3:0] _FDPE_io_i_mux_bus_2_1_rev_T_12 = {{3'd0}, muxes_2_1[3]}; // @[FlexDPUby2.scala 85:24]
+  wire [1:0] _FDPE_io_i_mux_bus_2_1_rev_T_14 = {{1'd0}, _FDPE_io_i_mux_bus_2_1_rev_T_12[0]}; // @[FlexDPUby2.scala 85:35]
+  wire [3:0] _GEN_232 = {{2'd0}, _FDPE_io_i_mux_bus_2_1_rev_T_14}; // @[FlexDPUby2.scala 85:17]
+  wire [3:0] _FDPE_io_i_mux_bus_2_2_rev_T_2 = {muxes_2_2[0], 3'h0}; // @[FlexDPUby2.scala 85:35]
+  wire [3:0] _FDPE_io_i_mux_bus_2_2_rev_T_4 = {{1'd0}, muxes_2_2[3:1]}; // @[FlexDPUby2.scala 85:24]
+  wire [2:0] _GEN_234 = {_FDPE_io_i_mux_bus_2_2_rev_T_4[0], 2'h0}; // @[FlexDPUby2.scala 85:35]
+  wire [3:0] _FDPE_io_i_mux_bus_2_2_rev_T_6 = {{1'd0}, _GEN_234}; // @[FlexDPUby2.scala 85:35]
+  wire [3:0] _FDPE_io_i_mux_bus_2_2_rev_T_7 = _FDPE_io_i_mux_bus_2_2_rev_T_2 | _FDPE_io_i_mux_bus_2_2_rev_T_6; // @[FlexDPUby2.scala 85:17]
+  wire [3:0] _FDPE_io_i_mux_bus_2_2_rev_T_8 = {{2'd0}, muxes_2_2[3:2]}; // @[FlexDPUby2.scala 85:24]
+  wire [1:0] _FDPE_io_i_mux_bus_2_2_rev_T_10 = {_FDPE_io_i_mux_bus_2_2_rev_T_8[0], 1'h0}; // @[FlexDPUby2.scala 85:35]
+  wire [3:0] _GEN_236 = {{2'd0}, _FDPE_io_i_mux_bus_2_2_rev_T_10}; // @[FlexDPUby2.scala 85:17]
+  wire [3:0] _FDPE_io_i_mux_bus_2_2_rev_T_11 = _FDPE_io_i_mux_bus_2_2_rev_T_7 | _GEN_236; // @[FlexDPUby2.scala 85:17]
+  wire [3:0] _FDPE_io_i_mux_bus_2_2_rev_T_12 = {{3'd0}, muxes_2_2[3]}; // @[FlexDPUby2.scala 85:24]
+  wire [1:0] _FDPE_io_i_mux_bus_2_2_rev_T_14 = {{1'd0}, _FDPE_io_i_mux_bus_2_2_rev_T_12[0]}; // @[FlexDPUby2.scala 85:35]
+  wire [3:0] _GEN_238 = {{2'd0}, _FDPE_io_i_mux_bus_2_2_rev_T_14}; // @[FlexDPUby2.scala 85:17]
+  wire [3:0] _FDPE_io_i_mux_bus_2_3_rev_T_2 = {muxes_2_3[0], 3'h0}; // @[FlexDPUby2.scala 85:35]
+  wire [3:0] _FDPE_io_i_mux_bus_2_3_rev_T_4 = {{1'd0}, muxes_2_3[3:1]}; // @[FlexDPUby2.scala 85:24]
+  wire [2:0] _GEN_240 = {_FDPE_io_i_mux_bus_2_3_rev_T_4[0], 2'h0}; // @[FlexDPUby2.scala 85:35]
+  wire [3:0] _FDPE_io_i_mux_bus_2_3_rev_T_6 = {{1'd0}, _GEN_240}; // @[FlexDPUby2.scala 85:35]
+  wire [3:0] _FDPE_io_i_mux_bus_2_3_rev_T_7 = _FDPE_io_i_mux_bus_2_3_rev_T_2 | _FDPE_io_i_mux_bus_2_3_rev_T_6; // @[FlexDPUby2.scala 85:17]
+  wire [3:0] _FDPE_io_i_mux_bus_2_3_rev_T_8 = {{2'd0}, muxes_2_3[3:2]}; // @[FlexDPUby2.scala 85:24]
+  wire [1:0] _FDPE_io_i_mux_bus_2_3_rev_T_10 = {_FDPE_io_i_mux_bus_2_3_rev_T_8[0], 1'h0}; // @[FlexDPUby2.scala 85:35]
+  wire [3:0] _GEN_242 = {{2'd0}, _FDPE_io_i_mux_bus_2_3_rev_T_10}; // @[FlexDPUby2.scala 85:17]
+  wire [3:0] _FDPE_io_i_mux_bus_2_3_rev_T_11 = _FDPE_io_i_mux_bus_2_3_rev_T_7 | _GEN_242; // @[FlexDPUby2.scala 85:17]
+  wire [3:0] _FDPE_io_i_mux_bus_2_3_rev_T_12 = {{3'd0}, muxes_2_3[3]}; // @[FlexDPUby2.scala 85:24]
+  wire [1:0] _FDPE_io_i_mux_bus_2_3_rev_T_14 = {{1'd0}, _FDPE_io_i_mux_bus_2_3_rev_T_12[0]}; // @[FlexDPUby2.scala 85:35]
+  wire [3:0] _GEN_244 = {{2'd0}, _FDPE_io_i_mux_bus_2_3_rev_T_14}; // @[FlexDPUby2.scala 85:17]
+  wire [3:0] _FDPE_io_i_mux_bus_3_0_rev_T_2 = {muxes_3_0[0], 3'h0}; // @[FlexDPUby2.scala 85:35]
+  wire [3:0] _FDPE_io_i_mux_bus_3_0_rev_T_4 = {{1'd0}, muxes_3_0[3:1]}; // @[FlexDPUby2.scala 85:24]
+  wire [2:0] _GEN_246 = {_FDPE_io_i_mux_bus_3_0_rev_T_4[0], 2'h0}; // @[FlexDPUby2.scala 85:35]
+  wire [3:0] _FDPE_io_i_mux_bus_3_0_rev_T_6 = {{1'd0}, _GEN_246}; // @[FlexDPUby2.scala 85:35]
+  wire [3:0] _FDPE_io_i_mux_bus_3_0_rev_T_7 = _FDPE_io_i_mux_bus_3_0_rev_T_2 | _FDPE_io_i_mux_bus_3_0_rev_T_6; // @[FlexDPUby2.scala 85:17]
+  wire [3:0] _FDPE_io_i_mux_bus_3_0_rev_T_8 = {{2'd0}, muxes_3_0[3:2]}; // @[FlexDPUby2.scala 85:24]
+  wire [1:0] _FDPE_io_i_mux_bus_3_0_rev_T_10 = {_FDPE_io_i_mux_bus_3_0_rev_T_8[0], 1'h0}; // @[FlexDPUby2.scala 85:35]
+  wire [3:0] _GEN_248 = {{2'd0}, _FDPE_io_i_mux_bus_3_0_rev_T_10}; // @[FlexDPUby2.scala 85:17]
+  wire [3:0] _FDPE_io_i_mux_bus_3_0_rev_T_11 = _FDPE_io_i_mux_bus_3_0_rev_T_7 | _GEN_248; // @[FlexDPUby2.scala 85:17]
+  wire [3:0] _FDPE_io_i_mux_bus_3_0_rev_T_12 = {{3'd0}, muxes_3_0[3]}; // @[FlexDPUby2.scala 85:24]
+  wire [1:0] _FDPE_io_i_mux_bus_3_0_rev_T_14 = {{1'd0}, _FDPE_io_i_mux_bus_3_0_rev_T_12[0]}; // @[FlexDPUby2.scala 85:35]
+  wire [3:0] _GEN_250 = {{2'd0}, _FDPE_io_i_mux_bus_3_0_rev_T_14}; // @[FlexDPUby2.scala 85:17]
+  wire [3:0] _FDPE_io_i_mux_bus_3_1_rev_T_2 = {muxes_3_1[0], 3'h0}; // @[FlexDPUby2.scala 85:35]
+  wire [3:0] _FDPE_io_i_mux_bus_3_1_rev_T_4 = {{1'd0}, muxes_3_1[3:1]}; // @[FlexDPUby2.scala 85:24]
+  wire [2:0] _GEN_252 = {_FDPE_io_i_mux_bus_3_1_rev_T_4[0], 2'h0}; // @[FlexDPUby2.scala 85:35]
+  wire [3:0] _FDPE_io_i_mux_bus_3_1_rev_T_6 = {{1'd0}, _GEN_252}; // @[FlexDPUby2.scala 85:35]
+  wire [3:0] _FDPE_io_i_mux_bus_3_1_rev_T_7 = _FDPE_io_i_mux_bus_3_1_rev_T_2 | _FDPE_io_i_mux_bus_3_1_rev_T_6; // @[FlexDPUby2.scala 85:17]
+  wire [3:0] _FDPE_io_i_mux_bus_3_1_rev_T_8 = {{2'd0}, muxes_3_1[3:2]}; // @[FlexDPUby2.scala 85:24]
+  wire [1:0] _FDPE_io_i_mux_bus_3_1_rev_T_10 = {_FDPE_io_i_mux_bus_3_1_rev_T_8[0], 1'h0}; // @[FlexDPUby2.scala 85:35]
+  wire [3:0] _GEN_254 = {{2'd0}, _FDPE_io_i_mux_bus_3_1_rev_T_10}; // @[FlexDPUby2.scala 85:17]
+  wire [3:0] _FDPE_io_i_mux_bus_3_1_rev_T_11 = _FDPE_io_i_mux_bus_3_1_rev_T_7 | _GEN_254; // @[FlexDPUby2.scala 85:17]
+  wire [3:0] _FDPE_io_i_mux_bus_3_1_rev_T_12 = {{3'd0}, muxes_3_1[3]}; // @[FlexDPUby2.scala 85:24]
+  wire [1:0] _FDPE_io_i_mux_bus_3_1_rev_T_14 = {{1'd0}, _FDPE_io_i_mux_bus_3_1_rev_T_12[0]}; // @[FlexDPUby2.scala 85:35]
+  wire [3:0] _GEN_256 = {{2'd0}, _FDPE_io_i_mux_bus_3_1_rev_T_14}; // @[FlexDPUby2.scala 85:17]
+  wire [3:0] _FDPE_io_i_mux_bus_3_2_rev_T_2 = {muxes_3_2[0], 3'h0}; // @[FlexDPUby2.scala 85:35]
+  wire [3:0] _FDPE_io_i_mux_bus_3_2_rev_T_4 = {{1'd0}, muxes_3_2[3:1]}; // @[FlexDPUby2.scala 85:24]
+  wire [2:0] _GEN_258 = {_FDPE_io_i_mux_bus_3_2_rev_T_4[0], 2'h0}; // @[FlexDPUby2.scala 85:35]
+  wire [3:0] _FDPE_io_i_mux_bus_3_2_rev_T_6 = {{1'd0}, _GEN_258}; // @[FlexDPUby2.scala 85:35]
+  wire [3:0] _FDPE_io_i_mux_bus_3_2_rev_T_7 = _FDPE_io_i_mux_bus_3_2_rev_T_2 | _FDPE_io_i_mux_bus_3_2_rev_T_6; // @[FlexDPUby2.scala 85:17]
+  wire [3:0] _FDPE_io_i_mux_bus_3_2_rev_T_8 = {{2'd0}, muxes_3_2[3:2]}; // @[FlexDPUby2.scala 85:24]
+  wire [1:0] _FDPE_io_i_mux_bus_3_2_rev_T_10 = {_FDPE_io_i_mux_bus_3_2_rev_T_8[0], 1'h0}; // @[FlexDPUby2.scala 85:35]
+  wire [3:0] _GEN_260 = {{2'd0}, _FDPE_io_i_mux_bus_3_2_rev_T_10}; // @[FlexDPUby2.scala 85:17]
+  wire [3:0] _FDPE_io_i_mux_bus_3_2_rev_T_11 = _FDPE_io_i_mux_bus_3_2_rev_T_7 | _GEN_260; // @[FlexDPUby2.scala 85:17]
+  wire [3:0] _FDPE_io_i_mux_bus_3_2_rev_T_12 = {{3'd0}, muxes_3_2[3]}; // @[FlexDPUby2.scala 85:24]
+  wire [1:0] _FDPE_io_i_mux_bus_3_2_rev_T_14 = {{1'd0}, _FDPE_io_i_mux_bus_3_2_rev_T_12[0]}; // @[FlexDPUby2.scala 85:35]
+  wire [3:0] _GEN_262 = {{2'd0}, _FDPE_io_i_mux_bus_3_2_rev_T_14}; // @[FlexDPUby2.scala 85:17]
+  wire [3:0] _FDPE_io_i_mux_bus_3_3_rev_T_2 = {muxes_3_3[0], 3'h0}; // @[FlexDPUby2.scala 85:35]
+  wire [3:0] _FDPE_io_i_mux_bus_3_3_rev_T_4 = {{1'd0}, muxes_3_3[3:1]}; // @[FlexDPUby2.scala 85:24]
+  wire [2:0] _GEN_264 = {_FDPE_io_i_mux_bus_3_3_rev_T_4[0], 2'h0}; // @[FlexDPUby2.scala 85:35]
+  wire [3:0] _FDPE_io_i_mux_bus_3_3_rev_T_6 = {{1'd0}, _GEN_264}; // @[FlexDPUby2.scala 85:35]
+  wire [3:0] _FDPE_io_i_mux_bus_3_3_rev_T_7 = _FDPE_io_i_mux_bus_3_3_rev_T_2 | _FDPE_io_i_mux_bus_3_3_rev_T_6; // @[FlexDPUby2.scala 85:17]
+  wire [3:0] _FDPE_io_i_mux_bus_3_3_rev_T_8 = {{2'd0}, muxes_3_3[3:2]}; // @[FlexDPUby2.scala 85:24]
+  wire [1:0] _FDPE_io_i_mux_bus_3_3_rev_T_10 = {_FDPE_io_i_mux_bus_3_3_rev_T_8[0], 1'h0}; // @[FlexDPUby2.scala 85:35]
+  wire [3:0] _GEN_266 = {{2'd0}, _FDPE_io_i_mux_bus_3_3_rev_T_10}; // @[FlexDPUby2.scala 85:17]
+  wire [3:0] _FDPE_io_i_mux_bus_3_3_rev_T_11 = _FDPE_io_i_mux_bus_3_3_rev_T_7 | _GEN_266; // @[FlexDPUby2.scala 85:17]
+  wire [3:0] _FDPE_io_i_mux_bus_3_3_rev_T_12 = {{3'd0}, muxes_3_3[3]}; // @[FlexDPUby2.scala 85:24]
+  wire [1:0] _FDPE_io_i_mux_bus_3_3_rev_T_14 = {{1'd0}, _FDPE_io_i_mux_bus_3_3_rev_T_12[0]}; // @[FlexDPUby2.scala 85:35]
+  wire [3:0] _GEN_268 = {{2'd0}, _FDPE_io_i_mux_bus_3_3_rev_T_14}; // @[FlexDPUby2.scala 85:17]
+  wire [31:0] _GEN_117 = Statvalid ? {{16'd0}, FDPE_io_matrix_0_0} : 32'h0; // @[FlexDPUby2.scala 120:21 202:23 212:19]
+  wire [31:0] _GEN_118 = Statvalid ? {{16'd0}, FDPE_io_matrix_0_1} : 32'h0; // @[FlexDPUby2.scala 120:21 202:23 212:19]
+  wire [31:0] _GEN_119 = Statvalid ? {{16'd0}, FDPE_io_matrix_1_0} : 32'h0; // @[FlexDPUby2.scala 120:21 202:23 212:19]
+  wire [31:0] _GEN_120 = Statvalid ? {{16'd0}, FDPE_io_matrix_1_1} : 32'h0; // @[FlexDPUby2.scala 120:21 202:23 212:19]
+  wire  _GEN_121 = Statvalid & FDPE_io_output_valid; // @[FlexDPUby2.scala 120:21 203:24 213:20]
+  wire [31:0] _GEN_144 = io_valid ? _GEN_117 : 32'h0; // @[FlexDPUby2.scala 218:16 37:20]
+  wire [31:0] _GEN_145 = io_valid ? _GEN_118 : 32'h0; // @[FlexDPUby2.scala 218:16 37:20]
+  wire [31:0] _GEN_146 = io_valid ? _GEN_119 : 32'h0; // @[FlexDPUby2.scala 218:16 37:20]
+  wire [31:0] _GEN_147 = io_valid ? _GEN_120 : 32'h0; // @[FlexDPUby2.scala 218:16 37:20]
+  PathFinder PF ( // @[FlexDPUby2.scala 121:24]
     .clock(PF_clock),
     .reset(PF_reset),
     .io_Stationary_matrix_0_0(PF_io_Stationary_matrix_0_0),
@@ -5293,7 +5319,7 @@ module FlexDPUby2(
     .io_PF_Valid(PF_io_PF_Valid),
     .io_DataValid(PF_io_DataValid)
   );
-  flexdpecom4 FDPE ( // @[FlexDPUby2.scala 147:26]
+  flexdpecom4 FDPE ( // @[FlexDPUby2.scala 160:26]
     .clock(FDPE_clock),
     .reset(FDPE_reset),
     .io_i_data_bus_0(FDPE_io_i_data_bus_0),
@@ -5334,372 +5360,371 @@ module FlexDPUby2(
     .io_input_valid(FDPE_io_input_valid),
     .io_output_valid(FDPE_io_output_valid)
   );
-  assign io_output_0_0 = _GEN_140[15:0];
-  assign io_output_0_1 = _GEN_141[15:0];
-  assign io_output_1_0 = _GEN_142[15:0];
-  assign io_output_1_1 = _GEN_143[15:0];
-  assign io_O_valid = io_valid & _GEN_121; // @[FlexDPUby2.scala 206:16 36:20]
+  assign io_output_0_0 = _GEN_144[15:0];
+  assign io_output_0_1 = _GEN_145[15:0];
+  assign io_output_1_0 = _GEN_146[15:0];
+  assign io_output_1_1 = _GEN_147[15:0];
+  assign io_O_valid = io_valid & _GEN_121; // @[FlexDPUby2.scala 219:16 37:20]
   assign PF_clock = clock;
   assign PF_reset = reset;
-  assign PF_io_Stationary_matrix_0_0 = io_Stationary_matrix_0_0; // @[FlexDPUby2.scala 109:33]
-  assign PF_io_Stationary_matrix_0_1 = io_Stationary_matrix_0_1; // @[FlexDPUby2.scala 109:33]
-  assign PF_io_Stationary_matrix_1_0 = io_Stationary_matrix_1_0; // @[FlexDPUby2.scala 109:33]
-  assign PF_io_Stationary_matrix_1_1 = io_Stationary_matrix_1_1; // @[FlexDPUby2.scala 109:33]
-  assign PF_io_Streaming_matrix_0 = _GEN_58[15:0]; // @[FlexDPUby2.scala 110:32]
-  assign PF_io_Streaming_matrix_1 = _GEN_60[15:0]; // @[FlexDPUby2.scala 110:32]
-  assign PF_io_DataValid = Statvalid; // @[FlexDPUby2.scala 112:25]
+  assign PF_io_Stationary_matrix_0_0 = io_Stationary_matrix_0_0; // @[FlexDPUby2.scala 122:33]
+  assign PF_io_Stationary_matrix_0_1 = io_Stationary_matrix_0_1; // @[FlexDPUby2.scala 122:33]
+  assign PF_io_Stationary_matrix_1_0 = io_Stationary_matrix_1_0; // @[FlexDPUby2.scala 122:33]
+  assign PF_io_Stationary_matrix_1_1 = io_Stationary_matrix_1_1; // @[FlexDPUby2.scala 122:33]
+  assign PF_io_Streaming_matrix_0 = _GEN_58[15:0]; // @[FlexDPUby2.scala 123:32]
+  assign PF_io_Streaming_matrix_1 = _GEN_60[15:0]; // @[FlexDPUby2.scala 123:32]
+  assign PF_io_DataValid = Statvalid; // @[FlexDPUby2.scala 125:25]
   assign FDPE_clock = clock;
   assign FDPE_reset = reset;
-  assign FDPE_io_i_data_bus_0 = dest_0[15:0]; // @[FlexDPUby2.scala 150:32]
-  assign FDPE_io_i_data_bus_1 = dest_1[15:0]; // @[FlexDPUby2.scala 150:32]
-  assign FDPE_io_i_data_bus_2 = dest_2[15:0]; // @[FlexDPUby2.scala 150:32]
-  assign FDPE_io_i_data_bus_3 = dest_3[15:0]; // @[FlexDPUby2.scala 150:32]
-  assign FDPE_io_i_data_bus2_0 = src_0[15:0]; // @[FlexDPUby2.scala 156:33]
-  assign FDPE_io_i_data_bus2_1 = src_1[15:0]; // @[FlexDPUby2.scala 156:33]
-  assign FDPE_io_i_data_bus2_2 = src_2[15:0]; // @[FlexDPUby2.scala 156:33]
-  assign FDPE_io_i_data_bus2_3 = src_3[15:0]; // @[FlexDPUby2.scala 156:33]
-  assign FDPE_io_Stationary_matrix_0_0 = io_Stationary_matrix_0_0; // @[FlexDPUby2.scala 161:39]
-  assign FDPE_io_Stationary_matrix_0_1 = io_Stationary_matrix_0_1; // @[FlexDPUby2.scala 161:39]
-  assign FDPE_io_Stationary_matrix_1_0 = io_Stationary_matrix_1_0; // @[FlexDPUby2.scala 161:39]
-  assign FDPE_io_Stationary_matrix_1_1 = io_Stationary_matrix_1_1; // @[FlexDPUby2.scala 161:39]
-  assign FDPE_io_i_mux_bus_0_0 = _FDPE_io_i_mux_bus_0_0_rev_T_11 | _GEN_174; // @[FlexDPUby2.scala 84:17]
-  assign FDPE_io_i_mux_bus_0_1 = _FDPE_io_i_mux_bus_0_1_rev_T_11 | _GEN_180; // @[FlexDPUby2.scala 84:17]
-  assign FDPE_io_i_mux_bus_0_2 = _FDPE_io_i_mux_bus_0_2_rev_T_11 | _GEN_186; // @[FlexDPUby2.scala 84:17]
-  assign FDPE_io_i_mux_bus_0_3 = _FDPE_io_i_mux_bus_0_3_rev_T_11 | _GEN_192; // @[FlexDPUby2.scala 84:17]
-  assign FDPE_io_i_mux_bus_1_0 = _FDPE_io_i_mux_bus_1_0_rev_T_11 | _GEN_198; // @[FlexDPUby2.scala 84:17]
-  assign FDPE_io_i_mux_bus_1_1 = _FDPE_io_i_mux_bus_1_1_rev_T_11 | _GEN_204; // @[FlexDPUby2.scala 84:17]
-  assign FDPE_io_i_mux_bus_1_2 = _FDPE_io_i_mux_bus_1_2_rev_T_11 | _GEN_210; // @[FlexDPUby2.scala 84:17]
-  assign FDPE_io_i_mux_bus_1_3 = _FDPE_io_i_mux_bus_1_3_rev_T_11 | _GEN_216; // @[FlexDPUby2.scala 84:17]
-  assign FDPE_io_i_mux_bus_2_0 = _FDPE_io_i_mux_bus_2_0_rev_T_11 | _GEN_222; // @[FlexDPUby2.scala 84:17]
-  assign FDPE_io_i_mux_bus_2_1 = _FDPE_io_i_mux_bus_2_1_rev_T_11 | _GEN_228; // @[FlexDPUby2.scala 84:17]
-  assign FDPE_io_i_mux_bus_2_2 = _FDPE_io_i_mux_bus_2_2_rev_T_11 | _GEN_234; // @[FlexDPUby2.scala 84:17]
-  assign FDPE_io_i_mux_bus_2_3 = _FDPE_io_i_mux_bus_2_3_rev_T_11 | _GEN_240; // @[FlexDPUby2.scala 84:17]
-  assign FDPE_io_i_mux_bus_3_0 = _FDPE_io_i_mux_bus_3_0_rev_T_11 | _GEN_246; // @[FlexDPUby2.scala 84:17]
-  assign FDPE_io_i_mux_bus_3_1 = _FDPE_io_i_mux_bus_3_1_rev_T_11 | _GEN_252; // @[FlexDPUby2.scala 84:17]
-  assign FDPE_io_i_mux_bus_3_2 = _FDPE_io_i_mux_bus_3_2_rev_T_11 | _GEN_258; // @[FlexDPUby2.scala 84:17]
-  assign FDPE_io_i_mux_bus_3_3 = _FDPE_io_i_mux_bus_3_3_rev_T_11 | _GEN_264; // @[FlexDPUby2.scala 84:17]
-  assign FDPE_io_input_valid = hig; // @[FlexDPUby2.scala 151:33]
+  assign FDPE_io_i_data_bus_0 = dest_0[15:0]; // @[FlexDPUby2.scala 163:32]
+  assign FDPE_io_i_data_bus_1 = dest_1[15:0]; // @[FlexDPUby2.scala 163:32]
+  assign FDPE_io_i_data_bus_2 = dest_2[15:0]; // @[FlexDPUby2.scala 163:32]
+  assign FDPE_io_i_data_bus_3 = dest_3[15:0]; // @[FlexDPUby2.scala 163:32]
+  assign FDPE_io_i_data_bus2_0 = src_0[15:0]; // @[FlexDPUby2.scala 169:33]
+  assign FDPE_io_i_data_bus2_1 = src_1[15:0]; // @[FlexDPUby2.scala 169:33]
+  assign FDPE_io_i_data_bus2_2 = src_2[15:0]; // @[FlexDPUby2.scala 169:33]
+  assign FDPE_io_i_data_bus2_3 = src_3[15:0]; // @[FlexDPUby2.scala 169:33]
+  assign FDPE_io_Stationary_matrix_0_0 = io_Stationary_matrix_0_0; // @[FlexDPUby2.scala 174:39]
+  assign FDPE_io_Stationary_matrix_0_1 = io_Stationary_matrix_0_1; // @[FlexDPUby2.scala 174:39]
+  assign FDPE_io_Stationary_matrix_1_0 = io_Stationary_matrix_1_0; // @[FlexDPUby2.scala 174:39]
+  assign FDPE_io_Stationary_matrix_1_1 = io_Stationary_matrix_1_1; // @[FlexDPUby2.scala 174:39]
+  assign FDPE_io_i_mux_bus_0_0 = _FDPE_io_i_mux_bus_0_0_rev_T_11 | _GEN_178; // @[FlexDPUby2.scala 85:17]
+  assign FDPE_io_i_mux_bus_0_1 = _FDPE_io_i_mux_bus_0_1_rev_T_11 | _GEN_184; // @[FlexDPUby2.scala 85:17]
+  assign FDPE_io_i_mux_bus_0_2 = _FDPE_io_i_mux_bus_0_2_rev_T_11 | _GEN_190; // @[FlexDPUby2.scala 85:17]
+  assign FDPE_io_i_mux_bus_0_3 = _FDPE_io_i_mux_bus_0_3_rev_T_11 | _GEN_196; // @[FlexDPUby2.scala 85:17]
+  assign FDPE_io_i_mux_bus_1_0 = _FDPE_io_i_mux_bus_1_0_rev_T_11 | _GEN_202; // @[FlexDPUby2.scala 85:17]
+  assign FDPE_io_i_mux_bus_1_1 = _FDPE_io_i_mux_bus_1_1_rev_T_11 | _GEN_208; // @[FlexDPUby2.scala 85:17]
+  assign FDPE_io_i_mux_bus_1_2 = _FDPE_io_i_mux_bus_1_2_rev_T_11 | _GEN_214; // @[FlexDPUby2.scala 85:17]
+  assign FDPE_io_i_mux_bus_1_3 = _FDPE_io_i_mux_bus_1_3_rev_T_11 | _GEN_220; // @[FlexDPUby2.scala 85:17]
+  assign FDPE_io_i_mux_bus_2_0 = _FDPE_io_i_mux_bus_2_0_rev_T_11 | _GEN_226; // @[FlexDPUby2.scala 85:17]
+  assign FDPE_io_i_mux_bus_2_1 = _FDPE_io_i_mux_bus_2_1_rev_T_11 | _GEN_232; // @[FlexDPUby2.scala 85:17]
+  assign FDPE_io_i_mux_bus_2_2 = _FDPE_io_i_mux_bus_2_2_rev_T_11 | _GEN_238; // @[FlexDPUby2.scala 85:17]
+  assign FDPE_io_i_mux_bus_2_3 = _FDPE_io_i_mux_bus_2_3_rev_T_11 | _GEN_244; // @[FlexDPUby2.scala 85:17]
+  assign FDPE_io_i_mux_bus_3_0 = _FDPE_io_i_mux_bus_3_0_rev_T_11 | _GEN_250; // @[FlexDPUby2.scala 85:17]
+  assign FDPE_io_i_mux_bus_3_1 = _FDPE_io_i_mux_bus_3_1_rev_T_11 | _GEN_256; // @[FlexDPUby2.scala 85:17]
+  assign FDPE_io_i_mux_bus_3_2 = _FDPE_io_i_mux_bus_3_2_rev_T_11 | _GEN_262; // @[FlexDPUby2.scala 85:17]
+  assign FDPE_io_i_mux_bus_3_3 = _FDPE_io_i_mux_bus_3_3_rev_T_11 | _GEN_268; // @[FlexDPUby2.scala 85:17]
+  assign FDPE_io_input_valid = hig; // @[FlexDPUby2.scala 164:33]
   always @(posedge clock) begin
     if (reset) begin // @[FlexDPUby2.scala 18:26]
       DPEDest_0_0 <= 32'h0; // @[FlexDPUby2.scala 18:26]
-    end else if (io_valid) begin // @[FlexDPUby2.scala 36:20]
-      if (_GEN_3 != 16'h0 & iloop <= 32'h1) begin // @[FlexDPUby2.scala 37:89]
-        if (~indexRow[0] & 2'h0 == indexCol[1:0]) begin // @[FlexDPUby2.scala 38:37]
-          DPEDest_0_0 <= _DPEDest_T_5_T_6; // @[FlexDPUby2.scala 38:37]
+    end else if (io_valid) begin // @[FlexDPUby2.scala 37:20]
+      if (_GEN_3 != 16'h0 & iloop <= 32'h1) begin // @[FlexDPUby2.scala 38:89]
+        if (~indexRow[0] & 2'h0 == indexCol[1:0]) begin // @[FlexDPUby2.scala 39:37]
+          DPEDest_0_0 <= _DPEDest_T_5_T_6; // @[FlexDPUby2.scala 39:37]
         end
       end
     end
     if (reset) begin // @[FlexDPUby2.scala 18:26]
       DPEDest_0_1 <= 32'h0; // @[FlexDPUby2.scala 18:26]
-    end else if (io_valid) begin // @[FlexDPUby2.scala 36:20]
-      if (_GEN_3 != 16'h0 & iloop <= 32'h1) begin // @[FlexDPUby2.scala 37:89]
-        if (~indexRow[0] & 2'h1 == indexCol[1:0]) begin // @[FlexDPUby2.scala 38:37]
-          DPEDest_0_1 <= _DPEDest_T_5_T_6; // @[FlexDPUby2.scala 38:37]
+    end else if (io_valid) begin // @[FlexDPUby2.scala 37:20]
+      if (_GEN_3 != 16'h0 & iloop <= 32'h1) begin // @[FlexDPUby2.scala 38:89]
+        if (~indexRow[0] & 2'h1 == indexCol[1:0]) begin // @[FlexDPUby2.scala 39:37]
+          DPEDest_0_1 <= _DPEDest_T_5_T_6; // @[FlexDPUby2.scala 39:37]
         end
       end
     end
     if (reset) begin // @[FlexDPUby2.scala 18:26]
       DPEDest_0_2 <= 32'h0; // @[FlexDPUby2.scala 18:26]
-    end else if (io_valid) begin // @[FlexDPUby2.scala 36:20]
-      if (_GEN_3 != 16'h0 & iloop <= 32'h1) begin // @[FlexDPUby2.scala 37:89]
-        if (~indexRow[0] & 2'h2 == indexCol[1:0]) begin // @[FlexDPUby2.scala 38:37]
-          DPEDest_0_2 <= _DPEDest_T_5_T_6; // @[FlexDPUby2.scala 38:37]
+    end else if (io_valid) begin // @[FlexDPUby2.scala 37:20]
+      if (_GEN_3 != 16'h0 & iloop <= 32'h1) begin // @[FlexDPUby2.scala 38:89]
+        if (~indexRow[0] & 2'h2 == indexCol[1:0]) begin // @[FlexDPUby2.scala 39:37]
+          DPEDest_0_2 <= _DPEDest_T_5_T_6; // @[FlexDPUby2.scala 39:37]
         end
       end
     end
     if (reset) begin // @[FlexDPUby2.scala 18:26]
       DPEDest_0_3 <= 32'h0; // @[FlexDPUby2.scala 18:26]
-    end else if (io_valid) begin // @[FlexDPUby2.scala 36:20]
-      if (_GEN_3 != 16'h0 & iloop <= 32'h1) begin // @[FlexDPUby2.scala 37:89]
-        if (~indexRow[0] & 2'h3 == indexCol[1:0]) begin // @[FlexDPUby2.scala 38:37]
-          DPEDest_0_3 <= _DPEDest_T_5_T_6; // @[FlexDPUby2.scala 38:37]
-        end
-      end
-    end
-    if (reset) begin // @[FlexDPUby2.scala 19:25]
-      DPESrc_0_0 <= 32'h0; // @[FlexDPUby2.scala 19:25]
-    end else if (io_valid) begin // @[FlexDPUby2.scala 36:20]
-      if (_GEN_28 != 16'h0 & _T_3) begin // @[FlexDPUby2.scala 41:88]
-        if (~SindexRow[0] & ~SindexCol[0]) begin // @[FlexDPUby2.scala 42:38]
-          DPESrc_0_0 <= _DPESrc_T_12_T_13; // @[FlexDPUby2.scala 42:38]
+    end else if (io_valid) begin // @[FlexDPUby2.scala 37:20]
+      if (_GEN_3 != 16'h0 & iloop <= 32'h1) begin // @[FlexDPUby2.scala 38:89]
+        if (~indexRow[0] & 2'h3 == indexCol[1:0]) begin // @[FlexDPUby2.scala 39:37]
+          DPEDest_0_3 <= _DPEDest_T_5_T_6; // @[FlexDPUby2.scala 39:37]
         end
       end
     end
     if (reset) begin // @[FlexDPUby2.scala 19:25]
       DPESrc_0_1 <= 32'h0; // @[FlexDPUby2.scala 19:25]
-    end else if (io_valid) begin // @[FlexDPUby2.scala 36:20]
-      if (_GEN_28 != 16'h0 & _T_3) begin // @[FlexDPUby2.scala 41:88]
-        if (~SindexRow[0] & SindexCol[0]) begin // @[FlexDPUby2.scala 42:38]
-          DPESrc_0_1 <= _DPESrc_T_12_T_13; // @[FlexDPUby2.scala 42:38]
-        end
-      end
+    end else if (io_valid) begin // @[FlexDPUby2.scala 37:20]
+      DPESrc_0_1 <= 32'h7; // @[FlexDPUby2.scala 97:15]
     end
     if (reset) begin // @[FlexDPUby2.scala 19:25]
       DPESrc_1_0 <= 32'h0; // @[FlexDPUby2.scala 19:25]
-    end else if (io_valid) begin // @[FlexDPUby2.scala 36:20]
-      if (_GEN_28 != 16'h0 & _T_3) begin // @[FlexDPUby2.scala 41:88]
-        if (SindexRow[0] & ~SindexCol[0]) begin // @[FlexDPUby2.scala 42:38]
-          DPESrc_1_0 <= _DPESrc_T_12_T_13; // @[FlexDPUby2.scala 42:38]
-        end
-      end
+    end else if (io_valid) begin // @[FlexDPUby2.scala 37:20]
+      DPESrc_1_0 <= 32'h8; // @[FlexDPUby2.scala 98:15]
     end
     if (reset) begin // @[FlexDPUby2.scala 19:25]
       DPESrc_1_1 <= 32'h0; // @[FlexDPUby2.scala 19:25]
-    end else if (io_valid) begin // @[FlexDPUby2.scala 36:20]
-      if (_GEN_28 != 16'h0 & _T_3) begin // @[FlexDPUby2.scala 41:88]
-        if (SindexRow[0] & SindexCol[0]) begin // @[FlexDPUby2.scala 42:38]
-          DPESrc_1_1 <= _DPESrc_T_12_T_13; // @[FlexDPUby2.scala 42:38]
-        end
-      end
+    end else if (io_valid) begin // @[FlexDPUby2.scala 37:20]
+      DPESrc_1_1 <= 32'h3; // @[FlexDPUby2.scala 98:15]
     end
-    if (reset) begin // @[FlexDPUby2.scala 21:27]
-      indexRow <= 32'h0; // @[FlexDPUby2.scala 21:27]
-    end else if (io_valid) begin // @[FlexDPUby2.scala 36:20]
-      if (!(indexCol == 32'h3 & indexRow == 32'h1)) begin // @[FlexDPUby2.scala 54:86]
-        if (_T_18) begin // @[FlexDPUby2.scala 57:52]
-          indexRow <= _indexRow_T_1; // @[FlexDPUby2.scala 58:18]
-        end
-      end
+    if (reset) begin // @[FlexDPUby2.scala 20:26]
+      DPESrc2_0_0 <= 32'h0; // @[FlexDPUby2.scala 20:26]
+    end else if (io_valid) begin // @[FlexDPUby2.scala 37:20]
+      DPESrc2_0_0 <= {{16'd0}, io_Streaming_matrix_0_0}; // @[FlexDPUby2.scala 103:27]
+    end
+    if (reset) begin // @[FlexDPUby2.scala 20:26]
+      DPESrc2_0_1 <= 32'h0; // @[FlexDPUby2.scala 20:26]
+    end else if (io_valid) begin // @[FlexDPUby2.scala 37:20]
+      DPESrc2_0_1 <= {{16'd0}, io_Streaming_matrix_1_0}; // @[FlexDPUby2.scala 103:27]
+    end
+    if (reset) begin // @[FlexDPUby2.scala 20:26]
+      DPESrc2_1_0 <= 32'h0; // @[FlexDPUby2.scala 20:26]
+    end else if (io_valid) begin // @[FlexDPUby2.scala 37:20]
+      DPESrc2_1_0 <= {{16'd0}, io_Streaming_matrix_0_1}; // @[FlexDPUby2.scala 103:27]
+    end
+    if (reset) begin // @[FlexDPUby2.scala 20:26]
+      DPESrc2_1_1 <= 32'h0; // @[FlexDPUby2.scala 20:26]
+    end else if (io_valid) begin // @[FlexDPUby2.scala 37:20]
+      DPESrc2_1_1 <= {{16'd0}, io_Streaming_matrix_1_1}; // @[FlexDPUby2.scala 103:27]
     end
     if (reset) begin // @[FlexDPUby2.scala 22:27]
-      indexCol <= 32'h0; // @[FlexDPUby2.scala 22:27]
-    end else if (io_valid) begin // @[FlexDPUby2.scala 36:20]
-      if (!(indexCol == 32'h3 & indexRow == 32'h1)) begin // @[FlexDPUby2.scala 54:86]
-        if (_T_18) begin // @[FlexDPUby2.scala 57:52]
-          indexCol <= 32'h0; // @[FlexDPUby2.scala 59:18]
+      indexRow <= 32'h0; // @[FlexDPUby2.scala 22:27]
+    end else if (io_valid) begin // @[FlexDPUby2.scala 37:20]
+      if (!(indexCol == 32'h3 & indexRow == 32'h1)) begin // @[FlexDPUby2.scala 55:86]
+        if (_T_18) begin // @[FlexDPUby2.scala 58:52]
+          indexRow <= _indexRow_T_1; // @[FlexDPUby2.scala 59:18]
+        end
+      end
+    end
+    if (reset) begin // @[FlexDPUby2.scala 23:27]
+      indexCol <= 32'h0; // @[FlexDPUby2.scala 23:27]
+    end else if (io_valid) begin // @[FlexDPUby2.scala 37:20]
+      if (!(indexCol == 32'h3 & indexRow == 32'h1)) begin // @[FlexDPUby2.scala 55:86]
+        if (_T_18) begin // @[FlexDPUby2.scala 58:52]
+          indexCol <= 32'h0; // @[FlexDPUby2.scala 60:18]
         end else begin
           indexCol <= _GEN_24;
         end
       end
     end
-    if (reset) begin // @[FlexDPUby2.scala 23:28]
-      SindexRow <= 32'h0; // @[FlexDPUby2.scala 23:28]
-    end else if (io_valid) begin // @[FlexDPUby2.scala 36:20]
-      if (!(SindexCol == 32'h1 & SindexRow == 32'h1)) begin // @[FlexDPUby2.scala 46:88]
-        if (_T_14) begin // @[FlexDPUby2.scala 49:53]
-          SindexRow <= _SindexRow_T_1; // @[FlexDPUby2.scala 50:19]
+    if (reset) begin // @[FlexDPUby2.scala 24:28]
+      SindexRow <= 32'h0; // @[FlexDPUby2.scala 24:28]
+    end else if (io_valid) begin // @[FlexDPUby2.scala 37:20]
+      if (!(SindexCol == 32'h1 & SindexRow == 32'h1)) begin // @[FlexDPUby2.scala 47:88]
+        if (_T_14) begin // @[FlexDPUby2.scala 50:53]
+          SindexRow <= _SindexRow_T_1; // @[FlexDPUby2.scala 51:19]
         end
       end
     end
-    if (reset) begin // @[FlexDPUby2.scala 24:28]
-      SindexCol <= 32'h0; // @[FlexDPUby2.scala 24:28]
-    end else if (io_valid) begin // @[FlexDPUby2.scala 36:20]
-      if (!(SindexCol == 32'h1 & SindexRow == 32'h1)) begin // @[FlexDPUby2.scala 46:88]
-        if (_T_14) begin // @[FlexDPUby2.scala 49:53]
-          SindexCol <= 32'h0; // @[FlexDPUby2.scala 51:19]
+    if (reset) begin // @[FlexDPUby2.scala 25:28]
+      SindexCol <= 32'h0; // @[FlexDPUby2.scala 25:28]
+    end else if (io_valid) begin // @[FlexDPUby2.scala 37:20]
+      if (!(SindexCol == 32'h1 & SindexRow == 32'h1)) begin // @[FlexDPUby2.scala 47:88]
+        if (_T_14) begin // @[FlexDPUby2.scala 50:53]
+          SindexCol <= 32'h0; // @[FlexDPUby2.scala 52:19]
         end else begin
           SindexCol <= _GEN_41;
         end
       end
     end
-    if (reset) begin // @[FlexDPUby2.scala 25:24]
-      iloop <= 32'h0; // @[FlexDPUby2.scala 25:24]
-    end else if (io_valid) begin // @[FlexDPUby2.scala 36:20]
-      if (_T_3 & jloop < 32'h1) begin // @[FlexDPUby2.scala 67:76]
-        if (iloop < 32'h1 & _SrcDestValid_T_1) begin // @[FlexDPUby2.scala 63:77]
-          iloop <= _iloop_T_1; // @[FlexDPUby2.scala 64:15]
+    if (reset) begin // @[FlexDPUby2.scala 26:24]
+      iloop <= 32'h0; // @[FlexDPUby2.scala 26:24]
+    end else if (io_valid) begin // @[FlexDPUby2.scala 37:20]
+      if (_T_3 & jloop < 32'h1) begin // @[FlexDPUby2.scala 68:76]
+        if (iloop < 32'h1 & _SrcDestValid_T_1) begin // @[FlexDPUby2.scala 64:77]
+          iloop <= _iloop_T_1; // @[FlexDPUby2.scala 65:15]
         end
-      end else if (_SrcDestValid_T_2) begin // @[FlexDPUby2.scala 69:83]
-        iloop <= 32'h2; // @[FlexDPUby2.scala 71:15]
+      end else if (_SrcDestValid_T_2) begin // @[FlexDPUby2.scala 70:83]
+        iloop <= 32'h2; // @[FlexDPUby2.scala 72:15]
       end else begin
         iloop <= _GEN_51;
       end
     end
-    if (reset) begin // @[FlexDPUby2.scala 26:24]
-      jloop <= 32'h0; // @[FlexDPUby2.scala 26:24]
-    end else if (io_valid) begin // @[FlexDPUby2.scala 36:20]
-      if (_T_3 & jloop < 32'h1) begin // @[FlexDPUby2.scala 67:76]
-        jloop <= _jloop_T_1; // @[FlexDPUby2.scala 68:15]
-      end else if (!(_SrcDestValid_T_2)) begin // @[FlexDPUby2.scala 69:83]
+    if (reset) begin // @[FlexDPUby2.scala 27:24]
+      jloop <= 32'h0; // @[FlexDPUby2.scala 27:24]
+    end else if (io_valid) begin // @[FlexDPUby2.scala 37:20]
+      if (_T_3 & jloop < 32'h1) begin // @[FlexDPUby2.scala 68:76]
+        jloop <= _jloop_T_1; // @[FlexDPUby2.scala 69:15]
+      end else if (!(_SrcDestValid_T_2)) begin // @[FlexDPUby2.scala 70:83]
         jloop <= {{31'd0}, _T_33};
       end
     end
-    if (reset) begin // @[FlexDPUby2.scala 27:28]
-      Statvalid <= 1'h0; // @[FlexDPUby2.scala 27:28]
+    if (reset) begin // @[FlexDPUby2.scala 28:28]
+      Statvalid <= 1'h0; // @[FlexDPUby2.scala 28:28]
     end else begin
-      Statvalid <= (_SrcDestValid_T | iloop == 32'h2) & _SrcDestValid_T_1; // @[FlexDPUby2.scala 34:15]
+      Statvalid <= (_SrcDestValid_T | iloop == 32'h2) & _SrcDestValid_T_1; // @[FlexDPUby2.scala 35:15]
     end
-    if (reset) begin // @[FlexDPUby2.scala 28:31]
-      SrcDestValid <= 1'h0; // @[FlexDPUby2.scala 28:31]
+    if (reset) begin // @[FlexDPUby2.scala 29:31]
+      SrcDestValid <= 1'h0; // @[FlexDPUby2.scala 29:31]
     end else begin
-      SrcDestValid <= iloop == 32'h1 & jloop == 32'h1; // @[FlexDPUby2.scala 29:18]
+      SrcDestValid <= iloop == 32'h1 & jloop == 32'h1; // @[FlexDPUby2.scala 30:18]
     end
-    if (reset) begin // @[FlexDPUby2.scala 89:22]
-      src_0 <= 32'h0; // @[FlexDPUby2.scala 89:22]
-    end else if (Statvalid) begin // @[FlexDPUby2.scala 107:21]
-      if (PF_io_PF_Valid) begin // @[FlexDPUby2.scala 121:30]
-        src_0 <= {{16'd0}, PF_io_Source_0}; // @[FlexDPUby2.scala 131:24]
+    if (reset) begin // @[FlexDPUby2.scala 90:22]
+      src_0 <= 32'h0; // @[FlexDPUby2.scala 90:22]
+    end else if (Statvalid) begin // @[FlexDPUby2.scala 120:21]
+      if (PF_io_PF_Valid) begin // @[FlexDPUby2.scala 134:30]
+        src_0 <= {{16'd0}, PF_io_Source_0}; // @[FlexDPUby2.scala 144:24]
       end
     end
-    if (reset) begin // @[FlexDPUby2.scala 89:22]
-      src_1 <= 32'h0; // @[FlexDPUby2.scala 89:22]
-    end else if (Statvalid) begin // @[FlexDPUby2.scala 107:21]
-      if (PF_io_PF_Valid) begin // @[FlexDPUby2.scala 121:30]
-        src_1 <= {{16'd0}, PF_io_Source_1}; // @[FlexDPUby2.scala 131:24]
+    if (reset) begin // @[FlexDPUby2.scala 90:22]
+      src_1 <= 32'h0; // @[FlexDPUby2.scala 90:22]
+    end else if (Statvalid) begin // @[FlexDPUby2.scala 120:21]
+      if (PF_io_PF_Valid) begin // @[FlexDPUby2.scala 134:30]
+        src_1 <= {{16'd0}, PF_io_Source_1}; // @[FlexDPUby2.scala 144:24]
       end
     end
-    if (reset) begin // @[FlexDPUby2.scala 89:22]
-      src_2 <= 32'h0; // @[FlexDPUby2.scala 89:22]
-    end else if (Statvalid) begin // @[FlexDPUby2.scala 107:21]
-      if (PF_io_PF_Valid) begin // @[FlexDPUby2.scala 121:30]
-        src_2 <= {{16'd0}, PF_io_Source_2}; // @[FlexDPUby2.scala 131:24]
+    if (reset) begin // @[FlexDPUby2.scala 90:22]
+      src_2 <= 32'h0; // @[FlexDPUby2.scala 90:22]
+    end else if (Statvalid) begin // @[FlexDPUby2.scala 120:21]
+      if (PF_io_PF_Valid) begin // @[FlexDPUby2.scala 134:30]
+        src_2 <= {{16'd0}, PF_io_Source_2}; // @[FlexDPUby2.scala 144:24]
       end
     end
-    if (reset) begin // @[FlexDPUby2.scala 89:22]
-      src_3 <= 32'h0; // @[FlexDPUby2.scala 89:22]
-    end else if (Statvalid) begin // @[FlexDPUby2.scala 107:21]
-      if (PF_io_PF_Valid) begin // @[FlexDPUby2.scala 121:30]
-        src_3 <= {{16'd0}, PF_io_Source_3}; // @[FlexDPUby2.scala 131:24]
+    if (reset) begin // @[FlexDPUby2.scala 90:22]
+      src_3 <= 32'h0; // @[FlexDPUby2.scala 90:22]
+    end else if (Statvalid) begin // @[FlexDPUby2.scala 120:21]
+      if (PF_io_PF_Valid) begin // @[FlexDPUby2.scala 134:30]
+        src_3 <= {{16'd0}, PF_io_Source_3}; // @[FlexDPUby2.scala 144:24]
       end
     end
-    if (reset) begin // @[FlexDPUby2.scala 90:24]
-      muxes_0_0 <= 4'h0; // @[FlexDPUby2.scala 90:24]
-    end else if (Statvalid) begin // @[FlexDPUby2.scala 107:21]
-      if (PF_io_PF_Valid) begin // @[FlexDPUby2.scala 121:30]
-        muxes_0_0 <= PF_io_i_mux_bus_0_0; // @[FlexDPUby2.scala 133:33]
+    if (reset) begin // @[FlexDPUby2.scala 91:24]
+      muxes_0_0 <= 4'h0; // @[FlexDPUby2.scala 91:24]
+    end else if (Statvalid) begin // @[FlexDPUby2.scala 120:21]
+      if (PF_io_PF_Valid) begin // @[FlexDPUby2.scala 134:30]
+        muxes_0_0 <= PF_io_i_mux_bus_0_0; // @[FlexDPUby2.scala 146:33]
       end
     end
-    if (reset) begin // @[FlexDPUby2.scala 90:24]
-      muxes_0_1 <= 4'h0; // @[FlexDPUby2.scala 90:24]
-    end else if (Statvalid) begin // @[FlexDPUby2.scala 107:21]
-      if (PF_io_PF_Valid) begin // @[FlexDPUby2.scala 121:30]
-        muxes_0_1 <= PF_io_i_mux_bus_0_1; // @[FlexDPUby2.scala 133:33]
+    if (reset) begin // @[FlexDPUby2.scala 91:24]
+      muxes_0_1 <= 4'h0; // @[FlexDPUby2.scala 91:24]
+    end else if (Statvalid) begin // @[FlexDPUby2.scala 120:21]
+      if (PF_io_PF_Valid) begin // @[FlexDPUby2.scala 134:30]
+        muxes_0_1 <= PF_io_i_mux_bus_0_1; // @[FlexDPUby2.scala 146:33]
       end
     end
-    if (reset) begin // @[FlexDPUby2.scala 90:24]
-      muxes_0_2 <= 4'h0; // @[FlexDPUby2.scala 90:24]
-    end else if (Statvalid) begin // @[FlexDPUby2.scala 107:21]
-      if (PF_io_PF_Valid) begin // @[FlexDPUby2.scala 121:30]
-        muxes_0_2 <= PF_io_i_mux_bus_0_2; // @[FlexDPUby2.scala 133:33]
+    if (reset) begin // @[FlexDPUby2.scala 91:24]
+      muxes_0_2 <= 4'h0; // @[FlexDPUby2.scala 91:24]
+    end else if (Statvalid) begin // @[FlexDPUby2.scala 120:21]
+      if (PF_io_PF_Valid) begin // @[FlexDPUby2.scala 134:30]
+        muxes_0_2 <= PF_io_i_mux_bus_0_2; // @[FlexDPUby2.scala 146:33]
       end
     end
-    if (reset) begin // @[FlexDPUby2.scala 90:24]
-      muxes_0_3 <= 4'h0; // @[FlexDPUby2.scala 90:24]
-    end else if (Statvalid) begin // @[FlexDPUby2.scala 107:21]
-      if (PF_io_PF_Valid) begin // @[FlexDPUby2.scala 121:30]
-        muxes_0_3 <= PF_io_i_mux_bus_0_3; // @[FlexDPUby2.scala 133:33]
+    if (reset) begin // @[FlexDPUby2.scala 91:24]
+      muxes_0_3 <= 4'h0; // @[FlexDPUby2.scala 91:24]
+    end else if (Statvalid) begin // @[FlexDPUby2.scala 120:21]
+      if (PF_io_PF_Valid) begin // @[FlexDPUby2.scala 134:30]
+        muxes_0_3 <= PF_io_i_mux_bus_0_3; // @[FlexDPUby2.scala 146:33]
       end
     end
-    if (reset) begin // @[FlexDPUby2.scala 90:24]
-      muxes_1_0 <= 4'h0; // @[FlexDPUby2.scala 90:24]
-    end else if (Statvalid) begin // @[FlexDPUby2.scala 107:21]
-      if (PF_io_PF_Valid) begin // @[FlexDPUby2.scala 121:30]
-        muxes_1_0 <= PF_io_i_mux_bus_1_0; // @[FlexDPUby2.scala 133:33]
+    if (reset) begin // @[FlexDPUby2.scala 91:24]
+      muxes_1_0 <= 4'h0; // @[FlexDPUby2.scala 91:24]
+    end else if (Statvalid) begin // @[FlexDPUby2.scala 120:21]
+      if (PF_io_PF_Valid) begin // @[FlexDPUby2.scala 134:30]
+        muxes_1_0 <= PF_io_i_mux_bus_1_0; // @[FlexDPUby2.scala 146:33]
       end
     end
-    if (reset) begin // @[FlexDPUby2.scala 90:24]
-      muxes_1_1 <= 4'h0; // @[FlexDPUby2.scala 90:24]
-    end else if (Statvalid) begin // @[FlexDPUby2.scala 107:21]
-      if (PF_io_PF_Valid) begin // @[FlexDPUby2.scala 121:30]
-        muxes_1_1 <= PF_io_i_mux_bus_1_1; // @[FlexDPUby2.scala 133:33]
+    if (reset) begin // @[FlexDPUby2.scala 91:24]
+      muxes_1_1 <= 4'h0; // @[FlexDPUby2.scala 91:24]
+    end else if (Statvalid) begin // @[FlexDPUby2.scala 120:21]
+      if (PF_io_PF_Valid) begin // @[FlexDPUby2.scala 134:30]
+        muxes_1_1 <= PF_io_i_mux_bus_1_1; // @[FlexDPUby2.scala 146:33]
       end
     end
-    if (reset) begin // @[FlexDPUby2.scala 90:24]
-      muxes_1_2 <= 4'h0; // @[FlexDPUby2.scala 90:24]
-    end else if (Statvalid) begin // @[FlexDPUby2.scala 107:21]
-      if (PF_io_PF_Valid) begin // @[FlexDPUby2.scala 121:30]
-        muxes_1_2 <= PF_io_i_mux_bus_1_2; // @[FlexDPUby2.scala 133:33]
+    if (reset) begin // @[FlexDPUby2.scala 91:24]
+      muxes_1_2 <= 4'h0; // @[FlexDPUby2.scala 91:24]
+    end else if (Statvalid) begin // @[FlexDPUby2.scala 120:21]
+      if (PF_io_PF_Valid) begin // @[FlexDPUby2.scala 134:30]
+        muxes_1_2 <= PF_io_i_mux_bus_1_2; // @[FlexDPUby2.scala 146:33]
       end
     end
-    if (reset) begin // @[FlexDPUby2.scala 90:24]
-      muxes_1_3 <= 4'h0; // @[FlexDPUby2.scala 90:24]
-    end else if (Statvalid) begin // @[FlexDPUby2.scala 107:21]
-      if (PF_io_PF_Valid) begin // @[FlexDPUby2.scala 121:30]
-        muxes_1_3 <= PF_io_i_mux_bus_1_3; // @[FlexDPUby2.scala 133:33]
+    if (reset) begin // @[FlexDPUby2.scala 91:24]
+      muxes_1_3 <= 4'h0; // @[FlexDPUby2.scala 91:24]
+    end else if (Statvalid) begin // @[FlexDPUby2.scala 120:21]
+      if (PF_io_PF_Valid) begin // @[FlexDPUby2.scala 134:30]
+        muxes_1_3 <= PF_io_i_mux_bus_1_3; // @[FlexDPUby2.scala 146:33]
       end
     end
-    if (reset) begin // @[FlexDPUby2.scala 90:24]
-      muxes_2_0 <= 4'h0; // @[FlexDPUby2.scala 90:24]
-    end else if (Statvalid) begin // @[FlexDPUby2.scala 107:21]
-      if (PF_io_PF_Valid) begin // @[FlexDPUby2.scala 121:30]
-        muxes_2_0 <= PF_io_i_mux_bus_2_0; // @[FlexDPUby2.scala 133:33]
+    if (reset) begin // @[FlexDPUby2.scala 91:24]
+      muxes_2_0 <= 4'h0; // @[FlexDPUby2.scala 91:24]
+    end else if (Statvalid) begin // @[FlexDPUby2.scala 120:21]
+      if (PF_io_PF_Valid) begin // @[FlexDPUby2.scala 134:30]
+        muxes_2_0 <= PF_io_i_mux_bus_2_0; // @[FlexDPUby2.scala 146:33]
       end
     end
-    if (reset) begin // @[FlexDPUby2.scala 90:24]
-      muxes_2_1 <= 4'h0; // @[FlexDPUby2.scala 90:24]
-    end else if (Statvalid) begin // @[FlexDPUby2.scala 107:21]
-      if (PF_io_PF_Valid) begin // @[FlexDPUby2.scala 121:30]
-        muxes_2_1 <= PF_io_i_mux_bus_2_1; // @[FlexDPUby2.scala 133:33]
+    if (reset) begin // @[FlexDPUby2.scala 91:24]
+      muxes_2_1 <= 4'h0; // @[FlexDPUby2.scala 91:24]
+    end else if (Statvalid) begin // @[FlexDPUby2.scala 120:21]
+      if (PF_io_PF_Valid) begin // @[FlexDPUby2.scala 134:30]
+        muxes_2_1 <= PF_io_i_mux_bus_2_1; // @[FlexDPUby2.scala 146:33]
       end
     end
-    if (reset) begin // @[FlexDPUby2.scala 90:24]
-      muxes_2_2 <= 4'h0; // @[FlexDPUby2.scala 90:24]
-    end else if (Statvalid) begin // @[FlexDPUby2.scala 107:21]
-      if (PF_io_PF_Valid) begin // @[FlexDPUby2.scala 121:30]
-        muxes_2_2 <= PF_io_i_mux_bus_2_2; // @[FlexDPUby2.scala 133:33]
+    if (reset) begin // @[FlexDPUby2.scala 91:24]
+      muxes_2_2 <= 4'h0; // @[FlexDPUby2.scala 91:24]
+    end else if (Statvalid) begin // @[FlexDPUby2.scala 120:21]
+      if (PF_io_PF_Valid) begin // @[FlexDPUby2.scala 134:30]
+        muxes_2_2 <= PF_io_i_mux_bus_2_2; // @[FlexDPUby2.scala 146:33]
       end
     end
-    if (reset) begin // @[FlexDPUby2.scala 90:24]
-      muxes_2_3 <= 4'h0; // @[FlexDPUby2.scala 90:24]
-    end else if (Statvalid) begin // @[FlexDPUby2.scala 107:21]
-      if (PF_io_PF_Valid) begin // @[FlexDPUby2.scala 121:30]
-        muxes_2_3 <= PF_io_i_mux_bus_2_3; // @[FlexDPUby2.scala 133:33]
+    if (reset) begin // @[FlexDPUby2.scala 91:24]
+      muxes_2_3 <= 4'h0; // @[FlexDPUby2.scala 91:24]
+    end else if (Statvalid) begin // @[FlexDPUby2.scala 120:21]
+      if (PF_io_PF_Valid) begin // @[FlexDPUby2.scala 134:30]
+        muxes_2_3 <= PF_io_i_mux_bus_2_3; // @[FlexDPUby2.scala 146:33]
       end
     end
-    if (reset) begin // @[FlexDPUby2.scala 90:24]
-      muxes_3_0 <= 4'h0; // @[FlexDPUby2.scala 90:24]
-    end else if (Statvalid) begin // @[FlexDPUby2.scala 107:21]
-      if (PF_io_PF_Valid) begin // @[FlexDPUby2.scala 121:30]
-        muxes_3_0 <= PF_io_i_mux_bus_3_0; // @[FlexDPUby2.scala 133:33]
+    if (reset) begin // @[FlexDPUby2.scala 91:24]
+      muxes_3_0 <= 4'h0; // @[FlexDPUby2.scala 91:24]
+    end else if (Statvalid) begin // @[FlexDPUby2.scala 120:21]
+      if (PF_io_PF_Valid) begin // @[FlexDPUby2.scala 134:30]
+        muxes_3_0 <= PF_io_i_mux_bus_3_0; // @[FlexDPUby2.scala 146:33]
       end
     end
-    if (reset) begin // @[FlexDPUby2.scala 90:24]
-      muxes_3_1 <= 4'h0; // @[FlexDPUby2.scala 90:24]
-    end else if (Statvalid) begin // @[FlexDPUby2.scala 107:21]
-      if (PF_io_PF_Valid) begin // @[FlexDPUby2.scala 121:30]
-        muxes_3_1 <= PF_io_i_mux_bus_3_1; // @[FlexDPUby2.scala 133:33]
+    if (reset) begin // @[FlexDPUby2.scala 91:24]
+      muxes_3_1 <= 4'h0; // @[FlexDPUby2.scala 91:24]
+    end else if (Statvalid) begin // @[FlexDPUby2.scala 120:21]
+      if (PF_io_PF_Valid) begin // @[FlexDPUby2.scala 134:30]
+        muxes_3_1 <= PF_io_i_mux_bus_3_1; // @[FlexDPUby2.scala 146:33]
       end
     end
-    if (reset) begin // @[FlexDPUby2.scala 90:24]
-      muxes_3_2 <= 4'h0; // @[FlexDPUby2.scala 90:24]
-    end else if (Statvalid) begin // @[FlexDPUby2.scala 107:21]
-      if (PF_io_PF_Valid) begin // @[FlexDPUby2.scala 121:30]
-        muxes_3_2 <= PF_io_i_mux_bus_3_2; // @[FlexDPUby2.scala 133:33]
+    if (reset) begin // @[FlexDPUby2.scala 91:24]
+      muxes_3_2 <= 4'h0; // @[FlexDPUby2.scala 91:24]
+    end else if (Statvalid) begin // @[FlexDPUby2.scala 120:21]
+      if (PF_io_PF_Valid) begin // @[FlexDPUby2.scala 134:30]
+        muxes_3_2 <= PF_io_i_mux_bus_3_2; // @[FlexDPUby2.scala 146:33]
       end
     end
-    if (reset) begin // @[FlexDPUby2.scala 90:24]
-      muxes_3_3 <= 4'h0; // @[FlexDPUby2.scala 90:24]
-    end else if (Statvalid) begin // @[FlexDPUby2.scala 107:21]
-      if (PF_io_PF_Valid) begin // @[FlexDPUby2.scala 121:30]
-        muxes_3_3 <= PF_io_i_mux_bus_3_3; // @[FlexDPUby2.scala 133:33]
+    if (reset) begin // @[FlexDPUby2.scala 91:24]
+      muxes_3_3 <= 4'h0; // @[FlexDPUby2.scala 91:24]
+    end else if (Statvalid) begin // @[FlexDPUby2.scala 120:21]
+      if (PF_io_PF_Valid) begin // @[FlexDPUby2.scala 134:30]
+        muxes_3_3 <= PF_io_i_mux_bus_3_3; // @[FlexDPUby2.scala 146:33]
       end
     end
-    if (reset) begin // @[FlexDPUby2.scala 91:23]
-      dest_0 <= 32'h0; // @[FlexDPUby2.scala 91:23]
-    end else if (Statvalid) begin // @[FlexDPUby2.scala 107:21]
-      dest_0 <= DPEDest_0_0; // @[FlexDPUby2.scala 117:21]
+    if (reset) begin // @[FlexDPUby2.scala 92:23]
+      dest_0 <= 32'h0; // @[FlexDPUby2.scala 92:23]
+    end else if (Statvalid) begin // @[FlexDPUby2.scala 120:21]
+      dest_0 <= DPEDest_0_0; // @[FlexDPUby2.scala 130:21]
     end
-    if (reset) begin // @[FlexDPUby2.scala 91:23]
-      dest_1 <= 32'h0; // @[FlexDPUby2.scala 91:23]
-    end else if (Statvalid) begin // @[FlexDPUby2.scala 107:21]
-      dest_1 <= DPEDest_0_1; // @[FlexDPUby2.scala 117:21]
+    if (reset) begin // @[FlexDPUby2.scala 92:23]
+      dest_1 <= 32'h0; // @[FlexDPUby2.scala 92:23]
+    end else if (Statvalid) begin // @[FlexDPUby2.scala 120:21]
+      dest_1 <= DPEDest_0_1; // @[FlexDPUby2.scala 130:21]
     end
-    if (reset) begin // @[FlexDPUby2.scala 91:23]
-      dest_2 <= 32'h0; // @[FlexDPUby2.scala 91:23]
-    end else if (Statvalid) begin // @[FlexDPUby2.scala 107:21]
-      dest_2 <= DPEDest_0_2; // @[FlexDPUby2.scala 117:21]
+    if (reset) begin // @[FlexDPUby2.scala 92:23]
+      dest_2 <= 32'h0; // @[FlexDPUby2.scala 92:23]
+    end else if (Statvalid) begin // @[FlexDPUby2.scala 120:21]
+      dest_2 <= DPEDest_0_2; // @[FlexDPUby2.scala 130:21]
     end
-    if (reset) begin // @[FlexDPUby2.scala 91:23]
-      dest_3 <= 32'h0; // @[FlexDPUby2.scala 91:23]
-    end else if (Statvalid) begin // @[FlexDPUby2.scala 107:21]
-      dest_3 <= DPEDest_0_3; // @[FlexDPUby2.scala 117:21]
+    if (reset) begin // @[FlexDPUby2.scala 92:23]
+      dest_3 <= 32'h0; // @[FlexDPUby2.scala 92:23]
+    end else if (Statvalid) begin // @[FlexDPUby2.scala 120:21]
+      dest_3 <= DPEDest_0_3; // @[FlexDPUby2.scala 130:21]
     end
-    if (reset) begin // @[FlexDPUby2.scala 106:34]
-      iterationChange <= 1'h0; // @[FlexDPUby2.scala 106:34]
-    end else if (Statvalid) begin // @[FlexDPUby2.scala 107:21]
-      if (PF_io_PF_Valid) begin // @[FlexDPUby2.scala 121:30]
-        if (!(iterationChange)) begin // @[FlexDPUby2.scala 122:58]
+    if (reset) begin // @[FlexDPUby2.scala 119:34]
+      iterationChange <= 1'h0; // @[FlexDPUby2.scala 119:34]
+    end else if (Statvalid) begin // @[FlexDPUby2.scala 120:21]
+      if (PF_io_PF_Valid) begin // @[FlexDPUby2.scala 134:30]
+        if (!(iterationChange)) begin // @[FlexDPUby2.scala 135:58]
           iterationChange <= _GEN_67;
         end
       end
     end
-    if (reset) begin // @[FlexDPUby2.scala 137:25]
-      hi <= 1'h0; // @[FlexDPUby2.scala 137:25]
+    if (reset) begin // @[FlexDPUby2.scala 150:25]
+      hi <= 1'h0; // @[FlexDPUby2.scala 150:25]
     end else begin
       hi <= _GEN_90;
     end
-    if (reset) begin // @[FlexDPUby2.scala 141:26]
-      hig <= 1'h0; // @[FlexDPUby2.scala 141:26]
+    if (reset) begin // @[FlexDPUby2.scala 154:26]
+      hig <= 1'h0; // @[FlexDPUby2.scala 154:26]
     end else begin
       hig <= _GEN_91;
     end
@@ -5749,83 +5774,89 @@ initial begin
   _RAND_3 = {1{`RANDOM}};
   DPEDest_0_3 = _RAND_3[31:0];
   _RAND_4 = {1{`RANDOM}};
-  DPESrc_0_0 = _RAND_4[31:0];
+  DPESrc_0_1 = _RAND_4[31:0];
   _RAND_5 = {1{`RANDOM}};
-  DPESrc_0_1 = _RAND_5[31:0];
+  DPESrc_1_0 = _RAND_5[31:0];
   _RAND_6 = {1{`RANDOM}};
-  DPESrc_1_0 = _RAND_6[31:0];
+  DPESrc_1_1 = _RAND_6[31:0];
   _RAND_7 = {1{`RANDOM}};
-  DPESrc_1_1 = _RAND_7[31:0];
+  DPESrc2_0_0 = _RAND_7[31:0];
   _RAND_8 = {1{`RANDOM}};
-  indexRow = _RAND_8[31:0];
+  DPESrc2_0_1 = _RAND_8[31:0];
   _RAND_9 = {1{`RANDOM}};
-  indexCol = _RAND_9[31:0];
+  DPESrc2_1_0 = _RAND_9[31:0];
   _RAND_10 = {1{`RANDOM}};
-  SindexRow = _RAND_10[31:0];
+  DPESrc2_1_1 = _RAND_10[31:0];
   _RAND_11 = {1{`RANDOM}};
-  SindexCol = _RAND_11[31:0];
+  indexRow = _RAND_11[31:0];
   _RAND_12 = {1{`RANDOM}};
-  iloop = _RAND_12[31:0];
+  indexCol = _RAND_12[31:0];
   _RAND_13 = {1{`RANDOM}};
-  jloop = _RAND_13[31:0];
+  SindexRow = _RAND_13[31:0];
   _RAND_14 = {1{`RANDOM}};
-  Statvalid = _RAND_14[0:0];
+  SindexCol = _RAND_14[31:0];
   _RAND_15 = {1{`RANDOM}};
-  SrcDestValid = _RAND_15[0:0];
+  iloop = _RAND_15[31:0];
   _RAND_16 = {1{`RANDOM}};
-  src_0 = _RAND_16[31:0];
+  jloop = _RAND_16[31:0];
   _RAND_17 = {1{`RANDOM}};
-  src_1 = _RAND_17[31:0];
+  Statvalid = _RAND_17[0:0];
   _RAND_18 = {1{`RANDOM}};
-  src_2 = _RAND_18[31:0];
+  SrcDestValid = _RAND_18[0:0];
   _RAND_19 = {1{`RANDOM}};
-  src_3 = _RAND_19[31:0];
+  src_0 = _RAND_19[31:0];
   _RAND_20 = {1{`RANDOM}};
-  muxes_0_0 = _RAND_20[3:0];
+  src_1 = _RAND_20[31:0];
   _RAND_21 = {1{`RANDOM}};
-  muxes_0_1 = _RAND_21[3:0];
+  src_2 = _RAND_21[31:0];
   _RAND_22 = {1{`RANDOM}};
-  muxes_0_2 = _RAND_22[3:0];
+  src_3 = _RAND_22[31:0];
   _RAND_23 = {1{`RANDOM}};
-  muxes_0_3 = _RAND_23[3:0];
+  muxes_0_0 = _RAND_23[3:0];
   _RAND_24 = {1{`RANDOM}};
-  muxes_1_0 = _RAND_24[3:0];
+  muxes_0_1 = _RAND_24[3:0];
   _RAND_25 = {1{`RANDOM}};
-  muxes_1_1 = _RAND_25[3:0];
+  muxes_0_2 = _RAND_25[3:0];
   _RAND_26 = {1{`RANDOM}};
-  muxes_1_2 = _RAND_26[3:0];
+  muxes_0_3 = _RAND_26[3:0];
   _RAND_27 = {1{`RANDOM}};
-  muxes_1_3 = _RAND_27[3:0];
+  muxes_1_0 = _RAND_27[3:0];
   _RAND_28 = {1{`RANDOM}};
-  muxes_2_0 = _RAND_28[3:0];
+  muxes_1_1 = _RAND_28[3:0];
   _RAND_29 = {1{`RANDOM}};
-  muxes_2_1 = _RAND_29[3:0];
+  muxes_1_2 = _RAND_29[3:0];
   _RAND_30 = {1{`RANDOM}};
-  muxes_2_2 = _RAND_30[3:0];
+  muxes_1_3 = _RAND_30[3:0];
   _RAND_31 = {1{`RANDOM}};
-  muxes_2_3 = _RAND_31[3:0];
+  muxes_2_0 = _RAND_31[3:0];
   _RAND_32 = {1{`RANDOM}};
-  muxes_3_0 = _RAND_32[3:0];
+  muxes_2_1 = _RAND_32[3:0];
   _RAND_33 = {1{`RANDOM}};
-  muxes_3_1 = _RAND_33[3:0];
+  muxes_2_2 = _RAND_33[3:0];
   _RAND_34 = {1{`RANDOM}};
-  muxes_3_2 = _RAND_34[3:0];
+  muxes_2_3 = _RAND_34[3:0];
   _RAND_35 = {1{`RANDOM}};
-  muxes_3_3 = _RAND_35[3:0];
+  muxes_3_0 = _RAND_35[3:0];
   _RAND_36 = {1{`RANDOM}};
-  dest_0 = _RAND_36[31:0];
+  muxes_3_1 = _RAND_36[3:0];
   _RAND_37 = {1{`RANDOM}};
-  dest_1 = _RAND_37[31:0];
+  muxes_3_2 = _RAND_37[3:0];
   _RAND_38 = {1{`RANDOM}};
-  dest_2 = _RAND_38[31:0];
+  muxes_3_3 = _RAND_38[3:0];
   _RAND_39 = {1{`RANDOM}};
-  dest_3 = _RAND_39[31:0];
+  dest_0 = _RAND_39[31:0];
   _RAND_40 = {1{`RANDOM}};
-  iterationChange = _RAND_40[0:0];
+  dest_1 = _RAND_40[31:0];
   _RAND_41 = {1{`RANDOM}};
-  hi = _RAND_41[0:0];
+  dest_2 = _RAND_41[31:0];
   _RAND_42 = {1{`RANDOM}};
-  hig = _RAND_42[0:0];
+  dest_3 = _RAND_42[31:0];
+  _RAND_43 = {1{`RANDOM}};
+  iterationChange = _RAND_43[0:0];
+  _RAND_44 = {1{`RANDOM}};
+  hi = _RAND_44[0:0];
+  _RAND_45 = {1{`RANDOM}};
+  hig = _RAND_45[0:0];
 `endif // RANDOMIZE_REG_INIT
   `endif // RANDOMIZE
 end // initial

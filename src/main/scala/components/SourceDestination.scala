@@ -12,7 +12,8 @@ class SourceDestination(implicit val config: MagmasiConfig) extends Module {
         val valid = Output(Bool())
         val start = Input(Bool())
     })
-    val prevStationary_matrix = RegNext(io.Streaming_matrix)
+    val prevStationary_matrix = RegNext(io.Stationary_matrix)
+    val prevStreaming_matrix = RegNext(io.Streaming_matrix)
     val matricesAreEqual = RegInit(1.B)
     val counterRegs1 = RegInit(VecInit(Seq.fill(config.MaxRows)(VecInit(Seq.fill(config.MaxCols)(0.U(config.DATA_TYPE.W))))))
     val counterRegs2 = RegInit(VecInit(Seq.fill(config.MaxRows)(0.U(config.DATA_TYPE.W))))
@@ -25,19 +26,22 @@ class SourceDestination(implicit val config: MagmasiConfig) extends Module {
     val jValid = Reg(Bool())
     val k = RegInit(0.U(32.W))
 
-    val counter1 = RegInit(0.U(32.W))
-    val counter2 = RegInit(0.U(32.W))
+    val counter1 = RegInit(1.U(32.W))
+    val counter2 = RegInit(1.U(32.W))
 
     val reg_i = RegNext(((j === (config.MaxCols - 1).U) && (i === (config.MaxRows - 1).U)), 1.B)
     //matricesAreEqual := true.B
 
     for (i <- 0 until config.MaxRows) {
-      for (j <- 0 until config.MaxCols) {
-        when(io.Streaming_matrix(i)(j) =/= prevStationary_matrix(i)(j)) {
-          matricesAreEqual := false.B
-        }
-      }
+  for (j <- 0 until config.MaxCols) {
+    when(io.Stationary_matrix(i)(j) =/= prevStationary_matrix(i)(j)) {
+      matricesAreEqual := false.B
     }
+  }
+  when(io.Streaming_matrix(i) =/= prevStreaming_matrix(i)) {
+    matricesAreEqual := false.B
+  }
+}
 
     val high = (i === 1.U) && (j === 1.U)
     when (~high){
@@ -95,8 +99,8 @@ class SourceDestination(implicit val config: MagmasiConfig) extends Module {
       i := 0.U
       j := 0.U
       k := 0.U
-      counter1 := 0.U
-      counter2 := 0.U
+      counter1 := 1.U
+      counter2 := 1.U
       matricesAreEqual := 1.B
       for ( i <- 0 until config.MaxRows){
         for (j <- 0 until config.MaxCols){

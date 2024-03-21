@@ -531,19 +531,19 @@
   },
   {
     "class":"firrtl.transforms.DontTouchAnnotation",
-    "target":"~Top|FlexDPUby2>DPESrc_0_0"
+    "target":"~Top|FlexDPUby2>DPESrc2_0_0"
   },
   {
     "class":"firrtl.transforms.DontTouchAnnotation",
-    "target":"~Top|FlexDPUby2>DPESrc_0_1"
+    "target":"~Top|FlexDPUby2>DPESrc2_0_1"
   },
   {
     "class":"firrtl.transforms.DontTouchAnnotation",
-    "target":"~Top|FlexDPUby2>DPESrc_1_0"
+    "target":"~Top|FlexDPUby2>DPESrc2_1_0"
   },
   {
     "class":"firrtl.transforms.DontTouchAnnotation",
-    "target":"~Top|FlexDPUby2>DPESrc_1_1"
+    "target":"~Top|FlexDPUby2>DPESrc2_1_1"
   },
   {
     "class":"firrtl.transforms.DontTouchAnnotation",
